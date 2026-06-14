@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI MASTER SCHOOL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0b1220;
+      --blue: #2563eb;
+      --sky: #eff6ff;
+      --text: #111827;
+      --sub: #64748b;
+      --line: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f8fafc;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(15, 23, 42, .10);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+    .section {
+      padding: 110px 0;
+    }
+    .section.gray {
+      background: var(--bg);
+    }
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      margin-bottom: 12px;
+    }
+    h1, h2, h3 {
+      color: var(--navy);
+      line-height: 1.35;
+      letter-spacing: -.03em;
+    }
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      font-weight: 900;
+    }
+    h2 {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 900;
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    p {
+      color: var(--sub);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 16px 30px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: .3s ease;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 16px 36px rgba(37, 99, 235, .28);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #1d4ed8;
+    }
+    .btn-outline {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--navy);
+    }
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: .8s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      width: min(1180px, 92%);
+      height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -.03em;
+    }
+    .logo span {
+      color: var(--blue);
+    }
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #475569;
+    }
+    .nav-cta {
+      min-width: auto;
+      padding: 10px 22px;
+      font-size: 14px;
+    }
+    .hero {
+      padding: 140px 0 80px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(37,99,235,.16), transparent 28%),
+        linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .hero-copy {
+      color: var(--blue);
+      font-weight: 900;
+      letter-spacing: .14em;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      margin-bottom: 24px;
+    }
+    .hero-text {
+      font-size: 18px;
+      margin-bottom: 34px;
+      max-width: 620px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .hero-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-card img {
+      height: 520px;
+      border-radius: 24px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 18px 45px rgba(15,23,42,.08);
+      text-align: center;
+    }
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      color: var(--blue);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .stat span {
+      color: var(--sub);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .message-grid,
+    .reality-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .photo-card {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+    .photo-card img {
+      height: 480px;
+      border-radius: 22px;
+    }
+    .quote-box {
+      margin-top: 28px;
+      padding: 28px;
+      background: var(--sky);
+      border-left: 5px solid var(--blue);
+      border-radius: 18px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .problem-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .problem {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+      font-weight: 700;
+    }
+    .problem::before {
+      content: "!";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sky);
+      color: var(--blue);
+      margin-right: 8px;
+      font-weight: 900;
+    }
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .learn-card,
+    .result-card,
+    .voice-card,
+    .price-card,
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+    }
+    .learn-card span {
+      font-size: 28px;
+    }
+    .learn-card h3 {
+      margin: 14px 0 8px;
+    }
+    .curriculum {
+      position: relative;
+    }
+    .steps {
+      display: grid;
+      gap: 18px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 26px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+    }
+    .step-num {
+      color: var(--blue);
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .work-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+    }
+    .work-card img {
+      height: 210px;
+    }
+    .work-card div {
+      padding: 24px;
+    }
+    .voice-grid,
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .voice-tag {
+      display: inline-block;
+      color: var(--blue);
+      background: var(--sky);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .compare-table {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+    th {
+      background: var(--navy);
+      color: #fff;
+    }
+    td:first-child {
+      text-align: left;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .good {
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .price-card {
+      text-align: center;
+      position: relative;
+    }
+    .price-card.recommend {
+      border: 2px solid var(--blue);
+      transform: translateY(-10px);
+    }
+    .ribbon {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .price {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--blue);
+      margin: 16px 0;
+    }
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .faq-q {
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .cta {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(37,99,235,.2), transparent 26%),
+        var(--navy);
+      color: #fff;
+      text-align: center;
+    }
+    .cta h2 {
+      color: #fff;
+    }
+    .cta p {
+      color: #cbd5e1;
+      margin: 20px 0 34px;
+    }
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 34px 0;
+      font-size: 13px;
+    }
+    .fixed-cta {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 80;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 18px 40px rgba(37,99,235,.35);
+    }
+    @media (max-width: 900px) {
+      .section {
+        padding: 84px 0;
+      }
+      .hero {
+        min-height: auto;
+        padding-top: 120px;
+      }
+      .hero-grid,
+      .message-grid,
+      .reality-grid,
+      .stats,
+      .problem-list,
+      .learn-grid,
+      .works-grid,
+      .voice-grid,
+      .price-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-card img,
+      .photo-card img {
+        height: 360px;
+      }
+      .stats {
+        margin-top: 0;
+      }
+      .step {
+        grid-template-columns: 1fr;
+      }
+      .price-card.recommend {
+        transform: none;
+      }
+      .btn {
+        width: 100%;
+      }
+      th, td {
+        padding: 16px 10px;
+        font-size: 13px;
+      }
+      .fixed-cta {
+        left: 16px;
+        right: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="#" class="logo">AI MASTER<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#message">講師</a>
+      <a href="#curriculum">内容</a>
+      <a href="#price">料金</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary nav-cta">無料相談</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="fade-up">
+      <div class="hero-copy">AI PRACTICAL SCHOOL</div>
+      <h1>AIは、<br>才能の差を埋める。</h1>
+      <p class="hero-text">
+        これからの時代に必要なのは、AIを知ることではなく、AIを使いこなすこと。
+        未経験から仕事・副業・事業に活かせる実践的なAI活用術を学べます。
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">無料個別相談を予約する</a>
+        <a href="#curriculum" class="btn btn-outline">カリキュラムを見る</a>
+      </div>
+    </div>
+    <div class="hero-card fade-up">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80" alt="AI講師">
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="stats fade-up">
+    <div class="stat"><strong>1,200+</strong><span>累計受講者</span></div>
+    <div class="stat"><strong>96%</strong><span>受講満足度</span></div>
+    <div class="stat"><strong>80社</strong><span>企業支援実績</span></div>
+    <div class="stat"><strong>5年</strong><span>AI活用支援歴</span></div>
+  </div>
+</div>
+<section class="section" id="message">
+  <div class="container message-grid">
+    <div class="photo-card fade-up">
+      <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="講師メッセージ">
+    </div>
+    <div class="fade-up">
+      <div class="label">MESSAGE</div>
+      <h2>なぜ、<br>AIを教えているのか。</h2>
+      <p>
+        AIは一部の専門家だけのものではありません。
+        文章作成、企画、営業、資料作成、業務改善まで、正しく使えば誰でも仕事の質を上げられます。
+      </p>
+      <p>
+        ただし、独学では「何をどう使えばいいのか」で止まってしまう人が多い。
+        このスクールでは、AIを知識として学ぶのではなく、現場で使える形まで落とし込みます。
+      </p>
+      <div class="quote-box">
+        AIを使う人が、これからの仕事を前に進める。
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section gray">
+  <div class="container reality-grid">
+    <div class="fade-up">
+      <div class="label">REALITY</div>
+      <h2>AIを知らないことより、<br>AIを使えないことがリスクになる。</h2>
+      <p>
+        生成AIはすでに、文章作成・資料作成・リサーチ・マーケティング・営業・制作現場に入り込んでいます。
+        これから求められるのは、AIを恐れることではなく、目的に合わせて使い分ける力です。
+      </p>
+    </div>
+    <div class="photo-card fade-up">
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="AI時代">
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">PROBLEM</div>
+      <h2>こんな不安はありませんか？</h2>
+    </div>
+    <div class="problem-list">
+      <div class="problem fade-up">ChatGPTを触ったけど使いこなせない</div>
+      <div class="problem fade-up">何から学べばいいかわからない</div>
+      <div class="problem fade-up">仕事にどう活かすか分からない</div>
+      <div class="problem fade-up">副業に使えるイメージが湧かない</div>
+      <div class="problem fade-up">専門用語が多くて挫折しそう</div>
+      <div class="problem fade-up">独学だと正解が分からない</div>
+    </div>
+  </div>
+</section>
+<section class="section gray">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">WHAT YOU LEARN</div>
+      <h2>AIを使って、<br>仕事の質を上げる。</h2>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card fade-up"><span>✍️</span><h3>文章作成</h3><p>メール、営業文、記事、SNS投稿を効率化。</p></div>
+      <div class="learn-card fade-up"><span>💡</span><h3>企画作成</h3><p>アイデア出しから構成作成までAIで支援。</p></div>
+      <div class="learn-card fade-up"><span>📊</span><h3>資料作成</h3><p>提案書やプレゼン資料の質と速度を高める。</p></div>
+      <div class="learn-card fade-up"><span>⚙️</span><h3>業務効率化</h3><p>日々の作業をAIで仕組み化する。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section curriculum" id="curriculum">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">CURRICULUM</div>
+      <h2>実践ベースで学ぶ<br>5STEPカリキュラム</h2>
+    </div>
+    <div class="steps">
+      <div class="step fade-up"><div class="step-num">STEP 01</div><div><h3>AI・ChatGPTの基本</h3><p>AIの仕組みと基本操作を、初心者にも分かる言葉で学習。</p></div></div>
+      <div class="step fade-up"><div class="step-num">STEP 02</div><div><h3>プロンプト設計</h3><p>欲しい答えを引き出す指示文の作り方を習得。</p></div></div>
+      <div class="step fade-up"><div class="step-num">STEP 03</div><div><h3>仕事への活用</h3><p>文章・企画・資料・リサーチなど実務課題で実践。</p></div></div>
+      <div class="step fade-up"><div class="step-num">STEP 04</div><div><h3>副業・案件活用</h3><p>提案文、LP構成、SNS運用、制作補助に応用。</p></div></div>
+      <div class="step fade-up"><div class="step-num">STEP 05</div><div><h3>自分専用ワークフロー構築</h3><p>自分の仕事に合わせたAI活用の型を作成。</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="section gray">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">OUTPUT</div>
+      <h2>学んで終わりではなく、<br>成果物まで作る。</h2>
+    </div>
+    <div class="works-grid">
+      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"><div><h3>提案書</h3><p>AIを使った営業資料・企画資料を作成。</p></div></div>
+      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"><div><h3>LP構成</h3><p>構成案、コピー、訴求設計をAIで制作。</p></div></div>
+      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=900&q=80"><div><h3>SNS投稿</h3><p>投稿企画、本文、ハッシュタグまで一気通貫。</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">VOICE</div>
+      <h2>受講生の変化</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card fade-up"><span class="voice-tag">会社員 / 30代</span><h3>資料作成が半分の時間に</h3><p>AIの使い方が具体的に分かり、仕事で毎日使えるようになりました。</p></div>
+      <div class="voice-card fade-up"><span class="voice-tag">副業希望 / 20代</span><h3>提案文が作れるように</h3><p>副業案件への応募文や構成案をAIで作れるようになりました。</p></div>
+      <div class="voice-card fade-up"><span class="voice-tag">経営者 / 40代</span><h3>業務改善のヒントが増えた</h3><p>社内の文章作成やマニュアル作成にAIを活用できています。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section gray">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">COMPARISON</div>
+      <h2>他スクールとの違い</h2>
+    </div>
+    <div class="compare-table fade-up">
+      <table>
+        <tr><th>項目</th><th>AI MASTER</th><th>一般的な講座</th></tr>
+        <tr><td>実践課題</td><td class="good">◎</td><td>△</td></tr>
+        <tr><td>個別サポート</td><td class="good">◎</td><td>△</td></tr>
+        <tr><td>仕事への活用</td><td class="good">◎</td><td>○</td></tr>
+        <tr><td>副業への応用</td><td class="good">◎</td><td>△</td></tr>
+        <tr><td>成果物作成</td><td class="good">◎</td><td>△</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="section" id="price">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">PRICE</div>
+      <h2>目的に合わせて選べるプラン</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card fade-up"><h3>入門プラン</h3><div class="price">49,800円</div><p>AIの基本を学びたい方向け</p></div>
+      <div class="price-card recommend fade-up"><div class="ribbon">おすすめ</div><h3>実践プラン</h3><div class="price">98,000円</div><p>仕事や副業で使いたい方向け</p></div>
+      <div class="price-card fade-up"><h3>個別サポートプラン</h3><div class="price">198,000円</div><p>伴走支援で成果物まで作りたい方向け</p></div>
+    </div>
+  </div>
+</section>
+<section class="section faq gray" id="faq">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">FAQ</div>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up"><div class="faq-q">Q. 未経験でも大丈夫ですか？</div><p>A. はい。基本操作から丁寧に学べます。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. パソコンが苦手でも大丈夫ですか？</div><p>A. 操作画面を見ながら進めるため安心です。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. 仕事や副業に使えますか？</div><p>A. 実務課題を通して、仕事に活かせる形で学べます。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. どのAIツールを学べますか？</div><p>A. ChatGPTを中心に、画像生成AIや資料作成ツールも扱います。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section cta" id="contact">
+  <div class="container fade-up">
+    <div class="label">FREE CONSULTATION</div>
+    <h2>AI時代を生き抜く力は、<br>今からでも身につく。</h2>
+    <p>
+      まずは無料相談で、あなたに合ったAI活用の始め方を見つけましょう。
+    </p>
+    <div class="hero-buttons" style="justify-content:center;">
+      <a href="#" class="btn btn-primary">無料個別相談を予約する</a>
+      <a href="#curriculum" class="btn btn-outline">カリキュラムを見る</a>
+    </div>
+  </div>
+</section>
+<footer>
+  © 2026 AI MASTER SCHOOL. All Rights Reserved.
+</footer>
+<a href="#contact" class="fixed-cta">無料相談する</a>
+<script>
+  const targets = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(target => observer.observe(target));
+</script>
+</body>
+</html>
