@@ -485,13 +485,18 @@
       .person {
         transform: scale(.62);
       }
-      .check-item,
       .case-card {
         grid-template-columns: 1fr;
         text-align: center;
       }
+      .check-item {
+        grid-template-columns: 48px 1fr;
+        align-items: center;
+      }
       .check {
-        margin: 0 auto;
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
       }
       .network {
         grid-template-columns: 1fr;
@@ -550,16 +555,16 @@
 </section>
 <section>
   <div class="container">
-    <div class="worry-card fade-up">
-      <h2 class="section-title">こんなことに当てはまりませんか？</h2>
+    <div class="worry-card">
+      <h2 class="section-title fade-up">こんなことに当てはまりませんか？</h2>
       <div class="check-list">
-        <div class="check-item"><div class="check">✓</div><p>老後資金がどれくらい必要かわからない。</p></div>
-        <div class="check-item"><div class="check">✓</div><p>NISAやiDeCoを始めたいが、何から進めれば良いかわからない。</p></div>
-        <div class="check-item"><div class="check">✓</div><p>保険の見直しをしたいが、今の保障が適正かわからない。</p></div>
-        <div class="check-item"><div class="check">✓</div><p>住宅ローンや教育費、相続など将来のお金に不安がある。</p></div>
-        <div class="check-item"><div class="check">✓</div><p>銀行や保険会社以外に、中立的に相談できる相手がほしい。</p></div>
+        <div class="check-item fade-up" style="transition-delay:.05s"><div class="check">✓</div><p>老後資金がどれくらい必要かわからない。</p></div>
+        <div class="check-item fade-up" style="transition-delay:.15s"><div class="check">✓</div><p>NISAやiDeCoを始めたいが、何から進めれば良いかわからない。</p></div>
+        <div class="check-item fade-up" style="transition-delay:.25s"><div class="check">✓</div><p>保険の見直しをしたいが、今の保障が適正かわからない。</p></div>
+        <div class="check-item fade-up" style="transition-delay:.35s"><div class="check">✓</div><p>住宅ローンや教育費、相続など将来のお金に不安がある。</p></div>
+        <div class="check-item fade-up" style="transition-delay:.45s"><div class="check">✓</div><p>銀行や保険会社以外に、中立的に相談できる相手がほしい。</p></div>
       </div>
-      <div class="solve">
+      <div class="solve fade-up" style="transition-delay:.1s">
         全て<br>
         マネーサポート室が<br>
         解決します。
