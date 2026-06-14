@@ -1,385 +1,767 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurant Opening LP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LP制作から予約システム・料金シミュレーターまで、ビジネスの成果につながるWebを一貫して制作します。">
+  <title>TAKE Design | LP + Webシステム構築</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:     '#080808',
+            surf:   '#0e0e0e',
+            card:   '#111111',
+            accent: '#6366f1',
+            alt:    '#818cf8',
+            adk:    '#4f46e5',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* Grid pattern */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(99,102,241,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
     }
-    body {
-      font-family: "Noto Sans JP", sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-      line-height: 1.8;
+
+    /* Reveal */
+    .rev { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+    .rev.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .45s; }
+
+    /* Gradient text */
+    .gtext {
+      background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 40%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .section {
-      padding: 96px 6%;
-    }
-    .section-title {
-      font-family: serif;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.3;
-      margin-bottom: 32px;
-      color: #f5e6c8;
-    }
-    .lead {
-      font-size: 17px;
-      color: #ddd;
-      max-width: 720px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 16px 36px;
-      background: #d8a76a;
-      color: #111;
-      font-weight: bold;
-      border-radius: 999px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #f0c98b;
-      transform: translateY(-3px);
-    }
-    .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
-        url("https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1800&q=80")
-        center/cover;
-      display: flex;
-      align-items: center;
-      padding: 0 6%;
-    }
-    .hero-content {
-      max-width: 760px;
-    }
-    .hero-label {
-      color: #d8a76a;
-      letter-spacing: .18em;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-    .hero h1 {
-      font-family: serif;
-      font-size: clamp(46px, 8vw, 92px);
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
-    .hero p {
-      font-size: 18px;
-      color: #eee;
-      margin-bottom: 40px;
-    }
-    .concept {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
-      background: #181818;
-    }
-    .concept img {
-      height: 560px;
-      border-radius: 24px;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .card {
-      background: #181818;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .card img {
-      height: 260px;
-    }
-    .card-body {
-      padding: 28px;
-    }
-    .card h3 {
-      color: #f5e6c8;
-      margin-bottom: 12px;
-      font-size: 22px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
-    }
-    .gallery img {
-      height: 420px;
-      border-radius: 24px;
-    }
-    .gallery-small {
-      display: grid;
-      gap: 24px;
-    }
-    .gallery-small img {
-      height: 198px;
-    }
-    .story {
-      background:
-        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=80")
-        center/cover;
-    }
-    .menu-card {
-      padding: 28px;
-      background: #181818;
-      border-radius: 24px;
-      border: 1px solid rgba(216,167,106,.35);
-    }
-    .menu-card span {
-      color: #d8a76a;
-      font-size: 14px;
-      letter-spacing: .12em;
-    }
-    .menu-card h3 {
-      font-size: 24px;
-      margin: 10px 0;
-    }
-    .voice {
-      background: #181818;
-    }
-    .voice-card {
-      background: #0f0f0f;
-      padding: 32px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .stars {
-      color: #d8a76a;
-      margin-bottom: 16px;
-    }
-    .access {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .map {
-      height: 420px;
-      background: #222;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-    }
-    .cta {
-      text-align: center;
-      background:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.78)),
-        url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1800&q=80")
-        center/cover;
-    }
-    .cta h2 {
-      font-family: serif;
-      font-size: clamp(34px, 5vw, 64px);
-      color: #f5e6c8;
-      margin-bottom: 24px;
-    }
-    .cta p {
-      margin-bottom: 36px;
-      color: #eee;
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      padding: 24px 0;
-    }
-    .faq-q {
-      color: #f5e6c8;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 6%;
-      background: #090909;
-      color: #aaa;
-      font-size: 14px;
-    }
-    @media (max-width: 900px) {
-      .concept,
-      .access,
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-      .concept img,
-      .gallery img,
-      .gallery-small img {
-        height: 320px;
-      }
-      .section {
-        padding: 72px 6%;
-      }
-    }
+
+    /* Card hover */
+    .ch { transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+    .ch:hover { transform: translateY(-4px); border-color: rgba(99,102,241,.35) !important; box-shadow: 0 12px 48px rgba(99,102,241,.08); }
+
+    /* Nav */
+    #nav { transition: background .3s, backdrop-filter .3s, border-color .3s; }
+
+    /* Featured pricing card */
+    .feat-card { box-shadow: 0 0 0 1px rgba(99,102,241,.45), 0 16px 64px rgba(99,102,241,.1); }
+
+    /* Thumb overlay */
+    .tov { background: linear-gradient(to top, rgba(8,8,8,.85) 0%, rgba(8,8,8,.1) 60%, transparent 100%); }
+
+    /* Step connector */
+    .step-arrow { color: rgba(99,102,241,.3); font-size: 1.8rem; line-height: 1; margin-top: 22px; flex-shrink: 0; }
+
+    /* Badge pill */
+    .badge-fn  { background: rgba(99,102,241,.85); color: #fff; }
+    .badge-sim { background: rgba(16,185,129,.85); color: #fff; }
+    .badge-wip { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+
+    /* Divider */
+    .hdiv { height: 1px; background: rgba(255,255,255,.06); }
+
+    /* Tag chip */
+    .chip { font-size: 11px; padding: 3px 11px; border-radius: 9999px; border: 1px solid rgba(99,102,241,.25); background: rgba(99,102,241,.08); color: rgba(129,140,248,.9); }
+
+    /* Section label */
+    .slbl { font-size: 10.5px; font-weight: 700; letter-spacing: .45em; text-transform: uppercase; color: rgba(99,102,241,.75); }
+
+    /* Input/hover hover anchor */
+    .nav-a { font-size: 13px; color: rgba(240,240,240,.5); transition: color .2s; }
+    .nav-a:hover { color: #fff; }
+
+    /* Scroll indicator */
+    @keyframes drip { 0% { top: -40%; } 100% { top: 140%; } }
+
+    /* Contact card hover */
+    .ctcard { transition: transform .22s ease, border-color .22s ease; }
+    .ctcard:hover { transform: translateY(-3px); border-color: rgba(99,102,241,.3) !important; }
+
+    /* Price hover */
+    .prcard { transition: transform .22s ease, border-color .22s ease; }
+    .prcard:hover { border-color: rgba(99,102,241,.25) !important; }
   </style>
 </head>
-<body>
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-label">NEW OPEN RESTAURANT</div>
-      <h1>その一皿が、<br>特別な夜を完成させる。</h1>
-      <p>旬の食材と洗練された空間で楽しむ、新しいダイニング体験。</p>
-      <a href="#reserve" class="btn">WEB予約する</a>
+<body class="bg-bg text-white">
+
+
+<!-- ═══════════════════════════════════
+     HEADER
+═══════════════════════════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50" style="border-bottom:1px solid transparent;">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 flex items-center justify-between" style="height:64px;">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2.5 select-none">
+      <span class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-white font-black text-[11px] flex-shrink-0">T</span>
+      <span class="font-bold text-[14px] tracking-wide" style="color:rgba(240,240,240,.85);">TAKE Design</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#services" class="nav-a">できること</a>
+      <a href="#works"    class="nav-a">制作実績</a>
+      <a href="#pricing"  class="nav-a">料金</a>
+      <a href="#flow"     class="nav-a">制作の流れ</a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-adk text-white text-[12.5px] font-bold px-5 py-2.5 rounded-lg transition-colors" style="min-height:40px;">
+      お問い合わせ
+    </a>
+
+    <!-- Hamburger -->
+    <button id="hb" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="メニュー">
+      <span id="h1" class="block w-5 h-px transition-all duration-300" style="background:rgba(255,255,255,.7);"></span>
+      <span id="h2" class="block w-5 h-px transition-all duration-300" style="background:rgba(255,255,255,.7);"></span>
+      <span id="h3" class="block w-5 h-px transition-all duration-300" style="background:rgba(255,255,255,.7);"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mob" class="md:hidden" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .35s ease;background:#0e0e0e;border-top:1px solid rgba(255,255,255,.06);">
+    <nav class="flex flex-col px-8 py-6 gap-5 text-[14px]" style="color:rgba(240,240,240,.6);">
+      <a href="#services" onclick="closeMob()" class="hover:text-white transition-colors">できること</a>
+      <a href="#works"    onclick="closeMob()" class="hover:text-white transition-colors">制作実績</a>
+      <a href="#pricing"  onclick="closeMob()" class="hover:text-white transition-colors">料金</a>
+      <a href="#flow"     onclick="closeMob()" class="hover:text-white transition-colors">制作の流れ</a>
+      <a href="#contact"  onclick="closeMob()" class="bg-accent hover:bg-adk text-white font-bold text-center py-3 rounded-lg transition-colors mt-1">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section id="hero" class="relative hero-grid flex items-center" style="min-height:100svh;padding-top:64px;">
+
+  <!-- Glow orbs -->
+  <div class="absolute pointer-events-none" style="top:20%;left:15%;width:480px;height:480px;background:radial-gradient(circle,rgba(99,102,241,.1) 0%,transparent 65%);filter:blur(48px);"></div>
+  <div class="absolute pointer-events-none" style="bottom:20%;right:10%;width:320px;height:320px;background:radial-gradient(circle,rgba(167,139,250,.07) 0%,transparent 65%);filter:blur(48px);"></div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-10 py-20">
+
+    <!-- Badge -->
+    <div class="rev inline-flex items-center gap-2 mb-8" style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.22);padding:5px 14px;border-radius:9999px;">
+      <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse flex-shrink-0"></span>
+      <span class="text-[11.5px] font-bold tracking-[.3em]" style="color:rgba(129,140,248,.9);">Web Freelancer</span>
     </div>
-  </section>
-  <section class="section concept">
-    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80" alt="">
-    <div>
-      <h2 class="section-title">ただ食事をする場所ではなく、<br>思い出が生まれる場所へ。</h2>
-      <p class="lead">
-        大切な人との会話、グラスを重ねる音、目の前に運ばれる一皿。
-        私たちは料理だけでなく、その時間ごと記憶に残るレストランを目指しています。
+
+    <!-- Headline -->
+    <h1 class="rev d1 font-black leading-tight mb-7" style="font-size:clamp(2rem,5.5vw,3.9rem);text-wrap:balance;">
+      集客できるLP＋<br>
+      業務を効率化するシステム、<br>
+      <span class="gtext">まとめて作ります。</span>
+    </h1>
+
+    <!-- Sub -->
+    <p class="rev d2 max-w-xl mb-10" style="font-size:clamp(13.5px,1.8vw,15.5px);color:rgba(240,240,240,.5);line-height:2.1;text-wrap:pretty;">
+      静的なLPだけでなく、予約システム・料金シミュレーター・お問い合わせフォームまで。<br>
+      ビジネスの成果につながるWebを、デザインから実装まで一貫して制作します。
+    </p>
+
+    <!-- CTAs -->
+    <div class="rev d3 flex flex-col sm:flex-row gap-3">
+      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-adk text-white font-bold text-[14px] px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5" style="min-height:52px;">
+        お問い合わせ・ご相談
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#works" class="inline-flex items-center justify-center gap-2 text-white font-bold text-[14px] px-8 py-4 rounded-xl transition-all hover:border-accent hover:text-alt" style="border:1px solid rgba(255,255,255,.12);min-height:52px;">
+        制作実績を見る
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="rev d4 flex flex-wrap gap-10 mt-14" style="padding-top:32px;border-top:1px solid rgba(255,255,255,.06);">
+      <div>
+        <p class="font-black text-white mb-0.5" style="font-size:2rem;line-height:1;">6<span class="text-accent text-[1.4rem]">+</span></p>
+        <p class="text-[11.5px]" style="color:rgba(240,240,240,.38);">制作実績</p>
+      </div>
+      <div>
+        <p class="font-black text-white mb-0.5" style="font-size:2rem;line-height:1;">4<span class="text-accent text-[1.4rem]">種</span></p>
+        <p class="text-[11.5px]" style="color:rgba(240,240,240,.38);">対応サービス</p>
+      </div>
+      <div>
+        <p class="font-black text-white mb-0.5" style="font-size:2rem;line-height:1;"><span class="text-accent">1-2</span>週</p>
+        <p class="text-[11.5px]" style="color:rgba(240,240,240,.38);">平均納品目安</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <div class="w-px h-10 relative overflow-hidden" style="background:rgba(255,255,255,.1);">
+      <div style="position:absolute;width:100%;height:38%;background:rgba(99,102,241,.6);animation:drip 2s ease-in-out infinite;"></div>
+    </div>
+    <span class="text-[9px] font-bold tracking-[.45em] uppercase" style="color:rgba(255,255,255,.2);">scroll</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     SERVICES — できること
+═══════════════════════════════════ -->
+<section id="services" style="background:#0a0a0a;padding:96px 0 104px;">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10">
+
+    <div class="mb-14 rev">
+      <p class="slbl mb-3">Services</p>
+      <h2 class="font-black text-white" style="font-size:clamp(1.5rem,3.5vw,2.4rem);">できること</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <!-- LP制作 -->
+      <div class="rev ch p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-[17px] mb-3">LP制作</h3>
+        <p class="text-[13.5px] leading-[1.95] mb-5" style="color:rgba(240,240,240,.48);">美容・飲食・医療・士業など、業種に合わせたデザインで成果につながるランディングページを制作。レスポンシブ対応・高速表示・SEO配慮まで一括対応します。</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="chip">レスポンシブ</span>
+          <span class="chip">アニメーション</span>
+          <span class="chip">SEO対応</span>
+          <span class="chip">高速表示</span>
+        </div>
+      </div>
+
+      <!-- 予約システム -->
+      <div class="rev d1 ch p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-[17px] mb-3">予約システム構築</h3>
+        <p class="text-[13.5px] leading-[1.95] mb-5" style="color:rgba(240,240,240,.48);">STORES予約・カレンダー連携・LINE通知など、業種に合わせた予約受付システムをLP内に組み込みます。電話対応を減らし、予約業務を自動化できます。</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="chip">STORES予約</span>
+          <span class="chip">LINE連携</span>
+          <span class="chip">自動化</span>
+        </div>
+      </div>
+
+      <!-- 料金シミュレーター -->
+      <div class="rev d2 ch p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-[17px] mb-3">料金シミュレーター</h3>
+        <p class="text-[13.5px] leading-[1.95] mb-5" style="color:rgba(240,240,240,.48);">条件選択でリアルタイムに費用を計算できるシミュレーターをLP内に実装。保険適用・プラン選択・人数など、業種に合わせたカスタム計算ロジックを組み込みます。</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="chip">リアルタイム計算</span>
+          <span class="chip">カスタムロジック</span>
+          <span class="chip">UX設計</span>
+        </div>
+      </div>
+
+      <!-- フォーム構築 -->
+      <div class="rev d3 ch p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-[17px] mb-3">フォーム構築</h3>
+        <p class="text-[13.5px] leading-[1.95] mb-5" style="color:rgba(240,240,240,.48);">お問い合わせ・資料請求・初回相談申込など、用途に合わせたフォームを構築。入力バリデーション・自動返信メール・管理者通知まで対応します。</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="chip">自動返信メール</span>
+          <span class="chip">バリデーション</span>
+          <span class="chip">管理通知</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     WORKS — 制作実績
+═══════════════════════════════════ -->
+<section id="works" style="background:#080808;padding:96px 0 104px;">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10">
+
+    <div class="flex items-end justify-between mb-14 rev">
+      <div>
+        <p class="slbl mb-3">Works</p>
+        <h2 class="font-black text-white" style="font-size:clamp(1.5rem,3.5vw,2.4rem);">制作実績</h2>
+      </div>
+      <span class="hidden sm:block text-[11.5px] font-bold" style="color:rgba(240,240,240,.2);">「機能付き」= 予約・シミュレーター等を実装</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- 01 Hair Salon LUMIA -->
+      <div class="rev ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#1e1510 0%,#7a5835 45%,#c9a96e 80%,#faf3e4 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-family:Georgia,serif;font-style:italic;font-size:1.9rem;color:rgba(253,251,247,.9);letter-spacing:.3em;text-shadow:0 2px 12px rgba(0,0,0,.4);">LUMIA</p>
+            <p style="font-size:9px;color:rgba(253,251,247,.45);letter-spacing:.45em;text-transform:uppercase;">Hair Salon</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3 flex gap-1.5">
+            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Hair Salon · 表参道</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">Hair Salon LUMIA</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">完全予約制プライベートサロンのLP。スクロールアニメーション・STORES予約ウィジェット組み込み対応。</p>
+          <a href="https://hair-salon-bloom.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#818cf8;">
+            サイトを見る
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 さくら整骨院 -->
+      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#071a10 0%,#1e7d53 55%,#29a86e 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-size:1.35rem;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:.08em;">さくら整骨院</p>
+            <p style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.3em;margin-top:4px;">交通事故・むちうち専門</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3 flex gap-1.5">
+            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+            <span class="badge-sim text-[10px] font-black px-2.5 py-1 rounded-full">シミュレーター</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Clinic · 大阪市北区</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">さくら整骨院</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">整骨院LP＋料金シミュレーター実装。保険種別・通院頻度でリアルタイム計算。FAQアコーディオン付き。</p>
+          <a href="https://sakura-seikotsuin-b3au.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#818cf8;">
+            サイトを見る
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 TRATTORIA LUCENTE -->
+      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#060606 0%,#191408 55%,#3d2e10 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-family:Georgia,serif;font-style:italic;font-size:1.5rem;color:rgba(197,163,95,.9);letter-spacing:.28em;">Lucente</p>
+            <p style="font-size:9px;color:rgba(197,163,95,.38);letter-spacing:.45em;text-transform:uppercase;margin-top:4px;">Trattoria · Kyoto</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3 flex gap-1.5">
+            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Restaurant · 京都中京区</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">TRATTORIA LUCENTE</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">薪火イタリアンのLP。動画ヒーロー・LINE予約・STORES予約対応。ダークラグジュアリーデザイン。</p>
+          <a href="https://trattoria-lucente.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#818cf8;">
+            サイトを見る
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 04 美容クリニック（準備中） -->
+      <div class="rev ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#0b0f1a 0%,#0f1e3d 55%,#1d3a7a 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-size:1.2rem;font-weight:700;color:rgba(255,255,255,.82);letter-spacing:.08em;">美容クリニック</p>
+            <p style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.3em;margin-top:4px;">Aesthetic Clinic</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3 flex gap-1.5">
+            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+            <span class="badge-wip text-[10px] font-black px-2.5 py-1 rounded-full">準備中</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Clinic · Web予約システム</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">美容クリニック様</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">Web予約システム・初診申込フォーム・症例ギャラリーを組み込んだLP。制作実績掲載準備中。</p>
+          <span class="text-[12px] font-bold" style="color:rgba(240,240,240,.2);">掲載準備中</span>
+        </div>
+      </div>
+
+      <!-- 05 フィットネスジム（準備中） -->
+      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#0d0010 0%,#1d0a35 55%,#5b21b6 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-size:1.2rem;font-weight:700;color:rgba(255,255,255,.82);letter-spacing:.08em;">フィットネスジム</p>
+            <p style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.3em;margin-top:4px;">Fitness Studio</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3 flex gap-1.5">
+            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+            <span class="badge-wip text-[10px] font-black px-2.5 py-1 rounded-full">準備中</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Fitness · 体験申込フォーム</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">フィットネスジム様</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">体験申込フォーム・料金プランシミュレーター・クラス予約を組み込んだLP。制作実績掲載準備中。</p>
+          <span class="text-[12px] font-bold" style="color:rgba(240,240,240,.2);">掲載準備中</span>
+        </div>
+      </div>
+
+      <!-- 06 カフェ（準備中） -->
+      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+        <div class="relative overflow-hidden" style="aspect-ratio:16/9;background:linear-gradient(135deg,#150c06 0%,#3b1f0c 55%,#a0622a 100%);">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-1">
+            <p style="font-family:Georgia,serif;font-style:italic;font-size:1.6rem;color:rgba(255,255,255,.85);letter-spacing:.25em;">Café</p>
+            <p style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.4em;text-transform:uppercase;margin-top:4px;">Specialty Coffee</p>
+          </div>
+          <div class="tov absolute inset-0"></div>
+          <div class="absolute top-3 left-3">
+            <span class="badge-wip text-[10px] font-black px-2.5 py-1 rounded-full">準備中</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(99,102,241,.65);">Café · デザイン特化LP</p>
+          <h3 class="font-bold text-white text-[15px] mb-1.5">スペシャルティカフェ様</h3>
+          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">ブランドイメージを重視したデザイン特化LP。撮影ディレクションからコーディングまで一貫対応。</p>
+          <span class="text-[12px] font-bold" style="color:rgba(240,240,240,.2);">掲載準備中</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     PRICING — 料金目安
+═══════════════════════════════════ -->
+<section id="pricing" style="background:#0a0a0a;padding:96px 0 104px;">
+  <div class="max-w-5xl mx-auto px-6 sm:px-10">
+
+    <div class="text-center mb-3 rev">
+      <p class="slbl mb-3">Pricing</p>
+      <h2 class="font-black text-white mb-4" style="font-size:clamp(1.5rem,3.5vw,2.4rem);">料金目安</h2>
+      <p class="text-[13.5px] max-w-sm mx-auto" style="color:rgba(240,240,240,.42);">ご要望・規模・機能数によって変動します。まずはお気軽にご相談ください。</p>
+    </div>
+    <p class="text-center text-[11px] mb-12 rev" style="color:rgba(240,240,240,.2);">※ 表示価格はすべて税込み目安です</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
+
+      <!-- LP基本 -->
+      <div class="rev prcard p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.07);">
+        <p class="text-[10.5px] font-bold tracking-[.3em] uppercase mb-5" style="color:rgba(240,240,240,.35);">LP 基本</p>
+        <p class="font-black text-white mb-1.5" style="font-size:2.5rem;line-height:1;">¥49,800<span class="text-[1.15rem]" style="color:rgba(240,240,240,.35);">〜</span></p>
+        <p class="text-[12px] mb-6" style="color:rgba(240,240,240,.32);">シンプルなLPをお求めの方に</p>
+        <div class="hdiv mb-6"></div>
+        <ul class="space-y-3 mb-8 text-[13px]" style="color:rgba(240,240,240,.52);">
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>レスポンシブLP制作</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>スクロールアニメーション</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Googleマップ埋め込み</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>修正3回まで</li>
+          <li class="flex items-center gap-2.5" style="opacity:.28;"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>予約システム</li>
+          <li class="flex items-center gap-2.5" style="opacity:.28;"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>料金シミュレーター</li>
+        </ul>
+        <a href="#contact" class="block w-full text-center py-3.5 rounded-xl text-[13px] font-bold transition-all" style="border:1px solid rgba(255,255,255,.1);color:rgba(240,240,240,.55);" onmouseover="this.style.borderColor='rgba(99,102,241,.35)';this.style.color='#818cf8'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(240,240,240,.55)'">相談してみる</a>
+      </div>
+
+      <!-- LP＋機能（Featured） -->
+      <div class="rev d1 relative p-8 rounded-2xl feat-card md:-translate-y-5" style="background:linear-gradient(160deg,#13133a 0%,#0e0e22 100%);">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+          <span class="text-[10px] font-black bg-accent text-white px-4 py-1.5 rounded-full">人気 No.1</span>
+        </div>
+        <p class="text-[10.5px] font-bold tracking-[.3em] uppercase mb-5 mt-1" style="color:rgba(129,140,248,.8);">LP ＋ 機能</p>
+        <p class="font-black text-white mb-1.5" style="font-size:2.5rem;line-height:1;">¥89,800<span class="text-[1.15rem]" style="color:rgba(240,240,240,.35);">〜</span></p>
+        <p class="text-[12px] mb-6" style="color:rgba(240,240,240,.32);">予約・シミュレーターを追加したい方に</p>
+        <div style="height:1px;background:rgba(99,102,241,.2);margin-bottom:24px;"></div>
+        <ul class="space-y-3 mb-8 text-[13px]" style="color:rgba(240,240,240,.7);">
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>LP基本プランすべて</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>予約システム組み込み</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>料金シミュレーター</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>お問い合わせフォーム</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>修正5回まで</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>LINE連携（オプション）</li>
+        </ul>
+        <a href="#contact" class="block w-full text-center py-3.5 rounded-xl text-[13px] font-bold bg-accent hover:bg-adk text-white transition-colors">相談してみる</a>
+      </div>
+
+      <!-- フルカスタム -->
+      <div class="rev d2 prcard p-8 rounded-2xl" style="background:#111111;border:1px solid rgba(255,255,255,.07);">
+        <p class="text-[10.5px] font-bold tracking-[.3em] uppercase mb-5" style="color:rgba(240,240,240,.35);">フルカスタム</p>
+        <p class="font-black text-white mb-1.5" style="font-size:2.5rem;line-height:1;">要<span style="font-size:1.8rem;">相談</span></p>
+        <p class="text-[12px] mb-6" style="color:rgba(240,240,240,.32);">複雑な要件・大規模サイトに</p>
+        <div class="hdiv mb-6"></div>
+        <ul class="space-y-3 mb-8 text-[13px]" style="color:rgba(240,240,240,.52);">
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>LP＋機能プランすべて</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>複数ページ対応</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>会員管理・DB連携</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>API・外部サービス連携</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>保守・運用サポート</li>
+          <li class="flex items-center gap-2.5"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>修正無制限</li>
+        </ul>
+        <a href="#contact" class="block w-full text-center py-3.5 rounded-xl text-[13px] font-bold transition-all" style="border:1px solid rgba(255,255,255,.1);color:rgba(240,240,240,.55);" onmouseover="this.style.borderColor='rgba(99,102,241,.35)';this.style.color='#818cf8'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(240,240,240,.55)'">相談してみる</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FLOW — 制作の流れ
+═══════════════════════════════════ -->
+<section id="flow" style="background:#080808;padding:96px 0 104px;">
+  <div class="max-w-5xl mx-auto px-6 sm:px-10">
+
+    <div class="text-center mb-14 rev">
+      <p class="slbl mb-3">Flow</p>
+      <h2 class="font-black text-white" style="font-size:clamp(1.5rem,3.5vw,2.4rem);">制作の流れ</h2>
+    </div>
+
+    <!-- Desktop: horizontal -->
+    <div class="hidden md:flex items-start gap-2 rev">
+
+      <div class="flex-1 text-center">
+        <div class="w-12 h-12 rounded-full bg-accent mx-auto mb-4 flex items-center justify-center shadow-lg" style="box-shadow:0 0 24px rgba(99,102,241,.35);">
+          <span class="font-black text-white text-sm">1</span>
+        </div>
+        <div class="rounded-xl p-5" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[13px] mb-2">ヒアリング</h3>
+          <p class="text-[11.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">目的・ターゲット・必要な機能をお伺いします。</p>
+        </div>
+      </div>
+      <div class="step-arrow px-1" style="padding-top:22px;">›</div>
+
+      <div class="flex-1 text-center">
+        <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">2</span>
+        </div>
+        <div class="rounded-xl p-5" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[13px] mb-2">お見積もり</h3>
+          <p class="text-[11.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">仕様確認後、料金と納期をご提示します。</p>
+        </div>
+      </div>
+      <div class="step-arrow px-1" style="padding-top:22px;">›</div>
+
+      <div class="flex-1 text-center">
+        <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">3</span>
+        </div>
+        <div class="rounded-xl p-5" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[13px] mb-2">デザイン</h3>
+          <p class="text-[11.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">デザイン案を作成し、方向性を確認します。</p>
+        </div>
+      </div>
+      <div class="step-arrow px-1" style="padding-top:22px;">›</div>
+
+      <div class="flex-1 text-center">
+        <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">4</span>
+        </div>
+        <div class="rounded-xl p-5" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[13px] mb-2">コーディング</h3>
+          <p class="text-[11.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">機能実装・レスポンシブ対応まで一括対応。</p>
+        </div>
+      </div>
+      <div class="step-arrow px-1" style="padding-top:22px;">›</div>
+
+      <div class="flex-1 text-center">
+        <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">5</span>
+        </div>
+        <div class="rounded-xl p-5" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[13px] mb-2">納品・公開</h3>
+          <p class="text-[11.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">修正対応後、ファイル納品またはサーバー公開。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile: vertical -->
+    <div class="md:hidden space-y-3 rev">
+      <div class="flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0" style="box-shadow:0 0 18px rgba(99,102,241,.3);">
+          <span class="font-black text-white text-sm">1</span>
+        </div>
+        <div class="flex-1 rounded-xl p-4" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[14px] mb-1">ヒアリング</h3>
+          <p class="text-[12.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">目的・ターゲット・必要な機能をお伺いします。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">2</span>
+        </div>
+        <div class="flex-1 rounded-xl p-4" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[14px] mb-1">お見積もり</h3>
+          <p class="text-[12.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">仕様確認後、料金と納期をご提示します。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">3</span>
+        </div>
+        <div class="flex-1 rounded-xl p-4" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[14px] mb-1">デザイン制作</h3>
+          <p class="text-[12.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">デザイン案を作成し、方向性を確認します。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">4</span>
+        </div>
+        <div class="flex-1 rounded-xl p-4" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[14px] mb-1">コーディング</h3>
+          <p class="text-[12.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">機能実装・レスポンシブ対応まで一括対応。</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);">
+          <span class="font-black text-accent text-sm">5</span>
+        </div>
+        <div class="flex-1 rounded-xl p-4" style="background:#111111;border:1px solid rgba(255,255,255,.06);">
+          <h3 class="font-bold text-white text-[14px] mb-1">納品・公開</h3>
+          <p class="text-[12.5px] leading-relaxed" style="color:rgba(240,240,240,.42);">修正対応後、ファイル納品またはサーバー公開。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CONTACT — お問い合わせ
+═══════════════════════════════════ -->
+<section id="contact" style="background:#0a0a0a;padding:96px 0 104px;">
+  <div class="max-w-3xl mx-auto px-6 sm:px-10 text-center">
+
+    <div class="mb-12 rev">
+      <p class="slbl mb-3">Contact</p>
+      <h2 class="font-black text-white mb-4" style="font-size:clamp(1.5rem,3.5vw,2.4rem);">お問い合わせ</h2>
+      <p class="text-[13.5px] max-w-md mx-auto" style="color:rgba(240,240,240,.42);line-height:2.1;">
+        ご要望・ご予算・お悩みなど、まずはお気軽にご相談ください。<br>
+        通常1〜2営業日以内にご返信いたします。
       </p>
     </div>
-  </section>
-  <section class="section">
-    <h2 class="section-title">五感を満たす、<br>シェフ渾身の一皿。</h2>
-    <div class="grid-3">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1000&q=80" alt="">
-        <div class="card-body">
-          <h3>旬の前菜</h3>
-          <p>季節の食材を美しく仕立てた、始まりの一皿。</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 rev">
+
+      <!-- Email -->
+      <a href="mailto:i.love.yoziro0705@gmail.com" class="ctcard block p-7 rounded-2xl text-left" style="background:#111111;border:1px solid rgba(255,255,255,.07);">
+        <div class="w-10 h-10 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80" alt="">
-        <div class="card-body">
-          <h3>メイン料理</h3>
-          <p>香り、焼き加減、余韻まで計算された看板メニュー。</p>
+        <p class="font-bold text-white text-[15px] mb-1.5">メールで相談する</p>
+        <p class="text-[12px] mb-4" style="color:rgba(240,240,240,.38);">i.love.yoziro0705@gmail.com</p>
+        <p class="text-[11.5px] font-bold" style="color:rgba(129,140,248,.8);">→ メールを送る</p>
+      </a>
+
+      <!-- Cloudworks -->
+      <a href="https://crowdworks.jp/public/employees/5088552?ref=login_header" target="_blank" rel="noopener noreferrer" class="ctcard block p-7 rounded-2xl text-left" style="background:#111111;border:1px solid rgba(255,255,255,.07);">
+        <div class="w-10 h-10 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(99,102,241,.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1000&q=80" alt="">
-        <div class="card-body">
-          <h3>デザート</h3>
-          <p>食後の時間まで華やかに彩る、特別な甘さ。</p>
-        </div>
-      </div>
+        <p class="font-bold text-white text-[15px] mb-1.5">Cloudworksで依頼する</p>
+        <p class="text-[12px] mb-4" style="color:rgba(240,240,240,.38);">クラウドワークス経由でご依頼いただけます</p>
+        <p class="text-[11.5px] font-bold" style="color:rgba(129,140,248,.8);">→ プロフィールを見る</p>
+      </a>
+
     </div>
-  </section>
-  <section class="section">
-    <h2 class="section-title">扉を開けた瞬間から、<br>非日常が始まる。</h2>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="">
-      <div class="gallery-small">
-        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="">
-      </div>
+
+    <!-- Note -->
+    <p class="mt-8 text-[11.5px] rev" style="color:rgba(240,240,240,.2);">
+      ※ メール・Cloudworksどちらからでもお気軽にどうぞ。お見積もりは無料です。
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer style="background:#050505;border-top:1px solid rgba(255,255,255,.05);padding:28px 0;">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5">
+      <span class="w-6 h-6 rounded-md bg-accent flex items-center justify-center text-white font-black text-[10px]">T</span>
+      <span class="text-[13px] font-bold" style="color:rgba(240,240,240,.4);">TAKE Design — LP + Webシステム構築</span>
     </div>
-  </section>
-  <section class="section story">
-    <h2 class="section-title">一皿の裏側にある、<br>譲れないこだわり。</h2>
-    <div class="grid-3">
-      <div class="menu-card">
-        <span>POINT 01</span>
-        <h3>厳選食材</h3>
-        <p>その時期に最も美味しい食材だけを仕入れ、素材の魅力を引き出します。</p>
-      </div>
-      <div class="menu-card">
-        <span>POINT 02</span>
-        <h3>職人の技術</h3>
-        <p>火入れ、香り、盛り付けまで細部にこだわり抜いた料理を提供します。</p>
-      </div>
-      <div class="menu-card">
-        <span>POINT 03</span>
-        <h3>空間設計</h3>
-        <p>デートや女子会、記念日にふさわしい上質な雰囲気を演出します。</p>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <h2 class="section-title">まずはこれを。</h2>
-    <div class="grid-3">
-      <div class="menu-card">
-        <span>POPULAR No.1</span>
-        <h3>シェフおすすめコース</h3>
-        <p>初めての方におすすめ。店の魅力を一度に楽しめる人気コース。</p>
-      </div>
-      <div class="menu-card">
-        <span>POPULAR No.2</span>
-        <h3>季節のメインディッシュ</h3>
-        <p>旬の素材を贅沢に使用した、満足感のある一皿。</p>
-      </div>
-      <div class="menu-card">
-        <span>POPULAR No.3</span>
-        <h3>記念日デザートプレート</h3>
-        <p>誕生日や記念日に華を添える、特別な演出メニュー。</p>
-      </div>
-    </div>
-  </section>
-  <section class="section voice">
-    <h2 class="section-title">実際にご来店いただいた<br>お客様から。</h2>
-    <div class="grid-3">
-      <div class="voice-card">
-        <div class="stars">★★★★★</div>
-        <p>記念日に利用しました。料理も接客も素晴らしく、特別な時間を過ごせました。</p>
-      </div>
-      <div class="voice-card">
-        <div class="stars">★★★★★</div>
-        <p>女子会で利用。写真映えする料理が多く、友人にも好評でした。</p>
-      </div>
-      <div class="voice-card">
-        <div class="stars">★★★★★</div>
-        <p>店内の雰囲気がとても良く、デートにぴったりのお店でした。</p>
-      </div>
-    </div>
-  </section>
-  <section class="section access">
-    <div>
-      <h2 class="section-title">駅からすぐ。<br>気軽に訪れられる特別な場所。</h2>
-      <p class="lead">
-        住所：東京都〇〇区〇〇 1-2-3<br>
-        最寄駅：〇〇駅 徒歩3分<br>
-        営業時間：17:00〜23:00<br>
-        定休日：月曜日
-      </p>
-    </div>
-    <div class="map">Google Mapをここに埋め込み</div>
-  </section>
-  <section class="section cta" id="reserve">
-    <h2>ご希望のお日にちは、<br>お早めにご予約ください。</h2>
-    <p>席数に限りがございます。デート・記念日・女子会のご予約はお早めに。</p>
-    <a href="#" class="btn">WEB予約する</a>
-  </section>
-  <section class="section">
-    <h2 class="section-title">よくある質問</h2>
-    <div class="faq-item">
-      <div class="faq-q">Q. 予約は必要ですか？</div>
-      <p>A. 当日利用も可能ですが、事前予約をおすすめしております。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 個室はありますか？</div>
-      <p>A. 個室席をご用意しております。ご希望の場合は予約時にお伝えください。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 記念日利用は可能ですか？</div>
-      <p>A. メッセージプレートなどのご相談も可能です。</p>
-    </div>
-  </section>
-  <footer>
-    © 2026 Restaurant Name. All Rights Reserved.
-  </footer>
+    <p class="text-[11px]" style="color:rgba(240,240,240,.18);">&copy; 2024 All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+  // ── Scroll reveal ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  // Hero above-fold
+  document.querySelectorAll('#hero .rev').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 180 + i * 120);
+  });
+
+  // ── Header scroll effect ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    const past = window.scrollY > 40;
+    nav.style.background = past ? 'rgba(8,8,8,.92)' : 'transparent';
+    nav.style.backdropFilter = past ? 'blur(18px)' : '';
+    nav.style.borderBottomColor = past ? 'rgba(255,255,255,.06)' : 'transparent';
+  }, { passive: true });
+
+  // ── Mobile menu ──
+  const hb  = document.getElementById('hb');
+  const mob = document.getElementById('mob');
+  const h1  = document.getElementById('h1');
+  const h2  = document.getElementById('h2');
+  const h3  = document.getElementById('h3');
+  let isOpen = false;
+
+  hb.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mob.style.maxHeight = isOpen ? '380px' : '0';
+    mob.style.opacity   = isOpen ? '1' : '0';
+    h1.style.transform  = isOpen ? 'translateY(6px) rotate(45deg)' : '';
+    h2.style.opacity    = isOpen ? '0' : '1';
+    h3.style.transform  = isOpen ? 'translateY(-6px) rotate(-45deg)' : '';
+  });
+
+  function closeMob() {
+    isOpen = false;
+    mob.style.maxHeight = '0';
+    mob.style.opacity   = '0';
+    h1.style.transform  = '';
+    h2.style.opacity    = '1';
+    h3.style.transform  = '';
+  }
+
+  document.addEventListener('click', e => {
+    if (isOpen && !hb.contains(e.target) && !mob.contains(e.target)) closeMob();
+  });
+</script>
+
 </body>
 </html>
