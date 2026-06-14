@@ -21,5 +21,13 @@ take-design-portfolio/
 
 ## ブランチ運用
 
-- `master` ブランチ：本番。TAKE Design portfolio を維持
-- 作業は作業ブランチで行い、masterには安易にmergeしない
+- `master` ブランチ：本番。全LPフォルダを含む最新状態を維持する
+- 作業ブランチで開発 → 完成したら必ず `master` にもmergeしてpushする
+- **新しいLPを作成・更新したら、必ず最後に master へ反映すること**
+
+## よくあるミスと対処
+
+### GitHubでLPが見えない
+- **原因**：作業ブランチにしかなく、`master` に反映していない
+- **対処**：`git checkout master && git merge [作業ブランチ名] && git push origin master`
+- **予防**：LP作成・修正の最後に必ずmasterへのmerge & pushを行う
