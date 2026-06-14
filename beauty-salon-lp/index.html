@@ -6,18 +6,21 @@
   <title>Lumière Beauty Salon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #FAF8F6;
-      --white: #FFFFFF;
-      --text: #4A4A4A;
-      --sub: #7B6F6A;
-      --accent: #D8B6A4;
-      --accent-dark: #A98272;
-      --soft: #F2E8E2;
-      --gold: #C9A46A;
-      --radius: 26px;
+      --bg: #faf7f3;
+      --white: #ffffff;
+      --text: #4a403b;
+      --sub: #7c6f68;
+      --accent: #d7b49e;
+      --accent-dark: #9f7465;
+      --gold: #c8a56a;
+      --gold-light: #ead8b7;
+      --soft: #f1e5dc;
+      --deep: #3b2f2a;
+      --radius: 28px;
+      --shadow: 0 24px 70px rgba(70, 45, 34, .12);
     }
     * {
       margin: 0;
@@ -30,9 +33,24 @@
     body {
       font-family: "Noto Sans JP", sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(232, 204, 181, .45), transparent 34%),
+        radial-gradient(circle at 90% 18%, rgba(200, 165, 106, .18), transparent 30%),
+        var(--bg);
       line-height: 1.8;
       overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .16;
+      z-index: -1;
     }
     img {
       width: 100%;
@@ -44,30 +62,40 @@
       color: inherit;
     }
     .container {
-      width: min(1120px, 90%);
+      width: min(1140px, 90%);
       margin: 0 auto;
     }
     .section {
-      padding: 110px 0;
+      padding: 120px 0;
+      position: relative;
     }
     .section-head {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 64px;
+      position: relative;
+    }
+    .ornament {
+      width: 1px;
+      height: 54px;
+      background: linear-gradient(var(--gold), transparent);
+      margin: 0 auto 18px;
     }
     .label {
-      color: var(--accent-dark);
-      letter-spacing: .18em;
-      font-size: 13px;
-      font-weight: 700;
+      font-family: "Jost", sans-serif;
+      color: var(--gold);
+      letter-spacing: .24em;
+      font-size: 12px;
+      font-weight: 600;
       margin-bottom: 12px;
     }
     h1, h2, h3 {
       font-family: "Noto Serif JP", serif;
       line-height: 1.45;
-      color: #3E3531;
+      color: var(--deep);
+      font-weight: 600;
     }
     h2 {
-      font-size: clamp(30px, 4vw, 48px);
+      font-size: clamp(31px, 4vw, 50px);
     }
     p {
       color: var(--sub);
@@ -76,34 +104,44 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 30px;
+      padding: 16px 32px;
       border-radius: 999px;
       font-weight: 700;
-      transition: .3s ease;
-      min-width: 210px;
+      transition: .35s ease;
+      min-width: 220px;
+      position: relative;
+      overflow: hidden;
     }
     .btn-primary {
-      background: var(--accent-dark);
       color: #fff;
-      box-shadow: 0 12px 30px rgba(169, 130, 114, .28);
+      background: linear-gradient(135deg, #b98974, #8f6558);
+      box-shadow: 0 18px 38px rgba(159, 116, 101, .28);
+    }
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      border: 1px solid rgba(255,255,255,.35);
     }
     .btn-primary:hover {
-      transform: translateY(-3px);
-      background: #927063;
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(159, 116, 101, .36);
     }
     .btn-outline {
-      border: 1px solid var(--accent-dark);
+      border: 1px solid var(--gold);
       color: var(--accent-dark);
-      background: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.72);
     }
     .btn-outline:hover {
-      background: var(--accent-dark);
+      background: var(--deep);
       color: #fff;
+      border-color: var(--deep);
     }
     .fade-up {
       opacity: 0;
-      transform: translateY(28px);
-      transition: .8s ease;
+      transform: translateY(30px);
+      transition: .9s ease;
     }
     .fade-up.show {
       opacity: 1;
@@ -112,16 +150,15 @@
     header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
       z-index: 50;
-      background: rgba(250,248,246,.86);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(169,130,114,.12);
+      background: rgba(250,247,243,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(200,165,106,.22);
     }
     .nav {
       width: min(1180px, 92%);
-      height: 72px;
+      height: 76px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -129,19 +166,22 @@
     }
     .logo {
       font-family: "Noto Serif JP", serif;
-      font-size: 24px;
-      color: var(--accent-dark);
-      letter-spacing: .08em;
+      color: var(--deep);
+      font-size: 25px;
+      letter-spacing: .12em;
       font-weight: 700;
     }
+    .logo span {
+      color: var(--gold);
+    }
     .nav-cta {
-      padding: 10px 22px;
-      font-size: 14px;
+      padding: 10px 24px;
       min-width: auto;
+      font-size: 14px;
     }
     .hero {
       min-height: 100vh;
-      padding: 120px 0 70px;
+      padding: 130px 0 76px;
       display: flex;
       align-items: center;
       position: relative;
@@ -152,98 +192,145 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(250,248,246,.96) 0%, rgba(250,248,246,.82) 46%, rgba(250,248,246,.25) 100%),
+        linear-gradient(90deg, rgba(250,247,243,.98) 0%, rgba(250,247,243,.88) 43%, rgba(250,247,243,.2) 100%),
         url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1800&q=80") center right / cover;
       z-index: -2;
     }
     .hero::after {
       content: "";
       position: absolute;
-      width: 360px;
-      height: 360px;
-      background: rgba(216,182,164,.32);
+      width: 620px;
+      height: 620px;
+      right: -180px;
+      bottom: -180px;
       border-radius: 50%;
-      filter: blur(20px);
-      bottom: -120px;
-      left: -80px;
+      border: 1px solid rgba(200,165,106,.42);
+      box-shadow: inset 0 0 80px rgba(200,165,106,.18);
       z-index: -1;
     }
     .hero-content {
       width: min(720px, 90%);
       margin-left: 6%;
     }
+    .hero-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      color: var(--gold);
+      font-family: "Jost", sans-serif;
+      letter-spacing: .2em;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .hero-top::before {
+      content: "";
+      width: 52px;
+      height: 1px;
+      background: var(--gold);
+    }
     .hero h1 {
-      font-size: clamp(42px, 7vw, 82px);
+      font-size: clamp(42px, 7vw, 84px);
       margin-bottom: 24px;
+      letter-spacing: .03em;
     }
     .hero-text {
       font-size: 18px;
-      margin-bottom: 32px;
-      max-width: 560px;
+      max-width: 590px;
+      margin-bottom: 34px;
     }
     .hero-buttons {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      gap: 16px;
+      margin-bottom: 36px;
     }
     .badges {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
     }
     .badge {
-      background: rgba(255,255,255,.75);
-      border: 1px solid rgba(216,182,164,.42);
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(200,165,106,.34);
       border-radius: 999px;
-      padding: 10px 18px;
-      color: #6D5B54;
-      font-weight: 700;
+      padding: 11px 18px;
       font-size: 14px;
+      font-weight: 700;
+      color: #6d5b54;
+      box-shadow: 0 12px 30px rgba(70,45,34,.06);
+    }
+    .luxury-card {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(200,165,106,.24);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .luxury-card::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(200,165,106,.16);
+      border-radius: calc(var(--radius) - 8px);
+      pointer-events: none;
     }
     .worry {
-      background: var(--white);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(250,247,243,.96));
     }
-    .worry-grid {
+    .worry-grid,
+    .future-grid,
+    .staff-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 46px;
+      gap: 56px;
       align-items: center;
     }
-    .worry-img img,
-    .future-img img,
-    .staff-img img {
+    .image-frame {
+      position: relative;
+      padding: 14px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(234,216,183,.42));
+      box-shadow: var(--shadow);
+    }
+    .image-frame::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-top: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+      top: -14px;
+      left: -14px;
+      opacity: .65;
+    }
+    .image-frame img {
       height: 540px;
-      border-radius: var(--radius);
-      box-shadow: 0 18px 50px rgba(80,50,38,.1);
+      border-radius: 24px;
     }
     .check-list {
       display: grid;
       gap: 14px;
-      margin: 28px 0;
+      margin: 30px 0;
     }
     .check-list li {
       list-style: none;
-      background: var(--bg);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(216,180,158,.22);
       padding: 15px 18px;
       border-radius: 16px;
-      color: #5B514D;
       font-weight: 500;
+      color: #5b514d;
     }
     .check-list li::before {
       content: "✓";
-      color: var(--accent-dark);
-      font-weight: 700;
+      color: var(--gold);
       margin-right: 10px;
+      font-weight: 700;
     }
     .future {
-      background: linear-gradient(180deg, var(--bg), #fff);
-    }
-    .future-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 46px;
-      align-items: center;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(216,180,158,.28), transparent 28%),
+        #fff;
     }
     .future-cards {
       display: grid;
@@ -258,39 +345,55 @@
     .price-card,
     .flow-card,
     .faq-item {
-      background: var(--white);
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 14px 38px rgba(80,50,38,.07);
-      border: 1px solid rgba(216,182,164,.2);
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(200,165,106,.22);
+      box-shadow: 0 16px 42px rgba(70,45,34,.08);
     }
     .future-card {
       font-weight: 700;
-      color: #5A4A44;
+      color: #594941;
     }
     .reasons-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 24px;
+    }
+    .reason-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .reason-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -36px;
+      top: -36px;
+      border-radius: 50%;
+      background: rgba(200,165,106,.13);
     }
     .reason-card span {
+      font-family: "Jost", sans-serif;
       display: inline-flex;
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: var(--soft);
+      background: linear-gradient(135deg, var(--gold-light), #fff);
       color: var(--accent-dark);
       font-weight: 700;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(200,165,106,.3);
     }
     .reason-card h3 {
       font-size: 21px;
       margin-bottom: 8px;
     }
     .ba {
-      background: var(--white);
+      background: linear-gradient(180deg, #fff, var(--bg));
     }
     .ba-grid {
       display: grid;
@@ -298,9 +401,11 @@
       gap: 24px;
     }
     .ba-card {
-      background: var(--bg);
+      background: rgba(255,255,255,.8);
       border-radius: var(--radius);
       padding: 18px;
+      border: 1px solid rgba(200,165,106,.24);
+      box-shadow: var(--shadow);
     }
     .ba-images {
       display: grid;
@@ -313,23 +418,37 @@
       border-radius: 18px;
     }
     .ba-tag {
-      font-size: 12px;
-      color: #fff;
-      background: var(--accent-dark);
-      padding: 5px 10px;
-      border-radius: 999px;
       display: inline-block;
+      color: #fff;
+      background: linear-gradient(135deg, var(--gold), var(--accent-dark));
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
       margin-bottom: 8px;
+      font-weight: 700;
     }
     .note {
-      margin-top: 20px;
-      font-size: 13px;
       text-align: center;
+      font-size: 13px;
+      margin-top: 22px;
     }
     .voice-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+    }
+    .voice-card {
+      position: relative;
+    }
+    .voice-card::before {
+      content: "\201C";
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      font-family: serif;
+      font-size: 90px;
+      line-height: 1;
+      color: rgba(200,165,106,.18);
     }
     .stars {
       color: var(--gold);
@@ -341,25 +460,20 @@
       margin-bottom: 12px;
     }
     .staff {
-      background: linear-gradient(90deg, #fff 0%, var(--bg) 100%);
-    }
-    .staff-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 52px;
-      align-items: center;
+      background:
+        linear-gradient(90deg, #fff 0%, rgba(250,247,243,.98) 100%);
     }
     .staff-name {
-      color: var(--accent-dark);
-      font-weight: 700;
+      color: var(--gold);
+      font-family: "Jost", sans-serif;
+      letter-spacing: .12em;
+      font-weight: 600;
       margin: 18px 0;
     }
-    .services-grid,
-    .price-grid,
-    .flow-grid {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 24px;
     }
     .service-card {
       padding: 0;
@@ -376,66 +490,96 @@
       margin-bottom: 8px;
     }
     .price {
-      background: var(--white);
+      background:
+        radial-gradient(circle at 15% 30%, rgba(200,165,106,.14), transparent 26%),
+        #fff;
     }
     .price-grid {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
     .price-card {
       text-align: center;
       position: relative;
+      padding: 38px 28px;
     }
     .price-card.recommend {
-      border: 2px solid var(--accent-dark);
+      border: 2px solid var(--gold);
       transform: translateY(-10px);
+      background: linear-gradient(180deg, #fff, #fff8f1);
     }
     .ribbon {
       position: absolute;
       top: -16px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--accent-dark);
+      background: linear-gradient(135deg, var(--gold), var(--accent-dark));
       color: #fff;
-      padding: 6px 18px;
+      padding: 6px 20px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
     }
     .price-value {
-      font-size: 34px;
       font-family: "Noto Serif JP", serif;
       color: var(--accent-dark);
-      margin: 12px 0;
+      font-size: 36px;
       font-weight: 700;
+      margin: 12px 0;
+    }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
     }
     .flow-card {
       text-align: center;
     }
     .flow-card span {
-      color: var(--accent-dark);
-      font-weight: 700;
-      letter-spacing: .12em;
+      font-family: "Jost", sans-serif;
+      color: var(--gold);
+      letter-spacing: .14em;
       font-size: 13px;
+      font-weight: 600;
     }
     .faq {
-      background: var(--white);
+      background: #fff;
     }
     .faq-list {
       display: grid;
       gap: 16px;
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
     }
     .faq-q {
+      color: var(--deep);
       font-weight: 700;
-      color: #3E3531;
       margin-bottom: 8px;
     }
     .final-cta {
       text-align: center;
       background:
-        linear-gradient(rgba(250,248,246,.86), rgba(250,248,246,.92)),
+        linear-gradient(rgba(250,247,243,.88), rgba(250,247,243,.94)),
         url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1800&q=80") center / cover;
+    }
+    .final-cta-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 72px 38px;
+      border-radius: 36px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(200,165,106,.28);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .final-cta-inner::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(200,165,106,.2);
+      border-radius: 26px;
+      pointer-events: none;
     }
     .final-cta h2 {
       font-size: clamp(34px, 5vw, 62px);
@@ -446,16 +590,17 @@
     }
     .shop-info {
       margin-top: 42px;
-      background: rgba(255,255,255,.78);
       display: inline-block;
+      text-align: left;
+      background: rgba(250,247,243,.82);
+      border: 1px solid rgba(200,165,106,.2);
       padding: 24px 34px;
       border-radius: 22px;
-      text-align: left;
     }
     footer {
-      padding: 36px 0;
+      padding: 36px 0 92px;
       text-align: center;
-      color: #8D817C;
+      color: #8d817c;
       font-size: 13px;
     }
     .fixed-line {
@@ -463,16 +608,16 @@
       right: 20px;
       bottom: 20px;
       z-index: 80;
-      background: #06C755;
+      background: linear-gradient(135deg, #06c755, #04a947);
       color: #fff;
       border-radius: 999px;
       padding: 14px 22px;
       font-weight: 700;
-      box-shadow: 0 12px 28px rgba(0,0,0,.18);
+      box-shadow: 0 14px 34px rgba(0,0,0,.2);
     }
     @media (max-width: 900px) {
       .section {
-        padding: 80px 0;
+        padding: 84px 0;
       }
       .hero {
         min-height: auto;
@@ -480,7 +625,7 @@
       }
       .hero::before {
         background:
-          linear-gradient(rgba(250,248,246,.92), rgba(250,248,246,.88)),
+          linear-gradient(rgba(250,247,243,.94), rgba(250,247,243,.9)),
           url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80") center / cover;
       }
       .hero-content {
@@ -500,16 +645,17 @@
       .future-cards {
         grid-template-columns: 1fr;
       }
-      .worry-img img,
-      .future-img img,
-      .staff-img img {
+      .image-frame img {
         height: 380px;
       }
       .price-card.recommend {
         transform: none;
       }
+      .btn {
+        width: 100%;
+      }
       .nav {
-        height: 64px;
+        height: 66px;
       }
       .logo {
         font-size: 20px;
@@ -518,8 +664,8 @@
         padding: 8px 14px;
         font-size: 12px;
       }
-      .btn {
-        width: 100%;
+      .final-cta-inner {
+        padding: 56px 22px;
       }
       .fixed-line {
         left: 16px;
@@ -532,13 +678,13 @@
 <body>
 <header>
   <div class="nav">
-    <a href="#" class="logo">Lumière</a>
+    <a href="#" class="logo">Lumière<span>.</span></a>
     <a href="#reserve" class="btn btn-primary nav-cta">無料相談</a>
   </div>
 </header>
 <section class="hero">
   <div class="hero-content fade-up">
-    <div class="label">PRIVATE BEAUTY SALON</div>
+    <div class="hero-top">PRIVATE BEAUTY SALON</div>
     <h1>変わりたいと思った今日が、<br>いちばん若い日。</h1>
     <p class="hero-text">
       年齢を重ねることを、もっと楽しめる私へ。<br>
@@ -557,8 +703,8 @@
 </section>
 <section class="section worry">
   <div class="container worry-grid">
-    <div class="worry-img fade-up">
-      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="美容サロンで悩む女性">
+    <div class="image-frame fade-up">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="">
     </div>
     <div class="fade-up">
       <div class="label">YOUR CONCERNS</div>
@@ -592,14 +738,15 @@
         <div class="future-card">自分を大切にする時間が増える</div>
       </div>
     </div>
-    <div class="future-img fade-up">
-      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="理想の未来を感じる女性">
+    <div class="image-frame fade-up">
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="">
     </div>
   </div>
 </section>
 <section class="section">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">REASONS</div>
       <h2>Lumièreが選ばれる<br>6つの理由</h2>
     </div>
@@ -616,6 +763,7 @@
 <section class="section ba">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">BEFORE / AFTER</div>
       <h2>結果で選ばれる<br>サロンです</h2>
     </div>
@@ -654,37 +802,26 @@
 <section class="section">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">VOICE</div>
       <h2>嬉しいお声を<br>いただいています</h2>
     </div>
     <div class="voice-grid">
-      <div class="voice-card fade-up">
-        <div class="stars">★★★★★</div>
-        <h3>30代女性</h3>
-        <p>肌の調子が整い、メイクのノリが変わりました。無理な勧誘もなく安心して通えます。</p>
-      </div>
-      <div class="voice-card fade-up">
-        <div class="stars">★★★★★</div>
-        <h3>20代女性</h3>
-        <p>初めてのサロンで緊張していましたが、丁寧に説明してもらえて安心できました。</p>
-      </div>
-      <div class="voice-card fade-up">
-        <div class="stars">★★★★★</div>
-        <h3>40代女性</h3>
-        <p>年齢のせいだと諦めていましたが、鏡を見るのが少し楽しみになりました。</p>
-      </div>
+      <div class="voice-card fade-up"><div class="stars">★★★★★</div><h3>30代女性</h3><p>肌の調子が整い、メイクのノリが変わりました。無理な勧誘もなく安心して通えます。</p></div>
+      <div class="voice-card fade-up"><div class="stars">★★★★★</div><h3>20代女性</h3><p>初めてのサロンで緊張していましたが、丁寧に説明してもらえて安心できました。</p></div>
+      <div class="voice-card fade-up"><div class="stars">★★★★★</div><h3>40代女性</h3><p>年齢のせいだと諦めていましたが、鏡を見るのが少し楽しみになりました。</p></div>
     </div>
   </div>
 </section>
 <section class="section staff">
   <div class="container staff-grid">
-    <div class="staff-img fade-up">
-      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" alt="スタッフ紹介">
+    <div class="image-frame fade-up">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" alt="">
     </div>
     <div class="fade-up">
       <div class="label">STAFF</div>
       <h2>私たちが<br>担当します</h2>
-      <div class="staff-name">Lumière Beauty Salon Staff</div>
+      <div class="staff-name">LUMIÈRE BEAUTY SALON STAFF</div>
       <h3>美容は、人生を前向きにする力がある。</h3>
       <p>
         Lumièreでは、お客様一人ひとりのお悩みや理想に寄り添い、無理なく続けられる美容ケアをご提案しています。
@@ -696,70 +833,36 @@
 <section class="section">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">SERVICE</div>
       <h2>お悩みに合わせた<br>施術をご提案</h2>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt="">
-        <div class="service-body">
-          <h3>フェイシャルケア</h3>
-          <p>毛穴・くすみ・ハリ不足にアプローチし、透明感のある肌へ。</p>
-        </div>
-      </div>
-      <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=900&q=80" alt="">
-        <div class="service-body">
-          <h3>脱毛ケア</h3>
-          <p>自己処理の負担を減らし、なめらかな素肌へ導きます。</p>
-        </div>
-      </div>
-      <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="">
-        <div class="service-body">
-          <h3>痩身ケア</h3>
-          <p>気になるラインにアプローチし、理想のシルエットを目指します。</p>
-        </div>
-      </div>
-      <div class="service-card fade-up">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80" alt="">
-        <div class="service-body">
-          <h3>リラクゼーション</h3>
-          <p>日々の疲れを癒し、心と身体を整える時間を提供します。</p>
-        </div>
-      </div>
+      <div class="service-card fade-up"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt=""><div class="service-body"><h3>フェイシャルケア</h3><p>毛穴・くすみ・ハリ不足にアプローチし、透明感のある肌へ。</p></div></div>
+      <div class="service-card fade-up"><img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=900&q=80" alt=""><div class="service-body"><h3>脱毛ケア</h3><p>自己処理の負担を減らし、なめらかな素肌へ導きます。</p></div></div>
+      <div class="service-card fade-up"><img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt=""><div class="service-body"><h3>痩身ケア</h3><p>気になるラインにアプローチし、理想のシルエットを目指します。</p></div></div>
+      <div class="service-card fade-up"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80" alt=""><div class="service-body"><h3>リラクゼーション</h3><p>日々の疲れを癒し、心と身体を整える時間を提供します。</p></div></div>
     </div>
   </div>
 </section>
 <section class="section price" id="price">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">PRICE</div>
       <h2>まずは気軽に<br>お試しください</h2>
     </div>
     <div class="price-grid">
-      <div class="price-card fade-up">
-        <h3>初回体験プラン</h3>
-        <div class="price-value">5,980円</div>
-        <p>初めての方におすすめ</p>
-      </div>
-      <div class="price-card recommend fade-up">
-        <div class="ribbon">人気</div>
-        <h3>人気プラン</h3>
-        <div class="price-value">9,800円</div>
-        <p>お悩みに合わせた定番ケア</p>
-      </div>
-      <div class="price-card fade-up">
-        <h3>プレミアムプラン</h3>
-        <div class="price-value">14,800円</div>
-        <p>特別な日の前にもおすすめ</p>
-      </div>
+      <div class="price-card fade-up"><h3>初回体験プラン</h3><div class="price-value">5,980円</div><p>初めての方におすすめ</p></div>
+      <div class="price-card recommend fade-up"><div class="ribbon">人気</div><h3>人気プラン</h3><div class="price-value">9,800円</div><p>お悩みに合わせた定番ケア</p></div>
+      <div class="price-card fade-up"><h3>プレミアムプラン</h3><div class="price-value">14,800円</div><p>特別な日の前にもおすすめ</p></div>
     </div>
   </div>
 </section>
 <section class="section">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">FLOW</div>
       <h2>初めての方へ<br>ご来店の流れ</h2>
     </div>
@@ -774,6 +877,7 @@
 <section class="section faq">
   <div class="container">
     <div class="section-head fade-up">
+      <div class="ornament"></div>
       <div class="label">FAQ</div>
       <h2>よくある質問</h2>
     </div>
@@ -786,23 +890,25 @@
   </div>
 </section>
 <section class="section final-cta" id="reserve">
-  <div class="container fade-up">
-    <div class="label">RESERVATION</div>
-    <h2>変わりたいと思った今日が、<br>いちばん若い日。</h2>
-    <p>
-      迷っている時間より、始める一歩を。<br>
-      まずは無料カウンセリングからお気軽にご相談ください。
-    </p>
-    <div class="hero-buttons" style="justify-content:center;">
-      <a href="#" class="btn btn-primary">LINEで無料カウンセリング</a>
-      <a href="#" class="btn btn-outline">WEB予約する</a>
-    </div>
-    <div class="shop-info">
-      <strong>Lumière Beauty Salon</strong><br>
-      東京都〇〇区〇〇 1-2-3<br>
-      〇〇駅 徒歩3分<br>
-      営業時間 10:00〜20:00<br>
-      定休日 不定休
+  <div class="container">
+    <div class="final-cta-inner fade-up">
+      <div class="label">RESERVATION</div>
+      <h2>変わりたいと思った今日が、<br>いちばん若い日。</h2>
+      <p>
+        迷っている時間より、始める一歩を。<br>
+        まずは無料カウンセリングからお気軽にご相談ください。
+      </p>
+      <div class="hero-buttons" style="justify-content:center;">
+        <a href="#" class="btn btn-primary">LINEで無料カウンセリング</a>
+        <a href="#" class="btn btn-outline">WEB予約する</a>
+      </div>
+      <div class="shop-info">
+        <strong>Lumière Beauty Salon</strong><br>
+        東京都〇〇区〇〇 1-2-3<br>
+        〇〇駅 徒歩3分<br>
+        営業時間 10:00〜20:00<br>
+        定休日 不定休
+      </div>
     </div>
   </div>
 </section>
