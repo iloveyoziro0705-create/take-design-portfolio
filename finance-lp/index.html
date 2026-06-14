@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>マネーサポート室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #16804f;
+      --green-dark: #0f6b42;
+      --green-soft: #eaf3ee;
+      --yellow: #d6d72b;
+      --bg: #f5f8f5;
+      --white: #ffffff;
+      --text: #333333;
+      --sub: #555555;
+      --line: #cfe3d9;
+      --radius: 18px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: min(980px, 90%);
+      margin: 0 auto;
+    }
+    section {
+      padding: 86px 0;
+    }
+    .section-title {
+      color: var(--green);
+      text-align: center;
+      font-size: clamp(24px, 4.5vw, 38px);
+      line-height: 1.6;
+      margin-bottom: 42px;
+      font-weight: 900;
+    }
+    .lead {
+      text-align: center;
+      color: var(--sub);
+      font-size: 17px;
+      margin-bottom: 38px;
+    }
+    .green-line {
+      height: 22px;
+      background: var(--green);
+    }
+    .btn {
+      display: block;
+      width: min(620px, 90%);
+      margin: 0 auto;
+      padding: 18px 24px;
+      border: 4px solid var(--green);
+      background: var(--white);
+      color: var(--green);
+      text-align: center;
+      font-size: clamp(18px, 4vw, 26px);
+      font-weight: 900;
+      transition: .3s;
+    }
+    .btn:hover {
+      background: var(--green);
+      color: #fff;
+    }
+    .hero {
+      padding: 50px 0 76px;
+      background: var(--green-soft);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-border {
+      width: min(780px, 82%);
+      height: 18px;
+      margin: 0 auto 46px;
+      background: linear-gradient(90deg, var(--green) 0 50%, var(--yellow) 50% 100%);
+    }
+    .hero-main {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1fr;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .illust {
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .person {
+      width: 150px;
+      height: 190px;
+      background: var(--green);
+      border-radius: 80px 80px 20px 20px;
+      position: relative;
+    }
+    .person::before {
+      content: "";
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #f2c7a7;
+      top: -34px;
+      left: 46px;
+      box-shadow: 0 -16px 0 #263238;
+    }
+    .person::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 18px;
+      background: #263238;
+      left: 30px;
+      top: 60px;
+      border-radius: 20px;
+    }
+    .person.man {
+      background: #1f2937;
+    }
+    .hero h1 {
+      color: var(--green);
+      font-size: clamp(32px, 7vw, 56px);
+      line-height: 1.45;
+      font-weight: 900;
+    }
+    .hero-logo {
+      color: var(--green);
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 26px;
+    }
+    .hero-logo span {
+      font-size: .68em;
+    }
+    .hero-copy {
+      color: var(--green);
+      font-size: clamp(17px, 3.8vw, 25px);
+      line-height: 2;
+      margin-bottom: 28px;
+    }
+    .marker {
+      display: inline;
+      background: linear-gradient(transparent 58%, var(--yellow) 58%);
+      padding: 0 4px;
+    }
+    .worry-card {
+      background: var(--white);
+      border: 2px solid var(--line);
+      padding: 56px 7%;
+      margin-top: 40px;
+      box-shadow: 0 16px 30px rgba(20, 80, 52, .06);
+    }
+    .check-list {
+      display: grid;
+      gap: 22px;
+      margin: 34px 0 46px;
+    }
+    .check-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      align-items: center;
+      background: #fafafa;
+      padding: 18px;
+    }
+    .check {
+      width: 54px;
+      height: 54px;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    .solve {
+      color: var(--green);
+      text-align: center;
+      font-size: clamp(20px, 4vw, 30px);
+      font-weight: 900;
+    }
+    .about {
+      background:
+        linear-gradient(rgba(15, 107, 66, .86), rgba(15, 107, 66, .86)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
+      color: #fff;
+    }
+    .about h2,
+    .about p {
+      color: #fff;
+      text-align: center;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 60px 7%;
+      text-align: center;
+      margin-top: 42px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.08);
+    }
+    .service-icon {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 34px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 72px;
+    }
+    .service-card h3 {
+      color: var(--green);
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 18px;
+      font-weight: 900;
+    }
+    .features {
+      background: var(--white);
+    }
+    .feature-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      margin-bottom: 42px;
+      overflow: hidden;
+    }
+    .feature-body {
+      padding: 58px 8%;
+    }
+    .feature-card h3 {
+      color: var(--green);
+      font-size: clamp(24px, 4vw, 34px);
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    .feature-visual {
+      background: var(--green-soft);
+      padding: 40px 8%;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat {
+      width: min(620px, 100%);
+      background: #fff;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
+    .bubble {
+      padding: 14px 18px;
+      margin: 12px 0;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .bubble.left {
+      background: #f1f5f9;
+      color: #333;
+      text-align: left;
+    }
+    .bubble.right {
+      background: var(--green);
+      color: #fff;
+      text-align: right;
+    }
+    .compare-mini {
+      width: min(680px, 100%);
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+    }
+    .compare-mini div {
+      padding: 24px 12px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      color: var(--sub);
+    }
+    .compare-mini div:last-child {
+      border-right: none;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .network {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      width: min(650px, 100%);
+    }
+    .network-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      color: var(--green);
+    }
+    .cases {
+      background: var(--bg);
+    }
+    .case-card {
+      background: var(--white);
+      border: 2px solid var(--line);
+      padding: 54px 7%;
+      margin-bottom: 34px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .case-icon {
+      color: var(--green);
+      font-size: 58px;
+      text-align: center;
+    }
+    .case-card h3 {
+      color: var(--green);
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+    .pricing {
+      background: var(--white);
+    }
+    .price-card {
+      border: 2px solid var(--line);
+      background: #fff;
+      text-align: center;
+      padding: 60px 7%;
+      margin-bottom: 34px;
+      position: relative;
+    }
+    .price-card.recommend::before {
+      content: "今なら、初回相談無料！";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--green);
+      color: #fff;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .price-card.recommend {
+      padding-top: 90px;
+      border-color: var(--green);
+    }
+    .plan-name {
+      color: var(--green);
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+    .price {
+      color: var(--green);
+      font-size: clamp(54px, 11vw, 86px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .per {
+      color: var(--green);
+      font-size: 22px;
+      margin-bottom: 28px;
+    }
+    .price-list {
+      display: grid;
+      gap: 16px;
+      max-width: 520px;
+      margin: 32px auto 0;
+      text-align: left;
+      color: var(--green);
+    }
+    .price-list li {
+      list-style: none;
+    }
+    .price-list li::before {
+      content: "✓";
+      color: var(--green);
+      margin-right: 14px;
+      font-size: 26px;
+    }
+    .cta-band {
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      padding: 34px 0;
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 900;
+    }
+    .faq {
+      background:
+        linear-gradient(90deg, var(--green) 0 10%, var(--bg) 10% 90%, var(--green) 90% 100%);
+    }
+    .faq-box {
+      background: var(--white);
+      border: 2px solid var(--line);
+      padding: 58px 7%;
+    }
+    .faq-item {
+      margin-bottom: 34px;
+    }
+    .q {
+      background: #fff;
+      padding: 18px 24px;
+      color: var(--sub);
+    }
+    .a {
+      background: var(--green-soft);
+      padding: 24px;
+      color: var(--green);
+      margin-top: 10px;
+    }
+    footer {
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+      padding: 36px 0;
+      font-size: 13px;
+    }
+    .fixed-cta {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      z-index: 50;
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: .8s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      section {
+        padding: 70px 0;
+      }
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .illust {
+        height: 130px;
+      }
+      .person {
+        transform: scale(.62);
+      }
+      .check-item,
+      .case-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .check {
+        margin: 0 auto;
+      }
+      .network {
+        grid-template-columns: 1fr;
+      }
+      .compare-mini {
+        font-size: 12px;
+      }
+      .fixed-cta {
+        left: 16px;
+        right: 16px;
+        text-align: center;
+      }
+      body {
+        letter-spacing: .04em;
+      }
+    }
+  </style>
+</head>
+<body>
+<section class="hero">
+  <div class="container">
+    <div class="hero-border"></div>
+    <div class="hero-main fade-up">
+      <div class="illust">
+        <div class="person man"></div>
+      </div>
+      <h1>資産形成、<br>身近に頼る相手<br>いますか？</h1>
+      <div class="illust">
+        <div class="person"></div>
+      </div>
+    </div>
+    <div class="hero-logo fade-up">
+      マネー<br><span>サポート室</span>
+    </div>
+    <p class="hero-copy fade-up">
+      を使えば、<br>
+      簡単に頼れるお金のパートナーを<br>
+      手に入れることができます。<br>
+      <span class="marker">最短即日から相談可能!!</span>
+    </p>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="worry-card fade-up">
+      <h2 class="section-title">こんなことに当てはまりませんか？</h2>
+      <div class="check-list">
+        <div class="check-item"><div class="check">✓</div><p>老後資金がどれくらい必要かわからない。</p></div>
+        <div class="check-item"><div class="check">✓</div><p>NISAやiDeCoを始めたいが、何から進めれば良いかわからない。</p></div>
+        <div class="check-item"><div class="check">✓</div><p>保険の見直しをしたいが、今の保障が適正かわからない。</p></div>
+        <div class="check-item"><div class="check">✓</div><p>住宅ローンや教育費、相続など将来のお金に不安がある。</p></div>
+        <div class="check-item"><div class="check">✓</div><p>銀行や保険会社以外に、中立的に相談できる相手がほしい。</p></div>
+      </div>
+      <div class="solve">
+        全て<br>
+        マネーサポート室が<br>
+        解決します。
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about">
+  <div class="container fade-up">
+    <h2 class="section-title">マネーサポート室とは...</h2>
+    <p>
+      資産形成・保険・住宅ローン・相続に精通した専門家が、<br>
+      あなた専属の相談パートナーとして継続的にサポートするサービスです。<br>
+      金融商品を売るのではなく、人生設計に合った選択肢を整理します。
+    </p>
+    <div class="service-card">
+      <div class="service-icon">¥</div>
+      <h3>お金の悩みを、いつでも相談できる環境へ。</h3>
+      <p>
+        大きな準備や難しい知識は必要ありません。<br>
+        まずは現在の状況を整理し、無理なく始められる改善策をご提案します。
+      </p>
+    </div>
+  </div>
+</section>
+<section class="features">
+  <div class="container">
+    <h2 class="section-title fade-up">
+      導入メリット・特徴<br>
+      「小さく」「早く」「柔軟に」に特化したサービスです。
+    </h2>
+    <div class="feature-card fade-up">
+      <div class="feature-body">
+        <h3>1. すぐ聞ける、すぐ頼める。</h3>
+        <p>
+          面倒な打ち合わせや日程調整は最小限。<br>
+          LINEやオンラインで気軽に相談できます。<br>
+          サービス申し込みから最短即日で相談可能です。
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="chat">
+          <div class="bubble left">NISAについて少し聞きたいです。</div>
+          <div class="bubble right">はい、現在の状況から一緒に整理しましょう。</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-body">
+        <h3>2. スモールスタートできる。</h3>
+        <p>
+          大きな資金や複雑な契約は不要。<br>
+          まず目の前にある小さな不安から整理し、必要に応じて段階的にサポートを広げられます。
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="compare-mini">
+          <div>銀行<br>手続き多め</div>
+          <div>保険営業<br>商品中心</div>
+          <div>当サービス<br>相談中心</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-body">
+        <h3>3. 専門家ネットワークと連携。</h3>
+        <p>
+          FP・税理士・社労士・弁護士など、課題に応じた専門家と連携。<br>
+          資産形成だけでなく、相続や事業のお金の悩みにも対応できます。
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="network">
+          <div class="network-box">FP</div>
+          <div class="network-box">税理士</div>
+          <div class="network-box">社労士</div>
+          <div class="network-box">弁護士</div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-body">
+        <h3>4. 情報収集もサポート。</h3>
+        <p>
+          NISA・iDeCo・税制改正・保険制度など、知るべき情報をわかりやすく整理。<br>
+          自分で調べ続ける負担を減らします。
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="chat">
+          <div class="bubble left">制度改正で何が変わるの？</div>
+          <div class="bubble right">あなたに関係する部分だけ整理してお伝えします。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cases">
+  <div class="container">
+    <h2 class="section-title fade-up">
+      使用例・導入例<br>
+      こんなシーンで最大限の力を発揮します。
+    </h2>
+    <div class="case-card fade-up">
+      <div class="case-icon">?</div>
+      <div>
+        <h3>CASE1<br>老後資金について不安がある。</h3>
+        <p>現在の収入・支出・貯蓄状況から、将来必要なお金を見える化します。</p>
+      </div>
+    </div>
+    <div class="case-card fade-up">
+      <div class="case-icon">Q</div>
+      <div>
+        <h3>CASE2<br>NISAを始めたいが不安。</h3>
+        <p>制度の基本から、無理のない積立額や考え方までわかりやすく整理します。</p>
+      </div>
+    </div>
+    <div class="case-card fade-up">
+      <div class="case-icon">✓</div>
+      <div>
+        <h3>CASE3<br>保険料を見直したい。</h3>
+        <p>必要な保障と不要な支出を整理し、家計改善のきっかけを作ります。</p>
+      </div>
+    </div>
+    <div class="case-card fade-up">
+      <div class="case-icon">家</div>
+      <div>
+        <h3>CASE4<br>相続や家族のお金を考えたい。</h3>
+        <p>家族構成や資産状況に合わせて、早めに整理すべきポイントをご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pricing">
+  <div class="container">
+    <h2 class="section-title fade-up">料金体系</h2>
+    <div class="price-card fade-up">
+      <div class="plan-name">ライトプラン</div>
+      <div class="price">¥5,000</div>
+      <div class="per">/月</div>
+      <p>とにかく小さく始めたい方に！</p>
+      <ul class="price-list">
+        <li>月1回相談</li>
+        <li>LINE相談</li>
+        <li>家計・資産状況の簡易整理</li>
+      </ul>
+    </div>
+    <div class="price-card recommend fade-up">
+      <div class="plan-name">スタンダードプラン</div>
+      <div class="price">¥10,000</div>
+      <div class="per">/月〜</div>
+      <p>課題を継続的に解決していきたい方に！</p>
+      <ul class="price-list">
+        <li>月2回相談</li>
+        <li>LINE相談</li>
+        <li>保険・資産形成の見直し</li>
+        <li>NISA・iDeCo相談</li>
+      </ul>
+    </div>
+    <div class="price-card fade-up">
+      <div class="plan-name">プロフェッショナルプラン</div>
+      <div class="price">要相談</div>
+      <div class="per">オーダーメイド</div>
+      <p>相続・事業資金・複雑な相談をしたい方に！</p>
+      <ul class="price-list">
+        <li>専属担当者の設置</li>
+        <li>専門家ネットワーク連携</li>
+        <li>課題に応じた個別支援</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<div class="cta-band">
+  今だけ、初回相談無料！
+</div>
+<section>
+  <div class="container">
+    <a href="#contact" class="btn fade-up">問い合わせ・見積もりをする</a>
+  </div>
+</section>
+<section class="faq">
+  <div class="container">
+    <div class="faq-box fade-up">
+      <h2 class="section-title">よくいただくご質問</h2>
+      <div class="faq-item">
+        <div class="q">Q. 初回相談は本当に無料ですか？</div>
+        <div class="a">A. はい。初回相談は無料です。現在の状況を整理するところから始めます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q. 投資初心者でも大丈夫ですか？</div>
+        <div class="a">A. 大丈夫です。専門用語を使いすぎず、基礎からわかりやすくご説明します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q. 無理な営業はありますか？</div>
+        <div class="a">A. 無理な勧誘はありません。お客様の状況に合った選択肢をご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Q. オンライン相談は可能ですか？</div>
+        <div class="a">A. 可能です。全国どこからでもオンラインでご相談いただけます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title fade-up">
+      お金の不安を、<br>
+      今日から整理しませんか？
+    </h2>
+    <p class="lead fade-up">
+      将来のための第一歩は、現状を知ることから。
+    </p>
+    <a href="#" class="btn fade-up">無料相談を予約する</a>
+  </div>
+</section>
+<footer>
+  © 2026 Money Support Room. All Rights Reserved.
+</footer>
+<a href="#contact" class="fixed-cta">無料相談する</a>
+<script>
+  const targets = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(target => observer.observe(target));
+</script>
+</body>
+</html>
