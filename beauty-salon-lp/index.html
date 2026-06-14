@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière Beauty Salon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF8F6;
+      --white: #FFFFFF;
+      --text: #4A4A4A;
+      --sub: #7B6F6A;
+      --accent: #D8B6A4;
+      --accent-dark: #A98272;
+      --soft: #F2E8E2;
+      --gold: #C9A46A;
+      --radius: 26px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+    .section {
+      padding: 110px 0;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .label {
+      color: var(--accent-dark);
+      letter-spacing: .18em;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1, h2, h3 {
+      font-family: "Noto Serif JP", serif;
+      line-height: 1.45;
+      color: #3E3531;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+    }
+    p {
+      color: var(--sub);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .3s ease;
+      min-width: 210px;
+    }
+    .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(169, 130, 114, .28);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #927063;
+    }
+    .btn-outline {
+      border: 1px solid var(--accent-dark);
+      color: var(--accent-dark);
+      background: rgba(255,255,255,.65);
+    }
+    .btn-outline:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: .8s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(250,248,246,.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(169,130,114,.12);
+    }
+    .nav {
+      width: min(1180px, 92%);
+      height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: "Noto Serif JP", serif;
+      font-size: 24px;
+      color: var(--accent-dark);
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+    .nav-cta {
+      padding: 10px 22px;
+      font-size: 14px;
+      min-width: auto;
+    }
+    .hero {
+      min-height: 100vh;
+      padding: 120px 0 70px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(250,248,246,.96) 0%, rgba(250,248,246,.82) 46%, rgba(250,248,246,.25) 100%),
+        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1800&q=80") center right / cover;
+      z-index: -2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: rgba(216,182,164,.32);
+      border-radius: 50%;
+      filter: blur(20px);
+      bottom: -120px;
+      left: -80px;
+      z-index: -1;
+    }
+    .hero-content {
+      width: min(720px, 90%);
+      margin-left: 6%;
+    }
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      margin-bottom: 24px;
+    }
+    .hero-text {
+      font-size: 18px;
+      margin-bottom: 32px;
+      max-width: 560px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .badges {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(216,182,164,.42);
+      border-radius: 999px;
+      padding: 10px 18px;
+      color: #6D5B54;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .worry {
+      background: var(--white);
+    }
+    .worry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      align-items: center;
+    }
+    .worry-img img,
+    .future-img img,
+    .staff-img img {
+      height: 540px;
+      border-radius: var(--radius);
+      box-shadow: 0 18px 50px rgba(80,50,38,.1);
+    }
+    .check-list {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .check-list li {
+      list-style: none;
+      background: var(--bg);
+      padding: 15px 18px;
+      border-radius: 16px;
+      color: #5B514D;
+      font-weight: 500;
+    }
+    .check-list li::before {
+      content: "✓";
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .future {
+      background: linear-gradient(180deg, var(--bg), #fff);
+    }
+    .future-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 46px;
+      align-items: center;
+    }
+    .future-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+    .future-card,
+    .reason-card,
+    .voice-card,
+    .service-card,
+    .price-card,
+    .flow-card,
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 14px 38px rgba(80,50,38,.07);
+      border: 1px solid rgba(216,182,164,.2);
+    }
+    .future-card {
+      font-weight: 700;
+      color: #5A4A44;
+    }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .reason-card span {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .reason-card h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+    .ba {
+      background: var(--white);
+    }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ba-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .ba-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .ba-images img {
+      height: 220px;
+      border-radius: 18px;
+    }
+    .ba-tag {
+      font-size: 12px;
+      color: #fff;
+      background: var(--accent-dark);
+      padding: 5px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .note {
+      margin-top: 20px;
+      font-size: 13px;
+      text-align: center;
+    }
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .stars {
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: .08em;
+    }
+    .voice-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .staff {
+      background: linear-gradient(90deg, #fff 0%, var(--bg) 100%);
+    }
+    .staff-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .staff-name {
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin: 18px 0;
+    }
+    .services-grid,
+    .price-grid,
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .service-card {
+      padding: 0;
+      overflow: hidden;
+    }
+    .service-card img {
+      height: 240px;
+    }
+    .service-body {
+      padding: 24px;
+    }
+    .service-body h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+    .price {
+      background: var(--white);
+    }
+    .price-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .price-card {
+      text-align: center;
+      position: relative;
+    }
+    .price-card.recommend {
+      border: 2px solid var(--accent-dark);
+      transform: translateY(-10px);
+    }
+    .ribbon {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-dark);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .price-value {
+      font-size: 34px;
+      font-family: "Noto Serif JP", serif;
+      color: var(--accent-dark);
+      margin: 12px 0;
+      font-weight: 700;
+    }
+    .flow-card {
+      text-align: center;
+    }
+    .flow-card span {
+      color: var(--accent-dark);
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: 13px;
+    }
+    .faq {
+      background: var(--white);
+    }
+    .faq-list {
+      display: grid;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .faq-q {
+      font-weight: 700;
+      color: #3E3531;
+      margin-bottom: 8px;
+    }
+    .final-cta {
+      text-align: center;
+      background:
+        linear-gradient(rgba(250,248,246,.86), rgba(250,248,246,.92)),
+        url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1800&q=80") center / cover;
+    }
+    .final-cta h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      margin-bottom: 18px;
+    }
+    .final-cta p {
+      margin-bottom: 30px;
+    }
+    .shop-info {
+      margin-top: 42px;
+      background: rgba(255,255,255,.78);
+      display: inline-block;
+      padding: 24px 34px;
+      border-radius: 22px;
+      text-align: left;
+    }
+    footer {
+      padding: 36px 0;
+      text-align: center;
+      color: #8D817C;
+      font-size: 13px;
+    }
+    .fixed-line {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 80;
+      background: #06C755;
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      box-shadow: 0 12px 28px rgba(0,0,0,.18);
+    }
+    @media (max-width: 900px) {
+      .section {
+        padding: 80px 0;
+      }
+      .hero {
+        min-height: auto;
+        padding-top: 120px;
+      }
+      .hero::before {
+        background:
+          linear-gradient(rgba(250,248,246,.92), rgba(250,248,246,.88)),
+          url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80") center / cover;
+      }
+      .hero-content {
+        margin: 0 auto;
+      }
+      .worry-grid,
+      .future-grid,
+      .staff-grid,
+      .reasons-grid,
+      .ba-grid,
+      .voice-grid,
+      .services-grid,
+      .price-grid,
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+      .future-cards {
+        grid-template-columns: 1fr;
+      }
+      .worry-img img,
+      .future-img img,
+      .staff-img img {
+        height: 380px;
+      }
+      .price-card.recommend {
+        transform: none;
+      }
+      .nav {
+        height: 64px;
+      }
+      .logo {
+        font-size: 20px;
+      }
+      .nav-cta {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .fixed-line {
+        left: 16px;
+        right: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a href="#" class="logo">Lumière</a>
+    <a href="#reserve" class="btn btn-primary nav-cta">無料相談</a>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-content fade-up">
+    <div class="label">PRIVATE BEAUTY SALON</div>
+    <h1>変わりたいと思った今日が、<br>いちばん若い日。</h1>
+    <p class="hero-text">
+      年齢を重ねることを、もっと楽しめる私へ。<br>
+      あなた本来の美しさを引き出す、完全予約制プライベートサロン。
+    </p>
+    <div class="hero-buttons">
+      <a href="#reserve" class="btn btn-primary">LINEで無料カウンセリング</a>
+      <a href="#price" class="btn btn-outline">WEB予約する</a>
+    </div>
+    <div class="badges">
+      <div class="badge">★★★★★ 4.9</div>
+      <div class="badge">施術実績3,000件以上</div>
+      <div class="badge">リピート率92%</div>
+    </div>
+  </div>
+</section>
+<section class="section worry">
+  <div class="container worry-grid">
+    <div class="worry-img fade-up">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="美容サロンで悩む女性">
+    </div>
+    <div class="fade-up">
+      <div class="label">YOUR CONCERNS</div>
+      <h2>こんなお悩み<br>ありませんか？</h2>
+      <ul class="check-list">
+        <li>最近、写真を撮るのが苦手</li>
+        <li>肌のハリやくすみが気になる</li>
+        <li>毛穴やフェイスラインが気になる</li>
+        <li>自己流ケアでは変化を感じにくい</li>
+        <li>忙しくて自分のケアを後回しにしている</li>
+        <li>昔より老けた気がする</li>
+      </ul>
+      <p>
+        その悩み、年齢のせいだけではありません。<br>
+        正しいケアと丁寧な施術で、あなたはもっと輝けます。
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section future">
+  <div class="container future-grid">
+    <div class="fade-up">
+      <div class="label">IDEAL FUTURE</div>
+      <h2>もし、こんな毎日に<br>なったら。</h2>
+      <div class="future-cards">
+        <div class="future-card">鏡を見るのが少し楽しみになる</div>
+        <div class="future-card">ノーファンデでも外出したくなる</div>
+        <div class="future-card">写真に映る自分を好きになれる</div>
+        <div class="future-card">好きな服を自信を持って着られる</div>
+        <div class="future-card">周囲から「きれいになったね」と言われる</div>
+        <div class="future-card">自分を大切にする時間が増える</div>
+      </div>
+    </div>
+    <div class="future-img fade-up">
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="理想の未来を感じる女性">
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">REASONS</div>
+      <h2>Lumièreが選ばれる<br>6つの理由</h2>
+    </div>
+    <div class="reasons-grid">
+      <div class="reason-card fade-up"><span>01</span><h3>完全個室</h3><p>人目を気にせず過ごせるプライベート空間。</p></div>
+      <div class="reason-card fade-up"><span>02</span><h3>女性スタッフ対応</h3><p>女性ならではのお悩みに丁寧に寄り添います。</p></div>
+      <div class="reason-card fade-up"><span>03</span><h3>無理な勧誘なし</h3><p>安心して相談できるサロンづくりを大切にしています。</p></div>
+      <div class="reason-card fade-up"><span>04</span><h3>都度払い対応</h3><p>無理なく、自分のペースで通えます。</p></div>
+      <div class="reason-card fade-up"><span>05</span><h3>丁寧なカウンセリング</h3><p>肌質やライフスタイルに合わせてご提案。</p></div>
+      <div class="reason-card fade-up"><span>06</span><h3>駅徒歩3分</h3><p>仕事帰りや休日にも通いやすい立地です。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section ba">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">BEFORE / AFTER</div>
+      <h2>結果で選ばれる<br>サロンです</h2>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card fade-up">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80" alt="">
+          <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=700&q=80" alt="">
+        </div>
+        <span class="ba-tag">肌の透明感</span>
+        <h3>くすみケア</h3>
+        <p>明るくなめらかな印象の肌へ。</p>
+      </div>
+      <div class="ba-card fade-up">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=700&q=80" alt="">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80" alt="">
+        </div>
+        <span class="ba-tag">フェイスライン</span>
+        <h3>すっきり印象</h3>
+        <p>気になるラインにやさしくアプローチ。</p>
+      </div>
+      <div class="ba-card fade-up">
+        <div class="ba-images">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80" alt="">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=80" alt="">
+        </div>
+        <span class="ba-tag">毛穴ケア</span>
+        <h3>なめらか素肌</h3>
+        <p>毛穴汚れやざらつきが気になる方へ。</p>
+      </div>
+    </div>
+    <p class="note">※効果には個人差があります。</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">VOICE</div>
+      <h2>嬉しいお声を<br>いただいています</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <div class="stars">★★★★★</div>
+        <h3>30代女性</h3>
+        <p>肌の調子が整い、メイクのノリが変わりました。無理な勧誘もなく安心して通えます。</p>
+      </div>
+      <div class="voice-card fade-up">
+        <div class="stars">★★★★★</div>
+        <h3>20代女性</h3>
+        <p>初めてのサロンで緊張していましたが、丁寧に説明してもらえて安心できました。</p>
+      </div>
+      <div class="voice-card fade-up">
+        <div class="stars">★★★★★</div>
+        <h3>40代女性</h3>
+        <p>年齢のせいだと諦めていましたが、鏡を見るのが少し楽しみになりました。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section staff">
+  <div class="container staff-grid">
+    <div class="staff-img fade-up">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" alt="スタッフ紹介">
+    </div>
+    <div class="fade-up">
+      <div class="label">STAFF</div>
+      <h2>私たちが<br>担当します</h2>
+      <div class="staff-name">Lumière Beauty Salon Staff</div>
+      <h3>美容は、人生を前向きにする力がある。</h3>
+      <p>
+        Lumièreでは、お客様一人ひとりのお悩みや理想に寄り添い、無理なく続けられる美容ケアをご提案しています。
+        初めての方でも安心してご来店いただけるよう、カウンセリングから施術後のアフターケアまで丁寧にサポートします。
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">SERVICE</div>
+      <h2>お悩みに合わせた<br>施術をご提案</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="service-body">
+          <h3>フェイシャルケア</h3>
+          <p>毛穴・くすみ・ハリ不足にアプローチし、透明感のある肌へ。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="service-body">
+          <h3>脱毛ケア</h3>
+          <p>自己処理の負担を減らし、なめらかな素肌へ導きます。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="service-body">
+          <h3>痩身ケア</h3>
+          <p>気になるラインにアプローチし、理想のシルエットを目指します。</p>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80" alt="">
+        <div class="service-body">
+          <h3>リラクゼーション</h3>
+          <p>日々の疲れを癒し、心と身体を整える時間を提供します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section price" id="price">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">PRICE</div>
+      <h2>まずは気軽に<br>お試しください</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card fade-up">
+        <h3>初回体験プラン</h3>
+        <div class="price-value">5,980円</div>
+        <p>初めての方におすすめ</p>
+      </div>
+      <div class="price-card recommend fade-up">
+        <div class="ribbon">人気</div>
+        <h3>人気プラン</h3>
+        <div class="price-value">9,800円</div>
+        <p>お悩みに合わせた定番ケア</p>
+      </div>
+      <div class="price-card fade-up">
+        <h3>プレミアムプラン</h3>
+        <div class="price-value">14,800円</div>
+        <p>特別な日の前にもおすすめ</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">FLOW</div>
+      <h2>初めての方へ<br>ご来店の流れ</h2>
+    </div>
+    <div class="flow-grid">
+      <div class="flow-card fade-up"><span>STEP 01</span><h3>LINE予約</h3><p>ご希望日時をお送りください。</p></div>
+      <div class="flow-card fade-up"><span>STEP 02</span><h3>ご来店</h3><p>リラックスしてお越しください。</p></div>
+      <div class="flow-card fade-up"><span>STEP 03</span><h3>カウンセリング</h3><p>お悩みや理想を伺います。</p></div>
+      <div class="flow-card fade-up"><span>STEP 04</span><h3>施術</h3><p>状態に合わせて丁寧に施術。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section faq">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="label">FAQ</div>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up"><div class="faq-q">Q. 勧誘はありますか？</div><p>A. 無理な勧誘は一切ありません。安心してご相談ください。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. 都度払いはできますか？</div><p>A. はい、都度払いにも対応しています。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. 初めてでも大丈夫ですか？</div><p>A. もちろんです。初めての方にも丁寧にご説明します。</p></div>
+      <div class="faq-item fade-up"><div class="faq-q">Q. メイクしたまま来店できますか？</div><p>A. 可能です。必要に応じて施術前にクレンジングを行います。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section final-cta" id="reserve">
+  <div class="container fade-up">
+    <div class="label">RESERVATION</div>
+    <h2>変わりたいと思った今日が、<br>いちばん若い日。</h2>
+    <p>
+      迷っている時間より、始める一歩を。<br>
+      まずは無料カウンセリングからお気軽にご相談ください。
+    </p>
+    <div class="hero-buttons" style="justify-content:center;">
+      <a href="#" class="btn btn-primary">LINEで無料カウンセリング</a>
+      <a href="#" class="btn btn-outline">WEB予約する</a>
+    </div>
+    <div class="shop-info">
+      <strong>Lumière Beauty Salon</strong><br>
+      東京都〇〇区〇〇 1-2-3<br>
+      〇〇駅 徒歩3分<br>
+      営業時間 10:00〜20:00<br>
+      定休日 不定休
+    </div>
+  </div>
+</section>
+<footer>
+  © 2026 Lumière Beauty Salon. All Rights Reserved.
+</footer>
+<a href="#reserve" class="fixed-line">LINEで無料カウンセリング</a>
+<script>
+  const targets = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+  targets.forEach(target => observer.observe(target));
+</script>
+</body>
+</html>
