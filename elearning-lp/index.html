@@ -3,268 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="企業向けe-Learningプラットフォーム「LearnCore」。社員研修・DX教育・リスキリングを一元管理。1,000社以上が導入。まずは無料デモを。">
   <title>LearnCore | 企業向けe-Learningプラットフォーム</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--p:#005BAC;--pd:#00438A;--a:#00AEEF;--bg:#F8FAFC;--bs:#EBF4FF;--w:#fff;--tx:#1F2937;--sub:#6B7280;--bd:#E5E7EB;--sc:#22C55E}
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:"Noto Sans JP",sans-serif;background:var(--w);color:var(--tx);line-height:1.8;font-weight:500;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1200px,90%);margin:0 auto}
-    section{padding:120px 0}
-    .lbl{font-size:11px;font-weight:700;letter-spacing:.45em;color:var(--p);text-transform:uppercase;margin-bottom:12px}
-    .ttl{font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.4;color:var(--tx);margin-bottom:20px}
-    .ttl em{color:var(--p);font-style:normal}
-    .lead{font-size:16px;color:var(--sub);line-height:2}
-    .bar{width:48px;height:4px;background:linear-gradient(90deg,var(--p) 60%,var(--a) 60%);border-radius:2px;margin-bottom:24px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;border-radius:8px;font-weight:700;font-size:16px;transition:.2s;cursor:pointer}
-    .btn-p{background:var(--p);color:#fff}
-    .btn-p:hover{background:var(--pd);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,91,172,.3)}
-    .btn-o{border:2px solid var(--p);color:var(--p)}
-    .btn-o:hover{background:var(--p);color:#fff}
-    .btn-w{background:#fff;color:var(--p)}
-    .btn-w:hover{background:#f0f7ff;transform:translateY(-2px)}
-    .fu{opacity:0;transform:translateY(28px);transition:opacity .65s,transform .65s}
-    .fu.on{opacity:1;transform:none}
-
-    /* HEADER */
-    .hd{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
-    .hd-in{display:flex;align-items:center;justify-content:space-between;height:68px;width:min(1200px,90%);margin:0 auto}
-    .logo{font-size:22px;font-weight:900;color:var(--p);letter-spacing:-.5px}
-    .logo span{color:var(--a)}
-    .hd-nav{display:flex;align-items:center;gap:32px}
-    .hd-nav a{font-size:14px;font-weight:700;color:var(--sub);transition:color .2s}
-    .hd-nav a:hover{color:var(--p)}
-    .hd-btns{display:flex;gap:12px}
-    .hd-btn{padding:10px 22px;border-radius:7px;font-size:14px;font-weight:700;transition:.2s}
-    .hd-btn-o{border:1.5px solid var(--p);color:var(--p)}
-    .hd-btn-o:hover{background:var(--p);color:#fff}
-    .hd-btn-p{background:var(--p);color:#fff}
-    .hd-btn-p:hover{background:var(--pd)}
-
-    /* HERO */
-    .hero{padding-top:68px;background:var(--bg);min-height:100vh;display:flex;align-items:center;overflow:hidden;position:relative}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 70% 50%,rgba(0,174,239,.08) 0%,transparent 70%);pointer-events:none}
-    .hero-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:60px 0}
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,91,172,.1);color:var(--p);font-size:13px;font-weight:700;padding:8px 18px;border-radius:999px;margin-bottom:28px}
-    .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--a)}
-    .hero h1{font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.35;color:var(--tx);margin-bottom:24px}
-    .hero h1 em{color:var(--p);font-style:normal}
-    .hero-sub{font-size:17px;color:var(--sub);line-height:2.1;margin-bottom:40px}
-    .hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:52px}
-    .hero-trust{font-size:12px;color:var(--sub);margin-bottom:12px;font-weight:700}
-    .logo-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-    .logo-chip{background:var(--w);border:1px solid var(--bd);border-radius:7px;padding:8px 16px;font-size:12px;font-weight:700;color:var(--sub)}
-    .dash-wrap{background:var(--w);border-radius:18px;box-shadow:0 28px 72px rgba(0,91,172,.14),0 4px 20px rgba(0,0,0,.06);overflow:hidden;animation:float 5s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-
-    /* STATS */
-    .stats{background:var(--w);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:80px 0}
-    .stats-g{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr 1px 1fr;gap:0;text-align:center}
-    .stat-sep{background:var(--bd)}
-    .stat-num{font-size:clamp(44px,5.5vw,72px);font-weight:900;color:var(--p);line-height:1;margin-bottom:8px;letter-spacing:-2px}
-    .stat-num sup{font-size:45%;vertical-align:top;margin-top:.25em}
-    .stat-lbl{font-size:15px;color:var(--sub);font-weight:700}
-
-    /* PROBLEMS */
-    .problems{background:var(--bs)}
-    .prob-g{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px}
-    .pc-card{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:28px 28px 28px 24px;display:flex;align-items:flex-start;gap:20px;transition:box-shadow .2s,transform .2s}
-    .pc-card:hover{box-shadow:0 8px 32px rgba(0,91,172,.1);transform:translateY(-3px)}
-    .pc-ic{width:52px;height:52px;border-radius:12px;background:rgba(0,91,172,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .pc-card h3{font-size:15px;font-weight:900;color:var(--tx);margin-bottom:5px}
-    .pc-card p{font-size:13px;color:var(--sub);line-height:1.8}
-
-    /* OVERVIEW */
-    .overview{background:var(--w)}
-    .ov-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-    .ov-vis{border-radius:18px;overflow:hidden;background:var(--bs);padding:48px;display:flex;align-items:center;justify-content:center;position:relative;min-height:340px}
-    .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(0,91,172,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;box-shadow:0 0 0 14px rgba(0,91,172,.15)}
-    .play-btn:hover{background:var(--pd);transform:translate(-50%,-50%) scale(1.07)}
-    .ov-pts{margin-top:32px;display:grid;gap:20px}
-    .ov-pt{display:flex;align-items:flex-start;gap:16px}
-    .ov-pt-ic{width:38px;height:38px;border-radius:9px;background:rgba(0,91,172,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-    .ov-pt h4{font-size:15px;font-weight:900;margin-bottom:4px}
-    .ov-pt p{font-size:13.5px;color:var(--sub);line-height:1.8}
-
-    /* REASONS */
-    .reasons{background:var(--bs)}
-    .rsn-hd{text-align:center;margin-bottom:72px}
-    .rsn-hd .bar{margin:14px auto 22px}
-    .reason-blk{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:80px}
-    .reason-blk:last-child{margin-bottom:0}
-    .reason-blk.rev{direction:rtl}
-    .reason-blk.rev>*{direction:ltr}
-    .reason-no{font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--a);margin-bottom:10px}
-    .reason-vis{background:var(--w);border-radius:18px;padding:36px;box-shadow:0 4px 24px rgba(0,91,172,.07);display:flex;align-items:center;justify-content:center;min-height:260px}
-
-    /* CYCLE */
-    .cycle{background:var(--w)}
-    .cycle-hd{text-align:center;margin-bottom:64px}
-    .cycle-hd .bar{margin:14px auto 22px}
-    .cycle-flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
-    .cyc-step{display:flex;flex-direction:column;align-items:center;gap:14px}
-    .cyc-circle{width:118px;height:118px;border-radius:50%;background:linear-gradient(135deg,var(--p),#0073d1);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 28px rgba(0,91,172,.28);transition:transform .3s,box-shadow .3s;cursor:pointer}
-    .cyc-circle:hover{transform:scale(1.07);box-shadow:0 14px 40px rgba(0,91,172,.38)}
-    .cyc-lbl{font-size:13px;font-weight:900;margin-top:12px;color:var(--sub)}
-    .cyc-arr{color:var(--a);font-size:26px;padding-bottom:28px;margin:0 4px}
-
-    /* ADMIN */
-    .admin{background:var(--bs)}
-    .adm-hd{text-align:center;margin-bottom:52px}
-    .adm-hd .bar{margin:14px auto 22px}
-    .adm-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .adm-card{background:var(--w);border:1px solid var(--bd);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
-    .adm-card:hover{transform:scale(1.03);box-shadow:0 12px 40px rgba(0,91,172,.14)}
-    .adm-vis{background:var(--bs);padding:28px;min-height:155px;display:flex;align-items:center;justify-content:center}
-    .adm-body{padding:22px 24px}
-    .adm-body h3{font-size:15px;font-weight:900;margin-bottom:6px}
-    .adm-body p{font-size:13px;color:var(--sub);line-height:1.8}
-
-    /* CASES */
-    .cases{background:var(--w)}
-    .cs-g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:52px}
-    .cs-card{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:28px 22px;text-align:center;transition:box-shadow .2s,transform .2s}
-    .cs-card:hover{box-shadow:0 8px 32px rgba(0,91,172,.1);transform:translateY(-3px)}
-    .cs-logo{background:var(--w);border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:0 auto 18px;width:76px;height:44px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:var(--p)}
-    .cs-ind{font-size:10px;font-weight:700;letter-spacing:.3em;color:var(--a);margin-bottom:6px;text-transform:uppercase}
-    .cs-card h3{font-size:14px;font-weight:900;margin-bottom:8px}
-    .cs-card p{font-size:12.5px;color:var(--sub);line-height:1.8}
-    .cs-kpi{margin-top:16px;font-size:26px;font-weight:900;color:var(--p)}
-    .cs-kpi small{font-size:12px;font-weight:700;color:var(--sub);display:block;margin-top:2px}
-
-    /* BEFORE/AFTER */
-    .bef-aft{background:var(--bs)}
-    .ba-g{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:stretch;margin-top:52px}
-    .ba-col{background:var(--w);border-radius:18px;padding:36px;border:2px solid var(--bd)}
-    .ba-col.after{border-color:var(--p);box-shadow:0 8px 40px rgba(0,91,172,.1)}
-    .ba-hd{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
-    .ba-tag{padding:7px 20px;border-radius:999px;font-size:13px;font-weight:900}
-    .ba-tag.b{background:#f3f4f6;color:var(--sub)}
-    .ba-tag.a{background:var(--p);color:#fff}
-    .ba-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
-    .ba-item:last-child{margin-bottom:0}
-    .ba-ic{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;margin-top:2px}
-    .ng{background:rgba(239,68,68,.1);color:#ef4444}
-    .ok{background:rgba(34,197,94,.1);color:var(--sc)}
-    .ba-item-txt{font-size:15px;font-weight:700}
-    .ba-item-sub{font-size:13px;color:var(--sub)}
-    .ba-vs{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:var(--p)}
-
-    /* PRICING */
-    .pricing{background:var(--w)}
-    .pr-hd{text-align:center;margin-bottom:52px}
-    .pr-hd .bar{margin:14px auto 22px}
-    .pr-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-    .pr-card{border:1.5px solid var(--bd);border-radius:18px;overflow:hidden;background:var(--w);position:relative}
-    .pr-card.star{border-color:var(--p);box-shadow:0 12px 48px rgba(0,91,172,.16)}
-    .pr-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;font-size:12px;font-weight:700;padding:5px 22px;border-radius:0 0 10px 10px;letter-spacing:.05em;white-space:nowrap}
-    .pr-top{padding:32px 32px 24px;background:var(--bg);border-bottom:1px solid var(--bd)}
-    .pr-card.star .pr-top{background:var(--p)}
-    .pr-card.star .pr-top *{color:#fff!important}
-    .pr-name{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--sub);margin-bottom:14px;text-transform:uppercase}
-    .pr-price{font-size:48px;font-weight:900;color:var(--tx);line-height:1;letter-spacing:-2px;margin-bottom:6px}
-    .pr-price small{font-size:17px;letter-spacing:0;font-weight:700}
-    .pr-per{font-size:13px;color:var(--sub)}
-    .pr-body{padding:28px 32px}
-    .pr-desc{font-size:13.5px;color:var(--sub);margin-bottom:22px;line-height:1.8}
-    .pl{list-style:none;display:grid;gap:11px;margin-bottom:28px}
-    .pl li{display:flex;align-items:flex-start;gap:10px;font-size:14px}
-    .pl li::before{content:'';width:20px;height:20px;min-width:20px;border-radius:50%;background:rgba(0,91,172,.1) url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10l4 4 8-8' stroke='%23005BAC' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat;margin-top:2px}
-    .pr-cta{display:block;text-align:center;padding:14px;border-radius:8px;font-weight:700;font-size:15px;transition:.2s}
-    .cta-p{background:var(--p);color:#fff}
-    .cta-p:hover{background:var(--pd)}
-    .cta-o{border:1.5px solid var(--p);color:var(--p)}
-    .cta-o:hover{background:var(--p);color:#fff}
-
-    /* FAQ */
-    .faq{background:var(--bs)}
-    .faq-hd{text-align:center;margin-bottom:52px}
-    .faq-hd .bar{margin:14px auto 22px}
-    .faq-l{display:grid;gap:12px;max-width:800px;margin:0 auto}
-    .fi{border:1px solid var(--bd);border-radius:12px;background:var(--w);overflow:hidden}
-    .fq{display:flex;align-items:center;gap:16px;padding:20px 26px;cursor:pointer;font-weight:700;font-size:15px;user-select:none}
-    .fq-i{width:32px;height:32px;border-radius:8px;background:rgba(0,91,172,.1);color:var(--p);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
-    .fq-arr{margin-left:auto;color:var(--p);transition:transform .3s;font-size:18px;line-height:1}
-    .fi.open .fq-arr{transform:rotate(180deg)}
-    .fa-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-    .fi.open .fa-body{max-height:300px}
-    .fa-inner{padding:0 26px 20px 74px;font-size:14px;color:var(--sub);line-height:2}
-
-    /* CTA SECTION */
-    .cta-sec{background:linear-gradient(135deg,var(--pd) 0%,var(--p) 50%,#0073d1 100%);padding:120px 0;position:relative;overflow:hidden}
-    .cta-sec::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
-    .cta-in{text-align:center;position:relative;z-index:1}
-    .cta-ttl{font-size:clamp(30px,4vw,52px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:20px}
-    .cta-sub{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:44px}
-    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-
-    /* FOOTER */
-    footer{background:var(--tx);padding:64px 0 40px}
-    .ft-g{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-    .ft-logo{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px}
-    .ft-logo span{color:var(--a)}
-    .ft-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:2}
-    .ft-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:16px;letter-spacing:.08em;text-transform:uppercase}
-    .ft-col ul{list-style:none;display:grid;gap:10px}
-    .ft-col li a{font-size:13px;color:rgba(255,255,255,.38);transition:color .2s}
-    .ft-col li a:hover{color:#fff}
-    .ft-btm{border-top:1px solid rgba(255,255,255,.1);padding-top:32px;display:flex;justify-content:space-between;align-items:center}
-    .ft-copy{font-size:12px;color:rgba(255,255,255,.28)}
-
-    /* FIXED CTA */
-    .fcta{position:fixed;bottom:30px;right:30px;z-index:200;background:var(--p);color:#fff;padding:15px 26px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:0 8px 28px rgba(0,91,172,.38);transition:.2s}
-    .fcta:hover{background:var(--pd);transform:translateY(-2px)}
-
-    /* RESPONSIVE */
-    @media(max-width:1024px){
-      .hero-g{grid-template-columns:1fr;gap:48px;padding:48px 0}
-      .ov-g{grid-template-columns:1fr;gap:40px}
-      .reason-blk{grid-template-columns:1fr;gap:32px}
-      .reason-blk.rev{direction:ltr}
-      .adm-g{grid-template-columns:1fr 1fr}
-      .cs-g{grid-template-columns:1fr 1fr}
-      .ft-g{grid-template-columns:1fr 1fr}
-      .hd-nav{display:none}
-    }
-    @media(max-width:768px){
-      section{padding:80px 0}
-      .stats-g{grid-template-columns:1fr 1fr;gap:36px}
-      .stat-sep{display:none}
-      .prob-g{grid-template-columns:1fr}
-      .ba-g{grid-template-columns:1fr}
-      .ba-vs{display:none}
-      .pr-g{grid-template-columns:1fr;max-width:440px;margin:0 auto}
-      .adm-g{grid-template-columns:1fr}
-      .cs-g{grid-template-columns:1fr 1fr}
-    }
-    @media(max-width:430px){
-      .hero h1{font-size:28px}
-      .hero-btns{flex-direction:column}
-      .cs-g{grid-template-columns:1fr}
-      .cta-btns{flex-direction:column;align-items:center}
-      .ft-g{grid-template-columns:1fr}
-      .fcta{bottom:16px;right:16px}
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="hd">
+<header class="hd" role="banner">
   <div class="hd-in">
-    <div class="logo">Learn<span>Core</span></div>
-    <nav class="hd-nav">
+    <a href="#top" class="logo">Learn<span>Core</span></a>
+    <nav class="hd-nav" aria-label="メインナビ">
       <a href="#service">サービス</a>
       <a href="#reasons">選ばれる理由</a>
       <a href="#cases">導入事例</a>
       <a href="#pricing">料金</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <div class="hd-btns">
+    <div class="hd-ctas">
       <a href="#contact" class="hd-btn hd-btn-o">資料請求</a>
       <a href="#contact" class="hd-btn hd-btn-p">無料デモ</a>
     </div>
@@ -275,86 +34,153 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div class="hero-g">
-      <div class="hero-txt fu">
-        <div class="hero-badge"><span class="hero-badge-dot"></span>企業向けe-Learningプラットフォーム</div>
+
+      <div class="sr">
+        <div class="hero-badge"><span class="badge-dot"></span>企業向けe-Learningプラットフォーム</div>
         <h1>学び続ける組織が、<br><em>未来をつくる。</em></h1>
         <p class="hero-sub">社員研修・DX教育・リスキリングまで。<br>企業の成長を支えるe-Learningプラットフォーム。</p>
         <div class="hero-btns">
-          <a href="#contact" class="btn btn-p">資料請求 →</a>
+          <a href="#contact" class="btn btn-p">資料請求（無料）→</a>
           <a href="#contact" class="btn btn-o">無料デモを見る</a>
         </div>
-        <p class="hero-trust">累計1,000社以上が導入</p>
-        <div class="logo-row">
-          <div class="logo-chip">製造業 A社</div>
-          <div class="logo-chip">IT企業 B社</div>
-          <div class="logo-chip">小売業 C社</div>
-          <div class="logo-chip">金融 D社</div>
+        <div class="hero-trust">
+          <p class="hero-trust-lbl">累計 1,000社以上が導入</p>
+          <div class="hero-logos">
+            <span class="hero-chip">製造業 A社</span>
+            <span class="hero-chip">IT企業 B社</span>
+            <span class="hero-chip">小売業 C社</span>
+            <span class="hero-chip">金融 D社</span>
+          </div>
         </div>
       </div>
-      <div class="fu" style="transition-delay:.18s">
+
+      <!-- SaaS Dashboard UI -->
+      <div class="sr d2">
         <div class="dash-wrap">
-          <svg viewBox="0 0 540 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
-            <rect width="540" height="360" fill="#F8FAFC"/>
+          <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block" aria-hidden="true">
+            <rect width="600" height="400" fill="#F1F5F9"/>
             <!-- Sidebar -->
-            <rect width="60" height="360" fill="#005BAC"/>
-            <rect x="14" y="16" width="32" height="32" rx="8" fill="rgba(255,255,255,0.22)"/>
+            <rect x="0" y="0" width="58" height="400" fill="#002E6D"/>
+            <rect x="13" y="15" width="32" height="32" rx="8" fill="rgba(255,255,255,.22)"/>
             <text x="19" y="35" font-family="sans-serif" font-size="11" font-weight="bold" fill="white">LC</text>
-            <rect x="14" y="62" width="32" height="32" rx="7" fill="rgba(255,255,255,0.18)"/>
-            <rect x="20" y="69" width="20" height="2.5" rx="1.2" fill="white"/><rect x="20" y="74" width="15" height="2.5" rx="1.2" fill="white"/><rect x="20" y="79" width="18" height="2.5" rx="1.2" fill="white"/>
-            <rect x="14" y="102" width="32" height="32" rx="7" fill="rgba(255,255,255,0.1)"/>
-            <circle cx="30" cy="112" r="5" stroke="white" stroke-width="1.5" fill="none"/><line x1="33.5" y1="115.5" x2="37" y2="119" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="14" y="142" width="32" height="32" rx="7" fill="rgba(255,255,255,0.1)"/>
-            <rect x="21" y="150" width="18" height="14" rx="2" stroke="white" stroke-width="1.5" fill="none"/><line x1="25" y1="146" x2="25" y2="150" stroke="white" stroke-width="1.5"/><line x1="35" y1="146" x2="35" y2="150" stroke="white" stroke-width="1.5"/>
-            <rect x="14" y="182" width="32" height="32" rx="7" fill="rgba(255,255,255,0.1)"/>
-            <polyline points="21,201 27,195 33,200 39,192" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Nav icons -->
+            <rect x="11" y="63" width="36" height="36" rx="9" fill="rgba(255,255,255,.2)"/>
+            <rect x="19" y="71" width="8" height="8" rx="1.5" fill="white"/>
+            <rect x="29" y="71" width="8" height="8" rx="1.5" fill="rgba(255,255,255,.55)"/>
+            <rect x="19" y="81" width="8" height="8" rx="1.5" fill="rgba(255,255,255,.55)"/>
+            <rect x="29" y="81" width="8" height="8" rx="1.5" fill="rgba(255,255,255,.55)"/>
+            <rect x="11" y="109" width="36" height="36" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="29" cy="120" r="5.5" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none"/>
+            <path d="M18 138 Q21 130 29 128 Q37 130 40 138" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <rect x="11" y="155" width="36" height="36" rx="9" fill="rgba(255,255,255,.07)"/>
+            <rect x="19" y="163" width="20" height="15" rx="2.5" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none"/>
+            <line x1="23" y1="159" x2="23" y2="163" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+            <line x1="35" y1="159" x2="35" y2="163" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+            <rect x="11" y="201" width="36" height="36" rx="9" fill="rgba(255,255,255,.07)"/>
+            <polyline points="19,225 24,217 30,222 38,210" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="11" y="247" width="36" height="36" rx="9" fill="rgba(255,255,255,.07)"/>
+            <rect x="20" y="255" width="18" height="14" rx="2" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none"/>
+            <line x1="29" y1="251" x2="29" y2="255" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+            <circle cx="29" cy="378" r="14" fill="rgba(255,255,255,.14)"/>
+            <circle cx="29" cy="373" r="5" fill="rgba(255,255,255,.6)"/>
+            <path d="M18 391 Q20 383 29 381 Q38 383 40 391" fill="rgba(255,255,255,.6)"/>
             <!-- Topbar -->
-            <rect x="60" y="0" width="480" height="46" fill="white" stroke="#E5E7EB" stroke-width="0.5"/>
-            <text x="78" y="28" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1F2937">学習ダッシュボード</text>
-            <circle cx="514" cy="23" r="15" fill="#EBF4FF"/>
-            <text x="507" y="27" font-family="sans-serif" font-size="9" font-weight="bold" fill="#005BAC">田中</text>
-            <!-- KPI cards -->
-            <rect x="76" y="58" width="126" height="60" rx="9" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="90" y="78" font-family="sans-serif" font-size="9.5" fill="#6B7280">受講者数</text>
-            <text x="90" y="103" font-family="sans-serif" font-size="21" font-weight="bold" fill="#005BAC">1,248</text>
-            <text x="158" y="102" font-family="sans-serif" font-size="9" fill="#22C55E">↑12%</text>
-            <rect x="212" y="58" width="126" height="60" rx="9" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="226" y="78" font-family="sans-serif" font-size="9.5" fill="#6B7280">受講完了率</text>
-            <text x="226" y="103" font-family="sans-serif" font-size="21" font-weight="bold" fill="#005BAC">87.4%</text>
-            <text x="296" y="102" font-family="sans-serif" font-size="9" fill="#22C55E">↑5%</text>
-            <rect x="348" y="58" width="172" height="60" rx="9" fill="#005BAC"/>
-            <text x="364" y="78" font-family="sans-serif" font-size="9.5" fill="rgba(255,255,255,0.75)">公開コース数</text>
-            <text x="364" y="103" font-family="sans-serif" font-size="21" font-weight="bold" fill="white">342 コース</text>
-            <!-- Bar chart -->
-            <rect x="76" y="132" width="244" height="162" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="92" y="154" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#1F2937">月別受講完了数</text>
-            <rect x="96"  y="226" width="22" height="54" rx="4" fill="#EBF4FF"/>
-            <rect x="126" y="214" width="22" height="66" rx="4" fill="#EBF4FF"/>
-            <rect x="156" y="200" width="22" height="80" rx="4" fill="#00AEEF"/>
-            <rect x="186" y="186" width="22" height="94" rx="4" fill="#005BAC"/>
-            <rect x="216" y="196" width="22" height="84" rx="4" fill="#EBF4FF"/>
-            <rect x="246" y="174" width="22" height="106" rx="4" fill="#005BAC"/>
-            <text x="96"  y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">1月</text>
-            <text x="126" y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">2月</text>
-            <text x="156" y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">3月</text>
-            <text x="186" y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">4月</text>
-            <text x="216" y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">5月</text>
-            <text x="246" y="292" font-family="sans-serif" font-size="8.5" fill="#6B7280">6月</text>
-            <!-- Donut chart -->
-            <rect x="330" y="132" width="190" height="162" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="346" y="154" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#1F2937">受講率</text>
-            <circle cx="425" cy="220" r="52" fill="none" stroke="#EBF4FF" stroke-width="16"/>
-            <circle cx="425" cy="220" r="52" fill="none" stroke="#005BAC" stroke-width="16" stroke-dasharray="261 66" stroke-dashoffset="0" transform="rotate(-90 425 220)" stroke-linecap="round"/>
-            <circle cx="425" cy="220" r="52" fill="none" stroke="#00AEEF" stroke-width="16" stroke-dasharray="33 294" stroke-dashoffset="-261" transform="rotate(-90 425 220)" stroke-linecap="round"/>
-            <text x="425" y="215" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1F2937" text-anchor="middle">78%</text>
-            <text x="425" y="230" font-family="sans-serif" font-size="9" fill="#6B7280" text-anchor="middle">完了率</text>
-            <!-- Course list row -->
-            <rect x="76" y="308" width="444" height="40" rx="8" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
-            <rect x="88" y="320" width="36" height="16" rx="4" fill="#EBF4FF"/>
-            <text x="92" y="332" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC">DX入門</text>
-            <text x="134" y="332" font-family="sans-serif" font-size="10.5" fill="#1F2937">DXリテラシー基礎講座</text>
-            <rect x="374" y="320" width="100" height="10" rx="5" fill="#EBF4FF"/>
-            <rect x="374" y="320" width="72" height="10" rx="5" fill="#005BAC"/>
-            <text x="480" y="330" font-family="sans-serif" font-size="9" fill="#6B7280">72%</text>
+            <rect x="58" y="0" width="542" height="52" fill="white"/>
+            <line x1="58" y1="52" x2="600" y2="52" stroke="#E5E7EB" stroke-width="0.5"/>
+            <text x="76" y="32" font-family="sans-serif" font-size="13.5" font-weight="bold" fill="#1F2937">ダッシュボード</text>
+            <text x="170" y="32" font-family="sans-serif" font-size="11" fill="#9CA3AF">/ 概要</text>
+            <rect x="272" y="14" width="168" height="26" rx="7" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+            <circle cx="283" cy="27" r="5" stroke="#9CA3AF" stroke-width="1.2" fill="none"/>
+            <line x1="286.5" y1="30.5" x2="290" y2="34" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round"/>
+            <text x="296" y="31" font-family="sans-serif" font-size="10" fill="#9CA3AF">コースを検索...</text>
+            <circle cx="464" cy="27" r="14" fill="#F8FAFC"/>
+            <path d="M460 24 Q460 18 464 18 Q468 18 468 24 L469 29 H459 Z" fill="#9CA3AF"/>
+            <circle cx="470" cy="19" r="4" fill="#EF4444"/>
+            <text x="468" y="22" font-family="sans-serif" font-size="5.5" font-weight="bold" fill="white">2</text>
+            <circle cx="504" cy="27" r="17" fill="#EBF5FF"/>
+            <circle cx="504" cy="22" r="6" fill="#005BAC" opacity=".3"/>
+            <path d="M493 38 Q496 30 504 28 Q512 30 515 38" fill="#005BAC" opacity=".25"/>
+            <text x="526" y="31" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">田中 一郎</text>
+            <text x="526" y="43" font-family="sans-serif" font-size="8.5" fill="#9CA3AF">管理者</text>
+            <!-- KPI Cards -->
+            <rect x="70" y="66" width="155" height="76" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="84" y="87" font-family="sans-serif" font-size="9" fill="#9CA3AF">受講者数</text>
+            <text x="84" y="118" font-family="sans-serif" font-size="26" font-weight="bold" fill="#1F2937">1,248</text>
+            <rect x="158" y="76" width="52" height="20" rx="6" fill="rgba(34,197,94,.1)"/>
+            <text x="163" y="90" font-family="sans-serif" font-size="9" font-weight="bold" fill="#22C55E">↑ 12.4%</text>
+            <polyline points="84,130 95,126 106,128 117,122 128,119 139,116 150,113" stroke="#005BAC" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+            <rect x="237" y="66" width="155" height="76" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="251" y="87" font-family="sans-serif" font-size="9" fill="#9CA3AF">受講完了率</text>
+            <text x="251" y="118" font-family="sans-serif" font-size="26" font-weight="bold" fill="#1F2937">87.4<tspan font-size="16">%</tspan></text>
+            <rect x="325" y="76" width="52" height="20" rx="6" fill="rgba(34,197,94,.1)"/>
+            <text x="330" y="90" font-family="sans-serif" font-size="9" font-weight="bold" fill="#22C55E">↑ 5.2%</text>
+            <polyline points="251,130 262,128 273,125 284,121 295,118 306,116 317,114" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+            <rect x="404" y="66" width="184" height="76" rx="10" fill="#005BAC"/>
+            <text x="418" y="87" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,.7)">今月の新規受講者</text>
+            <text x="418" y="118" font-family="sans-serif" font-size="26" font-weight="bold" fill="white">+124 <tspan font-size="14" font-weight="500">名</tspan></text>
+            <rect x="518" y="76" width="52" height="20" rx="6" fill="rgba(255,255,255,.18)"/>
+            <text x="523" y="90" font-family="sans-serif" font-size="9" font-weight="bold" fill="rgba(255,255,255,.9)">今月</text>
+            <polyline points="418,130 430,126 442,128 454,122 466,118 478,115 490,111" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Bar Chart -->
+            <rect x="70" y="158" width="296" height="188" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="86" y="180" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">月別受講完了数</text>
+            <text x="86" y="194" font-family="sans-serif" font-size="9" fill="#9CA3AF">2026年 1月〜6月</text>
+            <line x1="100" y1="201" x2="354" y2="201" stroke="#F3F4F6" stroke-width="0.5"/>
+            <line x1="100" y1="223" x2="354" y2="223" stroke="#F3F4F6" stroke-width="0.5"/>
+            <line x1="100" y1="245" x2="354" y2="245" stroke="#F3F4F6" stroke-width="0.5"/>
+            <line x1="100" y1="267" x2="354" y2="267" stroke="#F3F4F6" stroke-width="0.5"/>
+            <line x1="100" y1="289" x2="354" y2="289" stroke="#F3F4F6" stroke-width="0.5"/>
+            <rect x="107" y="248" width="28" height="41" rx="5" fill="#EBF5FF"/>
+            <rect x="149" y="234" width="28" height="55" rx="5" fill="#EBF5FF"/>
+            <rect x="191" y="218" width="28" height="71" rx="5" fill="#00AEEF" opacity=".7"/>
+            <rect x="233" y="201" width="28" height="88" rx="5" fill="#005BAC"/>
+            <rect x="275" y="212" width="28" height="77" rx="5" fill="#EBF5FF"/>
+            <rect x="317" y="194" width="28" height="95" rx="5" fill="#005BAC"/>
+            <text x="121" y="244" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9CA3AF" text-anchor="middle">142</text>
+            <text x="163" y="230" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9CA3AF" text-anchor="middle">189</text>
+            <text x="205" y="214" font-family="sans-serif" font-size="8" font-weight="bold" fill="#00AEEF" text-anchor="middle">246</text>
+            <text x="247" y="197" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">308</text>
+            <text x="289" y="208" font-family="sans-serif" font-size="8" font-weight="bold" fill="#9CA3AF" text-anchor="middle">268</text>
+            <text x="331" y="190" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">331</text>
+            <text x="121" y="303" font-family="sans-serif" font-size="8.5" fill="#9CA3AF" text-anchor="middle">1月</text>
+            <text x="163" y="303" font-family="sans-serif" font-size="8.5" fill="#9CA3AF" text-anchor="middle">2月</text>
+            <text x="205" y="303" font-family="sans-serif" font-size="8.5" fill="#9CA3AF" text-anchor="middle">3月</text>
+            <text x="247" y="303" font-family="sans-serif" font-size="8.5" fill="#1F2937" font-weight="bold" text-anchor="middle">4月</text>
+            <text x="289" y="303" font-family="sans-serif" font-size="8.5" fill="#9CA3AF" text-anchor="middle">5月</text>
+            <text x="331" y="303" font-family="sans-serif" font-size="8.5" fill="#1F2937" font-weight="bold" text-anchor="middle">6月</text>
+            <rect x="88" y="314" width="10" height="10" rx="3" fill="#005BAC"/>
+            <text x="102" y="323" font-family="sans-serif" font-size="8.5" fill="#6B7280">完了</text>
+            <rect x="136" y="314" width="10" height="10" rx="3" fill="#00AEEF" opacity=".7"/>
+            <text x="150" y="323" font-family="sans-serif" font-size="8.5" fill="#6B7280">受講中</text>
+            <rect x="196" y="314" width="10" height="10" rx="3" fill="#EBF5FF" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="210" y="323" font-family="sans-serif" font-size="8.5" fill="#6B7280">その他</text>
+            <rect x="280" y="311" width="74" height="20" rx="5" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="293" y="325" font-family="sans-serif" font-size="8.5" fill="#6B7280">2026 Q1-Q2</text>
+            <!-- Donut Chart -->
+            <rect x="378" y="158" width="210" height="188" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="394" y="180" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">受講率</text>
+            <circle cx="483" cy="248" r="58" fill="none" stroke="#F0F7FF" stroke-width="20"/>
+            <circle cx="483" cy="248" r="58" fill="none" stroke="#005BAC" stroke-width="20" stroke-dasharray="291 73" stroke-linecap="round" transform="rotate(-90 483 248)"/>
+            <circle cx="483" cy="248" r="58" fill="none" stroke="#00AEEF" stroke-width="20" stroke-dasharray="37 327" stroke-dashoffset="-291" stroke-linecap="round" transform="rotate(-90 483 248)"/>
+            <text x="483" y="241" font-family="sans-serif" font-size="24" font-weight="bold" fill="#1F2937" text-anchor="middle">78%</text>
+            <text x="483" y="258" font-family="sans-serif" font-size="9" fill="#9CA3AF" text-anchor="middle">受講完了率</text>
+            <circle cx="397" cy="326" r="5" fill="#005BAC"/>
+            <text x="407" y="330" font-family="sans-serif" font-size="8.5" fill="#6B7280">完了 78%</text>
+            <circle cx="450" cy="326" r="5" fill="#00AEEF"/>
+            <text x="460" y="330" font-family="sans-serif" font-size="8.5" fill="#6B7280">受講中 12%</text>
+            <!-- Bottom row -->
+            <rect x="70" y="360" width="518" height="32" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <circle cx="91" cy="376" r="10" fill="#EBF5FF"/>
+            <circle cx="91" cy="372" r="4" fill="#005BAC" opacity=".35"/>
+            <path d="M83 388 Q85 381 91 380 Q97 381 99 388" fill="#005BAC" opacity=".3"/>
+            <text x="109" y="378" font-family="sans-serif" font-size="10" fill="#1F2937" font-weight="bold">田中 一郎</text>
+            <text x="109" y="388" font-family="sans-serif" font-size="8" fill="#9CA3AF">DX推進部</text>
+            <rect x="224" y="370" width="110" height="12" rx="6" fill="#F0F7FF"/>
+            <rect x="224" y="370" width="80" height="12" rx="6" fill="#005BAC"/>
+            <text x="340" y="380" font-family="sans-serif" font-size="9" fill="#6B7280">72%</text>
+            <rect x="428" y="367" width="66" height="18" rx="5" fill="rgba(34,197,94,.1)"/>
+            <text x="441" y="380" font-family="sans-serif" font-size="9" font-weight="bold" fill="#22C55E">受講中</text>
+            <text x="504" y="379" font-family="sans-serif" font-size="9" fill="#9CA3AF">6コース</text>
           </svg>
         </div>
       </div>
@@ -366,25 +192,10 @@
 <section class="stats" id="stats">
   <div class="wrap">
     <div class="stats-g">
-      <div class="fu">
-        <div class="stat-num" data-target="1000" data-suffix="+"><sup></sup>1,000<sup>+</sup></div>
-        <div class="stat-lbl">導入企業数</div>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="fu" style="transition-delay:.08s">
-        <div class="stat-num" data-target="50000" data-suffix="+">50,000<sup>+</sup></div>
-        <div class="stat-lbl">受講者数</div>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="fu" style="transition-delay:.16s">
-        <div class="stat-num" data-target="95" data-suffix="%">95<sup>%</sup></div>
-        <div class="stat-lbl">継続率</div>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="fu" style="transition-delay:.24s">
-        <div class="stat-num" data-target="96" data-suffix="%">96<sup>%</sup></div>
-        <div class="stat-lbl">満足度</div>
-      </div>
+      <div class="stat sr"><div class="stat-num" data-target="1000" data-suffix="+">1,000<sup>+</sup></div><div class="stat-lbl">導入企業数</div></div>
+      <div class="stat sr d1"><div class="stat-num" data-target="50000" data-suffix="+">50,000<sup>+</sup></div><div class="stat-lbl">受講者数</div></div>
+      <div class="stat sr d2"><div class="stat-num" data-target="95" data-suffix="%">95<sup>%</sup></div><div class="stat-lbl">継続率</div></div>
+      <div class="stat sr d3"><div class="stat-num" data-target="96" data-suffix="%">96<sup>%</sup></div><div class="stat-lbl">満足度</div></div>
     </div>
   </div>
 </section>
@@ -392,126 +203,121 @@
 <!-- SECTION 03: PROBLEMS -->
 <section class="problems" id="problems">
   <div class="wrap">
-    <div class="fu" style="text-align:center">
-      <p class="lbl" style="display:inline-block">Pain Points</p>
-      <div class="bar" style="margin:14px auto 22px"></div>
+    <div class="sec-hd sr">
+      <span class="lbl">Pain Points</span>
       <h2 class="ttl">こんなお悩みありませんか？</h2>
+      <span class="rule"></span>
     </div>
     <div class="prob-g">
-      <div class="pc-card fu">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="5" stroke="#005BAC" stroke-width="2"/><path d="M5 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/><line x1="19" y1="6" x2="23" y2="2" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div><h3>研修が属人化している</h3><p>特定の担当者や講師に依存し、退職すると教育が回らなくなる</p></div>
+      <div class="prob-card sr">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="5" stroke="#005BAC" stroke-width="2"/><path d="M5 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/><path d="M20 5l2.5-2.5M22 7l2.5.5" stroke="#005BAC" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div><h3>研修が属人化している</h3><p>特定の担当者や講師に依存し、退職すると教育が止まってしまう</p></div>
       </div>
-      <div class="pc-card fu" style="transition-delay:.06s">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="5" width="20" height="16" rx="2" stroke="#005BAC" stroke-width="2"/><line x1="9" y1="21" x2="17" y2="21" stroke="#005BAC" stroke-width="2"/><line x1="13" y1="17" x2="13" y2="21" stroke="#005BAC" stroke-width="2"/><path d="M9 12l3 3 6-6" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+      <div class="prob-card sr d1">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="5" width="20" height="16" rx="2" stroke="#005BAC" stroke-width="2"/><line x1="9" y1="21" x2="17" y2="21" stroke="#005BAC" stroke-width="2"/><line x1="13" y1="17" x2="13" y2="21" stroke="#005BAC" stroke-width="2"/><path d="M8 13l3 3 7-7" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div><h3>DX人材が育たない</h3><p>デジタルスキルの習得が追いつかず、DX推進の足かせになっている</p></div>
       </div>
-      <div class="pc-card fu" style="transition-delay:.12s">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#005BAC" stroke-width="2"/><path d="M13 8v5l3 3" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div><h3>教育コストが高い</h3><p>外部研修の費用・交通費・工数が膨らみ、ROIが見えない</p></div>
+      <div class="prob-card sr d2">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#005BAC" stroke-width="2"/><path d="M13 8v5l3 3" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h3>教育コストが膨らむ</h3><p>外部研修の費用・交通費・工数が膨らみ、ROIが見えない状態が続く</p></div>
       </div>
-      <div class="pc-card fu" style="transition-delay:.18s">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><polyline points="4,18 9,12 14,15 20,7" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="22" x2="22" y2="22" stroke="#005BAC" stroke-width="2"/></svg>
-        </div>
-        <div><h3>受講率が低い</h3><p>業務の忙しさを理由に研修を後回しにされ、受講率が上がらない</p></div>
+      <div class="prob-card sr d3">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><polyline points="3,18 8,12 13,15 19,7" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="22" x2="23" y2="22" stroke="#005BAC" stroke-width="2"/></svg></div>
+        <div><h3>受講率が上がらない</h3><p>業務の忙しさを理由に後回しにされ、受講率が30〜40%台に留まる</p></div>
       </div>
-      <div class="pc-card fu" style="transition-delay:.24s">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="6" y="2" width="10" height="16" rx="2" stroke="#005BAC" stroke-width="2"/><path d="M9 22h12M15 18v4" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="7" r="1.5" fill="#005BAC"/></svg>
-        </div>
+      <div class="prob-card sr d4">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="6" y="2" width="10" height="18" rx="2" stroke="#005BAC" stroke-width="2"/><line x1="9" y1="6" x2="13" y2="6" stroke="#005BAC" stroke-width="1.5"/><line x1="9" y1="10" x2="13" y2="10" stroke="#005BAC" stroke-width="1.5"/><path d="M16 16h6M19 13v6" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/></svg></div>
         <div><h3>リモート教育が難しい</h3><p>テレワーク推進でOJTや対面研修が実施できなくなった</p></div>
       </div>
-      <div class="pc-card fu" style="transition-delay:.30s">
-        <div class="pc-ic">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="2" stroke="#005BAC" stroke-width="2"/><line x1="8" y1="12" x2="18" y2="12" stroke="#005BAC" stroke-width="2"/><line x1="8" y1="8" x2="18" y2="8" stroke="#005BAC" stroke-width="2"/><line x1="8" y1="16" x2="14" y2="16" stroke="#005BAC" stroke-width="2"/></svg>
-        </div>
+      <div class="prob-card sr d5">
+        <div class="prob-ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="4" width="20" height="18" rx="2" stroke="#005BAC" stroke-width="2"/><line x1="7" y1="12" x2="19" y2="12" stroke="#005BAC" stroke-width="1.5"/><line x1="7" y1="8" x2="19" y2="8" stroke="#005BAC" stroke-width="1.5"/><line x1="7" y1="16" x2="13" y2="16" stroke="#005BAC" stroke-width="1.5"/></svg></div>
         <div><h3>効果測定ができない</h3><p>研修の成果が数値化できず、人材育成の改善サイクルが回らない</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 04: SERVICE OVERVIEW -->
+<!-- SECTION 04: OVERVIEW -->
 <section class="overview" id="service">
   <div class="wrap">
     <div class="ov-g">
-      <div class="ov-vis fu">
-        <!-- Illustration: person with laptop + mobile -->
-        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <!-- Desk -->
-          <rect x="20" y="200" width="220" height="10" rx="4" fill="#E5E7EB"/>
-          <rect x="40" y="210" width="8" height="40" rx="3" fill="#E5E7EB"/>
-          <rect x="212" y="210" width="8" height="40" rx="3" fill="#E5E7EB"/>
-          <!-- Laptop body -->
-          <rect x="30" y="140" width="200" height="120" rx="6" fill="#1F2937"/>
-          <rect x="36" y="146" width="188" height="108" rx="4" fill="#005BAC"/>
-          <!-- Screen content -->
-          <rect x="42" y="152" width="176" height="96" rx="3" fill="#0A3D6B"/>
-          <!-- Video player on screen -->
-          <rect x="50" y="158" width="160" height="84" rx="4" fill="#0073d1"/>
-          <circle cx="130" cy="200" r="22" fill="rgba(255,255,255,0.18)"/>
-          <polygon points="122,192 122,208 142,200" fill="white"/>
-          <!-- Progress bar -->
-          <rect x="50" y="238" width="160" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-          <rect x="50" y="238" width="96" height="4" rx="2" fill="#00AEEF"/>
+      <div class="ov-vis sr">
+        <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px" aria-hidden="true">
+          <rect x="10" y="220" width="240" height="8" rx="4" fill="#E5E7EB"/>
+          <rect x="30" y="228" width="8" height="46" rx="3" fill="#E5E7EB"/>
+          <rect x="212" y="228" width="8" height="46" rx="3" fill="#E5E7EB"/>
+          <rect x="14" y="160" width="232" height="60" rx="6" fill="#2D3748"/>
+          <rect x="20" y="168" width="220" height="50" rx="4" fill="#1A202C"/>
+          <rect x="24" y="172" width="212" height="42" rx="3" fill="#0A2240"/>
+          <rect x="24" y="172" width="44" height="42" rx="3" fill="#002E6D"/>
+          <rect x="34" y="177" width="24" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+          <rect x="34" y="184" width="18" height="3" rx="1.5" fill="rgba(255,255,255,.12)"/>
+          <rect x="34" y="190" width="21" height="3" rx="1.5" fill="rgba(255,255,255,.12)"/>
+          <rect x="34" y="197" width="16" height="3" rx="1.5" fill="rgba(255,255,255,.12)"/>
+          <rect x="74" y="176" width="76" height="34" rx="4" fill="#005BAC" opacity=".7"/>
+          <circle cx="112" cy="193" r="10" fill="rgba(255,255,255,.18)"/>
+          <polygon points="108,189 108,197 118,193" fill="white"/>
+          <rect x="158" y="176" width="36" height="15" rx="3" fill="rgba(255,255,255,.1)"/>
+          <text x="164" y="187" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">87%</text>
+          <rect x="198" y="176" width="34" height="15" rx="3" fill="rgba(255,255,255,.1)"/>
+          <text x="203" y="187" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">1,248</text>
+          <rect x="158" y="196" width="74" height="10" rx="2" fill="rgba(255,255,255,.05)"/>
+          <rect x="158" y="196" width="48" height="10" rx="2" fill="#00AEEF" opacity=".4"/>
           <!-- Person -->
-          <!-- Head -->
-          <circle cx="266" cy="120" r="28" fill="#F2C7A7"/>
-          <!-- Hair -->
-          <path d="M242 108 Q246 82 266 80 Q286 82 290 108 Q282 96 266 95 Q250 96 242 108Z" fill="#4A3728"/>
-          <!-- Eyes -->
-          <ellipse cx="258" cy="117" rx="4" ry="4.5" fill="white"/>
-          <ellipse cx="274" cy="117" rx="4" ry="4.5" fill="white"/>
-          <circle cx="259" cy="118" r="2.5" fill="#3D2B1A"/>
-          <circle cx="275" cy="118" r="2.5" fill="#3D2B1A"/>
-          <!-- Smile -->
-          <path d="M259 128 Q266 133 273 128" stroke="#C4895A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <!-- Neck -->
-          <rect x="260" y="146" width="12" height="16" rx="4" fill="#F2C7A7"/>
-          <!-- Body: blue shirt -->
-          <path d="M238 200 Q248 160 260 160 L266 165 L272 160 Q284 160 294 200Z" fill="#005BAC"/>
-          <!-- Arms -->
-          <path d="M238 200 Q228 186 224 175 Q232 172 238 178 Q240 188 242 196Z" fill="#005BAC"/>
-          <path d="M294 200 Q302 182 300 168 Q308 170 308 180 Q304 192 298 200Z" fill="#005BAC"/>
-          <!-- Hands on keyboard area -->
-          <ellipse cx="220" cy="178" rx="10" ry="7" fill="#F2C7A7"/>
-          <ellipse cx="306" cy="178" rx="10" ry="7" fill="#F2C7A7"/>
-          <!-- Mobile phone -->
-          <rect x="292" y="155" width="36" height="60" rx="6" fill="#1F2937"/>
-          <rect x="296" y="160" width="28" height="48" rx="3" fill="#EBF4FF"/>
-          <rect x="299" y="163" width="22" height="18" rx="2" fill="#005BAC" opacity=".7"/>
-          <rect x="299" y="185" width="22" height="3" rx="1.5" fill="#E5E7EB"/>
-          <rect x="299" y="190" width="16" height="3" rx="1.5" fill="#E5E7EB"/>
-          <rect x="299" y="195" width="19" height="3" rx="1.5" fill="#E5E7EB"/>
+          <circle cx="310" cy="108" r="28" fill="#F2C7A7"/>
+          <path d="M285 97 Q289 74 310 72 Q331 74 335 97 Q326 84 310 83 Q294 84 285 97Z" fill="#3D2B1F"/>
+          <ellipse cx="302" cy="105" rx="4" ry="4.5" fill="white"/>
+          <ellipse cx="318" cy="105" rx="4" ry="4.5" fill="white"/>
+          <circle cx="303" cy="106.5" r="2.8" fill="#2D1B0E"/>
+          <circle cx="319" cy="106.5" r="2.8" fill="#2D1B0E"/>
+          <circle cx="304.5" cy="105" r=".9" fill="white"/>
+          <circle cx="320.5" cy="105" r=".9" fill="white"/>
+          <path d="M297 100 Q302 97 307 100" stroke="#3D2B1F" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M313 100 Q318 97 323 100" stroke="#3D2B1F" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M308 112 Q310 114 312 112" stroke="#C4895A" stroke-width="1" fill="none" stroke-linecap="round"/>
+          <path d="M303 119 Q310 124 317 119" stroke="#C4895A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="295" y="102" width="14" height="10" rx="5" stroke="#6B7280" stroke-width="1.5" fill="none"/>
+          <rect x="311" y="102" width="14" height="10" rx="5" stroke="#6B7280" stroke-width="1.5" fill="none"/>
+          <line x1="309" y1="107" x2="311" y2="107" stroke="#6B7280" stroke-width="1.5"/>
+          <rect x="304" y="134" width="12" height="16" rx="4" fill="#F2C7A7"/>
+          <path d="M278 220 Q288 165 304 155 L310 162 L316 155 Q332 165 342 220Z" fill="#005BAC"/>
+          <path d="M305 162 L310 170 L315 162" fill="white" opacity=".6"/>
+          <path d="M278 220 Q264 200 262 186 Q272 183 278 192 Q280 206 282 216Z" fill="#005BAC"/>
+          <path d="M342 220 Q352 196 348 180 Q358 182 358 194 Q354 208 348 218Z" fill="#005BAC"/>
+          <ellipse cx="258" cy="188" rx="12" ry="8" fill="#F2C7A7"/>
+          <ellipse cx="352" cy="186" rx="12" ry="8" fill="#F2C7A7"/>
+          <!-- Mobile -->
+          <rect x="276" y="148" width="44" height="72" rx="8" fill="#1F2937" transform="rotate(-8 276 148)"/>
+          <rect x="280" y="154" width="36" height="58" rx="5" fill="#EBF5FF" transform="rotate(-8 276 148)"/>
+          <rect x="283" y="158" width="30" height="14" rx="3" fill="#005BAC" transform="rotate(-8 276 148)"/>
+          <text x="285" y="168" font-family="sans-serif" font-size="6.5" fill="white" transform="rotate(-8 276 148)">学習中</text>
+          <rect x="283" y="176" width="30" height="3" rx="1.5" fill="#E5E7EB" transform="rotate(-8 276 148)"/>
+          <rect x="283" y="176" width="20" height="3" rx="1.5" fill="#005BAC" transform="rotate(-8 276 148)"/>
+          <!-- Stats card -->
+          <defs><filter id="sh1"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#005BAC" flood-opacity=".12"/></filter></defs>
+          <rect x="0" y="60" width="118" height="54" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1" filter="url(#sh1)"/>
+          <text x="14" y="82" font-family="sans-serif" font-size="9" fill="#9CA3AF">全体受講率</text>
+          <text x="14" y="102" font-family="sans-serif" font-size="22" font-weight="bold" fill="#005BAC">87.4%</text>
+          <polyline points="72,100 80,94 88,97 96,88 104,84" stroke="#22C55E" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
-        <div class="play-btn">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><polygon points="8,4 8,22 22,13" fill="white"/></svg>
-        </div>
       </div>
-      <div class="fu" style="transition-delay:.15s">
-        <p class="lbl">Service</p>
-        <div class="bar"></div>
+      <div class="sr d2">
+        <span class="lbl">Service</span>
+        <div class="rule" style="margin-bottom:24px"></div>
         <h2 class="ttl">e-Learningサービスとは</h2>
-        <p class="lead">企業向けオンライン学習プラットフォームです。いつでも・どこでも・誰でも学べる環境を構築し、組織全体の学習文化を育てます。</p>
+        <p class="lead" style="margin-top:16px">企業向けオンライン学習プラットフォームです。いつでも・どこでも・誰でも学べる環境を構築し、組織全体の学習文化を育てます。</p>
         <div class="ov-pts">
           <div class="ov-pt">
             <div class="ov-pt-ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10l5 5 9-9" stroke="#005BAC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><h4>場所を選ばない学習環境</h4><p class="lead" style="font-size:13.5px">PC・スマートフォン・タブレットに対応。通勤時間や休憩中も学習可能。</p></div>
+            <div><h4>場所を選ばない学習環境</h4><p>PC・スマートフォン・タブレットに完全対応。通勤時間や移動中も学習可能。</p></div>
           </div>
           <div class="ov-pt">
             <div class="ov-pt-ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10l5 5 9-9" stroke="#005BAC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><h4>342コース以上の充実した教材</h4><p class="lead" style="font-size:13.5px">ビジネス・DX・語学・コンプライアンスなど多彩なジャンルを網羅。</p></div>
+            <div><h4>342コース以上の充実した教材</h4><p>ビジネス・DX・語学・コンプライアンスなど多彩なジャンルを網羅。毎月追加。</p></div>
           </div>
           <div class="ov-pt">
             <div class="ov-pt-ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10l5 5 9-9" stroke="#005BAC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><h4>リアルタイムな進捗管理</h4><p class="lead" style="font-size:13.5px">管理者は受講状況・テスト結果をダッシュボードでリアルタイム確認。</p></div>
+            <div><h4>リアルタイムな進捗管理</h4><p>管理者は受講状況・テスト結果をダッシュボードでリアルタイム確認。</p></div>
           </div>
         </div>
       </div>
@@ -522,185 +328,181 @@
 <!-- SECTION 05: REASONS -->
 <section class="reasons" id="reasons">
   <div class="wrap">
-    <div class="rsn-hd fu">
-      <p class="lbl">Why LearnCore</p>
-      <div class="bar"></div>
+    <div class="rsn-hd sr">
+      <span class="lbl">Why LearnCore</span>
       <h2 class="ttl">選ばれる<em>4つの理由</em></h2>
+      <span class="rule"></span>
     </div>
-
-    <!-- Reason 1 -->
-    <div class="reason-blk fu">
+    <!-- Reason 01 -->
+    <div class="rsn-blk sr">
       <div>
-        <p class="reason-no">REASON 01</p>
-        <div class="bar"></div>
-        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,32px)">実務に直結する<em>学習コンテンツ</em></h3>
-        <p class="lead">現場で即戦力となるスキルを動画・テスト・資料で体系的に習得。忙しい社員でも短い時間で学べる5〜15分の「マイクロラーニング」形式に対応。</p>
+        <p class="rsn-no">Reason 01</p>
+        <div class="rule" style="margin-bottom:20px"></div>
+        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,34px)">実務に直結する<em>学習コンテンツ</em></h3>
+        <p class="lead" style="margin-top:16px">現場で即戦力となるスキルを動画・テスト・資料で体系的に習得。5〜15分のマイクロラーニング形式で、忙しい社員でも無理なく継続できます。</p>
       </div>
-      <div class="reason-vis">
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <!-- Laptop screen with video -->
-          <rect x="20" y="20" width="280" height="160" rx="10" fill="#0A3D6B"/>
-          <rect x="28" y="28" width="264" height="144" rx="7" fill="#0073d1"/>
-          <!-- Video controls bar -->
-          <rect x="28" y="148" width="264" height="24" rx="0" fill="rgba(0,0,0,0.4)" ry="0"/>
-          <rect x="28" y="148" width="264" height="24" rx="0" fill="rgba(0,0,0,0.35)"/>
-          <!-- Progress bar -->
-          <rect x="36" y="162" width="248" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
-          <rect x="36" y="162" width="140" height="4" rx="2" fill="#00AEEF"/>
-          <!-- Play pause -->
-          <rect x="36" y="152" width="10" height="8" rx="1" fill="white" opacity=".8"/>
-          <!-- Time -->
-          <text x="54" y="160" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.7)">04:30 / 12:00</text>
-          <!-- Speaker icon -->
-          <text x="252" y="160" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">♪</text>
-          <!-- Fullscreen -->
-          <rect x="266" y="152" width="8" height="8" rx="1" stroke="rgba(255,255,255,0.7)" stroke-width="1" fill="none"/>
-          <!-- Instructor figure in video -->
-          <circle cx="160" cy="88" r="26" fill="#EBF4FF" opacity=".15"/>
-          <circle cx="160" cy="74" r="13" fill="#F2C7A7" opacity=".9"/>
-          <path d="M142 112 Q148 94 160 92 Q172 94 178 112" fill="#005BAC" opacity=".9"/>
-          <!-- Slide content in bg -->
-          <rect x="40" y="36" width="80" height="8" rx="3" fill="rgba(255,255,255,0.15)"/>
-          <rect x="40" y="50" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.1)"/>
-          <rect x="40" y="60" width="70" height="5" rx="2.5" fill="rgba(255,255,255,0.1)"/>
-          <!-- Badge labels -->
-          <rect x="20" y="186" width="90" height="28" rx="8" fill="#005BAC" opacity=".1" stroke="#005BAC" stroke-width="1"/>
-          <text x="30" y="204" font-family="sans-serif" font-size="10" font-weight="bold" fill="#005BAC">マイクロ学習対応</text>
-          <rect x="120" y="186" width="90" height="28" rx="8" fill="#005BAC" opacity=".1" stroke="#005BAC" stroke-width="1"/>
-          <text x="132" y="204" font-family="sans-serif" font-size="10" font-weight="bold" fill="#005BAC">テスト機能付き</text>
-          <rect x="220" y="186" width="80" height="28" rx="8" fill="#005BAC" opacity=".1" stroke="#005BAC" stroke-width="1"/>
-          <text x="232" y="204" font-family="sans-serif" font-size="10" font-weight="bold" fill="#005BAC">字幕・スキップ</text>
+      <div class="rsn-vis">
+        <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px" aria-hidden="true">
+          <rect x="8" y="8" width="324" height="204" rx="12" fill="#0A2240"/>
+          <rect x="8" y="16" width="252" height="140" rx="6" fill="#003566"/>
+          <rect x="20" y="26" width="100" height="8" rx="4" fill="rgba(255,255,255,.12)"/>
+          <rect x="20" y="38" width="76" height="5" rx="2.5" fill="rgba(255,255,255,.07)"/>
+          <rect x="20" y="47" width="86" height="5" rx="2.5" fill="rgba(255,255,255,.07)"/>
+          <circle cx="198" cy="86" r="40" fill="#005BAC" opacity=".3"/>
+          <circle cx="198" cy="72" r="16" fill="#F2C7A7" opacity=".9"/>
+          <path d="M176 118 Q181 100 198 98 Q215 100 220 118" fill="#005BAC" opacity=".85"/>
+          <rect x="8" y="162" width="252" height="28" rx="0" fill="rgba(0,0,0,.5)"/>
+          <rect x="8" y="168" width="252" height="4" rx="2" fill="rgba(255,255,255,.15)"/>
+          <rect x="8" y="168" width="140" height="4" rx="2" fill="#00AEEF"/>
+          <circle cx="148" cy="170" r="5" fill="#00AEEF"/>
+          <text x="16" y="183" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.7)">▶ 04:30 / 12:00</text>
+          <text x="224" y="183" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)">1.5x ⟩⟩</text>
+          <rect x="264" y="8" width="68" height="182" rx="8" fill="#1E3A5F"/>
+          <text x="272" y="26" font-family="sans-serif" font-size="8" font-weight="bold" fill="rgba(255,255,255,.6)">チャプター</text>
+          <rect x="268" y="32" width="58" height="22" rx="4" fill="#005BAC"/>
+          <text x="274" y="44" font-family="sans-serif" font-size="7.5" fill="white">第1章 概要</text>
+          <text x="274" y="52" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.6)">● 受講済み</text>
+          <rect x="268" y="58" width="58" height="22" rx="4" fill="rgba(255,255,255,.12)"/>
+          <text x="274" y="70" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,.8)">第2章 基礎</text>
+          <text x="274" y="78" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.4)">04:30</text>
+          <text x="274" y="100" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,.4)">第3章 実践</text>
+          <text x="274" y="122" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,.4)">第4章 応用</text>
+          <text x="274" y="144" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,.4)">第5章 テスト</text>
+          <rect x="8" y="194" width="80" height="14" rx="5" fill="rgba(0,91,172,.3)" stroke="#005BAC" stroke-width="0.5"/>
+          <text x="14" y="204" font-family="sans-serif" font-size="7" font-weight="bold" fill="#00AEEF">字幕対応</text>
+          <rect x="96" y="194" width="80" height="14" rx="5" fill="rgba(0,91,172,.3)" stroke="#005BAC" stroke-width="0.5"/>
+          <text x="102" y="204" font-family="sans-serif" font-size="7" font-weight="bold" fill="#00AEEF">速度調整</text>
+          <rect x="184" y="194" width="80" height="14" rx="5" fill="rgba(0,91,172,.3)" stroke="#005BAC" stroke-width="0.5"/>
+          <text x="190" y="204" font-family="sans-serif" font-size="7" font-weight="bold" fill="#00AEEF">オフライン視聴</text>
         </svg>
       </div>
     </div>
-
-    <!-- Reason 2 -->
-    <div class="reason-blk rev fu">
+    <!-- Reason 02 -->
+    <div class="rsn-blk rev sr">
       <div>
-        <p class="reason-no">REASON 02</p>
-        <div class="bar"></div>
-        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,32px)"><em>342コース</em>以上の豊富な教材</h3>
-        <p class="lead">ビジネス基礎からDX・AI・語学・マネジメントまで、業界横断で使える学習コンテンツを毎月追加。自社オリジナル教材のアップロードにも対応。</p>
+        <p class="rsn-no">Reason 02</p>
+        <div class="rule" style="margin-bottom:20px"></div>
+        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,34px)"><em>342コース</em>以上の豊富な教材</h3>
+        <p class="lead" style="margin-top:16px">ビジネス基礎からDX・AI・語学・マネジメントまで、業界横断で使える学習コンテンツを毎月追加。自社オリジナル教材のアップロードにも対応。</p>
       </div>
-      <div class="reason-vis">
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <!-- Category cards grid -->
-          <rect x="16" y="16" width="136" height="88" rx="10" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".3"/>
-          <rect x="24" y="24" width="36" height="36" rx="8" fill="#005BAC" opacity=".15"/>
-          <text x="30" y="48" font-family="sans-serif" font-size="18">💼</text>
-          <text x="24" y="78" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">ビジネス</text>
-          <text x="24" y="93" font-family="sans-serif" font-size="9" fill="#6B7280">84コース</text>
-
-          <rect x="168" y="16" width="136" height="88" rx="10" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".3"/>
-          <rect x="176" y="24" width="36" height="36" rx="8" fill="#005BAC" opacity=".15"/>
-          <text x="182" y="48" font-family="sans-serif" font-size="18">🖥️</text>
-          <text x="176" y="78" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">DX・IT</text>
-          <text x="176" y="93" font-family="sans-serif" font-size="9" fill="#6B7280">96コース</text>
-
-          <rect x="16" y="116" width="136" height="88" rx="10" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".3"/>
-          <rect x="24" y="124" width="36" height="36" rx="8" fill="#005BAC" opacity=".15"/>
-          <text x="30" y="148" font-family="sans-serif" font-size="18">🌍</text>
-          <text x="24" y="178" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">語学</text>
-          <text x="24" y="193" font-family="sans-serif" font-size="9" fill="#6B7280">62コース</text>
-
-          <rect x="168" y="116" width="136" height="88" rx="10" fill="#005BAC"/>
-          <rect x="176" y="124" width="36" height="36" rx="8" fill="rgba(255,255,255,0.2)"/>
-          <text x="182" y="148" font-family="sans-serif" font-size="18">📊</text>
-          <text x="176" y="178" font-family="sans-serif" font-size="11" font-weight="bold" fill="white">マネジメント</text>
-          <text x="176" y="193" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">100コース</text>
+      <div class="rsn-vis">
+        <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px" aria-hidden="true">
+          <rect x="8" y="8" width="156" height="96" rx="12" fill="#EBF5FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".2"/>
+          <rect x="20" y="20" width="40" height="40" rx="9" fill="rgba(0,91,172,.12)"/>
+          <text x="26" y="47" font-family="sans-serif" font-size="24">💼</text>
+          <text x="20" y="78" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1F2937">ビジネス</text>
+          <text x="20" y="93" font-family="sans-serif" font-size="9.5" fill="#9CA3AF">84コース</text>
+          <rect x="176" y="8" width="156" height="96" rx="12" fill="#EBF5FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".2"/>
+          <rect x="188" y="20" width="40" height="40" rx="9" fill="rgba(0,91,172,.12)"/>
+          <text x="194" y="47" font-family="sans-serif" font-size="24">🖥️</text>
+          <text x="188" y="78" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1F2937">DX・IT</text>
+          <text x="188" y="93" font-family="sans-serif" font-size="9.5" fill="#9CA3AF">96コース</text>
+          <rect x="8" y="116" width="156" height="96" rx="12" fill="#EBF5FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".2"/>
+          <rect x="20" y="128" width="40" height="40" rx="9" fill="rgba(0,91,172,.12)"/>
+          <text x="26" y="155" font-family="sans-serif" font-size="24">🌍</text>
+          <text x="20" y="186" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1F2937">語学</text>
+          <text x="20" y="201" font-family="sans-serif" font-size="9.5" fill="#9CA3AF">62コース</text>
+          <rect x="176" y="116" width="156" height="96" rx="12" fill="#005BAC"/>
+          <rect x="188" y="128" width="40" height="40" rx="9" fill="rgba(255,255,255,.2)"/>
+          <text x="194" y="155" font-family="sans-serif" font-size="24">📊</text>
+          <text x="188" y="186" font-family="sans-serif" font-size="12" font-weight="bold" fill="white">マネジメント</text>
+          <text x="188" y="201" font-family="sans-serif" font-size="9.5" fill="rgba(255,255,255,.7)">100コース</text>
+          <rect x="266" y="118" width="52" height="16" rx="8" fill="#22C55E"/>
+          <text x="272" y="130" font-family="sans-serif" font-size="8" font-weight="bold" fill="white">毎月追加</text>
         </svg>
       </div>
     </div>
-
-    <!-- Reason 3 -->
-    <div class="reason-blk fu">
+    <!-- Reason 03 -->
+    <div class="rsn-blk sr">
       <div>
-        <p class="reason-no">REASON 03</p>
-        <div class="bar"></div>
-        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,32px)">スマホで<em>いつでも学べる</em></h3>
-        <p class="lead">専用アプリでオフライン視聴にも対応。通勤・移動中・昼休みなど、スキマ時間を活用した学習習慣を全社員に。学習の継続率が平均2.4倍向上。</p>
+        <p class="rsn-no">Reason 03</p>
+        <div class="rule" style="margin-bottom:20px"></div>
+        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,34px)">スマホで<em>いつでも学べる</em></h3>
+        <p class="lead" style="margin-top:16px">専用アプリでオフライン視聴にも対応。通勤・移動中・昼休みなど、スキマ時間を活用した学習習慣を全社員に届けます。学習継続率が平均2.4倍向上。</p>
       </div>
-      <div class="reason-vis">
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <!-- Phone 1 (main) -->
-          <rect x="100" y="10" width="120" height="200" rx="16" fill="#1F2937"/>
-          <rect x="106" y="20" width="108" height="180" rx="10" fill="#EBF4FF"/>
-          <!-- App header -->
-          <rect x="106" y="20" width="108" height="36" rx="10" fill="#005BAC" ry="10"/>
-          <rect x="106" y="44" width="108" height="12" rx="0" fill="#005BAC"/>
-          <text x="114" y="42" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">LearnCore</text>
-          <!-- Today's course card -->
-          <rect x="112" y="64" width="96" height="56" rx="8" fill="#005BAC"/>
-          <text x="120" y="83" font-family="sans-serif" font-size="8.5" fill="rgba(255,255,255,0.75)">今日の学習</text>
-          <text x="120" y="97" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">DX基礎 第3章</text>
-          <rect x="120" y="104" width="56" height="6" rx="3" fill="rgba(255,255,255,0.25)"/>
-          <rect x="120" y="104" width="38" height="6" rx="3" fill="#00AEEF"/>
-          <text x="180" y="111" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.7)">68%</text>
-          <!-- Course list -->
-          <rect x="112" y="128" width="96" height="28" rx="7" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-          <rect x="118" y="136" width="16" height="12" rx="3" fill="#EBF4FF"/>
-          <text x="140" y="142" font-family="sans-serif" font-size="9" fill="#1F2937">Excel実践講座</text>
-          <rect x="112" y="162" width="96" height="28" rx="7" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-          <rect x="118" y="170" width="16" height="12" rx="3" fill="#EBF4FF"/>
-          <text x="140" y="176" font-family="sans-serif" font-size="9" fill="#1F2937">ロジカル思考入門</text>
-          <!-- Badge offline -->
-          <rect x="148" y="192" width="54" height="18" rx="5" fill="#22C55E" opacity=".15" stroke="#22C55E" stroke-width="1"/>
-          <text x="154" y="204" font-family="sans-serif" font-size="8" font-weight="bold" fill="#22C55E">オフライン対応</text>
+      <div class="rsn-vis">
+        <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px" aria-hidden="true">
+          <rect x="100" y="6" width="140" height="208" rx="20" fill="#111827"/>
+          <rect x="106" y="14" width="128" height="192" rx="14" fill="#F8FAFC"/>
+          <rect x="148" y="14" width="44" height="10" rx="0" fill="#111827" ry="5"/>
+          <text x="114" y="26" font-family="sans-serif" font-size="7" fill="#6B7280">9:41</text>
+          <text x="202" y="26" font-family="sans-serif" font-size="7" fill="#6B7280">●●●</text>
+          <rect x="106" y="30" width="128" height="36" rx="0" fill="#005BAC"/>
+          <text x="114" y="50" font-family="sans-serif" font-size="12" font-weight="bold" fill="white">LearnCore</text>
+          <text x="196" y="50" font-family="sans-serif" font-size="16" fill="rgba(255,255,255,.7)">☰</text>
+          <rect x="110" y="72" width="120" height="68" rx="10" fill="#005BAC"/>
+          <text x="118" y="92" font-family="sans-serif" font-size="8.5" fill="rgba(255,255,255,.75)">今日の学習</text>
+          <text x="118" y="107" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="white">DX基礎 第3章</text>
+          <rect x="118" y="113" width="80" height="7" rx="3.5" fill="rgba(255,255,255,.25)"/>
+          <rect x="118" y="113" width="54" height="7" rx="3.5" fill="white" opacity=".8"/>
+          <text x="205" y="120" font-family="sans-serif" font-size="7.5" fill="rgba(255,255,255,.7)">68%</text>
+          <rect x="116" y="124" width="40" height="12" rx="6" fill="rgba(255,255,255,.18)"/>
+          <text x="122" y="134" font-family="sans-serif" font-size="7" fill="white">▶ 続ける</text>
+          <rect x="110" y="146" width="120" height="28" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+          <rect x="116" y="153" width="20" height="14" rx="4" fill="#EBF5FF"/>
+          <text x="118" y="163" font-family="sans-serif" font-size="7" fill="#005BAC">EX</text>
+          <text x="142" y="163" font-family="sans-serif" font-size="9" fill="#1F2937">Excel実践講座</text>
+          <rect x="110" y="178" width="120" height="28" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+          <rect x="116" y="185" width="20" height="14" rx="4" fill="#EBF5FF"/>
+          <text x="118" y="195" font-family="sans-serif" font-size="7" fill="#005BAC">LT</text>
+          <text x="142" y="195" font-family="sans-serif" font-size="9" fill="#1F2937">ロジカル思考</text>
+          <rect x="8" y="140" width="88" height="22" rx="6" fill="#22C55E" opacity=".12" stroke="#22C55E" stroke-width="1"/>
+          <text x="14" y="155" font-family="sans-serif" font-size="9" font-weight="bold" fill="#22C55E">✓ オフライン</text>
+          <rect x="244" y="60" width="90" height="56" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+          <text x="252" y="80" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#1F2937">学習リマインド</text>
+          <text x="252" y="92" font-family="sans-serif" font-size="7" fill="#9CA3AF">今日の目標まで</text>
+          <text x="252" y="104" font-family="sans-serif" font-size="7" fill="#9CA3AF">あと <tspan font-weight="bold" fill="#005BAC">15分</tspan> !</text>
         </svg>
       </div>
     </div>
-
-    <!-- Reason 4 -->
-    <div class="reason-blk rev fu">
+    <!-- Reason 04 -->
+    <div class="rsn-blk rev sr">
       <div>
-        <p class="reason-no">REASON 04</p>
-        <div class="bar"></div>
-        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,32px)">データで見える<em>管理ダッシュボード</em></h3>
-        <p class="lead">受講状況・テスト結果・スキル習得状況をリアルタイムで可視化。CSV出力・レポート自動作成で、教育担当者の工数を大幅に削減します。</p>
+        <p class="rsn-no">Reason 04</p>
+        <div class="rule" style="margin-bottom:20px"></div>
+        <h3 class="ttl" style="font-size:clamp(22px,2.8vw,34px)">データで見える<em>学習管理</em></h3>
+        <p class="lead" style="margin-top:16px">受講状況・テスト結果・スキル習得状況をリアルタイムで可視化。CSV出力・レポート自動作成で、教育担当者の工数を大幅に削減します。</p>
       </div>
-      <div class="reason-vis">
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <!-- Dashboard card -->
-          <rect x="10" y="10" width="300" height="200" rx="12" fill="white" stroke="#E5E7EB" stroke-width="1.5"/>
-          <!-- Header -->
-          <rect x="10" y="10" width="300" height="40" rx="12" fill="#005BAC" ry="12"/>
-          <rect x="10" y="38" width="300" height="12" fill="#005BAC"/>
-          <text x="26" y="35" font-family="sans-serif" font-size="12" font-weight="bold" fill="white">学習進捗レポート</text>
-          <rect x="242" y="20" width="52" height="20" rx="5" fill="rgba(255,255,255,0.2)"/>
-          <text x="250" y="33" font-family="sans-serif" font-size="8.5" fill="white">CSV出力</text>
-          <!-- KPI row -->
-          <rect x="22" y="58" width="80" height="44" rx="7" fill="#EBF4FF"/>
-          <text x="32" y="75" font-family="sans-serif" font-size="8" fill="#6B7280">受講完了</text>
-          <text x="32" y="93" font-family="sans-serif" font-size="18" font-weight="bold" fill="#005BAC">87%</text>
-          <rect x="114" y="58" width="80" height="44" rx="7" fill="#EBF4FF"/>
-          <text x="124" y="75" font-family="sans-serif" font-size="8" fill="#6B7280">テスト合格</text>
-          <text x="124" y="93" font-family="sans-serif" font-size="18" font-weight="bold" fill="#005BAC">92%</text>
-          <rect x="206" y="58" width="92" height="44" rx="7" fill="#005BAC"/>
-          <text x="216" y="75" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,0.75)">学習時間/月</text>
-          <text x="216" y="93" font-family="sans-serif" font-size="18" font-weight="bold" fill="white">4.2h</text>
-          <!-- User progress list -->
-          <text x="22" y="124" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1F2937">受講者一覧</text>
-          <!-- Row 1 -->
-          <circle cx="36" cy="142" r="9" fill="#EBF4FF"/>
-          <text x="32" y="146" font-family="sans-serif" font-size="7.5" fill="#005BAC">田</text>
-          <text x="50" y="143" font-family="sans-serif" font-size="9" fill="#1F2937">田中 一郎</text>
-          <rect x="150" y="135" width="100" height="10" rx="5" fill="#E5E7EB"/>
-          <rect x="150" y="135" width="88" height="10" rx="5" fill="#005BAC"/>
-          <text x="258" y="144" font-family="sans-serif" font-size="8" fill="#6B7280">88%</text>
-          <!-- Row 2 -->
-          <circle cx="36" cy="163" r="9" fill="#EBF4FF"/>
-          <text x="32" y="167" font-family="sans-serif" font-size="7.5" fill="#005BAC">鈴</text>
-          <text x="50" y="164" font-family="sans-serif" font-size="9" fill="#1F2937">鈴木 花子</text>
-          <rect x="150" y="156" width="100" height="10" rx="5" fill="#E5E7EB"/>
-          <rect x="150" y="156" width="72" height="10" rx="5" fill="#00AEEF"/>
-          <text x="258" y="165" font-family="sans-serif" font-size="8" fill="#6B7280">72%</text>
-          <!-- Row 3 -->
-          <circle cx="36" cy="184" r="9" fill="#EBF4FF"/>
-          <text x="32" y="188" font-family="sans-serif" font-size="7.5" fill="#005BAC">佐</text>
-          <text x="50" y="185" font-family="sans-serif" font-size="9" fill="#1F2937">佐藤 次郎</text>
-          <rect x="150" y="177" width="100" height="10" rx="5" fill="#E5E7EB"/>
-          <rect x="150" y="177" width="95" height="10" rx="5" fill="#22C55E" opacity=".8"/>
-          <text x="258" y="186" font-family="sans-serif" font-size="8" fill="#6B7280">95%</text>
+      <div class="rsn-vis">
+        <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px" aria-hidden="true">
+          <rect x="8" y="8" width="324" height="204" rx="14" fill="white" stroke="#E5E7EB" stroke-width="1.5"/>
+          <rect x="8" y="8" width="324" height="44" rx="14" fill="#005BAC" ry="14"/>
+          <rect x="8" y="30" width="324" height="22" fill="#005BAC"/>
+          <text x="24" y="35" font-family="sans-serif" font-size="13" font-weight="bold" fill="white">学習進捗レポート</text>
+          <rect x="248" y="18" width="72" height="22" rx="7" fill="rgba(255,255,255,.2)"/>
+          <text x="258" y="33" font-family="sans-serif" font-size="8.5" fill="white">CSV 出力</text>
+          <text x="24" y="64" font-family="sans-serif" font-size="9" fill="#9CA3AF">2026年 4月〜6月 / 集計対象: 全部署</text>
+          <rect x="20" y="72" width="88" height="48" rx="8" fill="#EBF5FF"/>
+          <text x="30" y="91" font-family="sans-serif" font-size="8" fill="#6B7280">受講完了</text>
+          <text x="30" y="110" font-family="sans-serif" font-size="20" font-weight="bold" fill="#005BAC">87%</text>
+          <rect x="120" y="72" width="88" height="48" rx="8" fill="#EBF5FF"/>
+          <text x="130" y="91" font-family="sans-serif" font-size="8" fill="#6B7280">テスト合格</text>
+          <text x="130" y="110" font-family="sans-serif" font-size="20" font-weight="bold" fill="#005BAC">92%</text>
+          <rect x="220" y="72" width="104" height="48" rx="8" fill="#005BAC"/>
+          <text x="230" y="91" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.75)">月平均学習時間</text>
+          <text x="230" y="110" font-family="sans-serif" font-size="20" font-weight="bold" fill="white">4.2h</text>
+          <text x="24" y="138" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">受講者一覧</text>
+          <text x="244" y="138" font-family="sans-serif" font-size="9" fill="#005BAC">全員表示 →</text>
+          <circle cx="36" cy="157" r="10" fill="#EBF5FF"/>
+          <text x="32" y="161" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">田</text>
+          <text x="52" y="159" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">田中 一郎</text>
+          <rect x="160" y="150" width="100" height="10" rx="5" fill="#E5E7EB"/>
+          <rect x="160" y="150" width="88" height="10" rx="5" fill="#005BAC"/>
+          <text x="266" y="159" font-family="sans-serif" font-size="8.5" fill="#6B7280">88%</text>
+          <rect x="296" y="148" width="26" height="16" rx="5" fill="rgba(34,197,94,.1)"/>
+          <text x="300" y="159" font-family="sans-serif" font-size="7.5" fill="#22C55E">完了</text>
+          <circle cx="36" cy="179" r="10" fill="#EBF5FF"/>
+          <text x="32" y="183" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">鈴</text>
+          <text x="52" y="181" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">鈴木 花子</text>
+          <rect x="160" y="172" width="100" height="10" rx="5" fill="#E5E7EB"/>
+          <rect x="160" y="172" width="72" height="10" rx="5" fill="#00AEEF" opacity=".7"/>
+          <text x="266" y="181" font-family="sans-serif" font-size="8.5" fill="#6B7280">72%</text>
+          <circle cx="36" cy="201" r="10" fill="#EBF5FF"/>
+          <text x="32" y="205" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">佐</text>
+          <text x="52" y="203" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">佐藤 次郎</text>
+          <rect x="160" y="194" width="100" height="10" rx="5" fill="#E5E7EB"/>
+          <rect x="160" y="194" width="95" height="10" rx="5" fill="#22C55E" opacity=".75"/>
+          <text x="266" y="203" font-family="sans-serif" font-size="8.5" fill="#6B7280">95%</text>
         </svg>
       </div>
     </div>
@@ -710,47 +512,22 @@
 <!-- SECTION 06: LEARNING CYCLE -->
 <section class="cycle" id="cycle">
   <div class="wrap">
-    <div class="cycle-hd fu">
-      <p class="lbl">Learning Flow</p>
-      <div class="bar"></div>
+    <div class="cyc-hd sr">
+      <span class="lbl">Learning Flow</span>
       <h2 class="ttl">学習サイクルで<em>成長が続く</em></h2>
-      <p class="lead">受講から分析・改善まで、一貫したサイクルで継続的なスキルアップを実現します。</p>
+      <span class="rule"></span>
+      <p class="lead" style="margin-top:20px;max-width:560px;margin-inline:auto">受講から分析・改善まで一貫したサイクルで、継続的なスキルアップを実現します。</p>
     </div>
-    <div class="cycle-flow">
-      <div class="cyc-step fu">
-        <div class="cyc-circle">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="6" y="6" width="24" height="18" rx="3" stroke="white" stroke-width="2"/><polygon points="14,10 14,20 24,15" fill="white"/></svg>
-        </div>
-        <p class="cyc-lbl">受講</p>
-      </div>
-      <div class="cyc-arr fu" style="transition-delay:.05s">›</div>
-      <div class="cyc-step fu" style="transition-delay:.1s">
-        <div class="cyc-circle">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M8 26 L14 18 L20 22 L28 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="18" r="2" fill="white"/><circle cx="20" cy="22" r="2" fill="white"/></svg>
-        </div>
-        <p class="cyc-lbl">学習</p>
-      </div>
-      <div class="cyc-arr fu" style="transition-delay:.15s">›</div>
-      <div class="cyc-step fu" style="transition-delay:.2s">
-        <div class="cyc-circle">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="7" y="8" width="22" height="20" rx="3" stroke="white" stroke-width="2"/><path d="M12 18l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p class="cyc-lbl">テスト</p>
-      </div>
-      <div class="cyc-arr fu" style="transition-delay:.25s">›</div>
-      <div class="cyc-step fu" style="transition-delay:.3s">
-        <div class="cyc-circle">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="12" stroke="white" stroke-width="2"/><path d="M18 18 L18 8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M18 18 L25 22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <p class="cyc-lbl">分析</p>
-      </div>
-      <div class="cyc-arr fu" style="transition-delay:.35s">›</div>
-      <div class="cyc-step fu" style="transition-delay:.4s">
-        <div class="cyc-circle" style="background:linear-gradient(135deg,var(--a),#0073d1)">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><polyline points="6,26 12,18 18,20 24,12 30,8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="26,4 32,10 24,10 26,4" fill="white"/></svg>
-        </div>
-        <p class="cyc-lbl" style="color:var(--p);font-weight:900">成長</p>
-      </div>
+    <div class="cyc-flow">
+      <div class="cyc-step sr"><div class="cyc-circle"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><rect x="5" y="6" width="28" height="20" rx="3" stroke="white" stroke-width="2"/><polygon points="14,10 14,22 26,16" fill="white"/></svg></div><p class="cyc-lbl">受講</p></div>
+      <div class="cyc-arr sr d1">›</div>
+      <div class="cyc-step sr d1"><div class="cyc-circle"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M8 26 L14 18 L20 22 L28 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="18" r="2.5" fill="white"/><circle cx="20" cy="22" r="2.5" fill="white"/></svg></div><p class="cyc-lbl">学習</p></div>
+      <div class="cyc-arr sr d2">›</div>
+      <div class="cyc-step sr d2"><div class="cyc-circle"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><rect x="7" y="8" width="24" height="22" rx="3" stroke="white" stroke-width="2"/><path d="M12 20l5 5 10-10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p class="cyc-lbl">テスト</p></div>
+      <div class="cyc-arr sr d3">›</div>
+      <div class="cyc-step sr d3"><div class="cyc-circle"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="13" stroke="white" stroke-width="2"/><path d="M19 19 L19 8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M19 19 L27 23" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><p class="cyc-lbl">分析</p></div>
+      <div class="cyc-arr sr d4">›</div>
+      <div class="cyc-step sr d4"><div class="cyc-circle accent"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"><polyline points="6,28 12,20 19,23 26,13 32,8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="28,4 34,10 26,11" fill="white"/></svg></div><p class="cyc-lbl accent">成長</p></div>
     </div>
   </div>
 </section>
@@ -758,144 +535,156 @@
 <!-- SECTION 07: ADMIN FEATURES -->
 <section class="admin" id="admin">
   <div class="wrap">
-    <div class="adm-hd fu">
-      <p class="lbl">Admin Features</p>
-      <div class="bar"></div>
+    <div class="adm-hd sr">
+      <span class="lbl">Admin Features</span>
       <h2 class="ttl">教育担当者の<em>負担を削減</em></h2>
-      <p class="lead" style="max-width:600px;margin:0 auto">管理画面は直感的なUIで、ITに不慣れな担当者でもすぐに使いこなせます。</p>
+      <span class="rule"></span>
+      <p class="lead" style="margin-top:20px;max-width:600px;margin-inline:auto">直感的な管理画面で、ITに不慣れな担当者でもすぐに使いこなせます。</p>
     </div>
     <div class="adm-g">
-      <!-- Card 1 -->
-      <div class="adm-card fu">
+      <div class="adm-card sr">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect x="4" y="4" width="192" height="112" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <rect x="4" y="4" width="192" height="32" rx="8" fill="#005BAC" ry="8"/>
-            <rect x="4" y="24" width="192" height="12" fill="#005BAC"/>
-            <text x="16" y="24" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">受講管理</text>
-            <circle cx="22" cy="54" r="9" fill="#EBF4FF"/><text x="18" y="58" font-family="sans-serif" font-size="7" fill="#005BAC">田中</text>
-            <text x="38" y="55" font-family="sans-serif" font-size="8.5" fill="#1F2937">田中 一郎</text>
-            <rect x="120" y="46" width="52" height="16" rx="4" fill="#22C55E" opacity=".15" stroke="#22C55E" stroke-width="1"/><text x="127" y="57" font-family="sans-serif" font-size="8" fill="#22C55E">受講中</text>
-            <circle cx="22" cy="76" r="9" fill="#EBF4FF"/><text x="18" y="80" font-family="sans-serif" font-size="7" fill="#005BAC">鈴木</text>
-            <text x="38" y="77" font-family="sans-serif" font-size="8.5" fill="#1F2937">鈴木 花子</text>
-            <rect x="120" y="68" width="52" height="16" rx="4" fill="#EBF4FF" stroke="#005BAC" stroke-width="1"/><text x="129" y="79" font-family="sans-serif" font-size="8" fill="#005BAC">完了</text>
-            <circle cx="22" cy="98" r="9" fill="#EBF4FF"/><text x="18" y="102" font-family="sans-serif" font-size="7" fill="#005BAC">佐藤</text>
-            <text x="38" y="99" font-family="sans-serif" font-size="8.5" fill="#1F2937">佐藤 次郎</text>
-            <rect x="120" y="90" width="52" height="16" rx="4" fill="#FEF9C3" stroke="#EAB308" stroke-width="1"/><text x="127" y="101" font-family="sans-serif" font-size="8" fill="#CA8A04">未受講</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <rect x="0" y="0" width="220" height="34" rx="10" fill="#005BAC" ry="10"/>
+            <rect x="0" y="22" width="220" height="12" fill="#005BAC"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="white">受講者一覧</text>
+            <rect x="156" y="10" width="52" height="16" rx="5" fill="rgba(255,255,255,.2)"/>
+            <text x="163" y="22" font-family="sans-serif" font-size="8" fill="white">+ 追加</text>
+            <circle cx="22" cy="54" r="10" fill="#EBF5FF"/><text x="18" y="58" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">田</text>
+            <text x="38" y="55" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">田中 一郎</text>
+            <rect x="130" y="46" width="52" height="16" rx="5" fill="rgba(34,197,94,.1)"/>
+            <text x="138" y="57" font-family="sans-serif" font-size="8" font-weight="bold" fill="#22C55E">受講中</text>
+            <text x="186" y="57" font-family="sans-serif" font-size="8" fill="#9CA3AF">88%</text>
+            <circle cx="22" cy="76" r="10" fill="#EBF5FF"/><text x="18" y="80" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">鈴</text>
+            <text x="38" y="77" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">鈴木 花子</text>
+            <rect x="130" y="68" width="52" height="16" rx="5" fill="#EBF5FF"/>
+            <text x="140" y="79" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC">完了</text>
+            <text x="186" y="79" font-family="sans-serif" font-size="8" fill="#9CA3AF">100%</text>
+            <circle cx="22" cy="98" r="10" fill="#EBF5FF"/><text x="18" y="102" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">佐</text>
+            <text x="38" y="99" font-family="sans-serif" font-size="9" fill="#1F2937" font-weight="bold">佐藤 次郎</text>
+            <rect x="130" y="90" width="52" height="16" rx="5" fill="rgba(253,224,71,.25)"/>
+            <text x="138" y="101" font-family="sans-serif" font-size="8" font-weight="bold" fill="#CA8A04">未受講</text>
+            <text x="14" y="122" font-family="sans-serif" font-size="8" fill="#9CA3AF">全 1,248名 / 1-3件表示</text>
+            <text x="174" y="122" font-family="sans-serif" font-size="8" fill="#005BAC">次へ →</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>受講管理</h3><p>社員の受講状況を一覧で把握。ステータスフィルタで未受講者を即座に特定。</p></div>
+        <div class="adm-body"><h3>受講管理</h3><p>社員の受講状況を一覧で把握。未受講者を即座に特定できます。</p></div>
       </div>
-      <!-- Card 2 -->
-      <div class="adm-card fu" style="transition-delay:.06s">
+      <div class="adm-card sr d1">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect width="200" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="14" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">進捗確認</text>
-            <text x="14" y="40" font-family="sans-serif" font-size="8.5" fill="#6B7280">DXリテラシー基礎</text>
-            <rect x="14" y="46" width="140" height="10" rx="5" fill="#EBF4FF"/>
-            <rect x="14" y="46" width="98" height="10" rx="5" fill="#005BAC"/>
-            <text x="160" y="55" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">70%</text>
-            <text x="14" y="72" font-family="sans-serif" font-size="8.5" fill="#6B7280">Excel実践講座</text>
-            <rect x="14" y="78" width="140" height="10" rx="5" fill="#EBF4FF"/>
-            <rect x="14" y="78" width="126" height="10" rx="5" fill="#22C55E" opacity=".8"/>
-            <text x="160" y="87" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#22C55E">90%</text>
-            <text x="14" y="104" font-family="sans-serif" font-size="8.5" fill="#6B7280">ビジネス英語</text>
-            <rect x="14" y="110" width="140" height="10" rx="5" fill="#EBF4FF"/>
-            <rect x="14" y="110" width="56" height="10" rx="5" fill="#00AEEF"/>
-            <text x="160" y="119" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#00AEEF">40%</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">コース別進捗</text>
+            <text x="14" y="42" font-family="sans-serif" font-size="8.5" fill="#9CA3AF">DXリテラシー基礎</text>
+            <rect x="14" y="48" width="150" height="10" rx="5" fill="#EBF5FF"/>
+            <rect x="14" y="48" width="105" height="10" rx="5" fill="#005BAC"/>
+            <text x="170" y="57" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">70%</text>
+            <text x="14" y="72" font-family="sans-serif" font-size="8.5" fill="#9CA3AF">Excel実践講座</text>
+            <rect x="14" y="78" width="150" height="10" rx="5" fill="#EBF5FF"/>
+            <rect x="14" y="78" width="135" height="10" rx="5" fill="#22C55E" opacity=".8"/>
+            <text x="170" y="87" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#22C55E">90%</text>
+            <text x="14" y="102" font-family="sans-serif" font-size="8.5" fill="#9CA3AF">ビジネス英語</text>
+            <rect x="14" y="108" width="150" height="10" rx="5" fill="#EBF5FF"/>
+            <rect x="14" y="108" width="60" height="10" rx="5" fill="#00AEEF" opacity=".8"/>
+            <text x="170" y="117" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#00AEEF">40%</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>進捗確認</h3><p>コース別・社員別の進捗をリアルタイムで可視化。一目で遅れを把握できる。</p></div>
+        <div class="adm-body"><h3>進捗確認</h3><p>コース別・社員別の進捗をリアルタイムで可視化できます。</p></div>
       </div>
-      <!-- Card 3 -->
-      <div class="adm-card fu" style="transition-delay:.12s">
+      <div class="adm-card sr d2">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect width="200" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="14" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">レポート</text>
-            <rect x="38" y="40" width="18" height="68" rx="4" fill="#EBF4FF"/>
-            <rect x="66" y="54" width="18" height="54" rx="4" fill="#EBF4FF"/>
-            <rect x="94" y="44" width="18" height="64" rx="4" fill="#005BAC"/>
-            <rect x="122" y="36" width="18" height="72" rx="4" fill="#005BAC"/>
-            <rect x="150" y="48" width="18" height="60" rx="4" fill="#00AEEF"/>
-            <text x="38"  y="116" font-family="sans-serif" font-size="7" fill="#6B7280">4月</text>
-            <text x="66"  y="116" font-family="sans-serif" font-size="7" fill="#6B7280">5月</text>
-            <text x="94"  y="116" font-family="sans-serif" font-size="7" fill="#6B7280">6月</text>
-            <text x="122" y="116" font-family="sans-serif" font-size="7" fill="#6B7280">7月</text>
-            <text x="150" y="116" font-family="sans-serif" font-size="7" fill="#6B7280">8月</text>
-            <rect x="14" y="26" width="64" height="12" rx="4" fill="#EBF4FF"/>
-            <text x="18" y="36" font-family="sans-serif" font-size="8" fill="#005BAC">PDF書き出し</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">月次レポート</text>
+            <rect x="152" y="10" width="56" height="18" rx="5" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="158" y="22" font-family="sans-serif" font-size="8" fill="#005BAC">PDF出力</text>
+            <line x1="24" y1="100" x2="206" y2="100" stroke="#E5E7EB" stroke-width="0.5"/>
+            <line x1="24" y1="84" x2="206" y2="84" stroke="#E5E7EB" stroke-width="0.5"/>
+            <line x1="24" y1="68" x2="206" y2="68" stroke="#E5E7EB" stroke-width="0.5"/>
+            <rect x="34" y="60" width="22" height="40" rx="4" fill="#EBF5FF"/>
+            <rect x="66" y="52" width="22" height="48" rx="4" fill="#EBF5FF"/>
+            <rect x="98" y="42" width="22" height="58" rx="4" fill="#00AEEF" opacity=".6"/>
+            <rect x="130" y="34" width="22" height="66" rx="4" fill="#005BAC"/>
+            <rect x="162" y="38" width="22" height="62" rx="4" fill="#005BAC" opacity=".7"/>
+            <text x="34" y="112" font-family="sans-serif" font-size="7.5" fill="#9CA3AF">2月</text>
+            <text x="66" y="112" font-family="sans-serif" font-size="7.5" fill="#9CA3AF">3月</text>
+            <text x="98" y="112" font-family="sans-serif" font-size="7.5" fill="#9CA3AF">4月</text>
+            <text x="128" y="112" font-family="sans-serif" font-size="7.5" fill="#1F2937" font-weight="bold">5月</text>
+            <text x="160" y="112" font-family="sans-serif" font-size="7.5" fill="#9CA3AF">6月</text>
+            <text x="130" y="30" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#005BAC">最高</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>レポート</h3><p>月次・四半期レポートをワンクリックで自動生成。PDF・CSV形式でエクスポート可。</p></div>
+        <div class="adm-body"><h3>レポート</h3><p>月次レポートをワンクリックで自動生成。PDF・CSV形式でエクスポート。</p></div>
       </div>
-      <!-- Card 4 -->
-      <div class="adm-card fu" style="transition-delay:.18s">
+      <div class="adm-card sr d3">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect width="200" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="14" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">権限管理</text>
-            <rect x="14" y="30" width="172" height="28" rx="6" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".3"/>
-            <rect x="22" y="38" width="18" height="12" rx="3" fill="#005BAC"/>
-            <text x="24" y="48" font-family="sans-serif" font-size="7" fill="white">管理</text>
-            <text x="48" y="49" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1F2937">管理者</text>
-            <text x="120" y="49" font-family="sans-serif" font-size="8.5" fill="#6B7280">全機能利用可</text>
-            <rect x="14" y="64" width="172" height="28" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
-            <rect x="22" y="72" width="18" height="12" rx="3" fill="#00AEEF"/>
-            <text x="25" y="82" font-family="sans-serif" font-size="7" fill="white">講師</text>
-            <text x="48" y="83" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1F2937">講師</text>
-            <text x="120" y="83" font-family="sans-serif" font-size="8.5" fill="#6B7280">教材管理・採点</text>
-            <rect x="14" y="98" width="172" height="18" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="48" y="111" font-family="sans-serif" font-size="8.5" fill="#1F2937">受講者 — 学習のみ</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">権限管理</text>
+            <rect x="14" y="30" width="192" height="24" rx="6" fill="#005BAC"/>
+            <rect x="20" y="36" width="22" height="12" rx="3" fill="rgba(255,255,255,.3)"/>
+            <text x="22" y="46" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">管理</text>
+            <text x="50" y="46" font-family="sans-serif" font-size="9" font-weight="bold" fill="white">スーパー管理者</text>
+            <text x="152" y="46" font-family="sans-serif" font-size="8.5" fill="rgba(255,255,255,.7)">全機能</text>
+            <rect x="14" y="60" width="192" height="24" rx="6" fill="#EBF5FF" stroke="#E5E7EB" stroke-width="1"/>
+            <rect x="20" y="66" width="22" height="12" rx="3" fill="#00AEEF"/>
+            <text x="23" y="76" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">講師</text>
+            <text x="50" y="76" font-family="sans-serif" font-size="9" fill="#1F2937">教育担当者</text>
+            <text x="152" y="76" font-family="sans-serif" font-size="8.5" fill="#6B7280">管理+教材</text>
+            <rect x="14" y="90" width="192" height="24" rx="6" fill="#F8FAFC" stroke="#E5E7EB" stroke-width="1"/>
+            <rect x="20" y="96" width="22" height="12" rx="3" fill="#9CA3AF"/>
+            <text x="23" y="106" font-family="sans-serif" font-size="7" font-weight="bold" fill="white">受講</text>
+            <text x="50" y="106" font-family="sans-serif" font-size="9" fill="#1F2937">受講者</text>
+            <text x="152" y="106" font-family="sans-serif" font-size="8.5" fill="#6B7280">学習のみ</text>
+            <text x="14" y="124" font-family="sans-serif" font-size="8" fill="#9CA3AF">+ カスタムロールを追加</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>権限管理</h3><p>管理者・講師・受講者ごとに細かくアクセス権限を設定。安全な運用を実現。</p></div>
+        <div class="adm-body"><h3>権限管理</h3><p>管理者・講師・受講者ごとに細かくアクセス権限を設定できます。</p></div>
       </div>
-      <!-- Card 5 -->
-      <div class="adm-card fu" style="transition-delay:.24s">
+      <div class="adm-card sr d4">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect width="200" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="14" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">教材登録</text>
-            <rect x="30" y="32" width="140" height="72" rx="8" fill="#F8FAFC" stroke="#005BAC" stroke-width="1.5" stroke-dasharray="4 3"/>
-            <circle cx="100" cy="60" r="16" fill="#EBF4FF"/>
-            <polyline points="100,52 100,64" stroke="#005BAC" stroke-width="2" stroke-linecap="round"/>
-            <polyline points="94,58 100,64 106,58" stroke="#005BAC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="68" y="82" font-family="sans-serif" font-size="8.5" fill="#6B7280">ドラッグ&amp;ドロップ</text>
-            <text x="60" y="94" font-family="sans-serif" font-size="8" fill="#6B7280">または クリックしてアップロード</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">教材登録</text>
+            <rect x="14" y="30" width="192" height="80" rx="10" fill="#F8FAFC" stroke="#005BAC" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <circle cx="110" cy="56" r="18" fill="#EBF5FF"/>
+            <path d="M110 48 L110 62" stroke="#005BAC" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M103 55 L110 62 L117 55" stroke="#005BAC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="110" y="82" font-family="sans-serif" font-size="9.5" fill="#6B7280" text-anchor="middle">ドラッグ＆ドロップ</text>
+            <text x="110" y="97" font-family="sans-serif" font-size="8.5" fill="#9CA3AF" text-anchor="middle">MP4 / PDF / PPTX 対応</text>
+            <rect x="14" y="116" width="90" height="10" rx="4" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="20" y="125" font-family="sans-serif" font-size="7" fill="#005BAC">DX基礎.mp4 ✓</text>
+            <rect x="112" y="116" width="94" height="10" rx="4" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="118" y="125" font-family="sans-serif" font-size="7" fill="#005BAC">資料.pdf アップ中...</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>教材登録</h3><p>動画・PDF・スライドをドラッグ&ドロップで簡単アップロード。自社教材をすぐ公開。</p></div>
+        <div class="adm-body"><h3>教材登録</h3><p>動画・PDF・スライドをドラッグ&ドロップで簡単アップロード。</p></div>
       </div>
-      <!-- Card 6 -->
-      <div class="adm-card fu" style="transition-delay:.30s">
+      <div class="adm-card sr d5">
         <div class="adm-vis">
-          <svg viewBox="0 0 200 120" fill="none" style="width:100%;max-width:200px">
-            <rect width="200" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="1"/>
-            <text x="14" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1F2937">LMS連携</text>
-            <!-- LearnCore -->
-            <rect x="60" y="38" width="80" height="36" rx="8" fill="#005BAC"/>
-            <text x="76" y="59" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">LearnCore</text>
-            <!-- Arrows -->
-            <line x1="24" y1="56" x2="58" y2="56" stroke="#00AEEF" stroke-width="2" stroke-dasharray="4 2"/>
-            <polygon points="56,52 62,56 56,60" fill="#00AEEF"/>
-            <line x1="142" y1="56" x2="176" y2="56" stroke="#00AEEF" stroke-width="2" stroke-dasharray="4 2"/>
-            <polygon points="174,52 180,56 174,60" fill="#00AEEF"/>
-            <!-- Systems -->
-            <rect x="4" y="42" width="52" height="28" rx="6" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".4"/>
-            <text x="11" y="60" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">HRMS</text>
-            <rect x="144" y="42" width="52" height="28" rx="6" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".4"/>
-            <text x="151" y="60" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">Slack</text>
-            <!-- Bottom systems -->
-            <rect x="44" y="90" width="52" height="24" rx="6" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".4"/>
-            <text x="53" y="106" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">Zoom</text>
-            <line x1="100" y1="74" x2="100" y2="88" stroke="#00AEEF" stroke-width="2" stroke-dasharray="4 2"/>
-            <rect x="104" y="90" width="52" height="24" rx="6" fill="#EBF4FF" stroke="#005BAC" stroke-width="1" stroke-opacity=".4"/>
-            <text x="113" y="106" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#005BAC">Teams</text>
+          <svg viewBox="0 0 220 130" fill="none" style="width:100%;max-width:220px" aria-hidden="true">
+            <rect width="220" height="130" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+            <text x="14" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1F2937">LMS連携</text>
+            <rect x="72" y="36" width="76" height="40" rx="10" fill="#005BAC"/>
+            <text x="110" y="58" font-family="sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">LearnCore</text>
+            <line x1="72" y1="56" x2="44" y2="56" stroke="#00AEEF" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <polygon points="47,52 40,56 47,60" fill="#00AEEF"/>
+            <rect x="4" y="46" width="40" height="20" rx="6" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="24" y="59" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">HRMS</text>
+            <line x1="148" y1="56" x2="176" y2="56" stroke="#00AEEF" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <polygon points="173,52 180,56 173,60" fill="#00AEEF"/>
+            <rect x="176" y="46" width="40" height="20" rx="6" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="196" y="59" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">Slack</text>
+            <line x1="110" y1="76" x2="110" y2="96" stroke="#00AEEF" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <polygon points="106,93 110,100 114,93" fill="#00AEEF"/>
+            <rect x="50" y="100" width="40" height="20" rx="6" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="70" y="113" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">Zoom</text>
+            <rect x="130" y="100" width="40" height="20" rx="6" fill="#EBF5FF" stroke="#005BAC" stroke-width="0.5"/>
+            <text x="150" y="113" font-family="sans-serif" font-size="8" font-weight="bold" fill="#005BAC" text-anchor="middle">Teams</text>
           </svg>
         </div>
-        <div class="adm-body"><h3>LMS連携</h3><p>HRMS・Slack・Zoom・Teamsなど主要ツールと連携。既存の社内環境に溶け込む。</p></div>
+        <div class="adm-body"><h3>LMS連携</h3><p>HRMS・Slack・Zoom・Teamsなど主要ツールと連携できます。</p></div>
       </div>
     </div>
   </div>
@@ -904,91 +693,43 @@
 <!-- SECTION 08: CASES -->
 <section class="cases" id="cases">
   <div class="wrap">
-    <div class="fu" style="text-align:center">
-      <p class="lbl">Case Studies</p>
-      <div class="bar" style="margin:14px auto 22px"></div>
+    <div class="sec-hd sr">
+      <span class="lbl">Case Studies</span>
       <h2 class="ttl">導入企業の<em>成果事例</em></h2>
+      <span class="rule"></span>
     </div>
     <div class="cs-g">
-      <div class="cs-card fu">
-        <div class="cs-logo">A製造</div>
-        <p class="cs-ind">Manufacturing</p>
-        <h3>DX教育の全社展開</h3>
-        <p>製造現場のデジタル化に向け、全1,200名にDX基礎研修をオンラインで実施</p>
-        <div class="cs-kpi">受講率 94%<small>3ヶ月で全社展開完了</small></div>
-      </div>
-      <div class="cs-card fu" style="transition-delay:.08s">
-        <div class="cs-logo">B IT</div>
-        <p class="cs-ind">IT / Tech</p>
-        <h3>新人研修のDX化</h3>
-        <p>入社研修をe-Learning化し、OJTに集中できる体制を構築。配属前スキル底上げに成功</p>
-        <div class="cs-kpi">研修工数 60%削減<small>新人の即戦力化を実現</small></div>
-      </div>
-      <div class="cs-card fu" style="transition-delay:.16s">
-        <div class="cs-logo">C小売</div>
-        <p class="cs-ind">Retail</p>
-        <h3>店舗スタッフ教育</h3>
-        <p>全国200店舗のパート・アルバイトへの接客研修をスマホで標準化</p>
-        <div class="cs-kpi">顧客満足度 +18pt<small>接客品質の均質化に成功</small></div>
-      </div>
-      <div class="cs-card fu" style="transition-delay:.24s">
-        <div class="cs-logo">D営業</div>
-        <p class="cs-ind">Sales</p>
-        <h3>営業力強化プログラム</h3>
-        <p>商談スキル・製品知識のe-Learning化で、営業チーム全体のスキルを底上げ</p>
-        <div class="cs-kpi">成約率 1.4倍<small>6ヶ月でROI 340%達成</small></div>
-      </div>
+      <div class="cs-card sr"><div class="cs-logo">A製造</div><p class="cs-ind">Manufacturing</p><h3>DX教育の全社展開</h3><p>製造現場のデジタル化に向け、全1,200名にDX基礎研修をオンラインで実施</p><div class="cs-kpi">受講率 94%<small>3ヶ月で全社展開完了</small></div></div>
+      <div class="cs-card sr d1"><div class="cs-logo">B IT</div><p class="cs-ind">IT / Tech</p><h3>新人研修のDX化</h3><p>入社研修をe-Learning化し、OJTに集中できる体制を構築。配属前スキル底上げに成功</p><div class="cs-kpi">研修工数 60%削減<small>新人の即戦力化を実現</small></div></div>
+      <div class="cs-card sr d2"><div class="cs-logo">C小売</div><p class="cs-ind">Retail</p><h3>店舗スタッフ教育</h3><p>全国200店舗のパート・アルバイトへの接客研修をスマホで標準化</p><div class="cs-kpi">顧客満足度 +18pt<small>接客品質の均質化に成功</small></div></div>
+      <div class="cs-card sr d3"><div class="cs-logo">D営業</div><p class="cs-ind">Sales</p><h3>営業力強化プログラム</h3><p>商談スキル・製品知識のe-Learning化で、営業チーム全体のスキルを底上げ</p><div class="cs-kpi">成約率 1.4倍<small>6ヶ月でROI 340%達成</small></div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 09: BEFORE / AFTER -->
+<!-- SECTION 09: BEFORE/AFTER -->
 <section class="bef-aft" id="bef-aft">
   <div class="wrap">
-    <div class="fu" style="text-align:center">
-      <p class="lbl">Before / After</p>
-      <div class="bar" style="margin:14px auto 22px"></div>
+    <div class="sec-hd sr">
+      <span class="lbl">Before / After</span>
       <h2 class="ttl">導入前後の<em>変化</em></h2>
+      <span class="rule"></span>
     </div>
     <div class="ba-g">
-      <div class="ba-col fu">
+      <div class="ba-col sr">
         <div class="ba-hd"><span class="ba-tag b">Before 導入前</span></div>
-        <div class="ba-item">
-          <div class="ba-ic ng">✕</div>
-          <div><p class="ba-item-txt">受講率が30〜40%台</p><span class="ba-item-sub">業務が忙しく後回しになりがち</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ng">✕</div>
-          <div><p class="ba-item-txt">研修が属人化・形骸化</p><span class="ba-item-sub">担当者の退職で教育が止まる</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ng">✕</div>
-          <div><p class="ba-item-txt">効果測定が困難</p><span class="ba-item-sub">研修の成果が数値で見えない</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ng">✕</div>
-          <div><p class="ba-item-txt">コスト・工数がかかる</p><span class="ba-item-sub">外部講師・会場手配で費用膨張</span></div>
-        </div>
+        <div class="ba-item"><div class="ba-ic ng">✕</div><div><p class="ba-ttl">受講率が30〜40%台</p><span class="ba-sub">業務が忙しく後回しになりがち</span></div></div>
+        <div class="ba-item"><div class="ba-ic ng">✕</div><div><p class="ba-ttl">研修が属人化・形骸化</p><span class="ba-sub">担当者の退職で教育が止まる</span></div></div>
+        <div class="ba-item"><div class="ba-ic ng">✕</div><div><p class="ba-ttl">効果測定が困難</p><span class="ba-sub">研修の成果が数値で見えない</span></div></div>
+        <div class="ba-item"><div class="ba-ic ng">✕</div><div><p class="ba-ttl">コスト・工数がかかる</p><span class="ba-sub">外部講師・会場手配で費用膨張</span></div></div>
       </div>
-      <div class="ba-vs fu" style="transition-delay:.1s">→</div>
-      <div class="ba-col after fu" style="transition-delay:.15s">
+      <div class="ba-vs sr d2">→</div>
+      <div class="ba-col after sr d1">
         <div class="ba-hd"><span class="ba-tag a">After 導入後</span></div>
-        <div class="ba-item">
-          <div class="ba-ic ok">✓</div>
-          <div><p class="ba-item-txt">受講率が平均87%へ向上</p><span class="ba-item-sub">スキマ時間・スマホで学習継続</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ok">✓</div>
-          <div><p class="ba-item-txt">教育の仕組みが資産化</p><span class="ba-item-sub">担当者に依存しない体制を構築</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ok">✓</div>
-          <div><p class="ba-item-txt">スキルが数値で可視化</p><span class="ba-item-sub">ダッシュボードでリアルタイム把握</span></div>
-        </div>
-        <div class="ba-item">
-          <div class="ba-ic ok">✓</div>
-          <div><p class="ba-item-txt">教育コスト 平均42%削減</p><span class="ba-item-sub">場所・時間の制約から解放</span></div>
-        </div>
+        <div class="ba-item"><div class="ba-ic ok">✓</div><div><p class="ba-ttl">受講率が平均87%へ向上</p><span class="ba-sub">スキマ時間・スマホで学習継続</span></div></div>
+        <div class="ba-item"><div class="ba-ic ok">✓</div><div><p class="ba-ttl">教育の仕組みが資産化</p><span class="ba-sub">担当者に依存しない体制を構築</span></div></div>
+        <div class="ba-item"><div class="ba-ic ok">✓</div><div><p class="ba-ttl">スキルが数値で可視化</p><span class="ba-sub">ダッシュボードでリアルタイム把握</span></div></div>
+        <div class="ba-item"><div class="ba-ic ok">✓</div><div><p class="ba-ttl">教育コスト 平均42%削減</p><span class="ba-sub">場所・時間の制約から解放</span></div></div>
       </div>
     </div>
   </div>
@@ -997,66 +738,25 @@
 <!-- SECTION 10: PRICING -->
 <section class="pricing" id="pricing">
   <div class="wrap">
-    <div class="pr-hd fu">
-      <p class="lbl">Pricing</p>
-      <div class="bar"></div>
+    <div class="pr-hd sr">
+      <span class="lbl">Pricing</span>
       <h2 class="ttl">シンプルな<em>料金プラン</em></h2>
-      <p class="lead">企業規模・用途に合わせて選べる3プラン。全プラン初月無料トライアル付き。</p>
+      <span class="rule"></span>
+      <p class="lead" style="margin-top:20px">企業規模・用途に合わせて選べる3プラン。全プラン初月無料トライアル付き。</p>
     </div>
     <div class="pr-g">
-      <div class="pr-card fu">
-        <div class="pr-top">
-          <p class="pr-name">STARTER</p>
-          <div class="pr-price"><small>¥</small>5,000<small style="font-size:14px">/月</small></div>
-          <p class="pr-per">〜50ユーザー</p>
-        </div>
-        <div class="pr-body">
-          <p class="pr-desc">スモールスタートで始めたい企業に</p>
-          <ul class="pl">
-            <li>コース50本まで利用可能</li>
-            <li>受講者管理・進捗確認</li>
-            <li>メールサポート</li>
-            <li>レポート自動生成</li>
-          </ul>
-          <a href="#contact" class="pr-cta cta-o">無料トライアル</a>
-        </div>
+      <div class="pr-card sr">
+        <div class="pr-top"><p class="pr-tier">Starter</p><div class="pr-price"><small>¥</small>5,000<small style="font-size:17px">/月</small></div><p class="pr-per">〜50ユーザー</p></div>
+        <div class="pr-body"><p class="pr-desc">スモールスタートで始めたい企業に</p><ul class="pr-list"><li>コース50本まで利用可能</li><li>受講者管理・進捗確認</li><li>レポート自動生成</li><li>メールサポート</li></ul><a href="#contact" class="pr-cta out">無料トライアル</a></div>
       </div>
-      <div class="pr-card star fu" style="transition-delay:.08s">
+      <div class="pr-card star sr d1">
         <div class="pr-badge">おすすめ</div>
-        <div class="pr-top">
-          <p class="pr-name">STANDARD</p>
-          <div class="pr-price"><small>¥</small>18,000<small style="font-size:14px">/月</small></div>
-          <p class="pr-per">〜200ユーザー</p>
-        </div>
-        <div class="pr-body">
-          <p class="pr-desc">成長企業の標準的な教育基盤として</p>
-          <ul class="pl">
-            <li>全342コース利用可能</li>
-            <li>オリジナル教材アップロード</li>
-            <li>チャット＋電話サポート</li>
-            <li>権限管理・CSV出力</li>
-            <li>SSO（シングルサインオン）</li>
-          </ul>
-          <a href="#contact" class="pr-cta cta-p">無料トライアル</a>
-        </div>
+        <div class="pr-top"><p class="pr-tier">Standard</p><div class="pr-price"><small>¥</small>18,000<small style="font-size:17px">/月</small></div><p class="pr-per">〜200ユーザー</p></div>
+        <div class="pr-body"><p class="pr-desc">成長企業の標準的な教育基盤として</p><ul class="pr-list"><li>全342コース利用可能</li><li>オリジナル教材アップロード</li><li>チャット＋電話サポート</li><li>権限管理・CSV出力</li><li>SSO（シングルサインオン）</li></ul><a href="#contact" class="pr-cta fill">無料トライアル</a></div>
       </div>
-      <div class="pr-card fu" style="transition-delay:.16s">
-        <div class="pr-top">
-          <p class="pr-name">ENTERPRISE</p>
-          <div class="pr-price" style="font-size:32px;letter-spacing:0;line-height:1.4">要相談</div>
-          <p class="pr-per">ユーザー数無制限</p>
-        </div>
-        <div class="pr-body">
-          <p class="pr-desc">大企業・複雑なニーズをお持ちの方に</p>
-          <ul class="pl">
-            <li>専属カスタマーサクセス</li>
-            <li>オリジナルLMS構築</li>
-            <li>HRMS・基幹システム連携</li>
-            <li>SLA保証・セキュリティ監査</li>
-            <li>カスタム研修コンテンツ制作</li>
-          </ul>
-          <a href="#contact" class="pr-cta cta-o">お問い合わせ</a>
-        </div>
+      <div class="pr-card sr d2">
+        <div class="pr-top"><p class="pr-tier">Enterprise</p><div class="pr-price" style="font-size:34px;letter-spacing:0;line-height:1.5">要相談</div><p class="pr-per">ユーザー数無制限</p></div>
+        <div class="pr-body"><p class="pr-desc">大企業・複雑なニーズをお持ちの方に</p><ul class="pr-list"><li>専属カスタマーサクセス</li><li>オリジナルLMS構築</li><li>HRMS・基幹システム連携</li><li>SLA保証・セキュリティ監査</li><li>カスタム研修コンテンツ制作</li></ul><a href="#contact" class="pr-cta out">お問い合わせ</a></div>
       </div>
     </div>
   </div>
@@ -1065,32 +765,17 @@
 <!-- SECTION 11: FAQ -->
 <section class="faq" id="faq">
   <div class="wrap">
-    <div class="faq-hd fu">
-      <p class="lbl">FAQ</p>
-      <div class="bar"></div>
+    <div class="faq-hd sr">
+      <span class="lbl">FAQ</span>
       <h2 class="ttl">よくいただく<em>ご質問</em></h2>
+      <span class="rule"></span>
     </div>
-    <div class="faq-l">
-      <div class="fi fu">
-        <div class="fq"><span class="fq-i">Q</span>導入までどのくらい期間がかかりますか？<span class="fq-arr">▼</span></div>
-        <div class="fa-body"><p class="fa-inner">最短3営業日でご利用開始いただけます。アカウント発行・初期設定は弊社が対応しますので、導入時の工数は最小限です。エンタープライズプランの場合は要件ヒアリングから実装まで2〜4週間を目安にお見積もりします。</p></div>
-      </div>
-      <div class="fi fu" style="transition-delay:.06s">
-        <div class="fq"><span class="fq-i">Q</span>既存の研修コンテンツを移行できますか？<span class="fq-arr">▼</span></div>
-        <div class="fa-body"><p class="fa-inner">はい、可能です。PowerPoint・PDF・動画ファイル（MP4）はそのままアップロードして教材として公開できます。SCORM形式にも対応しており、他のLMSからの移行もスムーズに行えます。</p></div>
-      </div>
-      <div class="fi fu" style="transition-delay:.12s">
-        <div class="fq"><span class="fq-i">Q</span>セキュリティ面は安全ですか？<span class="fq-arr">▼</span></div>
-        <div class="fa-body"><p class="fa-inner">ISO 27001認証取得済み、データセンターは国内拠点（東京・大阪）で運用しています。通信はすべてTLS暗号化、シングルサインオン（SAML 2.0）にも対応しており、企業の情報セキュリティ基準を満たします。</p></div>
-      </div>
-      <div class="fi fu" style="transition-delay:.18s">
-        <div class="fq"><span class="fq-i">Q</span>スマートフォンにも対応していますか？<span class="fq-arr">▼</span></div>
-        <div class="fa-body"><p class="fa-inner">iOS・Android両対応の専用アプリをご利用いただけます。オフライン視聴（事前ダウンロード）にも対応しており、通信環境のない場所でも学習を継続できます。</p></div>
-      </div>
-      <div class="fi fu" style="transition-delay:.24s">
-        <div class="fq"><span class="fq-i">Q</span>コンテンツは日本語のみですか？<span class="fq-arr">▼</span></div>
-        <div class="fa-body"><p class="fa-inner">日本語コンテンツが中心ですが、英語・中国語・韓国語など14ヶ国語のコンテンツもご利用いただけます。グローバル展開を行う企業でも、各国拠点の社員に統一した教育を提供できます。</p></div>
-      </div>
+    <div class="faq-list">
+      <div class="fi sr"><div class="fq"><span class="fq-i">Q</span>導入までどのくらい期間がかかりますか？<span class="fq-arr">▼</span></div><div class="fa-wrap"><p class="fa-body">最短3営業日でご利用開始いただけます。アカウント発行・初期設定は弊社が対応しますので、導入時の工数は最小限です。エンタープライズプランは要件ヒアリングから実装まで2〜4週間を目安にお見積もりします。</p></div></div>
+      <div class="fi sr d1"><div class="fq"><span class="fq-i">Q</span>既存の研修コンテンツを移行できますか？<span class="fq-arr">▼</span></div><div class="fa-wrap"><p class="fa-body">はい、可能です。PowerPoint・PDF・動画ファイル（MP4）はそのままアップロードして教材として公開できます。SCORM形式にも対応しており、他のLMSからの移行もスムーズに行えます。</p></div></div>
+      <div class="fi sr d2"><div class="fq"><span class="fq-i">Q</span>セキュリティ面は安全ですか？<span class="fq-arr">▼</span></div><div class="fa-wrap"><p class="fa-body">ISO 27001認証取得済み、データセンターは国内拠点（東京・大阪）で運用しています。通信はすべてTLS暗号化、シングルサインオン（SAML 2.0）にも対応しており、企業の情報セキュリティ基準を満たします。</p></div></div>
+      <div class="fi sr d3"><div class="fq"><span class="fq-i">Q</span>スマートフォンにも対応していますか？<span class="fq-arr">▼</span></div><div class="fa-wrap"><p class="fa-body">iOS・Android両対応の専用アプリをご利用いただけます。オフライン視聴（事前ダウンロード）にも対応しており、通信環境のない場所でも学習を継続できます。</p></div></div>
+      <div class="fi sr d4"><div class="fq"><span class="fq-i">Q</span>受講者数・コース数の上限はありますか？<span class="fq-arr">▼</span></div><div class="fa-wrap"><p class="fa-body">プランによって異なります。スターターは50ユーザー・50コースまで、スタンダードは200ユーザー・全コース利用可能です。エンタープライズはユーザー数・コース数ともに無制限でご利用いただけます。</p></div></div>
     </div>
   </div>
 </section>
@@ -1098,12 +783,12 @@
 <!-- SECTION 12: CTA -->
 <section class="cta-sec" id="contact">
   <div class="wrap">
-    <div class="cta-in fu">
+    <div class="cta-in sr">
       <h2 class="cta-ttl">人材育成を、<br>もっとシンプルに。</h2>
       <p class="cta-sub">まずは資料請求から。担当者が丁寧にご案内します。</p>
       <div class="cta-btns">
         <a href="#" class="btn btn-w">資料請求（無料）</a>
-        <a href="#" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.5)">無料デモを見る</a>
+        <a href="#" class="btn btn-gh">無料デモを見る</a>
       </div>
     </div>
   </div>
@@ -1118,31 +803,16 @@
         <p class="ft-desc">学び続ける組織をつくる、<br>企業向けe-Learningプラットフォーム。<br>1,000社以上の人材育成を支援しています。</p>
       </div>
       <div class="ft-col">
-        <h4>サービス</h4>
-        <ul>
-          <li><a href="#">機能一覧</a></li>
-          <li><a href="#">料金プラン</a></li>
-          <li><a href="#">コース一覧</a></li>
-          <li><a href="#">導入事例</a></li>
-        </ul>
+        <p class="ft-col-ttl">サービス</p>
+        <ul><li><a href="#">機能一覧</a></li><li><a href="#">料金プラン</a></li><li><a href="#">コース一覧</a></li><li><a href="#">導入事例</a></li></ul>
       </div>
       <div class="ft-col">
-        <h4>サポート</h4>
-        <ul>
-          <li><a href="#">よくある質問</a></li>
-          <li><a href="#">操作マニュアル</a></li>
-          <li><a href="#">お問い合わせ</a></li>
-          <li><a href="#">資料請求</a></li>
-        </ul>
+        <p class="ft-col-ttl">サポート</p>
+        <ul><li><a href="#">よくある質問</a></li><li><a href="#">操作マニュアル</a></li><li><a href="#">お問い合わせ</a></li><li><a href="#">資料請求</a></li></ul>
       </div>
       <div class="ft-col">
-        <h4>会社情報</h4>
-        <ul>
-          <li><a href="#">会社概要</a></li>
-          <li><a href="#">プライバシーポリシー</a></li>
-          <li><a href="#">利用規約</a></li>
-          <li><a href="#">セキュリティ</a></li>
-        </ul>
+        <p class="ft-col-ttl">会社情報</p>
+        <ul><li><a href="#">会社概要</a></li><li><a href="#">プライバシーポリシー</a></li><li><a href="#">利用規約</a></li><li><a href="#">セキュリティ</a></li></ul>
       </div>
     </div>
     <div class="ft-btm">
@@ -1151,68 +821,7 @@
   </div>
 </footer>
 
-<!-- FIXED CTA -->
-<a href="#contact" class="fcta">無料デモを見る →</a>
-
-<script>
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
-
-  // Count-up
-  function countUp(el, target) {
-    const dur = 1800, step = 16, steps = dur / step;
-    let cur = 0;
-    const inc = target / steps;
-    const t = setInterval(() => {
-      cur = Math.min(cur + inc, target);
-      const v = Math.floor(cur);
-      const suf = el.dataset.suffix || '';
-      el.innerHTML = v >= 1000 ? (v / 1000).toFixed(0) + (suf === '+' ? ',000+' : ',000') : v + suf;
-      if (cur >= target) clearInterval(t);
-    }, step);
-  }
-
-  const statObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.querySelectorAll('.stat-num').forEach(el => {
-        const raw = parseInt(el.dataset.target || '0');
-        const suf = el.dataset.suffix || '';
-        if (raw >= 1000) {
-          const k = raw / 1000;
-          let cur = 0;
-          const t = setInterval(() => {
-            cur = Math.min(cur + k / 112, k);
-            el.innerHTML = cur.toFixed(0) + (suf === '+' ? ',000<sup>+</sup>' : ',000<sup>%</sup>');
-            if (cur >= k) { el.innerHTML = (k % 1 === 0 ? k.toFixed(0) : k) + ',000<sup>' + suf + '</sup>'; clearInterval(t); }
-          }, 16);
-        } else {
-          let cur2 = 0;
-          const t2 = setInterval(() => {
-            cur2 = Math.min(cur2 + raw / 112, raw);
-            el.innerHTML = Math.floor(cur2) + '<sup>' + suf + '</sup>';
-            if (cur2 >= raw) clearInterval(t2);
-          }, 16);
-        }
-      });
-      statObs.unobserve(e.target);
-    });
-  }, { threshold: 0.5 });
-  const statsEl = document.querySelector('.stats');
-  if (statsEl) statObs.observe(statsEl);
-
-  // FAQ accordion
-  document.querySelectorAll('.fq').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement;
-      const was = item.classList.contains('open');
-      document.querySelectorAll('.fi').forEach(f => f.classList.remove('open'));
-      if (!was) item.classList.add('open');
-    });
-  });
-</script>
+<a href="#contact" class="fixed-cta">無料デモを見る →</a>
+<script src="./script.js" defer></script>
 </body>
 </html>
