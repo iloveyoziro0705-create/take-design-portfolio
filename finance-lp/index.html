@@ -1,797 +1,1035 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>マネーサポート室</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マネーサポート室 | お金の相談をもっと身近に</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --green: #16804f;
-      --green-dark: #0f6b42;
-      --green-soft: #eaf3ee;
-      --yellow: #d6d72b;
-      --bg: #f5f8f5;
-      --white: #ffffff;
-      --text: #333333;
-      --sub: #555555;
-      --line: #cfe3d9;
-      --radius: 18px;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: "Noto Sans JP", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.9;
-      font-weight: 700;
-      letter-spacing: .06em;
-    }
-    img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .container {
-      width: min(980px, 90%);
-      margin: 0 auto;
-    }
-    section {
-      padding: 86px 0;
-    }
-    .section-title {
-      color: var(--green);
-      text-align: center;
-      font-size: clamp(24px, 4.5vw, 38px);
-      line-height: 1.6;
-      margin-bottom: 42px;
-      font-weight: 900;
-    }
-    .lead {
-      text-align: center;
-      color: var(--sub);
-      font-size: 17px;
-      margin-bottom: 38px;
-    }
-    .green-line {
-      height: 22px;
-      background: var(--green);
-    }
-    .btn {
-      display: block;
-      width: min(620px, 90%);
-      margin: 0 auto;
-      padding: 18px 24px;
-      border: 4px solid var(--green);
-      background: var(--white);
-      color: var(--green);
-      text-align: center;
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: 900;
-      transition: .3s;
-    }
-    .btn:hover {
-      background: var(--green);
-      color: #fff;
-    }
-    .hero {
-      padding: 50px 0 76px;
-      background: var(--green-soft);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-border {
-      width: min(780px, 82%);
-      height: 18px;
-      margin: 0 auto 46px;
-      background: linear-gradient(90deg, var(--green) 0 50%, var(--yellow) 50% 100%);
-    }
-    .hero-main {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr 1fr;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-    .illust {
-      height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .person {
-      width: 150px;
-      height: 190px;
-      background: var(--green);
-      border-radius: 80px 80px 20px 20px;
-      position: relative;
-    }
-    .person::before {
-      content: "";
-      position: absolute;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #f2c7a7;
-      top: -34px;
-      left: 46px;
-      box-shadow: 0 -16px 0 #263238;
-    }
-    .person::after {
-      content: "";
-      position: absolute;
-      width: 90px;
-      height: 18px;
-      background: #263238;
-      left: 30px;
-      top: 60px;
-      border-radius: 20px;
-    }
-    .person.man {
-      background: #1f2937;
-    }
-    .hero h1 {
-      color: var(--green);
-      font-size: clamp(32px, 7vw, 56px);
-      line-height: 1.45;
-      font-weight: 900;
-    }
-    .hero-logo {
-      color: var(--green);
-      font-size: clamp(28px, 6vw, 48px);
-      font-weight: 900;
-      line-height: 1.25;
-      margin-bottom: 26px;
-    }
-    .hero-logo span {
-      font-size: .68em;
-    }
-    .hero-copy {
-      color: var(--green);
-      font-size: clamp(17px, 3.8vw, 25px);
-      line-height: 2;
-      margin-bottom: 28px;
-    }
-    .marker {
-      display: inline;
-      background: linear-gradient(transparent 58%, var(--yellow) 58%);
-      padding: 0 4px;
-    }
-    .worry-card {
-      background: var(--white);
-      border: 2px solid var(--line);
-      padding: 56px 7%;
-      margin-top: 40px;
-      box-shadow: 0 16px 30px rgba(20, 80, 52, .06);
-    }
-    .check-list {
-      display: grid;
-      gap: 22px;
-      margin: 34px 0 46px;
-    }
-    .check-item {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 20px;
-      align-items: center;
-      background: #fafafa;
-      padding: 18px;
-    }
-    .check {
-      width: 54px;
-      height: 54px;
-      background: var(--green);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-    }
-    .solve {
-      color: var(--green);
-      text-align: center;
-      font-size: clamp(20px, 4vw, 30px);
-      font-weight: 900;
-    }
-    .about {
-      background:
-        linear-gradient(rgba(15, 107, 66, .86), rgba(15, 107, 66, .86)),
-        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
-      color: #fff;
-    }
-    .about h2,
-    .about p {
-      color: #fff;
-      text-align: center;
-    }
-    .service-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 60px 7%;
-      text-align: center;
-      margin-top: 42px;
-      box-shadow: 0 18px 40px rgba(0,0,0,.08);
-    }
-    .service-icon {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 34px;
-      border-radius: 50%;
-      background: var(--green-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--green);
-      font-size: 72px;
-    }
-    .service-card h3 {
-      color: var(--green);
-      font-size: clamp(22px, 4vw, 32px);
-      margin-bottom: 18px;
-      font-weight: 900;
-    }
-    .features {
-      background: var(--white);
-    }
-    .feature-card {
-      border: 2px solid var(--line);
-      background: #fff;
-      margin-bottom: 42px;
-      overflow: hidden;
-    }
-    .feature-body {
-      padding: 58px 8%;
-    }
-    .feature-card h3 {
-      color: var(--green);
-      font-size: clamp(24px, 4vw, 34px);
-      margin-bottom: 20px;
-      font-weight: 900;
-    }
-    .feature-visual {
-      background: var(--green-soft);
-      padding: 40px 8%;
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .chat {
-      width: min(620px, 100%);
-      background: #fff;
-      padding: 28px;
-      border-radius: 12px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.08);
-    }
-    .bubble {
-      padding: 14px 18px;
-      margin: 12px 0;
-      border-radius: 999px;
-      font-size: 14px;
-    }
-    .bubble.left {
-      background: #f1f5f9;
-      color: #333;
-      text-align: left;
-    }
-    .bubble.right {
-      background: var(--green);
-      color: #fff;
-      text-align: right;
-    }
-    .compare-mini {
-      width: min(680px, 100%);
-      background: #fff;
-      border-radius: 14px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--line);
-    }
-    .compare-mini div {
-      padding: 24px 12px;
-      text-align: center;
-      border-right: 1px solid var(--line);
-      color: var(--sub);
-    }
-    .compare-mini div:last-child {
-      border-right: none;
-      color: var(--green);
-      font-weight: 900;
-    }
-    .network {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      width: min(650px, 100%);
-    }
-    .network-box {
-      background: #fff;
-      border-radius: 14px;
-      padding: 24px;
-      text-align: center;
-      color: var(--green);
-    }
-    .cases {
-      background: var(--bg);
-    }
-    .case-card {
-      background: var(--white);
-      border: 2px solid var(--line);
-      padding: 54px 7%;
-      margin-bottom: 34px;
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-    .case-icon {
-      color: var(--green);
-      font-size: 58px;
-      text-align: center;
-    }
-    .case-card h3 {
-      color: var(--green);
-      font-size: clamp(22px, 4vw, 32px);
-      margin-bottom: 16px;
-      font-weight: 900;
-    }
-    .pricing {
-      background: var(--white);
-    }
-    .price-card {
-      border: 2px solid var(--line);
-      background: #fff;
-      text-align: center;
-      padding: 60px 7%;
-      margin-bottom: 34px;
-      position: relative;
-    }
-    .price-card.recommend::before {
-      content: "今なら、初回相談無料！";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: var(--green);
-      color: #fff;
-      padding: 16px;
-      font-size: 18px;
-      font-weight: 900;
-    }
-    .price-card.recommend {
-      padding-top: 90px;
-      border-color: var(--green);
-    }
-    .plan-name {
-      color: var(--green);
-      font-size: clamp(22px, 4vw, 32px);
-      margin-bottom: 14px;
-      font-weight: 900;
-    }
-    .price {
-      color: var(--green);
-      font-size: clamp(54px, 11vw, 86px);
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .per {
-      color: var(--green);
-      font-size: 22px;
-      margin-bottom: 28px;
-    }
-    .price-list {
-      display: grid;
-      gap: 16px;
-      max-width: 520px;
-      margin: 32px auto 0;
-      text-align: left;
-      color: var(--green);
-    }
-    .price-list li {
-      list-style: none;
-    }
-    .price-list li::before {
-      content: "✓";
-      color: var(--green);
-      margin-right: 14px;
-      font-size: 26px;
-    }
-    .cta-band {
-      background: var(--green);
-      color: #fff;
-      text-align: center;
-      padding: 34px 0;
-      font-size: clamp(22px, 4.5vw, 34px);
-      font-weight: 900;
-    }
-    .faq {
-      background:
-        linear-gradient(90deg, var(--green) 0 10%, var(--bg) 10% 90%, var(--green) 90% 100%);
-    }
-    .faq-box {
-      background: var(--white);
-      border: 2px solid var(--line);
-      padding: 58px 7%;
-    }
-    .faq-item {
-      margin-bottom: 34px;
-    }
-    .q {
-      background: #fff;
-      padding: 18px 24px;
-      color: var(--sub);
-    }
-    .a {
-      background: var(--green-soft);
-      padding: 24px;
-      color: var(--green);
-      margin-top: 10px;
-    }
-    footer {
-      background: var(--green-dark);
-      color: #fff;
-      text-align: center;
-      padding: 36px 0;
-      font-size: 13px;
-    }
-    .fixed-cta {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: var(--green);
-      color: #fff;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 900;
-      z-index: 50;
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
-    }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: .8s ease;
-    }
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-      section {
-        padding: 70px 0;
-      }
-      .hero-main {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .illust {
-        height: 130px;
-      }
-      .person {
-        transform: scale(.62);
-      }
-      .case-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .check-item {
-        grid-template-columns: 48px 1fr;
-        align-items: center;
-      }
-      .check {
-        width: 42px;
-        height: 42px;
-        font-size: 22px;
-      }
-      .network {
-        grid-template-columns: 1fr;
-      }
-      .compare-mini {
-        font-size: 12px;
-      }
-      .fixed-cta {
-        left: 16px;
-        right: 16px;
-        text-align: center;
-      }
-      body {
-        letter-spacing: .04em;
-        font-size: 14px;
-      }
-      .section-title { font-size: clamp(17px, 3.2vw, 27px); }
-      .hero h1       { font-size: clamp(22px, 4.9vw, 39px); }
-      .hero-logo     { font-size: clamp(20px, 4.2vw, 34px); }
-      .hero-copy     { font-size: clamp(12px, 2.7vw, 18px); }
-      .solve         { font-size: clamp(14px, 2.8vw, 21px); }
-      .service-card h3,
-      .case-card h3,
-      .plan-name     { font-size: clamp(15px, 2.8vw, 22px); }
-      .feature-card h3 { font-size: clamp(17px, 2.8vw, 24px); }
-      .price         { font-size: clamp(38px, 7.7vw, 60px); }
-      .per           { font-size: 15px; }
-      .cta-band      { font-size: clamp(15px, 3.2vw, 24px); }
-      .btn           { font-size: clamp(13px, 2.8vw, 18px); }
+      --g:#177245; --gd:#0F5A38; --gs:#EAF3EE;
+      --y:#D5D73B; --bg:#F6F8F5; --w:#fff;
+      --tx:#2d3748; --sub:#666; --ln:#CFE3D9;
+      --sk:#F2C7A7; --dk:#263238;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:"Noto Sans JP",sans-serif;background:var(--bg);color:var(--tx);line-height:1.9;font-weight:500;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1060px,90%);margin:0 auto}
+    section{padding:96px 0}
+    .lbl{font-size:11px;font-weight:700;letter-spacing:.45em;color:var(--g);text-transform:uppercase;margin-bottom:14px}
+    .ttl{font-size:clamp(24px,3.8vw,40px);font-weight:900;line-height:1.45;color:var(--dk);margin-bottom:18px}
+    .ttl em{color:var(--g);font-style:normal}
+    .lead{font-size:15.5px;color:var(--sub);line-height:2.05}
+    .bar{width:52px;height:4px;background:linear-gradient(90deg,var(--g) 60%,var(--y) 60%);border-radius:2px;margin-bottom:22px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 38px;border-radius:6px;font-weight:700;font-size:16px;transition:.2s}
+    .btn-g{background:var(--g);color:#fff}
+    .btn-g:hover{background:var(--gd);transform:translateY(-1px)}
+    .btn-o{border:2px solid var(--g);color:var(--g)}
+    .btn-o:hover{background:var(--g);color:#fff}
+    .fu{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+    .fu.on{opacity:1;transform:none}
+
+    /* HEADER */
+    .hd{position:fixed;inset:0 0 auto;z-index:100;background:#fff;border-bottom:1px solid var(--ln)}
+    .hd-in{display:flex;align-items:center;justify-content:space-between;height:64px;width:min(1060px,90%);margin:0 auto}
+    .logo{font-size:18px;font-weight:900;color:var(--g);line-height:1.3}
+    .logo small{font-size:11px;color:var(--sub);font-weight:500;display:block}
+    .hd-btn{padding:10px 22px;background:var(--g);color:#fff;font-size:13px;font-weight:700;border-radius:6px}
+    .hd-btn:hover{background:var(--gd)}
+
+    /* HERO */
+    .hero{padding-top:64px;background:var(--gs);overflow:hidden}
+    .hero-g{display:grid;grid-template-columns:220px 1fr 220px;gap:16px;align-items:flex-end}
+    .hero-fig{display:flex;justify-content:center;align-items:flex-end}
+    .hero-fig svg{width:100%;max-width:220px}
+    .hero-cnt{text-align:center;padding:56px 16px 52px}
+    .h-badge{display:inline-block;background:var(--g);color:#fff;font-size:12px;font-weight:700;padding:6px 20px;border-radius:999px;letter-spacing:.1em;margin-bottom:26px}
+    .hero h1{font-size:clamp(26px,4.2vw,50px);font-weight:900;line-height:1.45;color:var(--dk);margin-bottom:22px}
+    .hero h1 em{color:var(--g);font-style:normal}
+    .hero-sub{font-size:15px;color:var(--sub);line-height:2.1;margin-bottom:32px}
+    .hero-note{font-size:13px;color:var(--sub);margin-top:14px}
+    .hero-note b{color:var(--g)}
+
+    /* WORRY */
+    .worry{background:#fff}
+    .worry-card{background:#fff;border:1.5px solid var(--ln);border-radius:14px;padding:60px 8%;box-shadow:0 8px 40px rgba(23,114,69,.07)}
+    .ck-list{display:grid;gap:14px;margin:32px 0 42px}
+    .ck-item{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--bg);border-radius:8px;border-left:3px solid var(--g)}
+    .ck-txt{font-size:15.5px;font-weight:700}
+    .solve{text-align:center;background:var(--gs);border-radius:10px;padding:36px;font-size:clamp(20px,3.2vw,32px);font-weight:900;color:var(--g);line-height:1.7}
+
+    /* ABOUT */
+    .about{background:var(--bg)}
+    .about-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-vis{background:var(--gs);border-radius:14px;padding:36px;display:flex;align-items:center;justify-content:center}
+
+    /* FEATURES */
+    .feat{background:#fff}
+    .feat-g{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+    .fc{border:1.5px solid var(--ln);border-radius:14px;overflow:hidden;background:#fff;transition:box-shadow .2s,transform .2s}
+    .fc:hover{box-shadow:0 8px 32px rgba(23,114,69,.1);transform:translateY(-2px)}
+    .fc-vis{background:var(--gs);padding:32px;display:flex;align-items:center;justify-content:center;min-height:185px}
+    .fc-body{padding:28px 32px}
+    .fc-no{font-size:11px;font-weight:700;color:var(--g);letter-spacing:.3em;margin-bottom:8px}
+    .fc-body h3{font-size:clamp(16px,2.1vw,20px);font-weight:900;color:var(--dk);margin-bottom:10px}
+    .fc-body p{font-size:13.5px;color:var(--sub);line-height:2}
+
+    /* CASES */
+    .cases{background:var(--bg)}
+    .ca-g{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
+    .cc{background:#fff;border:1.5px solid var(--ln);border-radius:14px;overflow:hidden;transition:box-shadow .2s,transform .2s}
+    .cc:hover{box-shadow:0 8px 32px rgba(23,114,69,.1);transform:translateY(-2px)}
+    .cc-vis{background:var(--gs);padding:28px;display:flex;align-items:center;justify-content:center;min-height:165px}
+    .cc-body{padding:24px 28px}
+    .cc-no{font-size:11px;font-weight:700;color:var(--g);letter-spacing:.3em;margin-bottom:7px}
+    .cc-body h3{font-size:clamp(14px,1.9vw,18px);font-weight:900;color:var(--dk);margin-bottom:9px}
+    .cc-body p{font-size:13px;color:var(--sub);line-height:2}
+
+    /* PRICING */
+    .pricing{background:#fff}
+    .pr-note{text-align:center;font-size:13px;color:var(--sub);margin-top:-28px;margin-bottom:48px}
+    .pr-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+    .pc{border:1.5px solid var(--ln);border-radius:14px;overflow:hidden;background:#fff;position:relative}
+    .pc.star{border-color:var(--g);box-shadow:0 8px 40px rgba(23,114,69,.14)}
+    .pc-hd{padding:26px 26px 22px;background:var(--bg);border-bottom:1.5px solid var(--ln)}
+    .pc.star .pc-hd{background:var(--g)}
+    .pc.star .pc-hd *{color:#fff!important}
+    .pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--y);color:var(--dk);font-size:11px;font-weight:700;padding:4px 16px;border-radius:999px;white-space:nowrap}
+    .pc-tag{font-size:10.5px;font-weight:700;color:var(--g);letter-spacing:.2em;margin-bottom:7px}
+    .pc-name{font-size:18px;font-weight:900;color:var(--dk);margin-bottom:12px}
+    .pc-price{font-size:40px;font-weight:900;color:var(--g);line-height:1.1}
+    .pc-per{font-size:13px;color:var(--sub);margin-top:3px}
+    .pc-body{padding:24px 26px}
+    .pc-sub{font-size:13px;color:var(--sub);margin-bottom:14px}
+    .pl{list-style:none;display:grid;gap:10px}
+    .pl li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx)}
+    .pl li::before{content:"";width:20px;height:20px;min-width:20px;margin-top:1px;background:var(--gs) url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10l4 4 8-8' stroke='%23177245' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;border-radius:50%}
+    .pc-cta{display:block;margin-top:20px;padding:12px;text-align:center;border-radius:6px;font-weight:700;font-size:13.5px;transition:.2s}
+    .cta-o{border:2px solid var(--g);color:var(--g)}
+    .cta-o:hover{background:var(--g);color:#fff}
+    .cta-f{background:var(--g);color:#fff}
+    .cta-f:hover{background:var(--gd)}
+
+    /* BAND */
+    .band{background:var(--g);padding:24px 0;text-align:center;color:#fff;font-size:clamp(15px,2.6vw,22px);font-weight:900}
+    .band-tag{display:inline-block;background:var(--y);color:var(--dk);font-size:.78em;padding:2px 12px;border-radius:4px;margin-right:8px;vertical-align:middle}
+
+    /* FAQ */
+    .faq{background:var(--bg)}
+    .faq-l{max-width:820px;margin:44px auto 0;display:grid;gap:12px}
+    .fi{background:#fff;border:1.5px solid var(--ln);border-radius:12px;overflow:hidden}
+    .fq{padding:20px 26px;font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:14px}
+    .fq-i{width:28px;height:28px;min-width:28px;background:var(--g);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+    .fa{padding:16px 26px 20px 68px;font-size:13.5px;color:var(--sub);line-height:2;background:var(--gs);border-top:1.5px solid var(--ln)}
+
+    /* CTA */
+    .cta-sec{background:#fff}
+    .cta-box{background:var(--gs);border:1.5px solid var(--ln);border-radius:14px;padding:68px 10%;text-align:center}
+    .cta-ttl{font-size:clamp(20px,3.2vw,38px);font-weight:900;color:var(--g);line-height:1.5;margin-bottom:16px}
+    .cta-sub{font-size:15px;color:var(--sub);margin-bottom:34px}
+
+    /* FOOTER */
+    footer{background:var(--dk);color:rgba(255,255,255,.42);text-align:center;padding:34px 0;font-size:13px}
+    .f-logo{color:#fff;font-size:17px;font-weight:900;margin-bottom:8px}
+
+    /* FIXED CTA */
+    .fcta{position:fixed;bottom:20px;right:20px;background:var(--g);color:#fff;padding:13px 22px;border-radius:999px;font-weight:900;font-size:13.5px;z-index:90;box-shadow:0 8px 24px rgba(23,114,69,.3);transition:.2s}
+    .fcta:hover{background:var(--gd);transform:translateY(-2px)}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      section{padding:72px 0}
+      .hero-g{grid-template-columns:1fr}
+      .hero-fig-l{display:none}
+      .hero-fig-r{max-height:200px;overflow:hidden}
+      .hero-fig-r svg{max-height:200px}
+      .about-g,.feat-g,.ca-g{grid-template-columns:1fr}
+      .pr-g{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+      .hero-cnt{padding:48px 0 40px}
+      .fa{padding-left:26px}
+      .fcta{left:16px;right:16px;text-align:center;border-radius:8px;bottom:16px}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:clamp(24px,7vw,36px)}
+      .ttl{font-size:clamp(20px,6vw,30px)}
+      .solve{font-size:clamp(18px,5vw,26px)}
+      .ck-txt{font-size:14px}
+      .hero-sub{font-size:14px}
     }
   </style>
 </head>
 <body>
+
+<!-- HEADER -->
+<header class="hd">
+  <div class="hd-in">
+    <div class="logo">マネーサポート室<small>お金の相談をもっと身近に</small></div>
+    <a href="#contact" class="hd-btn">無料相談はこちら</a>
+  </div>
+</header>
+
+
+<!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-border"></div>
-    <div class="hero-main fade-up">
-      <div class="illust">
-        <div class="person man"></div>
-      </div>
-      <h1>資産形成、<br>身近に頼る相手<br>いますか？</h1>
-      <div class="illust">
-        <div class="person"></div>
+  <div class="wrap hero-g">
+
+    <!-- Left: worried businessman -->
+    <div class="hero-fig hero-fig-l">
+      <svg viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="110" cy="317" rx="66" ry="7" fill="#b8d0c4" opacity=".5"/>
+        <!-- Body / dark suit -->
+        <path d="M36 188 Q36 162 62 152 L110 158 L158 152 Q184 162 184 188 L188 320 H32 Z" fill="#263238"/>
+        <!-- Lapels -->
+        <path d="M110 158 Q97 167 78 174 L74 193 L110 172 Z" fill="#1c2b33"/>
+        <path d="M110 158 Q123 167 142 174 L146 193 L110 172 Z" fill="#1c2b33"/>
+        <!-- White shirt -->
+        <rect x="103" y="158" width="14" height="162" fill="#f8f9fa"/>
+        <!-- Green tie -->
+        <path d="M107 162 L110 170 L113 162 L111 228 L110 234 L109 228 Z" fill="#177245"/>
+        <!-- Collar -->
+        <path d="M103 161 Q107 169 110 161 Q113 169 117 161" stroke="#e0e0e0" stroke-width="1.5" fill="none"/>
+        <!-- Left arm (holding doc) -->
+        <path d="M62 163 Q44 175 38 206 Q32 233 35 268" stroke="#263238" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <path d="M62 163 Q44 175 38 206 Q32 233 35 268" stroke="#2c3d47" stroke-width="21" fill="none" stroke-linecap="round"/>
+        <!-- Left hand -->
+        <ellipse cx="36" cy="270" rx="17" ry="14" fill="#F2C7A7"/>
+        <!-- Document -->
+        <rect x="2" y="256" width="56" height="70" rx="5" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+        <rect x="2" y="256" width="56" height="11" rx="4" fill="#EAF3EE"/>
+        <line x1="9" y1="277" x2="51" y2="277" stroke="#CFE3D9" stroke-width="1.4"/>
+        <line x1="9" y1="285" x2="51" y2="285" stroke="#CFE3D9" stroke-width="1.4"/>
+        <line x1="9" y1="293" x2="38" y2="293" stroke="#CFE3D9" stroke-width="1.4"/>
+        <rect x="10" y="300" width="7" height="16" fill="#177245" rx="2"/>
+        <rect x="19" y="306" width="7" height="10" fill="#D5D73B" rx="2"/>
+        <rect x="28" y="302" width="7" height="14" fill="#177245" rx="2" opacity=".5"/>
+        <rect x="37" y="304" width="7" height="12" fill="#EAF3EE" rx="2" stroke="#CFE3D9" stroke-width="1"/>
+        <!-- Right arm (hand near chin) -->
+        <path d="M158 163 Q177 175 183 206 Q189 228 185 248" stroke="#263238" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <path d="M158 163 Q177 175 183 206 Q189 228 185 248" stroke="#2c3d47" stroke-width="21" fill="none" stroke-linecap="round"/>
+        <!-- Right hand at chin -->
+        <ellipse cx="183" cy="250" rx="20" ry="16" fill="#F2C7A7"/>
+        <path d="M171 246 Q177 236 187 240" stroke="#e0b090" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M171 252 Q178 242 189 247" stroke="#e0b090" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M171 258 Q179 250 188 254" stroke="#e0b090" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <!-- Neck -->
+        <rect x="101" y="136" width="18" height="24" rx="4" fill="#F2C7A7"/>
+        <!-- Head -->
+        <ellipse cx="110" cy="82" rx="50" ry="57" fill="#F2C7A7"/>
+        <!-- Hair -->
+        <path d="M60 74 C60 28 78 16 110 14 C142 16 160 28 160 74 L160 62 C160 16 142 4 110 4 C78 4 60 16 60 62 Z" fill="#263238"/>
+        <rect x="56" y="60" width="9" height="30" rx="4.5" fill="#263238"/>
+        <rect x="155" y="60" width="9" height="30" rx="4.5" fill="#263238"/>
+        <!-- Ears -->
+        <ellipse cx="60" cy="86" rx="9" ry="13" fill="#F2C7A7"/>
+        <ellipse cx="160" cy="86" rx="9" ry="13" fill="#F2C7A7"/>
+        <ellipse cx="61" cy="86" rx="6" ry="9" fill="#e8b898"/>
+        <ellipse cx="159" cy="86" rx="6" ry="9" fill="#e8b898"/>
+        <!-- Eyes -->
+        <ellipse cx="92" cy="83" rx="10" ry="10.5" fill="#fff"/>
+        <ellipse cx="128" cy="83" rx="10" ry="10.5" fill="#fff"/>
+        <ellipse cx="93" cy="84" rx="7" ry="7.5" fill="#5d4037"/>
+        <ellipse cx="129" cy="84" rx="7" ry="7.5" fill="#5d4037"/>
+        <ellipse cx="93" cy="84" rx="4" ry="4.5" fill="#1a1a2e"/>
+        <ellipse cx="129" cy="84" rx="4" ry="4.5" fill="#1a1a2e"/>
+        <ellipse cx="95" cy="81" rx="2.5" ry="2.5" fill="#fff"/>
+        <ellipse cx="131" cy="81" rx="2.5" ry="2.5" fill="#fff"/>
+        <!-- Eyebrows (worried) -->
+        <path d="M80 66 Q92 61 104 66" stroke="#263238" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M116 66 Q128 61 140 66" stroke="#263238" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M104 66 Q110 62 116 66" stroke="#263238" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Nose -->
+        <path d="M105 98 Q110 106 115 98" stroke="#d4a090" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Mouth (slight concern) -->
+        <path d="M96 115 Q110 111 124 115" stroke="#c09080" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Suit buttons -->
+        <circle cx="110" cy="240" r="3" fill="#3d4f5c"/>
+        <circle cx="110" cy="258" r="3" fill="#3d4f5c"/>
+      </svg>
+    </div>
+
+    <!-- Center content -->
+    <div class="hero-cnt">
+      <div class="h-badge">初回相談 完全無料</div>
+      <h1>資産形成、<br><em>身近に頼れる相手</em><br>いますか？</h1>
+      <p class="hero-sub">NISA・保険・老後資金・住宅ローン。<br>専属FPがあなたの「お金の整理」を<br>一緒にします。</p>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <a href="#contact" class="btn btn-g">無料で相談してみる →</a>
+        <p class="hero-note"><b>最短即日</b>から相談可能</p>
       </div>
     </div>
-    <div class="hero-logo fade-up">
-      マネー<br><span>サポート室</span>
+
+    <!-- Right: FP woman -->
+    <div class="hero-fig hero-fig-r">
+      <svg viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="110" cy="317" rx="66" ry="7" fill="#b8d0c4" opacity=".5"/>
+        <!-- Body / green jacket -->
+        <path d="M36 188 Q36 162 62 152 L110 158 L158 152 Q184 162 184 188 L188 320 H32 Z" fill="#177245"/>
+        <!-- Lapels -->
+        <path d="M110 158 Q96 167 76 174 L72 196 L110 173 Z" fill="#0d5e38"/>
+        <path d="M110 158 Q124 167 144 174 L148 196 L110 173 Z" fill="#0d5e38"/>
+        <!-- White blouse center -->
+        <rect x="99" y="158" width="22" height="162" fill="#f8f9fa"/>
+        <!-- Blouse collar -->
+        <path d="M99 162 Q105 170 110 158 Q115 170 121 162" stroke="#e8e8e8" stroke-width="1.5" fill="none"/>
+        <!-- Right arm holding clipboard -->
+        <path d="M158 163 Q178 173 187 202 Q194 224 190 248" stroke="#177245" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <path d="M158 163 Q178 173 187 202 Q194 224 190 248" stroke="#1a8050" stroke-width="21" fill="none" stroke-linecap="round"/>
+        <!-- Right hand -->
+        <ellipse cx="188" cy="250" rx="17" ry="14" fill="#F2C7A7"/>
+        <!-- Clipboard -->
+        <rect x="150" y="154" width="54" height="70" rx="5" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+        <rect x="150" y="154" width="54" height="11" rx="4" fill="#EAF3EE"/>
+        <rect x="164" y="148" width="26" height="12" rx="3" fill="#CFE3D9"/>
+        <rect x="168" y="146" width="18" height="8" rx="2" fill="#b8d4c4"/>
+        <line x1="158" y1="175" x2="196" y2="175" stroke="#CFE3D9" stroke-width="1.4"/>
+        <line x1="158" y1="183" x2="196" y2="183" stroke="#CFE3D9" stroke-width="1.4"/>
+        <line x1="158" y1="191" x2="180" y2="191" stroke="#CFE3D9" stroke-width="1.4"/>
+        <!-- Pie chart on clipboard -->
+        <circle cx="176" cy="208" r="13" fill="#EAF3EE" stroke="#CFE3D9" stroke-width="1"/>
+        <path d="M176 208 L176 195 A13 13 0 0 1 189 208 Z" fill="#177245"/>
+        <path d="M176 208 L189 208 A13 13 0 0 1 169 219 Z" fill="#D5D73B"/>
+        <!-- Left arm -->
+        <path d="M62 163 Q42 175 36 203 Q30 229 33 260" stroke="#177245" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <path d="M62 163 Q42 175 36 203 Q30 229 33 260" stroke="#1a8050" stroke-width="21" fill="none" stroke-linecap="round"/>
+        <!-- Left hand -->
+        <ellipse cx="34" cy="262" rx="17" ry="14" fill="#F2C7A7"/>
+        <!-- Neck -->
+        <rect x="101" y="136" width="18" height="24" rx="4" fill="#F2C7A7"/>
+        <!-- Head -->
+        <ellipse cx="110" cy="82" rx="50" ry="57" fill="#F2C7A7"/>
+        <!-- Hair (brown, longer) -->
+        <path d="M60 80 C58 36 78 14 110 12 C142 14 162 36 160 80 L162 106 Q154 136 126 146 Q110 149 94 146 Q66 136 58 106 Z" fill="#5d4037"/>
+        <path d="M60 74 C60 28 78 16 110 14 C142 16 160 28 160 74 L160 58 C160 12 142 2 110 2 C78 2 60 12 60 58 Z" fill="#5d4037"/>
+        <ellipse cx="60" cy="100" rx="11" ry="26" fill="#5d4037"/>
+        <ellipse cx="160" cy="100" rx="11" ry="26" fill="#5d4037"/>
+        <!-- Face over hair -->
+        <ellipse cx="110" cy="82" rx="46" ry="53" fill="#F2C7A7"/>
+        <!-- Ears -->
+        <ellipse cx="64" cy="86" rx="8" ry="12" fill="#F2C7A7"/>
+        <ellipse cx="156" cy="86" rx="8" ry="12" fill="#F2C7A7"/>
+        <!-- Eyes -->
+        <ellipse cx="92" cy="82" rx="10" ry="10.5" fill="#fff"/>
+        <ellipse cx="128" cy="82" rx="10" ry="10.5" fill="#fff"/>
+        <ellipse cx="93" cy="83" rx="7" ry="7.5" fill="#5d4037"/>
+        <ellipse cx="129" cy="83" rx="7" ry="7.5" fill="#5d4037"/>
+        <ellipse cx="93" cy="83" rx="4" ry="4.5" fill="#1a1a2e"/>
+        <ellipse cx="129" cy="83" rx="4" ry="4.5" fill="#1a1a2e"/>
+        <ellipse cx="95" cy="80" rx="2.5" ry="2.5" fill="#fff"/>
+        <ellipse cx="131" cy="80" rx="2.5" ry="2.5" fill="#fff"/>
+        <!-- Lashes -->
+        <path d="M84 73 L86 70" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M92 71 L92 68" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M100 73 L102 70" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M120 73 L118 70" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M128 71 L128 68" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M136 73 L138 70" stroke="#5d4037" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Eyebrows -->
+        <path d="M80 65 Q92 60 104 64" stroke="#5d4037" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M116 64 Q128 60 140 65" stroke="#5d4037" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Nose -->
+        <path d="M105 97 Q110 105 115 97" stroke="#d4a090" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Smile -->
+        <path d="M96 112 Q110 122 124 112" stroke="#c08070" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Cheeks -->
+        <ellipse cx="88" cy="112" rx="9" ry="5.5" fill="#f5b8a0" opacity=".35"/>
+        <ellipse cx="132" cy="112" rx="9" ry="5.5" fill="#f5b8a0" opacity=".35"/>
+      </svg>
     </div>
-    <p class="hero-copy fade-up">
-      を使えば、<br>
-      簡単に頼れるお金のパートナーを<br>
-      手に入れることができます。<br>
-      <span class="marker">最短即日から相談可能!!</span>
-    </p>
   </div>
 </section>
-<section>
-  <div class="container">
-    <div class="worry-card">
-      <h2 class="section-title fade-up">こんなことに当てはまりませんか？</h2>
-      <div class="check-list">
-        <div class="check-item fade-up" style="transition-delay:.05s"><div class="check">✓</div><p>老後資金がどれくらい必要かわからない。</p></div>
-        <div class="check-item fade-up" style="transition-delay:.15s"><div class="check">✓</div><p>NISAやiDeCoを始めたいが、何から進めれば良いかわからない。</p></div>
-        <div class="check-item fade-up" style="transition-delay:.25s"><div class="check">✓</div><p>保険の見直しをしたいが、今の保障が適正かわからない。</p></div>
-        <div class="check-item fade-up" style="transition-delay:.35s"><div class="check">✓</div><p>住宅ローンや教育費、相続など将来のお金に不安がある。</p></div>
-        <div class="check-item fade-up" style="transition-delay:.45s"><div class="check">✓</div><p>銀行や保険会社以外に、中立的に相談できる相手がほしい。</p></div>
+
+
+<!-- WORRY SECTION -->
+<section class="worry">
+  <div class="wrap">
+    <div class="worry-card fu">
+      <div class="bar"></div>
+      <h2 class="ttl">こんなことに<em>当てはまりません</em>か？</h2>
+      <div class="ck-list">
+        <div class="ck-item fu" style="transition-delay:.05s">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="ck-icon"><circle cx="18" cy="18" r="18" fill="#177245"/><path d="M10 18 L16 24 L26 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ck-txt">老後資金がどれくらい必要かわからない。</span>
+        </div>
+        <div class="ck-item fu" style="transition-delay:.13s">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="ck-icon"><circle cx="18" cy="18" r="18" fill="#177245"/><path d="M10 18 L16 24 L26 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ck-txt">NISAやiDeCoを始めたいが、何から進めれば良いかわからない。</span>
+        </div>
+        <div class="ck-item fu" style="transition-delay:.21s">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="ck-icon"><circle cx="18" cy="18" r="18" fill="#177245"/><path d="M10 18 L16 24 L26 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ck-txt">保険の見直しをしたいが、今の保障が適正かわからない。</span>
+        </div>
+        <div class="ck-item fu" style="transition-delay:.29s">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="ck-icon"><circle cx="18" cy="18" r="18" fill="#177245"/><path d="M10 18 L16 24 L26 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ck-txt">住宅ローンや教育費、相続など将来のお金に不安がある。</span>
+        </div>
+        <div class="ck-item fu" style="transition-delay:.37s">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="ck-icon"><circle cx="18" cy="18" r="18" fill="#177245"/><path d="M10 18 L16 24 L26 12" stroke="white" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ck-txt">銀行や保険会社以外に、中立的に相談できる相手がほしい。</span>
+        </div>
       </div>
-      <div class="solve fade-up" style="transition-delay:.1s">
-        全て<br>
-        マネーサポート室が<br>
-        解決します。
-      </div>
+      <div class="solve fu" style="transition-delay:.1s">全て<br>マネーサポート室が<br>解決します。</div>
     </div>
   </div>
 </section>
+
+
+<!-- ABOUT -->
 <section class="about">
-  <div class="container fade-up">
-    <h2 class="section-title">マネーサポート室とは...</h2>
-    <p>
-      資産形成・保険・住宅ローン・相続に精通した専門家が、<br>
-      あなた専属の相談パートナーとして継続的にサポートするサービスです。<br>
-      金融商品を売るのではなく、人生設計に合った選択肢を整理します。
-    </p>
-    <div class="service-card">
-      <div class="service-icon">¥</div>
-      <h3>お金の悩みを、いつでも相談できる環境へ。</h3>
-      <p>
-        大きな準備や難しい知識は必要ありません。<br>
-        まずは現在の状況を整理し、無理なく始められる改善策をご提案します。
-      </p>
+  <div class="wrap about-g">
+    <div class="fu">
+      <p class="lbl">About</p>
+      <div class="bar"></div>
+      <h2 class="ttl">マネーサポート室とは</h2>
+      <p class="lead">資産形成・保険・住宅ローン・相続に精通した専門家が、あなた専属の相談パートナーとして継続的にサポートするサービスです。<br><br>金融商品を売るのではなく、人生設計に合った選択肢を整理します。まずは現状を把握し、無理なく始められる改善策をご提案します。</p>
+    </div>
+    <div class="about-vis fu" style="transition-delay:.15s">
+      <!-- Consultation scene SVG -->
+      <svg viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px">
+        <!-- Desk -->
+        <rect x="50" y="178" width="300" height="10" rx="4" fill="#d4c4b0"/>
+        <rect x="60" y="188" width="8" height="60" rx="3" fill="#c0ae98"/>
+        <rect x="332" y="188" width="8" height="60" rx="3" fill="#c0ae98"/>
+        <!-- Monitor -->
+        <rect x="154" y="104" width="92" height="76" rx="6" fill="#263238"/>
+        <rect x="160" y="110" width="80" height="58" rx="3" fill="#1a3328"/>
+        <!-- Screen bars -->
+        <rect x="168" y="133" width="10" height="27" fill="#177245" rx="2"/>
+        <rect x="181" y="124" width="10" height="36" fill="#D5D73B" rx="2"/>
+        <rect x="194" y="118" width="10" height="42" fill="#177245" rx="2" opacity=".7"/>
+        <rect x="207" y="126" width="10" height="34" fill="#EAF3EE" rx="2"/>
+        <rect x="220" y="121" width="10" height="39" fill="#D5D73B" rx="2" opacity=".6"/>
+        <!-- Screen stand -->
+        <rect x="192" y="180" width="16" height="7" fill="#263238"/>
+        <rect x="184" y="185" width="32" height="5" rx="2" fill="#263238"/>
+        <!-- Papers on desk -->
+        <rect x="72" y="162" width="54" height="38" rx="3" fill="#fff" stroke="#CFE3D9" stroke-width="1.2"/>
+        <line x1="79" y1="172" x2="119" y2="172" stroke="#CFE3D9" stroke-width="1.2"/>
+        <line x1="79" y1="179" x2="119" y2="179" stroke="#CFE3D9" stroke-width="1.2"/>
+        <line x1="79" y1="186" x2="105" y2="186" stroke="#CFE3D9" stroke-width="1.2"/>
+
+        <!-- Left person (client) body -->
+        <rect x="64" y="136" width="58" height="46" rx="8" fill="#37474f"/>
+        <rect x="87" y="136" width="12" height="46" fill="#f8f9fa"/>
+        <!-- Left person head -->
+        <ellipse cx="93" cy="112" rx="27" ry="30" fill="#F2C7A7"/>
+        <!-- Hair -->
+        <path d="M66 106 C66 80 76 70 93 68 C110 70 120 80 120 106 L120 96 C120 66 110 58 93 58 C76 58 66 66 66 96 Z" fill="#263238"/>
+        <rect x="63" y="94" width="7" height="22" rx="3.5" fill="#263238"/>
+        <rect x="117" y="94" width="7" height="22" rx="3.5" fill="#263238"/>
+        <!-- Eyes -->
+        <ellipse cx="84" cy="112" rx="6" ry="6.5" fill="#fff"/>
+        <ellipse cx="102" cy="112" rx="6" ry="6.5" fill="#fff"/>
+        <ellipse cx="85" cy="113" rx="4" ry="4.5" fill="#263238"/>
+        <ellipse cx="103" cy="113" rx="4" ry="4.5" fill="#263238"/>
+        <ellipse cx="86" cy="111" rx="1.8" ry="1.8" fill="#fff"/>
+        <ellipse cx="104" cy="111" rx="1.8" ry="1.8" fill="#fff"/>
+        <!-- Worried brows -->
+        <path d="M76 103 Q84 99 92 102" stroke="#263238" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M94 102 Q102 99 110 103" stroke="#263238" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <!-- Mouth -->
+        <path d="M84 122 Q93 118 102 122" stroke="#c09080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Speech bubble left -->
+        <rect x="26" y="60" width="56" height="36" rx="7" fill="#fff" stroke="#CFE3D9" stroke-width="1.4"/>
+        <path d="M64 96 L60 104 L70 97" fill="#fff" stroke="#CFE3D9" stroke-width="1.4"/>
+        <rect x="32" y="67" width="44" height="6" rx="3" fill="#EAF3EE"/>
+        <rect x="32" y="77" width="36" height="6" rx="3" fill="#EAF3EE"/>
+        <rect x="32" y="87" width="28" height="6" rx="3" fill="#EAF3EE"/>
+
+        <!-- Right person (FP) body -->
+        <rect x="278" y="136" width="58" height="46" rx="8" fill="#177245"/>
+        <rect x="299" y="136" width="14" height="46" fill="#f8f9fa"/>
+        <!-- Right person head -->
+        <ellipse cx="307" cy="112" rx="27" ry="30" fill="#F2C7A7"/>
+        <!-- Brown hair -->
+        <path d="M280 108 C280 76 290 62 307 60 C324 62 334 76 334 108 L334 118 Q327 132 307 135 Q287 132 280 118 Z" fill="#5d4037"/>
+        <path d="M280 102 C280 72 290 58 307 56 C324 58 334 72 334 102 L334 90 C334 56 324 48 307 48 C290 48 280 56 280 90 Z" fill="#5d4037"/>
+        <!-- Face over hair -->
+        <ellipse cx="307" cy="112" rx="24" ry="28" fill="#F2C7A7"/>
+        <!-- Eyes -->
+        <ellipse cx="298" cy="112" rx="6" ry="6.5" fill="#fff"/>
+        <ellipse cx="316" cy="112" rx="6" ry="6.5" fill="#fff"/>
+        <ellipse cx="299" cy="113" rx="4" ry="4.5" fill="#263238"/>
+        <ellipse cx="317" cy="113" rx="4" ry="4.5" fill="#263238"/>
+        <ellipse cx="300" cy="111" rx="1.8" ry="1.8" fill="#fff"/>
+        <ellipse cx="318" cy="111" rx="1.8" ry="1.8" fill="#fff"/>
+        <!-- Brows -->
+        <path d="M291 103 Q299 99 307 102" stroke="#5d4037" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M308 102 Q316 99 323 103" stroke="#5d4037" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Smile -->
+        <path d="M298 121 Q307 129 316 121" stroke="#c08070" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="292" cy="119" rx="7" ry="4.5" fill="#f5b8a0" opacity=".3"/>
+        <ellipse cx="322" cy="119" rx="7" ry="4.5" fill="#f5b8a0" opacity=".3"/>
+        <!-- Speech bubble right -->
+        <rect x="322" y="52" width="66" height="36" rx="7" fill="#EAF3EE" stroke="#177245" stroke-width="1.4"/>
+        <path d="M332 88 L336 96 L346 89" fill="#EAF3EE" stroke="#177245" stroke-width="1.4"/>
+        <rect x="328" y="59" width="54" height="6" rx="3" fill="#177245" opacity=".3"/>
+        <rect x="328" y="69" width="46" height="6" rx="3" fill="#177245" opacity=".3"/>
+        <rect x="328" y="79" width="38" height="6" rx="3" fill="#177245" opacity=".3"/>
+        <!-- Decorative -->
+        <circle cx="370" cy="30" r="18" fill="#EAF3EE" opacity=".7"/>
+        <circle cx="30" cy="232" r="12" fill="#EAF3EE" opacity=".7"/>
+      </svg>
     </div>
   </div>
 </section>
-<section class="features">
-  <div class="container">
-    <h2 class="section-title fade-up">
-      導入メリット・特徴<br>
-      「小さく」「早く」「柔軟に」に特化したサービスです。
-    </h2>
-    <div class="feature-card fade-up">
-      <div class="feature-body">
-        <h3>1. すぐ聞ける、すぐ頼める。</h3>
-        <p>
-          面倒な打ち合わせや日程調整は最小限。<br>
-          LINEやオンラインで気軽に相談できます。<br>
-          サービス申し込みから最短即日で相談可能です。
-        </p>
-      </div>
-      <div class="feature-visual">
-        <div class="chat">
-          <div class="bubble left">NISAについて少し聞きたいです。</div>
-          <div class="bubble right">はい、現在の状況から一緒に整理しましょう。</div>
-        </div>
-      </div>
+
+
+<!-- FEATURES -->
+<section class="feat">
+  <div class="wrap">
+    <div class="fu">
+      <p class="lbl">Features</p>
+      <div class="bar"></div>
+      <h2 class="ttl">選ばれる<em>4つの理由</em></h2>
     </div>
-    <div class="feature-card fade-up">
-      <div class="feature-body">
-        <h3>2. スモールスタートできる。</h3>
-        <p>
-          大きな資金や複雑な契約は不要。<br>
-          まず目の前にある小さな不安から整理し、必要に応じて段階的にサポートを広げられます。
-        </p>
-      </div>
-      <div class="feature-visual">
-        <div class="compare-mini">
-          <div>銀行<br>手続き多め</div>
-          <div>保険営業<br>商品中心</div>
-          <div>当サービス<br>相談中心</div>
+    <div class="feat-g">
+
+      <!-- Feature 1: Chat -->
+      <div class="fc fu">
+        <div class="fc-vis">
+          <svg viewBox="0 0 260 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px">
+            <!-- Phone outline -->
+            <rect x="85" y="10" width="90" height="150" rx="14" fill="#fff" stroke="#CFE3D9" stroke-width="2"/>
+            <rect x="91" y="22" width="78" height="124" rx="6" fill="#F6F8F5"/>
+            <rect x="107" y="14" width="46" height="6" rx="3" fill="#CFE3D9"/>
+            <circle cx="130" cy="154" r="5" fill="#CFE3D9"/>
+            <!-- Chat bubbles -->
+            <rect x="96" y="32" width="56" height="24" rx="10" fill="#EAF3EE"/>
+            <path d="M98 56 L96 62 L106 57" fill="#EAF3EE"/>
+            <rect x="100" y="38" width="44" height="6" rx="3" fill="#CFE3D9"/>
+            <rect x="100" y="46" width="34" height="6" rx="3" fill="#CFE3D9"/>
+            <rect x="108" y="68" width="56" height="24" rx="10" fill="#177245"/>
+            <path d="M162 68 L164 62 L154 66" fill="#177245"/>
+            <rect x="114" y="74" width="44" height="6" rx="3" fill="#fff" opacity=".6"/>
+            <rect x="114" y="82" width="30" height="6" rx="3" fill="#fff" opacity=".6"/>
+            <rect x="96" y="104" width="48" height="24" rx="10" fill="#EAF3EE"/>
+            <path d="M98 128 L96 134 L106 129" fill="#EAF3EE"/>
+            <rect x="102" y="110" width="36" height="6" rx="3" fill="#CFE3D9"/>
+            <rect x="102" y="118" width="28" height="6" rx="3" fill="#CFE3D9"/>
+            <!-- Status bar -->
+            <rect x="96" y="26" width="20" height="3" rx="1.5" fill="#177245" opacity=".4"/>
+            <rect x="148" y="26" width="16" height="3" rx="1.5" fill="#CFE3D9"/>
+          </svg>
+        </div>
+        <div class="fc-body">
+          <p class="fc-no">FEATURE 01</p>
+          <h3>すぐ聞ける、すぐ頼める。</h3>
+          <p>面倒な打ち合わせや日程調整は最小限。LINEやオンラインで気軽に相談できます。サービス申し込みから最短即日で相談可能です。</p>
         </div>
       </div>
-    </div>
-    <div class="feature-card fade-up">
-      <div class="feature-body">
-        <h3>3. 専門家ネットワークと連携。</h3>
-        <p>
-          FP・税理士・社労士・弁護士など、課題に応じた専門家と連携。<br>
-          資産形成だけでなく、相続や事業のお金の悩みにも対応できます。
-        </p>
-      </div>
-      <div class="feature-visual">
-        <div class="network">
-          <div class="network-box">FP</div>
-          <div class="network-box">税理士</div>
-          <div class="network-box">社労士</div>
-          <div class="network-box">弁護士</div>
+
+      <!-- Feature 2: Steps -->
+      <div class="fc fu" style="transition-delay:.1s">
+        <div class="fc-vis">
+          <svg viewBox="0 0 260 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px">
+            <!-- Staircase -->
+            <rect x="30" y="130" width="80" height="30" rx="4" fill="#EAF3EE" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="80" y="100" width="80" height="60" rx="4" fill="#177245" opacity=".25" stroke="#177245" stroke-width="1.5"/>
+            <rect x="130" y="70" width="80" height="90" rx="4" fill="#177245" opacity=".6" stroke="#177245" stroke-width="1.5"/>
+            <!-- Step labels -->
+            <circle cx="70" cy="115" r="12" fill="#EAF3EE" stroke="#CFE3D9" stroke-width="1.5"/>
+            <circle cx="120" cy="85" r="12" fill="#177245" opacity=".4" stroke="#177245" stroke-width="1.5"/>
+            <circle cx="170" cy="55" r="12" fill="#177245" stroke="#177245" stroke-width="1.5"/>
+            <!-- Number marks -->
+            <rect x="64" y="112" width="12" height="6" rx="3" fill="#CFE3D9"/>
+            <rect x="114" y="82" width="12" height="6" rx="3" fill="#fff"/>
+            <rect x="164" y="52" width="12" height="6" rx="3" fill="#fff"/>
+            <!-- Person on stairs (simple flat figure) -->
+            <circle cx="160" cy="34" r="10" fill="#F2C7A7"/>
+            <path d="M152 30 C152 22 156 20 160 20 C164 20 168 22 168 30" fill="#263238"/>
+            <rect x="154" y="44" width="12" height="22" rx="4" fill="#177245"/>
+            <!-- Coin -->
+            <circle cx="56" cy="118" r="8" fill="#D5D73B" stroke="#c8c820" stroke-width="1"/>
+            <circle cx="56" cy="118" r="5" fill="#e8e840" opacity=".5"/>
+            <!-- Arrow up -->
+            <path d="M220 90 L220 50 M220 50 L212 60 M220 50 L228 60" stroke="#177245" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="fc-body">
+          <p class="fc-no">FEATURE 02</p>
+          <h3>スモールスタートできる。</h3>
+          <p>大きな資金や複雑な契約は不要。まず目の前にある小さな不安から整理し、必要に応じて段階的にサポートを広げられます。</p>
         </div>
       </div>
-    </div>
-    <div class="feature-card fade-up">
-      <div class="feature-body">
-        <h3>4. 情報収集もサポート。</h3>
-        <p>
-          NISA・iDeCo・税制改正・保険制度など、知るべき情報をわかりやすく整理。<br>
-          自分で調べ続ける負担を減らします。
-        </p>
-      </div>
-      <div class="feature-visual">
-        <div class="chat">
-          <div class="bubble left">制度改正で何が変わるの？</div>
-          <div class="bubble right">あなたに関係する部分だけ整理してお伝えします。</div>
+
+      <!-- Feature 3: Network -->
+      <div class="fc fu">
+        <div class="fc-vis">
+          <svg viewBox="0 0 260 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px">
+            <!-- Center circle -->
+            <circle cx="130" cy="85" r="28" fill="#177245"/>
+            <!-- Person in center -->
+            <circle cx="130" cy="76" r="11" fill="#F2C7A7"/>
+            <path d="M118 76 C118 64 122 60 130 60 C138 60 142 64 142 76" fill="#fff"/>
+            <path d="M106 104 Q106 88 130 86 Q154 88 154 104" fill="#fff"/>
+            <!-- Lines to cards -->
+            <line x1="102" y1="85" x2="68" y2="50" stroke="#CFE3D9" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="102" y1="85" x2="68" y2="120" stroke="#CFE3D9" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="158" y1="85" x2="192" y2="50" stroke="#CFE3D9" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="158" y1="85" x2="192" y2="120" stroke="#CFE3D9" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <!-- Expert cards -->
+            <rect x="22" y="28" width="46" height="26" rx="6" fill="#fff" stroke="#177245" stroke-width="1.5"/>
+            <rect x="27" y="33" width="36" height="5" rx="2.5" fill="#177245" opacity=".3"/>
+            <rect x="27" y="41" width="28" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="22" y="112" width="46" height="26" rx="6" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="27" y="117" width="36" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="27" y="125" width="28" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="192" y="28" width="46" height="26" rx="6" fill="#fff" stroke="#177245" stroke-width="1.5"/>
+            <rect x="197" y="33" width="36" height="5" rx="2.5" fill="#177245" opacity=".3"/>
+            <rect x="197" y="41" width="28" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="192" y="112" width="46" height="26" rx="6" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="197" y="117" width="36" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="197" y="125" width="28" height="5" rx="2.5" fill="#CFE3D9"/>
+            <!-- Labels (colored rects as label indicators) -->
+            <rect x="26" y="31" width="5" height="5" rx="1" fill="#177245"/>
+            <rect x="26" y="115" width="5" height="5" rx="1" fill="#D5D73B"/>
+            <rect x="196" y="31" width="5" height="5" rx="1" fill="#177245"/>
+            <rect x="196" y="115" width="5" height="5" rx="1" fill="#177245" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="fc-body">
+          <p class="fc-no">FEATURE 03</p>
+          <h3>専門家ネットワークと連携。</h3>
+          <p>FP・税理士・社労士・弁護士など、課題に応じた専門家と連携。資産形成だけでなく、相続や事業のお金の悩みにも対応できます。</p>
         </div>
       </div>
+
+      <!-- Feature 4: Research -->
+      <div class="fc fu" style="transition-delay:.1s">
+        <div class="fc-vis">
+          <svg viewBox="0 0 260 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px">
+            <!-- Person seated -->
+            <circle cx="78" cy="80" r="20" fill="#F2C7A7"/>
+            <path d="M62 76 C62 56 68 52 78 52 C88 52 94 56 94 76" fill="#263238"/>
+            <rect x="56" y="100" width="44" height="32" rx="8" fill="#177245"/>
+            <rect x="68" y="100" width="20" height="32" fill="#1a8050"/>
+            <!-- Desk -->
+            <rect x="44" y="130" width="80" height="8" rx="3" fill="#d4c4b0"/>
+            <!-- Info cards floating -->
+            <rect x="120" y="28" width="66" height="34" rx="7" fill="#fff" stroke="#177245" stroke-width="1.5"/>
+            <rect x="127" y="34" width="22" height="5" rx="2.5" fill="#177245" opacity=".5"/>
+            <rect x="127" y="42" width="52" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="127" y="50" width="40" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="140" y="80" width="66" height="34" rx="7" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="147" y="86" width="22" height="5" rx="2.5" fill="#D5D73B"/>
+            <rect x="147" y="94" width="52" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="147" y="102" width="40" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="118" y="128" width="66" height="34" rx="7" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="125" y="134" width="22" height="5" rx="2.5" fill="#177245" opacity=".4"/>
+            <rect x="125" y="142" width="52" height="5" rx="2.5" fill="#CFE3D9"/>
+            <rect x="125" y="150" width="36" height="5" rx="2.5" fill="#CFE3D9"/>
+            <!-- Magnifying glass -->
+            <circle cx="108" cy="108" r="14" fill="none" stroke="#177245" stroke-width="3"/>
+            <line x1="118" y1="118" x2="128" y2="128" stroke="#177245" stroke-width="3" stroke-linecap="round"/>
+            <!-- Connecting lines -->
+            <line x1="100" y1="75" x2="120" y2="50" stroke="#EAF3EE" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <line x1="105" y1="85" x2="140" y2="95" stroke="#EAF3EE" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <line x1="100" y1="95" x2="118" y2="138" stroke="#EAF3EE" stroke-width="1.5" stroke-dasharray="3 2"/>
+          </svg>
+        </div>
+        <div class="fc-body">
+          <p class="fc-no">FEATURE 04</p>
+          <h3>情報収集もサポート。</h3>
+          <p>NISA・iDeCo・税制改正・保険制度など、知るべき情報をわかりやすく整理。自分で調べ続ける負担を減らします。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+
+<!-- CASES -->
 <section class="cases">
-  <div class="container">
-    <h2 class="section-title fade-up">
-      使用例・導入例<br>
-      こんなシーンで最大限の力を発揮します。
-    </h2>
-    <div class="case-card fade-up">
-      <div class="case-icon">?</div>
-      <div>
-        <h3>CASE1<br>老後資金について不安がある。</h3>
-        <p>現在の収入・支出・貯蓄状況から、将来必要なお金を見える化します。</p>
-      </div>
+  <div class="wrap">
+    <div class="fu">
+      <p class="lbl">Case Study</p>
+      <div class="bar"></div>
+      <h2 class="ttl">こんなシーンでご活用いただいています</h2>
     </div>
-    <div class="case-card fade-up">
-      <div class="case-icon">Q</div>
-      <div>
-        <h3>CASE2<br>NISAを始めたいが不安。</h3>
-        <p>制度の基本から、無理のない積立額や考え方までわかりやすく整理します。</p>
+    <div class="ca-g">
+
+      <!-- Case 1 -->
+      <div class="cc fu">
+        <div class="cc-vis">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px">
+            <!-- Person (40s man with calculator) -->
+            <circle cx="80" cy="60" r="28" fill="#F2C7A7"/>
+            <path d="M52 54 C52 28 62 20 80 18 C98 20 108 28 108 54 L108 44 C108 16 98 8 80 8 C62 8 52 16 52 44 Z" fill="#263238"/>
+            <rect x="66" y="42" width="7" height="24" rx="3.5" fill="#263238"/>
+            <rect x="87" y="42" width="7" height="24" rx="3.5" fill="#263238"/>
+            <!-- Ears -->
+            <ellipse cx="52" cy="62" rx="7" ry="10" fill="#F2C7A7"/>
+            <ellipse cx="108" cy="62" rx="7" ry="10" fill="#F2C7A7"/>
+            <!-- Eyes -->
+            <ellipse cx="71" cy="62" rx="8" ry="8.5" fill="#fff"/>
+            <ellipse cx="89" cy="62" rx="8" ry="8.5" fill="#fff"/>
+            <ellipse cx="72" cy="63" rx="5" ry="5.5" fill="#5d4037"/>
+            <ellipse cx="90" cy="63" rx="5" ry="5.5" fill="#5d4037"/>
+            <ellipse cx="72" cy="63" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="90" cy="63" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="73" cy="61" rx="2" ry="2" fill="#fff"/>
+            <ellipse cx="91" cy="61" rx="2" ry="2" fill="#fff"/>
+            <!-- Worried brows -->
+            <path d="M63 52 Q71 48 79 52" stroke="#263238" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M81 52 Q89 48 97 52" stroke="#263238" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Mouth -->
+            <path d="M72 74 Q80 70 88 74" stroke="#c09080" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Body -->
+            <rect x="50" y="88" width="60" height="60" rx="8" fill="#37474f"/>
+            <rect x="70" y="88" width="20" height="60" fill="#f8f9fa"/>
+            <!-- Neck -->
+            <rect x="72" y="80" width="16" height="12" rx="3" fill="#F2C7A7"/>
+            <!-- Calculator prop -->
+            <rect x="116" y="72" width="56" height="70" rx="6" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="116" y="72" width="56" height="20" rx="5" fill="#EAF3EE"/>
+            <rect x="122" y="79" width="44" height="6" rx="2" fill="#177245" opacity=".3"/>
+            <!-- Calc buttons -->
+            <circle cx="128" cy="104" r="5" fill="#EAF3EE"/>
+            <circle cx="144" cy="104" r="5" fill="#EAF3EE"/>
+            <circle cx="160" cy="104" r="5" fill="#177245"/>
+            <circle cx="128" cy="118" r="5" fill="#EAF3EE"/>
+            <circle cx="144" cy="118" r="5" fill="#EAF3EE"/>
+            <circle cx="160" cy="118" r="5" fill="#EAF3EE"/>
+            <circle cx="128" cy="132" r="5" fill="#EAF3EE"/>
+            <circle cx="144" cy="132" r="5" fill="#D5D73B"/>
+            <circle cx="160" cy="132" r="5" fill="#EAF3EE"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-no">CASE 01</p>
+          <h3>老後資金について不安がある</h3>
+          <p>現在の収入・支出・貯蓄状況から、将来必要なお金を見える化します。</p>
+        </div>
       </div>
-    </div>
-    <div class="case-card fade-up">
-      <div class="case-icon">✓</div>
-      <div>
-        <h3>CASE3<br>保険料を見直したい。</h3>
-        <p>必要な保障と不要な支出を整理し、家計改善のきっかけを作ります。</p>
+
+      <!-- Case 2 -->
+      <div class="cc fu" style="transition-delay:.1s">
+        <div class="cc-vis">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px">
+            <!-- Couple with chart -->
+            <!-- Man -->
+            <circle cx="58" cy="56" r="22" fill="#F2C7A7"/>
+            <path d="M36 50 C36 28 44 22 58 20 C72 22 80 28 80 50 L80 42 C80 18 72 10 58 10 C44 10 36 18 36 42 Z" fill="#263238"/>
+            <!-- Man eyes -->
+            <ellipse cx="51" cy="57" rx="6" ry="6.5" fill="#fff"/>
+            <ellipse cx="65" cy="57" rx="6" ry="6.5" fill="#fff"/>
+            <ellipse cx="52" cy="58" rx="4" ry="4.5" fill="#263238"/>
+            <ellipse cx="66" cy="58" rx="4" ry="4.5" fill="#263238"/>
+            <ellipse cx="53" cy="56" rx="1.8" ry="1.8" fill="#fff"/>
+            <ellipse cx="67" cy="56" rx="1.8" ry="1.8" fill="#fff"/>
+            <!-- Man smile -->
+            <path d="M51 67 Q58 73 65 67" stroke="#c09080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Man body -->
+            <rect x="38" y="78" width="40" height="70" rx="7" fill="#37474f"/>
+            <rect x="50" y="78" width="16" height="70" fill="#f8f9fa"/>
+            <rect x="46" y="73" width="24" height="10" rx="3" fill="#F2C7A7"/>
+
+            <!-- Woman -->
+            <circle cx="142" cy="56" r="22" fill="#F2C7A7"/>
+            <!-- Brown hair -->
+            <path d="M120 52 C120 28 130 20 142 18 C154 20 164 28 164 52 L164 60 Q160 72 142 74 Q124 72 120 60 Z" fill="#5d4037"/>
+            <path d="M120 48 C120 26 130 18 142 16 C154 18 164 26 164 48 L164 38 C164 14 154 6 142 6 C130 6 120 14 120 38 Z" fill="#5d4037"/>
+            <ellipse cx="142" cy="56" rx="20" ry="23" fill="#F2C7A7"/>
+            <!-- Woman eyes -->
+            <ellipse cx="135" cy="57" rx="6" ry="6.5" fill="#fff"/>
+            <ellipse cx="149" cy="57" rx="6" ry="6.5" fill="#fff"/>
+            <ellipse cx="136" cy="58" rx="4" ry="4.5" fill="#263238"/>
+            <ellipse cx="150" cy="58" rx="4" ry="4.5" fill="#263238"/>
+            <ellipse cx="137" cy="56" rx="1.8" ry="1.8" fill="#fff"/>
+            <ellipse cx="151" cy="56" rx="1.8" ry="1.8" fill="#fff"/>
+            <!-- Woman smile -->
+            <path d="M134 67 Q142 73 150 67" stroke="#c09080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Woman body -->
+            <rect x="122" y="78" width="40" height="70" rx="7" fill="#177245"/>
+            <rect x="134" y="78" width="16" height="70" fill="#f8f9fa"/>
+            <rect x="130" y="73" width="24" height="10" rx="3" fill="#F2C7A7"/>
+
+            <!-- Chart between them -->
+            <rect x="82" y="60" width="36" height="48" rx="4" fill="#fff" stroke="#CFE3D9" stroke-width="1.2"/>
+            <rect x="86" y="94" width="6" height="10" fill="#177245" rx="1"/>
+            <rect x="94" y="88" width="6" height="16" fill="#D5D73B" rx="1"/>
+            <rect x="102" y="82" width="6" height="22" fill="#177245" rx="1"/>
+            <rect x="110" y="76" width="6" height="28" fill="#177245" rx="1" opacity=".5"/>
+            <!-- Chart top line -->
+            <rect x="82" y="60" width="36" height="10" rx="4" fill="#EAF3EE"/>
+            <!-- Upward arrow -->
+            <path d="M100 44 L100 30 M100 30 L94 36 M100 30 L106 36" stroke="#177245" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-no">CASE 02</p>
+          <h3>NISAを始めたいが不安</h3>
+          <p>制度の基本から、無理のない積立額や考え方までわかりやすく整理します。</p>
+        </div>
       </div>
-    </div>
-    <div class="case-card fade-up">
-      <div class="case-icon">家</div>
-      <div>
-        <h3>CASE4<br>相続や家族のお金を考えたい。</h3>
-        <p>家族構成や資産状況に合わせて、早めに整理すべきポイントをご提案します。</p>
+
+      <!-- Case 3 -->
+      <div class="cc fu">
+        <div class="cc-vis">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px">
+            <!-- Businessman with insurance shield -->
+            <!-- Body suit -->
+            <rect x="54" y="92" width="52" height="60" rx="8" fill="#37474f"/>
+            <rect x="71" y="92" width="18" height="60" fill="#f8f9fa"/>
+            <!-- Neck -->
+            <rect x="73" y="84" width="14" height="12" rx="3" fill="#F2C7A7"/>
+            <!-- Head -->
+            <circle cx="80" cy="62" r="26" fill="#F2C7A7"/>
+            <!-- Hair -->
+            <path d="M54 56 C54 32 62 22 80 20 C98 22 106 32 106 56 L106 46 C106 18 98 10 80 10 C62 10 54 18 54 46 Z" fill="#263238"/>
+            <rect x="50" y="44" width="7" height="20" rx="3.5" fill="#263238"/>
+            <rect x="103" y="44" width="7" height="20" rx="3.5" fill="#263238"/>
+            <!-- Ears -->
+            <ellipse cx="54" cy="64" rx="7" ry="10" fill="#F2C7A7"/>
+            <ellipse cx="106" cy="64" rx="7" ry="10" fill="#F2C7A7"/>
+            <!-- Eyes -->
+            <ellipse cx="72" cy="63" rx="7.5" ry="8" fill="#fff"/>
+            <ellipse cx="88" cy="63" rx="7.5" ry="8" fill="#fff"/>
+            <ellipse cx="73" cy="64" rx="5" ry="5.5" fill="#5d4037"/>
+            <ellipse cx="89" cy="64" rx="5" ry="5.5" fill="#5d4037"/>
+            <ellipse cx="73" cy="64" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="89" cy="64" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="74" cy="62" rx="2" ry="2" fill="#fff"/>
+            <ellipse cx="90" cy="62" rx="2" ry="2" fill="#fff"/>
+            <!-- Brows -->
+            <path d="M64 53 Q72 49 80 52" stroke="#263238" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M80 52 Q88 49 96 53" stroke="#263238" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Mouth (neutral) -->
+            <path d="M72 75 Q80 79 88 75" stroke="#c09080" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Shield prop -->
+            <path d="M118 48 L118 88 Q118 108 142 116 Q166 108 166 88 L166 48 L142 40 Z" fill="#EAF3EE" stroke="#177245" stroke-width="2"/>
+            <path d="M128 48 L128 86 Q128 100 142 107 Q156 100 156 86 L156 48 L142 44 Z" fill="#177245" opacity=".15"/>
+            <!-- Checkmark on shield -->
+            <path d="M130 78 L138 88 L156 66" stroke="#177245" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Document lines -->
+            <rect x="118" y="126" width="48" height="28" rx="4" fill="#fff" stroke="#CFE3D9" stroke-width="1.2"/>
+            <line x1="124" y1="134" x2="160" y2="134" stroke="#CFE3D9" stroke-width="1.2"/>
+            <line x1="124" y1="141" x2="160" y2="141" stroke="#CFE3D9" stroke-width="1.2"/>
+            <line x1="124" y1="148" x2="146" y2="148" stroke="#CFE3D9" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-no">CASE 03</p>
+          <h3>保険料を見直したい</h3>
+          <p>必要な保障と不要な支出を整理し、家計改善のきっかけを作ります。</p>
+        </div>
       </div>
+
+      <!-- Case 4 -->
+      <div class="cc fu" style="transition-delay:.1s">
+        <div class="cc-vis">
+          <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:200px">
+            <!-- House -->
+            <polygon points="100,20 140,55 60,55" fill="#EAF3EE" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="68" y="54" width="64" height="50" rx="2" fill="#fff" stroke="#CFE3D9" stroke-width="1.5"/>
+            <rect x="90" y="74" width="20" height="30" rx="2" fill="#EAF3EE"/>
+            <rect x="72" y="62" width="18" height="14" rx="2" fill="#EAF3EE"/>
+            <rect x="110" y="62" width="18" height="14" rx="2" fill="#EAF3EE"/>
+            <!-- Senior couple -->
+            <!-- Senior man -->
+            <circle cx="46" cy="86" r="19" fill="#F2C7A7"/>
+            <!-- Silver hair -->
+            <path d="M27 80 C27 60 34 54 46 52 C58 54 65 60 65 80 L65 72 C65 50 58 42 46 42 C34 42 27 50 27 72 Z" fill="#9e9e9e"/>
+            <ellipse cx="46" cy="86" rx="17" ry="20" fill="#F2C7A7"/>
+            <!-- Senior man eyes (smaller, slight wrinkles) -->
+            <ellipse cx="39" cy="87" rx="5.5" ry="6" fill="#fff"/>
+            <ellipse cx="53" cy="87" rx="5.5" ry="6" fill="#fff"/>
+            <ellipse cx="40" cy="88" rx="3.5" ry="4" fill="#5d4037"/>
+            <ellipse cx="54" cy="88" rx="3.5" ry="4" fill="#5d4037"/>
+            <ellipse cx="40" cy="88" rx="2" ry="2.5" fill="#1a1a2e"/>
+            <ellipse cx="54" cy="88" rx="2" ry="2.5" fill="#1a1a2e"/>
+            <!-- Brows (heavier, senior) -->
+            <path d="M34 78 Q39 75 44 78" stroke="#9e9e9e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M48 78 Q53 75 58 78" stroke="#9e9e9e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Gentle smile -->
+            <path d="M39 97 Q46 102 53 97" stroke="#c09080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Man body -->
+            <rect x="28" y="105" width="36" height="50" rx="7" fill="#546e7a"/>
+            <rect x="39" y="105" width="14" height="50" fill="#f8f9fa"/>
+            <rect x="36" y="99" width="20" height="10" rx="3" fill="#F2C7A7"/>
+
+            <!-- Senior woman -->
+            <circle cx="154" cy="86" r="19" fill="#F2C7A7"/>
+            <!-- Silver curly hair suggestion -->
+            <path d="M135 82 C133 56 142 50 154 48 C166 50 175 56 173 82 L173 92 Q167 110 154 112 Q141 110 135 92 Z" fill="#bdbdbd"/>
+            <ellipse cx="154" cy="86" rx="17" ry="20" fill="#F2C7A7"/>
+            <!-- Curls -->
+            <ellipse cx="136" cy="78" rx="7" ry="9" fill="#bdbdbd"/>
+            <ellipse cx="172" cy="78" rx="7" ry="9" fill="#bdbdbd"/>
+            <!-- Woman eyes -->
+            <ellipse cx="147" cy="87" rx="5.5" ry="6" fill="#fff"/>
+            <ellipse cx="161" cy="87" rx="5.5" ry="6" fill="#fff"/>
+            <ellipse cx="148" cy="88" rx="3.5" ry="4" fill="#5d4037"/>
+            <ellipse cx="162" cy="88" rx="3.5" ry="4" fill="#5d4037"/>
+            <ellipse cx="148" cy="88" rx="2" ry="2.5" fill="#1a1a2e"/>
+            <ellipse cx="162" cy="88" rx="2" ry="2.5" fill="#1a1a2e"/>
+            <ellipse cx="149" cy="86" rx="1.5" ry="1.5" fill="#fff"/>
+            <ellipse cx="163" cy="86" rx="1.5" ry="1.5" fill="#fff"/>
+            <!-- Brows -->
+            <path d="M141 78 Q147 75 153 78" stroke="#9e9e9e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M155 78 Q161 75 167 78" stroke="#9e9e9e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Smile -->
+            <path d="M147 97 Q154 103 161 97" stroke="#c09080" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- Blush -->
+            <ellipse cx="142" cy="95" rx="7" ry="4.5" fill="#f5b8a0" opacity=".3"/>
+            <ellipse cx="166" cy="95" rx="7" ry="4.5" fill="#f5b8a0" opacity=".3"/>
+            <!-- Woman body -->
+            <rect x="136" y="105" width="36" height="50" rx="7" fill="#177245" opacity=".8"/>
+            <rect x="147" y="105" width="14" height="50" fill="#f8f9fa"/>
+            <rect x="144" y="99" width="20" height="10" rx="3" fill="#F2C7A7"/>
+          </svg>
+        </div>
+        <div class="cc-body">
+          <p class="cc-no">CASE 04</p>
+          <h3>相続や家族のお金を考えたい</h3>
+          <p>家族構成や資産状況に合わせて、早めに整理すべきポイントをご提案します。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-<section class="pricing">
-  <div class="container">
-    <h2 class="section-title fade-up">料金体系</h2>
-    <div class="price-card fade-up">
-      <div class="plan-name">ライトプラン</div>
-      <div class="price">¥5,000</div>
-      <div class="per">/月</div>
-      <p>とにかく小さく始めたい方に！</p>
-      <ul class="price-list">
-        <li>月1回相談</li>
-        <li>LINE相談</li>
-        <li>家計・資産状況の簡易整理</li>
-      </ul>
+
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="fu" style="text-align:center;margin-bottom:16px">
+      <p class="lbl" style="display:inline-block">Pricing</p>
+      <div class="bar" style="margin:14px auto 22px"></div>
+      <h2 class="ttl">料金プラン</h2>
     </div>
-    <div class="price-card recommend fade-up">
-      <div class="plan-name">スタンダードプラン</div>
-      <div class="price">¥10,000</div>
-      <div class="per">/月〜</div>
-      <p>課題を継続的に解決していきたい方に！</p>
-      <ul class="price-list">
-        <li>月2回相談</li>
-        <li>LINE相談</li>
-        <li>保険・資産形成の見直し</li>
-        <li>NISA・iDeCo相談</li>
-      </ul>
-    </div>
-    <div class="price-card fade-up">
-      <div class="plan-name">プロフェッショナルプラン</div>
-      <div class="price">要相談</div>
-      <div class="per">オーダーメイド</div>
-      <p>相続・事業資金・複雑な相談をしたい方に！</p>
-      <ul class="price-list">
-        <li>専属担当者の設置</li>
-        <li>専門家ネットワーク連携</li>
-        <li>課題に応じた個別支援</li>
-      </ul>
+    <p class="pr-note fu">初回相談は完全無料。まずはお気軽にご相談ください。</p>
+    <div class="pr-g fu">
+
+      <div class="pc">
+        <div class="pc-hd">
+          <p class="pc-tag">LIGHT</p>
+          <p class="pc-name">ライトプラン</p>
+          <p class="pc-price">¥5,000</p>
+          <p class="pc-per">/月（税込）</p>
+        </div>
+        <div class="pc-body">
+          <p class="pc-sub">小さく始めたい方に</p>
+          <ul class="pl">
+            <li>月1回オンライン相談</li>
+            <li>LINE相談対応</li>
+            <li>家計・資産状況の簡易整理</li>
+          </ul>
+          <a href="#contact" class="pc-cta cta-o">相談してみる</a>
+        </div>
+      </div>
+
+      <div class="pc star">
+        <div class="pc-badge">人気 No.1</div>
+        <div class="pc-hd">
+          <p class="pc-tag">STANDARD</p>
+          <p class="pc-name">スタンダードプラン</p>
+          <p class="pc-price">¥10,000</p>
+          <p class="pc-per">/月〜（税込）</p>
+        </div>
+        <div class="pc-body">
+          <p class="pc-sub">継続的に課題を解決したい方に</p>
+          <ul class="pl">
+            <li>月2回オンライン相談</li>
+            <li>LINE相談対応</li>
+            <li>保険・資産形成の見直し</li>
+            <li>NISA・iDeCo相談対応</li>
+          </ul>
+          <a href="#contact" class="pc-cta cta-f">相談してみる</a>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-hd">
+          <p class="pc-tag">PROFESSIONAL</p>
+          <p class="pc-name">プロフェッショナル</p>
+          <p class="pc-price" style="font-size:28px;line-height:1.4">要相談</p>
+          <p class="pc-per">オーダーメイド</p>
+        </div>
+        <div class="pc-body">
+          <p class="pc-sub">複雑な相談をお持ちの方に</p>
+          <ul class="pl">
+            <li>専属担当者アサイン</li>
+            <li>専門家ネットワーク連携</li>
+            <li>相続・事業資金など複雑案件</li>
+            <li>カスタム支援プラン</li>
+          </ul>
+          <a href="#contact" class="pc-cta cta-o">相談してみる</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-<div class="cta-band">
-  今だけ、初回相談無料！
-</div>
-<section>
-  <div class="container">
-    <a href="#contact" class="btn fade-up">問い合わせ・見積もりをする</a>
-  </div>
-</section>
+
+
+<!-- CTA BAND -->
+<div class="band fu"><span class="band-tag">今だけ</span>初回相談 完全無料！</div>
+
+
+<!-- FAQ -->
 <section class="faq">
-  <div class="container">
-    <div class="faq-box fade-up">
-      <h2 class="section-title">よくいただくご質問</h2>
-      <div class="faq-item">
-        <div class="q">Q. 初回相談は本当に無料ですか？</div>
-        <div class="a">A. はい。初回相談は無料です。現在の状況を整理するところから始めます。</div>
+  <div class="wrap">
+    <div class="fu" style="text-align:center">
+      <p class="lbl" style="display:inline-block">FAQ</p>
+      <div class="bar" style="margin:14px auto 22px"></div>
+      <h2 class="ttl">よくいただくご質問</h2>
+    </div>
+    <div class="faq-l">
+      <div class="fi fu">
+        <div class="fq"><span class="fq-i">Q</span>初回相談は本当に無料ですか？</div>
+        <div class="fa">はい。初回相談は無料です。現在の状況を整理するところから始めます。費用が発生するのはプランのご契約後のみです。</div>
       </div>
-      <div class="faq-item">
-        <div class="q">Q. 投資初心者でも大丈夫ですか？</div>
-        <div class="a">A. 大丈夫です。専門用語を使いすぎず、基礎からわかりやすくご説明します。</div>
+      <div class="fi fu" style="transition-delay:.08s">
+        <div class="fq"><span class="fq-i">Q</span>投資初心者でも大丈夫ですか？</div>
+        <div class="fa">大丈夫です。専門用語を使いすぎず、基礎からわかりやすくご説明します。まず現状の家計整理から始めることも可能です。</div>
       </div>
-      <div class="faq-item">
-        <div class="q">Q. 無理な営業はありますか？</div>
-        <div class="a">A. 無理な勧誘はありません。お客様の状況に合った選択肢をご提案します。</div>
+      <div class="fi fu" style="transition-delay:.16s">
+        <div class="fq"><span class="fq-i">Q</span>無理な営業はありますか？</div>
+        <div class="fa">無理な勧誘は一切ありません。お客様の状況に合った選択肢をご提案し、最終的な判断はすべてお客様に委ねます。</div>
       </div>
-      <div class="faq-item">
-        <div class="q">Q. オンライン相談は可能ですか？</div>
-        <div class="a">A. 可能です。全国どこからでもオンラインでご相談いただけます。</div>
+      <div class="fi fu" style="transition-delay:.24s">
+        <div class="fq"><span class="fq-i">Q</span>オンライン相談は可能ですか？</div>
+        <div class="fa">可能です。Zoom・Google Meet等を使用し、全国どこからでもオンラインでご相談いただけます。</div>
       </div>
     </div>
   </div>
 </section>
-<section id="contact">
-  <div class="container">
-    <h2 class="section-title fade-up">
-      お金の不安を、<br>
-      今日から整理しませんか？
-    </h2>
-    <p class="lead fade-up">
-      将来のための第一歩は、現状を知ることから。
-    </p>
-    <a href="#" class="btn fade-up">無料相談を予約する</a>
+
+
+<!-- CTA SECTION -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <div class="cta-box fu">
+      <h2 class="cta-ttl">お金の不安を、<br>今日から整理しませんか？</h2>
+      <p class="cta-sub">将来のための第一歩は、現状を知ることから。<br>まずは無料相談でお気軽にどうぞ。</p>
+      <a href="#" class="btn btn-g" style="font-size:18px;padding:18px 52px">無料相談を予約する →</a>
+    </div>
   </div>
 </section>
+
+
+<!-- FOOTER -->
 <footer>
-  © 2026 Money Support Room. All Rights Reserved.
+  <p class="f-logo">マネーサポート室</p>
+  <p>© 2026 Money Support Room. All Rights Reserved.</p>
 </footer>
-<a href="#contact" class="fixed-cta">無料相談する</a>
+
+<!-- FIXED CTA -->
+<a href="#contact" class="fcta">無料相談する</a>
+
 <script>
-  const targets = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  }, { threshold: 0.15 });
-  targets.forEach(target => observer.observe(target));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
 </script>
+
 </body>
 </html>
