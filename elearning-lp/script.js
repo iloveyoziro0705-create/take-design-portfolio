@@ -2,6 +2,9 @@
    LearnCore — script.js
    ============================================================ */
 
+/* JS が動いていることを html 要素に伝える（スクロールリベール有効化） */
+document.documentElement.classList.add('js');
+
 /* ── Scroll Reveal ───────────────────────────────────────────── */
 const revObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
