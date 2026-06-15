@@ -506,48 +506,99 @@ ul, ol { list-style: none; }
   .container { width: min(100% - 28px, var(--container)); }
   .section, .admin-intro { padding: 72px 0; }
   .header-inner { height: 64px; }
-  .header-actions .button { min-height: 38px; padding: 9px 13px; font-size: 11px; }
-  .brand { font-size: 18px; }
-  .brand-mark { width: 29px; height: 29px; }
-  .hero { padding: 112px 0 64px; }
-  .hero h1 { font-size: 36px; }
-  .hero-lead { font-size: 14px; }
+  .header-actions .button { min-height: 38px; padding: 9px 12px; font-size: 10.5px; }
+  .brand { gap: 8px; font-size: 17px; }
+  .brand-mark { width: 28px; height: 28px; font-size: 13px; }
+  .hero { padding: 104px 0 58px; }
+  .hero-grid { gap: 40px; }
+  .eyebrow { margin-bottom: 22px; padding: 6px 12px; font-size: 10px; }
+  .hero h1 { margin-bottom: 22px; font-size: clamp(28px, 8.2vw, 34px); line-height: 1.45; letter-spacing: -.045em; }
+  .hero h1 strong { display: block; white-space: nowrap; }
+  .hero-lead { margin-bottom: 28px; font-size: 13.5px; line-height: 1.95; }
+  .hero-lead br { display: none; }
   .button-row { flex-direction: column; }
   .button-row .button { width: 100%; }
-  .hero-proof ul { gap: 8px 13px; }
-  .dashboard-shell { grid-template-columns: 37px 1fr; border-radius: 15px; }
-  .dashboard-sidebar { gap: 9px; padding: 9px 5px; }
-  .sidebar-logo, .sidebar-item { width: 26px; height: 26px; }
-  .sidebar-item::before { inset: 7px; }
-  .sidebar-item::after { top: 10px; left: 10px; }
-  .dashboard-main { padding: 9px; }
+  .hero-proof { margin-top: 30px; padding-top: 20px; }
+  .hero-proof ul { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 10px; }
+  .hero-proof li { font-size: 10.5px; }
+  .hero-dashboard { width: 100%; }
+  .dashboard-shell { display: block; border-radius: 17px; box-shadow: 0 18px 42px rgba(27, 72, 116, .13); }
+  .dashboard-sidebar { display: none; }
+  .dashboard-main { padding: 14px; }
+  .dashboard-topbar { margin-bottom: 13px; }
+  .dashboard-kicker { font-size: 6.5px; }
+  .dashboard-topbar p { font-size: 12px; }
   .dashboard-user span:last-child { display: none; }
-  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .dashboard-avatar { width: 24px; height: 24px; }
+  .metric-grid { grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 9px; }
+  .metric-card { min-height: 82px; border-radius: 10px; padding: 12px; }
+  .metric-card p { margin-bottom: 6px; font-size: 8.5px; }
+  .metric-card strong { font-size: 24px; }
+  .metric-card strong span { font-size: 10px; }
+  .metric-card small { margin-top: 7px; font-size: 7px; }
+  .metric-change { margin-top: 7px; padding: 3px 6px; font-size: 6.5px; }
+  .mini-progress { height: 4px; margin-top: 10px; }
   .dashboard-content { grid-template-columns: 1fr; }
   .popular-card { display: none; }
+  .chart-card, .department-card { border-radius: 10px; padding: 12px; }
+  .card-heading p { font-size: 9.5px; }
+  .card-heading small, .card-heading > span, .department-card a { font-size: 6.5px; }
+  .bar-chart { height: 112px; gap: 7px; padding-top: 17px; }
+  .bar-chart small { font-size: 6.5px; }
   .department-list { grid-template-columns: 1fr; }
+  .department-list > div { grid-template-columns: 42px 1fr 26px; gap: 7px; }
+  .department-list span, .department-list b { font-size: 7px; }
+  .department-list > div > div { height: 4px; }
+  .result { min-width: 0; padding: 18px 8px; }
+  .result strong { font-size: clamp(32px, 10vw, 42px); white-space: nowrap; }
+  .result span { font-size: 10.5px; }
+  .section-heading { margin-bottom: 42px; }
+  .section-heading h2 { margin-bottom: 15px; font-size: 27px; line-height: 1.5; }
+  .section-heading > p:last-child { font-size: 13px; line-height: 1.9; }
   .logo-row { grid-template-columns: 1fr 1fr; }
   .problem-grid, .feature-grid, .case-grid { grid-template-columns: 1fr; }
+  .service-copy h2, .admin-intro h2 { font-size: 29px; line-height: 1.5; }
   .course-panel { padding: 24px 18px; }
-  .course-count strong { font-size: 58px; }
+  .course-count strong { font-size: 54px; }
   .course-count strong small { display: block; margin: 5px 0 0; }
   .course-sample { grid-template-columns: 1fr; }
   .admin-benefits { flex-direction: column; gap: 14px; }
+  .admin-console { border-radius: 16px; }
+  .console-top { padding: 13px 14px; }
+  .console-filters { padding: 11px 12px 0; }
+  .console-filters span { min-width: 100%; font-size: 7.5px; }
   .console-filters span:nth-child(n+2) { display: none; }
-  .console-summary { padding-inline: 10px; }
-  .console-table { padding-inline: 10px; overflow: hidden; }
-  .console-row { grid-template-columns: 1.25fr .8fr 1fr; }
-  .console-row > span:nth-child(4) { display: none; }
+  .console-summary { gap: 6px; padding: 11px 12px; }
+  .console-summary div { padding: 8px; }
+  .console-summary small { font-size: 6.5px; }
+  .console-summary strong { font-size: 13px; }
+  .console-table { padding: 0 12px 14px; overflow: hidden; }
+  .console-row { grid-template-columns: 1.2fr .95fr; gap: 8px; padding: 8px 6px; font-size: 7px; }
+  .console-row > span:nth-child(2), .console-row > span:nth-child(4) { display: none; }
+  .console-row span > i { width: 20px; height: 20px; }
   .comparison-side { padding: 24px 17px; }
   .pricing-card { padding: 30px 24px; }
   .faq-question { grid-template-columns: 30px 1fr 18px; gap: 10px; padding: 18px 16px; font-size: 13px; }
   .faq-answer p { padding: 0 55px 20px; }
   .final-cta { padding: 78px 0; }
+  .final-cta h2 { font-size: 34px; }
+  .final-cta-copy > p:not(.section-label) { font-size: 14px; }
   .final-cta-copy > p:not(.section-label) br { display: none; }
   .cta-dashboard { transform: none; padding: 12px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 4px; }
-  .fixed-cta { right: 14px; bottom: 14px; }
+  .fixed-cta { display: none; }
+}
+
+@media (max-width: 350px) {
+  .container { width: min(100% - 22px, var(--container)); }
+  .header-actions .button { padding-inline: 9px; font-size: 9.5px; }
+  .brand { font-size: 16px; }
+  .hero h1 { font-size: 28px; }
+  .hero-proof ul { grid-template-columns: 1fr; }
+  .metric-card { padding: 10px; }
+  .metric-card strong { font-size: 21px; }
+  .section-heading h2, .service-copy h2, .admin-intro h2 { font-size: 25px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
