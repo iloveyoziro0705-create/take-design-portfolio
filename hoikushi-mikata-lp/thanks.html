@@ -121,7 +121,7 @@
       box-shadow: 0 20px 60px rgba(255,107,157,.18); border: 1px solid var(--line);
       background: #fff;
     }
-    .fv-img-wrap img { width: 100%; object-fit: cover; object-position: center top; aspect-ratio: 16/7; }
+    .fv-img-wrap img { width: 100%; height: auto; display: block; }
 
     /* Mobile FV reorder */
     .fv-mobile-top { display: none; }
@@ -257,7 +257,7 @@
       .fv-grid { grid-template-columns: 1fr; gap: 28px; }
       .fv-mobile-top { display: block; }
       .fv-desktop-copy { display: none; }
-      .fv-img-wrap img { aspect-ratio: 16/8; }
+      .fv-img-wrap img { width: 100%; height: auto; }
       .feat-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
