@@ -399,6 +399,34 @@ footer{background:var(--tx);padding:72px 0 44px}
 .fixed-cta:hover{background:var(--pd);transform:translateY(-2px);
   box-shadow:0 12px 36px rgba(0,91,172,.52)}
 
+/* Logo band */
+.logos-band{background:var(--w);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:40px 0}
+.logos-lbl{text-align:center;font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-bottom:28px}
+.logos-row{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.logo-item{font-size:12px;font-weight:900;color:#C9CDD6;letter-spacing:.12em;text-align:center;line-height:1.3;text-transform:uppercase}
+.logo-item small{display:block;font-size:9px;font-weight:700;letter-spacing:.08em;color:#D9DCE4;margin-top:1px}
+
+/* Course tags */
+.course-tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+.ctag{display:inline-block;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(0,91,172,.07);color:var(--p);border:1px solid rgba(0,91,172,.14)}
+.ctag.ctag-a{background:var(--p);color:#fff;border-color:var(--p)}
+
+/* Admin intro */
+.adm-intro-wrap{background:var(--surf);padding:100px 0 72px;border-bottom:1px solid var(--bd)}
+.adm-intro-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.adm-intro-vis{display:flex;align-items:center;justify-content:flex-end}
+
+/* Cases improvement */
+.cs-challenge{font-size:11.5px;color:var(--a);font-weight:700;margin-bottom:6px;margin-top:8px}
+.cs-result{font-size:12.5px;color:var(--sub);line-height:1.8;margin-bottom:0}
+.cs-arrow{color:var(--p);font-weight:900;margin:0 4px}
+
+/* CTA grid */
+.cta-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.cta-txt{text-align:left}
+.cta-btns{justify-content:flex-start}
+.cta-dash{display:flex;align-items:center;justify-content:flex-end}
+
 /* ────────────────────────────────────────────────────────────────
    RESPONSIVE
 ──────────────────────────────────────────────────────────────── */
@@ -412,6 +440,12 @@ footer{background:var(--tx);padding:72px 0 44px}
   .adm-g{grid-template-columns:1fr 1fr}
   .cs-g{grid-template-columns:1fr 1fr}
   .ft-g{grid-template-columns:1fr 1fr}
+  .adm-intro-g{grid-template-columns:1fr;}
+  .cta-g{grid-template-columns:1fr;}
+  .cta-txt{text-align:center;}
+  .cta-btns{justify-content:center;}
+  .cta-dash{display:none;}
+  .logos-row{gap:24px;}
 }
 @media(max-width:768px){
   :root{--sp:80px}
