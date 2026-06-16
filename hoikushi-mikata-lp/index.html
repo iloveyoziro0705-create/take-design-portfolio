@@ -315,6 +315,24 @@
       .steps { grid-template-columns: 1fr 1fr; }
       .trust-badges span { font-size: 12px; padding: 7px 12px; }
       .image-card img { max-height: 380px; }
+
+      /* Cards — horizontal (icon left, text right) on small screens */
+      .card {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        column-gap: 12px;
+        row-gap: 2px;
+        padding: 14px 16px;
+        text-align: left;
+      }
+      .card-icon {
+        grid-column: 1; grid-row: 1 / span 4;
+        width: 44px; height: 44px; border-radius: 12px;
+        font-size: 18px; margin-bottom: 0; align-self: start;
+      }
+      .card h3 { grid-column: 2; grid-row: 1; font-size: 14px; }
+      .card .stars { grid-column: 2; grid-row: 2; font-size: 13px; margin: 0; }
+      .card > p { grid-column: 2; grid-row: 3; font-size: 12px; }
     }
   </style>
 </head>
