@@ -821,7 +821,111 @@
   </div>
 </section>
 
-<!-- SECTION 09: BEFORE/AFTER -->
+<!-- SECTION 09: CLIENT DASHBOARD -->
+<section class="client-dash" id="client-dash">
+  <div class="wrap">
+    <div class="sec-hd sr">
+      <span class="lbl">Live Dashboard</span>
+      <h2 class="ttl">導入企業の<em>リアルな数値</em></h2>
+      <span class="rule"></span>
+      <p class="sec-sub">各社の実際の学習データをリアルタイムで可視化。LearnCoreが組織の学習を変えます。</p>
+    </div>
+
+    <div class="cd-tabs sr d1" role="tablist">
+      <button class="cd-tab active" data-company="mfg" role="tab" aria-selected="true">
+        <span class="cd-tab-ind">製</span>
+        <span class="cd-tab-name">製造業A社</span>
+        <span class="cd-tab-users">1,200名</span>
+      </button>
+      <button class="cd-tab" data-company="it" role="tab" aria-selected="false">
+        <span class="cd-tab-ind">IT</span>
+        <span class="cd-tab-name">IT企業B社</span>
+        <span class="cd-tab-users">450名</span>
+      </button>
+      <button class="cd-tab" data-company="retail" role="tab" aria-selected="false">
+        <span class="cd-tab-ind">小</span>
+        <span class="cd-tab-name">小売業C社</span>
+        <span class="cd-tab-users">3,200名</span>
+      </button>
+      <button class="cd-tab" data-company="sales" role="tab" aria-selected="false">
+        <span class="cd-tab-ind">営</span>
+        <span class="cd-tab-name">営業組織D社</span>
+        <span class="cd-tab-users">280名</span>
+      </button>
+    </div>
+
+    <div class="cd-panel sr d2" id="cd-panel">
+      <div class="cd-panel-hd">
+        <div class="cd-company-info">
+          <span class="cd-badge" id="cd-badge">製造業</span>
+          <span class="cd-company-name" id="cd-company-name">A社 — DXリテラシー研修プログラム</span>
+        </div>
+        <div class="cd-period"><span class="cd-dot-live"></span>集計期間：2024年4月〜2024年9月</div>
+      </div>
+
+      <div class="cd-kpis">
+        <div class="cd-kpi cd-kpi-hl">
+          <div class="cd-kpi-val"><span class="cd-num" id="cd-users">1,200</span><span class="cd-unit">名</span></div>
+          <div class="cd-kpi-lbl">受講者数</div>
+          <div class="cd-kpi-sub" id="cd-users-sub">全社員対象</div>
+        </div>
+        <div class="cd-kpi">
+          <div class="cd-kpi-val"><span class="cd-num" id="cd-rate">81</span><span class="cd-unit">%</span></div>
+          <div class="cd-kpi-lbl">受講率</div>
+          <div class="cd-kpi-sub" id="cd-rate-sub">前年比 +39pt</div>
+        </div>
+        <div class="cd-kpi">
+          <div class="cd-kpi-val"><span class="cd-num" id="cd-comp">68</span><span class="cd-unit">%</span></div>
+          <div class="cd-kpi-lbl">修了率</div>
+          <div class="cd-kpi-sub" id="cd-comp-sub">目標 70%</div>
+        </div>
+        <div class="cd-kpi">
+          <div class="cd-kpi-val"><span class="cd-num" id="cd-hours">2.8</span><span class="cd-unit">h</span></div>
+          <div class="cd-kpi-lbl">平均学習時間/月</div>
+          <div class="cd-kpi-sub" id="cd-hours-sub">月間ペース</div>
+        </div>
+      </div>
+
+      <div class="cd-bottom">
+        <div class="cd-chart-wrap">
+          <div class="cd-chart-hd">
+            <span class="cd-chart-ttl">月別受講完了数</span>
+            <span class="cd-chart-unit">単位：件</span>
+          </div>
+          <div class="cd-chart" id="cd-chart">
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">280</div><div class="cd-bar-lbl">4月</div></div>
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">340</div><div class="cd-bar-lbl">5月</div></div>
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">410</div><div class="cd-bar-lbl">6月</div></div>
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">520</div><div class="cd-bar-lbl">7月</div></div>
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">480</div><div class="cd-bar-lbl">8月</div></div>
+            <div class="cd-bar-group"><div class="cd-bar-bg"><div class="cd-bar"></div></div><div class="cd-bar-num">610</div><div class="cd-bar-lbl">9月</div></div>
+          </div>
+        </div>
+
+        <div class="cd-progress-wrap">
+          <div class="cd-prog-hd">人気コース TOP3</div>
+          <ul class="cd-prog-list" id="cd-prog-list">
+            <li class="cd-prog-item">
+              <div class="cd-prog-head"><span class="cd-prog-name">DXリテラシー基礎</span><span class="cd-prog-pct">92%</span></div>
+              <div class="cd-prog-track"><div class="cd-prog-bar"></div></div>
+            </li>
+            <li class="cd-prog-item">
+              <div class="cd-prog-head"><span class="cd-prog-name">IoT・AI入門</span><span class="cd-prog-pct">78%</span></div>
+              <div class="cd-prog-track"><div class="cd-prog-bar"></div></div>
+            </li>
+            <li class="cd-prog-item">
+              <div class="cd-prog-head"><span class="cd-prog-name">データ活用実践</span><span class="cd-prog-pct">64%</span></div>
+              <div class="cd-prog-track"><div class="cd-prog-bar"></div></div>
+            </li>
+          </ul>
+          <div class="cd-result-tag" id="cd-result-tag">受講率 42% → 81% 達成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: BEFORE/AFTER -->
 <section class="bef-aft" id="bef-aft">
   <div class="wrap">
     <div class="sec-hd sr">
