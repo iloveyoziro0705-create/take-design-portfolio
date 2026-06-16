@@ -120,8 +120,14 @@
       border-radius: 24px; overflow: hidden;
       box-shadow: 0 20px 60px rgba(255,107,157,.18); border: 1px solid var(--line);
       background: #fff;
+      position: relative;
+      aspect-ratio: 1 / 1; /* 正方形でクロップ → 左約42%のみ表示 */
     }
-    .fv-img-wrap img { width: 100%; height: auto; display: block; }
+    .fv-img-wrap img {
+      position: absolute; top: 0; left: 0;
+      width: auto; height: 100%; max-width: none;
+      display: block;
+    }
 
     /* Mobile FV reorder */
     .fv-mobile-top { display: none; }
@@ -257,7 +263,7 @@
       .fv-grid { grid-template-columns: 1fr; gap: 28px; }
       .fv-mobile-top { display: block; }
       .fv-desktop-copy { display: none; }
-      .fv-img-wrap img { width: 100%; height: auto; }
+      .fv-img-wrap { aspect-ratio: 4/3; } /* モバイルは少し横長に */
       .feat-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
