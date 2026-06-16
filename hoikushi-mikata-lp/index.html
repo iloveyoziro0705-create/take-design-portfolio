@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>保育士のミカタ｜保育士口コミサービス</title>
+  <meta name="description" content="求人票だけでは見えない保育園のリアルがわかる。保育士口コミ100万件以上をもとに、口コミ・ランキング・比較機能で保育園選びをサポートします。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Custom Properties ─────────────────────────────────────── */
+    :root {
+      --pink: #f85f91;
+      --pink-d: #e04578;
+      --pink-soft: #fff4f7;
+      --pink-light: #ffd6e2;
+      --text: #3f3f46;
+      --sub: #747474;
+      --line: #f0dce3;
+      --yellow: #ffbd3a;
+      --shadow: 0 12px 40px rgba(248,95,145,.12);
+      --shadow-strong: 0 24px 64px rgba(248,95,145,.22);
+      --hh: 74px; /* header height */
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Noto Sans JP", sans-serif; color: var(--text); background: #fff; line-height: 1.85; overflow-x: hidden; }
+    img { display: block; width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+    .container { width: min(1120px, 90%); margin: 0 auto; }
+    .section { padding: 96px 0; position: relative; }
+    .section-soft { background: linear-gradient(180deg, #fff, var(--pink-soft)); }
+
+    /* anchor offset so fixed header doesn't overlap targets */
+    [id] { scroll-margin-top: calc(var(--hh) + 16px); }
+
+    /* ── Typography ────────────────────────────────────────────── */
+    .section-title { max-width: 780px; margin: 0 auto 52px; text-align: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--pink); font-weight: 900; font-size: 13px; letter-spacing: .1em;
+      margin-bottom: 10px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ""; width: 20px; height: 2px;
+      background: var(--pink-light); border-radius: 999px;
+    }
+    h1, h2, h3 { color: #333; line-height: 1.45; font-weight: 900; }
+    h1 { font-size: clamp(30px, 5.5vw, 60px); letter-spacing: .02em; }
+    h2 { font-size: clamp(26px, 4vw, 46px); }
+    h3 { font-size: 20px; }
+    p { color: var(--sub); }
+    .pink { color: var(--pink); }
+
+    /* ── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-width: 240px; padding: 16px 32px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), #ff8ab0);
+      color: #fff; font-weight: 900; font-size: 15px;
+      box-shadow: 0 12px 32px rgba(248,95,145,.28);
+      transition: transform .25s ease, box-shadow .25s ease;
+      border: none; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(248,95,145,.36); }
+    .btn-outline {
+      background: #fff; color: var(--pink);
+      border: 2px solid var(--pink); box-shadow: none;
+    }
+    .btn-outline:hover { background: var(--pink-soft); }
+
+    /* ── Header ────────────────────────────────────────────────── */
+    .header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      background: rgba(255,255,255,.88); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      height: var(--hh);
+    }
+    .nav {
+      width: min(1180px, 92%); height: 100%; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; color: var(--pink); font-size: 20px; font-weight: 900; }
+    .logo-mark {
+      width: 38px; height: 38px; border: 2px solid var(--pink); border-radius: 50%;
+      display: grid; place-items: center; background: var(--pink-soft); font-size: 18px;
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; font-weight: 700; color: #666; }
+    .nav-links a:hover { color: var(--pink); }
+    .nav .btn { min-width: auto; padding: 9px 20px; font-size: 13px; }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      padding: calc(var(--hh) + 44px) 0 64px;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255,214,226,.85), transparent 22%),
+        radial-gradient(circle at 88% 24%, rgba(255,244,247,.9), transparent 30%),
+        linear-gradient(135deg, #fff 0%, var(--pink-soft) 70%, #fff 100%);
+      overflow: hidden;
+    }
+    .hero-mobile-copy { display: none; text-align: center; margin-bottom: 24px; }
+    .hero-mobile-copy h1 { font-size: clamp(26px, 7vw, 36px); }
+    .hero-mobile-copy p { margin-top: 10px; font-size: 14px; }
+    .hero-banner {
+      border-radius: 32px; overflow: hidden;
+      box-shadow: var(--shadow-strong); border: 1px solid rgba(248,95,145,.14);
+      background: #fff;
+    }
+    .hero-banner img { object-fit: cover; object-position: center top; max-height: 520px; }
+    .hero-cta-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .trust-badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .trust-badges span {
+      background: #fff; border: 1px solid var(--line); border-radius: 999px;
+      padding: 8px 16px; color: #666; font-weight: 700; font-size: 13px;
+      box-shadow: 0 8px 24px rgba(248,95,145,.07);
+    }
+
+    /* ── Stats ─────────────────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .stat {
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: var(--shadow); padding: 26px 18px; text-align: center;
+    }
+    .stat strong { display: block; color: var(--pink); font-size: clamp(26px, 4.5vw, 44px); line-height: 1.1; font-weight: 900; margin-bottom: 6px; }
+    .stat span { color: #777; font-weight: 700; font-size: 13px; }
+
+    /* ── Two-col layouts ───────────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: .95fr 1.05fr; gap: 52px; align-items: center; }
+    .two-col.reverse { grid-template-columns: 1.05fr .95fr; }
+    .image-card {
+      background: #fff; border: 1px solid var(--line); border-radius: 28px;
+      padding: 16px; box-shadow: var(--shadow); overflow: hidden;
+    }
+    .image-card img { border-radius: 18px; object-fit: cover; object-position: top; max-height: 560px; width: 100%; }
+    .lead-text { font-size: 16px; margin: 18px 0 24px; line-height: 1.9; }
+    .point-list { display: grid; gap: 12px; margin-top: 22px; }
+    .point-list li {
+      background: var(--pink-soft); border: 1px solid var(--line);
+      border-radius: 14px; padding: 12px 16px; font-weight: 700; color: var(--text);
+    }
+    .point-list li::before { content: "✓"; color: var(--pink); font-weight: 900; margin-right: 10px; }
+
+    /* ── Cards ─────────────────────────────────────────────────── */
+    .card {
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: var(--shadow); padding: 26px; transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-strong); }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 16px;
+      display: grid; place-items: center;
+      background: var(--pink-soft); color: var(--pink); font-size: 24px;
+      margin-bottom: 14px; font-weight: 900;
+    }
+    .stars { color: var(--yellow); letter-spacing: 2px; margin: 8px 0; font-size: 17px; }
+
+    /* ── Review section ────────────────────────────────────────── */
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .review-showcase {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255,214,226,.6), transparent 20%),
+        linear-gradient(180deg, #fff, var(--pink-soft));
+    }
+    .floating-reviews { display: grid; gap: 14px; }
+    .review-bubble {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 22px; padding: 20px; box-shadow: var(--shadow);
+    }
+    .review-bubble strong { display: block; color: var(--pink); margin-bottom: 6px; font-size: 15px; }
+
+    /* ── Ranking ───────────────────────────────────────────────── */
+    .rank-mini { display: grid; gap: 12px; margin-top: 22px; }
+    .rank-item {
+      display: flex; align-items: center; gap: 14px;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 18px; padding: 14px 16px; box-shadow: var(--shadow);
+    }
+    .rank-num {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: grid; place-items: center; color: #fff;
+      background: linear-gradient(135deg, var(--pink), #ff9ebb);
+      font-weight: 900; flex-shrink: 0;
+    }
+    .rank-item p { font-size: 13px; margin-top: 2px; }
+
+    /* ── Steps ─────────────────────────────────────────────────── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step {
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: var(--shadow); padding: 26px; text-align: center;
+    }
+    .step-num { color: var(--pink); font-weight: 900; margin-bottom: 8px; font-size: 13px; letter-spacing: .05em; }
+
+    /* ── Feature / Reason grids ────────────────────────────────── */
+    .function-grid, .reason-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    /* ── FAQ ───────────────────────────────────────────────────── */
+    .faq-list { max-width: 860px; margin: 0 auto; display: grid; gap: 12px; }
+    details {
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 18px; padding: 18px 22px;
+      box-shadow: 0 6px 20px rgba(248,95,145,.07);
+    }
+    summary { cursor: pointer; font-weight: 900; color: #444; user-select: none; list-style: none; padding-right: 20px; position: relative; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--pink); font-size: 20px; font-weight: 400; transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { margin-top: 12px; background: var(--pink-soft); padding: 14px 16px; border-radius: 12px; }
+
+    /* ── Final CTA ─────────────────────────────────────────────── */
+    .final-cta {
+      background:
+        radial-gradient(circle at 12% 16%, rgba(255,214,226,.85), transparent 24%),
+        linear-gradient(135deg, var(--pink-soft), #fff);
+      overflow: hidden;
+    }
+    /* Desktop: image as background with text overlay */
+    .final-cta-box {
+      background: #fff; border-radius: 36px; overflow: hidden;
+      box-shadow: var(--shadow-strong); border: 1px solid var(--line);
+      position: relative;
+    }
+    .final-cta-img { display: block; width: 100%; object-fit: cover; object-position: center; min-height: 380px; max-height: 460px; }
+    .final-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; padding-left: 7%; width: 46%;
+    }
+    .final-panel {
+      background: rgba(255,255,255,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(248,95,145,.18); border-radius: 26px; padding: 32px;
+    }
+    .final-panel h2 { font-size: clamp(24px, 3.5vw, 40px); }
+    .final-panel p { margin: 12px 0 22px; }
+    /* Mobile-only CTA block */
+    .final-cta-mobile { display: none; text-align: center; padding: 36px 24px; }
+    .final-cta-mobile h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 12px; }
+    .final-cta-mobile p { margin-bottom: 24px; }
+    .final-cta-mobile .btn { width: 100%; }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    footer {
+      padding: 36px 0 108px; /* extra bottom padding so fixed-cta doesn't overlap */
+      background: var(--pink-soft); color: #888; text-align: center; font-size: 13px;
+    }
+    footer .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    footer nav { display: flex; gap: 20px; }
+    footer nav a { color: #999; font-size: 12px; }
+    footer nav a:hover { color: var(--pink); }
+
+    /* ── Fixed CTA ─────────────────────────────────────────────── */
+    .fixed-cta {
+      position: fixed; right: 18px; bottom: 22px; z-index: 60;
+      background: linear-gradient(135deg, var(--pink), #ff8ab0);
+      color: #fff; font-weight: 900; font-size: 14px;
+      border-radius: 999px; padding: 13px 22px;
+      box-shadow: 0 12px 32px rgba(248,95,145,.38);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+      transform: translateY(8px);
+    }
+    .fixed-cta.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* ── Scroll reveal ─────────────────────────────────────────── */
+    /* Progressive enhancement: only hidden when JS has loaded */
+    .js .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .js .fade-up.show { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --hh: 62px; }
+      .section { padding: 72px 0; }
+      .nav-links, .nav .btn { display: none; }
+      .logo { font-size: 17px; }
+
+      /* Hero */
+      .hero { padding-top: calc(var(--hh) + 24px); padding-bottom: 48px; }
+      .hero-mobile-copy { display: block; }
+      .hero-banner img { max-height: 260px; }
+
+      /* Grids */
+      .stats { grid-template-columns: 1fr 1fr; }
+      .review-grid { grid-template-columns: 1fr 1fr; }
+      .function-grid, .reason-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .two-col, .two-col.reverse { grid-template-columns: 1fr; gap: 32px; }
+      .two-col.reverse .image-card { order: -1; }
+
+      /* Buttons */
+      .btn { width: 100%; min-width: auto; }
+      .hero-cta-row { flex-direction: column; gap: 10px; }
+
+      /* Final CTA: hide overlay version, show mobile block */
+      .final-cta-box { border-radius: 24px; }
+      .final-cta-img { display: none; }
+      .final-overlay { display: none; }
+      .final-cta-mobile { display: block; }
+
+      /* Fixed CTA: stretch across bottom */
+      .fixed-cta { left: 14px; right: 14px; text-align: center; bottom: 14px; }
+
+      footer { padding-bottom: 88px; }
+    }
+
+    @media (max-width: 560px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .function-grid, .reason-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .trust-badges span { font-size: 12px; padding: 7px 12px; }
+      .image-card img { max-height: 380px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────────────────── -->
+<header class="header">
+  <div class="nav">
+    <a href="#" class="logo">
+      <span class="logo-mark" aria-hidden="true">☺</span>
+      保育士のミカタ
+    </a>
+    <nav class="nav-links" aria-label="メインナビゲーション">
+      <a href="#reviews">口コミ</a>
+      <a href="#ranking">ランキング</a>
+      <a href="#compare">比較</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#cta" class="btn">無料で口コミを見る</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-mobile-copy">
+        <h1>求人票だけでは見えない<br><span class="pink">保育園のリアル</span>がわかる。</h1>
+        <p>保育士口コミ100万件以上をもとに、気になる園の雰囲気・<br>働きやすさ・ランキングを無料でチェック。</p>
+      </div>
+      <div class="hero-banner fade-up">
+        <img src="assets/hero-cta.png" alt="保育士のミカタ メインビジュアル">
+      </div>
+      <div class="hero-cta-row fade-up">
+        <a href="#cta" class="btn">無料で口コミを見る</a>
+        <a href="#ranking" class="btn btn-outline">人気保育園ランキングを見る</a>
+      </div>
+      <div class="trust-badges fade-up">
+        <span>保育士口コミ100万件以上</span>
+        <span>ランキングで比較</span>
+        <span>気になる園を検索</span>
+        <span>すべての機能が無料</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stats ─────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="stats fade-up">
+        <div class="stat"><strong>100万件<small style="font-size:.6em">以上</small></strong><span>保育士口コミ</span></div>
+        <div class="stat"><strong>無料</strong><span>口コミ閲覧</span></div>
+        <div class="stat"><strong>比較</strong><span>園選びに活用</span></div>
+        <div class="stat"><strong>ランキング</strong><span>人気園を確認</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ──────────────────────────────────────────────────── -->
+  <section class="section section-soft">
+    <div class="container two-col">
+      <div class="image-card fade-up">
+        <img src="assets/reviews-ui.png" alt="口コミ一覧UI">
+      </div>
+      <div class="fade-up">
+        <span class="eyebrow">ABOUT</span>
+        <h2>保育士のミカタとは</h2>
+        <p class="lead-text">実際に働いた保育士の口コミから、求人票だけでは分からない保育園のリアルを確認できる口コミサービスです。</p>
+        <ul class="point-list">
+          <li>人間関係や園長先生の雰囲気がわかる</li>
+          <li>残業・給与・休みやすさなどを確認できる</li>
+          <li>ランキングや比較機能で園選びをサポート</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reviews ────────────────────────────────────────────────── -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="eyebrow">REVIEWS</span>
+        <h2>求人票だけではわからない<br>保育園のリアルが見える</h2>
+      </div>
+      <div class="review-grid">
+        <div class="card fade-up"><div class="card-icon">♡</div><h3>人間関係</h3><div class="stars">★★★★★</div><p>職員同士の雰囲気や相談しやすさを確認。</p></div>
+        <div class="card fade-up"><div class="card-icon">⏱</div><h3>残業</h3><div class="stars">★★★★☆</div><p>残業や持ち帰り仕事の実態をチェック。</p></div>
+        <div class="card fade-up"><div class="card-icon">¥</div><h3>給与</h3><div class="stars">★★★★☆</div><p>給与・昇給・待遇に関する口コミを確認。</p></div>
+        <div class="card fade-up"><div class="card-icon">☘</div><h3>園長先生</h3><div class="stars">★★★★★</div><p>園長先生の雰囲気や方針が見えてくる。</p></div>
+        <div class="card fade-up"><div class="card-icon">☕</div><h3>休みやすさ</h3><div class="stars">★★★★☆</div><p>有給やシフトの相談しやすさを確認。</p></div>
+        <div class="card fade-up"><div class="card-icon">📘</div><h3>保育方針</h3><div class="stars">★★★★★</div><p>園の方針や教育観の相性がわかります。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Real Voice ─────────────────────────────────────────────── -->
+  <section class="section review-showcase">
+    <div class="container two-col reverse">
+      <div class="fade-up">
+        <span class="eyebrow">REAL VOICE</span>
+        <h2>実際の口コミを<br>見てみよう</h2>
+        <div class="floating-reviews">
+          <div class="review-bubble">
+            <strong>人間関係 ★★★★★</strong>
+            <p>職員同士の雰囲気が良く、相談しやすい環境でした。</p>
+          </div>
+          <div class="review-bubble">
+            <strong>残業 ★★★★☆</strong>
+            <p>行事前は忙しいですが、普段は残業が少なめです。</p>
+          </div>
+          <div class="review-bubble">
+            <strong>休みやすさ ★★★★☆</strong>
+            <p>シフト希望を出しやすく、有給も取りやすい雰囲気です。</p>
+          </div>
+        </div>
+      </div>
+      <div class="image-card fade-up">
+        <img src="assets/reviews-visual.png" alt="口コミ閲覧イメージ">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ranking ────────────────────────────────────────────────── -->
+  <section class="section" id="ranking">
+    <div class="container two-col">
+      <div class="fade-up">
+        <span class="eyebrow">RANKING</span>
+        <h2>人気の保育園を<br>ランキングで比較</h2>
+        <p class="lead-text">口コミ評価をもとに、気になる園をランキング形式でチェックできます。エリアや特徴から、自分に合う園探しをサポートします。</p>
+        <div class="rank-mini">
+          <div class="rank-item">
+            <div class="rank-num">1</div>
+            <div><strong>さくら保育園</strong><p>評価 4.6 / 口コミ128件</p></div>
+          </div>
+          <div class="rank-item">
+            <div class="rank-num">2</div>
+            <div><strong>ひまわり保育園</strong><p>評価 4.4 / 口コミ96件</p></div>
+          </div>
+          <div class="rank-item">
+            <div class="rank-num">3</div>
+            <div><strong>まどか保育園</strong><p>評価 4.3 / 口コミ78件</p></div>
+          </div>
+        </div>
+        <br>
+        <a href="#cta" class="btn">ランキングを見る</a>
+      </div>
+      <div class="image-card fade-up">
+        <img src="assets/ranking-ui.png" alt="保育園ランキング画面">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Compare ────────────────────────────────────────────────── -->
+  <section class="section section-soft" id="compare">
+    <div class="container two-col">
+      <div class="image-card fade-up">
+        <img src="assets/compare-ui.png" alt="保育園比較画面">
+      </div>
+      <div class="fade-up">
+        <span class="eyebrow">COMPARE</span>
+        <h2>気になる園を<br>かんたん比較</h2>
+        <p class="lead-text">人間関係・給与・残業・休みやすさなど、気になるポイントを並べて比較できます。</p>
+        <ul class="point-list">
+          <li>複数の園を一覧で比較できる</li>
+          <li>項目別の評価が見やすい</li>
+          <li>迷ったときの判断材料になる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Functions ──────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="eyebrow">FUNCTION</span>
+        <h2>保育士のミカタで<br>できること</h2>
+      </div>
+      <div class="function-grid">
+        <div class="card fade-up"><div class="card-icon">🔍</div><h3>園を検索</h3><p>エリアや条件から、自分に合う保育園を探せます。</p></div>
+        <div class="card fade-up"><div class="card-icon">★</div><h3>口コミ閲覧</h3><p>実際に働いた保育士のリアルな声を確認。</p></div>
+        <div class="card fade-up"><div class="card-icon">♕</div><h3>ランキング</h3><p>人気の保育園をランキングで比較できます。</p></div>
+        <div class="card fade-up"><div class="card-icon">⇄</div><h3>園を比較</h3><p>複数園の評価や特徴を見比べられます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How to Use ─────────────────────────────────────────────── -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="eyebrow">HOW TO USE</span>
+        <h2>かんたん4STEPで<br>使えます</h2>
+      </div>
+      <div class="steps">
+        <div class="step fade-up"><div class="step-num">STEP 01</div><h3>無料登録</h3><p>スマホからかんたん登録。</p></div>
+        <div class="step fade-up"><div class="step-num">STEP 02</div><h3>口コミを見る</h3><p>気になる園のリアルを確認。</p></div>
+        <div class="step fade-up"><div class="step-num">STEP 03</div><h3>園を比較</h3><p>評価や特徴を見比べる。</p></div>
+        <div class="step fade-up"><div class="step-num">STEP 04</div><h3>応募する</h3><p>納得して次の一歩へ。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reasons ────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="eyebrow">REASON</span>
+        <h2>保育士のミカタが<br>選ばれる理由</h2>
+      </div>
+      <div class="reason-grid">
+        <div class="card fade-up"><div class="card-icon">1</div><h3>口コミ数が豊富</h3><p>多くの口コミから園の雰囲気を確認できます。</p></div>
+        <div class="card fade-up"><div class="card-icon">2</div><h3>リアルな声</h3><p>求人票だけでは見えない働く人の声が見られます。</p></div>
+        <div class="card fade-up"><div class="card-icon">3</div><h3>ランキング</h3><p>人気の保育園を比較しながら探せます。</p></div>
+        <div class="card fade-up"><div class="card-icon">4</div><h3>無料で使える</h3><p>気になる園の情報を気軽に確認できます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────────────────────────── -->
+  <section class="section section-soft" id="faq">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="eyebrow">FAQ</span>
+        <h2>よくある質問</h2>
+      </div>
+      <div class="faq-list fade-up">
+        <details open>
+          <summary>Q. 本当に無料ですか？</summary>
+          <p>A. はい、すべての機能を無料でご利用いただけます。</p>
+        </details>
+        <details>
+          <summary>Q. スマホでも利用できますか？</summary>
+          <p>A. はい。スマートフォンに最適化されていますので、通勤中などでも快適にご利用いただけます。</p>
+        </details>
+        <details>
+          <summary>Q. どんな口コミが見られますか？</summary>
+          <p>A. 人間関係、残業、給与、園長先生の雰囲気、休みやすさ、保育方針など、働く上で気になる項目の口コミを確認できます。</p>
+        </details>
+        <details>
+          <summary>Q. ランキングは見られますか？</summary>
+          <p>A. 口コミ評価をもとにしたランキングで、気になる保育園を比較できます。</p>
+        </details>
+        <details>
+          <summary>Q. 登録後すぐに使えますか？</summary>
+          <p>A. はい。登録後すぐに口コミやランキングをご確認いただけます。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ──────────────────────────────────────────────── -->
+  <section class="section final-cta" id="cta">
+    <div class="container">
+      <!-- Desktop: image + overlay panel -->
+      <div class="final-cta-box fade-up">
+        <img class="final-cta-img" src="assets/hero-cta.png" alt="無料登録 イメージ">
+        <div class="final-overlay">
+          <div class="final-panel">
+            <span class="eyebrow">FREE START</span>
+            <h2>まずは無料で<br>保育園の口コミを<br>見てみませんか？</h2>
+            <p>転職してから後悔する前に、保育園のリアルを確認しましょう。</p>
+            <a href="thanks.html" class="btn">無料で口コミを見る</a>
+          </div>
+        </div>
+        <!-- Mobile: clean block (shown via CSS) -->
+        <div class="final-cta-mobile">
+          <span class="eyebrow">FREE START</span>
+          <h2>まずは無料で<br>保育園の口コミを<br>見てみませんか？</h2>
+          <p>転職してから後悔する前に、保育園のリアルを確認しましょう。</p>
+          <a href="thanks.html" class="btn">無料で口コミを見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="container footer-inner">
+    <nav aria-label="フッターナビゲーション">
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">利用規約</a>
+      <a href="#">お問い合わせ</a>
+    </nav>
+    <p>© 2026 保育士のミカタ. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- ── Fixed CTA ──────────────────────────────────────────────── -->
+<a href="#cta" class="fixed-cta" id="fixed-cta">無料で口コミを見る ›</a>
+
+<script>
+  /* Progressive enhancement */
+  document.documentElement.classList.add('js');
+
+  /* Scroll reveal */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('show'); revObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => revObs.observe(el));
+
+  /* Fixed CTA show/hide */
+  const fixedCta = document.getElementById('fixed-cta');
+  window.addEventListener('scroll', () => {
+    fixedCta.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+
+  /* FAQ — prevent page jump when opened */
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {});
+  });
+</script>
+</body>
+</html>
