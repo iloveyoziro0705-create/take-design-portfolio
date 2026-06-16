@@ -103,6 +103,24 @@
     /* Price hover */
     .prcard { transition: transform .22s ease, border-color .22s ease; }
     .prcard:hover { border-color: rgba(99,102,241,.25) !important; }
+
+    /* Works cards — horizontal layout on mobile */
+    @media (max-width: 639px) {
+      #works .grid > div { display: flex; flex-direction: row; }
+      #works .grid > div > div:first-child {
+        width: 108px; min-width: 108px; flex-shrink: 0;
+        aspect-ratio: auto !important; min-height: 116px;
+      }
+      #works .grid > div > div.p-5 {
+        flex: 1; min-width: 0; padding: 12px 13px;
+      }
+      #works .grid > div .p-5 h3 { font-size: 13px; margin-bottom: 4px; }
+      #works .grid > div .p-5 p.text-\[12\.5px\] {
+        font-size: 11px; line-height: 1.65;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      #works .grid > div .p-5 a { font-size: 11px; margin-top: 8px; display: inline-flex; }
+    }
   </style>
 </head>
 <body class="bg-bg text-white">
