@@ -89,48 +89,27 @@
 
     /* ── FV ─────────────────────────────────────────────────────── */
     .fv {
-      padding: 52px 0 60px;
+      padding: 48px 0 56px;
       background: linear-gradient(135deg, #fff 0%, var(--bg) 60%, #fff 100%);
       overflow: hidden; position: relative;
     }
     .fv::before {
       content: ""; position: absolute;
       top: -80px; left: -80px; width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(255,182,201,.35), transparent 65%);
+      background: radial-gradient(circle, rgba(255,182,201,.3), transparent 65%);
       pointer-events: none;
     }
-    .fv-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 52px; align-items: center; position: relative; z-index: 1;
-    }
-    .fv-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: linear-gradient(135deg, rgba(255,107,157,.12), rgba(255,182,201,.15));
-      border: 1px solid var(--acc); border-radius: 999px;
-      padding: 6px 16px; color: var(--pink); font-weight: 900; font-size: 12px;
-      margin-bottom: 16px;
-    }
-    .fv-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: #22C55E; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    .fv h1 { font-size: clamp(20px, 2.8vw, 32px); line-height: 1.5; color: var(--tx); margin-bottom: 16px; }
-    .fv h1 em { font-style: normal; color: var(--pink); }
-    .fv-sub { font-size: 14px; color: var(--sub); line-height: 1.9; margin-bottom: 28px; max-width: 440px; }
-    .fv-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .fv-img-wrap {
+      max-width: 860px; margin: 0 auto;
       border-radius: 24px; overflow: hidden;
-      box-shadow: 0 20px 60px rgba(255,107,157,.18); border: 1px solid var(--line);
-      background: #fff;
-      position: relative;
-      aspect-ratio: 1 / 1; /* 正方形でクロップ → 左約42%のみ表示 */
+      box-shadow: 0 20px 60px rgba(255,107,157,.18);
+      border: 1px solid var(--line); background: #fff;
     }
-    .fv-img-wrap img {
-      position: absolute; top: 0; left: 0;
-      width: auto; height: 100%; max-width: none;
-      display: block;
+    .fv-img-wrap img { width: 100%; height: auto; display: block; }
+    .fv-btns {
+      display: flex; justify-content: center;
+      gap: 14px; flex-wrap: wrap; margin-top: 28px;
     }
-
-    /* Mobile FV reorder */
-    .fv-mobile-top { display: none; }
 
     /* ── Section titles ─────────────────────────────────────────── */
     .sec-title { text-align: center; margin-bottom: 44px; }
@@ -260,10 +239,6 @@
 
     /* ── Responsive ─────────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .fv-grid { grid-template-columns: 1fr; gap: 28px; }
-      .fv-mobile-top { display: block; }
-      .fv-desktop-copy { display: none; }
-      .fv-img-wrap { aspect-ratio: 4/3; } /* モバイルは少し横長に */
       .feat-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
@@ -301,39 +276,13 @@
   <!-- ── FV ───────────────────────────────────────────────────────── -->
   <section class="fv">
     <div class="container">
-
-      <!-- Mobile: テキストを先に表示 -->
-      <div class="fv-mobile-top" style="margin-bottom:24px;">
-        <div class="fv-tag"><span class="fv-tag-dot"></span>登録完了</div>
-        <h1>ご登録ありがとうございます！<br><em>保育園選びの準備ができました。</em></h1>
-        <p class="fv-sub">これで、保育士のリアルな口コミ・人気ランキング・園比較機能を無料でご利用いただけます。気になる園をチェックして、後悔しない転職先選びにお役立てください。</p>
+      <div class="fv-img-wrap sr">
+        <img src="assets/thanks-fv.png" alt="保育士のミカタへの登録が完了しました！">
       </div>
-
-      <div class="fv-grid">
-        <!-- Desktop: テキスト左 -->
-        <div class="fv-desktop-copy">
-          <div class="fv-tag"><span class="fv-tag-dot"></span>登録完了</div>
-          <h1>ご登録ありがとうございます！<br><em>保育園選びの準備ができました。</em></h1>
-          <p class="fv-sub">これで、保育士のリアルな口コミ・人気ランキング・園比較機能を無料でご利用いただけます。気になる園をチェックして、後悔しない転職先選びにお役立てください。</p>
-          <div class="fv-btns">
-            <a href="#" class="btn">さっそく口コミを見る</a>
-            <a href="#" class="btn btn-outline">人気ランキングを見る</a>
-          </div>
-        </div>
-        <!-- 画像 -->
-        <div class="fv-img-wrap sr">
-          <img src="assets/thanks-fv.png" alt="保育士のミカタ 登録完了 — 口コミ・ランキング・比較機能">
-        </div>
+      <div class="fv-btns">
+        <a href="#" class="btn">口コミを見る</a>
+        <a href="#" class="btn btn-outline">ランキングを見る</a>
       </div>
-
-      <!-- Mobile: CTAを画像の下に表示 -->
-      <div class="fv-mobile-top" style="margin-top:24px;">
-        <div class="fv-btns">
-          <a href="#" class="btn">さっそく口コミを見る</a>
-          <a href="#" class="btn btn-outline">人気ランキングを見る</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
