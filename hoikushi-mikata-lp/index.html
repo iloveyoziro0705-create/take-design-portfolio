@@ -311,12 +311,12 @@
     @media (max-width: 560px) {
       .stats { grid-template-columns: 1fr 1fr; }
       .review-grid { grid-template-columns: 1fr; }
-      .function-grid, .reason-grid { grid-template-columns: 1fr 1fr; }
-      .steps { grid-template-columns: 1fr 1fr; }
+      .function-grid, .reason-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
       .trust-badges span { font-size: 12px; padding: 7px 12px; }
       .image-card img { max-height: 380px; }
 
-      /* Cards — horizontal (icon left, text right) on small screens */
+      /* Cards — horizontal (icon left, text right) */
       .card {
         display: grid;
         grid-template-columns: 46px 1fr;
@@ -333,6 +333,19 @@
       .card h3 { grid-column: 2; grid-row: 1; font-size: 14px; }
       .card .stars { grid-column: 2; grid-row: 2; font-size: 13px; margin: 0; }
       .card > p { grid-column: 2; grid-row: 3; font-size: 12px; }
+
+      /* Steps — horizontal (number left, text right) */
+      .step {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        column-gap: 12px;
+        row-gap: 2px;
+        padding: 14px 16px;
+        text-align: left;
+      }
+      .step-num { grid-column: 1; grid-row: 1 / span 2; align-self: start; padding-top: 2px; }
+      .step h3 { grid-column: 2; grid-row: 1; font-size: 14px; }
+      .step > p { grid-column: 2; grid-row: 2; font-size: 12px; }
     }
   </style>
 </head>
