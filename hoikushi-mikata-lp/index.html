@@ -113,7 +113,7 @@
       box-shadow: var(--shadow-strong); border: 1px solid rgba(248,95,145,.14);
       background: #fff;
     }
-    .hero-banner img { object-fit: cover; object-position: center top; max-height: 520px; }
+    .hero-banner img { width: 100%; height: auto; display: block; }
     .hero-cta-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
     .trust-badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
     .trust-badges span {
@@ -282,7 +282,7 @@
       /* Hero */
       .hero { padding-top: calc(var(--hh) + 24px); padding-bottom: 48px; }
       .hero-mobile-copy { display: block; }
-      .hero-banner img { max-height: 260px; }
+      .hero-banner { border-radius: 20px; }
 
       /* Grids */
       .stats { grid-template-columns: 1fr 1fr; }
