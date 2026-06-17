@@ -19,7 +19,7 @@
       --r:20px;--r-lg:32px
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;overflow-x:hidden}
     body{font-family:'Noto Sans JP',sans-serif;color:var(--text);line-height:1.85;background:#fff;overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     button,input,select,textarea{font-family:inherit}
@@ -40,14 +40,14 @@
     .green{color:var(--green)}
 
     /* Buttons */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:220px;padding:16px 30px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--orange),#fb923c);color:#fff;font-weight:900;font-size:15px;box-shadow:0 14px 36px rgba(255,107,53,.3);cursor:pointer;transition:.22s}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:0;max-width:100%;padding:16px 30px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--orange),#fb923c);color:#fff;font-weight:900;font-size:15px;box-shadow:0 14px 36px rgba(255,107,53,.3);cursor:pointer;transition:.22s}
     .btn:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(255,107,53,.38)}
     .btn.blueBtn{background:linear-gradient(135deg,var(--blue),#60a5fa);box-shadow:0 14px 36px rgba(37,99,235,.28)}
     .btn.blueBtn:hover{box-shadow:0 20px 44px rgba(37,99,235,.36)}
     .btn.greenBtn{background:linear-gradient(135deg,#06c755,var(--green));box-shadow:0 14px 36px rgba(6,199,85,.3)}
     .btn.greenBtn:hover{box-shadow:0 20px 44px rgba(6,199,85,.38)}
     .btn.outline{background:#fff;color:var(--blue);border:2px solid var(--blue);box-shadow:none}
-    .btn.sm{min-width:auto;padding:11px 20px;font-size:14px}
+    .btn.sm{padding:11px 20px;font-size:14px}
 
     /* Header */
     .header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
@@ -123,7 +123,8 @@
     .answers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px}
     .answer{background:#fff;color:var(--text);border:2px solid transparent;border-radius:16px;padding:22px 18px;text-align:left;font-weight:700;font-size:15px;cursor:pointer;transition:.2s;line-height:1.4}
     .answer:hover,.answer.selected{border-color:var(--orange);box-shadow:0 8px 24px rgba(255,107,53,.22);transform:translateY(-2px)}
-    .diagActions{display:flex;justify-content:space-between;gap:12px}
+    .diagActions{display:flex;justify-content:center;gap:16px}
+    .diagActions .btn{min-width:140px;flex-shrink:0}
     .result{display:none;margin-top:28px}
     .result.show{display:block}
     .resultCard{background:#fff;color:var(--text);border-radius:var(--r);padding:32px}
@@ -273,20 +274,26 @@
       .branchBenefits{grid-template-columns:1fr 1fr}
       .formLayout{grid-template-columns:1fr}
       .answers{grid-template-columns:1fr}
-      .btn{width:100%}
+      .actions .btn,
+      .branchHero .btn,
+      .rankCard .btn,
+      .formCard .btn,
+      .lineCard .btn,
+      .resultCard .btn,
+      .cta .btn{width:100%}
       .actions{max-width:100%}
-      .diagActions{gap:10px}
       .midCta{flex-direction:column;text-align:center}
       .midCta .btn{width:auto}
       .rankGrid{grid-template-columns:1fr}
       .resultDetails{grid-template-columns:1fr}
-      .jobActions{flex-direction:column}
     }
     @media(max-width:620px){
       h1{font-size:34px}
       h2{font-size:26px}
       .grid3,.voiceGrid{grid-template-columns:1fr}
       .grid4,.statsGrid,.flowGrid{grid-template-columns:1fr 1fr}
+      .jobActions{flex-direction:column}
+      .jobActions .btn{width:100%}
     }
   </style>
 </head>
@@ -503,7 +510,7 @@
       </div>
 
       <div class="diagActions">
-        <button class="btn outline" id="prevBtn" type="button" style="visibility:hidden">戻る</button>
+        <button class="btn outline" id="prevBtn" type="button" style="display:none">戻る</button>
         <button class="btn" id="nextBtn" type="button">次へ</button>
       </div>
 
@@ -1140,7 +1147,7 @@ function updateStep() {
   stepLabel.textContent = `STEP ${current + 1} / ${questions.length}`;
   percentLabel.textContent = `${percent}%`;
   progressBar.style.width = `${percent}%`;
-  prevBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+  prevBtn.style.display = current === 0 ? 'none' : '';
   nextBtn.textContent = current === questions.length - 1 ? '診断結果を見る' : '次へ';
 }
 
