@@ -108,11 +108,11 @@
 
     /* ── Why table ── */
     .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-    .tableBox{overflow:hidden;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm)}
-    .row{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--line)}
+    .tableBox{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm)}
+    .row{display:grid;grid-template-columns:1fr 1.1fr 1.1fr;border-bottom:1px solid var(--line);min-width:300px}
     .row:last-child{border-bottom:0}
-    .row div{padding:14px 12px;text-align:center}
-    .row div:first-child{background:var(--bg);font-weight:900;text-align:left;padding-left:16px}
+    .row div{padding:13px 10px;text-align:center;font-size:14px}
+    .row div:first-child{background:var(--bg);font-weight:900;text-align:left;padding-left:14px;white-space:nowrap}
     .good{color:var(--green);font-weight:900}
     .bad{color:#ef4444;font-weight:900}
 
@@ -328,47 +328,92 @@
     .fadeUp{opacity:0;transform:translateY(26px);transition:.75s}
     .fadeUp.show{opacity:1;transform:translateY(0)}
 
-    /* ── Responsive ── */
+    /* ── Responsive 960px (tablet / large mobile) ── */
     @media(max-width:960px){
-      .section,.diagnosis,.cta{padding:84px 0}
-      .nav{height:64px}
+      .section,.diagnosis,.cta{padding:72px 0}
+      .nav{height:62px}
       .navLinks,.nav .btn{display:none}
-      .hero{padding-top:96px;padding-bottom:64px}
+      .hero{padding-top:90px;padding-bottom:56px}
       .heroGrid{grid-template-columns:1fr}
       .heroPanel{order:-1}
       .fvStats{grid-template-columns:repeat(2,1fr)}
       .statsGrid{grid-template-columns:repeat(2,1fr)}
       .grid3,.voiceGrid{grid-template-columns:1fr 1fr}
       .grid4,.flowGrid{grid-template-columns:repeat(2,1fr)}
-      .twoCol{grid-template-columns:1fr}
-      .branchHero{grid-template-columns:1fr}
-      .branchVisual{min-height:160px}
+      .twoCol{grid-template-columns:1fr;gap:32px}
+      .branchHero{grid-template-columns:1fr;gap:24px;padding:24px}
+      .branchVisual{min-height:140px}
       .branchBenefits{grid-template-columns:1fr 1fr}
       .formLayout{grid-template-columns:1fr}
       .answers{grid-template-columns:1fr}
       .actions .btn,.branchHero .btn,.rankCard .btn,.formCard .btn,.lineCard .btn,.resultCard .btn,.cta .btn{width:100%}
       .actions{max-width:100%}
-      .midCta{flex-direction:column;text-align:center}
+      .midCta{flex-direction:column;text-align:center;padding:24px}
       .midCta .btn{width:auto}
       .rankGrid{grid-template-columns:1fr}
       .resultGrid{grid-template-columns:1fr}
       .diagKnow{grid-template-columns:repeat(3,1fr)}
       .areaGrid{grid-template-columns:repeat(3,1fr)}
       .ctaBtns .btn{width:100%}
-      .formTop{flex-direction:column;gap:10px}
+      .formTop{flex-direction:row;flex-wrap:wrap;gap:10px;padding:14px}
+      .formTopItem{flex:1;min-width:80px}
+      .lead{font-size:15px}
+      .card{padding:22px}
+      .stat{padding:22px 14px}
     }
+
+    /* ── Responsive 620px (small mobile) ── */
     @media(max-width:620px){
-      h1{font-size:32px}
-      h2{font-size:24px}
+      h1{font-size:30px}
+      h2{font-size:22px}
+      h3{font-size:17px}
+      .section,.diagnosis,.cta{padding:60px 0}
+      .title{margin-bottom:36px}
+      .lead{font-size:14px}
       .grid3,.voiceGrid{grid-template-columns:1fr}
-      .grid4,.statsGrid,.flowGrid{grid-template-columns:1fr 1fr}
+      .grid4,.statsGrid{grid-template-columns:1fr 1fr}
+      .flowGrid{grid-template-columns:1fr 1fr}
+      .card{padding:18px}
+      .stat{padding:18px 10px}
+      .stat strong{font-size:24px}
       .jobActions{flex-direction:column}
       .jobActions .btn{width:100%}
       .jobDetails{grid-template-columns:1fr}
       .diagKnow{grid-template-columns:repeat(2,1fr)}
       .areaGrid{grid-template-columns:repeat(2,1fr)}
       .fvStats{grid-template-columns:repeat(2,1fr)}
+      .fvStat{padding:12px 8px}
+      .fvStat strong{font-size:16px}
       .rankGrid,.branchBenefits{grid-template-columns:1fr}
+      .branchVoice{flex-direction:column}
+      .branchHero{padding:18px}
+      .diagBox{padding:22px 16px}
+      .answer{padding:16px 14px;font-size:14px}
+      .urgency{gap:7px}
+      .urgBadge{font-size:12px;padding:6px 10px}
+      .heroPanel{padding:18px}
+      .miniJobCard{padding:12px}
+      .step{padding:18px 14px}
+      .stepNum{font-size:11px}
+      details{padding:14px 16px}
+      summary{font-size:14px}
+      .voiceCard{padding:16px}
+      .formCard{padding:20px}
+      .lineCard{padding:20px}
+      .areaCard{padding:16px 10px}
+      .areaIcon{font-size:26px}
+      .fixed{padding:13px 20px;font-size:14px}
+    }
+
+    /* ── Responsive 400px (very small) ── */
+    @media(max-width:400px){
+      .container{width:94%}
+      h1{font-size:27px}
+      h2{font-size:20px}
+      .fvStats{grid-template-columns:1fr 1fr}
+      .statsGrid{grid-template-columns:1fr 1fr}
+      .grid4{grid-template-columns:1fr 1fr}
+      .diagKnow{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
