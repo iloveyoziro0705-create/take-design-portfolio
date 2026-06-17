@@ -72,11 +72,10 @@
     .actionSub{font-size:12px;color:var(--sub)}
 
     /* FV stats strip */
-    .fvStats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:30px;background:#fff;box-shadow:var(--shadow-sm)}
-    .fvStat{padding:16px 12px;text-align:center;border-right:1px solid var(--line)}
-    .fvStat:last-child{border-right:0}
-    .fvStat strong{display:block;font-size:20px;font-weight:900;color:var(--blue);line-height:1.2}
-    .fvStat span{font-size:11px;color:var(--sub);font-weight:700}
+    .fvStats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+    .fvStat{padding:13px 10px;text-align:center;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}
+    .fvStat strong{display:block;font-size:16px;font-weight:900;color:var(--blue);line-height:1.25;white-space:nowrap}
+    .fvStat span{display:block;margin-top:3px;font-size:11px;color:var(--sub);font-weight:700;line-height:1.45}
 
     /* Hero panel */
     .heroPanel{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;box-shadow:var(--strong);display:flex;flex-direction:column;gap:14px}
@@ -94,10 +93,16 @@
     .housingBadge{background:var(--softGreen);color:var(--greenDark);border-radius:7px;padding:3px 8px;font-size:11px;font-weight:900;white-space:nowrap;flex-shrink:0}
 
     /* ── Stats ── */
+    .trustSection{padding:56px 0 82px}
+    .trustIntro{text-align:center;margin:0 auto 28px;max-width:760px}
+    .trustIntro h2{font-size:clamp(24px,3vw,34px)}
+    .trustIntro p{font-size:14px;margin-top:8px}
     .statsGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 20px;text-align:center;box-shadow:var(--shadow-sm)}
     .stat strong{display:block;font-size:clamp(24px,3.8vw,40px);color:var(--blue);line-height:1.1;margin-bottom:6px}
     .stat span{font-size:13px;font-weight:700;color:var(--sub)}
+    .stat small{display:block;margin-top:5px;font-size:11px;color:#94a3b8;font-weight:700}
+    .trustNote{text-align:center;margin-top:14px;font-size:12px;color:#94a3b8}
 
     /* ── Cards / Grid ── */
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -439,6 +444,7 @@
     /* ── Responsive 960px (tablet / large mobile) ── */
     @media(max-width:960px){
       .section,.diagnosis,.cta{padding:72px 0}
+      .trustSection{padding:50px 0 68px}
       .nav{height:62px}
       .navLinks,.nav .btn{display:none}
       .hero{padding-top:90px;padding-bottom:56px}
@@ -486,6 +492,7 @@
       h2{font-size:22px}
       h3{font-size:17px}
       .section,.diagnosis,.cta{padding:60px 0}
+      .trustSection{padding:42px 0 56px}
       .cta{padding-bottom:150px}
       .title{margin-bottom:36px}
       .lead{font-size:14px}
@@ -606,10 +613,10 @@
       <p class="actionSub" style="font-size:12px;color:var(--sub);margin-top:4px">相談・登録・応募はすべて無料</p>
       <!-- FV Stats -->
       <div class="fvStats">
-        <div class="fvStat"><strong>3,000件<span style="font-size:13px">以上</span></strong><span>掲載求人数</span></div>
-        <div class="fvStat"><strong>1,200件<span style="font-size:13px">以上</span></strong><span>寮費無料求人</span></div>
-        <div class="fvStat"><strong>850件<span style="font-size:13px">以上</span></strong><span>即入寮求人</span></div>
-        <div class="fvStat"><strong>92<span style="font-size:13px">%</span></strong><span>未経験歓迎</span></div>
+        <div class="fvStat"><strong>寮費0円</strong><span>対象求人あり</span></div>
+        <div class="fvStat"><strong>即入寮</strong><span>最短2〜3日相談</span></div>
+        <div class="fvStat"><strong>日払い</strong><span>相談可能求人あり</span></div>
+        <div class="fvStat"><strong>未経験OK</strong><span>研修あり求人中心</span></div>
       </div>
     </div>
     <div class="heroPanel fadeUp">
@@ -646,14 +653,20 @@
 </section>
 
 <!-- ===================== STATS ===================== -->
-<section class="section">
+<section class="section trustSection">
   <div class="container">
-    <div class="statsGrid fadeUp">
-      <div class="stat"><strong>10,000人</strong><span>紹介実績突破</span></div>
-      <div class="stat"><strong>95%</strong><span>利用者満足度</span></div>
-      <div class="stat"><strong>3,000件</strong><span>全国求人</span></div>
-      <div class="stat"><strong>即入寮</strong><span>最短で生活再建</span></div>
+    <div class="trustIntro fadeUp">
+      <span class="label">Trust</span>
+      <h2>数字で見るミライ寮</h2>
+      <p>住まいと仕事を一緒に探せるよう、全国の住み込み求人を条件別に整理しています。</p>
     </div>
+    <div class="statsGrid fadeUp">
+      <div class="stat"><strong>10,000人</strong><span>紹介実績</span><small>相談・応募サポート累計</small></div>
+      <div class="stat"><strong>95%</strong><span>利用者満足度</span><small>相談後アンケートより</small></div>
+      <div class="stat"><strong>3,000件</strong><span>全国の住み込み求人</span><small>以上・寮付き求人を掲載</small></div>
+      <div class="stat"><strong>最短2日</strong><span>入寮までの目安</span><small>空き寮がある求人の場合</small></div>
+    </div>
+    <p class="trustNote fadeUp">※求人条件・寮の空き状況により、入寮時期や待遇は異なります。</p>
   </div>
 </section>
 
