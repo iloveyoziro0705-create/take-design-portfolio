@@ -59,7 +59,7 @@
     .nav .btn{padding:9px 20px;font-size:13px}
 
     /* ── Hero ── */
-    .hero{padding:124px 0 88px;background:radial-gradient(circle at 8% 12%,rgba(37,99,235,.1),transparent 30%),radial-gradient(circle at 90% 14%,rgba(16,185,129,.14),transparent 28%),linear-gradient(180deg,#fff,var(--bg));overflow:hidden}
+    .hero{padding:124px 0 42px;background:radial-gradient(circle at 8% 12%,rgba(37,99,235,.1),transparent 30%),radial-gradient(circle at 90% 14%,rgba(16,185,129,.14),transparent 28%),linear-gradient(180deg,#fff,var(--bg));overflow:hidden}
     .heroGrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--blue);font-weight:900;font-size:13px;margin-bottom:18px;box-shadow:var(--shadow-sm)}
     .badge-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
@@ -87,8 +87,8 @@
     .housingBadge{background:var(--softGreen);color:var(--greenDark);border-radius:7px;padding:3px 8px;font-size:11px;font-weight:900;white-space:nowrap;flex-shrink:0}
 
     /* ── Stats ── */
-    .trustSection{padding:56px 0 82px}
-    .trustIntro{text-align:center;margin:0 auto 28px;max-width:760px}
+    .trustSection{padding:30px 0 76px}
+    .trustIntro{text-align:center;margin:0 auto 24px;max-width:760px}
     .trustIntro h2{font-size:clamp(24px,3vw,34px)}
     .trustIntro p{font-size:14px;margin-top:8px}
     .statsGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -97,6 +97,14 @@
     .stat span{font-size:13px;font-weight:700;color:var(--sub)}
     .stat small{display:block;margin-top:5px;font-size:11px;color:#94a3b8;font-weight:700}
     .trustNote{text-align:center;margin-top:14px;font-size:12px;color:#94a3b8}
+
+    @media(min-width:961px){
+      .statsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+      .stat{display:grid;grid-template-columns:minmax(140px,auto) 1fr;grid-template-rows:auto auto;align-items:center;text-align:left;gap:4px 22px;padding:24px 28px;min-height:126px}
+      .stat strong{grid-row:1/3;grid-column:1;margin-bottom:0;white-space:nowrap}
+      .stat span{grid-column:2;display:block;font-size:15px;color:var(--text)}
+      .stat small{grid-column:2;margin-top:2px;font-size:12px}
+    }
 
     /* ── Cards / Grid ── */
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -438,10 +446,10 @@
     /* ── Responsive 960px (tablet / large mobile) ── */
     @media(max-width:960px){
       .section,.diagnosis,.cta{padding:72px 0}
-      .trustSection{padding:50px 0 68px}
+      .trustSection{padding:28px 0 62px}
       .nav{height:62px}
       .navLinks,.nav .btn{display:none}
-      .hero{padding-top:90px;padding-bottom:56px}
+      .hero{padding-top:90px;padding-bottom:36px}
       .heroGrid{grid-template-columns:1fr}
       .heroPanel{order:-1}
       .statsGrid{grid-template-columns:repeat(2,1fr)}
@@ -485,7 +493,8 @@
       h2{font-size:22px}
       h3{font-size:17px}
       .section,.diagnosis,.cta{padding:60px 0}
-      .trustSection{padding:42px 0 56px}
+      .trustSection{padding:24px 0 52px}
+      .hero{padding-top:82px;padding-bottom:30px}
       .cta{padding-bottom:150px}
       .title{margin-bottom:36px}
       .lead{font-size:14px}
