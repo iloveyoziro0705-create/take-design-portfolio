@@ -31,6 +31,14 @@
     .container { width: min(1200px, 90%); margin: auto; }
     section { padding: 120px 0; }
 
+
+    /* ===== GLOBAL IMAGE RULES ===== */
+    img { display:block; width:100%; height:auto; }
+    .hero-image img,
+    .feature-image img,
+    .curriculum-image img,
+    .cta-bg img { width:100%; height:100%; object-fit:cover; }
+
     /* ===== FADE UP ANIMATION ===== */
     .fade-up {
       opacity: 0;
@@ -1055,21 +1063,8 @@
       <!-- Right -->
       <div class="fv-image-wrap fade-up delay-2">
         <div class="fv-image-card">
-          <div class="img-placeholder" style="width:100%;height:480px;">
-            <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
-              <defs>
-                <linearGradient id="fv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#1a2332"/>
-                  <stop offset="100%" style="stop-color:#0d1520"/>
-                </linearGradient>
-              </defs>
-              <rect width="800" height="600" fill="url(#fv-grad)"/>
-              <rect x="60" y="60" width="220" height="150" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.18)" stroke-width="1"/>
-              <rect x="320" y="40" width="420" height="260" rx="14" fill="rgba(212,175,55,0.05)" stroke="rgba(212,175,55,0.14)" stroke-width="1"/>
-              <rect x="60" y="260" width="420" height="210" rx="14" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.14)" stroke-width="1"/>
-              <rect x="530" y="360" width="210" height="170" rx="14" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.11)" stroke-width="1"/>
-              <text x="400" y="300" text-anchor="middle" fill="#D4AF37" font-size="15" font-family="sans-serif" opacity="0.55">hero-business.jpg（800×600px）</text>
-            </svg>
+          <div class="hero-image" style="width:100%;height:480px;">
+            <img src="./assets/hero-business.jpg" alt="事業設計・起業支援" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);">
           </div>
           <div class="fv-overlay-card">
             <p class="fv-overlay-title">BUSINESS ROADMAP</p>
@@ -1138,16 +1133,7 @@
       <!-- Right -->
       <div class="problem-image-wrap fade-up delay-3">
         <div style="width:100%;height:520px;">
-          <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
-            <defs>
-              <linearGradient id="prob-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1e2a3a"/>
-                <stop offset="100%" style="stop-color:#111827"/>
-              </linearGradient>
-            </defs>
-            <rect width="600" height="700" fill="url(#prob-grad)"/>
-            <text x="300" y="360" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">problem-office-worker.jpg（600×700px）</text>
-          </svg>
+          <img src="./assets/problem-office-worker.jpg" alt="起業前の悩み・課題" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);">
         </div>
       </div>
     </div>
@@ -1166,10 +1152,7 @@
       <!-- Card 1 -->
       <div class="learn-card fade-up delay-1">
         <div class="learn-card-img">
-          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-            <rect width="600" height="200" fill="#f0ede6"/>
-            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">business-strategy.jpg（600×200px）</text>
-          </svg>
+          <img src="./assets/business-strategy.jpg" alt="事業戦略設計" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="learn-card-body">
           <div class="learn-card-line"></div>
@@ -1180,10 +1163,7 @@
       <!-- Card 2 -->
       <div class="learn-card fade-up delay-2">
         <div class="learn-card-img">
-          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-            <rect width="600" height="200" fill="#ede8e0"/>
-            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">product-design.jpg（600×200px）</text>
-          </svg>
+          <img src="./assets/product-design.jpg" alt="商品・サービス設計" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="learn-card-body">
           <div class="learn-card-line"></div>
@@ -1194,10 +1174,7 @@
       <!-- Card 3 -->
       <div class="learn-card fade-up delay-3">
         <div class="learn-card-img">
-          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-            <rect width="600" height="200" fill="#e8ede0"/>
-            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">marketing-funnel.jpg（600×200px）</text>
-          </svg>
+          <img src="./assets/marketing-funnel.jpg" alt="集客導線設計" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="learn-card-body">
           <div class="learn-card-line"></div>
@@ -1261,17 +1238,8 @@
     <div class="features-grid">
       <!-- Left: Image -->
       <div class="features-image-wrap fade-up">
-        <div style="width:100%;height:560px;">
-          <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
-            <defs>
-              <linearGradient id="feat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#1a2a3a"/>
-                <stop offset="100%" style="stop-color:#0d1825"/>
-              </linearGradient>
-            </defs>
-            <rect width="600" height="700" fill="url(#feat-grad)"/>
-            <text x="300" y="360" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">mentoring-session.jpg（600×700px）</text>
-          </svg>
+        <div class="feature-image" style="width:100%;height:560px;">
+          <img src="./assets/mentoring-session.jpg" alt="個別伴走メンタリング" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);">
         </div>
       </div>
       <!-- Right: Features -->
@@ -1324,18 +1292,8 @@
     </div>
     <!-- Roadmap Image -->
     <div class="curriculum-image-wrap fade-up">
-      <div style="width:100%;height:360px;">
-        <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
-          <defs>
-            <linearGradient id="rd-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#1a2332"/>
-              <stop offset="100%" style="stop-color:#0d1520"/>
-            </linearGradient>
-          </defs>
-          <rect width="1200" height="360" fill="url(#rd-grad)"/>
-          <line x1="0" y1="180" x2="1200" y2="180" stroke="rgba(212,175,55,0.25)" stroke-width="2" stroke-dasharray="10 8"/>
-          <text x="600" y="188" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">roadmap-screen.jpg（1200×360px）</text>
-        </svg>
+      <div class="curriculum-image" style="width:100%;height:360px;">
+        <img src="./assets/roadmap-screen.jpg" alt="起業ロードマップ" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);">
       </div>
     </div>
     <!-- PC: Horizontal Roadmap -->
@@ -1374,16 +1332,7 @@
     <!-- Transformation Image -->
     <div class="transformation-image-wrap fade-up">
       <div style="width:100%;height:400px;">
-        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
-          <defs>
-            <linearGradient id="tf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#1a2c20"/>
-              <stop offset="50%" style="stop-color:#1a2332"/>
-              <stop offset="100%" style="stop-color:#2c1a1a"/>
-            </linearGradient>
-          </defs>
-          <rect width="1200" height="400" fill="url(#tf-grad)"/>
-          <text x="600" y="208" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">transformation.jpg（1200×400px）</text>
+        <img src="./assets/transformation.jpg" alt="起業前後のビジョン変容" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r);">
         </svg>
       </div>
     </div>
@@ -1604,21 +1553,7 @@
 
 <!-- ===== SECTION10 — Final CTA ===== -->
 <section id="final-cta" style="padding:0;">
-  <div class="final-cta-bg">
-    <svg viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
-      <defs>
-        <linearGradient id="cta-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#0f1a2e"/>
-          <stop offset="100%" style="stop-color:#1a0f0a"/>
-        </linearGradient>
-      </defs>
-      <rect width="1440" height="600" fill="url(#cta-grad)"/>
-      <circle cx="720" cy="300" r="500" fill="rgba(212,175,55,0.03)"/>
-      <circle cx="720" cy="300" r="300" fill="rgba(212,175,55,0.025)"/>
-      <circle cx="720" cy="300" r="150" fill="rgba(212,175,55,0.02)"/>
-    </svg>
-    <div class="final-cta-overlay"></div>
-  </div>
+  <div class="final-cta-bg" style="background:linear-gradient(rgba(11,15,25,.65),rgba(11,15,25,.65)),url('./assets/final-cta.jpg');background-size:cover;background-position:center;"></div>
   <div style="padding:160px 0;text-align:center;position:relative;z-index:2;">
     <div class="container final-cta-content">
       <p class="section-label fade-up" style="display:block;margin-bottom:20px;">FREE CONSULTATION</p>
