@@ -571,6 +571,116 @@
       .grid4{grid-template-columns:1fr 1fr}
       .diagKnow{grid-template-columns:1fr 1fr}
     }
+
+    /* ── Branch LP v2 (redesigned) ── */
+    .branch-tabs-wrap{text-align:center;margin-bottom:48px}
+    .branch-tabs-hint{font-size:14px;color:#475569;font-weight:700;margin-bottom:20px;line-height:1.8}
+    .branch-tabs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .branch-tab{border:1.5px solid var(--line);background:#fff;border-radius:18px;padding:16px 20px;color:#475569;font-size:13px;font-weight:900;cursor:pointer;transition:.22s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;align-items:center;gap:7px;min-width:114px;position:relative}
+    .branch-tab .bt-icon{font-size:22px}
+    .branch-tab .bt-badge{position:absolute;top:-8px;right:-8px;background:#f59e0b;color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;font-weight:900}
+    .branch-tab:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .branch-tab.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 16px 40px rgba(37,99,235,.28)}
+    .branch-tab.income-tab.active{background:linear-gradient(135deg,var(--orange),#f59e0b);border-color:var(--orange);box-shadow:0 16px 40px rgba(255,107,53,.28)}
+    .branch-tab.woman-tab.active{background:linear-gradient(135deg,#ec4899,#8b5cf6);border-color:#ec4899;box-shadow:0 16px 40px rgba(236,72,153,.28)}
+    .branch-tab.restart-tab.active{background:linear-gradient(135deg,#1e3a8a,#10b981);border-color:#1e3a8a;box-shadow:0 16px 40px rgba(30,58,138,.28)}
+    .branch-content{background:#fff;border-radius:44px;box-shadow:0 40px 100px rgba(15,23,42,.16);padding:52px;display:grid;gap:40px}
+
+    /* Result header */
+    .branch-result-header{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;background:linear-gradient(135deg,#f8fafc,#fff);border:1.5px solid var(--line);border-radius:32px;padding:40px 44px}
+    .brh-label{font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .brh-label::before{content:'';width:24px;height:2px;background:var(--green);border-radius:999px}
+    .brh-left h2{font-size:clamp(22px,3.4vw,38px);margin-bottom:14px}
+    .brh-stars{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+    .brh-stars .stars{color:#f59e0b;font-size:18px;letter-spacing:2px}
+    .brh-stars span{font-size:13px;font-weight:900;color:var(--sub)}
+    .brh-desc{font-size:15px;color:#475569;line-height:1.9;margin-bottom:22px;max-width:560px}
+    .brh-score{background:linear-gradient(135deg,var(--blue),#60a5fa);border-radius:28px;padding:28px 24px;text-align:center;color:#fff;min-width:164px;box-shadow:0 20px 50px rgba(37,99,235,.28)}
+    .brh-score .score-num{font-size:60px;font-weight:900;line-height:1;margin-bottom:4px}
+    .brh-score .score-label{font-size:12px;color:rgba(255,255,255,.85);font-weight:700;margin-bottom:14px}
+    .brh-score .score-stars{color:#fbbf24;font-size:15px;letter-spacing:2px}
+
+    /* Reason section */
+    .branch-reason{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+    .br-left .br-heading{font-size:clamp(18px,2.4vw,26px);margin-bottom:14px}
+    .br-left p{font-size:14px;color:#475569;line-height:1.9}
+    .br-checklist{background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow-sm)}
+    .br-checklist h4{font-size:14px;font-weight:900;margin-bottom:16px}
+    .br-check-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+    .br-check-item:last-child{border-bottom:0;padding-bottom:0}
+    .br-check-icon{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;color:#fff;margin-top:2px}
+    .br-check-item p{font-size:14px;color:#374151;font-weight:700;line-height:1.6;margin:0}
+
+    /* Enhanced job cards */
+    .branch-jobs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .bj-card{background:#fff;border:1.5px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-sm);transition:.25s}
+    .bj-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .bj-img{aspect-ratio:16/9;background:linear-gradient(135deg,#eff6ff,#fff);display:grid;place-items:center;position:relative;overflow:hidden}
+    .bj-img::before{content:'';position:absolute;inset:14px 22px;border-radius:14px;background:rgba(255,255,255,.76);box-shadow:0 10px 24px rgba(15,23,42,.1)}
+    .bj-img-icon{position:relative;z-index:1;font-size:34px;font-weight:900}
+    .bj-type{position:absolute;top:9px;left:9px;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:900;color:#475569;z-index:2}
+    .bj-popular{position:absolute;top:9px;right:9px;background:var(--orange);color:#fff;border-radius:999px;padding:3px 9px;font-size:10px;font-weight:900;z-index:2}
+    .bj-body{padding:18px}
+    .bj-body h4{font-size:14px;font-weight:900;line-height:1.5;margin-bottom:5px}
+    .bj-pay{font-size:24px;font-weight:900;color:var(--orange);margin:6px 0 10px;line-height:1}
+    .bj-meta{display:grid;gap:6px;margin-bottom:10px}
+    .bj-meta div{display:flex;justify-content:space-between;gap:10px;font-size:12px}
+    .bj-meta span{color:var(--sub)}
+    .bj-meta b{color:#334155;font-weight:700}
+    .bj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+    .bj-tags span{border-radius:999px;padding:3px 9px;font-size:11px;font-weight:900}
+    .bj-life{background:linear-gradient(135deg,#fff7ed,#fff);border:1px solid #fed7aa;border-radius:13px;padding:11px 13px;margin-bottom:12px}
+    .bj-life-title{font-size:11px;font-weight:900;color:var(--orangeDark);margin-bottom:7px}
+    .bj-life-items{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+    .bj-life-item{font-size:11px;color:#475569}
+    .bj-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .bj-actions .btn{padding:11px 7px;font-size:12px;font-weight:900}
+
+    /* Enhanced voice */
+    .bv-card{border:1.5px solid rgba(226,232,240,.9);border-radius:28px;padding:30px;box-shadow:var(--shadow-sm)}
+    .bv-avatar-row{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+    .bv-avatar{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px;flex-shrink:0}
+    .bv-name{font-size:14px;font-weight:900}
+    .bv-meta{font-size:12px;color:var(--sub);margin-top:2px}
+    .bv-stars{color:#f59e0b;font-size:13px;letter-spacing:2px;margin-top:4px}
+    .bv-before-after{display:grid;grid-template-columns:1fr 44px 1fr;gap:10px;align-items:center;margin-bottom:18px}
+    .bva-box{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px}
+    .bva-label{font-size:11px;font-weight:900;letter-spacing:.1em;margin-bottom:7px;text-transform:uppercase}
+    .bva-box.before .bva-label{color:#ef4444}
+    .bva-box.after .bva-label{color:var(--green)}
+    .bva-box p{font-size:13px;color:#374151;font-weight:700;line-height:1.6;margin:0}
+    .bva-arrow{text-align:center;font-size:22px;color:var(--sub)}
+    .bv-comment{border-left:3px solid var(--blue);border-radius:0 14px 14px 0;background:rgba(248,250,252,.8);padding:14px 16px;font-size:14px;color:#374151;font-weight:700;line-height:1.85}
+
+    /* CTA band */
+    .branch-cta-band{border-radius:32px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .bcta-left h3{font-size:clamp(18px,2.6vw,26px);color:#fff;margin-bottom:9px;line-height:1.45}
+    .bcta-left p{color:rgba(255,255,255,.88);font-size:14px;line-height:1.8}
+    .bcta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+
+    @media(max-width:960px){
+      .branch-content{padding:32px 24px;border-radius:32px;gap:28px}
+      .branch-result-header{grid-template-columns:1fr;gap:24px;padding:24px}
+      .brh-score{display:flex;align-items:center;gap:18px;text-align:left;min-width:0;padding:18px 22px}
+      .brh-score .score-num{font-size:44px;margin-bottom:0}
+      .branch-reason{grid-template-columns:1fr;gap:20px}
+      .branch-jobs-grid{grid-template-columns:1fr 1fr;gap:14px}
+      .bv-before-after{grid-template-columns:1fr;gap:8px}
+      .bva-arrow{display:none}
+      .branch-cta-band{flex-direction:column;align-items:flex-start;padding:24px 28px}
+      .bcta-btns .btn{width:100%}
+    }
+    @media(max-width:620px){
+      .branch-content{padding:20px 16px;border-radius:22px;gap:22px}
+      .branch-result-header{padding:18px;border-radius:20px}
+      .branch-tabs{gap:7px}
+      .branch-tab{min-width:72px;padding:11px 12px;border-radius:14px;font-size:12px}
+      .branch-tab .bt-icon{font-size:18px}
+      .branch-jobs-grid{grid-template-columns:1fr}
+      .bj-life-items{grid-template-columns:1fr}
+      .branch-cta-band{padding:20px 18px;border-radius:20px}
+      .bcta-btns{width:100%}
+    }
   </style>
 </head>
 <body>
@@ -858,29 +968,59 @@
   <div class="container">
     <div class="title fadeUp">
       <span class="label">Type LP</span>
-      <h2>診断結果別の専用ページ</h2>
+      <h2>あなただけの<br>診断結果ページ</h2>
       <p>あなたの状況に近いタイプから、住まい・収入・働き方までまとめて確認できます。</p>
     </div>
-    <p class="typeHint fadeUp">あなたの診断結果に合わせて切り替えできます</p>
-    <div class="typeTabs fadeUp">
-      <button class="typeTab active" data-type="income">高収入</button>
-      <button class="typeTab" data-type="dorm">即入寮</button>
-      <button class="typeTab" data-type="woman">女性安心</button>
-      <button class="typeTab" data-type="restart">リスタート</button>
+    <div class="branch-tabs-wrap fadeUp">
+      <p class="branch-tabs-hint">診断結果に合わせて、あなたに近いタイプの求人を確認できます</p>
+      <div class="branch-tabs">
+        <button class="branch-tab income-tab active" data-type="income">
+          <span class="bt-icon">💰</span>
+          <span>高収入タイプ</span>
+          <span class="bt-badge">人気No.1</span>
+        </button>
+        <button class="branch-tab dorm-tab" data-type="dorm">
+          <span class="bt-icon">🏠</span>
+          <span>即入寮タイプ</span>
+        </button>
+        <button class="branch-tab woman-tab" data-type="woman">
+          <span class="bt-icon">🌸</span>
+          <span>女性安心タイプ</span>
+        </button>
+        <button class="branch-tab restart-tab" data-type="restart">
+          <span class="bt-icon">🌅</span>
+          <span>リスタートタイプ</span>
+        </button>
+      </div>
     </div>
 
     <!-- HIGH INCOME -->
     <div class="branch active" id="branch-income">
-      <div class="branchLP income">
+      <div class="branch-content branchLP income">
+        <div class="branch-result-header">
+          <div class="brh-left">
+            <div class="brh-label">診断結果</div>
+            <h2>あなたは「最短貯金タイプ」です</h2>
+            <div class="brh-stars"><span class="stars">★★★★★</span><span>おすすめ度 5.0</span></div>
+            <p class="brh-desc">家賃負担を抑えながら、短期間でお金を貯める働き方が向いています。製造・物流系で月収30万円以上を狙えます。</p>
+            <a href="#form" class="btn">このタイプの求人を見る</a>
+          </div>
+          <div class="brh-score">
+            <div class="score-num">92</div>
+            <div class="score-label">適性スコア</div>
+            <div class="score-stars">★★★★★</div>
+          </div>
+        </div>
         <div class="branchHero">
           <div>
-            <span class="branchKicker">診断結果：高収入タイプ</span>
-            <h2>3ヶ月で貯金50万円を目指したい方へ</h2>
+            <span class="branchKicker">高収入タイプ専用LP</span>
+            <h2>3ヶ月で<span class="orange">貯金50万円</span>を<br>目指したい方へ</h2>
             <p class="branchLead">寮費無料で固定費を抑えながら、月収30万円以上を狙える製造・工場・物流系求人を中心にご紹介します。</p>
-            <div class="branchTags">
-              <span>月収30万円以上</span><span>寮費無料</span><span>未経験歓迎</span><span>赴任費支給</span>
+            <div class="branchTags"><span>月収30万円以上</span><span>寮費無料</span><span>未経験歓迎</span><span>赴任費支給</span></div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#form" class="btn">このタイプの求人を見る</a>
+              <a href="#form" class="btn greenBtn">LINEで相談する</a>
             </div>
-            <a href="#form" class="btn">高収入求人を見る</a>
           </div>
           <div class="branchVisual">
             <div class="branchVisualInner">
@@ -892,42 +1032,186 @@
           </div>
         </div>
         <div class="branchBenefits">
-          <div class="branchBenefit"><div class="bIcon">¥</div><h4>家賃負担を抑えられる</h4><p>寮費無料・補助ありの求人で、固定費を小さくできます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">↗</div><h4>短期間で貯金しやすい</h4><p>生活費を抑えながら手元に残るお金を増やせます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">工</div><h4>高収入求人が多い</h4><p>製造・工場・物流など、月収30万円以上を狙える案件が中心です。</p></div>
+          <div class="branchBenefit"><div class="bIcon">¥</div><h4>家賃を抑えて貯金しやすい</h4><p>寮費無料・補助ありの求人で毎月の固定費を圧縮できます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">↗</div><h4>月収30万円以上を狙える</h4><p>製造・工場・物流系を中心に高収入求人が集まっています。</p></div>
+          <div class="branchBenefit"><div class="bIcon">未</div><h4>未経験から始めやすい</h4><p>研修・サポートが整った求人で、経験ゼロからスタートできます。</p></div>
         </div>
-        <div class="branchLife">
-          <div class="lifeVisual"></div>
-          <div class="lifeCopy">
-            <h3>生活費を抑えて、貯金の見通しを立てる</h3>
-            <p>個室寮で住む場所を確保しながら、毎月の固定費を圧縮。休日の過ごし方や周辺環境まで確認してから応募できます。</p>
-            <div class="lifeChecks"><span>寮費無料の個室寮</span><span>スーパー徒歩圏内</span><span>週2日休み</span><span>月20万円以上の貯金も相談可</span></div>
+        <div class="branch-reason">
+          <div class="br-left">
+            <span class="label">Why</span>
+            <h3 class="br-heading">なぜこのタイプがおすすめなのか</h3>
+            <p>診断結果から、あなたの優先度・状況・タイミングに最も合う働き方として「高収入タイプ」が選ばれました。</p>
+          </div>
+          <div class="br-checklist">
+            <h4>✅ このタイプが向いている理由</h4>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--green)">✓</div><p>固定費を下げるほど貯金しやすい</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--blue)">✓</div><p>製造・物流系は未経験求人が多い</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--orange)">✓</div><p>短期より3ヶ月以上の勤務が向いている</p></div>
           </div>
         </div>
-        <div class="branchSectionHead"><div><h3>高収入タイプにおすすめの求人</h3><p>月収・寮費・勤務開始時期を見ながら比較できます。</p></div></div>
-        <div class="branchJobs">
-          <div class="branchJob"><div class="branchJobImg"><span>工</span></div><div class="branchJobBody"><h4>自動車部品の製造スタッフ</h4><div class="branchPay">月収32万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>愛知県豊田市</b></div><div><span>寮タイプ</span><b>個室寮・寮費無料</b></div><div><span>開始時期</span><b>即日〜</b></div><div><span>人気度</span><b>★★★★★</b></div></div><div class="branchPills"><span>月収30万以上</span><span>赴任費支給</span><span>未経験OK</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>物</span></div><div class="branchJobBody"><h4>物流倉庫のフォークリフト補助</h4><div class="branchPay">月収30万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>神奈川県厚木市</b></div><div><span>寮タイプ</span><b>家具家電付き寮</b></div><div><span>開始時期</span><b>3日以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>日払い可</span><span>寮費補助</span><span>交通費支給</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>食</span></div><div class="branchJobBody"><h4>食品工場のライン管理</h4><div class="branchPay">月収31万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>静岡県富士市</b></div><div><span>寮タイプ</span><b>Wi-Fi付き個室寮</b></div><div><span>開始時期</span><b>1週間以内</b></div><div><span>人気度</span><b>★★★★★</b></div></div><div class="branchPills"><span>夜勤手当</span><span>寮費無料</span><span>長期安定</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
+        <div>
+          <div class="branchSectionHead" style="margin-bottom:20px"><div><h3>高収入タイプにおすすめの求人</h3><p>月収・寮費・勤務開始時期を見ながら比較できます。</p></div></div>
+          <div class="branch-jobs-grid">
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fff7ed,#fff)">
+                <span class="bj-type">個室寮</span><span class="bj-popular">🔥 人気</span>
+                <span class="bj-img-icon" style="color:var(--orange)">工</span>
+              </div>
+              <div class="bj-body">
+                <h4>自動車部品の製造スタッフ</h4>
+                <div class="bj-pay">月収32万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>愛知県豊田市</b></div>
+                  <div><span>寮タイプ</span><b>個室寮・寮費無料</b></div>
+                  <div><span>入寮時期</span><b>即日〜</b></div>
+                  <div><span>人気度</span><b>★★★★★</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fff7ed;color:var(--orangeDark)">月収30万以上</span>
+                  <span style="background:#eff6ff;color:var(--blue)">赴任費支給</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">未経験OK</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩5分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩8分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🍱 食事補助あり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--orange);color:var(--orange)">詳細を見る</a>
+                  <a href="#form" class="btn">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fff7ed,#fff)">
+                <span class="bj-type">家具付き寮</span>
+                <span class="bj-img-icon" style="color:var(--orange)">物</span>
+              </div>
+              <div class="bj-body">
+                <h4>物流倉庫のフォークリフト補助</h4>
+                <div class="bj-pay">月収30万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>神奈川県厚木市</b></div>
+                  <div><span>寮タイプ</span><b>家具家電付き寮</b></div>
+                  <div><span>入寮時期</span><b>3日以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fff7ed;color:var(--orangeDark)">日払い可</span>
+                  <span style="background:#eff6ff;color:var(--blue)">寮費補助</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">交通費支給</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩3分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩10分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🍱 食事補助あり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--orange);color:var(--orange)">詳細を見る</a>
+                  <a href="#form" class="btn">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fff7ed,#fff)">
+                <span class="bj-type">Wi-Fi個室</span>
+                <span class="bj-img-icon" style="color:var(--orange)">食</span>
+              </div>
+              <div class="bj-body">
+                <h4>食品工場のライン管理</h4>
+                <div class="bj-pay">月収31万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>静岡県富士市</b></div>
+                  <div><span>寮タイプ</span><b>Wi-Fi付き個室寮</b></div>
+                  <div><span>入寮時期</span><b>1週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★★</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fff7ed;color:var(--orangeDark)">夜勤手当</span>
+                  <span style="background:#eff6ff;color:var(--blue)">寮費無料</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">長期安定</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩7分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩12分</div>
+                    <div class="bj-life-item">📶 Wi-Fi完備</div>
+                    <div class="bj-life-item">🍱 食事補助あり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--orange);color:var(--orange)">詳細を見る</a>
+                  <a href="#form" class="btn">応募する</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="branchVoice">
-          <div class="branchVoiceAvatar">24</div>
-          <div><p>寮費がかからないので、毎月の貯金額が増えました。</p><div class="voiceBeforeAfterMini"><div><b>応募前</b>貯金3万円</div><div><b>応募後</b>半年で生活が安定</div></div><div class="branchVoiceMeta">24歳男性・製造スタッフ</div></div>
+        <div class="bv-card" style="background:linear-gradient(135deg,#fff,#fff7ed)">
+          <div class="bv-avatar-row">
+            <div class="bv-avatar" style="background:linear-gradient(135deg,var(--orange),#f59e0b)">24</div>
+            <div>
+              <div class="bv-name">24歳男性・製造スタッフ</div>
+              <div class="bv-meta">愛知県 / 製造職 / 入寮から4ヶ月</div>
+              <div class="bv-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="bv-before-after">
+            <div class="bva-box before"><div class="bva-label">応募前</div><p>貯金3万円、家賃負担が重い</p></div>
+            <div class="bva-arrow">→</div>
+            <div class="bva-box after"><div class="bva-label">応募後</div><p>寮費無料で毎月の貯金額が増加</p></div>
+          </div>
+          <div class="bv-comment" style="border-color:var(--orange)">家賃がかからないだけで、生活の余裕が大きく変わりました。毎月しっかり貯金できるようになって本当に良かったです。</div>
         </div>
-        <div class="branchCta"><div><h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3><p>収入目標と入寮希望日をもとに、候補求人を確認します。</p></div><div class="branchCtaActions"><a href="#form" class="btn">このタイプの求人に応募する</a><a href="#form" class="btn greenBtn">LINEで相談する</a></div></div>
+        <div class="branch-cta-band" style="background:linear-gradient(135deg,var(--orange),#f59e0b);box-shadow:0 24px 60px rgba(255,107,53,.28)">
+          <div class="bcta-left">
+            <h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3>
+            <p>寮の条件、入寮時期、給与の目安まで相談できます。</p>
+          </div>
+          <div class="bcta-btns">
+            <a href="#form" class="btn" style="background:#fff;color:var(--orange)">このタイプの求人に応募する</a>
+            <a href="#form" class="btn greenBtn">LINEで条件を相談する</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- FAST DORM -->
     <div class="branch" id="branch-dorm">
-      <div class="branchLP dorm">
+      <div class="branch-content branchLP dorm">
+        <div class="branch-result-header">
+          <div class="brh-left">
+            <div class="brh-label" style="color:var(--blue)">診断結果</div>
+            <h2>あなたは「即入寮重視タイプ」です</h2>
+            <div class="brh-stars"><span class="stars">★★★★★</span><span>おすすめ度 5.0</span></div>
+            <p class="brh-desc">今すぐ住む場所と仕事を同時に確保したい方に向けた、最短入寮可能な求人が最も向いています。</p>
+            <a href="#form" class="btn blueBtn">このタイプの求人を見る</a>
+          </div>
+          <div class="brh-score" style="background:linear-gradient(135deg,var(--blue),#60a5fa)">
+            <div class="score-num">88</div>
+            <div class="score-label">適性スコア</div>
+            <div class="score-stars">★★★★★</div>
+          </div>
+        </div>
         <div class="branchHero">
           <div>
-            <span class="branchKicker">診断結果：即入寮タイプ</span>
-            <h2>今日から住める。<br>今日から働ける。</h2>
+            <span class="branchKicker">即入寮タイプ専用LP</span>
+            <h2>今日から住める。<br><span class="blue">今日から働ける。</span></h2>
             <p class="branchLead">住む場所が必要な方に向けて、即入寮・家具家電付き・保証人不要相談可の求人を中心にご紹介します。</p>
             <div class="branchTags"><span>即入寮OK</span><span>家具家電付き</span><span>保証人不要相談</span><span>最短当日相談</span></div>
-            <a href="#form" class="btn">即入寮求人を見る</a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#form" class="btn blueBtn">即入寮求人を見る</a>
+              <a href="#form" class="btn greenBtn">LINEで相談する</a>
+            </div>
           </div>
           <div class="branchVisual">
             <div class="branchVisualInner">
@@ -939,79 +1223,538 @@
           </div>
         </div>
         <div class="branchBenefits">
-          <div class="branchBenefit"><div class="bIcon">鍵</div><h4>住む場所をすぐ確保</h4><p>空き寮のある求人から優先的に確認できます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">0</div><h4>初期費用を抑えられる</h4><p>家具家電付き・赴任費支給の求人を中心に探せます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">整</div><h4>生活を立て直しやすい</h4><p>住まいと仕事を同時に整えて、次の生活へ移れます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">鍵</div><h4>住む場所をすぐ確保できる</h4><p>空き寮のある求人から優先的に確認できます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">0</div><h4>初期費用を抑えやすい</h4><p>家具家電付き・赴任費支給の求人を中心に探せます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">家</div><h4>家具家電付き求人あり</h4><p>荷物ゼロでも生活を始められる求人を選べます。</p></div>
         </div>
-        <div class="branchLife"><div class="lifeVisual"></div><div class="lifeCopy"><h3>荷物が少なくても、生活を始めやすい寮へ</h3><p>ベッド・冷蔵庫・洗濯機などの条件を確認しながら、今すぐ動ける求人を絞り込みます。</p><div class="lifeChecks"><span>個室寮相談可</span><span>家具家電付き</span><span>保証人不要相談</span><span>最短当日相談</span></div></div></div>
-        <div class="branchSectionHead"><div><h3>即入寮タイプにおすすめの求人</h3><p>空き寮と勤務開始時期を優先して選べます。</p></div></div>
-        <div class="branchJobs">
-          <div class="branchJob"><div class="branchJobImg"><span>物</span></div><div class="branchJobBody"><h4>物流倉庫の軽作業スタッフ</h4><div class="branchPay">月収28万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>神奈川県横浜市</b></div><div><span>寮タイプ</span><b>家具家電付き寮</b></div><div><span>開始時期</span><b>今日〜</b></div><div><span>人気度</span><b>★★★★★</b></div></div><div class="branchPills"><span>即入寮OK</span><span>日払い相談</span><span>履歴書不要</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>検</span></div><div class="branchJobBody"><h4>自動車部品の検査スタッフ</h4><div class="branchPay">月収29万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>愛知県安城市</b></div><div><span>寮タイプ</span><b>即入寮個室寮</b></div><div><span>開始時期</span><b>1〜3日</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>個室</span><span>赴任費支給</span><span>未経験歓迎</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>清</span></div><div class="branchJobBody"><h4>ホテル清掃サポート</h4><div class="branchPay">月収25万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>千葉県成田市</b></div><div><span>寮タイプ</span><b>個室寮</b></div><div><span>開始時期</span><b>3日以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>日勤あり</span><span>家具付き</span><span>保証人相談</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
+        <div class="branch-reason">
+          <div class="br-left">
+            <span class="label">Why</span>
+            <h3 class="br-heading">なぜこのタイプがおすすめなのか</h3>
+            <p>診断結果から、住まいの確保を最優先にすべき状況と判断されました。即入寮求人なら生活を素早く立て直せます。</p>
+          </div>
+          <div class="br-checklist">
+            <h4>✅ このタイプが向いている理由</h4>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--blue)">✓</div><p>まずは住まいの確保が最優先</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--green)">✓</div><p>即入寮求人なら生活を立て直しやすい</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--orange)">✓</div><p>家具家電付きなら初期費用を抑えられる</p></div>
+          </div>
         </div>
-        <div class="branchVoice"><div class="branchVoiceAvatar">28</div><div><p>すぐ入寮できる求人を紹介してもらえて助かりました。</p><div class="voiceBeforeAfterMini"><div><b>応募前</b>住む場所に困っていた</div><div><b>応募後</b>個室寮で生活を再スタート</div></div><div class="branchVoiceMeta">28歳男性・物流勤務</div></div></div>
-        <div class="branchCta"><div><h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3><p>空き寮と入寮日を確認して、今動ける求人を探します。</p></div><div class="branchCtaActions"><a href="#form" class="btn">このタイプの求人に応募する</a><a href="#form" class="btn greenBtn">LINEで相談する</a></div></div>
+        <div>
+          <div class="branchSectionHead" style="margin-bottom:20px"><div><h3>即入寮タイプにおすすめの求人</h3><p>空き寮と勤務開始時期を優先して選べます。</p></div></div>
+          <div class="branch-jobs-grid">
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#eff6ff,#fff)">
+                <span class="bj-type">家具家電付き</span><span class="bj-popular">⚡ 即入寮</span>
+                <span class="bj-img-icon" style="color:var(--blue)">物</span>
+              </div>
+              <div class="bj-body">
+                <h4>物流倉庫の軽作業スタッフ</h4>
+                <div class="bj-pay" style="color:var(--blue)">月収28万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>神奈川県横浜市</b></div>
+                  <div><span>寮タイプ</span><b>家具家電付き寮</b></div>
+                  <div><span>入寮時期</span><b>今日〜</b></div>
+                  <div><span>人気度</span><b>★★★★★</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#eff6ff;color:var(--blue)">即入寮OK</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">日払い相談</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">履歴書不要</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩3分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩8分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🛏 個室寮</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--blue);color:var(--blue)">詳細を見る</a>
+                  <a href="#form" class="btn blueBtn">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#eff6ff,#fff)">
+                <span class="bj-type">即入寮個室</span>
+                <span class="bj-img-icon" style="color:var(--blue)">検</span>
+              </div>
+              <div class="bj-body">
+                <h4>自動車部品の検査スタッフ</h4>
+                <div class="bj-pay" style="color:var(--blue)">月収29万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>愛知県安城市</b></div>
+                  <div><span>寮タイプ</span><b>即入寮個室寮</b></div>
+                  <div><span>入寮時期</span><b>1〜3日</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#eff6ff;color:var(--blue)">個室</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">赴任費支給</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">未経験歓迎</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩5分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩12分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🛏 個室・鍵付き</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--blue);color:var(--blue)">詳細を見る</a>
+                  <a href="#form" class="btn blueBtn">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#ecfdf5,#fff)">
+                <span class="bj-type">個室寮</span>
+                <span class="bj-img-icon" style="color:var(--green)">清</span>
+              </div>
+              <div class="bj-body">
+                <h4>ホテル清掃サポート</h4>
+                <div class="bj-pay" style="color:var(--blue)">月収25万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>千葉県成田市</b></div>
+                  <div><span>寮タイプ</span><b>個室寮</b></div>
+                  <div><span>入寮時期</span><b>3日以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#ecfdf5;color:var(--greenDark)">日勤あり</span>
+                  <span style="background:#eff6ff;color:var(--blue)">家具付き</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">保証人相談</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩6分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩15分</div>
+                    <div class="bj-life-item">📶 Wi-Fi完備</div>
+                    <div class="bj-life-item">🛏 個室・家具付き</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:var(--blue);color:var(--blue)">詳細を見る</a>
+                  <a href="#form" class="btn blueBtn">応募する</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bv-card" style="background:linear-gradient(135deg,#fff,#eff6ff)">
+          <div class="bv-avatar-row">
+            <div class="bv-avatar" style="background:linear-gradient(135deg,var(--blue),var(--green))">28</div>
+            <div>
+              <div class="bv-name">28歳男性・物流勤務</div>
+              <div class="bv-meta">神奈川県 / 物流職 / 入寮から2ヶ月</div>
+              <div class="bv-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="bv-before-after">
+            <div class="bva-box before"><div class="bva-label">応募前</div><p>住む場所に困っていた</p></div>
+            <div class="bva-arrow">→</div>
+            <div class="bva-box after"><div class="bva-label">応募後</div><p>個室寮に入って生活を再スタート</p></div>
+          </div>
+          <div class="bv-comment" style="border-color:var(--blue)">すぐに入寮できる求人を案内してもらえて助かりました。相談から3日で引越しができて、本当に助かりました。</div>
+        </div>
+        <div class="branch-cta-band" style="background:linear-gradient(135deg,var(--blue),#60a5fa);box-shadow:0 24px 60px rgba(37,99,235,.28)">
+          <div class="bcta-left">
+            <h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3>
+            <p>寮の条件、入寮時期、給与の目安まで相談できます。</p>
+          </div>
+          <div class="bcta-btns">
+            <a href="#form" class="btn" style="background:#fff;color:var(--blue)">このタイプの求人に応募する</a>
+            <a href="#form" class="btn greenBtn">LINEで条件を相談する</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- FOR WOMEN -->
     <div class="branch" id="branch-woman">
-      <div class="branchLP woman">
+      <div class="branch-content branchLP woman">
+        <div class="branch-result-header">
+          <div class="brh-left">
+            <div class="brh-label" style="color:#ec4899">診断結果</div>
+            <h2>あなたは「安心重視タイプ」です</h2>
+            <div class="brh-stars"><span class="stars">★★★★★</span><span>おすすめ度 5.0</span></div>
+            <p class="brh-desc">安全・安心な環境を重視する方に向けた、女性専用寮・個室・オートロック完備の求人が最も向いています。</p>
+            <a href="#form" class="btn" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);box-shadow:0 14px 40px rgba(236,72,153,.3)">このタイプの求人を見る</a>
+          </div>
+          <div class="brh-score" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">
+            <div class="score-num">85</div>
+            <div class="score-label">適性スコア</div>
+            <div class="score-stars">★★★★★</div>
+          </div>
+        </div>
         <div class="branchHero">
           <div>
-            <span class="branchKicker">診断結果：女性安心タイプ</span>
-            <h2>はじめての一人暮らしでも安心。</h2>
+            <span class="branchKicker">女性安心タイプ専用LP</span>
+            <h2>はじめての一人暮らしでも<br><span style="color:#ec4899">安心。</span></h2>
             <p class="branchLead">女性寮・個室・オートロック・日勤案件など、安心して働きやすい住み込み求人を中心にご紹介します。</p>
             <div class="branchTags"><span>女性寮</span><span>個室</span><span>オートロック</span><span>日勤あり</span></div>
-            <a href="#form" class="btn">女性向け求人を見る</a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#form" class="btn" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);box-shadow:0 14px 40px rgba(236,72,153,.3)">女性向け求人を見る</a>
+              <a href="#form" class="btn greenBtn">LINEで相談する</a>
+            </div>
           </div>
-          <div class="branchVisual"><div class="branchVisualInner"><div class="visualHead"><span>安心条件チェック</span><span class="visualBadge">For Women</span></div><div class="visualMetric"><strong>個室寮</strong><div class="meter"><span style="width:90%"></span></div></div><div class="visualMetric"><strong>防犯設備</strong><div class="meter"><span style="width:82%"></span></div></div><div class="visualIcons"><div class="visualIcon">鍵</div><div class="visualIcon">室</div><div class="visualIcon">昼</div></div></div></div>
+          <div class="branchVisual">
+            <div class="branchVisualInner">
+              <div class="visualHead"><span>安心条件チェック</span><span class="visualBadge">For Women</span></div>
+              <div class="visualMetric"><strong>個室寮</strong><div class="meter"><span style="width:90%"></span></div></div>
+              <div class="visualMetric"><strong>防犯設備</strong><div class="meter"><span style="width:82%"></span></div></div>
+              <div class="visualIcons"><div class="visualIcon">鍵</div><div class="visualIcon">室</div><div class="visualIcon">昼</div></div>
+            </div>
+          </div>
         </div>
         <div class="branchBenefits">
-          <div class="branchBenefit"><div class="bIcon">守</div><h4>安全性を重視できる</h4><p>女性寮・オートロックなど、寮条件を事前に確認できます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">室</div><h4>個室寮で安心</h4><p>プライベートを保ちやすい住環境を優先して探せます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">昼</div><h4>日勤・接客系求人も選べる</h4><p>ホテル・食品・事務補助など、働き方の幅があります。</p></div>
+          <div class="branchBenefit"><div class="bIcon">守</div><h4>女性寮・個室求人あり</h4><p>セキュリティ重視・女性専用寮の求人を優先して探せます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">昼</div><h4>日勤・接客系も選べる</h4><p>ホテル・食品・介護補助など、働き方の幅があります。</p></div>
+          <div class="branchBenefit"><div class="bIcon">確</div><h4>事前に寮条件を確認できる</h4><p>部屋のタイプ・防犯設備を確認してから応募できます。</p></div>
         </div>
-        <div class="branchLife"><div class="lifeVisual"></div><div class="lifeCopy"><h3>寮の条件を見てから、安心して応募する</h3><p>部屋のタイプ、防犯設備、周辺の明るさ、通勤経路まで確認しながら求人を選べます。</p><div class="lifeChecks"><span>女性専用寮</span><span>個室・鍵付き</span><span>日勤あり</span><span>女性担当相談可</span></div></div></div>
-        <div class="branchSectionHead"><div><h3>女性安心タイプにおすすめの求人</h3><p>安全性と働きやすさを重視した求人を集めました。</p></div></div>
-        <div class="branchJobs">
-          <div class="branchJob"><div class="branchJobImg"><span>受</span></div><div class="branchJobBody"><h4>リゾートホテル受付</h4><div class="branchPay">月収24万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>長野県軽井沢</b></div><div><span>寮タイプ</span><b>女性専用個室寮</b></div><div><span>開始時期</span><b>2週間以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>女性寮</span><span>日勤あり</span><span>食事補助</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>食</span></div><div class="branchJobBody"><h4>食品製造チェック</h4><div class="branchPay">月収26万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>静岡県焼津市</b></div><div><span>寮タイプ</span><b>オートロック寮</b></div><div><span>開始時期</span><b>1週間以内</b></div><div><span>人気度</span><b>★★★★★</b></div></div><div class="branchPills"><span>個室</span><span>日勤中心</span><span>未経験OK</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>支</span></div><div class="branchJobBody"><h4>介護施設サポート</h4><div class="branchPay">月収25万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>神奈川県藤沢市</b></div><div><span>寮タイプ</span><b>女性寮相談可</b></div><div><span>開始時期</span><b>1週間以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>日勤あり</span><span>個室相談</span><span>駅近</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
+        <div class="branch-reason">
+          <div class="br-left">
+            <span class="label">Why</span>
+            <h3 class="br-heading">なぜこのタイプがおすすめなのか</h3>
+            <p>安全な環境で安心して働けること、不安を事前に解消できることを優先した結果です。</p>
+          </div>
+          <div class="br-checklist">
+            <h4>✅ このタイプが向いている理由</h4>
+            <div class="br-check-item"><div class="br-check-icon" style="background:#ec4899">✓</div><p>寮の安全性を事前確認できる</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:#8b5cf6">✓</div><p>個室・日勤求人を優先できる</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--green)">✓</div><p>不安を減らして応募しやすい</p></div>
+          </div>
         </div>
-        <div class="branchVoice"><div class="branchVoiceAvatar">22</div><div><p>寮の条件を事前に確認できたので安心でした。</p><div class="voiceBeforeAfterMini"><div><b>応募前</b>初めての一人暮らしが不安</div><div><b>応募後</b>女性寮で安心して勤務</div></div><div class="branchVoiceMeta">22歳女性・ホテル勤務</div></div></div>
-        <div class="branchCta"><div><h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3><p>寮の安全性や働き方の希望を聞いた上で、候補求人を確認します。</p></div><div class="branchCtaActions"><a href="#form" class="btn">このタイプの求人に応募する</a><a href="#form" class="btn greenBtn">LINEで相談する</a></div></div>
+        <div>
+          <div class="branchSectionHead" style="margin-bottom:20px"><div><h3>女性安心タイプにおすすめの求人</h3><p>安全性と働きやすさを重視した求人を集めました。</p></div></div>
+          <div class="branch-jobs-grid">
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fdf2f8,#fff)">
+                <span class="bj-type">女性専用寮</span><span class="bj-popular">🌸 人気</span>
+                <span class="bj-img-icon" style="color:#ec4899">受</span>
+              </div>
+              <div class="bj-body">
+                <h4>リゾートホテル受付</h4>
+                <div class="bj-pay" style="color:#ec4899">月収24万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>長野県軽井沢</b></div>
+                  <div><span>寮タイプ</span><b>女性専用個室寮</b></div>
+                  <div><span>入寮時期</span><b>2週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fdf2f8;color:#ec4899">女性寮</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">日勤あり</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">食事補助</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🌳 自然が近い</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩10分</div>
+                    <div class="bj-life-item">🔒 オートロック</div>
+                    <div class="bj-life-item">🍱 食事補助あり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#ec4899;color:#ec4899">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fdf2f8,#fff)">
+                <span class="bj-type">オートロック</span>
+                <span class="bj-img-icon" style="color:#8b5cf6">食</span>
+              </div>
+              <div class="bj-body">
+                <h4>食品製造チェック</h4>
+                <div class="bj-pay" style="color:#ec4899">月収26万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>静岡県焼津市</b></div>
+                  <div><span>寮タイプ</span><b>オートロック寮</b></div>
+                  <div><span>入寮時期</span><b>1週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★★</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fdf2f8;color:#ec4899">個室</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">日勤中心</span>
+                  <span style="background:#eff6ff;color:var(--blue)">未経験OK</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩4分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩8分</div>
+                    <div class="bj-life-item">🔒 オートロック</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#ec4899;color:#ec4899">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#fdf2f8,#fff)">
+                <span class="bj-type">女性寮相談可</span>
+                <span class="bj-img-icon" style="color:#8b5cf6">支</span>
+              </div>
+              <div class="bj-body">
+                <h4>介護施設サポート</h4>
+                <div class="bj-pay" style="color:#ec4899">月収25万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>神奈川県藤沢市</b></div>
+                  <div><span>寮タイプ</span><b>女性寮相談可</b></div>
+                  <div><span>入寮時期</span><b>1週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#fdf2f8;color:#ec4899">日勤あり</span>
+                  <span style="background:#eff6ff;color:var(--blue)">個室相談</span>
+                  <span style="background:#ecfdf5;color:var(--greenDark)">駅近</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🚉 駅徒歩10分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩5分</div>
+                    <div class="bj-life-item">🔒 セキュリティあり</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#ec4899;color:#ec4899">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">応募する</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bv-card" style="background:linear-gradient(135deg,#fff,#fdf2f8)">
+          <div class="bv-avatar-row">
+            <div class="bv-avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">22</div>
+            <div>
+              <div class="bv-name">22歳女性・ホテル勤務</div>
+              <div class="bv-meta">長野県 / 接客職 / 入寮から3ヶ月</div>
+              <div class="bv-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="bv-before-after">
+            <div class="bva-box before"><div class="bva-label">応募前</div><p>初めての一人暮らしが不安</p></div>
+            <div class="bva-arrow">→</div>
+            <div class="bva-box after"><div class="bva-label">応募後</div><p>女性寮・個室で安心して勤務</p></div>
+          </div>
+          <div class="bv-comment" style="border-color:#ec4899">寮条件を事前に確認できたので、不安がかなり減りました。個室でプライベートも守られていて、毎日安心して過ごせています。</div>
+        </div>
+        <div class="branch-cta-band" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);box-shadow:0 24px 60px rgba(236,72,153,.28)">
+          <div class="bcta-left">
+            <h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3>
+            <p>寮の条件、入寮時期、給与の目安まで相談できます。</p>
+          </div>
+          <div class="bcta-btns">
+            <a href="#form" class="btn" style="background:#fff;color:#ec4899">このタイプの求人に応募する</a>
+            <a href="#form" class="btn greenBtn">LINEで条件を相談する</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- RESTART -->
     <div class="branch" id="branch-restart">
-      <div class="branchLP restart">
+      <div class="branch-content branchLP restart">
+        <div class="branch-result-header">
+          <div class="brh-left">
+            <div class="brh-label" style="color:#1e3a8a">診断結果</div>
+            <h2>あなたは「人生リスタートタイプ」です</h2>
+            <div class="brh-stars"><span class="stars">★★★★★</span><span>おすすめ度 5.0</span></div>
+            <p class="brh-desc">環境を一変させてゼロから新生活を始めたい方に向けた、全国対応の新生活スタート求人が最も向いています。</p>
+            <a href="#form" class="btn" style="background:linear-gradient(135deg,#1e3a8a,#10b981);box-shadow:0 14px 40px rgba(30,58,138,.3)">このタイプの求人を見る</a>
+          </div>
+          <div class="brh-score" style="background:linear-gradient(135deg,#1e3a8a,#10b981)">
+            <div class="score-num">81</div>
+            <div class="score-label">適性スコア</div>
+            <div class="score-stars">★★★★☆</div>
+          </div>
+        </div>
         <div class="branchHero">
           <div>
-            <span class="branchKicker">診断結果：リスタートタイプ</span>
-            <h2>人生を変えるなら、<br>環境から。</h2>
+            <span class="branchKicker">リスタートタイプ専用LP</span>
+            <h2>人生を変えるなら、<br><span style="color:var(--green)">環境から。</span></h2>
             <p class="branchLead">地元を離れたい、人間関係を変えたい、生活を立て直したい方に向けて、新生活を始めやすい求人をご紹介します。</p>
             <div class="branchTags"><span>新生活</span><span>環境を変える</span><span>未経験OK</span><span>生活再建</span></div>
-            <a href="#form" class="btn">新生活向け求人を見る</a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#form" class="btn" style="background:linear-gradient(135deg,#1e3a8a,#10b981);box-shadow:0 14px 40px rgba(30,58,138,.3)">新生活向け求人を見る</a>
+              <a href="#form" class="btn greenBtn">LINEで相談する</a>
+            </div>
           </div>
-          <div class="branchVisual"><div class="branchVisualInner"><div class="visualHead"><span>新生活ロードマップ</span><span class="visualBadge">Restart</span></div><div class="visualMetric"><strong>環境変更</strong><div class="meter"><span style="width:88%"></span></div></div><div class="visualMetric"><strong>生活再建</strong><div class="meter"><span style="width:76%"></span></div></div><div class="visualIcons"><div class="visualIcon">道</div><div class="visualIcon">→</div><div class="visualIcon">朝</div></div></div></div>
+          <div class="branchVisual">
+            <div class="branchVisualInner">
+              <div class="visualHead"><span>新生活ロードマップ</span><span class="visualBadge">Restart</span></div>
+              <div class="visualMetric"><strong>環境変更</strong><div class="meter"><span style="width:88%"></span></div></div>
+              <div class="visualMetric"><strong>生活再建</strong><div class="meter"><span style="width:76%"></span></div></div>
+              <div class="visualIcons"><div class="visualIcon">道</div><div class="visualIcon">→</div><div class="visualIcon">朝</div></div>
+            </div>
+          </div>
         </div>
         <div class="branchBenefits">
-          <div class="branchBenefit"><div class="bIcon">住</div><h4>住む場所と仕事を同時に変えられる</h4><p>新しい土地で、生活と働き方をまとめて整えられます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">人</div><h4>新しい人間関係から始められる</h4><p>地元を離れて、まっさらな環境で再スタートできます。</p></div>
-          <div class="branchBenefit"><div class="bIcon">整</div><h4>生活リズムを整えやすい</h4><p>寮と職場の距離が近く、生活の基盤を作りやすい求人を選べます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">住</div><h4>仕事と住まいを同時に変更</h4><p>新しい土地で、生活と働き方をまとめて整えられます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">人</div><h4>新しい人間関係で始められる</h4><p>地元を離れて、まっさらな環境で再スタートできます。</p></div>
+          <div class="branchBenefit"><div class="bIcon">整</div><h4>生活リズムを整えやすい</h4><p>寮と職場が近い求人で、生活基盤を作りやすい環境が選べます。</p></div>
         </div>
-        <div class="branchLife"><div class="lifeVisual"></div><div class="lifeCopy"><h3>新しい街で、生活の再スタートを切る</h3><p>住む場所、働く場所、休日の過ごし方まで確認しながら、今の環境から離れる選択肢を探せます。</p><div class="lifeChecks"><span>全国求人から選択</span><span>個室寮あり</span><span>未経験OK</span><span>担当者が入寮まで伴走</span></div></div></div>
-        <div class="branchSectionHead"><div><h3>リスタートタイプにおすすめの求人</h3><p>環境を変えたい方に向けた新生活向け求人です。</p></div></div>
-        <div class="branchJobs">
-          <div class="branchJob"><div class="branchJobImg"><span>工</span></div><div class="branchJobBody"><h4>地方工場の製造サポート</h4><div class="branchPay">月収28万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>大阪府堺市</b></div><div><span>寮タイプ</span><b>個室寮</b></div><div><span>開始時期</span><b>1週間以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>未経験OK</span><span>生活再建</span><span>寮費補助</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>宿</span></div><div class="branchJobBody"><h4>リゾート施設運営</h4><div class="branchPay">月収24万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>北海道ニセコ</b></div><div><span>寮タイプ</span><b>食事付き寮</b></div><div><span>開始時期</span><b>2週間以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>新天地</span><span>食事補助</span><span>短期相談</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
-          <div class="branchJob"><div class="branchJobImg"><span>農</span></div><div class="branchJobBody"><h4>農業・倉庫サポート</h4><div class="branchPay">月収23万円〜</div><div class="branchJobMeta"><div><span>勤務地</span><b>熊本県阿蘇市</b></div><div><span>寮タイプ</span><b>個室寮</b></div><div><span>開始時期</span><b>1週間以内</b></div><div><span>人気度</span><b>★★★★☆</b></div></div><div class="branchPills"><span>自然環境</span><span>未経験OK</span><span>全国対応</span></div><div class="branchJobActions"><a href="#form" class="btn outline sm">詳細を見る</a><a href="#form" class="btn sm">応募する</a></div></div></div>
+        <div class="branch-reason">
+          <div class="br-left">
+            <span class="label">Why</span>
+            <h3 class="br-heading">なぜこのタイプがおすすめなのか</h3>
+            <p>環境を変えることが、あなたにとって最もインパクトのある一手。まず住む場所と仕事を整えることが先決です。</p>
+          </div>
+          <div class="br-checklist">
+            <h4>✅ このタイプが向いている理由</h4>
+            <div class="br-check-item"><div class="br-check-icon" style="background:#1e3a8a">✓</div><p>環境を変えることが一番のきっかけになる</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--green)">✓</div><p>生活と人間関係を同時に変えられる</p></div>
+            <div class="br-check-item"><div class="br-check-icon" style="background:var(--blue)">✓</div><p>まずは住む場所と仕事を整えられる</p></div>
+          </div>
         </div>
-        <div class="branchVoice"><div class="branchVoiceAvatar">31</div><div><p>環境を変えることで気持ちも切り替えられました。</p><div class="voiceBeforeAfterMini"><div><b>応募前</b>地元を離れたかった</div><div><b>応募後</b>新しい土地で生活を再建</div></div><div class="branchVoiceMeta">31歳男性・工場勤務</div></div></div>
-        <div class="branchCta"><div><h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3><p>離れたい環境と希望エリアを聞いた上で、新生活向け求人を探します。</p></div><div class="branchCtaActions"><a href="#form" class="btn">このタイプの求人に応募する</a><a href="#form" class="btn greenBtn">LINEで相談する</a></div></div>
+        <div>
+          <div class="branchSectionHead" style="margin-bottom:20px"><div><h3>リスタートタイプにおすすめの求人</h3><p>環境を変えたい方に向けた新生活向け求人です。</p></div></div>
+          <div class="branch-jobs-grid">
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#eef6ff,#fff)">
+                <span class="bj-type">個室寮</span><span class="bj-popular">🌅 新天地</span>
+                <span class="bj-img-icon" style="color:#1e3a8a">工</span>
+              </div>
+              <div class="bj-body">
+                <h4>地方工場の製造サポート</h4>
+                <div class="bj-pay">月収28万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>大阪府堺市</b></div>
+                  <div><span>寮タイプ</span><b>個室寮</b></div>
+                  <div><span>入寮時期</span><b>1週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#ecfdf5;color:var(--greenDark)">未経験OK</span>
+                  <span style="background:#eff6ff;color:var(--blue)">生活再建</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">寮費補助</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🏪 コンビニ徒歩5分</div>
+                    <div class="bj-life-item">🛒 スーパー徒歩10分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🛏 個室・鍵付き</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#1e3a8a;color:#1e3a8a">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#1e3a8a,#10b981)">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#ecfdf5,#fff)">
+                <span class="bj-type">食事付き寮</span>
+                <span class="bj-img-icon" style="color:var(--green)">宿</span>
+              </div>
+              <div class="bj-body">
+                <h4>リゾート施設運営</h4>
+                <div class="bj-pay">月収24万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>北海道ニセコ</b></div>
+                  <div><span>寮タイプ</span><b>食事付き寮</b></div>
+                  <div><span>入寮時期</span><b>2週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#ecfdf5;color:var(--greenDark)">新天地</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">食事補助</span>
+                  <span style="background:#eff6ff;color:var(--blue)">短期相談</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🌨 北海道の自然</div>
+                    <div class="bj-life-item">🍱 3食付き</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🏔 リゾート環境</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#1e3a8a;color:#1e3a8a">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#1e3a8a,#10b981)">応募する</a>
+                </div>
+              </div>
+            </div>
+            <div class="bj-card">
+              <div class="bj-img" style="background:linear-gradient(135deg,#ecfdf5,#fff)">
+                <span class="bj-type">個室寮</span>
+                <span class="bj-img-icon" style="color:var(--green)">農</span>
+              </div>
+              <div class="bj-body">
+                <h4>農業・倉庫サポート</h4>
+                <div class="bj-pay">月収23万円〜</div>
+                <div class="bj-meta">
+                  <div><span>勤務地</span><b>熊本県阿蘇市</b></div>
+                  <div><span>寮タイプ</span><b>個室寮</b></div>
+                  <div><span>入寮時期</span><b>1週間以内</b></div>
+                  <div><span>人気度</span><b>★★★★☆</b></div>
+                </div>
+                <div class="bj-tags">
+                  <span style="background:#ecfdf5;color:var(--greenDark)">自然環境</span>
+                  <span style="background:#eff6ff;color:var(--blue)">未経験OK</span>
+                  <span style="background:#fff7ed;color:var(--orangeDark)">全国対応</span>
+                </div>
+                <div class="bj-life">
+                  <div class="bj-life-title">🏠 生活イメージ</div>
+                  <div class="bj-life-items">
+                    <div class="bj-life-item">🌄 阿蘇の自然</div>
+                    <div class="bj-life-item">🛒 スーパー車10分</div>
+                    <div class="bj-life-item">📶 Wi-Fiあり</div>
+                    <div class="bj-life-item">🛏 個室・静か</div>
+                  </div>
+                </div>
+                <div class="bj-actions">
+                  <a href="#form" class="btn outline" style="border-color:#1e3a8a;color:#1e3a8a">詳細を見る</a>
+                  <a href="#form" class="btn" style="background:linear-gradient(135deg,#1e3a8a,#10b981)">応募する</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bv-card" style="background:linear-gradient(135deg,#fff,#eef6ff)">
+          <div class="bv-avatar-row">
+            <div class="bv-avatar" style="background:linear-gradient(135deg,#1e3a8a,#10b981)">31</div>
+            <div>
+              <div class="bv-name">31歳男性・工場勤務</div>
+              <div class="bv-meta">大阪府 / 製造職 / 入寮から6ヶ月</div>
+              <div class="bv-stars">★★★★★</div>
+            </div>
+          </div>
+          <div class="bv-before-after">
+            <div class="bva-box before"><div class="bva-label">応募前</div><p>地元を離れたいが何から始めるか不明</p></div>
+            <div class="bva-arrow">→</div>
+            <div class="bva-box after"><div class="bva-label">応募後</div><p>仕事と住まいを同時に変えられた</p></div>
+          </div>
+          <div class="bv-comment" style="border-color:#1e3a8a">環境を変えたことで、気持ちも生活も立て直せました。担当者が入寮まで丁寧にサポートしてくれて、不安なく新生活を始められました。</div>
+        </div>
+        <div class="branch-cta-band" style="background:linear-gradient(135deg,#1e3a8a,#10b981);box-shadow:0 24px 60px rgba(30,58,138,.28)">
+          <div class="bcta-left">
+            <h3>あなたに合う求人を、<br>まずは無料で確認しませんか？</h3>
+            <p>寮の条件、入寮時期、給与の目安まで相談できます。</p>
+          </div>
+          <div class="bcta-btns">
+            <a href="#form" class="btn" style="background:#fff;color:#1e3a8a">このタイプの求人に応募する</a>
+            <a href="#form" class="btn greenBtn">LINEで条件を相談する</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1644,23 +2387,27 @@ function showResult(){
   document.getElementById('rdFuture').textContent=r.future;
   document.getElementById('resultTags').innerHTML=r.tags.map(t=>`<span class="tag">${t}</span>`).join('');
   resultArea.classList.add('show');
-  switchBranch(r.branch);
+  switchBranch(r.branch, true);
 }
 
 nextBtn.addEventListener('click',()=>{if(current<questions.length-1){current++;updateStep();}else showResult();});
 prevBtn.addEventListener('click',()=>{if(current>0){current--;updateStep();}});
 
 /* ── Branch tabs ── */
-function switchBranch(type){
+function switchBranch(type, scroll){
   document.querySelectorAll('.branch').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.typeTab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.branch-tab').forEach(t=>t.classList.remove('active'));
   const br=document.getElementById('branch-'+type);
   const tb=document.querySelector(`[data-type="${type}"]`);
   if(br)br.classList.add('active');
   if(tb)tb.classList.add('active');
+  if(scroll){
+    const sec=document.getElementById('branches');
+    if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
+  }
 }
-document.querySelectorAll('.typeTab').forEach(tab=>{
-  tab.addEventListener('click',()=>switchBranch(tab.dataset.type));
+document.querySelectorAll('.branch-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>switchBranch(tab.dataset.type,false));
 });
 </script>
 </body>
