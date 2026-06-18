@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Design Academy — 起業を、感覚ではなく仕組みで成功させる。</title>
+  <meta name="description" content="事業設計、商品設計、集客、販売導線まで。売れるビジネスの土台を一緒に構築する実践型スクール。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --bg-dark: #0B0F19;
+      --bg-section: #111827;
+      --gold: #D4AF37;
+      --gold-light: #F5D76E;
+      --cta: #F59E0B;
+      --white: #FFFFFF;
+      --text: #E5E7EB;
+      --muted: #A1A1AA;
+      --card: #FFFFFF;
+      --dark-text: #111827;
+      --line: rgba(255,255,255,.12);
+      --r: 28px;
+      --shadow: 0 30px 80px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.85; }
+    .container { width: min(1200px, 90%); margin: auto; }
+    section { padding: 120px 0; }
+
+    /* ===== FADE UP ANIMATION ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+    .fade-up.delay-5 { transition-delay: 0.5s; }
+    .fade-up.delay-6 { transition-delay: 0.6s; }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+    }
+    .header.scrolled {
+      background: rgba(11, 15, 25, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .header-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+    .header-nav a:hover { color: var(--gold); }
+    .btn-ghost {
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover {
+      background: var(--gold);
+      color: var(--dark-text);
+      transform: translateY(-2px);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(11, 15, 25, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 700;
+      transition: color 0.25s ease;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--muted);
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ===== COMMON SECTION STYLES ===== */
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .section-head .section-sub { margin: 0 auto; }
+    .gold-line {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin: 16px auto 0;
+    }
+    .gold-line-left { margin: 16px 0 0; }
+
+    /* ===== BUTTONS ===== */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--dark-text);
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 18px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35);
+    }
+    .btn-gold:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+    }
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-outline-white:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTION01 — FV ===== */
+    #fv {
+      padding-top: 160px;
+      padding-bottom: 100px;
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #fv::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .fv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .fv-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fv-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .fv-h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .fv-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .fv-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .fv-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .fv-tag {
+      border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+    }
+    .fv-image-wrap {
+      position: relative;
+    }
+    .fv-image-card {
+      border-radius: var(--r);
+      overflow: hidden;
+      position: relative;
+    }
+    .fv-overlay-card {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      background: rgba(11,15,25,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 16px;
+      padding: 18px 24px;
+    }
+    .fv-overlay-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .fv-overlay-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .fv-overlay-step {
+      font-size: 0.75rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fv-overlay-step::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== SECTION02 — 悩み ===== */
+    #problem { background: var(--bg-section); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .worry-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .worry-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.25s ease;
+    }
+    .worry-card:hover {
+      border-color: rgba(212,175,55,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .worry-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .worry-icon svg { width: 14px; height: 14px; }
+    .worry-text {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .problem-image-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    /* ===== SECTION03 — 学べること ===== */
+    #learn { background: var(--bg-dark); }
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .learn-card {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      transition: all 0.25s ease;
+    }
+    .learn-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .learn-card-img { height: 200px; overflow: hidden; }
+    .learn-card-body { padding: 28px 28px 32px; }
+    .learn-card-line {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .learn-card-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--dark-text);
+      margin-bottom: 10px;
+    }
+    .learn-card-desc {
+      font-size: 0.875rem;
+      color: #4B5563;
+      line-height: 1.8;
+    }
+    .learn-card-icon {
+      padding: 32px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background: linear-gradient(135deg, #f8f6f0, #fdf9ed);
+    }
+    .learn-card-icon svg { width: 64px; height: 64px; }
+
+    /* ===== SECTION04 — 特徴 ===== */
+    #features { background: var(--bg-section); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .features-image-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .feature-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      transition: all 0.25s ease;
+    }
+    .feature-card:hover {
+      border-color: rgba(212,175,55,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .feature-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      opacity: 0.45;
+    }
+    .feature-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ===== SECTION05 — カリキュラム ===== */
+    #curriculum { background: var(--bg-dark); }
+    .curriculum-image-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+    .roadmap-scroll {
+      overflow-x: auto;
+      padding-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--bg-section);
+    }
+    .roadmap-scroll::-webkit-scrollbar { height: 4px; }
+    .roadmap-scroll::-webkit-scrollbar-track { background: var(--bg-section); border-radius: 4px; }
+    .roadmap-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+    .roadmap-track {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 40px 20px;
+      position: relative;
+    }
+    .roadmap-track::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+    .roadmap-step {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 185px;
+      flex-shrink: 0;
+    }
+    .roadmap-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+      box-shadow: 0 0 0 3px var(--gold);
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .roadmap-card {
+      background: var(--bg-section);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      width: 162px;
+      transition: all 0.25s ease;
+    }
+    .roadmap-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(212,175,55,0.15);
+    }
+    .roadmap-step-num {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .roadmap-step-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    /* SP vertical timeline */
+    .roadmap-vertical {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 40px;
+    }
+    .roadmap-vertical::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), var(--gold-light));
+    }
+    .roadmap-v-step {
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .roadmap-v-step::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .roadmap-v-num {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .roadmap-v-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ===== SECTION06 — Before/After ===== */
+    #transformation { background: var(--bg-section); }
+    .transformation-image-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .ba-card {
+      border-radius: 24px;
+      padding: 40px 36px;
+    }
+    .ba-before {
+      background: var(--bg-dark);
+      border: 1px solid var(--line);
+    }
+    .ba-after {
+      background: linear-gradient(135deg, rgba(212,175,55,0.05), rgba(245,215,110,0.03));
+      border: 2px solid var(--gold);
+    }
+    .ba-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ba-before .ba-label { color: var(--muted); }
+    .ba-after .ba-label { color: var(--gold); }
+    .ba-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .ba-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .ba-before .ba-list li { color: var(--muted); }
+    .ba-after .ba-list li { color: var(--text); }
+    .ba-check { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    /* ===== SECTION07 — こんな方に ===== */
+    #target { background: var(--bg-dark); }
+    .target-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .target-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg-section);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: all 0.25s ease;
+    }
+    .target-item:hover {
+      border-color: rgba(212,175,55,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+    .target-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; }
+    .target-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ===== SECTION08 — 料金 ===== */
+    #pricing { background: var(--bg-section); }
+    .pricing-card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--bg-dark);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .pricing-card-top {
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+    .pricing-card-body { padding: 52px 52px 48px; }
+    .pricing-plan-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .pricing-price { margin-bottom: 32px; }
+    .pricing-price-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .pricing-price-tax {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+      border-top: 1px solid var(--line);
+      padding-top: 32px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .pricing-check { width: 20px; height: 20px; flex-shrink: 0; }
+    .pricing-footnote {
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* ===== SECTION09 — FAQ ===== */
+    #faq { background: var(--bg-dark); }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      background: var(--bg-section);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s ease;
+    }
+    .faq-item.open { border-color: rgba(212,175,55,0.3); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-q-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .faq-arrow {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(212,175,55,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .faq-item.open .faq-arrow {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: rotate(180deg);
+    }
+    .faq-arrow svg { width: 12px; height: 12px; stroke: var(--gold); transition: stroke 0.25s ease; }
+    .faq-item.open .faq-arrow svg { stroke: var(--dark-text); }
+    .faq-body { height: 0; overflow: hidden; transition: height 0.35s ease; }
+    .faq-body-inner {
+      padding: 20px 28px 24px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.9;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ===== SECTION10 — Final CTA ===== */
+    #final-cta {
+      position: relative;
+      padding: 160px 0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .final-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 15, 25, 0.72);
+      z-index: 1;
+    }
+    .final-cta-content {
+      position: relative;
+      z-index: 2;
+    }
+    .final-cta-title {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.35;
+    }
+    .final-cta-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      line-height: 1.9;
+    }
+
+    /* ===== FIXED CTA ===== */
+    .fixed-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 900;
+    }
+    .fixed-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--dark-text);
+      font-weight: 900;
+      font-size: 0.875rem;
+      padding: 14px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(212,175,55,0.4);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .fixed-cta-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+    .fixed-cta-bar { display: none; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #070A12;
+      border-top: 1px solid var(--line);
+      padding: 48px 0;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .footer-copy { font-size: 0.75rem; color: #52525B; }
+    .footer-disclaimer {
+      font-size: 0.7rem;
+      color: #3F3F46;
+      margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      section { padding: 80px 0; }
+      .fv-grid { grid-template-columns: 1fr; gap: 48px; }
+      .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+      .problem-image-wrap { order: -1; }
+      .learn-grid { grid-template-columns: 1fr; gap: 20px; }
+      .features-grid { grid-template-columns: 1fr; gap: 48px; }
+      .worry-cards { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; gap: 24px; }
+      .target-grid { grid-template-columns: 1fr; }
+      .roadmap-scroll { display: none; }
+      .roadmap-vertical { display: flex; }
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+      .fixed-cta { display: none; }
+      .fixed-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        padding: 16px 24px;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: var(--dark-text);
+        font-weight: 900;
+        font-size: 1rem;
+        box-shadow: 0 -4px 24px rgba(212,175,55,0.3);
+        gap: 8px;
+      }
+      body { padding-bottom: 70px; }
+      .fv-btns { flex-direction: column; }
+      .pricing-card-body { padding: 36px 28px 32px; }
+    }
+    @media (max-width: 600px) {
+      .fv-h1 { font-size: 1.75rem; }
+      .section-title { font-size: 1.5rem; }
+      .pricing-price-num { font-size: 2.75rem; }
+      .final-cta-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#fv" class="logo">
+        <span class="logo-dot"></span>
+        Business Design Academy
+      </a>
+      <nav class="header-nav">
+        <a href="#problem">課題</a>
+        <a href="#learn">学べること</a>
+        <a href="#curriculum">カリキュラム</a>
+        <a href="#pricing">料金</a>
+        <a href="#faq">FAQ</a>
+        <a href="#final-cta" class="btn-ghost">無料相談</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="ナビゲーション">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="閉じる">✕</button>
+  <a href="#problem" class="mobile-nav-link">課題</a>
+  <a href="#learn" class="mobile-nav-link">学べること</a>
+  <a href="#curriculum" class="mobile-nav-link">カリキュラム</a>
+  <a href="#pricing" class="mobile-nav-link">料金</a>
+  <a href="#faq" class="mobile-nav-link">FAQ</a>
+  <a href="#final-cta" class="btn-gold mobile-nav-link" style="font-size:0.95rem;padding:16px 32px;">無料個別相談を予約する</a>
+</div>
+
+<!-- ===== SECTION01 — FV ===== -->
+<section id="fv">
+  <div class="container">
+    <div class="fv-grid">
+      <!-- Left -->
+      <div>
+        <p class="fv-label fade-up">Business Design Academy</p>
+        <h1 class="fv-h1 fade-up delay-1">起業を、感覚ではなく<br>仕組みで成功させる。</h1>
+        <p class="fv-sub fade-up delay-2">事業設計、商品設計、集客、販売導線まで。<br>売れるビジネスの土台を一緒に構築する実践型スクール。</p>
+        <div class="fv-btns fade-up delay-3">
+          <a href="#final-cta" class="btn-gold">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            無料個別相談を予約する
+          </a>
+          <a href="#curriculum" class="btn-outline-white">カリキュラムを見る</a>
+        </div>
+        <div class="fv-tags fade-up delay-4">
+          <span class="fv-tag">オンライン対応</span>
+          <span class="fv-tag">初心者歓迎</span>
+          <span class="fv-tag">個別伴走</span>
+          <span class="fv-tag">高単価商品設計</span>
+        </div>
+      </div>
+      <!-- Right -->
+      <div class="fv-image-wrap fade-up delay-2">
+        <div class="fv-image-card">
+          <div class="img-placeholder" style="width:100%;height:480px;">
+            <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
+              <defs>
+                <linearGradient id="fv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1a2332"/>
+                  <stop offset="100%" style="stop-color:#0d1520"/>
+                </linearGradient>
+              </defs>
+              <rect width="800" height="600" fill="url(#fv-grad)"/>
+              <rect x="60" y="60" width="220" height="150" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.18)" stroke-width="1"/>
+              <rect x="320" y="40" width="420" height="260" rx="14" fill="rgba(212,175,55,0.05)" stroke="rgba(212,175,55,0.14)" stroke-width="1"/>
+              <rect x="60" y="260" width="420" height="210" rx="14" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.14)" stroke-width="1"/>
+              <rect x="530" y="360" width="210" height="170" rx="14" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.11)" stroke-width="1"/>
+              <text x="400" y="300" text-anchor="middle" fill="#D4AF37" font-size="15" font-family="sans-serif" opacity="0.55">hero-business.jpg（800×600px）</text>
+            </svg>
+          </div>
+          <div class="fv-overlay-card">
+            <p class="fv-overlay-title">BUSINESS ROADMAP</p>
+            <div class="fv-overlay-steps">
+              <span class="fv-overlay-step">01 事業テーマ整理</span>
+              <span class="fv-overlay-step">02 市場・ターゲット分析</span>
+              <span class="fv-overlay-step">03 商品・サービス設計</span>
+              <span class="fv-overlay-step">04 集客・販売導線設計</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION02 — 悩み ===== -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <!-- Left -->
+      <div>
+        <p class="section-label fade-up">PROBLEM</p>
+        <h2 class="section-title fade-up delay-1">こんなお悩みありませんか？</h2>
+        <p class="section-sub fade-up delay-2">起業に必要なのは、根性ではなく"設計図"です。</p>
+        <div class="gold-line gold-line-left fade-up delay-2" style="margin-bottom:8px;"></div>
+        <div class="worry-cards">
+          <div class="worry-card fade-up delay-1">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">起業したいが何から始めればいいかわからない</p>
+          </div>
+          <div class="worry-card fade-up delay-2">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">アイデアはあるが商品化できない</p>
+          </div>
+          <div class="worry-card fade-up delay-3">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">集客方法がわからない</p>
+          </div>
+          <div class="worry-card fade-up delay-4">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">SNSが売上につながらない</p>
+          </div>
+          <div class="worry-card fade-up delay-5">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">高単価商品を売る自信がない</p>
+          </div>
+          <div class="worry-card fade-up delay-6">
+            <div class="worry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="worry-text">一人で進めるのが不安</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right -->
+      <div class="problem-image-wrap fade-up delay-3">
+        <div style="width:100%;height:520px;">
+          <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
+            <defs>
+              <linearGradient id="prob-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1e2a3a"/>
+                <stop offset="100%" style="stop-color:#111827"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="700" fill="url(#prob-grad)"/>
+            <text x="300" y="360" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">problem-office-worker.jpg（600×700px）</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION03 — 学べること ===== -->
+<section id="learn">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">WHAT YOU LEARN</p>
+      <h2 class="section-title fade-up delay-1">このスクールで学べること</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <div class="learn-grid">
+      <!-- Card 1 -->
+      <div class="learn-card fade-up delay-1">
+        <div class="learn-card-img">
+          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+            <rect width="600" height="200" fill="#f0ede6"/>
+            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">business-strategy.jpg（600×200px）</text>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">事業戦略設計</h3>
+          <p class="learn-card-desc">市場分析からポジショニングまで。選ばれる理由を言語化し、事業の根幹となる戦略を体系的に構築します。</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="learn-card fade-up delay-2">
+        <div class="learn-card-img">
+          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+            <rect width="600" height="200" fill="#ede8e0"/>
+            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">product-design.jpg（600×200px）</text>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">商品・サービス設計</h3>
+          <p class="learn-card-desc">高単価でも選ばれる商品の作り方。価格設定、パッケージング、提供価値の明確化まで一貫して設計します。</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="learn-card fade-up delay-3">
+        <div class="learn-card-img">
+          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+            <rect width="600" height="200" fill="#e8ede0"/>
+            <text x="300" y="108" text-anchor="middle" fill="#D4AF37" font-size="13" font-family="sans-serif" opacity="0.75">marketing-funnel.jpg（600×200px）</text>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">集客マーケティング</h3>
+          <p class="learn-card-desc">SNS、LP、コンテンツ戦略を組み合わせ、理想の顧客が自然と集まる集客ファネルを構築します。</p>
+        </div>
+      </div>
+      <!-- Card 4: 販売導線 -->
+      <div class="learn-card fade-up delay-4">
+        <div class="learn-card-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 32H56M40 16L56 32L40 48" stroke="#D4AF37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="32" r="6" stroke="#D4AF37" stroke-width="2.5"/>
+            <circle cx="48" cy="32" r="6" fill="rgba(212,175,55,0.15)" stroke="#D4AF37" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">販売導線設計</h3>
+          <p class="learn-card-desc">問い合わせから成約までの流れを作る。顧客が迷わず購入を決断できる導線を設計します。</p>
+        </div>
+      </div>
+      <!-- Card 5: セールス設計 -->
+      <div class="learn-card fade-up delay-5">
+        <div class="learn-card-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="20" r="10" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M12 52c0-11 8.954-20 20-20s20 8.954 20 20" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M26 40l4 4 8-8" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">セールス設計</h3>
+          <p class="learn-card-desc">無理に売り込まず、納得して選ばれる提案力。信頼関係を築きながら自然に成約する技術を習得します。</p>
+        </div>
+      </div>
+      <!-- Card 6: 仕組み化 -->
+      <div class="learn-card fade-up delay-6">
+        <div class="learn-card-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="32" width="12" height="24" rx="4" stroke="#D4AF37" stroke-width="2.5"/>
+            <rect x="26" y="20" width="12" height="36" rx="4" stroke="#D4AF37" stroke-width="2.5"/>
+            <rect x="44" y="8" width="12" height="48" rx="4" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M14 28l12-10 12 6 12-14" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="learn-card-body">
+          <div class="learn-card-line"></div>
+          <h3 class="learn-card-title">仕組み化・改善運用</h3>
+          <p class="learn-card-desc">数字を見ながら事業を継続改善する。KPI設定から振り返り、PDCAサイクルの回し方まで実践的に学びます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION04 — 特徴 ===== -->
+<section id="features">
+  <div class="container">
+    <div class="features-grid">
+      <!-- Left: Image -->
+      <div class="features-image-wrap fade-up">
+        <div style="width:100%;height:560px;">
+          <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
+            <defs>
+              <linearGradient id="feat-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a2a3a"/>
+                <stop offset="100%" style="stop-color:#0d1825"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="700" fill="url(#feat-grad)"/>
+            <text x="300" y="360" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">mentoring-session.jpg（600×700px）</text>
+          </svg>
+        </div>
+      </div>
+      <!-- Right: Features -->
+      <div>
+        <p class="section-label fade-up">FEATURES</p>
+        <h2 class="section-title fade-up delay-1">一人で悩ませない。<br>事業づくりを伴走します。</h2>
+        <div class="gold-line gold-line-left fade-up delay-2" style="margin-bottom:40px;"></div>
+        <div class="feature-cards">
+          <div class="feature-card fade-up delay-1">
+            <span class="feature-num">01</span>
+            <div>
+              <h3 class="feature-title">実践型カリキュラム</h3>
+              <p class="feature-desc">理論だけでなく、実際の事業に即した課題に取り組みながら学ぶ実践重視のプログラム。アウトプットを繰り返すことで本当の力が身につきます。</p>
+            </div>
+          </div>
+          <div class="feature-card fade-up delay-2">
+            <span class="feature-num">02</span>
+            <div>
+              <h3 class="feature-title">個別伴走サポート</h3>
+              <p class="feature-desc">グループ授業だけでなく、あなたの事業に合わせた個別フィードバックを提供。疑問や不安をそのままにしません。</p>
+            </div>
+          </div>
+          <div class="feature-card fade-up delay-3">
+            <span class="feature-num">03</span>
+            <div>
+              <h3 class="feature-title">高単価商品に対応</h3>
+              <p class="feature-desc">50万〜200万円の高額サービスを設計・販売するノウハウを習得。価格競争に巻き込まれない事業づくりを目指します。</p>
+            </div>
+          </div>
+          <div class="feature-card fade-up delay-4">
+            <span class="feature-num">04</span>
+            <div>
+              <h3 class="feature-title">初心者でも取り組みやすい</h3>
+              <p class="feature-desc">副業段階や起業前からスタートOK。専門知識がなくても、ステップを踏みながら確実に事業の土台を作ることができます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION05 — カリキュラム ===== -->
+<section id="curriculum">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">CURRICULUM</p>
+      <h2 class="section-title fade-up delay-1">起業までの道筋を、7STEPで設計。</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <!-- Roadmap Image -->
+    <div class="curriculum-image-wrap fade-up">
+      <div style="width:100%;height:360px;">
+        <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
+          <defs>
+            <linearGradient id="rd-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#1a2332"/>
+              <stop offset="100%" style="stop-color:#0d1520"/>
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="360" fill="url(#rd-grad)"/>
+          <line x1="0" y1="180" x2="1200" y2="180" stroke="rgba(212,175,55,0.25)" stroke-width="2" stroke-dasharray="10 8"/>
+          <text x="600" y="188" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">roadmap-screen.jpg（1200×360px）</text>
+        </svg>
+      </div>
+    </div>
+    <!-- PC: Horizontal Roadmap -->
+    <div class="roadmap-scroll">
+      <div class="roadmap-track">
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 01</p><p class="roadmap-step-title">起業テーマ整理</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 02</p><p class="roadmap-step-title">ターゲット・市場分析</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 03</p><p class="roadmap-step-title">商品・サービス設計</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 04</p><p class="roadmap-step-title">集客媒体の設計</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 05</p><p class="roadmap-step-title">LP・相談導線設計</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 06</p><p class="roadmap-step-title">セールス・クロージング</p></div></div>
+        <div class="roadmap-step"><div class="roadmap-dot"></div><div class="roadmap-card"><p class="roadmap-step-num">STEP 07</p><p class="roadmap-step-title">改善・運用・仕組み化</p></div></div>
+      </div>
+    </div>
+    <!-- SP: Vertical Timeline -->
+    <div class="roadmap-vertical">
+      <div class="roadmap-v-step fade-up delay-1"><p class="roadmap-v-num">STEP 01</p><p class="roadmap-v-title">起業テーマ整理</p></div>
+      <div class="roadmap-v-step fade-up delay-2"><p class="roadmap-v-num">STEP 02</p><p class="roadmap-v-title">ターゲット・市場分析</p></div>
+      <div class="roadmap-v-step fade-up delay-3"><p class="roadmap-v-num">STEP 03</p><p class="roadmap-v-title">商品・サービス設計</p></div>
+      <div class="roadmap-v-step fade-up delay-4"><p class="roadmap-v-num">STEP 04</p><p class="roadmap-v-title">集客媒体の設計</p></div>
+      <div class="roadmap-v-step fade-up delay-5"><p class="roadmap-v-num">STEP 05</p><p class="roadmap-v-title">LP・相談導線設計</p></div>
+      <div class="roadmap-v-step fade-up delay-6"><p class="roadmap-v-num">STEP 06</p><p class="roadmap-v-title">セールス・クロージング</p></div>
+      <div class="roadmap-v-step fade-up delay-6"><p class="roadmap-v-num">STEP 07</p><p class="roadmap-v-title">改善・運用・仕組み化</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION06 — Before/After ===== -->
+<section id="transformation">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">TRANSFORMATION</p>
+      <h2 class="section-title fade-up delay-1">起業が"現実"になる。</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <!-- Transformation Image -->
+    <div class="transformation-image-wrap fade-up">
+      <div style="width:100%;height:400px;">
+        <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:var(--r);display:block">
+          <defs>
+            <linearGradient id="tf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1a2c20"/>
+              <stop offset="50%" style="stop-color:#1a2332"/>
+              <stop offset="100%" style="stop-color:#2c1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="400" fill="url(#tf-grad)"/>
+          <text x="600" y="208" text-anchor="middle" fill="#D4AF37" font-size="14" font-family="sans-serif" opacity="0.6">transformation.jpg（1200×400px）</text>
+        </svg>
+      </div>
+    </div>
+    <!-- Before / After -->
+    <div class="ba-grid">
+      <!-- Before -->
+      <div class="ba-card ba-before fade-up delay-1">
+        <p class="ba-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          BEFORE
+        </p>
+        <ul class="ba-list">
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#52525B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            何から始めていいかわからず、情報収集だけで時間が過ぎる
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#52525B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            SNSを発信しても反応がなく売上につながらない
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#52525B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            価格を下げても競合に負け、疲弊が続く
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#52525B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            一人で孤独に悩み、前に進む自信が持てない
+          </li>
+        </ul>
+      </div>
+      <!-- After -->
+      <div class="ba-card ba-after fade-up delay-2">
+        <p class="ba-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          AFTER
+        </p>
+        <ul class="ba-list">
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            事業の全体像が見え、自信を持って次の一手を打てる
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            理想のお客様が自然と集まる仕組みが完成する
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            高単価商品を自信を持って提案し、成約できるようになる
+          </li>
+          <li>
+            <svg class="ba-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            伴走サポートのもと、安心感を持って前進できる
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION07 — こんな方に ===== -->
+<section id="target">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">FOR YOU</p>
+      <h2 class="section-title fade-up delay-1">こんな方におすすめです</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <div class="target-grid">
+      <div class="target-item fade-up delay-1">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">会社員・副業から本業起業を目指している方</p>
+      </div>
+      <div class="target-item fade-up delay-2">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">フリーランスとして独立を考えている方</p>
+      </div>
+      <div class="target-item fade-up delay-3">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">すでに起業しているが売上が伸び悩んでいる方</p>
+      </div>
+      <div class="target-item fade-up delay-4">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">高単価商品・サービスを作りたい方</p>
+      </div>
+      <div class="target-item fade-up delay-5">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">ビジネスの仕組みを体系的に学びたい方</p>
+      </div>
+      <div class="target-item fade-up delay-6">
+        <svg class="target-icon" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p class="target-text">一人で悩まず、プロに伴走してもらいたい方</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION08 — 料金 ===== -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">PRICING</p>
+      <h2 class="section-title fade-up delay-1">受講プラン</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <div class="pricing-card fade-up delay-1">
+      <div class="pricing-card-top"></div>
+      <div class="pricing-card-body">
+        <p class="pricing-plan-name">個別伴走型 起業スクール</p>
+        <div class="pricing-price">
+          <div class="pricing-price-num">¥800,000</div>
+          <p class="pricing-price-tax">（税込 ¥880,000）</p>
+        </div>
+        <ul class="pricing-features">
+          <li>
+            <svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            分割相談可
+          </li>
+          <li>
+            <svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            オンライン対応（全国どこからでも受講可）
+          </li>
+          <li>
+            <svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            個別伴走サポート付き
+          </li>
+          <li>
+            <svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            起業前・副業段階でも参加可
+          </li>
+        </ul>
+        <a href="#final-cta" class="btn-gold" style="width:100%;">
+          無料個別相談で詳細を聞く
+        </a>
+        <p class="pricing-footnote">無理な勧誘はありません。まずは現状整理からご相談いただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION09 — FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label fade-up">FAQ</p>
+      <h2 class="section-title fade-up delay-1">よくある質問</h2>
+      <div class="gold-line fade-up delay-2"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-q">
+          <p class="faq-q-text">起業経験がゼロでも受講できますか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">はい、起業経験がまったくない方でも問題ありません。むしろ、最初から正しい設計を身につけていただくことで、遠回りせずに事業を立ち上げることができます。副業段階や会社員のまま受講される方も多くいらっしゃいます。</div>
+        </div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-q">
+          <p class="faq-q-text">オンラインで受講できますか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">はい、すべてオンライン（Zoom等）で受講いただけます。全国どこからでも、またお仕事の合間にも柔軟にご参加いただける環境を整えております。</div>
+        </div>
+      </div>
+      <div class="faq-item fade-up delay-3">
+        <div class="faq-q">
+          <p class="faq-q-text">受講期間はどれくらいですか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">目安として3〜6ヶ月間のプログラムです。ただし、お一人おひとりの状況やペースに合わせて柔軟に対応いたします。詳しくは無料個別相談でご確認ください。</div>
+        </div>
+      </div>
+      <div class="faq-item fade-up delay-4">
+        <div class="faq-q">
+          <p class="faq-q-text">分割払いはできますか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">はい、分割払いのご相談も承っております。ご状況に応じた支払い方法についても無料相談の際にお気軽にご確認ください。</div>
+        </div>
+      </div>
+      <div class="faq-item fade-up delay-5">
+        <div class="faq-q">
+          <p class="faq-q-text">無料相談では何を話すのですか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">現在のお仕事やご状況、起業に向けての目標や悩みをお聞きし、現状整理をお手伝いします。セールスを目的とした場ではありませんので、お気軽にご参加いただけます。所要時間は約45〜60分です。</div>
+        </div>
+      </div>
+      <div class="faq-item fade-up delay-6">
+        <div class="faq-q">
+          <p class="faq-q-text">すでに起業している場合でも受講できますか？</p>
+          <div class="faq-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">もちろんです。「売上が伸び悩んでいる」「商品設計を見直したい」「仕組み化できていない」といった課題をお持ちの既存事業主の方にも対応しております。現状の事業を土台から見直す機会としてご活用いただいています。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION10 — Final CTA ===== -->
+<section id="final-cta" style="padding:0;">
+  <div class="final-cta-bg">
+    <svg viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+      <defs>
+        <linearGradient id="cta-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#0f1a2e"/>
+          <stop offset="100%" style="stop-color:#1a0f0a"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="600" fill="url(#cta-grad)"/>
+      <circle cx="720" cy="300" r="500" fill="rgba(212,175,55,0.03)"/>
+      <circle cx="720" cy="300" r="300" fill="rgba(212,175,55,0.025)"/>
+      <circle cx="720" cy="300" r="150" fill="rgba(212,175,55,0.02)"/>
+    </svg>
+    <div class="final-cta-overlay"></div>
+  </div>
+  <div style="padding:160px 0;text-align:center;position:relative;z-index:2;">
+    <div class="container final-cta-content">
+      <p class="section-label fade-up" style="display:block;margin-bottom:20px;">FREE CONSULTATION</p>
+      <h2 class="final-cta-title fade-up delay-1">あなたの起業を、<br>本気で一緒に設計します。</h2>
+      <p class="final-cta-sub fade-up delay-2">まずは現状をお話しください。<br>無理な勧誘は一切ありません。45〜60分の無料個別相談から始められます。</p>
+      <div class="fade-up delay-3">
+        <a href="mailto:i.love.yoziro0705@gmail.com?subject=無料個別相談のご予約" class="btn-gold" style="font-size:1.05rem;padding:20px 52px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          無料個別相談を予約する
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIXED CTA (PC) ===== -->
+<div class="fixed-cta">
+  <a href="mailto:i.love.yoziro0705@gmail.com?subject=無料個別相談のご予約" class="fixed-cta-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    無料相談を予約する
+  </a>
+</div>
+
+<!-- FIXED CTA (SP) -->
+<a href="mailto:i.love.yoziro0705@gmail.com?subject=無料個別相談のご予約" class="fixed-cta-bar">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  無料個別相談を予約する
+</a>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p class="footer-logo">Business Design Academy</p>
+    <p class="footer-copy">©2025 Business Design Academy. All rights reserved.</p>
+    <p class="footer-disclaimer">本サービスの成果・収益には個人差があります。受講による収益・成果を保証するものではありません。記載の事例はあくまで一例であり、すべての方に同様の結果を約束するものではありません。</p>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* 1. IntersectionObserver: fade-up */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  /* 2. FAQ Accordion */
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const body = item.querySelector('.faq-body');
+      const inner = item.querySelector('.faq-body-inner');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-body').style.height = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.height = inner.offsetHeight + 'px';
+      }
+    });
+  });
+
+  /* 3. Header scroll effect */
+  const header = document.getElementById('header');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* 4. Mobile menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-label', 'メニューを閉じる');
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+    hamburger.setAttribute('aria-label', 'メニューを開く');
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  mobileMenuClose.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* 5. FAQ body height recalculate on resize */
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.faq-item.open').forEach(item => {
+      const inner = item.querySelector('.faq-body-inner');
+      item.querySelector('.faq-body').style.height = inner.offsetHeight + 'px';
+    });
+  });
+</script>
+
+</body>
+</html>
