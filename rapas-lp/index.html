@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在宅ワーク募集｜株式会社RAPAS（ラパス）</title>
+  <meta name="description" content="全国5,000名以上が活躍中！自宅でできるデータ入力・名刺チェック等の在宅ワーク。主婦・副業・シニアの方歓迎。プライバシーマーク取得の安心企業。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary: #2196F3;
+      --primary-dark: #1565C0;
+      --primary-light: #E3F2FD;
+      --accent: #FF6B6B;
+      --accent-dark: #E53935;
+      --accent-light: #FFF3F3;
+      --success: #4CAF50;
+      --warning: #FF9800;
+      --bg: #FAFBFF;
+      --bg-gray: #F5F7FA;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-sub: #718096;
+      --border: #E8ECF0;
+      --card: #FFFFFF;
+      --shadow: 0 8px 40px rgba(33,150,243,.10);
+      --shadow-sm: 0 2px 12px rgba(33,150,243,.08);
+      --shadow-card: 0 4px 24px rgba(0,0,0,.07);
+      --r: 16px;
+      --r-lg: 24px;
+      --r-xl: 32px;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.85;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== Layout ===== */
+    .container { width: min(1100px, 92%); margin: auto; }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 60px 0; }
+
+    /* ===== Section Header ===== */
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .section-title span { color: var(--primary); }
+    .section-sub {
+      margin-top: 14px;
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--text-mid);
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 44px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform .22s, box-shadow .22s;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #FF4E4E 100%);
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(255,107,107,.40);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(255,107,107,.50);
+    }
+    .btn-line {
+      background: #06C755;
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(6,199,85,.35);
+    }
+    .btn-line:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(6,199,85,.45);
+    }
+
+    /* ===== Header ===== */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    #header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.10); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: .04em;
+    }
+    .logo span { color: var(--text); }
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-btn {
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #FF4E4E);
+      color: #fff;
+      box-shadow: 0 3px 16px rgba(255,107,107,.35);
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .header-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,107,107,.45); }
+
+    /* ===== Hero ===== */
+    #hero {
+      background: linear-gradient(145deg, #EBF5FF 0%, #F0F7FF 50%, #E8F4FD 100%);
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(33,150,243,.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,107,107,.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge-blue {
+      background: var(--primary);
+      color: #fff;
+    }
+    .badge-green {
+      background: var(--success);
+      color: #fff;
+    }
+    .hero-copy {
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero-copy em {
+      font-style: normal;
+      color: var(--primary);
+      position: relative;
+    }
+    .hero-copy em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0; right: 0;
+      height: 4px;
+      background: var(--primary);
+      opacity: .3;
+      border-radius: 2px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .hero-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF3CD;
+      border: 1.5px solid #FF9800;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #E65100;
+    }
+    .hero-notice-icon { font-size: 14px; }
+    .hero-image-area {
+      position: relative;
+    }
+    .hero-illust {
+      width: 100%;
+      aspect-ratio: 5/4;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, #BBDEFB 0%, #E3F2FD 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-stat-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+    .hero-stat-card.card-a {
+      bottom: -16px; left: -20px;
+    }
+    .hero-stat-card.card-b {
+      top: -16px; right: -20px;
+    }
+    .hero-stat-num { font-size: 26px; color: var(--primary); line-height: 1; }
+    .hero-stat-label { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+
+    /* ===== Recommend ===== */
+    #recommend { background: var(--bg-gray); }
+    .recommend-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .recommend-card {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .recommend-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .recommend-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .recommend-text h3 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .recommend-text p {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    /* ===== Jobs ===== */
+    #jobs { background: var(--bg); }
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .job-card {
+      background: var(--card);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform .22s, box-shadow .22s;
+      border: 1.5px solid transparent;
+    }
+    .job-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+    .job-card-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 28px 24px 24px;
+      color: #fff;
+    }
+    .job-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      opacity: .75;
+      margin-bottom: 8px;
+    }
+    .job-icon { font-size: 36px; margin-bottom: 10px; }
+    .job-title { font-size: 18px; font-weight: 900; line-height: 1.4; }
+    .job-card-body { padding: 24px; }
+    .job-desc {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .job-tasks { display: flex; flex-direction: column; gap: 10px; }
+    .job-task {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+    .job-task-icon {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== Reasons ===== */
+    #reasons { background: var(--bg-gray); }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .reason-card {
+      background: var(--card);
+      border-radius: var(--r-lg);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .reason-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .reason-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .reason-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .reason-icon { font-size: 48px; margin-bottom: 16px; }
+    .reason-title { font-size: 20px; font-weight: 900; margin-bottom: 10px; color: var(--text); }
+    .reason-big { font-size: 36px; font-weight: 900; color: var(--primary); line-height: 1; margin-bottom: 6px; }
+    .reason-big span { font-size: 18px; }
+    .reason-desc { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+
+    /* ===== Environment ===== */
+    #environment { background: var(--bg); }
+    .env-warning {
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFF8F0 100%);
+      border: 2.5px solid var(--warning);
+      border-radius: var(--r-lg);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .env-warning-icon {
+      font-size: 48px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .env-warning h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #E65100;
+      margin-bottom: 8px;
+    }
+    .env-warning p {
+      font-size: 14px;
+      color: #6D4C41;
+      line-height: 1.8;
+    }
+    .env-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .env-item {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      border: 1.5px solid var(--border);
+    }
+    .env-item-icon { font-size: 36px; margin-bottom: 10px; }
+    .env-item-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .env-item-note { font-size: 12px; color: var(--text-sub); }
+    .env-ng {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #FFEBEE;
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-top: 6px;
+    }
+
+    /* ===== Steps ===== */
+    #steps { background: var(--bg-gray); }
+    .steps-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-flow::before {
+      content: '';
+      position: absolute;
+      top: 52px; left: 12.5%; right: 12.5%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      z-index: 0;
+    }
+    .step-item {
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 6px 20px rgba(33,150,243,.35);
+      font-weight: 900;
+    }
+    .step-circle.last {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      box-shadow: 0 6px 20px rgba(255,107,107,.35);
+    }
+    .step-label { font-size: 10px; letter-spacing: .1em; opacity: .8; }
+    .step-num { font-size: 28px; line-height: 1; }
+    .step-content h3 { font-size: 15px; font-weight: 900; margin-bottom: 6px; color: var(--text); }
+    .step-content p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+    .step-icon { font-size: 22px; margin-bottom: 8px; }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--card);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .18s;
+    }
+    .faq-q:hover { background: var(--primary-light); }
+    .faq-q-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .faq-q-text { font-size: 15px; font-weight: 700; flex: 1; color: var(--text); line-height: 1.5; }
+    .faq-arrow {
+      font-size: 14px;
+      color: var(--text-sub);
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px 72px;
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* ===== Company ===== */
+    #company { background: var(--bg-gray); }
+    .company-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .company-card-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 28px 36px;
+      color: #fff;
+    }
+    .company-name-en { font-size: 12px; letter-spacing: .14em; opacity: .75; margin-bottom: 6px; }
+    .company-name-ja { font-size: 24px; font-weight: 900; }
+    .company-table { width: 100%; }
+    .company-table td { padding: 14px 36px; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .company-table td:first-child { font-weight: 700; color: var(--text-sub); width: 110px; white-space: nowrap; }
+    .company-table tr:last-child td { border-bottom: none; }
+    .privacy-mark-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary);
+      border-radius: 10px;
+      padding: 8px 16px;
+      margin-top: 16px;
+      margin-left: 36px;
+      margin-bottom: 20px;
+    }
+    .privacy-mark-badge img { width: 36px; height: auto; }
+    .privacy-mark-badge span { font-size: 13px; font-weight: 700; color: var(--primary); }
+
+    /* ===== Final CTA ===== */
+    #final-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 100px 0;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    #final-cta::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+    }
+    #final-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -60px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+    }
+    .final-cta-inner { position: relative; z-index: 1; }
+    .final-cta-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      margin-bottom: 20px;
+    }
+    .final-cta-title {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .final-cta-sub { font-size: 16px; opacity: .85; margin-bottom: 36px; }
+    .final-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 6px 24px rgba(0,0,0,.15);
+      font-weight: 900;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.20); }
+    .final-notice {
+      margin-top: 24px;
+      font-size: 13px;
+      opacity: .7;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #1A1A2E;
+      color: rgba(255,255,255,.7);
+      padding: 40px 0 28px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-logo { font-size: 18px; font-weight: 900; color: #fff; }
+    .footer-copy { font-size: 12px; }
+    .footer-links { display: flex; gap: 20px; font-size: 13px; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ===== Floating CTA ===== */
+    #floating-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 990;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transform: translateY(100%);
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+    }
+    #floating-cta.visible { transform: translateY(0); }
+    .floating-cta-text { font-size: 13px; font-weight: 700; color: var(--text-mid); }
+    .floating-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--accent), #FF4E4E);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(255,107,107,.40);
+      text-decoration: none;
+      transition: transform .2s;
+      white-space: nowrap;
+    }
+    .floating-btn:hover { transform: translateY(-2px); }
+
+    /* ===== Fade-up Animation ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero-image-area { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
+      .hero-cta-group { align-items: center; }
+      .hero-copy { text-align: center; }
+      .hero-sub { text-align: center; }
+      .hero-badges { justify-content: center; }
+      .recommend-grid { grid-template-columns: 1fr 1fr; }
+      .jobs-grid { grid-template-columns: 1fr 1fr; }
+      .reasons-grid { grid-template-columns: 1fr 1fr; }
+      .env-items { grid-template-columns: 1fr 1fr; }
+      .steps-flow { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .steps-flow::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 60px 0; }
+      .section-header { margin-bottom: 36px; }
+      #hero { padding: 100px 0 60px; }
+      .recommend-grid { grid-template-columns: 1fr; }
+      .jobs-grid { grid-template-columns: 1fr; }
+      .reasons-grid { grid-template-columns: 1fr; }
+      .env-items { grid-template-columns: 1fr; }
+      .env-warning { flex-direction: column; gap: 12px; padding: 24px 20px; }
+      .steps-flow { grid-template-columns: 1fr 1fr; }
+      .final-cta-btns { flex-direction: column; align-items: center; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .company-table td { padding: 12px 20px; }
+      .company-card-header { padding: 24px 20px; }
+      .privacy-mark-badge { margin-left: 20px; }
+      .hero-stat-card { display: none; }
+      .floating-cta-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header id="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">RAPAS<span>採用</span></div>
+        <div class="header-cta">
+          <a href="#final-cta" class="header-btn">今すぐ応募する →</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badges">
+            <span class="badge badge-blue">👥 全国5,000名以上活躍中</span>
+            <span class="badge badge-green">🔒 プライバシーマーク取得</span>
+          </div>
+          <h1 class="hero-copy">
+            自宅で、<em>自分の</em><br>ペースで。
+          </h1>
+          <p class="hero-sub">
+            スキマ時間でできる在宅ワーク、<br>始めませんか？
+          </p>
+          <div class="hero-cta-group">
+            <a href="#final-cta" class="btn btn-primary">
+              📩 今すぐ応募する
+            </a>
+            <div class="hero-notice">
+              <span class="hero-notice-icon">⚠️</span>
+              <span>PC必須（Windows推奨）・スマホ不可</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-area">
+          <div class="hero-illust">
+            <!-- Hero illustration placeholder -->
+            <svg viewBox="0 0 480 384" xmlns="http://www.w3.org/2000/svg" style="width:100%">
+              <rect width="480" height="384" fill="#BBDEFB"/>
+              <circle cx="240" cy="140" r="60" fill="#90CAF9"/>
+              <rect x="140" y="220" width="200" height="12" rx="6" fill="#90CAF9"/>
+              <rect x="170" y="248" width="140" height="10" rx="5" fill="#BBDEFB"/>
+              <rect x="155" y="272" width="170" height="10" rx="5" fill="#BBDEFB"/>
+              <text x="240" y="340" text-anchor="middle" fill="#1565C0" font-size="13" font-family="sans-serif" font-weight="bold">在宅ワークのイメージ画像</text>
+            </svg>
+          </div>
+          <div class="hero-stat-card card-a">
+            <div class="hero-stat-num">5,000<span style="font-size:16px">名+</span></div>
+            <div class="hero-stat-label">全国で活躍中</div>
+          </div>
+          <div class="hero-stat-card card-b">
+            <div class="hero-stat-num" style="color:#4CAF50">🔒</div>
+            <div class="hero-stat-label">プライバシーマーク</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Recommend ===== -->
+  <section id="recommend" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">RECOMMEND</div>
+        <h2 class="section-title">こんな方に<span>おすすめ</span>です</h2>
+        <p class="section-sub">ライフスタイルに合わせて、無理なく働けます</p>
+      </div>
+      <div class="recommend-grid">
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">👩‍👧</div>
+          <div class="recommend-text">
+            <h3>育児・家事の合間に<br>働きたい方</h3>
+            <p>子どもが寝ている時間や家事の合間に</p>
+          </div>
+        </div>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">💼</div>
+          <div class="recommend-text">
+            <h3>副業・ダブルワークを<br>探している方</h3>
+            <p>本業のスキマ時間を有効活用したい方</p>
+          </div>
+        </div>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">🏠</div>
+          <div class="recommend-text">
+            <h3>在宅でコツコツ<br>作業が得意な方</h3>
+            <p>丁寧な仕事が好きな方に向いています</p>
+          </div>
+        </div>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">⏰</div>
+          <div class="recommend-text">
+            <h3>本業の合間に<br>働きたい方</h3>
+            <p>時間の融通が利く仕事をお探しの方</p>
+          </div>
+        </div>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">🐾</div>
+          <div class="recommend-text">
+            <h3>ペットと過ごしながら<br>働きたい方</h3>
+            <p>完全在宅なのでペットそばで作業できます</p>
+          </div>
+        </div>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">🤝</div>
+          <div class="recommend-text">
+            <h3>ご自身の事情に<br>配慮が必要な方</h3>
+            <p>体調・介護・通院など様々なご事情に対応</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Jobs ===== -->
+  <section id="jobs" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">WORK CONTENT</div>
+        <h2 class="section-title">お仕事内容</h2>
+        <p class="section-sub">3種類のシンプルな在宅作業です。未経験でも安心してスタートできます。</p>
+      </div>
+      <div class="jobs-grid">
+        <!-- Job 1 -->
+        <div class="job-card fade-up">
+          <div class="job-card-header">
+            <div class="job-num">JOB 01</div>
+            <div class="job-icon">🪪</div>
+            <h3 class="job-title">名刺チェック作業</h3>
+          </div>
+          <div class="job-card-body">
+            <p class="job-desc">
+              画像とデータを見比べて、正しく入力されているか確認するお仕事です。
+            </p>
+            <div class="job-tasks">
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>誤字・脱字のチェック</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>入力場所の確認</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>情報の抜け漏れチェック</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Job 2 -->
+        <div class="job-card fade-up">
+          <div class="job-card-header">
+            <div class="job-num">JOB 02</div>
+            <div class="job-icon">⌨️</div>
+            <h3 class="job-title">文字の入力・確認・編集作業</h3>
+          </div>
+          <div class="job-card-body">
+            <p class="job-desc">
+              指定された画像を見ながら、指示に沿って入力するシンプルな作業です。
+            </p>
+            <div class="job-tasks">
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>画像を見ながらの文字入力</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>入力内容の確認・修正</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>指示に沿った編集作業</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Job 3 -->
+        <div class="job-card fade-up">
+          <div class="job-card-header">
+            <div class="job-num">JOB 03</div>
+            <div class="job-icon">🔍</div>
+            <h3 class="job-title">その他簡単作業</h3>
+          </div>
+          <div class="job-card-body">
+            <p class="job-desc">
+              Webを活用したシンプルな作業です。PCが扱えれば問題なく取り組めます。
+            </p>
+            <div class="job-tasks">
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>お問い合わせフォームへの送信</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>会社情報のインターネット調査</span>
+              </div>
+              <div class="job-task">
+                <div class="job-task-icon">✓</div>
+                <span>指定フォーマットへのまとめ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reasons ===== -->
+  <section id="reasons" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">WHY RAPAS</div>
+        <h2 class="section-title">RAPASが<span>選ばれる</span>理由</h2>
+        <p class="section-sub">安心・安全・柔軟な働き方を実現しています</p>
+      </div>
+      <div class="reasons-grid">
+        <div class="reason-card fade-up">
+          <div class="reason-num">REASON 01</div>
+          <div class="reason-icon">👥</div>
+          <h3 class="reason-title">圧倒的な実績</h3>
+          <div class="reason-big">5,000<span>名+</span></div>
+          <p class="reason-desc">全国で活躍するワーカーが5,000名以上。充実した実績と信頼のある企業です。</p>
+        </div>
+        <div class="reason-card fade-up">
+          <div class="reason-icon">🔒</div>
+          <div class="reason-num">REASON 02</div>
+          <h3 class="reason-title">安心のセキュリティ</h3>
+          <p class="reason-desc" style="margin-top:8px">プライバシーマークを取得。<br>認定番号：12842076(0)1N<br>個人情報を適切・安全に管理しています。</p>
+        </div>
+        <div class="reason-card fade-up">
+          <div class="reason-num">REASON 03</div>
+          <div class="reason-icon">🕐</div>
+          <h3 class="reason-title">自由な時間で働ける</h3>
+          <div class="reason-big" style="font-size:28px">スキマ時間<span style="font-size:16px">OK</span></div>
+          <p class="reason-desc">朝・昼・夜、好きな時間に作業できます。自分のペースで続けられます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Environment ===== -->
+  <section id="environment" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">REQUIREMENT</div>
+        <h2 class="section-title">必要な<span>環境・機器</span></h2>
+        <p class="section-sub">作業前に必ずご確認ください</p>
+      </div>
+      <div class="env-warning fade-up">
+        <div class="env-warning-icon">⚠️</div>
+        <div>
+          <h3>重要：スマートフォン・タブレットでの作業はできません</h3>
+          <p>
+            本業務はPC（パソコン）が必須となります。スマートフォンやタブレット端末ではシステムが対応しておらず、作業を行うことができませんのでご注意ください。<br>
+            また、Windowsのご使用を推奨しています（Macは非対応の場合があります）。
+          </p>
+        </div>
+      </div>
+      <div class="env-items fade-up">
+        <div class="env-item">
+          <div class="env-item-icon">🖥️</div>
+          <div class="env-item-label">PCパソコン</div>
+          <div class="env-item-note">Windows推奨</div>
+          <div style="margin-top:8px;">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;">✅ 必須</span>
+          </div>
+        </div>
+        <div class="env-item">
+          <div class="env-item-icon">📶</div>
+          <div class="env-item-label">インターネット環境</div>
+          <div class="env-item-note">安定した接続が必要です</div>
+          <div style="margin-top:8px;">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;">✅ 必須</span>
+          </div>
+        </div>
+        <div class="env-item">
+          <div class="env-item-icon">📱</div>
+          <div class="env-item-label">スマートフォン</div>
+          <div class="env-item-note">作業には使用できません</div>
+          <div style="margin-top:8px;">
+            <span class="env-ng">✕ 作業不可</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Steps ===== -->
+  <section id="steps" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">HOW TO APPLY</div>
+        <h2 class="section-title">応募の<span>流れ</span></h2>
+        <p class="section-sub">4つのステップで簡単にスタートできます</p>
+      </div>
+      <div class="steps-flow fade-up">
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-label">STEP</span>
+            <span class="step-num">01</span>
+          </div>
+          <div class="step-content">
+            <div class="step-icon">📩</div>
+            <h3>応募ボタンを<br>クリック</h3>
+            <p>このページ下部の「今すぐ応募する」ボタンを押してください</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-label">STEP</span>
+            <span class="step-num">02</span>
+          </div>
+          <div class="step-content">
+            <div class="step-icon">💚</div>
+            <h3>LINEで<br>友だち追加</h3>
+            <p>案内メールよりLINE公式アカウントを友だち追加してください</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-label">STEP</span>
+            <span class="step-num">03</span>
+          </div>
+          <div class="step-content">
+            <div class="step-icon">📋</div>
+            <h3>基本情報入力・<br>契約締結</h3>
+            <p>必要事項の入力と契約手続きを行います</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle last">
+            <span class="step-label">STEP</span>
+            <span class="step-num">04</span>
+          </div>
+          <div class="step-content">
+            <div class="step-icon">🎯</div>
+            <h3>作業テスト<br>実施</h3>
+            <p>簡単な作業テストを実施してスタート！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">FAQ</div>
+        <h2 class="section-title">よくある<span>ご質問</span></h2>
+      </div>
+      <div class="faq-list fade-up">
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">スマートフォンだけでも作業できますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            申し訳ございませんが、PC（Windows推奨）が必須となります。スマートフォン・タブレット端末では作業システムが対応しておりませんので、作業を行うことができません。必ずPCをご準備の上ご応募ください。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">どのくらいの収入になりますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            作業量や内容により異なります。詳細な報酬については、LINE登録後に担当者よりご案内いたします。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">全国どこからでも応募できますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            はい、全国どこからでもご応募いただけます。完全在宅でのお仕事ですので、お住まいの地域は問いません。現在も全国5,000名以上のワーカーが活躍しています。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">応募後すぐに作業できますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            基本情報の入力・契約締結・簡単な作業テストを完了後、お仕事の依頼をお送りします。手続きが完了次第、スムーズにスタートいただけます。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">個人情報は安全に管理されていますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            プライバシーマーク（認定番号：12842076(0)1N）を取得しており、個人情報の適切な管理・保護を徹底しています。安心してご応募ください。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">PCスキルに自信がないのですが大丈夫ですか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-icon">A.</div>
+            基本的なPCの操作（文字入力・インターネット閲覧）ができれば問題ありません。作業テストで確認しながら進められますので、未経験の方もお気軽にご応募ください。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Company ===== -->
+  <section id="company" class="section-sm">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">COMPANY</div>
+        <h2 class="section-title">会社情報</h2>
+      </div>
+      <div class="company-card fade-up">
+        <div class="company-card-header">
+          <div class="company-name-en">RAPAS CO., LTD.</div>
+          <div class="company-name-ja">株式会社RAPAS（ラパス）</div>
+        </div>
+        <table class="company-table">
+          <tr>
+            <td>会社名</td>
+            <td>株式会社RAPAS（ラパス）</td>
+          </tr>
+          <tr>
+            <td>所在地</td>
+            <td>福岡県福岡市南区清水1-24-31<br>流花モンテ・ビヤンカ2F-3F</td>
+          </tr>
+          <tr>
+            <td>TEL</td>
+            <td>092-915-2220</td>
+          </tr>
+          <tr>
+            <td>FAX</td>
+            <td>092-915-2022</td>
+          </tr>
+        </table>
+        <div class="privacy-mark-badge">
+          <svg viewBox="0 0 36 36" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="6" fill="#2196F3"/>
+            <text x="18" y="14" text-anchor="middle" fill="white" font-size="6" font-family="sans-serif" font-weight="bold">プライバシー</text>
+            <text x="18" y="22" text-anchor="middle" fill="white" font-size="6" font-family="sans-serif" font-weight="bold">マーク</text>
+            <text x="18" y="30" text-anchor="middle" fill="white" font-size="5" font-family="sans-serif">認定取得済</text>
+          </svg>
+          <span>プライバシーマーク取得済｜認定番号：12842076(0)1N</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section id="final-cta">
+    <div class="container">
+      <div class="final-cta-inner fade-up">
+        <div class="final-cta-tag">✨ 今すぐ在宅ワークをスタート</div>
+        <h2 class="final-cta-title">
+          自宅でできる仕事を、<br>一緒に始めましょう。
+        </h2>
+        <p class="final-cta-sub">
+          LINEで簡単応募！全国5,000名以上が活躍中のRAPASで、<br>
+          あなたのペースで在宅ワークを始めてみませんか？
+        </p>
+        <div class="final-cta-btns">
+          <a href="#" class="btn btn-white">
+            📩 今すぐ応募する
+          </a>
+          <a href="#" class="btn btn-line">
+            💚 LINEで問い合わせる
+          </a>
+        </div>
+        <p class="final-notice">⚠️ 作業にはPC（Windows推奨）が必須です。スマートフォン・タブレットでの作業は不可となります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">RAPAS</div>
+        <div class="footer-links">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">特定商取引法</a>
+        </div>
+        <div class="footer-copy">© 2024 株式会社RAPAS All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Floating CTA ===== -->
+  <div id="floating-cta">
+    <span class="floating-cta-text">スキマ時間に在宅ワーク</span>
+    <a href="#final-cta" class="floating-btn">
+      📩 今すぐ応募する
+    </a>
+  </div>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Floating CTA visibility
+    const floatingCta = document.getElementById('floating-cta');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        floatingCta.classList.add('visible');
+      } else {
+        floatingCta.classList.remove('visible');
+      }
+    });
+
+    // Fade-up animation via IntersectionObserver
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach((el) => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach((q) => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
