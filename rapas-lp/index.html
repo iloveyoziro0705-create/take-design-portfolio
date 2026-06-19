@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>在宅ワーク募集｜株式会社RAPAS（ラパス）</title>
-  <meta name="description" content="全国5,000名以上が活躍中！自宅でできるデータ入力・名刺チェック等の在宅ワーク。主婦・副業・シニアの方歓迎。プライバシーマーク取得の安心企業。" />
+  <meta name="description" content="全国5,000名以上が活躍中！自宅でできるデータ入力・名刺チェック等の在宅ワーク。未経験歓迎・年齢性別不問・完全在宅。主婦・副業・シニアの方も歓迎。" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -14,21 +14,20 @@
       --primary: #2196F3;
       --primary-dark: #1565C0;
       --primary-light: #E3F2FD;
-      --accent: #FF6B6B;
-      --accent-dark: #E53935;
-      --accent-light: #FFF3F3;
-      --success: #4CAF50;
-      --warning: #FF9800;
+      --cta: #F97316;
+      --cta-dark: #EA580C;
+      --cta-light: #FFF7ED;
+      --success: #22C55E;
+      --warning: #F59E0B;
       --bg: #FAFBFF;
-      --bg-gray: #F5F7FA;
+      --bg-gray: #F4F7FB;
       --text: #1A1A2E;
       --text-mid: #4A5568;
       --text-sub: #718096;
-      --border: #E8ECF0;
+      --border: #E2E8F0;
       --card: #FFFFFF;
-      --shadow: 0 8px 40px rgba(33,150,243,.10);
-      --shadow-sm: 0 2px 12px rgba(33,150,243,.08);
-      --shadow-card: 0 4px 24px rgba(0,0,0,.07);
+      --shadow: 0 8px 40px rgba(33,150,243,.11);
+      --shadow-card: 0 4px 20px rgba(0,0,0,.07);
       --r: 16px;
       --r-lg: 24px;
       --r-xl: 32px;
@@ -50,8 +49,8 @@
 
     /* ===== Layout ===== */
     .container { width: min(1100px, 92%); margin: auto; }
-    .section { padding: 80px 0; }
-    .section-sm { padding: 60px 0; }
+    .section { padding: 88px 0; }
+    .section-sm { padding: 64px 0; }
 
     /* ===== Section Header ===== */
     .section-header { text-align: center; margin-bottom: 56px; }
@@ -59,12 +58,12 @@
       display: inline-block;
       background: var(--primary-light);
       color: var(--primary);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: .12em;
-      padding: 6px 16px;
+      letter-spacing: .14em;
+      padding: 5px 16px;
       border-radius: 999px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .section-title {
       font-size: clamp(26px, 4vw, 38px);
@@ -86,39 +85,63 @@
       justify-content: center;
       gap: 8px;
       padding: 18px 44px;
-      border-radius: 999px;
-      font-size: 17px;
+      border-radius: var(--r);
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
       border: none;
       transition: transform .22s, box-shadow .22s;
       text-decoration: none;
+      letter-spacing: .02em;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent) 0%, #FF4E4E 100%);
+    .btn-cta {
+      background: linear-gradient(135deg, var(--cta) 0%, var(--cta-dark) 100%);
       color: #fff;
-      box-shadow: 0 6px 28px rgba(255,107,107,.40);
+      box-shadow: 0 6px 24px rgba(249,115,22,.38);
     }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(255,107,107,.50);
+    .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(249,115,22,.48); }
+    .btn-ghost {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
     }
+    .btn-ghost:hover { background: var(--primary-light); transform: translateY(-2px); }
     .btn-line {
       background: #06C755;
       color: #fff;
-      box-shadow: 0 6px 28px rgba(6,199,85,.35);
+      box-shadow: 0 6px 24px rgba(6,199,85,.32);
     }
-    .btn-line:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(6,199,85,.45);
+    .btn-line:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(6,199,85,.42); }
+    .btn-white {
+      background: #fff;
+      color: var(--cta);
+      box-shadow: 0 4px 20px rgba(0,0,0,.14);
+      font-weight: 900;
     }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+
+    /* ===== Inline CTA block ===== */
+    .inline-cta {
+      text-align: center;
+      margin-top: 48px;
+      padding: 40px 32px;
+      background: var(--cta-light);
+      border: 1.5px solid rgba(249,115,22,.25);
+      border-radius: var(--r-lg);
+    }
+    .inline-cta p {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+    .inline-cta .btn-cta { min-width: 320px; font-size: 17px; padding: 20px 40px; }
 
     /* ===== Header ===== */
     #header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 999;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.93);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -131,35 +154,24 @@
       justify-content: space-between;
       height: 64px;
     }
-    .logo {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--primary);
-      letter-spacing: .04em;
-    }
+    .logo { font-size: 19px; font-weight: 900; color: var(--primary); letter-spacing: .04em; }
     .logo span { color: var(--text); }
-    .header-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
     .header-btn {
-      padding: 10px 24px;
+      padding: 10px 22px;
       font-size: 14px;
       font-weight: 700;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), #FF4E4E);
+      border-radius: var(--r);
+      background: linear-gradient(135deg, var(--cta), var(--cta-dark));
       color: #fff;
-      box-shadow: 0 3px 16px rgba(255,107,107,.35);
+      box-shadow: 0 3px 14px rgba(249,115,22,.32);
       transition: transform .2s, box-shadow .2s;
-      text-decoration: none;
     }
-    .header-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,107,107,.45); }
+    .header-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(249,115,22,.42); }
 
     /* ===== Hero ===== */
     #hero {
-      background: linear-gradient(145deg, #EBF5FF 0%, #F0F7FF 50%, #E8F4FD 100%);
-      padding: 140px 0 80px;
+      background: linear-gradient(150deg, #EBF5FF 0%, #F0F8FF 55%, #FFF7ED 100%);
+      padding: 140px 0 72px;
       position: relative;
       overflow: hidden;
     }
@@ -167,61 +179,55 @@
       content: '';
       position: absolute;
       top: -80px; right: -80px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(33,150,243,.12) 0%, transparent 70%);
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(33,150,243,.10) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
     #hero::after {
       content: '';
       position: absolute;
-      bottom: -100px; left: -60px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(255,107,107,.08) 0%, transparent 70%);
+      bottom: -80px; left: -60px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(249,115,22,.07) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
     .hero-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 52px;
       align-items: center;
       position: relative;
       z-index: 1;
     }
-    .hero-badges {
+    .hero-trust-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 6px 14px;
-      border-radius: 999px;
+      padding: 6px 13px;
+      border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
     }
-    .badge-blue {
-      background: var(--primary);
-      color: #fff;
-    }
-    .badge-green {
-      background: var(--success);
-      color: #fff;
-    }
+    .badge-blue { background: var(--primary); color: #fff; }
+    .badge-green { background: var(--success); color: #fff; }
     .hero-copy {
-      font-size: clamp(34px, 5vw, 56px);
+      font-size: clamp(32px, 4.8vw, 54px);
       font-weight: 900;
       line-height: 1.25;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .hero-copy em {
       font-style: normal;
-      color: var(--primary);
+      color: var(--cta);
       position: relative;
     }
     .hero-copy em::after {
@@ -229,38 +235,41 @@
       position: absolute;
       bottom: 2px; left: 0; right: 0;
       height: 4px;
-      background: var(--primary);
-      opacity: .3;
+      background: var(--cta);
+      opacity: .25;
       border-radius: 2px;
     }
     .hero-sub {
       font-size: clamp(15px, 2.2vw, 18px);
       color: var(--text-mid);
-      margin-bottom: 28px;
-      line-height: 1.8;
+      margin-bottom: 32px;
+      line-height: 1.85;
     }
     .hero-cta-group {
       display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .hero-notice {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #FFF3CD;
-      border: 1.5px solid #FF9800;
+      gap: 7px;
+      background: #FEF3C7;
+      border: 1.5px solid var(--warning);
       border-radius: 10px;
       padding: 8px 16px;
       font-size: 12px;
       font-weight: 700;
-      color: #E65100;
+      color: #92400E;
     }
-    .hero-notice-icon { font-size: 14px; }
-    .hero-image-area {
-      position: relative;
-    }
+    .hero-image-area { position: relative; }
     .hero-illust {
       width: 100%;
       aspect-ratio: 5/4;
@@ -275,18 +284,40 @@
       position: absolute;
       background: #fff;
       border-radius: 14px;
-      padding: 14px 20px;
+      padding: 14px 18px;
       box-shadow: var(--shadow);
       font-weight: 700;
     }
-    .hero-stat-card.card-a {
-      bottom: -16px; left: -20px;
+    .hero-stat-card.card-a { bottom: -16px; left: -20px; }
+    .hero-stat-card.card-b { top: -16px; right: -20px; }
+    .hero-stat-num { font-size: 24px; color: var(--primary); line-height: 1; }
+    .hero-stat-label { font-size: 11px; color: var(--text-sub); margin-top: 3px; }
+
+    /* ===== Trust Strip (under hero) ===== */
+    #trust-strip {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
     }
-    .hero-stat-card.card-b {
-      top: -16px; right: -20px;
+    .trust-strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
     }
-    .hero-stat-num { font-size: 26px; color: var(--primary); line-height: 1; }
-    .hero-stat-label { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+    .trust-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      background: var(--bg-gray);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+    .trust-tag-icon { font-size: 16px; }
 
     /* ===== Recommend ===== */
     #recommend { background: var(--bg-gray); }
@@ -298,20 +329,18 @@
     .recommend-card {
       background: var(--card);
       border-radius: var(--r);
-      padding: 28px 24px;
+      padding: 28px 22px;
       box-shadow: var(--shadow-card);
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      transition: transform .22s, box-shadow .22s;
+      border: 1.5px solid transparent;
+      transition: transform .22s, box-shadow .22s, border-color .22s;
     }
-    .recommend-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
+    .recommend-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
     .recommend-icon {
       width: 52px; height: 52px;
-      border-radius: 14px;
+      border-radius: var(--r);
       background: var(--primary-light);
       display: flex;
       align-items: center;
@@ -319,17 +348,8 @@
       font-size: 26px;
       flex-shrink: 0;
     }
-    .recommend-text h3 {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.5;
-      color: var(--text);
-    }
-    .recommend-text p {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
+    .recommend-text h3 { font-size: 15px; font-weight: 700; line-height: 1.55; color: var(--text); }
+    .recommend-text p { font-size: 13px; color: var(--text-sub); margin-top: 5px; line-height: 1.65; }
 
     /* ===== Jobs ===== */
     #jobs { background: var(--bg); }
@@ -346,40 +366,19 @@
       transition: transform .22s, box-shadow .22s;
       border: 1.5px solid transparent;
     }
-    .job-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: var(--primary);
-    }
+    .job-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--primary); }
     .job-card-header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       padding: 28px 24px 24px;
       color: #fff;
     }
-    .job-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      opacity: .75;
-      margin-bottom: 8px;
-    }
+    .job-num { font-size: 11px; font-weight: 700; letter-spacing: .12em; opacity: .75; margin-bottom: 8px; }
     .job-icon { font-size: 36px; margin-bottom: 10px; }
     .job-title { font-size: 18px; font-weight: 900; line-height: 1.4; }
     .job-card-body { padding: 24px; }
-    .job-desc {
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-bottom: 20px;
-    }
+    .job-desc { font-size: 14px; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
     .job-tasks { display: flex; flex-direction: column; gap: 10px; }
-    .job-task {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-mid);
-    }
+    .job-task { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid); }
     .job-task-icon {
       width: 22px; height: 22px;
       border-radius: 6px;
@@ -394,12 +393,59 @@
       margin-top: 1px;
     }
 
+    /* ===== Steps ===== */
+    #steps { background: var(--bg-gray); }
+    .steps-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-flow::before {
+      content: '';
+      position: absolute;
+      top: 56px;
+      left: calc(10% + 8px);
+      right: calc(10% + 8px);
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--cta));
+      z-index: 0;
+    }
+    .step-item {
+      text-align: center;
+      padding: 0 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 108px; height: 108px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 6px 20px rgba(33,150,243,.32);
+      font-weight: 900;
+    }
+    .step-circle.last {
+      background: linear-gradient(135deg, var(--cta) 0%, var(--cta-dark) 100%);
+      box-shadow: 0 6px 20px rgba(249,115,22,.32);
+    }
+    .step-circle-icon { font-size: 28px; line-height: 1; margin-bottom: 2px; }
+    .step-label { font-size: 9px; letter-spacing: .1em; opacity: .8; }
+    .step-num { font-size: 22px; line-height: 1; }
+    .step-content h3 { font-size: 14px; font-weight: 900; margin-bottom: 6px; color: var(--text); line-height: 1.4; }
+    .step-content p { font-size: 12px; color: var(--text-sub); line-height: 1.7; }
+
     /* ===== Reasons ===== */
-    #reasons { background: var(--bg-gray); }
+    #reasons { background: var(--bg); }
     .reasons-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
     .reason-card {
       background: var(--card);
@@ -417,25 +463,51 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: linear-gradient(90deg, var(--primary), var(--cta));
     }
-    .reason-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
+    .reason-num { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--primary); margin-bottom: 10px; }
     .reason-icon { font-size: 48px; margin-bottom: 16px; }
     .reason-title { font-size: 20px; font-weight: 900; margin-bottom: 10px; color: var(--text); }
     .reason-big { font-size: 36px; font-weight: 900; color: var(--primary); line-height: 1; margin-bottom: 6px; }
     .reason-big span { font-size: 18px; }
     .reason-desc { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
 
+    /* ===== Safety (はじめてでも安心) ===== */
+    #safety { background: var(--bg-gray); }
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .safety-card {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      box-shadow: var(--shadow-card);
+      border-left: 4px solid var(--primary);
+      transition: transform .22s;
+    }
+    .safety-card:hover { transform: translateY(-3px); }
+    .safety-card-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--r);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .safety-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: var(--text); }
+    .safety-card p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+
     /* ===== Environment ===== */
     #environment { background: var(--bg); }
     .env-warning {
-      background: linear-gradient(135deg, #FFF3E0 0%, #FFF8F0 100%);
+      background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E0 100%);
       border: 2.5px solid var(--warning);
       border-radius: var(--r-lg);
       padding: 36px 40px;
@@ -444,22 +516,9 @@
       gap: 24px;
       align-items: flex-start;
     }
-    .env-warning-icon {
-      font-size: 48px;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-    .env-warning h3 {
-      font-size: 20px;
-      font-weight: 900;
-      color: #E65100;
-      margin-bottom: 8px;
-    }
-    .env-warning p {
-      font-size: 14px;
-      color: #6D4C41;
-      line-height: 1.8;
-    }
+    .env-warning-icon { font-size: 48px; flex-shrink: 0; line-height: 1; }
+    .env-warning h3 { font-size: 20px; font-weight: 900; color: #92400E; margin-bottom: 8px; }
+    .env-warning p { font-size: 14px; color: #78350F; line-height: 1.85; }
     .env-items {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -474,141 +533,113 @@
       border: 1.5px solid var(--border);
     }
     .env-item-icon { font-size: 36px; margin-bottom: 10px; }
-    .env-item-label {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
+    .env-item-label { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .env-item-note { font-size: 12px; color: var(--text-sub); }
+    .env-ok {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #DCFCE7; color: #166534;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px; margin-top: 6px;
+    }
     .env-ng {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #FFEBEE;
-      color: var(--accent-dark);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      margin-top: 6px;
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #FEE2E2; color: #991B1B;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px; margin-top: 6px;
     }
 
-    /* ===== Steps ===== */
-    #steps { background: var(--bg-gray); }
-    .steps-flow {
+    /* ===== Voices ===== */
+    #voices { background: var(--bg-gray); }
+    .voices-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-    .steps-flow::before {
-      content: '';
+    .voice-card {
+      background: var(--card);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      border: 1.5px solid var(--border);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .voice-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .voice-quote {
+      font-size: 48px;
+      color: var(--primary-light);
+      line-height: 1;
+      font-family: Georgia, serif;
       position: absolute;
-      top: 52px; left: 12.5%; right: 12.5%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      z-index: 0;
-    }
-    .step-item {
-      text-align: center;
-      padding: 0 12px;
-      position: relative;
-      z-index: 1;
-    }
-    .step-circle {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      box-shadow: 0 6px 20px rgba(33,150,243,.35);
+      top: 20px; left: 24px;
       font-weight: 900;
     }
-    .step-circle.last {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-      box-shadow: 0 6px 20px rgba(255,107,107,.35);
+    .voice-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      padding-top: 28px;
     }
-    .step-label { font-size: 10px; letter-spacing: .1em; opacity: .8; }
-    .step-num { font-size: 28px; line-height: 1; }
-    .step-content h3 { font-size: 15px; font-weight: 900; margin-bottom: 6px; color: var(--text); }
-    .step-content p { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
-    .step-icon { font-size: 22px; margin-bottom: 8px; }
+    .voice-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .voice-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .voice-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .voice-title { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+    .voice-stars { color: #F59E0B; font-size: 13px; margin-top: 3px; }
 
     /* ===== FAQ ===== */
     #faq { background: var(--bg); }
-    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-    .faq-item {
-      background: var(--card);
-      border-radius: var(--r);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
-    }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .faq-item { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow-card); overflow: hidden; }
     .faq-q {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
-      cursor: pointer;
-      user-select: none;
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px; cursor: pointer; user-select: none;
       transition: background .18s;
     }
     .faq-q:hover { background: var(--primary-light); }
     .faq-q-icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%; background: var(--primary); color: #fff;
+      font-size: 15px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
     .faq-q-text { font-size: 15px; font-weight: 700; flex: 1; color: var(--text); line-height: 1.5; }
-    .faq-arrow {
-      font-size: 14px;
-      color: var(--text-sub);
-      transition: transform .25s;
-      flex-shrink: 0;
-    }
+    .faq-arrow { font-size: 13px; color: var(--text-sub); transition: transform .25s; flex-shrink: 0; }
     .faq-item.open .faq-arrow { transform: rotate(180deg); }
     .faq-a {
       display: none;
-      padding: 0 24px 20px 72px;
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.85;
+      padding: 0 22px 18px 66px;
+      font-size: 14px; color: var(--text-mid); line-height: 1.9;
     }
     .faq-item.open .faq-a { display: block; }
-    .faq-a-icon {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
+    .faq-a-label { font-weight: 700; color: var(--primary); margin-bottom: 4px; display: block; }
 
     /* ===== Company ===== */
     #company { background: var(--bg-gray); }
     .company-card {
-      max-width: 700px;
-      margin: 0 auto;
-      background: var(--card);
-      border-radius: var(--r-lg);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
+      max-width: 700px; margin: 0 auto;
+      background: var(--card); border-radius: var(--r-lg);
+      box-shadow: var(--shadow-card); overflow: hidden;
     }
     .company-card-header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      padding: 28px 36px;
-      color: #fff;
+      padding: 28px 36px; color: #fff;
     }
     .company-name-en { font-size: 12px; letter-spacing: .14em; opacity: .75; margin-bottom: 6px; }
     .company-name-ja { font-size: 24px; font-weight: 900; }
@@ -617,23 +648,16 @@
     .company-table td:first-child { font-weight: 700; color: var(--text-sub); width: 110px; white-space: nowrap; }
     .company-table tr:last-child td { border-bottom: none; }
     .privacy-mark-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--primary-light);
-      border: 1.5px solid var(--primary);
-      border-radius: 10px;
-      padding: 8px 16px;
-      margin-top: 16px;
-      margin-left: 36px;
-      margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary-light); border: 1.5px solid var(--primary);
+      border-radius: 10px; padding: 8px 16px;
+      margin: 12px 36px 20px;
     }
-    .privacy-mark-badge img { width: 36px; height: auto; }
     .privacy-mark-badge span { font-size: 13px; font-weight: 700; color: var(--primary); }
 
     /* ===== Final CTA ===== */
     #final-cta {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, #1E3A5F 0%, #1565C0 50%, #1976D2 100%);
       padding: 100px 0;
       text-align: center;
       color: #fff;
@@ -645,7 +669,7 @@
       position: absolute;
       top: -100px; right: -100px;
       width: 500px; height: 500px;
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.05);
       border-radius: 50%;
     }
     #final-cta::after {
@@ -653,55 +677,34 @@
       position: absolute;
       bottom: -80px; left: -60px;
       width: 400px; height: 400px;
-      background: rgba(255,255,255,.04);
+      background: rgba(249,115,22,.08);
       border-radius: 50%;
     }
     .final-cta-inner { position: relative; z-index: 1; }
     .final-cta-tag {
       display: inline-block;
-      background: rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
       border-radius: 999px;
       padding: 6px 18px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .1em;
+      font-size: 12px; font-weight: 700; letter-spacing: .1em;
       margin-bottom: 20px;
     }
     .final-cta-title {
       font-size: clamp(28px, 4.5vw, 44px);
-      font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 16px;
+      font-weight: 900; line-height: 1.3; margin-bottom: 14px;
     }
-    .final-cta-sub { font-size: 16px; opacity: .85; margin-bottom: 36px; }
-    .final-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-white {
-      background: #fff;
-      color: var(--primary);
-      box-shadow: 0 6px 24px rgba(0,0,0,.15);
-      font-weight: 900;
-    }
-    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.20); }
-    .final-notice {
-      margin-top: 24px;
-      font-size: 13px;
-      opacity: .7;
-    }
+    .final-cta-sub { font-size: 16px; opacity: .85; margin-bottom: 36px; line-height: 1.8; }
+    .final-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .final-notice { font-size: 13px; opacity: .7; }
 
     /* ===== Footer ===== */
     footer {
-      background: #1A1A2E;
-      color: rgba(255,255,255,.7);
+      background: #0F172A;
+      color: rgba(255,255,255,.65);
       padding: 40px 0 28px;
     }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .footer-logo { font-size: 18px; font-weight: 900; color: #fff; }
     .footer-copy { font-size: 12px; }
     .footer-links { display: flex; gap: 20px; font-size: 13px; }
@@ -715,7 +718,7 @@
       background: rgba(255,255,255,.96);
       backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
-      padding: 12px 16px;
+      padding: 12px 16px 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -724,67 +727,67 @@
       transition: transform .35s cubic-bezier(.22,1,.36,1);
     }
     #floating-cta.visible { transform: translateY(0); }
-    .floating-cta-text { font-size: 13px; font-weight: 700; color: var(--text-mid); }
+    .floating-cta-text { font-size: 13px; font-weight: 700; color: var(--text-mid); white-space: nowrap; }
     .floating-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 14px 28px;
-      background: linear-gradient(135deg, var(--accent), #FF4E4E);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: 999px;
-      box-shadow: 0 4px 20px rgba(255,107,107,.40);
-      text-decoration: none;
-      transition: transform .2s;
+      background: linear-gradient(135deg, var(--cta), var(--cta-dark));
+      color: #fff; font-size: 15px; font-weight: 700;
+      border-radius: var(--r);
+      box-shadow: 0 4px 18px rgba(249,115,22,.38);
+      text-decoration: none; transition: transform .2s;
       white-space: nowrap;
     }
     .floating-btn:hover { transform: translateY(-2px); }
 
-    /* ===== Fade-up Animation ===== */
+    /* ===== Fade-up ===== */
     .fade-up {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity .6s ease, transform .6s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== Responsive ===== */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; gap: 36px; }
-      .hero-image-area { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
-      .hero-cta-group { align-items: center; }
+      .hero-image-area { order: -1; max-width: 400px; margin: 0 auto; width: 100%; }
+      .hero-cta-group { align-items: stretch; }
+      .hero-cta-row { flex-direction: column; }
       .hero-copy { text-align: center; }
       .hero-sub { text-align: center; }
-      .hero-badges { justify-content: center; }
+      .hero-trust-badges { justify-content: center; }
       .recommend-grid { grid-template-columns: 1fr 1fr; }
       .jobs-grid { grid-template-columns: 1fr 1fr; }
       .reasons-grid { grid-template-columns: 1fr 1fr; }
+      .safety-grid { grid-template-columns: 1fr 1fr; }
       .env-items { grid-template-columns: 1fr 1fr; }
-      .steps-flow { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .voices-grid { grid-template-columns: 1fr 1fr; }
+      .steps-flow { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
       .steps-flow::before { display: none; }
     }
-    @media (max-width: 600px) {
-      .section { padding: 60px 0; }
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
       .section-header { margin-bottom: 36px; }
-      #hero { padding: 100px 0 60px; }
+      #hero { padding: 96px 0 56px; }
       .recommend-grid { grid-template-columns: 1fr; }
       .jobs-grid { grid-template-columns: 1fr; }
       .reasons-grid { grid-template-columns: 1fr; }
+      .safety-grid { grid-template-columns: 1fr; }
       .env-items { grid-template-columns: 1fr; }
-      .env-warning { flex-direction: column; gap: 12px; padding: 24px 20px; }
-      .steps-flow { grid-template-columns: 1fr 1fr; }
-      .final-cta-btns { flex-direction: column; align-items: center; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .env-warning { flex-direction: column; gap: 12px; padding: 22px 18px; }
+      .steps-flow { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .final-cta-btns { flex-direction: column; align-items: stretch; }
+      .final-cta-btns .btn { width: 100%; }
       .footer-inner { flex-direction: column; text-align: center; }
-      .company-table td { padding: 12px 20px; }
-      .company-card-header { padding: 24px 20px; }
-      .privacy-mark-badge { margin-left: 20px; }
+      .company-table td { padding: 12px 18px; }
+      .company-card-header { padding: 22px 18px; }
+      .privacy-mark-badge { margin: 12px 18px 16px; }
       .hero-stat-card { display: none; }
       .floating-cta-text { display: none; }
+      .floating-btn { width: 100%; justify-content: center; }
+      .inline-cta .btn-cta { min-width: unset; width: 100%; }
     }
   </style>
 </head>
@@ -795,9 +798,7 @@
     <div class="container">
       <div class="header-inner">
         <div class="logo">RAPAS<span>採用</span></div>
-        <div class="header-cta">
-          <a href="#final-cta" class="header-btn">今すぐ応募する →</a>
-        </div>
+        <a href="#final-cta" class="header-btn">今すぐ応募する →</a>
       </div>
     </div>
   </header>
@@ -807,50 +808,69 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-text">
-          <div class="hero-badges">
+          <div class="hero-trust-badges">
             <span class="badge badge-blue">👥 全国5,000名以上活躍中</span>
             <span class="badge badge-green">🔒 プライバシーマーク取得</span>
           </div>
           <h1 class="hero-copy">
-            自宅で、<em>自分の</em><br>ペースで。
+            空いた時間を、<br><em>収入に変えませんか？</em>
           </h1>
           <p class="hero-sub">
-            スキマ時間でできる在宅ワーク、<br>始めませんか？
+            自宅のPCでできる在宅ワーク。<br>
+            未経験OK・年齢・性別不問。<br>
+            あなたのペースでスタートできます。
           </p>
           <div class="hero-cta-group">
-            <a href="#final-cta" class="btn btn-primary">
-              📩 今すぐ応募する
-            </a>
+            <div class="hero-cta-row">
+              <a href="#final-cta" class="btn btn-cta">📩 まずは応募して説明を聞いてみる</a>
+              <a href="#steps" class="btn btn-ghost">お仕事の流れを見る</a>
+            </div>
             <div class="hero-notice">
-              <span class="hero-notice-icon">⚠️</span>
+              <span>⚠️</span>
               <span>PC必須（Windows推奨）・スマホ不可</span>
             </div>
           </div>
         </div>
         <div class="hero-image-area">
           <div class="hero-illust">
-            <!-- Hero illustration placeholder -->
             <svg viewBox="0 0 480 384" xmlns="http://www.w3.org/2000/svg" style="width:100%">
               <rect width="480" height="384" fill="#BBDEFB"/>
-              <circle cx="240" cy="140" r="60" fill="#90CAF9"/>
-              <rect x="140" y="220" width="200" height="12" rx="6" fill="#90CAF9"/>
-              <rect x="170" y="248" width="140" height="10" rx="5" fill="#BBDEFB"/>
-              <rect x="155" y="272" width="170" height="10" rx="5" fill="#BBDEFB"/>
-              <text x="240" y="340" text-anchor="middle" fill="#1565C0" font-size="13" font-family="sans-serif" font-weight="bold">在宅ワークのイメージ画像</text>
+              <rect x="100" y="80" width="280" height="180" rx="16" fill="#90CAF9"/>
+              <rect x="120" y="100" width="240" height="140" rx="10" fill="#E3F2FD"/>
+              <rect x="140" y="120" width="200" height="12" rx="6" fill="#90CAF9"/>
+              <rect x="140" y="145" width="160" height="10" rx="5" fill="#BBDEFB"/>
+              <rect x="140" y="165" width="180" height="10" rx="5" fill="#BBDEFB"/>
+              <rect x="140" y="185" width="120" height="10" rx="5" fill="#BBDEFB"/>
+              <rect x="100" y="278" width="280" height="12" rx="6" fill="#90CAF9"/>
+              <text x="240" y="350" text-anchor="middle" fill="#1565C0" font-size="13" font-family="sans-serif" font-weight="bold">在宅ワークのイメージ</text>
             </svg>
           </div>
           <div class="hero-stat-card card-a">
-            <div class="hero-stat-num">5,000<span style="font-size:16px">名+</span></div>
+            <div class="hero-stat-num">5,000<span style="font-size:15px">名+</span></div>
             <div class="hero-stat-label">全国で活躍中</div>
           </div>
           <div class="hero-stat-card card-b">
-            <div class="hero-stat-num" style="color:#4CAF50">🔒</div>
-            <div class="hero-stat-label">プライバシーマーク</div>
+            <div class="hero-stat-num" style="font-size:18px;">未経験OK</div>
+            <div class="hero-stat-label">資格不要</div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== Trust Strip ===== -->
+  <div id="trust-strip">
+    <div class="container">
+      <div class="trust-strip-inner">
+        <span class="trust-tag"><span class="trust-tag-icon">✅</span>未経験歓迎</span>
+        <span class="trust-tag"><span class="trust-tag-icon">🏠</span>完全在宅</span>
+        <span class="trust-tag"><span class="trust-tag-icon">🗾</span>全国対応</span>
+        <span class="trust-tag"><span class="trust-tag-icon">🙆</span>年齢・性別不問</span>
+        <span class="trust-tag"><span class="trust-tag-icon">⏰</span>スキマ時間OK</span>
+        <span class="trust-tag"><span class="trust-tag-icon">📜</span>資格不要</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== Recommend ===== -->
   <section id="recommend" class="section">
@@ -858,49 +878,49 @@
       <div class="section-header fade-up">
         <div class="section-tag">RECOMMEND</div>
         <h2 class="section-title">こんな方に<span>おすすめ</span>です</h2>
-        <p class="section-sub">ライフスタイルに合わせて、無理なく働けます</p>
+        <p class="section-sub">ライフスタイルに合わせて、無理なく始められます</p>
       </div>
       <div class="recommend-grid">
         <div class="recommend-card fade-up">
-          <div class="recommend-icon">👩‍👧</div>
+          <div class="recommend-icon">👶</div>
           <div class="recommend-text">
-            <h3>育児・家事の合間に<br>働きたい方</h3>
-            <p>子どもが寝ている時間や家事の合間に</p>
+            <h3>子育て中の方</h3>
+            <p>子どもが寝ている時間や保育園の送り迎えの合間に作業できます</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
           <div class="recommend-icon">💼</div>
           <div class="recommend-text">
-            <h3>副業・ダブルワークを<br>探している方</h3>
-            <p>本業のスキマ時間を有効活用したい方</p>
+            <h3>副業を始めたい方</h3>
+            <p>本業の合間・休日のスキマ時間を活用したい会社員の方にも最適です</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
           <div class="recommend-icon">🏠</div>
           <div class="recommend-text">
-            <h3>在宅でコツコツ<br>作業が得意な方</h3>
-            <p>丁寧な仕事が好きな方に向いています</p>
+            <h3>在宅勤務希望の方</h3>
+            <p>通勤なし・自宅で完結するため、外出が難しい方にも向いています</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
-          <div class="recommend-icon">⏰</div>
+          <div class="recommend-icon">🌸</div>
           <div class="recommend-text">
-            <h3>本業の合間に<br>働きたい方</h3>
-            <p>時間の融通が利く仕事をお探しの方</p>
+            <h3>シニア層の方</h3>
+            <p>定年後の時間を有効活用したい方。PCの基本操作ができれば大丈夫です</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
-          <div class="recommend-icon">🐾</div>
+          <div class="recommend-icon">🙆</div>
           <div class="recommend-text">
-            <h3>ペットと過ごしながら<br>働きたい方</h3>
-            <p>完全在宅なのでペットそばで作業できます</p>
+            <h3>男性・女性どなたでも</h3>
+            <p>性別・年齢・経歴不問。全国5,000名以上の多様な方が活躍しています</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
-          <div class="recommend-icon">🤝</div>
+          <div class="recommend-icon">📝</div>
           <div class="recommend-text">
-            <h3>ご自身の事情に<br>配慮が必要な方</h3>
-            <p>体調・介護・通院など様々なご事情に対応</p>
+            <h3>コツコツ作業が得意な方</h3>
+            <p>丁寧な仕事が好きな方、細かいチェック作業が苦にならない方</p>
           </div>
         </div>
       </div>
@@ -913,10 +933,9 @@
       <div class="section-header fade-up">
         <div class="section-tag">WORK CONTENT</div>
         <h2 class="section-title">お仕事内容</h2>
-        <p class="section-sub">3種類のシンプルな在宅作業です。未経験でも安心してスタートできます。</p>
+        <p class="section-sub">3種類のシンプルな在宅作業。難しいスキルは一切不要です。</p>
       </div>
       <div class="jobs-grid">
-        <!-- Job 1 -->
         <div class="job-card fade-up">
           <div class="job-card-header">
             <div class="job-num">JOB 01</div>
@@ -924,53 +943,29 @@
             <h3 class="job-title">名刺チェック作業</h3>
           </div>
           <div class="job-card-body">
-            <p class="job-desc">
-              画像とデータを見比べて、正しく入力されているか確認するお仕事です。
-            </p>
+            <p class="job-desc">画像とデータを見比べて、正しく入力されているかを確認するお仕事です。</p>
             <div class="job-tasks">
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>誤字・脱字のチェック</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>入力場所の確認</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>情報の抜け漏れチェック</span>
-              </div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>誤字・脱字のチェック</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>入力場所の確認</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>情報の抜け漏れチェック</span></div>
             </div>
           </div>
         </div>
-        <!-- Job 2 -->
         <div class="job-card fade-up">
           <div class="job-card-header">
             <div class="job-num">JOB 02</div>
             <div class="job-icon">⌨️</div>
-            <h3 class="job-title">文字の入力・確認・編集作業</h3>
+            <h3 class="job-title">文字の入力・確認・編集</h3>
           </div>
           <div class="job-card-body">
-            <p class="job-desc">
-              指定された画像を見ながら、指示に沿って入力するシンプルな作業です。
-            </p>
+            <p class="job-desc">指定された画像を見ながら、指示に沿って入力するシンプルな作業です。</p>
             <div class="job-tasks">
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>画像を見ながらの文字入力</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>入力内容の確認・修正</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>指示に沿った編集作業</span>
-              </div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>画像を見ながらの文字入力</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>入力内容の確認・修正</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>指示に沿った編集作業</span></div>
             </div>
           </div>
         </div>
-        <!-- Job 3 -->
         <div class="job-card fade-up">
           <div class="job-card-header">
             <div class="job-num">JOB 03</div>
@@ -978,25 +973,144 @@
             <h3 class="job-title">その他簡単作業</h3>
           </div>
           <div class="job-card-body">
-            <p class="job-desc">
-              Webを活用したシンプルな作業です。PCが扱えれば問題なく取り組めます。
-            </p>
+            <p class="job-desc">Webを活用したシンプルな作業。PCの基本操作ができれば取り組めます。</p>
             <div class="job-tasks">
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>お問い合わせフォームへの送信</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>会社情報のインターネット調査</span>
-              </div>
-              <div class="job-task">
-                <div class="job-task-icon">✓</div>
-                <span>指定フォーマットへのまとめ</span>
-              </div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>問い合わせフォームへの送信</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>会社情報のインターネット調査</span></div>
+              <div class="job-task"><div class="job-task-icon">✓</div><span>指定フォーマットへのまとめ</span></div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="inline-cta fade-up">
+        <p>まずは説明だけでも聞いてみませんか？応募後にLINEで詳しくご案内します。</p>
+        <a href="#final-cta" class="btn btn-cta">📩 まずは応募して説明を聞いてみる</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Steps ===== -->
+  <section id="steps" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">HOW TO START</div>
+        <h2 class="section-title">お仕事の<span>流れ</span></h2>
+        <p class="section-sub">5つのステップでスタートできます。お気軽にどうぞ。</p>
+      </div>
+      <div class="steps-flow fade-up">
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-circle-icon">📩</span>
+            <span class="step-label">STEP 01</span>
+          </div>
+          <div class="step-content">
+            <h3>申込み</h3>
+            <p>ページ下部の応募ボタンからお申し込みください</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-circle-icon">📋</span>
+            <span class="step-label">STEP 02</span>
+          </div>
+          <div class="step-content">
+            <h3>説明確認</h3>
+            <p>LINEで業務内容・流れを詳しくご案内します</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-circle-icon">✏️</span>
+            <span class="step-label">STEP 03</span>
+          </div>
+          <div class="step-content">
+            <h3>作業テスト</h3>
+            <p>簡単なサンプル作業でお仕事の流れを確認します</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">
+            <span class="step-circle-icon">🚀</span>
+            <span class="step-label">STEP 04</span>
+          </div>
+          <div class="step-content">
+            <h3>お仕事スタート</h3>
+            <p>テスト完了後、実際のお仕事が始まります</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle last">
+            <span class="step-circle-icon">📦</span>
+            <span class="step-label">STEP 05</span>
+          </div>
+          <div class="step-content">
+            <h3>納品・完了</h3>
+            <p>作業完了後、成果物を納品してお仕事完了です</p>
+          </div>
+        </div>
+      </div>
+      <div class="inline-cta fade-up">
+        <p>流れを確認できたら、ぜひ応募してみてください。詳細はLINEでご案内します。</p>
+        <a href="#final-cta" class="btn btn-cta">📩 まずは応募して説明を聞いてみる</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Safety ===== -->
+  <section id="safety" class="section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-tag">BEGINNER FRIENDLY</div>
+        <h2 class="section-title">はじめてでも<span>安心して</span>始められる理由</h2>
+        <p class="section-sub">特別なスキルや資格は一切必要ありません</p>
+      </div>
+      <div class="safety-grid">
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">📖</div>
+          <div>
+            <h3>丁寧なマニュアルあり</h3>
+            <p>作業手順を詳しく説明したマニュアルをご用意。はじめての方でも迷わず進められます。</p>
+          </div>
+        </div>
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">🏠</div>
+          <div>
+            <h3>自宅で完結</h3>
+            <p>通勤・外出は一切不要。自宅のPCさえあればどこでも作業できます。</p>
+          </div>
+        </div>
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">🎓</div>
+          <div>
+            <h3>特別な資格不要</h3>
+            <p>PCの基本操作（文字入力・インターネット閲覧）ができれば十分です。</p>
+          </div>
+        </div>
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">🕐</div>
+          <div>
+            <h3>自分のペースで進められる</h3>
+            <p>作業時間を自由に選べます。朝でも夜でも、空いた時間に取り組めます。</p>
+          </div>
+        </div>
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">💬</div>
+          <div>
+            <h3>不明点を相談できる</h3>
+            <p>わからないことはLINEでいつでもご相談いただけます。一人で悩まなくて大丈夫です。</p>
+          </div>
+        </div>
+        <div class="safety-card fade-up">
+          <div class="safety-card-icon">📱</div>
+          <div>
+            <h3>スマホから応募可能</h3>
+            <p>応募フォームはスマホからでも簡単に送信できます。※作業自体はPC必須です。</p>
+          </div>
+        </div>
+      </div>
+      <div class="inline-cta fade-up">
+        <p>安心して始めていただけます。まずはお気軽に応募してみてください。</p>
+        <a href="#final-cta" class="btn btn-cta">📩 まずは応募して説明を聞いてみる</a>
       </div>
     </div>
   </section>
@@ -1006,7 +1120,7 @@
     <div class="container">
       <div class="section-header fade-up">
         <div class="section-tag">WHY RAPAS</div>
-        <h2 class="section-title">RAPASが<span>選ばれる</span>理由</h2>
+        <h2 class="section-title">RAPASが<span>選ばれる</span>3つの理由</h2>
         <p class="section-sub">安心・安全・柔軟な働き方を実現しています</p>
       </div>
       <div class="reasons-grid">
@@ -1015,20 +1129,20 @@
           <div class="reason-icon">👥</div>
           <h3 class="reason-title">圧倒的な実績</h3>
           <div class="reason-big">5,000<span>名+</span></div>
-          <p class="reason-desc">全国で活躍するワーカーが5,000名以上。充実した実績と信頼のある企業です。</p>
+          <p class="reason-desc">全国で活躍するワーカーが5,000名以上。主婦・会社員・シニアなど多様な方が活躍中です。</p>
         </div>
         <div class="reason-card fade-up">
-          <div class="reason-icon">🔒</div>
           <div class="reason-num">REASON 02</div>
+          <div class="reason-icon">🔒</div>
           <h3 class="reason-title">安心のセキュリティ</h3>
-          <p class="reason-desc" style="margin-top:8px">プライバシーマークを取得。<br>認定番号：12842076(0)1N<br>個人情報を適切・安全に管理しています。</p>
+          <p class="reason-desc" style="margin-top:8px;">プライバシーマークを取得。<br>認定番号：12842076(0)1N<br><br>個人情報を適切・安全に管理しています。</p>
         </div>
         <div class="reason-card fade-up">
           <div class="reason-num">REASON 03</div>
           <div class="reason-icon">🕐</div>
           <h3 class="reason-title">自由な時間で働ける</h3>
-          <div class="reason-big" style="font-size:28px">スキマ時間<span style="font-size:16px">OK</span></div>
-          <p class="reason-desc">朝・昼・夜、好きな時間に作業できます。自分のペースで続けられます。</p>
+          <div class="reason-big" style="font-size:28px;">スキマ時間<span style="font-size:16px;">OK</span></div>
+          <p class="reason-desc">朝・昼・夜、好きな時間に作業可能。ノルマなし・自分のペースで続けられます。</p>
         </div>
       </div>
     </div>
@@ -1047,91 +1161,78 @@
         <div>
           <h3>重要：スマートフォン・タブレットでの作業はできません</h3>
           <p>
-            本業務はPC（パソコン）が必須となります。スマートフォンやタブレット端末ではシステムが対応しておらず、作業を行うことができませんのでご注意ください。<br>
-            また、Windowsのご使用を推奨しています（Macは非対応の場合があります）。
+            本業務はPC（パソコン）が必須となります。スマートフォンやタブレット端末ではシステムが対応しておらず、作業を行うことができません。<br>
+            Windowsのご使用を推奨しています（Macは非対応の場合があります）。<br>
+            ※応募フォームの入力はスマートフォンからでも可能です。
           </p>
         </div>
       </div>
       <div class="env-items fade-up">
         <div class="env-item">
           <div class="env-item-icon">🖥️</div>
-          <div class="env-item-label">PCパソコン</div>
-          <div class="env-item-note">Windows推奨</div>
-          <div style="margin-top:8px;">
-            <span style="display:inline-flex;align-items:center;gap:4px;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;">✅ 必須</span>
-          </div>
+          <div class="env-item-label">Windows PC</div>
+          <div class="env-item-note">作業に必須（Mac非推奨）</div>
+          <div style="margin-top:8px;"><span class="env-ok">✅ 必須</span></div>
         </div>
         <div class="env-item">
           <div class="env-item-icon">📶</div>
           <div class="env-item-label">インターネット環境</div>
           <div class="env-item-note">安定した接続が必要です</div>
-          <div style="margin-top:8px;">
-            <span style="display:inline-flex;align-items:center;gap:4px;background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;">✅ 必須</span>
-          </div>
+          <div style="margin-top:8px;"><span class="env-ok">✅ 必須</span></div>
         </div>
         <div class="env-item">
           <div class="env-item-icon">📱</div>
           <div class="env-item-label">スマートフォン</div>
-          <div class="env-item-note">作業には使用できません</div>
-          <div style="margin-top:8px;">
-            <span class="env-ng">✕ 作業不可</span>
-          </div>
+          <div class="env-item-note">作業への使用は不可</div>
+          <div style="margin-top:8px;"><span class="env-ng">✕ 作業不可</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Steps ===== -->
-  <section id="steps" class="section">
+  <!-- ===== Voices ===== -->
+  <section id="voices" class="section">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-tag">HOW TO APPLY</div>
-        <h2 class="section-title">応募の<span>流れ</span></h2>
-        <p class="section-sub">4つのステップで簡単にスタートできます</p>
+        <div class="section-tag">VOICE</div>
+        <h2 class="section-title">利用者の<span>声</span></h2>
+        <p class="section-sub">全国で活躍するワーカーの声をご紹介します</p>
       </div>
-      <div class="steps-flow fade-up">
-        <div class="step-item">
-          <div class="step-circle">
-            <span class="step-label">STEP</span>
-            <span class="step-num">01</span>
-          </div>
-          <div class="step-content">
-            <div class="step-icon">📩</div>
-            <h3>応募ボタンを<br>クリック</h3>
-            <p>このページ下部の「今すぐ応募する」ボタンを押してください</p>
-          </div>
-        </div>
-        <div class="step-item">
-          <div class="step-circle">
-            <span class="step-label">STEP</span>
-            <span class="step-num">02</span>
-          </div>
-          <div class="step-content">
-            <div class="step-icon">💚</div>
-            <h3>LINEで<br>友だち追加</h3>
-            <p>案内メールよりLINE公式アカウントを友だち追加してください</p>
+      <div class="voices-grid">
+        <div class="voice-card fade-up">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">子どもが寝た後の時間を活用できています。無理なく続けられるのがいいですね。</p>
+          <div class="voice-author">
+            <div class="voice-avatar" style="background:#EBF5FF;">👩</div>
+            <div>
+              <div class="voice-name">40代 女性</div>
+              <div class="voice-title">主婦・子育て中</div>
+              <div class="voice-stars">★★★★★</div>
+            </div>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-circle">
-            <span class="step-label">STEP</span>
-            <span class="step-num">03</span>
-          </div>
-          <div class="step-content">
-            <div class="step-icon">📋</div>
-            <h3>基本情報入力・<br>契約締結</h3>
-            <p>必要事項の入力と契約手続きを行います</p>
+        <div class="voice-card fade-up">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">副業として無理なく続けられています。本業への影響もなく、スキマ時間を有効活用できています。</p>
+          <div class="voice-author">
+            <div class="voice-avatar" style="background:#E8F5E9;">👨</div>
+            <div>
+              <div class="voice-name">30代 男性</div>
+              <div class="voice-title">会社員・副業として</div>
+              <div class="voice-stars">★★★★★</div>
+            </div>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-circle last">
-            <span class="step-label">STEP</span>
-            <span class="step-num">04</span>
-          </div>
-          <div class="step-content">
-            <div class="step-icon">🎯</div>
-            <h3>作業テスト<br>実施</h3>
-            <p>簡単な作業テストを実施してスタート！</p>
+        <div class="voice-card fade-up">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">退職後のやりがいになっています。マニュアルが丁寧なので、PCが得意でなくても安心でした。</p>
+          <div class="voice-author">
+            <div class="voice-avatar" style="background:#FFF8E1;">🧓</div>
+            <div>
+              <div class="voice-name">60代 女性</div>
+              <div class="voice-title">定年後・シニアワーカー</div>
+              <div class="voice-stars">★★★★★</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1144,8 +1245,86 @@
       <div class="section-header fade-up">
         <div class="section-tag">FAQ</div>
         <h2 class="section-title">よくある<span>ご質問</span></h2>
+        <p class="section-sub">応募前の不安・疑問にお答えします</p>
       </div>
       <div class="faq-list fade-up">
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">男性でも応募できますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            はい、もちろんです。性別・年齢は一切問いません。現在も男性・女性・シニア層など多様な方が全国で活躍しています。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">シニアでも応募できますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            はい、歓迎しています。定年後の時間を有効活用したいシニアの方も多数活躍中です。PCの基本操作（文字入力・インターネット閲覧）ができれば問題ありません。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">子育て中でもできますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            はい、子育て中の方も多く活躍されています。子どもが寝ている時間・保育園に行っている時間など、空き時間に合わせて自由に作業いただけます。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">副業としてできますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            はい、副業・ダブルワークとして取り組んでいる方もいます。本業への影響なく、スキマ時間を活用して作業できます。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">ノルマはありますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            ノルマはありません。自分のペースで取り組んでいただけます。無理のない範囲で続けられることが特長です。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">どのくらいの作業時間が必要ですか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            作業内容や量によって異なります。1日30分程度から取り組んでいる方もいます。詳細はLINE登録後にご案内いたします。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <div class="faq-q-icon">Q</div>
+            <div class="faq-q-text">在宅だけで完結しますか？</div>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <span class="faq-a-label">A.</span>
+            はい、完全在宅で完結します。出社・外出は一切不要です。PCとインターネット環境があれば、全国どこからでも作業できます。
+          </div>
+        </div>
         <div class="faq-item">
           <div class="faq-q">
             <div class="faq-q-icon">Q</div>
@@ -1153,41 +1332,8 @@
             <div class="faq-arrow">▼</div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
-            申し訳ございませんが、PC（Windows推奨）が必須となります。スマートフォン・タブレット端末では作業システムが対応しておりませんので、作業を行うことができません。必ずPCをご準備の上ご応募ください。
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            <div class="faq-q-icon">Q</div>
-            <div class="faq-q-text">どのくらいの収入になりますか？</div>
-            <div class="faq-arrow">▼</div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
-            作業量や内容により異なります。詳細な報酬については、LINE登録後に担当者よりご案内いたします。
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            <div class="faq-q-icon">Q</div>
-            <div class="faq-q-text">全国どこからでも応募できますか？</div>
-            <div class="faq-arrow">▼</div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
-            はい、全国どこからでもご応募いただけます。完全在宅でのお仕事ですので、お住まいの地域は問いません。現在も全国5,000名以上のワーカーが活躍しています。
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            <div class="faq-q-icon">Q</div>
-            <div class="faq-q-text">応募後すぐに作業できますか？</div>
-            <div class="faq-arrow">▼</div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
-            基本情報の入力・契約締結・簡単な作業テストを完了後、お仕事の依頼をお送りします。手続きが完了次第、スムーズにスタートいただけます。
+            <span class="faq-a-label">A.</span>
+            申し訳ございませんが、作業にはPC（Windows推奨）が必須となります。スマートフォン・タブレットでは作業システムが対応しておりません。応募フォームの入力はスマホからでもできます。
           </div>
         </div>
         <div class="faq-item">
@@ -1197,21 +1343,14 @@
             <div class="faq-arrow">▼</div>
           </div>
           <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
+            <span class="faq-a-label">A.</span>
             プライバシーマーク（認定番号：12842076(0)1N）を取得しており、個人情報の適切な管理・保護を徹底しています。安心してご応募ください。
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-q">
-            <div class="faq-q-icon">Q</div>
-            <div class="faq-q-text">PCスキルに自信がないのですが大丈夫ですか？</div>
-            <div class="faq-arrow">▼</div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-icon">A.</div>
-            基本的なPCの操作（文字入力・インターネット閲覧）ができれば問題ありません。作業テストで確認しながら進められますので、未経験の方もお気軽にご応募ください。
-          </div>
-        </div>
+      </div>
+      <div class="inline-cta fade-up">
+        <p>他にご不明な点はLINEでお気軽にご相談いただけます。</p>
+        <a href="#final-cta" class="btn btn-cta">📩 まずは応募して説明を聞いてみる</a>
       </div>
     </div>
   </section>
@@ -1229,22 +1368,10 @@
           <div class="company-name-ja">株式会社RAPAS（ラパス）</div>
         </div>
         <table class="company-table">
-          <tr>
-            <td>会社名</td>
-            <td>株式会社RAPAS（ラパス）</td>
-          </tr>
-          <tr>
-            <td>所在地</td>
-            <td>福岡県福岡市南区清水1-24-31<br>流花モンテ・ビヤンカ2F-3F</td>
-          </tr>
-          <tr>
-            <td>TEL</td>
-            <td>092-915-2220</td>
-          </tr>
-          <tr>
-            <td>FAX</td>
-            <td>092-915-2022</td>
-          </tr>
+          <tr><td>会社名</td><td>株式会社RAPAS（ラパス）</td></tr>
+          <tr><td>所在地</td><td>福岡県福岡市南区清水1-24-31<br>流花モンテ・ビヤンカ2F-3F</td></tr>
+          <tr><td>TEL</td><td>092-915-2220</td></tr>
+          <tr><td>FAX</td><td>092-915-2022</td></tr>
         </table>
         <div class="privacy-mark-badge">
           <svg viewBox="0 0 36 36" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
@@ -1265,21 +1392,17 @@
       <div class="final-cta-inner fade-up">
         <div class="final-cta-tag">✨ 今すぐ在宅ワークをスタート</div>
         <h2 class="final-cta-title">
-          自宅でできる仕事を、<br>一緒に始めましょう。
+          まずは応募して、<br>説明を聞いてみませんか？
         </h2>
         <p class="final-cta-sub">
-          LINEで簡単応募！全国5,000名以上が活躍中のRAPASで、<br>
-          あなたのペースで在宅ワークを始めてみませんか？
+          全国5,000名以上が活躍中のRAPASで、<br>
+          あなたのペースで在宅ワークを始めてみましょう。
         </p>
         <div class="final-cta-btns">
-          <a href="#" class="btn btn-white">
-            📩 今すぐ応募する
-          </a>
-          <a href="#" class="btn btn-line">
-            💚 LINEで問い合わせる
-          </a>
+          <a href="#" class="btn btn-white">📩 まずは応募して説明を聞いてみる</a>
+          <a href="#" class="btn btn-line">💚 LINEで問い合わせる</a>
         </div>
-        <p class="final-notice">⚠️ 作業にはPC（Windows推奨）が必須です。スマートフォン・タブレットでの作業は不可となります。</p>
+        <p class="final-notice">⚠️ 作業にはPC（Windows推奨）が必須です。スマートフォンでの作業は不可となります。</p>
       </div>
     </div>
   </section>
@@ -1301,46 +1424,28 @@
   <!-- ===== Floating CTA ===== -->
   <div id="floating-cta">
     <span class="floating-cta-text">スキマ時間に在宅ワーク</span>
-    <a href="#final-cta" class="floating-btn">
-      📩 今すぐ応募する
-    </a>
+    <a href="#final-cta" class="floating-btn">📩 まずは応募して説明を聞いてみる</a>
   </div>
 
   <!-- ===== JavaScript ===== -->
   <script>
-    // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 30) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      header.classList.toggle('scrolled', window.scrollY > 30);
     });
 
-    // Floating CTA visibility
     const floatingCta = document.getElementById('floating-cta');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        floatingCta.classList.add('visible');
-      } else {
-        floatingCta.classList.remove('visible');
-      }
+      floatingCta.classList.toggle('visible', window.scrollY > 100);
     });
 
-    // Fade-up animation via IntersectionObserver
-    const fadeEls = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
-    fadeEls.forEach((el) => observer.observe(el));
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
-    // FAQ accordion
     document.querySelectorAll('.faq-q').forEach((q) => {
       q.addEventListener('click', () => {
         const item = q.closest('.faq-item');
