@@ -1,6 +1,6 @@
 # AGENTS.md — AI Design Company ナレッジ運用ルール
 
-**バージョン**: 2.1  
+**バージョン**: 2.2  
 **更新日**: 2026-06-20
 
 ---
@@ -10,6 +10,19 @@
 GitHub上のナレッジベース（`knowledge/`）を唯一の情報源とし、
 どの端末・どのClaude Code・どのセッションからアクセスしても
 同じ品質でLP・ホームページ・WordPressサイトを提案・設計・制作できる状態を維持する。
+
+---
+
+## Knowledge Governance Rules
+
+**作業開始前に必ず `knowledge/governance.md` を確認すること。**
+
+- 知識を保存する場合は `governance.md` の Single Source of Truth マップで保存先を確認する
+- 同じ知識を複数箇所へ保存しない（重複禁止）
+- 知識を追加する前に既存知識を `grep -r` で検索する
+- 新規作成より既存知識への統合を優先する
+- CTAの実装詳細は `cta-library.md` のみへ / FVの実装詳細は `fv-library.md` のみへ
+- `industry-patterns.md` では `CTA-XXX` `FV-XXX` として参照し、重複記述しない
 
 ---
 
@@ -282,6 +295,7 @@ Step 6: Learning Decision に応じて辞典・inspirations/ へ反映
 
 ```
 knowledge/
+├── governance.md               ← Single Source of Truth 管理（作業開始前に必読）
 ├── lp/
 │   ├── lp-design-dictionary.md    ← LP構造パターン辞典（Pattern-LP-XXX）
 │   ├── fv-library.md               ← FVパターン辞典（FV-XXX）
@@ -321,6 +335,8 @@ knowledge/
 │   ├── lp-analysis-template.md     ← LP分析標準手順書（必須使用）
 │   ├── lp-rank-evaluation-rules.md ← LP-Rank採点基準（必須参照）
 │   └── pattern-naming-rules.md     ← パターン命名規則リファレンス
+├── templates-production/           ← 量産高CVテンプレート置き場（将来追加予定）
+│   └── README.md
 └── learning-history/
     └── YYYY-MM-DD-[案件名].md      ← 分析履歴（業種タグ・LP-Rank・LP-Score付き）
 ```
