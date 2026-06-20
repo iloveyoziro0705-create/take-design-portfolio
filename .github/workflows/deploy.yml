@@ -1,0 +1,77 @@
+# ============================================================
+#  TAKE Design Portfolio — Vercel 自動デプロイ
+# ============================================================
+#
+#  【初回セットアップ手順】
+#  GitHubリポジトリの Settings → Secrets and variables → Actions
+#  に以下のシークレットを登録してください。
+#
+#  VERCEL_TOKEN          : vercel.com/account/tokens で発行
+#  VERCEL_ORG_ID         : Vercel Settings → General → Team ID
+#  VERCEL_PROJECT_ID_RAPAS : rapas-lp プロジェクトの Project ID
+#
+#  ※ 新しいLPを追加するたびに
+#     1. Vercel でプロジェクトを作成（Root Directory = LP名）
+#     2. Project ID を GitHub Secrets に追加
+#     3. このファイルに新しいジョブをコピーして追加
+#
+# ============================================================
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  # ─────────────────────────────────────────────
+  #  rapas-lp
+  # ─────────────────────────────────────────────
+  deploy-rapas-lp:
+    name: "Deploy rapas-lp"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Deploy rapas-lp to Vercel (Production)
+        working-directory: ./rapas-lp
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_RAPAS }}
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+
+  # ─────────────────────────────────────────────
+  #  mirai-ryo-lp（すでにVercel公開済みの場合）
+  # ─────────────────────────────────────────────
+  # deploy-mirai-ryo-lp:
+  #   name: "Deploy mirai-ryo-lp"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - run: npm install -g vercel@latest
+  #     - working-directory: ./mirai-ryo-lp
+  #       env:
+  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_MIRAI }}
+  #       run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+
+  # ─────────────────────────────────────────────
+  #  ＜新しいLPを追加するときのテンプレート＞
+  # ─────────────────────────────────────────────
+  # deploy-[案件名]-lp:
+  #   name: "Deploy [案件名]-lp"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - run: npm install -g vercel@latest
+  #     - working-directory: ./[案件名]-lp
+  #       env:
+  #         VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  #         VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_[案件名大文字] }}
+  #       run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
