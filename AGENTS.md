@@ -1,6 +1,6 @@
 # AGENTS.md — AI Design Company ナレッジ運用ルール
 
-**バージョン**: 2.0  
+**バージョン**: 2.1  
 **更新日**: 2026-06-20
 
 ---
@@ -221,6 +221,52 @@ Step 6: Learning Decision に応じて辞典・inspirations/ へ反映
 
 ---
 
+## Case Study Rules
+
+制作案件が完了したら、必ず `knowledge/case-studies/` に記録すること。
+
+- `knowledge/case-studies/case-study-template.md` を使用する
+- ファイル名: `YYYY-MM-DD-[業種]-[プロジェクト名].md`
+- 採用したPattern（Pattern-LP-XXX / FV-XXX / CTA-XXX）を必ず記録する
+- 改善点・次回に活かすこと・再利用できる知識を記録する
+- クライアント評価・成果は後日追記で構わない
+- 感想禁止。構造的事実のみ記録する
+
+---
+
+## Failure Pattern Rules
+
+成果を下げる要因を発見した場合は、`knowledge/failure-patterns/failure-patterns.md` に追加すること。
+
+- LP分析後の「CV阻害要因」欄で新しい失敗パターンを発見した場合は登録する
+- 既存 FAIL-XXX に該当する場合は新規作成せず既存エントリへ参考事例を追記する
+- 成功パターンだけでなく失敗パターンも学習資産として蓄積する
+- 追加前に `grep -r "FAIL-" knowledge/failure-patterns/` で重複確認する
+
+---
+
+## Prompt Library Rules
+
+成功した指示文・制作プロンプトは `knowledge/prompts/` に保存すること。
+
+- LP分析、LP制作、業種別制作、WordPress制作ごとに整理する
+- プロンプトを使用して成果が出た場合は、改善版に更新する
+- 新業種対応のプロンプトが完成したら追加する
+- 変数（`[案件名]` 等）は実案件ごとに必ず置き換えて使用する
+
+---
+
+## Learning Reason Rules
+
+ナレッジを保存する場合は、必ず Learning Reason を記録すること。
+
+- なぜ保存したのか（保存理由）を明記する
+- どの案件・業種に応用できるか（他案件への応用先）を明記する
+- 感想禁止。再利用価値・応用先を構造的に記述する
+- Learning Reason なしのナレッジ追加は不完全とみなし、後日補完する
+
+---
+
 ## 禁止事項
 
 - ルートの `index.html` を上書きしない
@@ -254,8 +300,26 @@ knowledge/
 │   ├── cta-inspirations.md         ← CTA事例集（CTAINS-XXX）
 │   ├── layout-inspirations.md      ← レイアウト事例集（LAYINS-XXX）
 │   └── design-inspirations.md      ← 配色・世界観事例集（DESINS-XXX）
+├── case-studies/                   ← 実案件記録（自社制作案件）
+│   ├── README.md
+│   └── YYYY-MM-DD-[業種]-[案件名].md
+├── failure-patterns/               ← 失敗パターン辞典（FAIL-XXX）
+│   ├── README.md
+│   ├── failure-patterns.md
+│   └── failure-template.md
+├── prompts/                        ← 再利用プロンプトライブラリ
+│   ├── README.md
+│   ├── lp-analysis-prompt.md
+│   ├── lp-production-prompt.md
+│   ├── beauty-lp-prompt.md
+│   ├── recruit-lp-prompt.md
+│   ├── job-lp-prompt.md
+│   ├── clinic-lp-prompt.md
+│   ├── restaurant-lp-prompt.md
+│   └── wordpress-production-prompt.md
 ├── templates/
 │   ├── lp-analysis-template.md     ← LP分析標準手順書（必須使用）
+│   ├── lp-rank-evaluation-rules.md ← LP-Rank採点基準（必須参照）
 │   └── pattern-naming-rules.md     ← パターン命名規則リファレンス
 └── learning-history/
     └── YYYY-MM-DD-[案件名].md      ← 分析履歴（業種タグ・LP-Rank・LP-Score付き）
