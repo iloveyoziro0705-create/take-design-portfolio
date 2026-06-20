@@ -28,5 +28,5 @@ LP・ホームページ・WordPress制作において、CVRを下げる「やっ
 ## Failure Pattern ID 採番ルール
 
 - プレフィックス: `FAIL-XXX`（3桁ゼロ埋め）
-- 現在登録数: 5件（FAIL-001〜FAIL-005）
-- 次番: FAIL-006〜
+- 現在登録数: 6件（FAIL-001〜FAIL-006）
+- 次番: FAIL-007〜
