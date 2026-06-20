@@ -1,0 +1,186 @@
+# CTAインスピレーション事例集
+
+## 概要
+辞典（cta-library.md）に登録するほどではないが、制作時に強く参考になるCTA事例を保存する。
+「なぜCVに効くか」を構造的に記録する（感想禁止）。
+
+---
+
+## 記録フォーマット
+
+```
+## CTAINS-XXX: [事例タイトル]
+**出典**: [案件名 / 分析ID]
+**業種タグ**: #XXX #XXX
+**LP-Rank**: S / A / B
+**参考箇所**: ボタン文言 / 配置 / 周辺要素 / カラー / 形状
+
+### 参考要素
+[何が、どのように機能しているかを構造的に記録]
+
+### 適用可能業種
+[この要素が転用できる業種リスト]
+
+### 実装メモ
+[コード断片・CSS値・文言パターン]
+```
+
+---
+
+## 事例一覧
+
+---
+
+## CTAINS-001: 2択CTAによるユーザー誘導分散
+
+**出典**: beauty-salon-lp（Lumière Beauty Salon）/ 2026-06-20-beauty-salon-lp.md  
+**業種タグ**: #beauty #salon #service  
+**LP-Rank**: A  
+**参考箇所**: CTA設計（FV・最終CTA）
+
+### 参考要素
+- LINEと電話の2択を並置することで、ユーザーの好みに応じた離脱防止
+- LINE: 非同期・文字が苦手なユーザー向け
+- 電話: 即時解決・高齢層向け
+- どちらかの選択でCV成立 → 取りこぼし最小化の構造
+
+### 適用可能業種
+美容・クリニック・整骨院・士業・コンサル・採用
+
+### 実装メモ
+```html
+<div class="cta-group">
+  <a href="https://lin.ee/XXXXX" class="btn btn--line">
+    LINEで予約する
+  </a>
+  <a href="tel:0X-XXXX-XXXX" class="btn btn--tel">
+    電話で問い合わせ
+  </a>
+</div>
+```
+```css
+.cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn--line { background: #06c755; color: #fff; }
+.btn--tel  { background: transparent; border: 2px solid var(--gold); color: var(--deep); }
+```
+
+---
+
+## CTAINS-002: ゴールドシャドウ付きCTAボタン（ラグジュアリー系）
+
+**出典**: beauty-salon-lp（Lumière Beauty Salon）/ 2026-06-20-beauty-salon-lp.md  
+**業種タグ**: #beauty #luxury #premium  
+**LP-Rank**: A  
+**参考箇所**: CTAボタンのデザイン
+
+### 参考要素
+- `box-shadow: 0 8px 24px rgba(200,165,106,.35)` でブランドカラーのシャドウ
+- ホバー時に `translateY(-3px)` + シャドウ強化で浮き上がりエフェクト
+- ブランドカラーのシャドウはボタンとページの一体感を生み、「安っぽさ」を排除する
+
+### 適用可能業種
+美容・ホテル・ジュエリー・ブライダル・高級飲食
+
+### 実装メモ
+```css
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #d7b49e, #c8a56a);
+  color: #fff;
+  padding: 18px 44px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  box-shadow: 0 8px 24px rgba(200,165,106,.35);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(200,165,106,.5);
+}
+```
+
+---
+
+## CTAINS-003: ダーク背景上のゴールドCTAボタン（飲食・ラグジュアリー）
+
+**出典**: restaurant-lp / 2026-06-20-restaurant-lp.md  
+**業種タグ**: #restaurant #food #luxury #dark-theme  
+**LP-Rank**: A  
+**参考箇所**: ダーク背景 × CTAカラー対比
+
+### 参考要素
+- 背景 `#0f0f0f`（ほぼ黒）に対して `#d8a76a`（ゴールド）ボタンは最大コントラスト
+- テキストカラーを `#111`（濃いめの黒）にすることでボタン内の可読性確保
+- ホバー時に `#f0c98b`（明るいゴールド）へ変化させて押下フィードバック
+
+### 適用可能業種
+飲食（高級）・バー・ホテル・ナイトエンタメ・ダーク系ブランド
+
+### 実装メモ
+```css
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  background: #d8a76a;
+  color: #111;
+  font-weight: bold;
+  border-radius: 999px;
+  transition: background .3s, transform .3s;
+}
+.btn:hover {
+  background: #f0c98b;
+  transform: translateY(-3px);
+}
+```
+
+---
+
+## CTAINS-004: 周辺安心テキストによるCVR補強
+
+**出典**: 採用LP全般 / Pattern-LP-003  
+**業種タグ**: #recruit #medical #consultation  
+**LP-Rank**: A  
+**参考箇所**: CTAボタン直下の補足テキスト
+
+### 参考要素
+- CTAボタン直下に「✓ 完全無料」「✓ 営業なし」「✓ 〇分で完了」を配置
+- 最後の「踏み出す一歩」を阻む不安を、ボタンの直近で解消する
+- チェックマーク（✓）が箇条書きより軽く見えてCV摩擦を下げる
+
+### 適用可能業種
+採用・医療・コンサル・金融・BtoB・SaaS（全てのCTA周辺に応用可）
+
+### 実装メモ
+```html
+<div class="cta-block">
+  <a href="#form" class="btn-primary">今すぐ無料相談する</a>
+  <ul class="cta-reassurance">
+    <li>✓ 完全無料・費用一切なし</li>
+    <li>✓ しつこい営業は一切しません</li>
+    <li>✓ 1分で申込完了</li>
+  </ul>
+</div>
+```
+```css
+.cta-reassurance {
+  list-style: none;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--sub);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
+
+---
+
+## 統計
+
+- 登録事例数: 4
+- 最終更新: 2026-06-20
