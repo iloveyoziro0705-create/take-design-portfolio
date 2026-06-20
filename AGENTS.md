@@ -44,9 +44,10 @@ grep -r "#[業種タグ]" knowledge/learning-history/
 - 同業種・類似業種の過去分析ファイルを確認
 - LP-Rank S・Aの案件を優先参照
 
-### Step 3: Sランク優先参照
-- `learning-history/` 内で `LP-Rank: S` または `LP-Rank: A` のファイルを優先
-- Sランクの構成・FV・CTA・導線を第一候補とする
+### Step 3: S+/Sランク優先参照
+- `learning-history/` 内で `LP-Rank: S+` `LP-Rank: S` `LP-Rank: A` のファイルを優先
+- S+/Sランクの構成・FV・CTA・導線を第一候補とする
+- BランクはInspirationsの部分参照に留める。Dランクは参照しない
 
 ### Step 4: 既存パターン照合
 - Pattern-LP-XXX / FV-XXX / CTA-XXX 等から最適なものを選定
@@ -85,8 +86,9 @@ LP制作依頼を受けた場合、必ず以下の順序で実行する。
 Step 1: lp-analysis-template.md をコピー
 Step 2: knowledge/learning-history/YYYY-MM-DD-[案件名].md として保存
 Step 3: テンプレートの①〜⑪を上から順に埋める（省略・順序変更禁止）
-Step 4: ⑩ スコアリング → LP-Score と LP-Rank を確定
-Step 5: ⑪ 学習結果 → lp-design-dictionary.md / 各辞典 / inspirations/ へ反映
+Step 4: ⑩ LP-Rank Evaluation → lp-rank-evaluation-rules.md の基準で採点
+Step 5: LP-Score・LP-Rank・Learning Decision を確定
+Step 6: Learning Decision に応じて辞典・inspirations/ へ反映
 ```
 
 ### 分析の必須付与事項
@@ -94,30 +96,40 @@ Step 5: ⑪ 学習結果 → lp-design-dictionary.md / 各辞典 / inspirations/
 | 項目 | 内容 |
 |------|------|
 | 業種タグ | 最低3つ（例: `#beauty` `#salon` `#luxury`） |
-| LP-Rank | S / A / B / C / D（採点基準に基づく） |
-| LP-Score | XX / 100（7項目採点・合計） |
+| LP-Rank | S+ / S / A / B / C / D（lp-rank-evaluation-rules.md 基準） |
+| LP-Score | XX / 100（6項目採点・合計） |
+| Learning Decision | 積極学習 / 部分学習 / 参考保存 / 学習対象外 |
 
-### LP-Score採点基準（合計100点）
+### LP-Score 採点基準（合計100点）
 
-| 項目 | 配点 |
-|------|------|
-| FV（ファーストビュー） | 15点 |
-| CTA | 15点 |
-| 導線 | 15点 |
-| 信頼性 | 15点 |
-| オファー | 10点 |
-| モバイル最適化 | 15点 |
-| デザイン品質 | 15点 |
+**詳細は `knowledge/templates/lp-rank-evaluation-rules.md` を参照すること。**
+
+| 項目 | 配点 | 評価軸 |
+|------|------|--------|
+| FV（ファーストビュー） | 20点 | コピー強度・ターゲット明確性・ベネフィット伝達・信頼要素・視線誘導 |
+| 導線設計 | 20点 | セクション順序・悩み→解決→証拠→CTAの流れ・不安解消・スクロール動機 |
+| CTA設計 | 20点 | 配置数・文言の具体性・視認性・CTA直前の理由・役割整理 |
+| 信頼性 | 15点 | 数値実績・お客様の声・権威性 |
+| オファー | 15点 | 行動する理由・希少性/期限・リスク低減要素 |
+| モバイル最適化 | 10点 | 可読性・CTA操作性・情報密度・切替明確性・負荷 |
 
 ### LP-Rank 判定基準
 
-| ランク | LP-Score | 参照優先度 |
-|--------|---------|-----------|
-| S | 90〜100 | 最優先参照 |
-| A | 75〜89 | 優先参照 |
-| B | 60〜74 | 参照可 |
-| C | 45〜59 | 限定参照 |
-| D | 44以下 | 参照しない |
+| ランク | LP-Score | ナレッジ登録 | Learning Decision |
+|--------|---------|------------|-----------------|
+| S+ | 95〜100 | 全項目を積極登録 | 積極学習 |
+| S | 90〜94 | 積極登録 | 積極学習 |
+| A | 80〜89 | 登録する | 積極学習 |
+| B | 70〜79 | 優れた部分のみ | 部分学習 |
+| C | 60〜69 | 参考要素のみ | 参考保存 |
+| D | 59以下 | 原則登録しない | 学習対象外 |
+
+### LP-Rank Evaluation の必須禁止事項
+
+- デザインの美しさを根拠にした高評価 → 禁止
+- 業界大手だからという理由の高評価 → 禁止
+- 採点根拠のない主観的な点数変更 → 禁止
+- 迷った場合の甘い採点 → 厳しめを採用する
 
 ### 11分析軸（テンプレートに準拠）
 
@@ -131,7 +143,7 @@ Step 5: ⑪ 学習結果 → lp-design-dictionary.md / 各辞典 / inspirations/
 ⑦  デザイン  → レイアウト・配色・タイポグラフィ・UIコンポーネント
 ⑧  モバイル  → 視認性・CTA導線・スクロール設計
 ⑨  CV要因   → コンバージョンを生む構造的な理由（感想禁止）
-⑩  スコアリング → LP-Score算出・LP-Rank確定
+⑩  LP-Rank Evaluation → 6項目採点・LP-Score算出・Rank確定・Learning Decision
 ⑪  学習結果  → 重要知識10項目以上・流用可能知識10項目以上・辞典更新案
 ```
 
