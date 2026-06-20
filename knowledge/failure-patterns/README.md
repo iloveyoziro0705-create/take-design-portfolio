@@ -11,7 +11,7 @@ LP・ホームページ・WordPress制作において、CVRを下げる「やっ
 
 | ファイル | 内容 |
 |---------|------|
-| `failure-patterns.md` | 失敗パターン辞典（FAIL-XXX形式） |
+| `failure-patterns.md` | 失敗パターン辞典（FAIL-XXX形式）現在7件登録 |
 | `failure-template.md` | 新規Failure Pattern追加時のテンプレート |
 
 ---
@@ -28,5 +28,5 @@ LP・ホームページ・WordPress制作において、CVRを下げる「やっ
 ## Failure Pattern ID 採番ルール
 
 - プレフィックス: `FAIL-XXX`（3桁ゼロ埋め）
-- 現在登録数: 6件（FAIL-001〜FAIL-006）
-- 次番: FAIL-007〜
+- 現在登録数: 7件（FAIL-001〜FAIL-007）
+- 次番: FAIL-008〜
