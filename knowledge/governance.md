@@ -30,6 +30,7 @@
 | 成功事例 | `knowledge/case-studies/` | 実案件記録 / 成功事例 / クライアント評価 |
 | 失敗事例 | `knowledge/failure-patterns/` | 失敗パターン(FAIL-XXX) / 注意点 / 改善策 |
 | 再利用プロンプト | `knowledge/prompts/` | 成功した指示文 / 業種別プロンプト |
+| ジャンル自動判定 | `knowledge/prompts/genre-auto-detection.md` | 画像からのジャンル自動分類ルール（GEN-001〜008）/ 分析方針切り替えチェックリスト |
 | 量産テンプレート | `knowledge/templates-production/` | 業種別高CVテンプレート（将来追加予定） |
 | インスピレーション | `knowledge/inspirations/` | FVINS/CTAINS/LAYINS/DESINS-XXX 参考事例 |
 | 分析履歴 | `knowledge/learning-history/` | LP分析レポート / LP-Rank / LP-Score |
@@ -152,3 +153,4 @@ grep -rh "^## Pattern-LP-[0-9]" knowledge/ | sort | uniq -d
 | バージョン | 更新日 | 変更内容 |
 |----------|--------|---------|
 | 1.0 | 2026-06-20 | 初版作成。SST マップ・重複禁止ルール・カテゴリ境界定義 |
+| 1.1 | 2026-06-20 | ジャンル自動判定ファイル（genre-auto-detection.md）をSSTマップに追加 |
