@@ -169,7 +169,156 @@ h2 { font-size: clamp(28px, 4vw, 50px); }
 
 ---
 
+## FVINS-005: 縦書きFVコピー × 施術シーン写真（和の品格）
+
+**出典**: Hériter（ヘリテ）/ 2026-06-20-heriter-beauty-salon.md  
+**業種タグ**: #beauty #salon #japanese #heritage #natural  
+**LP-Rank**: B（70/100）  
+**参考箇所**: FVコピー表現・タイポグラフィ設計
+
+### 参考要素
+- 縦書きメインコピー「毎日のために 心地のよいスタイルを」が和の品格と温かみを同時表現
+- フランス語ブランド名（Hériter）と縦書き日本語コピーの対比で「洋×和」の独自世界観
+- 施術シーン（スタイリスト + お客様）の写真が「どんな空間で施術を受けるか」をFVで即座に伝える
+- コピーは「日常」訴求（特別な日ではなく毎日のために）でリピート来店の動機を形成
+
+### 適用可能業種
+美容サロン・日本料理・旅館・茶道・和雑貨・老舗ブランド全般
+
+### 実装メモ
+```css
+/* 縦書きコピーの基本設定 */
+.fv-copy-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 3vw, 38px);
+  letter-spacing: .18em;
+  line-height: 1.9;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+/* モバイルでは横書きに */
+@media (max-width: 767px) {
+  .fv-copy-vertical {
+    writing-mode: horizontal-tb;
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
+```
+
+---
+
+## FVINS-006: 英語哲学型FVコピー × ミニマリスト施術写真
+
+**出典**: Invincible Hair MADA / 2026-06-20-mada-beauty-salon.md  
+**業種タグ**: #beauty #salon #monochrome #minimal #stylish #philosophy  
+**LP-Rank**: A（80/100）  
+**参考箇所**: FVコピー表現・世界観設計（GEN-001シリーズ唯一のFV満点事例）
+
+### 参考要素
+- 「BE YOURSELF. FOR ALWAYS.」全大文字英語短文2連で哲学的価値観を即座に表明
+- ピリオド（.）で1文ずつ完結させることで重みと断言の印象を強める
+- モノクロ背景 + コーラルアクセントというシンプルな配色がコピーを際立たせる
+- 業種説明・悩み共感型コピーを使わないことでターゲットのセルフスクリーニングが成立
+
+### 適用可能業種
+美容サロン（スタイリッシュ系）・アパレル・フィットネス・ライフスタイルブランド・コーポレート（ブランド系）
+
+### 実装メモ
+```css
+/* 英語哲学コピーのスタイル */
+.fv-title-philosophy {
+  font-family: 'Jost', 'Montserrat', 'Inter', sans-serif;
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #fff;
+  line-height: 1.15;
+}
+/* 補足の日本語コピー */
+.fv-subtitle-ja {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(13px, 1.8vw, 17px);
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.8);
+  margin-top: 20px;
+  line-height: 2;
+}
+```
+
+---
+
+## FVINS-007: 内発動機型FVコピー「好きを 仕事に。」（ウェルネス・採用LP）
+
+**出典**: LAVA ホットヨガスタジオ 採用LP / 2026-06-22-lava-hotyoga-recruit-lp.md  
+**業種タグ**: #recruit #wellness #yoga #lifestyle  
+**LP-Rank**: B-（68/100 — GEN-002最高スコア）  
+**参考箇所**: FVコピー表現
+
+### 参考要素
+- 「好きを 仕事に。」という6文字コピーが「内発動機（好き）」を仕事の正当な動機として肯定する
+- 求職者が「そういう仕事をしたかった」と既に持っていた感情を言語化する役割
+- 短文×句点（。）で断言することで「誰でも歓迎」ではなく「この仕事が好きな人に来てほしい」というセルフスクリーニング効果が生まれる
+- FVにスタッフのカルーセル写真を組み合わせることで「好きを仕事にした人たちがいる職場」を視覚的に実証
+
+### 適用可能業種
+ヨガ・フィットネス・スポーツ・アパレル・音楽・料理・アート・アウトドア・ゲーム等「業種自体への熱量」がある採用LP全般
+
+### 実装メモ
+```css
+/* 内発動機型コピーのスタイル */
+.fv-copy-inner-motivation {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.4;
+}
+/* サブコピー（仕事内容の補足）*/
+.fv-subcopy {
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: .08em;
+  margin-top: 24px;
+  opacity: .85;
+}
+```
+
+---
+
+## FVINS-008: 対称反復型FVコピー「ひらけ、世界。ひらけ、自分。」（大手採用LP）
+
+**出典**: 日本生命 採用LP / 2026-06-22-nipponlife-recruit-lp.md  
+**業種タグ**: #recruit #insurance #corporate #bigcompany  
+**LP-Rank**: B-（63/100）  
+**参考箇所**: FVコピー表現・テンプレートパターン
+
+### 参考要素
+- 「ひらけ、世界。ひらけ、自分。」: 「[動詞命令形]、[外の概念]。[動詞命令形]、[内の概念]。」の対称反復構造
+- リズム（音の繰り返し）が記憶に定着しやすく、見た後も脳内で再生される
+- 「世界（社会・外部への貢献）」と「自分（個人の成長）」を同時に訴求できる二重訴求構造
+- 大企業の「社会的使命」と「個人の成長機会」を1文で両立させる希少なコピーパターン
+- ピリオド＋句点（。）で1フレーズずつ完結させることで重みと断言感を付与
+
+### 適用可能業種
+大手企業採用LP・社会貢献系採用（保険・金融・インフラ・行政・NGO）・グローバル展開企業
+
+### 実装メモ
+```
+/* 対称反復型コピーの構文テンプレート */
+[動詞命令形]、[外の概念]。[動詞命令形]、[内の概念]。
+
+/* 業種別応用例 */
+「伸ばせ、地域。伸ばせ、自分。」（地方採用LP）
+「守れ、命。守れ、誇り。」（医療・警察・消防採用LP）
+「繋げ、社会。繋げ、未来。」（インフラ・通信採用LP）
+「育てろ、子どもたち。育てろ、自分。」（保育・教育採用LP）
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 4
-- 最終更新: 2026-06-20
+- 登録事例数: 8（採用LP 辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（FVINS-007〜008 追加 / 採用LP辞典統合）

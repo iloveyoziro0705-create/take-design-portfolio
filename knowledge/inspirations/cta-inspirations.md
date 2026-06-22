@@ -180,7 +180,127 @@
 
 ---
 
+## CTAINS-005: ヘッダーナビ内のカラー強調Reserveボタン
+
+**出典**: Invincible Hair MADA / 2026-06-20-mada-beauty-salon.md  
+**業種タグ**: #beauty #salon #stylish #minimal  
+**LP-Rank**: A（80/100）  
+**参考箇所**: ヘッダーCTA設計
+
+### 参考要素
+- ナビゲーション内のリンク項目すべてがテキストリンクの中で「Reserve」だけがコーラルカラーのカラーボタン
+- ヘッダーが `position: sticky` で固定されているため、スクロール中も常時視界に予約ボタンが存在する
+- ボタンの存在がナビ全体のデザインのアクセントカラーとしても機能している（配色の一貫性）
+- スマホ固定フッターCTAと組み合わせることで画面の上端・下端の両方に予約を常駐させる二重構造
+
+### 適用可能業種
+美容・クリニック・エステ・個人サービス・飲食（予約必須型）・士業・スクール
+
+### 実装メモ
+```css
+/* ヘッダーナビ — テキストリンク */
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: .05em;
+  padding: 8px 12px;
+}
+/* 予約ボタンだけカラー強調 */
+nav a.nav-reserve {
+  background: var(--accent);   /* #e05050 など */
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: opacity .2s;
+}
+nav a.nav-reserve:hover { opacity: .85; }
+
+/* ヘッダー固定 */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+}
+```
+
+---
+
+## CTAINS-006: 多形態雇用形態別エントリーCTA設計
+
+**出典**: LAVA ホットヨガスタジオ 採用LP / 2026-06-22-lava-hotyoga-recruit-lp.md  
+**業種タグ**: #recruit #wellness #multitype-employment  
+**LP-Rank**: B-（68/100 — GEN-002最高スコア）  
+**参考箇所**: CTA設計・雇用形態別分岐設計
+
+### 参考要素
+- 正社員（新卒）・正社員（中途）・アルバイト・業務委託・特集求人を独立したCTAボタン+ページで分岐
+- 「自分はどこに応募すればいいか」という迷いを解消し、求職者を最適なエントリーページへ誘導
+- 各雇用形態に「あなた向けはこちら→」ラベルをつけることで属性マッチング感が生まれてCV率向上
+- 単一「エントリーはこちら」ボタンより、雇用形態別CTAはそれぞれのページで属性に最適化した訴求が可能
+
+### 適用可能業種
+多形態雇用を常時展開する採用LP全般（飲食チェーン・ウェルネス・教育・小売・介護）
+
+### 実装メモ
+```html
+<!-- 多形態雇用形態別エントリーCTA -->
+<section class="entry-cta">
+  <h2>あなたに合った働き方を選んでください</h2>
+  <div class="entry-grid">
+    <a href="/entry/new-grad" class="entry-card">
+      <span class="entry-type">新卒採用</span>
+      <span class="entry-label">新卒・第二新卒の方はこちら →</span>
+    </a>
+    <a href="/entry/mid-career" class="entry-card">
+      <span class="entry-type">中途採用</span>
+      <span class="entry-label">経験者・キャリア採用の方はこちら →</span>
+    </a>
+    <a href="/entry/part-time" class="entry-card">
+      <span class="entry-type">アルバイト</span>
+      <span class="entry-label">パートタイムで働きたい方はこちら →</span>
+    </a>
+  </div>
+</section>
+```
+```css
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.entry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.entry-type {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 4
-- 最終更新: 2026-06-20
+- 登録事例数: 6（採用LP 辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（CTAINS-006 追加 / 採用LP辞典統合）
