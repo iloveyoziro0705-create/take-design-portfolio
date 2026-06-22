@@ -305,7 +305,120 @@ body { font-family: 'Noto Sans JP', sans-serif; }
 
 ---
 
+## DESINS-009: 和紙テクスチャー×ダークゴールド×毛筆体（炭火職人系）
+
+**出典**: 炭火串焼 慶鳥（けいちょう）/ 2026-06-21-keicho-restaurant-lp.md  
+**業種タグ**: #restaurant #yakitori #japanese #craftsman  
+**LP-Rank**: B-（65/100）  
+**参考箇所**: カラーパレット全体設計・背景テクスチャー設計
+
+### 参考要素
+- 背景: `#f5ead8`（和紙クリーム）— 和紙・障子を連想させる温かみと質感
+- テキスト: `#4a2c0a`（ダークブラウン）— 炭・木・土の色相で職人感を表現
+- アクセント: `#c8960a`（鈍金）— ピカピカしないマットな金で「老舗の渋み」を表現
+- 焼き鳥・炭火・和食職人系の「暗さの中の温かさ」を演出するパレット
+- 毛筆体フォントとの組み合わせでさらに和の格調が増す
+
+### 適用可能業種
+焼き鳥・炭火料理・和食職人系・老舗居酒屋・日本料理・蕎麦・うなぎ・鰻
+
+### 実装メモ
+```css
+:root {
+  --bg:     #f5ead8;  /* 和紙クリーム */
+  --text:   #4a2c0a;  /* ダークブラウン（炭・木・土）*/
+  --sub:    #7a5a30;  /* ミドルブラウン */
+  --accent: #c8960a;  /* 鈍金（マットゴールド）*/
+  --deep:   #2a1000;  /* ほぼ黒（焦げ感）*/
+}
+/* フォントペアリング */
+h1, h2, h3 { font-family: 'Noto Serif JP', '游明朝', serif; }
+/* セクション背景の和の変化 */
+.section--washi { background: #f0e0c8; } /* 竹紙トーン */
+.section--char  { background: #1a0a00; color: #f5ead8; } /* 炭黒セクション */
+```
+
+---
+
+## DESINS-010: バーントオレンジ×ダークチョコブラウン（スパイシー本格系）
+
+**出典**: SPICE HOLIC（スパイスホリック）/ 2026-06-20-spiceholic-restaurant-lp.md  
+**業種タグ**: #restaurant #curry #spice #ethnic  
+**LP-Rank**: A（82/100）  
+**参考箇所**: カラーパレット全体設計
+
+### 参考要素
+- メインカラー: `#c8400a`（バーントオレンジ）— 食欲増進色。マクドナルド・吉野家等の飲食チェーンが採用する「食欲と活気」の色相
+- 背景: `#2a1a0a`（ダークチョコブラウン）— スパイス・コーヒー・チョコレートを連想させる「深み」の色
+- サブ背景: `#f5e6c8`（クリームベージュ）— ご飯・ナン・ライスの色相で「完成された料理」を連想させる
+- A'unique（白×グレー）との対比で「飲食LP暖色アクセント必須ルール」を実証（17点差）
+
+### 適用可能業種
+スパイスカレー・インド料理・タイ料理・エスニック全般・メキシカン・本格カジュアル飲食
+
+### 実装メモ
+```css
+:root {
+  --bg:          #2a1a0a;  /* ダークチョコブラウン（背景）*/
+  --surface:     #f5e6c8;  /* クリームベージュ（カード背景）*/
+  --text:        #ffffff;  /* 白（暗背景用）*/
+  --sub:         #d8c9a8;  /* ライトクリーム（サブテキスト）*/
+  --accent:      #c8400a;  /* バーントオレンジ（強調・CTA）*/
+  --accent-hover: #e85a20;
+}
+/* 食欲訴求強化: アクセントカラーでCTA・タグを統一 */
+.btn-primary { background: var(--accent); color: #fff; }
+.tag         { background: var(--accent); color: #fff; }
+.section-light { background: var(--surface); color: var(--bg); }
+```
+
+---
+
+## DESINS-011: クリームベージュ×ウォームブラウン×刺繍テクスチャー（欧風ダイニング系）
+
+**出典**: OINOS（オイノス）/ 2026-06-21-oinos-restaurant-lp.md  
+**業種タグ**: #restaurant #european #dining #bar #casual-luxury  
+**LP-Rank**: D+（42/100 — パレット設計の方向性のみ参考）  
+**参考箇所**: カラーパレット全体設計・テクスチャー設計
+
+### 参考要素
+- 背景: `#f5ead0`（クリームベージュ）— ヨーロッパの古いカフェ・レストランの壁色を連想させる温かみ
+- テキスト: `#5c3d1e`（ウォームブラウン）— 木製家具・コルクボードの色相。欧風の親しみやすさと上品さを両立
+- 刺繍テクスチャー: テーブルクロス・ランチョンマットを連想させる幾何学刺繍パターン
+- OINOSはLPスコアが低いが（NewsStale 13年・CTA欠如）、カラーパレットの「方向性」は欧風ダイニング業態と合致しており参考になる
+
+### 適用可能業種
+欧風ダイニング・イタリアン・フレンチカフェ・ワインバー・ブランチカフェ・ビストロ
+
+### 実装メモ
+```css
+:root {
+  --bg:     #f5ead0;  /* クリームベージュ（欧州カフェの壁色）*/
+  --surface: #fff8f0; /* 明るいクリーム（カード）*/
+  --text:   #5c3d1e;  /* ウォームブラウン */
+  --sub:    #8a6a48;  /* ライトブラウン */
+  --accent: #8a4800;  /* テラコッタブラウン */
+  --deep:   #3a2010;  /* ダークブラウン */
+}
+/* 刺繍風ボーダー装飾 */
+.section-embroidery-border {
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding: 4px 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent, transparent 6px,
+    var(--accent) 6px, var(--accent) 7px
+  );
+  background-size: 14px 3px;
+  background-position: 0 0, 0 100%;
+  background-repeat: repeat-x;
+}
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 8（美容室LP 辞典統合 2026-06-22 時点）
-- 最終更新: 2026-06-22（DESINS-006〜008 追加 / 美容室LP辞典統合）
+- 登録事例数: 11（飲食LP 辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（DESINS-009〜011 追加 / 飲食LP辞典統合）
