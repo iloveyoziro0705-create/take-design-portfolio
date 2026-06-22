@@ -198,6 +198,131 @@
 
 ---
 
+## CTA-008: ヘッダーナビ内カラー強調予約ボタン型
+
+**用途**: ヘッダー固定ナビゲーション内での予約ボタン差別化  
+**CV率特性**: スクロール中の視認性確保・常時接触・FAIL-001回避
+
+### 構成
+```html
+<nav>
+  <a href="#">HOME</a>
+  <a href="#">CONCEPT</a>
+  <a href="#">MENU</a>
+  <a href="#">GALLERY</a>
+  <!-- この予約ボタンだけカラーで塗りつぶし -->
+  <a href="#reserve" class="nav-reserve-btn">Reserve</a>
+</nav>
+```
+
+### スタイル
+```css
+.nav-reserve-btn {
+  background: var(--accent); /* ブランドカラー */
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: opacity .2s;
+}
+.nav-reserve-btn:hover { opacity: .85; }
+
+/* ヘッダー固定 */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(10px);
+}
+```
+
+### 配置ルール
+- ヘッダー固定（`position: sticky`）必須
+- ナビ最右端に配置（視線が自然に予約ボタンへ着地）
+- スマホ固定フッターCTAと組み合わせることで上下両端に予約を常駐させる
+
+### 効果的なテキスト
+| テキスト | 適用場面 |
+|---------|---------|
+| 「Reserve」 | スタイリッシュ系サロン（英字） |
+| 「ご予約」 | 親しみやすい系サロン（日本語） |
+| 「予約する」 | 明確な行動喚起型 |
+| 「WEB予約」 | 24時間対応を示唆 |
+
+---
+
+## CTA-009: WEB予約+LINE 2択フッターCTA型（美容系標準）
+
+**用途**: フッター・最終CTA・スマホ固定フッターでの2択構成  
+**CV率特性**: ユーザーの好み分散に対応・取りこぼし最小化・FAIL-006回避
+
+### 構成
+```html
+<!-- スマホ固定フッターCTA -->
+<div class="sticky-cta-2col">
+  <a href="#web-reserve" class="btn btn--web">
+    <svg><!-- カレンダーアイコン --></svg>
+    WEB予約する
+  </a>
+  <a href="https://lin.ee/XXXXX" class="btn btn--line">
+    <svg><!-- LINEアイコン --></svg>
+    LINEで予約
+  </a>
+</div>
+```
+
+### スタイル
+```css
+.sticky-cta-2col {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  z-index: 9999;
+}
+.btn--web {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 12px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn--line {
+  background: #06c755;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 12px;
+  font-weight: 700;
+  font-size: 15px;
+}
+@media (min-width: 768px) {
+  .sticky-cta-2col { display: none; }
+}
+```
+
+### 2択の心理設計
+| ボタン | 対象ユーザー | 特性 |
+|------|------------|------|
+| WEB予約（カレンダー型） | 計画的・情報整理派 | 日時を即確定したい |
+| LINE予約 | コミュニケーション重視派 | 質問してから決めたい・文字派 |
+
+**Locco D/56 でCTA設計 16/20（シリーズ最高）を実現した確認済みパターン**
+
+---
+
 ## デザイン原則
 
 ### ボタンカラー（業種別）
@@ -229,6 +354,6 @@
 
 ## 統計・メモ
 
-- 登録CTAパターン数: 7
+- 登録CTAパターン数: 9（美容室LP 辞典統合 2026-06-22 時点）
 - Phase 3 育成開始条件: LP辞典100パターン到達後
-- 最終更新: 2026-06-20
+- 最終更新: 2026-06-22（CTA-008〜009 追加 / 美容室LP辞典統合）

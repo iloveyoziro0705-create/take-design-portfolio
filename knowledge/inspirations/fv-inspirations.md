@@ -169,7 +169,88 @@ h2 { font-size: clamp(28px, 4vw, 50px); }
 
 ---
 
+## FVINS-005: 縦書きFVコピー × 施術シーン写真（和の品格）
+
+**出典**: Hériter（ヘリテ）/ 2026-06-20-heriter-beauty-salon.md  
+**業種タグ**: #beauty #salon #japanese #heritage #natural  
+**LP-Rank**: B（70/100）  
+**参考箇所**: FVコピー表現・タイポグラフィ設計
+
+### 参考要素
+- 縦書きメインコピー「毎日のために 心地のよいスタイルを」が和の品格と温かみを同時表現
+- フランス語ブランド名（Hériter）と縦書き日本語コピーの対比で「洋×和」の独自世界観
+- 施術シーン（スタイリスト + お客様）の写真が「どんな空間で施術を受けるか」をFVで即座に伝える
+- コピーは「日常」訴求（特別な日ではなく毎日のために）でリピート来店の動機を形成
+
+### 適用可能業種
+美容サロン・日本料理・旅館・茶道・和雑貨・老舗ブランド全般
+
+### 実装メモ
+```css
+/* 縦書きコピーの基本設定 */
+.fv-copy-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(20px, 3vw, 38px);
+  letter-spacing: .18em;
+  line-height: 1.9;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+/* モバイルでは横書きに */
+@media (max-width: 767px) {
+  .fv-copy-vertical {
+    writing-mode: horizontal-tb;
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
+```
+
+---
+
+## FVINS-006: 英語哲学型FVコピー × ミニマリスト施術写真
+
+**出典**: Invincible Hair MADA / 2026-06-20-mada-beauty-salon.md  
+**業種タグ**: #beauty #salon #monochrome #minimal #stylish #philosophy  
+**LP-Rank**: A（80/100）  
+**参考箇所**: FVコピー表現・世界観設計（GEN-001シリーズ唯一のFV満点事例）
+
+### 参考要素
+- 「BE YOURSELF. FOR ALWAYS.」全大文字英語短文2連で哲学的価値観を即座に表明
+- ピリオド（.）で1文ずつ完結させることで重みと断言の印象を強める
+- モノクロ背景 + コーラルアクセントというシンプルな配色がコピーを際立たせる
+- 業種説明・悩み共感型コピーを使わないことでターゲットのセルフスクリーニングが成立
+
+### 適用可能業種
+美容サロン（スタイリッシュ系）・アパレル・フィットネス・ライフスタイルブランド・コーポレート（ブランド系）
+
+### 実装メモ
+```css
+/* 英語哲学コピーのスタイル */
+.fv-title-philosophy {
+  font-family: 'Jost', 'Montserrat', 'Inter', sans-serif;
+  font-size: clamp(42px, 7vw, 90px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #fff;
+  line-height: 1.15;
+}
+/* 補足の日本語コピー */
+.fv-subtitle-ja {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(13px, 1.8vw, 17px);
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.8);
+  margin-top: 20px;
+  line-height: 2;
+}
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 4
-- 最終更新: 2026-06-20
+- 登録事例数: 6（美容室LP 辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（FVINS-005〜006 追加 / 美容室LP辞典統合）

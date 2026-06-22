@@ -180,7 +180,57 @@
 
 ---
 
+## CTAINS-005: ヘッダーナビ内のカラー強調Reserveボタン
+
+**出典**: Invincible Hair MADA / 2026-06-20-mada-beauty-salon.md  
+**業種タグ**: #beauty #salon #stylish #minimal  
+**LP-Rank**: A（80/100）  
+**参考箇所**: ヘッダーCTA設計
+
+### 参考要素
+- ナビゲーション内のリンク項目すべてがテキストリンクの中で「Reserve」だけがコーラルカラーのカラーボタン
+- ヘッダーが `position: sticky` で固定されているため、スクロール中も常時視界に予約ボタンが存在する
+- ボタンの存在がナビ全体のデザインのアクセントカラーとしても機能している（配色の一貫性）
+- スマホ固定フッターCTAと組み合わせることで画面の上端・下端の両方に予約を常駐させる二重構造
+
+### 適用可能業種
+美容・クリニック・エステ・個人サービス・飲食（予約必須型）・士業・スクール
+
+### 実装メモ
+```css
+/* ヘッダーナビ — テキストリンク */
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: .05em;
+  padding: 8px 12px;
+}
+/* 予約ボタンだけカラー強調 */
+nav a.nav-reserve {
+  background: var(--accent);   /* #e05050 など */
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: opacity .2s;
+}
+nav a.nav-reserve:hover { opacity: .85; }
+
+/* ヘッダー固定 */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+}
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 4
-- 最終更新: 2026-06-20
+- 登録事例数: 5（美容室LP 辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（CTAINS-005 追加 / 美容室LP辞典統合）
