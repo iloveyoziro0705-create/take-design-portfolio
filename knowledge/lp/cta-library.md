@@ -198,6 +198,222 @@
 
 ---
 
+## CTA-008: ヘッダーナビ内カラー強調予約ボタン型
+
+**用途**: ヘッダー固定ナビゲーション内での予約ボタン差別化  
+**CV率特性**: スクロール中の視認性確保・常時接触・FAIL-001回避
+
+### 構成
+```html
+<nav>
+  <a href="#">HOME</a>
+  <a href="#">CONCEPT</a>
+  <a href="#">MENU</a>
+  <a href="#">GALLERY</a>
+  <!-- この予約ボタンだけカラーで塗りつぶし -->
+  <a href="#reserve" class="nav-reserve-btn">Reserve</a>
+</nav>
+```
+
+### スタイル
+```css
+.nav-reserve-btn {
+  background: var(--accent); /* ブランドカラー */
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: opacity .2s;
+}
+.nav-reserve-btn:hover { opacity: .85; }
+
+/* ヘッダー固定 */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(10px);
+}
+```
+
+### 配置ルール
+- ヘッダー固定（`position: sticky`）必須
+- ナビ最右端に配置（視線が自然に予約ボタンへ着地）
+- スマホ固定フッターCTAと組み合わせることで上下両端に予約を常駐させる
+
+### 効果的なテキスト
+| テキスト | 適用場面 |
+|---------|---------|
+| 「Reserve」 | スタイリッシュ系サロン（英字） |
+| 「ご予約」 | 親しみやすい系サロン（日本語） |
+| 「予約する」 | 明確な行動喚起型 |
+| 「WEB予約」 | 24時間対応を示唆 |
+
+---
+
+## CTA-009: WEB予約+LINE 2択フッターCTA型（美容系標準）
+
+**用途**: フッター・最終CTA・スマホ固定フッターでの2択構成  
+**CV率特性**: ユーザーの好み分散に対応・取りこぼし最小化・FAIL-006回避
+
+### 構成
+```html
+<!-- スマホ固定フッターCTA -->
+<div class="sticky-cta-2col">
+  <a href="#web-reserve" class="btn btn--web">
+    <svg><!-- カレンダーアイコン --></svg>
+    WEB予約する
+  </a>
+  <a href="https://lin.ee/XXXXX" class="btn btn--line">
+    <svg><!-- LINEアイコン --></svg>
+    LINEで予約
+  </a>
+</div>
+```
+
+### スタイル
+```css
+.sticky-cta-2col {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  z-index: 9999;
+}
+.btn--web {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 12px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn--line {
+  background: #06c755;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 12px;
+  font-weight: 700;
+  font-size: 15px;
+}
+@media (min-width: 768px) {
+  .sticky-cta-2col { display: none; }
+}
+```
+
+### 2択の心理設計
+| ボタン | 対象ユーザー | 特性 |
+|------|------------|------|
+| WEB予約（カレンダー型） | 計画的・情報整理派 | 日時を即確定したい |
+| LINE予約 | コミュニケーション重視派 | 質問してから決めたい・文字派 |
+
+**Locco D/56 でCTA設計 16/20（シリーズ最高）を実現した確認済みパターン**
+
+---
+
+## CTA-010: 来店誘導型CTA（地図+電話 / 予約不要型飲食店）
+
+**用途**: 予約不要の来店誘導型飲食店（ラーメン・焼肉・カウンター・ファストカジュアル）のCTA設計  
+**CV率特性**: 業態に合った最適CVアクションへ誘導し、ミスマッチによる離脱を防ぐ
+
+### 業態別CTA設計ルール
+
+| 業態タイプ | 最適CTA | NG例（ミスマッチ）|
+|----------|---------|----------------|
+| 来店誘導型 | [地図を見る] + [電話する] | 「ご予約はこちら」（予約不要なのに混乱を招く）|
+| 予約必須型 | [ネット予約] + [電話予約] | 地図ボタンのみ（予約への誘導が弱い）|
+| 宴会対応型 | [宴会予約する] + [地図を見る] | 地図なし（来店確認ができない）|
+
+**注意**: IND-002に記録の通り、来店誘導型に「予約ボタンなし」は欠陥ではなく正解。
+
+### 実装（来店誘導型）
+```html
+<div class="cta-visit">
+  <a href="https://maps.google.com/?q=[店舗住所]" class="btn btn--map" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+    </svg>
+    地図を見る
+  </a>
+  <a href="tel:0X-XXXX-XXXX" class="btn btn--tel">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </svg>
+    電話で確認する
+  </a>
+</div>
+```
+
+### スタイル
+```css
+.cta-visit {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn--map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2a6aad;   /* Googleマップブルー系 */
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(42,106,173,.35);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn--map:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(42,106,173,.45);
+}
+.btn--tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background .2s, color .2s;
+}
+.btn--tel:hover {
+  background: var(--accent);
+  color: #fff;
+}
+```
+
+### 2択の設計意図
+| ボタン | 対象ユーザー | 心理段階 |
+|------|------------|---------|
+| 地図を見る | アクセス確認 → 来店直結 | 「行けるかどうか確認したい」段階 |
+| 電話で確認 | 混雑確認・席数確認 | 「今夜行くか迷っている」段階 |
+
+### 配置ルール
+- フッター最終CTA: 必須（来店誘導型の核心）
+- ヘッダー右端: 電話番号テキストリンクのみ（常時表示）
+- セクション末尾: 「地図を見る」1択でOK（重複させすぎない）
+- スマホ固定フッター: `btn--map`（大）+ `btn--tel`（小）の2択
+
+---
+
 ## デザイン原則
 
 ### ボタンカラー（業種別）
@@ -229,6 +445,6 @@
 
 ## 統計・メモ
 
-- 登録CTAパターン数: 7
+- 登録CTAパターン数: 10（飲食LP 辞典統合 2026-06-22 時点）
 - Phase 3 育成開始条件: LP辞典100パターン到達後
-- 最終更新: 2026-06-20
+- 最終更新: 2026-06-22（CTA-010 追加 / 飲食LP辞典統合）
