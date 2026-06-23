@@ -11,10 +11,23 @@
 
 ## 現在のステータス
 
-**予約済み（テンプレート本体は未作成）**
+**Knowledge Extraction Phase STEP5 完了（2026-06-23）**
 
-knowledge/learning-history/ に分析データが蓄積され、
-各業種で LP-Rank S / S+ の案件が複数確認された段階でテンプレート作成を開始する。
+60本のLP分析から得られた知識を業種別テンプレート（.md形式）として整備済み。
+各テンプレートはセクション別HTML/CSS・デザイントークン・FAILパターン回避ガイドを含む。
+
+---
+
+## 整備済みテンプレート一覧
+
+| テンプレートファイル | 対象業種 | 参照パターン |
+|-----------------|---------|------------|
+| `beauty-template.md` | 美容サロン・エステ・ネイル・ヘア | IND-001 / FV-001〜012 / CTA-001, 008, 009 |
+| `recruit-template.md` | 採用全般（福祉・飲食・IT・保育） | IND-003, 004 / FV-013, 017, 018, 021 / CTA-005, 014 |
+| `medical-template.md` | クリニック・整体・美容医療・歯科 | IND-005 / FV-014, 015, 016 / CTA-012 |
+| `restaurant-template.md` | 飲食店・居酒屋・宴会対応店 | IND-002 / FV-011, 025, 026 / CTA-010, 016 |
+| `school-template.md` | デザイン・AI・転職スクール | IND-006 / FV-019, 020, 021 / CTA-003, 013 |
+| `saas-template.md` | SaaS・BtoBサービス・業務ツール | IND-008 / FV-022〜030 / CTA-011, 015 |
 
 ---
 
@@ -22,12 +35,8 @@ knowledge/learning-history/ に分析データが蓄積され、
 
 | テンプレート名 | 対象業種 | 追加条件 |
 |-------------|---------|---------|
-| `beauty-salon-lp.html` | 美容サロン・エステ・脱毛 | 美容系Sランク案件3件以上の分析完了後 |
-| `recruit-lp.html` | 採用（正社員・パート） | 採用系Sランク案件3件以上の分析完了後 |
-| `job-lp.html` | 住み込み求人・季節労働 | 求人系Sランク案件3件以上の分析完了後 |
-| `clinic-lp.html` | 整骨院・鍼灸院・クリニック | 医療系Sランク案件3件以上の分析完了後 |
-| `restaurant-lp.html` | 飲食店・レストラン | 飲食系Sランク案件3件以上の分析完了後 |
-| `wordpress-base/` | WordPress 汎用構成 | WordPress案件3件以上の実績完了後 |
+| `wordpress-base.md` | WordPress 汎用構成 | WordPress案件3件以上の実績完了後 |
+| `finance-template.md` | 金融・保険・士業 | IND-007 系LP分析5件完了後 |
 
 ---
 
