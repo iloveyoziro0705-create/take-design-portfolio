@@ -300,7 +300,84 @@ header {
 
 ---
 
+---
+
+## CTAINS-007: ヘッダー英語バッジ付き二択CTA（プレミアム医療型）
+
+**出典**: にしむら歯科クリニック（GEN-004-003）/ 2026-06-22-nishimura-dental-lp.md  
+**業種タグ**: #dental #medical #beauty-clinic #luxury #header-cta  
+**LP-Rank**: D（デザイン参考のみ）  
+**参考箇所**: ヘッダーCTA設計・来院種別セルフナビゲーション
+
+### CTAの構造
+```
+[ヘッダー右端の2択CTA]
+┌──────────────────────────────────────────┐
+│  ┌──────────────────┐  ┌──────────────────┐  │
+│  │ New Patient     │  │ Current Patient │  │
+│  │ Appointment     │  │ Appointment     │  │
+│  └──────────────────┘  └──────────────────┘  │
+└──────────────────────────────────────────┘
+    （英語バッジ付き2択ボタン / ヘッダー固定）
+```
+
+### 設計思想
+- **英語バッジの機能**: 「New Patient / Current Patient」の英語表記が「高い医療水準・国際的なクリニック」を暗示。日本語より英語の方がプレミアム感を演出しやすい
+- **二択の論理**: 「初診」「再診」の来院種別によるセルフナビゲーション。誘導先を分けることで双方の体験（初診フォーム / 再診フォーム）を最適化できる
+- **配置のメリット**: ヘッダー固定のため全ページで常に視認できる。スクロールに依存しない予約機会の確保（FAIL-014の部分解消）
+- **ターゲット絞り込み効果**: 英語バッジは「英語に抵抗のない、プレミアム意識の高い患者」を自然にフィルタリングするセルフスクリーニング効果
+
+### 適用可能業種
+美容歯科・美容クリニック・インターナショナルクリニック・高級サロン（エステ / ネイル / ヘア）
+
+### 注意点
+- 英語バッジは対象業種のターゲット層が「英語に抵抗がない」場合のみ有効
+- 一般内科・地域密着型クリニックでは英語バッジが「敷居の高さ」に転化するリスクがある
+- 二択CTAは「どちらを押せばいいか迷わない」よう、2つの違いを一目で判断できる表現にすること
+
+### 実装メモ
+```html
+<!-- ヘッダー英語バッジ付き二択CTA例 -->
+<div class="header-cta-pair">
+  <a href="/new-patient" class="cta-btn cta-new">
+    <span class="badge-en">New Patient</span>
+    <span class="label-ja">初診のご予約</span>
+  </a>
+  <a href="/current-patient" class="cta-btn cta-current">
+    <span class="badge-en">Current Patient</span>
+    <span class="label-ja">再診のご予約</span>
+  </a>
+</div>
+```
+
+```css
+.header-cta-pair { display: flex; gap: 8px; }
+.cta-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.cta-new { background: var(--accent); color: #fff; }
+.cta-current {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.badge-en {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.label-ja { font-size: 12px; margin-top: 2px; }
+```
+
+---
+
 ## 統計
 
-- 登録事例数: 6（採用LP 辞典統合 2026-06-22 時点）
-- 最終更新: 2026-06-22（CTAINS-006 追加 / 採用LP辞典統合）
+- 登録事例数: 7（GEN-004 医療系LP辞典統合 2026-06-22 時点）
+- 最終更新: 2026-06-22（CTAINS-007 追加 / 医療系LP辞典統合）
