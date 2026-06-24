@@ -23,6 +23,8 @@
 | ファーストビュー | `knowledge/lp/fv-library.md` | FV構成 / コピー構造 / 視線誘導 / FVレイアウト |
 | CTA | `knowledge/lp/cta-library.md` | CTAパターン / CTA文言 / CTA配置 / CTAデザイン |
 | 業種別知識 | `knowledge/lp/industry-patterns.md` | 業種別構成 / 業種別導線 / 業種別CTA推奨 |
+| 感情訴求トリガー | `knowledge/lp/emotional-triggers.md` | 感情トリガー（TRIG-XXX）/ 悩み共感 / 理想投影 / 損失回避 / 緊急性 |
+| オファー設計 | `knowledge/lp/offer-library.md` | オファー（OFFER-XXX）/ 初回割引 / 無料相談 / 返金保証 / 期間限定 |
 | デザインシステム | `knowledge/web/design-system.md` | 配色 / 余白 / カード / ボタン / 見出し |
 | UIコンポーネント | `knowledge/web/ui-patterns.md` | UI構造 / ナビゲーション / コンポーネント実装 |
 | CV改善 | `knowledge/web/conversion-patterns.md` | CV改善 / 離脱防止 / マイクロコンバージョン / 心理学 |
@@ -108,6 +110,8 @@ grep -r "[キーワード]" knowledge/ で既存知識を検索
 | FVのコピー構造 | `fv-library.md` | FV知識はFV辞典に集約 |
 | LP全体の心理設計 | `lp-design-dictionary.md` | 構成・導線・心理構造はLP辞典 |
 | 心理学トリガーの定義 | `conversion-patterns.md` | CVR改善の科学的根拠は変換辞典 |
+| 感情訴求トリガーの定義 | `emotional-triggers.md` | LP感情訴求の分類・コピー例・選定ロジックはここに集約 |
+| オファー設計パターン | `offer-library.md` | 割引・無料相談・返金保証等のオファー種別はここに集約 |
 | 色・フォントの使用例 | `design-system.md` | デザイントークンはデザインシステム |
 | 色・フォントのインスピレーション事例 | `inspirations/design-inspirations.md` | 事例はinspirationsへ |
 | 実施した実案件の記録 | `case-studies/` | 自社制作案件のみ |
@@ -154,3 +158,4 @@ grep -rh "^## Pattern-LP-[0-9]" knowledge/ | sort | uniq -d
 |----------|--------|---------|
 | 1.0 | 2026-06-20 | 初版作成。SST マップ・重複禁止ルール・カテゴリ境界定義 |
 | 1.1 | 2026-06-20 | ジャンル自動判定ファイル（genre-auto-detection.md）をSSTマップに追加 |
+| 1.2 | 2026-06-24 | 感情訴求トリガー（emotional-triggers.md）・オファー設計（offer-library.md）をSSTマップ・カテゴリ境界テーブルに追加 |

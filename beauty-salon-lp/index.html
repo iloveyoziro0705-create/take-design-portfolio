@@ -299,6 +299,52 @@
 
     .hero-cta-note { font-size: 12px; color: var(--sub); margin-top: 10px; }
 
+    /* hero証拠バー */
+    .hero-proof {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-proof-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-proof-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .hero-proof-item span { font-size: 10px; color: var(--sub); margin-top: 2px; }
+
+    /* hero緊急性バッジ */
+    .hero-urgency { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .hero-urgency-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: .04em;
+    }
+    .hero-urgency-badge.outline {
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1.5px solid var(--accent);
+    }
+
     /* — right image — */
     .hero-image { position: relative; }
     .hero-img-placeholder {
@@ -976,6 +1022,103 @@
     .voice-name { font-size: 13px; font-weight: 700; color: var(--text); }
     .voice-attr { font-size: 11px; color: var(--sub); margin-top: 2px; }
 
+    /* voice ストーリー型 */
+    .voice-story {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 12px;
+      background: var(--bg-beige);
+      border-radius: var(--radius-sm);
+    }
+    .voice-story-item {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .voice-story-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .05em;
+      padding: 2px 5px;
+      background: var(--bg-pink);
+      border: 1px solid var(--accent-light);
+      border-radius: 4px;
+      white-space: nowrap;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .voice-story-text { font-size: 12px; color: var(--text); line-height: 1.6; }
+    .voice-comment {
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.8;
+      margin-bottom: 12px;
+      font-style: italic;
+      padding-left: 10px;
+      border-left: 2px solid var(--accent-light);
+    }
+
+    /* ========== TRUST ========== */
+    .trust { background: var(--bg-pink); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .trust-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .trust-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+    .trust-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1.1;
+      display: block;
+    }
+    .trust-num small { font-family: 'Noto Sans JP', sans-serif; font-size: 16px; }
+    .trust-label { font-size: 13px; font-weight: 700; color: var(--text); margin-top: 4px; display: block; }
+    .trust-sub { font-size: 11px; color: var(--sub); margin-top: 4px; }
+    .trust-certs { margin-top: 40px; }
+    .trust-certs-title {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sub);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .trust-cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .trust-cert-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1.5px solid var(--accent-light);
+      border-radius: 50px;
+      padding: 7px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .trust-cert-item::before { content: '🏅'; font-size: 13px; }
+
     /* ========== 12. FAQ ========== */
     .faq { background: var(--bg-pink); }
     .faq-list {
@@ -1147,10 +1290,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      transform: translateY(100%);
-      transition: transform .35s ease;
     }
-    .fixed-cta.show { transform: translateY(0); }
     .fixed-cta-text { color: rgba(255,255,255,.7); font-size: 12px; line-height: 1.4; }
     .fixed-cta-text strong { color: var(--white); font-size: 14px; display: block; }
     .fixed-cta-btn {
@@ -1220,6 +1360,9 @@
       .owner-photo { aspect-ratio: 3/2; }
 
       .voice-grid { grid-template-columns: 1fr; }
+      .voice-story-item { grid-template-columns: 68px 1fr; }
+
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
 
       .access-inner { grid-template-columns: 1fr; }
 
@@ -1266,25 +1409,46 @@
     <div class="hero-inner">
 
       <div class="hero-text">
-        <!-- 悩み -->
+        <!-- ① 悩み層 -->
         <div class="hero-problem fadeUp">
-          肌のハリ不足・毛穴・くすみが気になる方へ
+          毛穴・くすみ・乾燥肌でお悩みの方へ
         </div>
 
-        <!-- 理想 -->
+        <!-- ② 主見出し（悩み訴求） -->
         <h1 class="hero-title fadeUp">
-          完全個室で、<br>
-          <em>自分だけの時間</em>を。<br>
-          <span style="font-size:.72em; color:var(--sub); font-family:'Noto Sans JP',sans-serif; font-weight:400;">はじめてでも、ひとりで来ても、安心です。</span>
+          ファンデーションで隠す毎日、<br>
+          <em>もう終わりにしませんか。</em>
         </h1>
+
+        <!-- ③ 理想層 -->
         <p class="hero-ideal fadeUp">
-          女性スタッフのみ・無理な勧誘なし・都度払いOK。<br>
-          あなたのペースで、ずっと通えるサロンを目指しています。
+          素肌に自信を持てる自分へ。<br>
+          完全個室で、あなただけの肌再生プログラムを。
         </p>
 
-        <!-- オファー -->
+        <!-- ④ 証拠層（ミニ実績バー） -->
+        <div class="hero-proof fadeUp">
+          <div class="hero-proof-item">
+            <strong>3,200名+</strong><span>施術実績</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>★4.8</strong><span>口コミ評価</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>8年</strong><span>施術経験</span>
+          </div>
+        </div>
+
+        <!-- ⑤ 緊急性バッジ -->
+        <div class="hero-urgency fadeUp">
+          <span class="hero-urgency-badge">🎁 初回限定</span>
+          <span class="hero-urgency-badge outline">⏰ 期間限定特価</span>
+          <span class="hero-urgency-badge">50%OFF</span>
+        </div>
+
+        <!-- ⑥ オファー層 -->
         <div class="hero-offer fadeUp">
-          <span class="hero-offer-label">初回限定オファー</span>
+          <span class="hero-offer-label">初回特別オファー</span>
           <div class="hero-offer-prices">
             <div>
               <div style="font-size:11px; color:var(--sub); margin-bottom:2px;">通常価格</div>
@@ -1302,16 +1466,10 @@
           <p class="hero-price-note">税込 ／ 初回ご来店のみ ／ 全メニュー対象 ／ 当日追加料金なし</p>
         </div>
 
-        <!-- badges -->
-        <div class="hero-badges fadeUp">
-          <span class="hero-badge"><span class="hero-badge-icon">★</span>口コミ 4.8</span>
-          <span class="hero-badge"><span class="hero-badge-icon">🚪</span>完全個室</span>
-          <span class="hero-badge"><span class="hero-badge-icon">👩</span>女性スタッフのみ</span>
-        </div>
-
+        <!-- CTA層 -->
         <a href="#line-reserve" class="btn-line fadeUp">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.05 2 11.08c0 2.49 1.09 4.72 2.85 6.33l-.74 2.73 2.84-1.46c.98.27 2.01.42 3.05.42 5.52 0 10-4.05 10-9.02C20 6.05 17.52 2 12 2z"/></svg>
-          LINEで初回予約をする（5,980円〜）
+          この価格でLINE予約する（5,980円〜）
         </a>
         <p class="hero-cta-note fadeUp">📱 LINEアプリで友達追加 → 日程をお送りください</p>
       </div>
@@ -1760,6 +1918,55 @@
   </section>
 
   <!-- ==============================
+       10.5 TRUST — 資格・実績・信頼性
+  ============================== -->
+  <section class="trust" id="trust">
+    <div class="inner">
+      <div class="section-header">
+        <span class="section-label fadeUp">Credentials &amp; Track Record</span>
+        <h2 class="section-title fadeUp">資格・実績・信頼性</h2>
+        <p class="section-sub fadeUp">確かな技術と6年の実績に裏打ちされた、安心のサロンです。</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card fadeUp">
+          <span class="trust-icon">👩‍⚕️</span>
+          <span class="trust-num">3,200<small>名+</small></span>
+          <span class="trust-label">累計施術実績</span>
+          <p class="trust-sub">開業以来2020〜2026年</p>
+        </div>
+        <div class="trust-card fadeUp">
+          <span class="trust-icon">🏠</span>
+          <span class="trust-num">6<small>年</small></span>
+          <span class="trust-label">サロン運営歴</span>
+          <p class="trust-sub">2020年独立開業〜現在</p>
+        </div>
+        <div class="trust-card fadeUp">
+          <span class="trust-icon">⭐</span>
+          <span class="trust-num">★4.8</span>
+          <span class="trust-label">口コミ平均評価</span>
+          <p class="trust-sub">87件の口コミ</p>
+        </div>
+        <div class="trust-card fadeUp">
+          <span class="trust-icon">📰</span>
+          <span class="trust-num">12<small>媒体</small></span>
+          <span class="trust-label">メディア掲載実績</span>
+          <p class="trust-sub">美容誌・WEBメディア掲載</p>
+        </div>
+      </div>
+      <div class="trust-certs">
+        <p class="trust-certs-title">— 保有資格・認定 —</p>
+        <div class="trust-cert-list">
+          <span class="trust-cert-item">日本エステティック協会 認定エステティシャン</span>
+          <span class="trust-cert-item">CIDESCO 国際資格</span>
+          <span class="trust-cert-item">アロマテラピー検定1級</span>
+          <span class="trust-cert-item">美容師免許</span>
+          <span class="trust-cert-item">日本化粧品検定1級</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
        11. VOICE
   ============================== -->
   <section class="voice" id="voice">
@@ -1774,9 +1981,24 @@
         <span class="voice-count">/ 5.0（口コミ87件）</span>
       </div>
       <div class="voice-grid">
+
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
-          <p class="voice-text">「エステって勧誘がこわくて行けなかったんですが、ここは本当にしつこくなくて感動。施術も毛穴がすっきりしてやみつきになりそうです！」</p>
+          <div class="voice-story">
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店前の悩み</span>
+              <span class="voice-story-text">毛穴の黒ずみが気になりファンデーションを厚塗り。でも勧誘が怖くてエステへ踏み出せなかった</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店の決め手</span>
+              <span class="voice-story-text">「勧誘なし」「完全個室」の文字を見て「ここなら安心」と思えた</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">施術後の変化</span>
+              <span class="voice-story-text">毛穴がすっきりしてファンデーションが薄くなった。もう少し続けてみたい！</span>
+            </div>
+          </div>
+          <p class="voice-comment">エステって勧誘がこわくて行けなかったんですが、ここは本当にしつこくなくて感動。施術も毛穴がすっきりしてやみつきになりそうです！</p>
           <div class="voice-author">
             <div class="voice-avatar">👩</div>
             <div>
@@ -1785,9 +2007,24 @@
             </div>
           </div>
         </div>
+
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
-          <p class="voice-text">「完全個室なので人の目を気にせずリラックスできました。スタッフさんがすごく丁寧で、肌悩みをちゃんと聞いてくれて安心感が違います。」</p>
+          <div class="voice-story">
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店前の悩み</span>
+              <span class="voice-story-text">他のサロンでは大部屋や衝立施術ばかりで恥ずかしかった。本当に個室か不安だった</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店の決め手</span>
+              <span class="voice-story-text">写真を見て「本当に完全個室だ」と確認。女性スタッフのみという点も決め手に</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">施術後の変化</span>
+              <span class="voice-story-text">人の目を気にせずリラックスして受けられた。肌悩みをじっくり聞いてもらえた</span>
+            </div>
+          </div>
+          <p class="voice-comment">完全個室なので人の目を気にせずリラックスできました。スタッフさんがすごく丁寧で、肌悩みをちゃんと聞いてくれて安心感が違います。</p>
           <div class="voice-author">
             <div class="voice-avatar">👩</div>
             <div>
@@ -1796,9 +2033,24 @@
             </div>
           </div>
         </div>
+
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
-          <p class="voice-text">「初回5,980円でこのクオリティは驚きました。たるみが気になっていたのに、施術後は頬がリフトアップした感じ！毎月通いたいと思います。」</p>
+          <div class="voice-story">
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店前の悩み</span>
+              <span class="voice-story-text">30代後半からたるみとほうれい線が気になり始めた。高いお金を出す覚悟がなかった</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店の決め手</span>
+              <span class="voice-story-text">初回5,980円というお試し価格。失敗しても大丈夫な金額だから試せた</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">施術後の変化</span>
+              <span class="voice-story-text">施術後は頬がリフトアップした感じ！このクオリティで5,980円は驚き</span>
+            </div>
+          </div>
+          <p class="voice-comment">初回5,980円でこのクオリティは驚きました。たるみが気になっていたのに、施術後は頬がリフトアップした感じ！毎月通いたいと思います。</p>
           <div class="voice-author">
             <div class="voice-avatar">👩</div>
             <div>
@@ -1807,9 +2059,24 @@
             </div>
           </div>
         </div>
+
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★☆</div>
-          <p class="voice-text">「他サロンで高額契約をさせられた経験があって怖かったんですが、本当に勧誘がなくて安心しました。都度払いなので自分のペースで通えるのも嬉しい。」</p>
+          <div class="voice-story">
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店前の悩み</span>
+              <span class="voice-story-text">他サロンで無理に高額コース契約をさせられた経験があり、エステが怖くなっていた</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店の決め手</span>
+              <span class="voice-story-text">都度払いOK・コース不要という一文。自分のペースで通える仕組みが信頼できた</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">施術後の変化</span>
+              <span class="voice-story-text">本当に勧誘がなかった。終わってから「また来てみようかな」と思えるのが初めての体験</span>
+            </div>
+          </div>
+          <p class="voice-comment">他サロンで高額契約をさせられた経験があって怖かったんですが、本当に勧誘がなくて安心しました。都度払いなので自分のペースで通えるのも嬉しい。</p>
           <div class="voice-author">
             <div class="voice-avatar">👩</div>
             <div>
@@ -1818,9 +2085,24 @@
             </div>
           </div>
         </div>
+
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
-          <p class="voice-text">「駅から3分で仕事帰りに寄れるのが最高です。くすみが気になっていたのに、施術後は顔色が全然違う！同僚に『何かいいことあった？』と言われました（笑）」</p>
+          <div class="voice-story">
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店前の悩み</span>
+              <span class="voice-story-text">くすみと疲れ顔が悩み。でも仕事帰りに寄れるサロンが近くになかった</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">来店の決め手</span>
+              <span class="voice-story-text">渋谷駅徒歩3分という立地。仕事帰りにそのまま寄れると知って予約した</span>
+            </div>
+            <div class="voice-story-item">
+              <span class="voice-story-label">施術後の変化</span>
+              <span class="voice-story-text">顔色が全然違うと同僚に驚かれた。「何かいいことあった？」と言われて嬉しかった</span>
+            </div>
+          </div>
+          <p class="voice-comment">駅から3分で仕事帰りに寄れるのが最高です。くすみが気になっていたのに、施術後は顔色が全然違う！同僚に「何かいいことあった？」と言われました（笑）</p>
           <div class="voice-author">
             <div class="voice-avatar">👩</div>
             <div>
@@ -1829,6 +2111,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -2032,12 +2315,6 @@
       });
     }, { threshold: 0.10 });
     document.querySelectorAll('.fadeUp').forEach(el => observer.observe(el));
-
-    // 固定フッターCTA（PATTERN-001）
-    const fixedCta = document.getElementById('fixedCta');
-    window.addEventListener('scroll', () => {
-      fixedCta.classList.toggle('show', window.scrollY > 500);
-    }, { passive: true });
 
     // FAQアコーディオン
     function toggleFaq(el) {
