@@ -1,7 +1,8 @@
 # Emotional Triggers Library — 感情訴求トリガー辞典
 
-**バージョン**: 1.0  
+**バージョン**: 1.1  
 **作成日**: 2026-06-24  
+**更新日**: 2026-06-24  
 **管理ルール**: `knowledge/governance.md` の SST マップ参照（感情訴求トリガーの定義はここに集約）
 
 ---
@@ -434,8 +435,37 @@ LPコピーで使用する感情訴求トリガーを体系化し、再現可能
 
 ---
 
+## FV Copy Library との紐付け
+
+各FVコピーパターンと感情トリガーの対応は `knowledge/lp/fv-copy-library.md` を参照。
+
+| FV-COPY-ID | 主感情トリガー | 副感情トリガー |
+|-----------|-------------|-------------|
+| FV-COPY-001（肌悩み直撃） | TRIG-001 | TRIG-005, TRIG-008 |
+| FV-COPY-002（素肌美イメージ） | TRIG-003 | TRIG-004 |
+| FV-COPY-003（完全個室差別化） | TRIG-006 | TRIG-002 |
+| FV-COPY-004（放置リスク） | TRIG-005 | TRIG-008, TRIG-007 |
+| FV-COPY-005（実績数字信頼） | TRIG-010 | TRIG-002 |
+| FV-COPY-006（資格権威） | TRIG-002 | TRIG-004 |
+| FV-COPY-007（初回体験オファー） | TRIG-007 | TRIG-008, TRIG-002 |
+| FV-COPY-008（肌タイプ診断） | TRIG-001 | TRIG-009 |
+| FV-COPY-009（オーナーストーリー） | TRIG-002 | TRIG-001 |
+| FV-COPY-010（憧れ美肌） | TRIG-004 | TRIG-009 |
+| FV-COPY-011（職場悩み直撃） | TRIG-001 | TRIG-005 |
+| FV-COPY-019（低ハードル相談） | TRIG-002 | TRIG-001 |
+| FV-COPY-021（症状直撃） | TRIG-001 | TRIG-010 |
+| FV-COPY-024（放置悪化リスク） | TRIG-005 | TRIG-008 |
+| FV-COPY-031（食欲感覚訴求） | TRIG-004 | — |
+| FV-COPY-041（スキル不満） | TRIG-001 | TRIG-009 |
+| FV-COPY-044（行動しないリスク） | TRIG-005 | — |
+| FV-COPY-051（業務課題直撃） | TRIG-001 | — |
+| FV-COPY-060（ROI明示） | TRIG-009 | — |
+
+---
+
 ## バージョン管理
 
 | バージョン | 更新日 | 変更内容 |
 |----------|--------|---------|
 | 1.0 | 2026-06-24 | 初版作成。TRIG-001〜010の10カテゴリ + 選定マトリクス |
+| 1.1 | 2026-06-24 | FV Copy Library（fv-copy-library.md）との紐付けテーブルを追加 |
