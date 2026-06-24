@@ -1,7 +1,7 @@
 # AGENTS.md — AI Design Company ナレッジ運用ルール
 
-**バージョン**: 2.2  
-**更新日**: 2026-06-20
+**バージョン**: 2.3  
+**更新日**: 2026-06-24
 
 ---
 
@@ -10,6 +10,31 @@
 GitHub上のナレッジベース（`knowledge/`）を唯一の情報源とし、
 どの端末・どのClaude Code・どのセッションからアクセスしても
 同じ品質でLP・ホームページ・WordPressサイトを提案・設計・制作できる状態を維持する。
+
+---
+
+## 制作開始前の必須確認（最優先）
+
+**LP・HP・WordPress 制作依頼を受けたら、最初に必ず以下を確認すること。**
+
+```
+knowledge/production-rules.md  ← 制作標準手順書（制作フロー全体の起点）
+```
+
+### production-rules.md に従う4原則
+
+1. **ナレッジベース優先**: 独自判断より `knowledge/` 内の既存知識を優先する
+2. **既存Pattern優先**: 新規パターン作成より既存パターン（FV-XXX / CTA-XXX）の活用を優先する
+3. **既存Template優先**: `templates-production/` の業種別テンプレートを最初に参照する
+4. **Case Study保存必須**: 制作完了後は必ず `knowledge/case-studies/` へ記録する
+
+### ゼロから考えない（最重要）
+
+```
+業種判定 → Template選択 → FV選択 → CTA選択 → Design System適用 → 制作 → Case Study保存
+```
+
+この順序で進める。途中ステップをスキップしない。
 
 ---
 
@@ -70,19 +95,22 @@ grep -r "#[業種タグ]" knowledge/learning-history/
 
 ## 制作フロー（順序厳守）
 
-LP制作依頼を受けた場合、必ず以下の順序で実行する。
+**LP・HP・WordPress の制作フロー詳細は `knowledge/production-rules.md` を参照すること。**  
+以下はLP制作の概要。詳細ステップ・チェック項目は production-rules.md に従う。
 
 ```
-1. 業種判定 → 業種タグ（#XXX）を特定
-2. 類似案件検索（knowledge/learning-history/）
-3. Sランク案件の確認
-4. FV選定（fv-library.md の FV-XXX から）
-5. CTA選定（cta-library.md の CTA-XXX から）
-6. 導線設計（FLOW-XXX 参照）
-7. 信頼要素選定（TRUST-XXX 参照）
-8. 情報設計
-9. デザイン提案（design-system.md のトークン適用）
-10. コーディング
+STEP1:  案件分析（業種・ターゲット・オファー・CVポイント抽出）
+STEP2:  業種判定（industry-patterns.md → IND-XXX特定）
+STEP3:  テンプレート選定（templates-production/ を参照）
+STEP4:  FV選定（fv-library.md の選定フローチャートを使用）
+STEP5:  CTA選定（cta-library.md の早引き一覧を使用）
+STEP6:  構成設計（推奨導線を構築）
+STEP7:  コピー設計（FV見出し・中間見出し・CTA文言）
+STEP8:  デザイン設計（design-system.md のトークン適用）
+STEP9:  LP設計書作成（コーディング前に必ず作成）
+STEP10: コーディング
+STEP11: 自己レビュー（failure-patterns.md と照合）
+STEP12: Case Study保存（case-studies/ へ保存）
 ```
 
 ---
@@ -296,13 +324,14 @@ Step 6: Learning Decision に応じて辞典・inspirations/ へ反映
 ```
 knowledge/
 ├── governance.md               ← Single Source of Truth 管理（作業開始前に必読）
+├── production-rules.md         ← 制作標準手順書（LP/HP/WP 制作フロー・品質管理）★NEW
 ├── lp/
 │   ├── lp-design-dictionary.md    ← LP構造パターン辞典（Pattern-LP-XXX）
-│   ├── fv-library.md               ← FVパターン辞典（FV-XXX）
-│   ├── cta-library.md              ← CTAパターン辞典（CTA-XXX）
+│   ├── fv-library.md               ← FVパターン辞典（FV-XXX / FV-001〜030）
+│   ├── cta-library.md              ← CTAパターン辞典（CTA-XXX / CTA-001〜017）
 │   └── industry-patterns.md        ← 業種別LP辞典（IND-XXX）
 ├── web/
-│   ├── design-system.md            ← デザイントークン・タイポ・カラー
+│   ├── design-system.md            ← デザイントークン・15カテゴリUIコンポーネント
 │   ├── ui-patterns.md              ← UIコンポーネント（TRUST/LAYOUT/PROOF/VOICE/FAQ-XXX）
 │   └── conversion-patterns.md      ← CV改善・心理学辞典
 ├── wordpress/
@@ -314,10 +343,19 @@ knowledge/
 │   ├── cta-inspirations.md         ← CTA事例集（CTAINS-XXX）
 │   ├── layout-inspirations.md      ← レイアウト事例集（LAYINS-XXX）
 │   └── design-inspirations.md      ← 配色・世界観事例集（DESINS-XXX）
+├── templates-production/           ← 量産高CVテンプレート（業種別6ジャンル整備済み）
+│   ├── README.md
+│   ├── beauty-template.md          ← 美容サロン・エステ・ネイル
+│   ├── recruit-template.md         ← 採用全般
+│   ├── medical-template.md         ← クリニック・整体・歯科
+│   ├── restaurant-template.md      ← 飲食店・居酒屋・宴会
+│   ├── school-template.md          ← スクール・教育
+│   ├── saas-template.md            ← SaaS・BtoB
+│   └── validation-2026-06-23.md    ← Template Validation Phase 完了レポート
 ├── case-studies/                   ← 実案件記録（自社制作案件）
 │   ├── README.md
 │   └── YYYY-MM-DD-[業種]-[案件名].md
-├── failure-patterns/               ← 失敗パターン辞典（FAIL-XXX）
+├── failure-patterns/               ← 失敗パターン辞典（FAIL-001〜017）
 │   ├── README.md
 │   ├── failure-patterns.md
 │   └── failure-template.md
@@ -335,7 +373,7 @@ knowledge/
 │   ├── lp-analysis-template.md     ← LP分析標準手順書（必須使用）
 │   ├── lp-rank-evaluation-rules.md ← LP-Rank採点基準（必須参照）
 │   └── pattern-naming-rules.md     ← パターン命名規則リファレンス
-├── templates-production/           ← 量産高CVテンプレート置き場（将来追加予定）
+├── analytics/                      ← Pattern利用履歴（実案件5件完了後に運用開始）★NEW
 │   └── README.md
 └── learning-history/
     └── YYYY-MM-DD-[案件名].md      ← 分析履歴（業種タグ・LP-Rank・LP-Score付き）
