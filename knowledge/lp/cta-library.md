@@ -1201,6 +1201,141 @@ header {
 .banquet-notes li::before { content: '※ '; }
 ```
 
+### 宴会予約フォーム実装仕様（GAP-006対応）
+
+**フォームに必要な項目**（飲食宴会予約の最小セット）:
+
+```html
+<!-- 宴会予約フォーム（#banquet-reserve セクション） -->
+<section class="section" id="banquet-reserve">
+  <div class="container container--narrow">
+    <div class="form-header">
+      <p class="form-eyebrow">BANQUET RESERVE</p>
+      <h2 class="form-title">宴会・コース予約フォーム</h2>
+      <p class="form-desc">入力後3営業日以内に確認のご連絡をいたします</p>
+    </div>
+
+    <form class="lp-form" action="#" method="post">
+      <!-- お名前 -->
+      <div class="form-group">
+        <label class="form-label" for="b-name">
+          お名前（幹事様）<span class="form-required">必須</span>
+        </label>
+        <input class="form-input" type="text" id="b-name" name="name"
+          placeholder="例: 山田 太郎" required>
+      </div>
+
+      <!-- 電話番号（宴会は電話必須） -->
+      <div class="form-group">
+        <label class="form-label" for="b-tel">
+          電話番号 <span class="form-required">必須</span>
+        </label>
+        <input class="form-input" type="tel" id="b-tel" name="tel"
+          placeholder="例: 090-1234-5678" required autocomplete="tel">
+        <p class="form-hint">確認のご連絡に使用します</p>
+      </div>
+
+      <!-- 人数 -->
+      <div class="form-group">
+        <label class="form-label" for="b-guests">
+          ご利用人数 <span class="form-required">必須</span>
+        </label>
+        <div class="form-select-wrap">
+          <select class="form-select" id="b-guests" name="guests" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="2-5">2〜5名</option>
+            <option value="6-10">6〜10名</option>
+            <option value="11-20">11〜20名</option>
+            <option value="21-30">21〜30名</option>
+            <option value="31+">31名以上</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 希望コース -->
+      <div class="form-group">
+        <label class="form-label" for="b-course">
+          ご希望コース <span class="form-required">必須</span>
+        </label>
+        <div class="form-select-wrap">
+          <select class="form-select" id="b-course" name="course" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="standard">スタンダードコース（¥3,980〜/人）</option>
+            <option value="premium">プレミアムコース（¥5,980〜/人）</option>
+            <option value="corporate">法人・接待コース（¥8,000〜/人）</option>
+            <option value="consult">相談して決めたい</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 希望日時 -->
+      <div class="form-group">
+        <label class="form-label" for="b-date">
+          ご希望日 <span class="form-required">必須</span>
+        </label>
+        <input class="form-input" type="date" id="b-date" name="date" required>
+      </div>
+
+      <!-- 個室希望 -->
+      <div class="form-group">
+        <p class="form-label">個室のご希望</p>
+        <div class="form-radio-group">
+          <label class="form-radio-label">
+            <input type="radio" name="private" value="yes"> 個室を希望する
+          </label>
+          <label class="form-radio-label">
+            <input type="radio" name="private" value="no" checked> どちらでも可
+          </label>
+        </div>
+      </div>
+
+      <!-- その他 -->
+      <div class="form-group">
+        <label class="form-label" for="b-note">
+          その他ご要望・アレルギー情報 <span class="form-optional">任意</span>
+        </label>
+        <textarea class="form-textarea" id="b-note" name="note"
+          rows="3" placeholder="アレルギー・お祝いのデコレーション希望など"></textarea>
+      </div>
+
+      <!-- プライバシー同意 -->
+      <div class="form-group form-group--checkbox">
+        <label class="form-checkbox-label">
+          <input type="checkbox" name="privacy" required>
+          <span class="form-checkbox-text">
+            <a href="/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block form-submit">
+        宴会予約を申し込む →
+      </button>
+      <p class="form-assurance">✓ 3営業日以内に確認のご連絡をいたします</p>
+    </form>
+  </div>
+</section>
+```
+
+```css
+/* ラジオボタングループ */
+.form-radio-group { display: flex; gap: 24px; flex-wrap: wrap; }
+.form-radio-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 15px; cursor: pointer;
+}
+.form-radio-label input[type="radio"] {
+  width: 18px; height: 18px; accent-color: var(--accent);
+}
+.form-hint { font-size: 12px; color: var(--text-sub); margin-top: 4px; }
+```
+
+**必須項目の根拠**:
+- 電話番号：宴会は当日人数変更・キャンセルが多いため電話連絡が必須
+- 人数：コース割引・個室割り当ての判断に必要
+- 希望コース：事前に見積もりを準備するために必要
+- 希望日：仮押さえ可能か確認するために必要
+
 ### Learning Reason
 **保存理由**: GEN-005飲食LP分析で「宴会専用CTA設計」ありLPは団体予約CVに直結することを確認。忘新年会・歓送迎会シーズンにWeb流入が増える業態では宴会CTAが重要CVポイント。  
 **再利用価値**: 居酒屋・焼肉・しゃぶしゃぶ・中華・和食など宴会需要がある全飲食店LP。  
