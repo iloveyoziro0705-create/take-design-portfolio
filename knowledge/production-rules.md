@@ -25,8 +25,10 @@
 2. knowledge/lp/industry-patterns.md    ← 業種別パターン（IND-XXX）
 3. knowledge/lp/fv-library.md           ← FVパターン（FV-XXX）+ 選定フローチャート
 4. knowledge/lp/cta-library.md          ← CTAパターン（CTA-XXX）
-5. knowledge/web/design-system.md       ← デザイントークン・コンポーネント
-6. knowledge/case-studies/              ← 同業種の過去案件
+5. knowledge/lp/emotional-triggers.md   ← 感情訴求トリガー（TRIG-XXX）
+6. knowledge/lp/offer-library.md        ← オファー設計パターン（OFFER-XXX）
+7. knowledge/web/design-system.md       ← デザイントークン・コンポーネント
+8. knowledge/case-studies/              ← 同業種の過去案件
 ```
 
 ---
