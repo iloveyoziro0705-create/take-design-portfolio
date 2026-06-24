@@ -1055,8 +1055,435 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 ---
 
+## 13. フォームコンポーネント（GAP-002対応）
+
+**用途**: お問い合わせ・資料DL・無料体験申込・採用エントリー・予約フォーム
+
+### 基本フォーム構造
+
+```html
+<!-- 汎用フォーム（3〜5項目・最も高CVな構成） -->
+<section class="section-form" id="form">
+  <div class="container container--narrow">
+    <div class="form-header">
+      <p class="form-eyebrow">FREE / 無料</p>
+      <h2 class="form-title">○○を無料で受け取る</h2>
+      <p class="form-desc">フォームに入力するだけ。1分で完了します。</p>
+    </div>
+
+    <form class="lp-form" action="#" method="post">
+      <!-- テキスト入力 -->
+      <div class="form-group">
+        <label class="form-label" for="name">
+          お名前 <span class="form-required">必須</span>
+        </label>
+        <input class="form-input" type="text" id="name" name="name"
+          placeholder="例: 山田 太郎" required autocomplete="name">
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="form-group">
+        <label class="form-label" for="email">
+          メールアドレス <span class="form-required">必須</span>
+        </label>
+        <input class="form-input" type="email" id="email" name="email"
+          placeholder="例: taro@example.com" required autocomplete="email">
+      </div>
+
+      <!-- 電話番号（任意） -->
+      <div class="form-group">
+        <label class="form-label" for="tel">
+          電話番号 <span class="form-optional">任意</span>
+        </label>
+        <input class="form-input" type="tel" id="tel" name="tel"
+          placeholder="例: 090-1234-5678" autocomplete="tel">
+      </div>
+
+      <!-- セレクト -->
+      <div class="form-group">
+        <label class="form-label" for="inquiry">
+          お問い合わせ内容 <span class="form-required">必須</span>
+        </label>
+        <div class="form-select-wrap">
+          <select class="form-select" id="inquiry" name="inquiry" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="service">サービスについて</option>
+            <option value="price">料金について</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- テキストエリア -->
+      <div class="form-group">
+        <label class="form-label" for="message">
+          メッセージ <span class="form-optional">任意</span>
+        </label>
+        <textarea class="form-textarea" id="message" name="message"
+          rows="4" placeholder="ご質問・ご要望をご記入ください"></textarea>
+      </div>
+
+      <!-- プライバシーポリシー同意 -->
+      <div class="form-group form-group--checkbox">
+        <label class="form-checkbox-label">
+          <input type="checkbox" name="privacy" required>
+          <span class="form-checkbox-text">
+            <a href="/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block form-submit">
+        無料で受け取る →
+      </button>
+      <p class="form-assurance">✓ 送信後、3営業日以内にご連絡します</p>
+    </form>
+  </div>
+</section>
+```
+
+### フォームCSS
+
+```css
+/* フォーム共通 */
+.section-form { padding: 80px 24px; background: var(--bg-sub, #f8f9fa); }
+.container--narrow { max-width: 540px; margin: 0 auto; }
+
+.form-header { text-align: center; margin-bottom: 40px; }
+.form-eyebrow {
+  font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 8px;
+}
+.form-title { font-size: clamp(22px, 4vw, 28px); font-weight: 700; margin-bottom: 8px; }
+.form-desc { font-size: 14px; color: var(--text-sub); }
+
+/* フォームグループ */
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-main);
+}
+.form-required {
+  font-size: 11px; background: #e53e3e; color: #fff;
+  padding: 2px 6px; border-radius: 3px; font-weight: 600;
+}
+.form-optional {
+  font-size: 11px; background: #a0aec0; color: #fff;
+  padding: 2px 6px; border-radius: 3px; font-weight: 600;
+}
+
+/* 入力フィールド */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid #d1d5db; border-radius: 8px;
+  font-size: 15px; color: var(--text-main);
+  background: #fff; transition: border-color .2s, box-shadow .2s;
+  box-sizing: border-box;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+
+/* セレクトラッパー（矢印表示） */
+.form-select-wrap { position: relative; }
+.form-select-wrap::after {
+  content: '▼'; position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%); font-size: 10px; color: var(--text-sub);
+  pointer-events: none;
+}
+.form-select { appearance: none; cursor: pointer; }
+
+/* チェックボックス */
+.form-group--checkbox { margin-top: 8px; }
+.form-checkbox-label {
+  display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
+}
+.form-checkbox-label input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--accent);
+}
+.form-checkbox-text { font-size: 13px; color: var(--text-sub); }
+.form-checkbox-text a { color: var(--accent); text-decoration: underline; }
+
+/* 送信ボタン・安心文言 */
+.form-submit { margin-top: 24px; font-size: 17px; font-weight: 700; }
+.form-assurance {
+  text-align: center; font-size: 13px; color: var(--text-sub); margin-top: 12px;
+}
+```
+
+### フォームバリエーション別ガイド
+
+| 業種 | 推奨項目 | 備考 |
+|------|---------|------|
+| 美容サロン | 名前・電話・希望メニュー・希望日時 | 電話番号を必須にする |
+| 採用LP | 名前・電話・希望勤務地 | 項目を絞って低ハードル |
+| 医療系 | 名前・電話・希望日時・症状 | 「受診前相談」のニュアンスで |
+| スクール | 名前・メール・受講目的 | 資料DLとセット |
+| SaaS | 会社名・名前・メール・役職 | 4項目まで（5項目以上でCV激減） |
+| 飲食宴会 | 名前・電話・人数・希望日 | 電話番号必須・希望日をカレンダーUIで |
+
+---
+
+## 14. タブ切り替えコンポーネント（GAP-004対応）
+
+**用途**: 料金プラン切り替え・メニューカテゴリ・スタッフ一覧フィルター・FAQカテゴリ
+
+### タブ（横型・.tabs）
+
+```html
+<!-- 料金プラン切り替えタブ -->
+<div class="tabs-wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab tab--active" role="tab" aria-selected="true" data-target="plan-monthly">
+      月払い
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-target="plan-annual">
+      年払い <span class="tab-badge">20%OFF</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-target="plan-enterprise">
+      法人
+    </button>
+  </div>
+
+  <div class="tab-panel" id="plan-monthly" role="tabpanel">
+    <!-- 月払いコンテンツ -->
+  </div>
+  <div class="tab-panel tab-panel--hidden" id="plan-annual" role="tabpanel">
+    <!-- 年払いコンテンツ -->
+  </div>
+  <div class="tab-panel tab-panel--hidden" id="plan-enterprise" role="tabpanel">
+    <!-- 法人コンテンツ -->
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.target;
+    document.querySelectorAll('.tab').forEach(t => {
+      t.classList.remove('tab--active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('tab-panel--hidden'));
+    tab.classList.add('tab--active');
+    tab.setAttribute('aria-selected', 'true');
+    document.getElementById(target).classList.remove('tab-panel--hidden');
+  });
+});
+</script>
+```
+
+### ピルタブ（カテゴリフィルター・.pill-tabs）
+
+```html
+<!-- メニューカテゴリフィルター -->
+<div class="pill-tabs" role="tablist">
+  <button class="pill-tab pill-tab--active" data-filter="all">すべて</button>
+  <button class="pill-tab" data-filter="lunch">ランチ</button>
+  <button class="pill-tab" data-filter="dinner">ディナー</button>
+  <button class="pill-tab" data-filter="drink">ドリンク</button>
+</div>
+```
+
+### タブCSS
+
+```css
+/* タブ共通 */
+.tabs-wrap { margin: 40px 0; }
+.tabs {
+  display: flex; border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 32px; overflow-x: auto; scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0; padding: 12px 24px;
+  font-size: 15px; font-weight: 600; color: var(--text-sub);
+  background: none; border: none; cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--accent); }
+.tab--active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-badge {
+  font-size: 11px; background: #22c55e; color: #fff;
+  padding: 2px 6px; border-radius: 10px; margin-left: 6px; font-weight: 700;
+}
+
+/* タブパネル */
+.tab-panel { animation: fadeIn .25s ease; }
+.tab-panel--hidden { display: none; }
+
+/* ピルタブ */
+.pill-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.pill-tab {
+  padding: 8px 20px; border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  background: #f1f5f9; color: var(--text-sub);
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: all .2s;
+}
+.pill-tab:hover { border-color: var(--accent); color: var(--accent); }
+.pill-tab--active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .tab { padding: 10px 16px; font-size: 14px; }
+  .pill-tabs { gap: 6px; }
+  .pill-tab { padding: 7px 16px; font-size: 13px; }
+}
+```
+
+### タブ使用場面ガイド
+
+| 場面 | 推奨タイプ | 備考 |
+|------|----------|------|
+| 料金プラン（月払い/年払い） | `.tabs` 横型 | SaaSで最頻出 |
+| メニューカテゴリ | `.pill-tabs` | 飲食・美容で使用 |
+| FAQカテゴリ | `.pill-tabs` | 多業種で使用 |
+| スタッフ一覧フィルター | `.pill-tabs` | 採用・医療で使用 |
+| Before/After切り替え | `.tabs` 横型 | スクール・整体で使用 |
+
+---
+
+## 15. カルーセルコンポーネント（GAP-001対応）
+
+**用途**: スタッフ紹介・口コミ・実績写真・メニュー写真のスライド表示（特にFV-013向け）
+
+### 基本カルーセル構造
+
+```html
+<!-- 口コミ・スタッフカルーセル -->
+<div class="carousel-wrap">
+  <div class="carousel" id="mainCarousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
+        <!-- スライド1コンテンツ -->
+        <div class="review-card">...</div>
+      </div>
+      <div class="carousel-slide">
+        <!-- スライド2コンテンツ -->
+      </div>
+      <div class="carousel-slide">
+        <!-- スライド3コンテンツ -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ナビゲーション矢印 -->
+  <button class="carousel-btn carousel-btn--prev" aria-label="前へ">&#8249;</button>
+  <button class="carousel-btn carousel-btn--next" aria-label="次へ">&#8250;</button>
+
+  <!-- ドット指示器 -->
+  <div class="carousel-dots">
+    <span class="carousel-dot carousel-dot--active"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+  </div>
+</div>
+
+<script>
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let current = 0;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('carousel-dot--active', i === current));
+  }
+
+  document.querySelector('.carousel-btn--prev').addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel-btn--next').addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  // 自動再生（5秒間隔）
+  setInterval(() => goTo(current + 1), 5000);
+})();
+</script>
+```
+
+### カルーセルCSS
+
+```css
+/* カルーセル本体 */
+.carousel-wrap { position: relative; overflow: hidden; }
+.carousel { overflow: hidden; border-radius: 12px; }
+.carousel-track {
+  display: flex;
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+}
+.carousel-slide { flex: 0 0 100%; min-width: 0; }
+
+/* 複数表示（PC: 3枚同時） */
+@media (min-width: 768px) {
+  .carousel-track--multi .carousel-slide { flex: 0 0 33.333%; }
+}
+
+/* ナビゲーション矢印 */
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.9); border: 1.5px solid #e2e8f0;
+  font-size: 22px; color: var(--text-main); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  transition: background .2s, box-shadow .2s;
+  z-index: 2;
+}
+.carousel-btn:hover { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+.carousel-btn--prev { left: 12px; }
+.carousel-btn--next { right: 12px; }
+
+/* ドット */
+.carousel-dots {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: 20px;
+}
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #d1d5db; cursor: pointer; transition: all .25s;
+}
+.carousel-dot--active { background: var(--accent); width: 24px; border-radius: 4px; }
+
+/* スマホ: 矢印を小さく */
+@media (max-width: 480px) {
+  .carousel-btn { width: 36px; height: 36px; font-size: 18px; }
+  .carousel-btn--prev { left: 4px; }
+  .carousel-btn--next { right: 4px; }
+}
+```
+
+### カルーセル用途別ガイド
+
+| 用途 | 設定 | 使用業種 |
+|------|------|---------|
+| 口コミスライド | 1枚表示 / 自動5秒 | 全業種 |
+| スタッフ紹介 | PC3枚 / SP1枚 / 矢印あり | 美容・採用・医療 |
+| 料理写真ギャラリー | PC3枚 / SP1枚 / 自動なし | 飲食 |
+| 実績写真 | PC2枚 / SP1枚 / 矢印あり | 建設・内装 |
+| FV背景スライド（FV-013） | 全画面 / 自動4秒 / ドットのみ | 採用LP |
+
+---
+
 ## 統計・メモ
 
-- **コンポーネント定義数**: タイポグラフィ・カラー・スペーシング・カード・ボタン・見出し・背景・比較表・実績表示・口コミ・FAQ・CTA周辺設計（全12カテゴリ）
+- **コンポーネント定義数**: タイポグラフィ・カラー・スペーシング・カード・ボタン・見出し・背景・比較表・実績表示・口コミ・FAQ・CTA周辺設計・フォーム・タブ・カルーセル（全15カテゴリ）
+- **GAP補強**: 2026-06-24 GAP-001（カルーセル）/ GAP-002（フォーム）/ GAP-004（タブ）を追加
 - Phase 3 育成開始条件: LP辞典100パターン到達後
 - 最終更新: 2026-06-23（Knowledge Extraction Phase STEP3完了 / 全コンポーネント追加）
