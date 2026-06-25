@@ -1481,9 +1481,45 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 ---
 
+## ビジュアルデザイン参照規則
+
+LP制作時、画像・写真・ビジュアル選定は以下のナレッジを必ず参照すること。
+
+### 参照ファイル一覧（Visual Design SST）
+
+| ファイル | 用途 | 参照タイミング |
+|---------|------|-------------|
+| `knowledge/design/visual-library.md` | 44の汎用ビジュアルパターン（VISUAL-001〜044）| FV画像選定時・ビジュアル要素選定時 |
+| `knowledge/design/fv-visual-library.md` | 12のFVレイアウトパターン（FV-VISUAL-001〜012）| FV設計時（必須） |
+| `knowledge/design/industry-visual-patterns.md` | 6業種×ビジュアル仕様（IND-V-001〜006）| 業種確定後（必須） |
+| `knowledge/design/image-direction-rules.md` | 業種別撮影ディレクション・AI生成プロンプト | 画像選定・生成・ディレクション時 |
+
+### ビジュアル設計フロー
+
+```
+1. 業種確定 → industry-visual-patterns.md でIND-V-XXXを参照
+2. FVレイアウト選定 → fv-visual-library.md でFV-VISUAL-XXXを選択
+3. 使用ビジュアル要素選定 → visual-library.md でVISUAL-XXXを確認
+4. 画像生成/選定 → image-direction-rules.md でプロンプト・仕様を確認
+5. 感情連携確認 → emotional-triggers.md でTRIG-XXXとの整合を取る
+```
+
+### 感情×ビジュアル クイックマップ
+
+| 感情トリガー | 推奨ビジュアル | 光 | 色温度 |
+|------------|-------------|-----|-------|
+| TRIG-001（共感） | 同じ境遇の人物 | 拡散光 | ニュートラル |
+| TRIG-002（安心） | 笑顔・自然光 | 窓際自然光 | 暖色 3200K |
+| TRIG-003（憧れ） | 逆光・余白多め | 逆光・ハレーション | ゴールド暖色 |
+| TRIG-004（権威） | 正面視線・白背景 | スタジオ正面光 | クール 5500K |
+| TRIG-005（緊急） | 動きある構図 | コントラスト強め | 高彩度 |
+| TRIG-006（変化） | Before→After構成 | 明るい・クリア | 暗→明変化 |
+
+---
+
 ## 統計・メモ
 
 - **コンポーネント定義数**: タイポグラフィ・カラー・スペーシング・カード・ボタン・見出し・背景・比較表・実績表示・口コミ・FAQ・CTA周辺設計・フォーム・タブ・カルーセル（全15カテゴリ）
 - **GAP補強**: 2026-06-24 GAP-001（カルーセル）/ GAP-002（フォーム）/ GAP-004（タブ）を追加
 - Phase 3 育成開始条件: LP辞典100パターン到達後
-- 最終更新: 2026-06-23（Knowledge Extraction Phase STEP3完了 / 全コンポーネント追加）
+- 最終更新: 2026-06-25（Visual Library System追加 / ビジュアル設計SST確立）
