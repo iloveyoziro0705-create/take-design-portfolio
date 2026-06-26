@@ -10,6 +10,9 @@
 #  VERCEL_ORG_ID         : Vercel Settings → General → Team ID
 #  VERCEL_PROJECT_ID_RAPAS : rapas-lp プロジェクトの Project ID
 #
+#  Secretsを設定したら、GitHubの Actions タブ → Deploy to Vercel
+#  → "Run workflow" ボタンで手動実行してください。
+#
 #  ※ 新しいLPを追加するたびに
 #     1. Vercel でプロジェクトを作成（Root Directory = LP名）
 #     2. Project ID を GitHub Secrets に追加
@@ -20,9 +23,10 @@
 name: Deploy to Vercel
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    # Secretsを設定してから手動で実行してください
+    # GitHub Settings → Secrets and variables → Actions
+    # 必要なSecrets: VERCEL_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID_RAPAS
 
 jobs:
 
