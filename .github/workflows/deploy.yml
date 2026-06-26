@@ -20,9 +20,10 @@
 name: Deploy to Vercel
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    # Secretsを設定してから手動で実行してください
+    # GitHub Settings → Secrets and variables → Actions
+    # 必要なSecrets: VERCEL_TOKEN / VERCEL_ORG_ID / VERCEL_PROJECT_ID_RAPAS
 
 jobs:
 
