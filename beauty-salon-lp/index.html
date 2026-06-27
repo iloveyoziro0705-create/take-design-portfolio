@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     :root {
       --bg:           #faf8f6;
@@ -1375,6 +1376,51 @@
     @media (max-width: 480px) {
       .reasons-grid { grid-template-columns: 1fr; }
     }
+
+    /* ===== ASSET MANAGEMENT v2.0 ===== */
+    .hero-img-placeholder { position: relative; }
+    .hero-img-placeholder > img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      border-radius: var(--radius-lg);
+    }
+    .img-fallback {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; font-size: 11px; color: var(--sub);
+      width: 100%; height: 100%; padding: 20px; text-align: center;
+    }
+    .menu-card-img { position: relative; overflow: hidden; }
+    .menu-card-img > img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .menu-img-fallback {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%; position: absolute; inset: 0;
+    }
+    .owner-photo { position: relative; overflow: hidden; }
+    .owner-photo > img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      border-radius: var(--radius-lg);
+    }
+    .owner-img-fallback {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; font-size: 11px; color: var(--sub);
+      width: 100%; height: 100%; padding: 20px; text-align: center;
+    }
+    .reason-icon i[data-lucide] { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; }
+    .trust-icon i[data-lucide] { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; }
+    .voice-avatar i[data-lucide] { width: 18px; height: 18px; stroke: var(--sub); stroke-width: 1.5; }
+    .line-benefit-icon i[data-lucide] { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; }
+    .access-map iframe { width: 100%; height: 100%; border: 0; border-radius: var(--radius); }
+    .trust-cert-item::before { content: ''; }
+    .trust-cert-item i[data-lucide] { width: 13px; height: 13px; stroke: var(--accent); stroke-width: 2; vertical-align: middle; margin-right: 3px; }
   </style>
 </head>
 <body>
@@ -1441,8 +1487,8 @@
 
         <!-- ⑤ 緊急性バッジ -->
         <div class="hero-urgency fadeUp">
-          <span class="hero-urgency-badge">🎁 初回限定</span>
-          <span class="hero-urgency-badge outline">⏰ 期間限定特価</span>
+          <span class="hero-urgency-badge"><i data-lucide="gift"></i> 初回限定</span>
+          <span class="hero-urgency-badge outline"><i data-lucide="clock"></i> 期間限定特価</span>
           <span class="hero-urgency-badge">50%OFF</span>
         </div>
 
@@ -1476,8 +1522,14 @@
 
       <div class="hero-image fadeUp">
         <div class="hero-img-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          施術イメージ写真<br>（実写に差し替え予定）
+          <img src="./assets/images/fv-hero.jpg"
+               alt="フェイシャルサロン Luminos Skin の施術イメージ"
+               loading="eager"
+               onerror="this.remove()">
+          <div class="img-fallback">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>fv-hero.jpg を<br>assets/images/ に配置</span>
+          </div>
         </div>
         <div class="hero-ribbon">
           <span class="hero-ribbon-item">完全個室</span>
@@ -1586,7 +1638,7 @@
         <!-- case 1 -->
         <div class="ba-card fadeUp">
           <div class="ba-header">
-            <div class="ba-avatar">👩</div>
+            <div class="ba-avatar"><i data-lucide="user-circle"></i></div>
             <div class="ba-person">
               <p class="ba-name">A.K.さん（38歳）</p>
               <p class="ba-attr">会社員 / 施術4回目</p>
@@ -1611,7 +1663,7 @@
         <!-- case 2 -->
         <div class="ba-card fadeUp">
           <div class="ba-header">
-            <div class="ba-avatar">👩</div>
+            <div class="ba-avatar"><i data-lucide="user-circle"></i></div>
             <div class="ba-person">
               <p class="ba-name">M.T.さん（44歳）</p>
               <p class="ba-attr">主婦 / 施術6回目</p>
@@ -1636,7 +1688,7 @@
         <!-- case 3 -->
         <div class="ba-card fadeUp">
           <div class="ba-header">
-            <div class="ba-avatar">👩</div>
+            <div class="ba-avatar"><i data-lucide="user-circle"></i></div>
             <div class="ba-person">
               <p class="ba-name">Y.S.さん（33歳）</p>
               <p class="ba-attr">看護師 / 施術3回目</p>
@@ -1678,37 +1730,37 @@
       <div class="reasons-grid">
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 01</p>
-          <div class="reason-icon">🚪</div>
+          <div class="reason-icon"><i data-lucide="door-closed"></i></div>
           <h3 class="reason-title">完全個室</h3>
           <p class="reason-desc">他のお客様と顔を合わせることなく、完全にプライベートな空間でゆっくりお過ごしいただけます。</p>
         </div>
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 02</p>
-          <div class="reason-icon">👩</div>
+          <div class="reason-icon"><i data-lucide="users"></i></div>
           <h3 class="reason-title">女性スタッフのみ</h3>
           <p class="reason-desc">施術スタッフは全員女性。お肌のことはもちろん、ライフスタイルの悩みもざっくばらんにお話しいただけます。</p>
         </div>
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 03</p>
-          <div class="reason-icon">🤝</div>
+          <div class="reason-icon"><i data-lucide="shield-check"></i></div>
           <h3 class="reason-title">無理な勧誘なし</h3>
           <p class="reason-desc">コース契約の勧誘は一切おこなっておりません。施術後もすっきりとお帰りいただけます。お約束します。</p>
         </div>
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 04</p>
-          <div class="reason-icon">💳</div>
+          <div class="reason-icon"><i data-lucide="credit-card"></i></div>
           <h3 class="reason-title">都度払いOK</h3>
           <p class="reason-desc">高額なコース契約は不要。1回ずつのお支払いで、ご自身のペースで通えます。月1回でも大歓迎です。</p>
         </div>
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 05</p>
-          <div class="reason-icon">⭐</div>
+          <div class="reason-icon"><i data-lucide="star"></i></div>
           <h3 class="reason-title">口コミ評価 ★4.8</h3>
           <p class="reason-desc">実際にご来店いただいたお客様からの評価で★4.8を達成。「また来たい」と言っていただける施術を大切にしています。</p>
         </div>
         <div class="reason-card fadeUp">
           <p class="reason-num">REASON 06</p>
-          <div class="reason-icon">🚃</div>
+          <div class="reason-icon"><i data-lucide="map-pin"></i></div>
           <h3 class="reason-title">駅徒歩3分</h3>
           <p class="reason-desc">最寄り駅から徒歩3分の好立地。お仕事帰りや休日のお出かけついでに、気軽にお立ち寄りいただけます。</p>
         </div>
@@ -1777,7 +1829,13 @@
       <div class="menu-grid">
         <div class="menu-card fadeUp">
           <div class="menu-card-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/></svg>
+            <img src="./assets/images/menu-01-basic.jpg"
+                 alt="ベーシックフェイシャル 施術イメージ"
+                 loading="lazy"
+                 onerror="this.remove()">
+            <div class="menu-img-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><circle cx="12" cy="12" r="9"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/></svg>
+            </div>
           </div>
           <div class="menu-card-body">
             <span class="menu-tag">人気No.1</span>
@@ -1791,7 +1849,13 @@
         </div>
         <div class="menu-card fadeUp">
           <div class="menu-card-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/></svg>
+            <img src="./assets/images/menu-02-aging.jpg"
+                 alt="エイジングケアコース リフトアップ施術イメージ"
+                 loading="lazy"
+                 onerror="this.remove()">
+            <div class="menu-img-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/></svg>
+            </div>
           </div>
           <div class="menu-card-body">
             <span class="menu-tag">リフトアップ</span>
@@ -1805,7 +1869,13 @@
         </div>
         <div class="menu-card fadeUp">
           <div class="menu-card-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9"/><path d="M12 7v5l3 3"/></svg>
+            <img src="./assets/images/menu-03-moisture.jpg"
+                 alt="保湿集中フェイシャル 潤いケア施術イメージ"
+                 loading="lazy"
+                 onerror="this.remove()">
+            <div class="menu-img-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
           </div>
           <div class="menu-card-body">
             <span class="menu-tag">潤いケア</span>
@@ -1877,8 +1947,14 @@
       <div class="owner-inner">
         <div class="owner-photo-wrap fadeUp">
           <div class="owner-photo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            オーナー写真<br>（実写に差し替え予定）
+            <img src="./assets/images/owner.jpg"
+                 alt="サロンオーナー 田中美咲"
+                 loading="lazy"
+                 onerror="this.remove()">
+            <div class="owner-img-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <span>owner.jpg を<br>assets/images/ に配置</span>
+            </div>
           </div>
           <div class="owner-certs">
             <span class="owner-cert">日本エステティック協会認定</span>
@@ -1929,25 +2005,25 @@
       </div>
       <div class="trust-grid">
         <div class="trust-card fadeUp">
-          <span class="trust-icon">👩‍⚕️</span>
+          <span class="trust-icon"><i data-lucide="users"></i></span>
           <span class="trust-num">3,200<small>名+</small></span>
           <span class="trust-label">累計施術実績</span>
           <p class="trust-sub">開業以来2020〜2026年</p>
         </div>
         <div class="trust-card fadeUp">
-          <span class="trust-icon">🏠</span>
+          <span class="trust-icon"><i data-lucide="building-2"></i></span>
           <span class="trust-num">6<small>年</small></span>
           <span class="trust-label">サロン運営歴</span>
           <p class="trust-sub">2020年独立開業〜現在</p>
         </div>
         <div class="trust-card fadeUp">
-          <span class="trust-icon">⭐</span>
+          <span class="trust-icon"><i data-lucide="star"></i></span>
           <span class="trust-num">★4.8</span>
           <span class="trust-label">口コミ平均評価</span>
           <p class="trust-sub">87件の口コミ</p>
         </div>
         <div class="trust-card fadeUp">
-          <span class="trust-icon">📰</span>
+          <span class="trust-icon"><i data-lucide="newspaper"></i></span>
           <span class="trust-num">12<small>媒体</small></span>
           <span class="trust-label">メディア掲載実績</span>
           <p class="trust-sub">美容誌・WEBメディア掲載</p>
@@ -1956,11 +2032,11 @@
       <div class="trust-certs">
         <p class="trust-certs-title">— 保有資格・認定 —</p>
         <div class="trust-cert-list">
-          <span class="trust-cert-item">日本エステティック協会 認定エステティシャン</span>
-          <span class="trust-cert-item">CIDESCO 国際資格</span>
-          <span class="trust-cert-item">アロマテラピー検定1級</span>
-          <span class="trust-cert-item">美容師免許</span>
-          <span class="trust-cert-item">日本化粧品検定1級</span>
+          <span class="trust-cert-item"><i data-lucide="award"></i>日本エステティック協会 認定エステティシャン</span>
+          <span class="trust-cert-item"><i data-lucide="award"></i>CIDESCO 国際資格</span>
+          <span class="trust-cert-item"><i data-lucide="award"></i>アロマテラピー検定1級</span>
+          <span class="trust-cert-item"><i data-lucide="award"></i>美容師免許</span>
+          <span class="trust-cert-item"><i data-lucide="award"></i>日本化粧品検定1級</span>
         </div>
       </div>
     </div>
@@ -2000,7 +2076,7 @@
           </div>
           <p class="voice-comment">エステって勧誘がこわくて行けなかったんですが、ここは本当にしつこくなくて感動。施術も毛穴がすっきりしてやみつきになりそうです！</p>
           <div class="voice-author">
-            <div class="voice-avatar">👩</div>
+            <div class="voice-avatar"><i data-lucide="user-circle"></i></div>
             <div>
               <p class="voice-name">A.K.さん</p>
               <p class="voice-attr">36歳 / 会社員 / 初回利用</p>
@@ -2026,7 +2102,7 @@
           </div>
           <p class="voice-comment">完全個室なので人の目を気にせずリラックスできました。スタッフさんがすごく丁寧で、肌悩みをちゃんと聞いてくれて安心感が違います。</p>
           <div class="voice-author">
-            <div class="voice-avatar">👩</div>
+            <div class="voice-avatar"><i data-lucide="user-circle"></i></div>
             <div>
               <p class="voice-name">M.T.さん</p>
               <p class="voice-attr">42歳 / 主婦 / 3回目利用</p>
@@ -2052,7 +2128,7 @@
           </div>
           <p class="voice-comment">初回5,980円でこのクオリティは驚きました。たるみが気になっていたのに、施術後は頬がリフトアップした感じ！毎月通いたいと思います。</p>
           <div class="voice-author">
-            <div class="voice-avatar">👩</div>
+            <div class="voice-avatar"><i data-lucide="user-circle"></i></div>
             <div>
               <p class="voice-name">Y.S.さん</p>
               <p class="voice-attr">38歳 / 看護師 / 初回利用</p>
@@ -2078,7 +2154,7 @@
           </div>
           <p class="voice-comment">他サロンで高額契約をさせられた経験があって怖かったんですが、本当に勧誘がなくて安心しました。都度払いなので自分のペースで通えるのも嬉しい。</p>
           <div class="voice-author">
-            <div class="voice-avatar">👩</div>
+            <div class="voice-avatar"><i data-lucide="user-circle"></i></div>
             <div>
               <p class="voice-name">N.O.さん</p>
               <p class="voice-attr">45歳 / 自営業 / 2回目利用</p>
@@ -2104,7 +2180,7 @@
           </div>
           <p class="voice-comment">駅から3分で仕事帰りに寄れるのが最高です。くすみが気になっていたのに、施術後は顔色が全然違う！同僚に「何かいいことあった？」と言われました（笑）</p>
           <div class="voice-author">
-            <div class="voice-avatar">👩</div>
+            <div class="voice-avatar"><i data-lucide="user-circle"></i></div>
             <div>
               <p class="voice-name">R.I.さん</p>
               <p class="voice-attr">33歳 / IT企業勤務 / 初回利用</p>
@@ -2213,8 +2289,12 @@
           </a>
         </div>
         <div class="access-map fadeUp">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Googleマップ<br>（実装時に埋め込み予定）
+          <!-- Google Maps埋め込み: 実装時に以下のiframeに差し替えてください -->
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;color:var(--sub);font-size:12px;">
+            <i data-lucide="map-pin" style="width:40px;height:40px;stroke:var(--accent);opacity:.6;"></i>
+            <span>Googleマップを埋め込んでください<br>（src URLをクライアントに確認）</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2238,17 +2318,17 @@
         <!-- LINE予約のメリット -->
         <div class="line-benefits">
           <div class="line-benefit">
-            <div class="line-benefit-icon">🕐</div>
+            <div class="line-benefit-icon"><i data-lucide="clock"></i></div>
             <p class="line-benefit-title">24時間受付</p>
             <p class="line-benefit-desc">深夜・早朝でもLINEで予約OK。思い立ったときにすぐ予約できます。</p>
           </div>
           <div class="line-benefit">
-            <div class="line-benefit-icon">💬</div>
+            <div class="line-benefit-icon"><i data-lucide="message-circle"></i></div>
             <p class="line-benefit-title">相談だけでもOK</p>
             <p class="line-benefit-desc">「向いているか不安」「何のメニューがいい？」など、予約前の質問大歓迎です。</p>
           </div>
           <div class="line-benefit">
-            <div class="line-benefit-icon">🤝</div>
+            <div class="line-benefit-icon"><i data-lucide="shield-check"></i></div>
             <p class="line-benefit-title">無理な勧誘なし</p>
             <p class="line-benefit-desc">LINEでも電話でも、コース勧誘は一切おこないません。ご安心ください。</p>
           </div>
@@ -2304,6 +2384,10 @@
     <p style="margin-top:8px;">© 2026 Luminos Skin. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Lucide Icons初期化
+    document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+  </script>
   <script>
     // FadeUp（PATTERN-002）
     const observer = new IntersectionObserver(entries => {
