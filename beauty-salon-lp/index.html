@@ -1378,41 +1378,43 @@
     }
 
     /* ===== ASSET MANAGEMENT v2.0 ===== */
-    .hero-img-placeholder { position: relative; }
+    .hero-img-placeholder { position: relative; overflow: hidden; }
     .hero-img-placeholder > img {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       border-radius: var(--radius-lg);
     }
     .img-fallback {
-      display: flex; flex-direction: column;
+      display: none; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 10px; font-size: 11px; color: var(--sub);
       width: 100%; height: 100%; padding: 20px; text-align: center;
+      position: absolute; inset: 0; z-index: 1;
     }
     .menu-card-img { position: relative; overflow: hidden; }
     .menu-card-img > img {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       width: 100%; height: 100%;
       object-fit: cover;
     }
     .menu-img-fallback {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 100%; position: absolute; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      width: 100%; height: 100%; position: absolute; inset: 0; z-index: 1;
     }
     .owner-photo { position: relative; overflow: hidden; }
     .owner-photo > img {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       border-radius: var(--radius-lg);
     }
     .owner-img-fallback {
-      display: flex; flex-direction: column;
+      display: none; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 10px; font-size: 11px; color: var(--sub);
       width: 100%; height: 100%; padding: 20px; text-align: center;
+      position: absolute; inset: 0; z-index: 1;
     }
     .reason-icon i[data-lucide] { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; }
     .trust-icon i[data-lucide] { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; }
@@ -1675,6 +1677,77 @@
       .fixed-cta { padding: 14px 16px; gap: 10px; }
       .fixed-cta-btn { font-size: 14px; padding: 14px 20px; min-height: 50px; }
     }
+
+    /* ===== フローティング LINE CTA ===== */
+    .float-line-cta {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(160px);
+      z-index: 996;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .52s cubic-bezier(.34,1.56,.64,1), opacity .3s ease;
+    }
+    .float-line-cta.is-visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .float-line-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--line-green);
+      color: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 17px 38px;
+      border-radius: 50px;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(6,199,85,.44), 0 2px 8px rgba(0,0,0,.12);
+      position: relative;
+      overflow: hidden;
+      animation: floatLineBob 2.8s ease-in-out infinite;
+    }
+    .float-line-cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.16) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .float-line-cta-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .float-line-cta-price { color: #ffe564; }
+    @keyframes floatLineBob {
+      0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 8px 32px rgba(6,199,85,.44), 0 2px 8px rgba(0,0,0,.12);
+      }
+      50% {
+        transform: translateY(-7px);
+        box-shadow: 0 16px 44px rgba(6,199,85,.32), 0 4px 12px rgba(0,0,0,.08);
+      }
+    }
+    @media (max-width: 768px) {
+      .float-line-cta {
+        left: 16px;
+        right: 16px;
+        bottom: 80px;
+        transform: translateX(0) translateY(160px);
+      }
+      .float-line-cta.is-visible {
+        transform: translateX(0) translateY(0);
+      }
+      .float-line-cta-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 18px 24px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1779,7 +1852,7 @@
           <img src="./assets/images/fv-hero.jpg"
                alt="フェイシャルサロン Luminos Skin の施術イメージ"
                loading="eager"
-               onerror="this.remove()">
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="img-fallback">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
             <span>fv-hero.jpg を<br>assets/images/ に配置</span>
@@ -2102,7 +2175,7 @@
             <img src="./assets/images/menu-01-basic.jpg"
                  alt="ベーシックフェイシャル 施術イメージ"
                  loading="lazy"
-                 onerror="this.remove()">
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="menu-img-fallback">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><circle cx="12" cy="12" r="9"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/></svg>
             </div>
@@ -2122,7 +2195,7 @@
             <img src="./assets/images/menu-02-aging.jpg"
                  alt="エイジングケアコース リフトアップ施術イメージ"
                  loading="lazy"
-                 onerror="this.remove()">
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="menu-img-fallback">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7z"/></svg>
             </div>
@@ -2142,7 +2215,7 @@
             <img src="./assets/images/menu-03-moisture.jpg"
                  alt="保湿集中フェイシャル 潤いケア施術イメージ"
                  loading="lazy"
-                 onerror="this.remove()">
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="menu-img-fallback">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" opacity=".3"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9"/><path d="M12 7v5l3 3"/></svg>
             </div>
@@ -2220,7 +2293,7 @@
             <img src="./assets/images/owner.jpg"
                  alt="サロンオーナー 田中美咲"
                  loading="lazy"
-                 onerror="this.remove()">
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="owner-img-fallback">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
               <span>owner.jpg を<br>assets/images/ に配置</span>
@@ -2590,13 +2663,17 @@
             LINEで予約する
           </a>
         </div>
-        <div class="access-map fadeUp">
-          <!-- Google Maps埋め込み: 実装時に以下のiframeに差し替えてください -->
-          <!-- <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;color:var(--sub);font-size:12px;">
-            <i data-lucide="map-pin" style="width:40px;height:40px;stroke:var(--accent);opacity:.6;"></i>
-            <span>Googleマップを埋め込んでください<br>（src URLをクライアントに確認）</span>
-          </div>
+        <div class="access-map fadeUp" style="padding:0;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0668091566553!2d139.69800371524694!3d35.65830804394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b563b00109f%3A0x337328ef7c9b39a!2z5riL6LC35pmC!5e0!3m2!1sja!2sjp!4v1719484000000!5m2!1sja!2sjp"
+            width="100%"
+            height="100%"
+            style="border:0;display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Luminos Skin アクセスマップ（渋谷駅徒歩3分）">
+          </iframe>
         </div>
       </div>
     </div>
@@ -2671,6 +2748,14 @@
     </a>
   </div>
 
+  <!-- フローティング LINE CTA (全デバイス) -->
+  <div class="float-line-cta" id="floatLineCta" aria-hidden="true">
+    <a href="#line-reserve" class="float-line-cta-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.05 2 11.08c0 2.49 1.09 4.72 2.85 6.33l-.74 2.73 2.84-1.46c.98.27 2.01.42 3.05.42 5.52 0 10-4.05 10-9.02C20 6.05 17.52 2 12 2z"/></svg>
+      <span>初回<span class="float-line-cta-price">5,980円</span>で体験予約する</span>
+    </a>
+  </div>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-logo">Luminos Skin</div>
@@ -2709,6 +2794,31 @@
       document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
+
+    // フローティング LINE CTA スクロール連動
+    (function() {
+      const fc = document.getElementById('floatLineCta');
+      if (!fc) return;
+      let ticking = false;
+      function update() {
+        const y = window.scrollY;
+        const footer = document.querySelector('.site-footer');
+        const footerTop = footer ? footer.getBoundingClientRect().top + y : Infinity;
+        const show = y > 480 && (y + window.innerHeight) < footerTop - 40;
+        if (show) {
+          fc.classList.add('is-visible');
+          fc.setAttribute('aria-hidden', 'false');
+        } else {
+          fc.classList.remove('is-visible');
+          fc.setAttribute('aria-hidden', 'true');
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      update();
+    })();
 
     // 数字カウントアップアニメーション
     (function() {
