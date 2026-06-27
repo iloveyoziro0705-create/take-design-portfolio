@@ -26,9 +26,10 @@
 | `menu-01-basic.jpg` | Unsplash | photo-1570172619644-dfd03ed5d881 | 50KB |
 | `menu-02-aging.jpg` | Unsplash | photo-1616394584738-fc6e612e71b9 | 48KB |
 | `menu-03-moisture.jpg` | Unsplash | photo-1683408640631-2c99fff964d7 | 37KB |
+| `owner.jpg` | Unsplash | photo-1616326431919-be810ad5dacd | 61KB |
 
 ※ Unsplash License: 商用利用OK・帰属表示不要
-※ `owner.jpg` のみクライアント実写を待って差し替えてください
+※ `owner.jpg` は仮のフリー素材です。クライアント実写が届き次第差し替えてください
 
 ---
 
