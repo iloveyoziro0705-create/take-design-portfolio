@@ -1421,6 +1421,260 @@
     .access-map iframe { width: 100%; height: 100%; border: 0; border-radius: var(--radius); }
     .trust-cert-item::before { content: ''; }
     .trust-cert-item i[data-lucide] { width: 13px; height: 13px; stroke: var(--accent); stroke-width: 2; vertical-align: middle; margin-right: 3px; }
+
+    /* ============================================================
+       BRUSH-UP v2.0
+       ============================================================ */
+
+    /* ② 写真トーン統一: 暖色・高級感フィルター */
+    .hero-img-placeholder > img,
+    .menu-card-img > img,
+    .owner-photo > img {
+      filter: brightness(1.02) contrast(.97) saturate(.88) sepia(.04);
+    }
+
+    /* ① FV: ヒーロー写真を大きく・存在感アップ */
+    .hero { padding: 128px 0 104px; }
+    .hero-inner { align-items: start; }
+    .hero-img-placeholder { aspect-ratio: 3/4; }
+
+    /* 写真背後の光輪 */
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: -32px; right: -32px;
+      width: 70%; height: 70%;
+      background: radial-gradient(ellipse, rgba(196,135,140,.22) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-img-placeholder { z-index: 1; }
+
+    /* ① オファーボックス強化 */
+    .hero-offer {
+      background: linear-gradient(135deg, #fff 0%, #fef6f6 100%);
+      box-shadow: 0 4px 28px rgba(196,135,140,.15);
+      border-width: 2px;
+    }
+    .hero-price-new { font-size: clamp(52px, 10vw, 76px); }
+
+    /* ① CTAボタン強化 */
+    .btn-line {
+      font-size: 16px;
+      padding: 18px 36px;
+      box-shadow: 0 6px 32px rgba(6,199,85,.40);
+      letter-spacing: .04em;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .btn-line:hover {
+      opacity: 1;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(6,199,85,.46);
+    }
+
+    /* ① 写真上フローティングバッジ */
+    .hero-first-badge {
+      position: absolute;
+      top: 24px; right: -16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      text-align: center;
+      line-height: 1.6;
+      box-shadow: 0 6px 24px rgba(196,135,140,.48);
+      z-index: 2;
+      letter-spacing: .04em;
+    }
+
+    /* ③ Before/After: 改善ポイントタグ */
+    .ba-card { border-top: 3px solid var(--accent-light); }
+    .ba-improvement {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .ba-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: linear-gradient(135deg, var(--bg-pink), #fff);
+      border: 1px solid var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 50px;
+    }
+    .ba-tag::before { content: '↑'; color: var(--accent); font-size: 9px; font-weight: 900; }
+
+    /* ⑤ 口コミカード: メタ情報タグ */
+    .voice-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .voice-meta-tag {
+      display: inline-block;
+      background: var(--bg-beige);
+      color: var(--sub);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      letter-spacing: .03em;
+    }
+    .voice-meta-tag.hl {
+      background: var(--bg-pink);
+      color: var(--accent);
+      border-color: var(--accent-light);
+    }
+
+    /* ④ オーナー: 資格アイコングリッド */
+    .owner-cert-icons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-top: 16px;
+    }
+    .owner-cert-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 11px;
+      font-size: 11px;
+      color: var(--sub);
+      line-height: 1.35;
+    }
+    .owner-cert-icon i[data-lucide] {
+      width: 15px; height: 15px;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    /* ④ オーナーメッセージ: 引用スタイル */
+    .owner-message-wrap {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent-light);
+      padding: 22px 20px 18px 22px;
+      margin-top: 4px;
+    }
+    .owner-message-wrap::before {
+      content: '\201C';
+      position: absolute;
+      top: -8px; left: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      color: var(--accent-light);
+      line-height: 1;
+    }
+
+    /* ⑦ カード品質向上: 影・ホバー */
+    .reason-card,
+    .voice-card,
+    .ba-card {
+      box-shadow: 0 2px 8px rgba(196,135,140,.05), 0 8px 32px rgba(60,42,39,.07);
+      border-color: rgba(232,213,213,.85);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+    }
+    .reason-card:hover,
+    .voice-card:hover,
+    .ba-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 16px rgba(196,135,140,.13), 0 20px 56px rgba(60,42,39,.10);
+    }
+    .menu-card {
+      box-shadow: 0 2px 8px rgba(196,135,140,.05), 0 8px 32px rgba(60,42,39,.07);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 16px rgba(196,135,140,.13), 0 20px 56px rgba(60,42,39,.10);
+    }
+    .price-box {
+      box-shadow: 0 8px 48px rgba(196,135,140,.20), 0 2px 8px rgba(60,42,39,.08);
+    }
+
+    /* ⑧ マイクロアニメーション: 画像ホバースケール */
+    .menu-card-img > img { transition: transform .5s ease; }
+    .menu-card:hover .menu-card-img > img { transform: scale(1.05); }
+
+    /* ⑧ グリッドカード スタガーフェード */
+    .reasons-grid > *:nth-child(2) { transition-delay: .08s; }
+    .reasons-grid > *:nth-child(3) { transition-delay: .16s; }
+    .reasons-grid > *:nth-child(4) { transition-delay: .24s; }
+    .reasons-grid > *:nth-child(5) { transition-delay: .32s; }
+    .reasons-grid > *:nth-child(6) { transition-delay: .40s; }
+    .menu-grid > *:nth-child(2) { transition-delay: .10s; }
+    .menu-grid > *:nth-child(3) { transition-delay: .20s; }
+    .voice-grid > *:nth-child(2) { transition-delay: .08s; }
+    .voice-grid > *:nth-child(3) { transition-delay: .16s; }
+    .voice-grid > *:nth-child(4) { transition-delay: .24s; }
+    .voice-grid > *:nth-child(5) { transition-delay: .32s; }
+    .ba-grid > *:nth-child(2) { transition-delay: .10s; }
+    .ba-grid > *:nth-child(3) { transition-delay: .20s; }
+
+    /* ⑥ セクションメリハリ: Final CTA グラデーション */
+    .final-cta {
+      background: linear-gradient(160deg, var(--bg-pink) 0%, var(--bg-beige) 58%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(ellipse, rgba(196,135,140,.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -50px;
+      width: 260px; height: 260px;
+      background: radial-gradient(ellipse, rgba(196,135,140,.10) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .final-cta-box { position: relative; z-index: 1; }
+
+    /* ⑨ モバイル最適化 */
+    @media (max-width: 768px) {
+      .hero-img-placeholder { aspect-ratio: 4/5; }
+      .hero-first-badge { display: none; }
+      .btn-line {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 18px 20px;
+        min-height: 56px;
+      }
+      .hero-offer { padding: 14px 16px; }
+      .fixed-cta { padding: 14px 16px; gap: 10px; }
+      .fixed-cta-btn { font-size: 14px; padding: 14px 20px; min-height: 50px; }
+    }
   </style>
 </head>
 <body>
@@ -1515,9 +1769,9 @@
         <!-- CTA層 -->
         <a href="#line-reserve" class="btn-line fadeUp">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.05 2 11.08c0 2.49 1.09 4.72 2.85 6.33l-.74 2.73 2.84-1.46c.98.27 2.01.42 3.05.42 5.52 0 10-4.05 10-9.02C20 6.05 17.52 2 12 2z"/></svg>
-          この価格でLINE予約する（5,980円〜）
+          初回5,980円で体験予約する（LINEで完結）
         </a>
-        <p class="hero-cta-note fadeUp">📱 LINEアプリで友達追加 → 日程をお送りください</p>
+        <p class="hero-cta-note fadeUp">📱 LINEで友達追加 → 日時送信のみ。24時間受付</p>
       </div>
 
       <div class="hero-image fadeUp">
@@ -1531,6 +1785,7 @@
             <span>fv-hero.jpg を<br>assets/images/ に配置</span>
           </div>
         </div>
+        <div class="hero-first-badge">初回限定<br><span style="font-size:17px; line-height:1.2;">50%</span><br>OFF</div>
         <div class="hero-ribbon">
           <span class="hero-ribbon-item">完全個室</span>
           <span class="hero-ribbon-item">女性スタッフのみ</span>
@@ -1549,12 +1804,12 @@
     <div class="inner">
       <div class="stats-grid">
         <div class="stat-item fadeUp">
-          <span class="stat-num">2,000<span class="stat-unit">名</span></span>
+          <span class="stat-num"><span data-count="2000">2,000</span><span class="stat-unit">名</span></span>
           <p class="stat-label">累計来店実績</p>
           <span class="stat-badge">2024年度実績</span>
         </div>
         <div class="stat-item fadeUp">
-          <span class="stat-num">87<span class="stat-unit">%</span></span>
+          <span class="stat-num"><span data-count="87">87</span><span class="stat-unit">%</span></span>
           <p class="stat-label">リピート率</p>
           <span class="stat-badge">月2回以上通う方も</span>
         </div>
@@ -1564,7 +1819,7 @@
           <span class="stat-badge">87件の口コミ</span>
         </div>
         <div class="stat-item fadeUp">
-          <span class="stat-num">0<span class="stat-unit">件</span></span>
+          <span class="stat-num"><span data-count="0">0</span><span class="stat-unit">件</span></span>
           <p class="stat-label">勧誘クレーム</p>
           <span class="stat-badge">開業以来ゼロ継続中</span>
         </div>
@@ -1646,6 +1901,11 @@
             </div>
           </div>
           <div class="ba-body">
+            <div class="ba-improvement">
+              <span class="ba-tag">毛穴縮小</span>
+              <span class="ba-tag">透明感UP</span>
+              <span class="ba-tag">くすみ改善</span>
+            </div>
             <div class="ba-row">
               <div class="ba-col">
                 <p class="ba-col-label">BEFORE</p>
@@ -1671,6 +1931,11 @@
             </div>
           </div>
           <div class="ba-body">
+            <div class="ba-improvement">
+              <span class="ba-tag">ハリ回復</span>
+              <span class="ba-tag">リフトアップ</span>
+              <span class="ba-tag">ほうれい線改善</span>
+            </div>
             <div class="ba-row">
               <div class="ba-col">
                 <p class="ba-col-label">BEFORE</p>
@@ -1696,6 +1961,11 @@
             </div>
           </div>
           <div class="ba-body">
+            <div class="ba-improvement">
+              <span class="ba-tag">保湿力UP</span>
+              <span class="ba-tag">うるおい持続</span>
+              <span class="ba-tag">トーンアップ</span>
+            </div>
             <div class="ba-row">
               <div class="ba-col">
                 <p class="ba-col-label">BEFORE</p>
@@ -1956,11 +2226,11 @@
               <span>owner.jpg を<br>assets/images/ に配置</span>
             </div>
           </div>
-          <div class="owner-certs">
-            <span class="owner-cert">日本エステティック協会認定</span>
-            <span class="owner-cert">CIDESCO国際資格</span>
-            <span class="owner-cert">アロマテラピー検定1級</span>
-            <span class="owner-cert">美容師免許</span>
+          <div class="owner-cert-icons">
+            <div class="owner-cert-icon"><i data-lucide="award"></i>日本エステティック協会<br>認定エステティシャン</div>
+            <div class="owner-cert-icon"><i data-lucide="globe"></i>CIDESCO<br>国際資格</div>
+            <div class="owner-cert-icon"><i data-lucide="leaf"></i>アロマテラピー<br>検定1級</div>
+            <div class="owner-cert-icon"><i data-lucide="scissors"></i>美容師<br>免許</div>
           </div>
         </div>
         <div class="owner-info fadeUp">
@@ -1979,15 +2249,17 @@
           </div>
 
           <p class="owner-message-label">MESSAGE</p>
-          <p class="owner-message">
-            大手サロンで働いていたとき、「ノルマのための勧誘」に悩んでいました。
-            お客様の顔が曇るたびに、心が痛かった。<br><br>
-            「このお客様に、本当に必要なケアだけを届けたい」——
-            その思いがLuminos Skinを立ち上げた理由です。<br><br>
-            <strong>勧誘はしません。ゆっくり通えるサロンでいます。</strong>
-            あなたの肌の変化を、一緒に楽しみましょう。
-          </p>
-          <p class="owner-sign">— 田中 美咲</p>
+          <div class="owner-message-wrap">
+            <p class="owner-message">
+              大手サロンで働いていたとき、「ノルマのための勧誘」に悩んでいました。
+              お客様の顔が曇るたびに、心が痛かった。<br><br>
+              「このお客様に、本当に必要なケアだけを届けたい」——
+              その思いがLuminos Skinを立ち上げた理由です。<br><br>
+              <strong>勧誘はしません。ゆっくり通えるサロンでいます。</strong>
+              あなたの肌の変化を、一緒に楽しみましょう。
+            </p>
+            <p class="owner-sign">— 田中 美咲</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2006,13 +2278,13 @@
       <div class="trust-grid">
         <div class="trust-card fadeUp">
           <span class="trust-icon"><i data-lucide="users"></i></span>
-          <span class="trust-num">3,200<small>名+</small></span>
+          <span class="trust-num"><span data-count="3200">3,200</span><small>名+</small></span>
           <span class="trust-label">累計施術実績</span>
           <p class="trust-sub">開業以来2020〜2026年</p>
         </div>
         <div class="trust-card fadeUp">
           <span class="trust-icon"><i data-lucide="building-2"></i></span>
-          <span class="trust-num">6<small>年</small></span>
+          <span class="trust-num"><span data-count="6">6</span><small>年</small></span>
           <span class="trust-label">サロン運営歴</span>
           <p class="trust-sub">2020年独立開業〜現在</p>
         </div>
@@ -2024,7 +2296,7 @@
         </div>
         <div class="trust-card fadeUp">
           <span class="trust-icon"><i data-lucide="newspaper"></i></span>
-          <span class="trust-num">12<small>媒体</small></span>
+          <span class="trust-num"><span data-count="12">12</span><small>媒体</small></span>
           <span class="trust-label">メディア掲載実績</span>
           <p class="trust-sub">美容誌・WEBメディア掲載</p>
         </div>
@@ -2060,6 +2332,12 @@
 
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
+          <div class="voice-meta">
+            <span class="voice-meta-tag hl">36歳</span>
+            <span class="voice-meta-tag">会社員</span>
+            <span class="voice-meta-tag">ベーシックフェイシャル</span>
+            <span class="voice-meta-tag">来店1回目</span>
+          </div>
           <div class="voice-story">
             <div class="voice-story-item">
               <span class="voice-story-label">来店前の悩み</span>
@@ -2086,6 +2364,12 @@
 
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
+          <div class="voice-meta">
+            <span class="voice-meta-tag hl">42歳</span>
+            <span class="voice-meta-tag">主婦</span>
+            <span class="voice-meta-tag">エイジングケアコース</span>
+            <span class="voice-meta-tag">来店3回目</span>
+          </div>
           <div class="voice-story">
             <div class="voice-story-item">
               <span class="voice-story-label">来店前の悩み</span>
@@ -2112,6 +2396,12 @@
 
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
+          <div class="voice-meta">
+            <span class="voice-meta-tag hl">38歳</span>
+            <span class="voice-meta-tag">看護師</span>
+            <span class="voice-meta-tag">ベーシックフェイシャル</span>
+            <span class="voice-meta-tag">来店1回目</span>
+          </div>
           <div class="voice-story">
             <div class="voice-story-item">
               <span class="voice-story-label">来店前の悩み</span>
@@ -2138,6 +2428,12 @@
 
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★☆</div>
+          <div class="voice-meta">
+            <span class="voice-meta-tag hl">45歳</span>
+            <span class="voice-meta-tag">自営業</span>
+            <span class="voice-meta-tag">保湿集中フェイシャル</span>
+            <span class="voice-meta-tag">来店2回目</span>
+          </div>
           <div class="voice-story">
             <div class="voice-story-item">
               <span class="voice-story-label">来店前の悩み</span>
@@ -2164,6 +2460,12 @@
 
         <div class="voice-card fadeUp">
           <div class="voice-stars-sm">★★★★★</div>
+          <div class="voice-meta">
+            <span class="voice-meta-tag hl">33歳</span>
+            <span class="voice-meta-tag">IT企業勤務</span>
+            <span class="voice-meta-tag">ベーシックフェイシャル</span>
+            <span class="voice-meta-tag">来店1回目</span>
+          </div>
           <div class="voice-story">
             <div class="voice-story-item">
               <span class="voice-story-label">来店前の悩み</span>
@@ -2407,6 +2709,34 @@
       document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
+
+    // 数字カウントアップアニメーション
+    (function() {
+      function animateCount(el) {
+        const target = parseInt(el.dataset.count, 10);
+        if (isNaN(target) || target === 0) return;
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(ease * target);
+          el.textContent = val.toLocaleString('ja-JP');
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+      const countObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !e.target.dataset.counted) {
+            e.target.dataset.counted = '1';
+            animateCount(e.target);
+            countObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+    })();
   </script>
 
 </body>
