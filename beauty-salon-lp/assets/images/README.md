@@ -22,13 +22,13 @@
 
 | ファイル名 | 取得元 | Photo ID | サイズ |
 |-----------|-------|---------|-------|
-| `fv-hero.jpg` | Unsplash | photo-1731514771613-991a02407132 | 116KB |
-| `menu-01-basic.jpg` | Unsplash | photo-1570172619644-dfd03ed5d881 | 50KB |
-| `menu-02-aging.jpg` | Unsplash | photo-1616394584738-fc6e612e71b9 | 48KB |
-| `menu-03-moisture.jpg` | Unsplash | photo-1683408640631-2c99fff964d7 | 37KB |
+| `fv-hero.jpg` | ChatGPT生成 | — | 82KB |
+| `menu-01-basic.jpg` | ChatGPT生成 | — | 106KB |
+| `menu-02-aging.jpg` | ChatGPT生成 | — | 148KB |
+| `menu-03-moisture.jpg` | ChatGPT生成 | — | 156KB |
 | `owner.jpg` | Unsplash | photo-1616326431919-be810ad5dacd | 61KB |
 
-※ Unsplash License: 商用利用OK・帰属表示不要
+※ ChatGPT生成画像: OpenAI利用規約に基づき商用利用OK
 ※ `owner.jpg` は仮のフリー素材です。クライアント実写が届き次第差し替えてください
 
 ---
