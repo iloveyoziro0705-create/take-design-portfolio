@@ -18,6 +18,20 @@
 
 ---
 
+## 配置済み画像（フリー素材）
+
+| ファイル名 | 取得元 | Photo ID | サイズ |
+|-----------|-------|---------|-------|
+| `fv-hero.jpg` | Unsplash | photo-1731514771613-991a02407132 | 116KB |
+| `menu-01-basic.jpg` | Unsplash | photo-1570172619644-dfd03ed5d881 | 50KB |
+| `menu-02-aging.jpg` | Unsplash | photo-1616394584738-fc6e612e71b9 | 48KB |
+| `menu-03-moisture.jpg` | Unsplash | photo-1683408640631-2c99fff964d7 | 37KB |
+
+※ Unsplash License: 商用利用OK・帰属表示不要
+※ `owner.jpg` のみクライアント実写を待って差し替えてください
+
+---
+
 ## 画像の配置方法
 
 このフォルダ（`assets/images/`）に上記ファイル名でJPGを配置するだけで自動的に表示されます。
