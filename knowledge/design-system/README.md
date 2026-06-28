@@ -37,7 +37,9 @@ knowledge/design-system/
 | hero-ranking.md | HeroランキングCV/デザイン/モバイル | ✅ 完成 |
 | hero-pattern-map.md | Hero業種×CV目的マップ | ✅ 完成 |
 | cta-layout-library.md | CTAセクションレイアウト | 🔜 準備中 |
-| feature-layout-library.md | Featureセクションレイアウト | 🔜 準備中 |
+| feature-layout-library.md | Featureセクションレイアウト 55パターン | ✅ 完成 |
+| feature-ranking.md | FeatureランキングCV/デザイン/スマホ/汎用性 | ✅ 完成 |
+| feature-pattern-map.md | Feature業種×CV目的マップ | ✅ 完成 |
 | voice-layout-library.md | Voiceセクションレイアウト | 🔜 準備中 |
 | faq-layout-library.md | FAQセクションレイアウト | 🔜 準備中 |
 | flow-layout-library.md | Flowセクションレイアウト | 🔜 準備中 |
