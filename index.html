@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TAKE CRAFT｜伝えたいを、成果へ。動画・Web・LP・AIを手段に、人が動く理由を設計するクリエイティブ戦略スタジオ。" />
+  <meta name="description" content="TAKE CRAFT｜伝えたいを、成果へ。人が動く理由をデザインするクリエイティブ戦略スタジオ。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。" />
   <title>TAKE CRAFT | Craft for Results. Creative Strategy Studio.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,10 @@
       --surface: #252525;
       --card: #252525;
       --border: rgba(255,255,255,0.08);
-      --border-mid: rgba(255,255,255,0.14);
+      --border-mid: rgba(255,255,255,0.16);
       --accent: #2563EB;
       --accent-soft: rgba(37,99,235,0.10);
-      --accent-mid: rgba(37,99,235,0.35);
+      --accent-mid: rgba(37,99,235,0.38);
       --text: #F5F5F5;
       --sub: #8B8B8B;
       --sub2: #6B6B6B;
@@ -26,20 +26,34 @@
       --radius-lg: 20px;
       --radius-md: 16px;
       --radius-sm: 10px;
-      --content: 1160px;
-      --py: 136px;
+      --content: 1200px;
+      --py: 148px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    img { max-width: 100%; display: block; }
+    html { scroll-behavior: auto; }
+    body { margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; cursor: none; }
+    img, video { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
     h1,h2,h3,h4 { margin-top: 0; }
     p { margin-top: 0; }
     .container { width: min(var(--content), calc(100% - 48px)); margin: 0 auto; }
     .section { padding: var(--py) 0; position: relative; }
     .section-alt { background: var(--surface); }
+    .split { overflow: hidden; }
+
+    @media (hover: none) { body { cursor: auto; } }
+
+    /* ── CUSTOM CURSOR ── */
+    #cursor-dot, #cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
+    #cursor-dot { width: 6px; height: 6px; background: var(--accent); }
+    #cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(37,99,235,0.5); transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s; }
+    #cursor-ring.is-active { width: 64px; height: 64px; background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.7); }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
+
+    /* ── LENIS ── */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto; }
 
     .label {
       display: inline-flex; align-items: center; gap: 10px;
@@ -50,31 +64,33 @@
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 15px 30px; border-radius: 999px;
+      padding: 16px 32px; border-radius: 999px;
       background: var(--accent); color: #F5F5F5;
       font-family: var(--dm); font-weight: 600; font-size: 14px; letter-spacing: 0.03em;
-      border: none; cursor: pointer;
-      box-shadow: 0 0 0 1px rgba(37,99,235,0.4), 0 8px 24px rgba(37,99,235,0.18);
-      transition: transform 0.25s, box-shadow 0.25s;
+      border: none; cursor: none;
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.4), 0 8px 28px rgba(37,99,235,0.20);
+      transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(37,99,235,0.55), 0 10px 32px rgba(37,99,235,0.28); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(37,99,235,0.6), 0 14px 36px rgba(37,99,235,0.32); }
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 15px 30px; border-radius: 999px;
+      padding: 16px 32px; border-radius: 999px;
       background: transparent; color: var(--text);
       font-family: var(--dm); font-weight: 500; font-size: 14px;
-      border: 1px solid var(--border-mid); cursor: pointer;
-      transition: border-color 0.25s, background 0.25s;
+      border: 1px solid var(--border-mid); cursor: none;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s cubic-bezier(.2,.8,.2,1);
     }
-    .btn-outline:hover { border-color: rgba(37,99,235,0.45); background: var(--accent-soft); }
+    .btn-outline:hover { border-color: rgba(37,99,235,0.5); background: var(--accent-soft); transform: translateY(-3px); }
 
     /* ── HEADER ── */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 76px;
       padding: 0 48px; display: flex; align-items: center; justify-content: space-between;
-      background: rgba(30,30,30,0.86); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      background: transparent; backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
     }
+    header.is-scrolled { background: rgba(30,30,30,0.82); backdrop-filter: blur(20px); border-bottom-color: var(--border); }
     .logo { font-family: var(--dm); font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; display: flex; align-items: center; gap: 9px; }
     .logo-mark { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
     .nav-links { display: flex; gap: 40px; font-family: var(--dm); font-size: 12.5px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub); }
@@ -83,7 +99,7 @@
 
     .menu-btn {
       display: none; flex-direction: column; justify-content: center; gap: 5px;
-      width: 32px; height: 32px; cursor: pointer; background: none; border: none; padding: 0; z-index: 300;
+      width: 32px; height: 32px; cursor: none; background: none; border: none; padding: 0; z-index: 300;
     }
     .menu-btn span { display: block; height: 1.5px; background: var(--text); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
     .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -99,144 +115,168 @@
     .mobile-nav a:hover { color: var(--text); }
 
     /* ── HERO ── */
-    #hero {
-      min-height: 100vh; padding-top: 76px;
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      background: var(--bg);
-    }
-    .hero-bg-grid {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 78%);
-    }
-    .hero-bg-orb1 { position: absolute; top: -180px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.16), transparent 68%); z-index: 0; pointer-events: none; }
-    .hero-bg-orb2 { position: absolute; bottom: -220px; left: -160px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%); z-index: 0; pointer-events: none; }
-    .hero-bg-ring { position: absolute; top: 18%; right: 8%; width: 380px; height: 380px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); z-index: 0; pointer-events: none; }
-    .hero-bg-ring2 { position: absolute; top: 30%; right: 14%; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(37,99,235,0.14); z-index: 0; pointer-events: none; }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 780px; padding: 100px 0 96px; }
+    #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: flex-end; background: #000; }
+    .hero-media { position: absolute; inset: 0; z-index: 0; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.8s ease; }
+    .hero-video.is-active { opacity: 1; }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(15,15,15,0.55) 45%, rgba(10,10,10,0.92) 100%); }
+    .hero-inner { position: relative; z-index: 2; width: 100%; padding: 100px 0 88px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 16px; border: 1px solid var(--border-mid); border-radius: 999px;
-      font-family: var(--dm); font-size: 11px; letter-spacing: 0.14em; color: var(--sub); margin-bottom: 36px;
+      padding: 7px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px;
+      font-family: var(--dm); font-size: 11px; letter-spacing: 0.14em; color: rgba(245,245,245,0.85); margin-bottom: 32px;
+      backdrop-filter: blur(6px); background: rgba(0,0,0,0.2);
     }
     .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2.2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    .hero-eyebrow { font-family: var(--dm); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); margin-bottom: 18px; }
-    .hero-content h1 { font-family: var(--dm); font-size: clamp(40px, 6vw, 74px); font-weight: 700; line-height: 1.14; margin-bottom: 26px; letter-spacing: -0.01em; color: var(--text); }
-    .hero-content h1 span { display: block; }
-    .hero-content h1 .brand-name { color: var(--text); }
+    .hero-eyebrow { font-family: var(--dm); font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.7); margin-bottom: 18px; }
+    .hero-title { font-family: var(--dm); font-size: clamp(42px, 7vw, 88px); font-weight: 700; line-height: 1.1; margin-bottom: 26px; letter-spacing: -0.01em; color: #fff; max-width: 16ch; }
+    .hero-title .line { display: block; overflow: hidden; }
+    .hero-title .line span { display: inline-block; will-change: transform; }
 
-    .hero-core { font-size: clamp(16px, 1.6vw, 19px); color: var(--sub); line-height: 1.9; margin-bottom: 8px; max-width: 520px; }
-    .hero-sub { font-family: var(--dm); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sub2); margin-bottom: 44px; }
-    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-core { font-size: clamp(15px, 1.4vw, 18px); color: rgba(245,245,245,0.68); line-height: 1.9; margin-bottom: 8px; max-width: 480px; }
+    .hero-sub { font-family: var(--dm); font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 44px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-outline-inverse { border-color: rgba(255,255,255,0.28); }
+    .hero-outline-inverse:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
 
-    /* ── MANIFESTO ── */
-    #manifesto { background: var(--surface); }
-    .manifesto-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
-    .manifesto-head h2 { font-family: var(--dm); font-size: clamp(28px, 3.4vw, 46px); font-weight: 700; line-height: 1.3; color: var(--text); }
-    .manifesto-head h2 em { font-style: normal; color: var(--accent); }
+    .hero-scroll { display: flex; align-items: center; gap: 14px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.24em; color: rgba(245,245,245,0.5); }
+    .hero-scroll-line { width: 1px; height: 46px; background: linear-gradient(rgba(255,255,255,0.6), transparent); position: relative; overflow: hidden; }
+    .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background: linear-gradient(var(--accent), transparent); animation: scrollLine 2.2s ease-in-out infinite; }
+    @keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
+
+    /* ── MANIFESTO (split, huge photo) ── */
+    #manifesto { background: var(--bg); padding: 0; }
+    .manifesto-split { display: grid; grid-template-columns: 1.05fr 1fr; min-height: 92vh; }
+    .manifesto-photo { position: relative; overflow: hidden; }
+    .manifesto-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .manifesto-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, rgba(30,30,30,0.5) 100%); }
+    .manifesto-text { display: flex; flex-direction: column; justify-content: center; padding: 96px 72px; }
+    .manifesto-text h2 { font-family: var(--dm); font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; line-height: 1.32; color: var(--text); margin-bottom: 32px; }
+    .manifesto-text h2 em { font-style: normal; color: var(--accent); }
     .manifesto-body p { font-size: 16px; color: var(--sub); line-height: 2.1; margin-bottom: 20px; }
     .manifesto-founder { display: flex; align-items: center; gap: 18px; margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .mf-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--card); border: 1px solid var(--border); }
+    .mf-avatar { width: 54px; height: 54px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--card); border: 1px solid var(--border); }
     .mf-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .mf-founder-name { font-family: var(--dm); font-size: 14px; font-weight: 600; color: var(--text); }
     .mf-founder-role { font-size: 12.5px; color: var(--sub); }
-    .mf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
-    .mf-stat { background: var(--card); padding: 26px 24px; }
-    .mf-stat-num { font-family: var(--dm); font-size: 30px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .mf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-top: 28px; }
+    .mf-stat { background: var(--card); padding: 22px 22px; }
+    .mf-stat-num { font-family: var(--dm); font-size: 28px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 8px; }
     .mf-stat-lbl { font-size: 12px; color: var(--sub); letter-spacing: 0.04em; }
 
-    /* ── SERVICE ── */
-    #service { background: var(--bg); }
-    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-    .svc-card { background: var(--card); padding: 40px 32px; transition: background 0.25s; }
-    .svc-card:hover { background: rgba(37,99,235,0.045); }
-    .svc-index { font-family: var(--dm); font-size: 12px; color: var(--sub2); letter-spacing: 0.1em; margin-bottom: 28px; }
-    .svc-card h3 { font-family: var(--dm); font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
-    .svc-card h3 .svc-en { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-    .svc-card p { font-size: 14px; color: var(--sub); line-height: 1.9; margin-bottom: 0; }
+    /* ── SERVICES (photo cards) ── */
+    #service { background: var(--surface); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+    .svc-card { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+    .svc-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
+    .svc-card:hover img { transform: scale(1.08); }
+    .svc-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,15,15,0.92) 0%, rgba(15,15,15,0.55) 45%, rgba(15,15,15,0.15) 100%); }
+    .svc-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; }
+    .svc-index { font-family: var(--dm); font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.14em; margin-bottom: 12px; }
+    .svc-en { display: block; font-family: var(--dm); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .svc-content h3 { font-family: var(--dm); font-size: 19px; font-weight: 600; margin-bottom: 10px; color: #fff; }
+    .svc-content p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 0; max-width: 30ch; }
 
-    /* ── METHOD ── */
-    #method { background: var(--surface); }
-    .method-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 64px; position: relative; }
-    .method-steps::before { content: ''; position: absolute; top: 27px; left: 6%; right: 6%; height: 1px; background: linear-gradient(to right, transparent, var(--border-mid) 15%, var(--border-mid) 85%, transparent); }
-    .method-step { text-align: left; padding: 0 18px 0 0; position: relative; }
-    .method-num { width: 54px; height: 54px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border-mid); margin-bottom: 24px; display: grid; place-items: center; font-family: var(--dm); font-size: 13px; font-weight: 500; color: var(--accent); position: relative; z-index: 1; transition: border-color 0.25s, background 0.25s; }
-    .method-step:hover .method-num { border-color: var(--accent-mid); background: var(--accent-soft); }
-    .method-step h4 { font-family: var(--dm); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
-    .method-step .method-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sub2); margin-bottom: 10px; }
-    .method-step p { font-size: 13px; color: var(--sub); line-height: 1.8; margin-bottom: 0; }
+    /* ── METHOD (steps with photos) ── */
+    #method { background: var(--bg); }
+    .method-list { margin-top: 64px; display: flex; flex-direction: column; }
+    .method-row { display: grid; grid-template-columns: 64px 1fr 200px; gap: 40px; align-items: center; padding: 40px 0; border-top: 1px solid var(--border); }
+    .method-row:last-child { border-bottom: 1px solid var(--border); }
+    .method-num { font-family: var(--dm); font-size: 15px; color: var(--accent); border: 1px solid var(--border-mid); border-radius: 50%; width: 54px; height: 54px; display: grid; place-items: center; }
+    .method-copy .method-en { display: block; font-family: var(--dm); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sub2); margin-bottom: 10px; }
+    .method-copy h4 { font-family: var(--dm); font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .method-copy p { font-size: 14px; color: var(--sub); line-height: 1.8; max-width: 46ch; }
+    .method-photo { width: 200px; aspect-ratio: 4/3; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+    .method-photo img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ── PROJECTS ── */
-    #projects { background: var(--bg); }
+    #projects { background: var(--surface); }
     .projects-intro { max-width: 640px; margin-bottom: 20px; }
     .projects-intro p { font-size: 16px; color: var(--sub); line-height: 2.0; margin-bottom: 0; }
-    .projects-group-label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sub2); margin: 64px 0 28px; display: flex; align-items: center; gap: 14px; }
+    .projects-group-label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sub2); margin: 72px 0 32px; display: flex; align-items: center; gap: 14px; }
     .projects-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .projects-group-label:first-of-type { margin-top: 56px; }
+    .projects-group-label:first-of-type { margin-top: 64px; }
 
-    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
-    .proj-card:hover { transform: translateY(-6px); border-color: var(--border-mid); }
-    .proj-thumb { aspect-ratio: 4/3; position: relative; overflow: hidden; background: #171717; flex-shrink: 0; }
-    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.6s; }
-    .proj-card:hover .proj-thumb img { transform: scale(1.05); }
-    .proj-thumb-video { display: flex; align-items: center; justify-content: center; }
-    .proj-play { width: 50px; height: 50px; border-radius: 50%; background: rgba(37,99,235,0.16); border: 1.5px solid rgba(37,99,235,0.5); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 16px; padding-left: 3px; position: relative; z-index: 1; transition: transform 0.4s; }
-    .proj-card:hover .proj-play { transform: scale(1.08); }
-    .proj-cat { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(30,30,30,0.82); backdrop-filter: blur(6px); border: 1px solid var(--border-mid); padding: 5px 12px; border-radius: 999px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.1em; color: var(--sub); }
-    .proj-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
-    .proj-body h3 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
-    .proj-rows { display: grid; gap: 10px; margin-bottom: 18px; flex: 1; }
-    .proj-row { display: grid; grid-template-columns: 56px 1fr; gap: 10px; font-size: 12.5px; align-items: baseline; }
-    .proj-lbl { font-family: var(--dm); font-size: 9px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1px; }
-    .proj-val { color: var(--sub); line-height: 1.7; }
-    .proj-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--dm); font-size: 12px; font-weight: 600; color: var(--accent); transition: opacity 0.2s; letter-spacing: 0.03em; margin-top: auto; }
-    .proj-link:hover { opacity: 0.7; }
+    .proj-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .proj-card {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--card); border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1.3fr 1fr;
+      min-height: 380px;
+    }
+    .proj-card.proj-card--lp { grid-template-columns: 1fr 1.3fr; }
+    .proj-card.proj-card--lp .proj-thumb { order: 2; }
+    .proj-card.proj-card--lp .proj-body { order: 1; }
 
-    .proj-thumb-wt1 { background: linear-gradient(135deg, #202436, #191c2a, #14151f); }
-    .proj-thumb-wt2 { background: linear-gradient(135deg, #16232a, #131c22, #12181c); }
-    .proj-thumb-wt3 { background: linear-gradient(135deg, #1a1e2a, #171a22, #121319); }
-    .proj-thumb-video::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(37,99,235,0.10), transparent); }
+    .proj-thumb { position: relative; overflow: hidden; background: #171717; }
+    .proj-thumb img, .proj-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .proj-preview-video { opacity: 0; transition: opacity 0.5s ease; }
+    .proj-card.is-playing .proj-preview-video { opacity: 1; }
+    .proj-card.is-playing .proj-poster { opacity: 0; }
+    .proj-poster { transition: opacity 0.5s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
+    .proj-card--lp .proj-poster { transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
+    .proj-card--lp:hover .proj-poster { transform: translateY(-8%) scale(1.03); }
+    .proj-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 58px; height: 58px; border-radius: 50%; background: rgba(37,99,235,0.18); border: 1.5px solid rgba(37,99,235,0.55); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 17px; padding-left: 3px; z-index: 2; transition: opacity 0.4s, transform 0.4s; }
+    .proj-card.is-playing .proj-play { opacity: 0; transform: translate(-50%,-50%) scale(0.8); }
+    .proj-cat { position: absolute; top: 18px; left: 18px; z-index: 3; background: rgba(20,20,20,0.75); backdrop-filter: blur(6px); border: 1px solid var(--border-mid); padding: 6px 14px; border-radius: 999px; font-family: var(--dm); font-size: 10.5px; letter-spacing: 0.1em; color: #fff; }
+    .proj-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+    .proj-body h3 { font-family: var(--dm); font-size: 22px; font-weight: 600; margin-bottom: 24px; color: var(--text); }
+    .proj-rows { display: grid; gap: 14px; margin-bottom: 24px; }
+    .proj-row { display: grid; grid-template-columns: 78px 1fr; gap: 12px; font-size: 13.5px; align-items: baseline; }
+    .proj-lbl { font-family: var(--dm); font-size: 10px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1px; }
+    .proj-val { color: var(--sub); line-height: 1.75; }
+    .proj-link { display: inline-flex; align-items: center; gap: 7px; font-family: var(--dm); font-size: 13px; font-weight: 600; color: var(--accent); transition: gap 0.25s; letter-spacing: 0.03em; width: fit-content; }
+    .proj-link:hover { gap: 11px; }
 
-    .projects-more { text-align: center; margin-top: 56px; }
+    .projects-more { text-align: center; margin-top: 64px; }
 
-    /* ── PHILOSOPHY ── */
+    /* ── BEHIND THE CRAFT (masonry) ── */
+    #behind { background: var(--bg); }
+    .behind-grid { columns: 3 260px; column-gap: 20px; margin-top: 56px; }
+    .behind-item { break-inside: avoid; margin-bottom: 20px; border-radius: var(--radius-md); overflow: hidden; position: relative; border: 1px solid var(--border); }
+    .behind-item img { width: 100%; height: auto; display: block; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
+    .behind-item:hover img { transform: scale(1.06); }
+    .behind-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: linear-gradient(0deg, rgba(10,10,10,0.85), transparent); font-family: var(--dm); font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); }
+
+    /* ── PHILOSOPHY (photo cards) ── */
     #philosophy { background: var(--surface); }
-    .phil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 56px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-    .phil-card { background: var(--card); padding: 36px 28px; text-align: left; }
-    .phil-num { font-family: var(--dm); font-size: 38px; font-weight: 300; color: rgba(37,99,235,0.22); line-height: 1; margin-bottom: 18px; }
-    .phil-card h4 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
-    .phil-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sub2); margin-bottom: 12px; }
-    .phil-card p { font-size: 13px; color: var(--sub); margin-bottom: 0; line-height: 1.85; }
+    .phil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+    .phil-card { position: relative; aspect-ratio: 3/4; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+    .phil-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
+    .phil-card:hover img { transform: scale(1.08); }
+    .phil-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,10,0.90) 0%, rgba(10,10,10,0.35) 55%, rgba(10,10,10,0.05) 100%); }
+    .phil-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px; }
+    .phil-num { font-family: var(--dm); font-size: 30px; font-weight: 300; color: rgba(37,99,235,0.55); line-height: 1; margin-bottom: 14px; }
+    .phil-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+    .phil-content h4 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+    .phil-content p { font-size: 12.5px; color: rgba(255,255,255,0.65); margin-bottom: 0; line-height: 1.8; }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--bg); }
-    .contact-wrap { max-width: 640px; margin: 0 auto; text-align: center; }
-    .contact-wrap h2 { font-family: var(--dm); font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 20px; line-height: 1.3; color: var(--text); }
-    .c-sub { font-size: 16px; color: var(--sub); margin-bottom: 18px; line-height: 2.0; }
+    /* ── CONTACT (huge photo) ── */
+    #contact { position: relative; padding: 0; overflow: hidden; min-height: 90vh; display: flex; align-items: center; }
+    .contact-media { position: absolute; inset: 0; z-index: 0; }
+    .contact-media img { width: 100%; height: 100%; object-fit: cover; }
+    .contact-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.80) 60%, rgba(10,10,10,0.95) 100%); }
+    .contact-wrap { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; text-align: center; padding: 120px 24px; }
+    .contact-wrap h2 { font-family: var(--dm); font-size: clamp(30px, 4.4vw, 52px); font-weight: 700; margin-bottom: 20px; line-height: 1.28; color: #fff; }
+    .c-sub { font-size: 16px; color: rgba(245,245,245,0.65); margin-bottom: 18px; line-height: 2.0; }
     .c-email-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 48px; font-family: var(--dm); font-size: 14px; color: var(--accent); letter-spacing: 0.03em; border-bottom: 1px solid var(--accent-mid); padding-bottom: 2px; transition: opacity 0.2s; }
     .c-email-link:hover { opacity: 0.75; }
     .cform { display: grid; gap: 16px; text-align: left; }
     .ff { display: flex; flex-direction: column; gap: 8px; }
-    .ff label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.1em; color: var(--sub); }
+    .ff label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.1em; color: rgba(245,245,245,0.6); }
     .ff input, .ff textarea, .ff select {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: rgba(37,37,37,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-md);
       padding: 14px 18px; color: var(--text); font-family: var(--sans); font-size: 14px;
       outline: none; transition: border-color 0.2s; resize: none;
     }
     .ff input::placeholder, .ff textarea::placeholder { color: var(--sub2); }
     .ff input:focus, .ff textarea:focus, .ff select:focus { border-color: var(--accent-mid); }
-    .ff textarea { min-height: 140px; }
-    .ff select { appearance: none; cursor: pointer; }
+    .ff textarea { min-height: 130px; }
+    .ff select { appearance: none; cursor: none; }
     .c-submit { margin-top: 8px; }
-    .c-submit .btn-primary { width: 100%; justify-content: center; padding: 16px; font-size: 15px; border-radius: var(--radius-md); }
+    .c-submit .btn-primary { width: 100%; justify-content: center; padding: 17px; font-size: 15px; border-radius: var(--radius-md); }
 
     /* ── FOOTER ── */
     footer { padding: 44px 48px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
@@ -245,40 +285,52 @@
     .f-links a:hover { color: var(--sub); }
     .f-copy { font-size: 12px; color: var(--sub2); }
 
-    /* ── REVEAL ── */
-    .r { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-    .r.on { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; }
-    .d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
+    /* ── REVEAL (GSAP-driven; base state) ── */
+    .r { opacity: 0; transform: translateY(28px); }
+    .r.gsap-ready { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      :root { --py: 92px; }
+      :root { --py: 96px; }
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
       header { padding: 0 24px; }
       .nav-links, .h-cta { display: none; }
       .menu-btn { display: flex; }
-      .hero-inner { padding: 56px 0 64px; }
-      .manifesto-inner { grid-template-columns: 1fr; gap: 44px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .method-steps { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
-      .method-steps::before { display: none; }
-      .proj-grid { grid-template-columns: 1fr; }
+      .manifesto-split { grid-template-columns: 1fr; min-height: auto; }
+      .manifesto-photo { height: 50vh; }
+      .manifesto-text { padding: 56px 28px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .method-row { grid-template-columns: 48px 1fr; }
+      .method-photo { display: none; }
+      .proj-card, .proj-card.proj-card--lp { grid-template-columns: 1fr; }
+      .proj-card .proj-thumb, .proj-card.proj-card--lp .proj-thumb { order: -1; aspect-ratio: 16/10; }
+      .proj-card .proj-body, .proj-card.proj-card--lp .proj-body { order: 1; padding: 28px; }
+      .behind-grid { columns: 2 200px; }
       .phil-grid { grid-template-columns: 1fr 1fr; }
       footer { padding: 32px 24px; }
     }
     @media (max-width: 600px) {
       .container { width: calc(100% - 36px); }
-      .method-steps { grid-template-columns: 1fr 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+      .behind-grid { columns: 1; }
       .phil-grid { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
       .mf-stats { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .r { opacity: 1 !important; transform: none !important; }
+      .hero-scroll-line::after { animation: none; }
     }
   </style>
 </head>
 <body>
 
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
 <!-- HEADER -->
-<header>
+<header id="siteHeader">
   <a href="#hero" class="logo"><span class="logo-mark">T</span>TAKE CRAFT</a>
   <nav class="nav-links">
     <a href="#manifesto">BRAND</a>
@@ -305,52 +357,58 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-bg-orb1"></div>
-  <div class="hero-bg-orb2"></div>
-  <div class="hero-bg-ring"></div>
-  <div class="hero-bg-ring2"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-badge r">Creative Strategy Studio</div>
-      <p class="hero-eyebrow r d1">TAKE CRAFT</p>
-      <h1>
-        <span class="r d1">伝えたいを、成果へ。</span>
-      </h1>
-      <p class="hero-core r d2">人が動く理由をデザインする。良い商品でも、良いサービスでも、伝わらなければ選ばれません。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。</p>
-      <p class="hero-sub r d2">Craft for Results.</p>
-      <div class="hero-ctas r d3">
-        <a class="btn-primary" href="#projects">View Projects</a>
-        <a class="btn-outline" href="#contact">Start Project</a>
-      </div>
+  <div class="hero-media">
+    <video class="hero-video is-active" autoplay muted loop playsinline poster="assets/video/hero-1-poster.jpg">
+      <source src="assets/video/hero-1-web.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-2-poster.jpg">
+      <source src="assets/video/hero-2-web.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-3-poster.jpg">
+      <source src="assets/video/hero-3-web.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-badge">Creative Strategy Studio</div>
+    <p class="hero-eyebrow">TAKE CRAFT</p>
+    <h1 class="hero-title" id="heroTitle">伝えたいを、成果へ。</h1>
+    <p class="hero-core">人が動く理由をデザインする。良い商品でも、良いサービスでも、伝わらなければ選ばれません。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。</p>
+    <p class="hero-sub">Design the Reason People Act.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-outline hero-outline-inverse" href="#contact">Start Project</a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll-line"></span>
+      SCROLL
     </div>
   </div>
 </section>
 
 <!-- BRAND MANIFESTO -->
-<section id="manifesto" class="section">
-  <div class="container">
-    <div class="manifesto-inner">
-      <div class="manifesto-head r">
-        <span class="label">Brand Manifesto</span>
-        <h2>Design is not<br>decoration.<br>It is <em>strategy.</em></h2>
+<section id="manifesto">
+  <div class="manifesto-split">
+    <div class="manifesto-photo r">
+      <img src="assets/photo/manifesto-main.jpg" alt="暗いスタジオで植物のスケッチを描くデザイナーの手元" loading="lazy">
+    </div>
+    <div class="manifesto-text">
+      <span class="label r">Brand Manifesto</span>
+      <h2 class="r d1">Design is not<br>decoration.<br>It is <em>strategy.</em></h2>
+      <div class="manifesto-body r d2">
+        <p>良い商品でも、良いサービスでも、伝わらなければ選ばれません。</p>
+        <p>TAKE CRAFTは、動画・Web・LP・AIを手段として、人が動く理由を設計します。見た目を整えることではなく、成果につながる仕組みをつくることが、私たちの仕事です。</p>
       </div>
-      <div>
-        <div class="manifesto-body r d1">
-          <p>良い商品でも、良いサービスでも、伝わらなければ選ばれません。</p>
-          <p>TAKE CRAFTは、動画・Web・LP・AIを手段として、人が動く理由を設計します。見た目を整えることではなく、成果につながる仕組みをつくることが、私たちの仕事です。</p>
+      <div class="manifesto-founder r d3">
+        <div class="mf-avatar"><img src="images/profile.jpg" alt="TAKE CRAFT" loading="lazy"></div>
+        <div>
+          <div class="mf-founder-name">TAKE CRAFT</div>
+          <div class="mf-founder-role">Creative Strategy / Video / Web / AI</div>
         </div>
-        <div class="manifesto-founder r d2">
-          <div class="mf-avatar"><img src="images/profile.jpg" alt="TAKE CRAFT Founder"></div>
-          <div>
-            <div class="mf-founder-name">TAKE CRAFT</div>
-            <div class="mf-founder-role">Creative Strategy / Video / Web / AI</div>
-          </div>
-        </div>
-        <div class="mf-stats r d3" style="margin-top:24px;">
-          <div class="mf-stat"><div class="mf-stat-num">50<span style="font-size:16px">+</span></div><div class="mf-stat-lbl">制作実績</div></div>
-          <div class="mf-stat"><div class="mf-stat-num">4<span style="font-size:16px">年</span></div><div class="mf-stat-lbl">戦略設計の経験</div></div>
-        </div>
+      </div>
+      <div class="mf-stats r d3">
+        <div class="mf-stat"><div class="mf-stat-num">50<span style="font-size:16px">+</span></div><div class="mf-stat-lbl">制作実績</div></div>
+        <div class="mf-stat"><div class="mf-stat-num">4<span style="font-size:16px">年</span></div><div class="mf-stat-lbl">戦略設計の経験</div></div>
       </div>
     </div>
   </div>
@@ -363,34 +421,58 @@
     <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">できること</h2>
     <div class="service-grid">
       <div class="svc-card r">
-        <div class="svc-index">01</div>
-        <h3><span class="svc-en">Creative Strategy</span>クリエイティブ戦略</h3>
-        <p>「何を作るか」の前に「なぜ作るか」から設計。目的・ターゲット・訴求を整理し、成果から逆算した企画をつくります。</p>
+        <img src="assets/photo/method-clarify-whiteboard.jpg" alt="ホワイトボードで戦略を整理する様子" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">Creative Strategy</span>
+          <h3>クリエイティブ戦略</h3>
+          <p>「何を作るか」の前に「なぜ作るか」から設計します。</p>
+        </div>
       </div>
       <div class="svc-card r d1">
-        <div class="svc-index">02</div>
-        <h3><span class="svc-en">Video Production</span>映像制作</h3>
-        <p>企業PR動画・広告動画・SNSショート動画まで対応。企画・撮影・編集・カラーグレーディングまで一貫して担当します。</p>
+        <img src="assets/video/proj-corporate-pr-poster.jpg" alt="企業PR動画の撮影現場" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">Video Production</span>
+          <h3>映像制作</h3>
+          <p>企画・撮影・編集・カラーグレーディングまで一貫対応。</p>
+        </div>
       </div>
       <div class="svc-card r d2">
-        <div class="svc-index">03</div>
-        <h3><span class="svc-en">Landing Page</span>LP制作</h3>
-        <p>サービス・商品の魅力を問い合わせ・予約へつなげるランディングページを設計・制作。感情設計からコーディングまで対応します。</p>
+        <img src="assets/photo/method-architect-code.jpg" alt="LP実装画面" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">Landing Page</span>
+          <h3>LP制作</h3>
+          <p>感情設計からコーディングまで、成果につながるLPを。</p>
+        </div>
       </div>
       <div class="svc-card r">
-        <div class="svc-index">04</div>
-        <h3><span class="svc-en">Website</span>Webサイト制作</h3>
-        <p>コーポレートサイト・採用サイト・サービスサイトをデザインから実装まで。WordPress・レスポンシブにも対応します。</p>
+        <img src="assets/photo/svc-website-code.jpg" alt="Webサイトのコーディング画面" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">Website</span>
+          <h3>Webサイト制作</h3>
+          <p>コーポレート・採用・サービスサイトをデザインから実装まで。</p>
+        </div>
       </div>
       <div class="svc-card r d1">
-        <div class="svc-index">05</div>
-        <h3><span class="svc-en">AI Workflow</span>AI活用設計</h3>
-        <p>制作・運用フローにAIを組み込み、スピードと品質を両立。生成AIを活用したコンテンツ制作・業務効率化を支援します。</p>
+        <img src="assets/photo/svc-ai-workflow.jpg" alt="AIワークフローの抽象的なインターフェース" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">AI Workflow</span>
+          <h3>AI活用設計</h3>
+          <p>制作・運用フローにAIを組み込み、スピードと品質を両立。</p>
+        </div>
       </div>
       <div class="svc-card r d2">
-        <div class="svc-index">06</div>
-        <h3><span class="svc-en">System Design</span>システム設計</h3>
-        <p>予約・診断・料金シミュレーターなど、成果に直結する機能設計を実装。静的サイトを超えた仕組みづくりに対応します。</p>
+        <img src="assets/photo/method-test-analytics.jpg" alt="データ分析画面" loading="lazy">
+        <div class="svc-overlay"></div>
+        <div class="svc-content">
+          <span class="svc-en">System Design</span>
+          <h3>システム設計</h3>
+          <p>予約・診断・料金シミュレーターなど機能面まで設計。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -401,36 +483,51 @@
   <div class="container">
     <span class="label r">CRAFT Method</span>
     <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">成果を設計する、<br>5つのステップ。</h2>
-    <div class="method-steps">
-      <div class="method-step r">
+    <div class="method-list">
+      <div class="method-row r">
         <div class="method-num">01</div>
-        <span class="method-en">Clarify</span>
-        <h4>目的を明確にする</h4>
-        <p>誰に、何を、なぜ伝えるのか。成果の定義から始めます。</p>
+        <div class="method-copy">
+          <span class="method-en">Clarify</span>
+          <h4>目的を明確にする</h4>
+          <p>誰に、何を、なぜ伝えるのか。成果の定義から始めます。</p>
+        </div>
+        <div class="method-photo"><img src="assets/photo/method-clarify-whiteboard.jpg" alt="ホワイトボードでの整理" loading="lazy"></div>
       </div>
-      <div class="method-step r d1">
+      <div class="method-row r">
         <div class="method-num">02</div>
-        <span class="method-en">Research</span>
-        <h4>相手を深く知る</h4>
-        <p>ターゲットの課題・心理・行動を丁寧にリサーチします。</p>
+        <div class="method-copy">
+          <span class="method-en">Research</span>
+          <h4>相手を深く知る</h4>
+          <p>ターゲットの課題・心理・行動を丁寧にリサーチします。</p>
+        </div>
+        <div class="method-photo"><img src="assets/photo/method-research-notes.jpg" alt="リサーチノート" loading="lazy"></div>
       </div>
-      <div class="method-step r d2">
+      <div class="method-row r">
         <div class="method-num">03</div>
-        <span class="method-en">Architect</span>
-        <h4>戦略を設計する</h4>
-        <p>伝える順番・構成・導線を、成果から逆算して設計します。</p>
+        <div class="method-copy">
+          <span class="method-en">Architect</span>
+          <h4>戦略を設計する</h4>
+          <p>伝える順番・構成・導線を、成果から逆算して設計します。</p>
+        </div>
+        <div class="method-photo"><img src="assets/photo/method-architect-code.jpg" alt="設計画面" loading="lazy"></div>
       </div>
-      <div class="method-step r d3">
+      <div class="method-row r">
         <div class="method-num">04</div>
-        <span class="method-en">Form</span>
-        <h4>形にして届ける</h4>
-        <p>動画・LP・Webとして制作し、狙った相手に届けます。</p>
+        <div class="method-copy">
+          <span class="method-en">Form</span>
+          <h4>形にして届ける</h4>
+          <p>動画・LP・Webとして制作し、狙った相手に届けます。</p>
+        </div>
+        <div class="method-photo"><img src="assets/video/hero-1-poster.jpg" alt="編集画面" loading="lazy"></div>
       </div>
-      <div class="method-step r d4">
+      <div class="method-row r">
         <div class="method-num">05</div>
-        <span class="method-en">Test</span>
-        <h4>検証し、改善する</h4>
-        <p>公開後の反応を見て、成果につながるまで磨き続けます。</p>
+        <div class="method-copy">
+          <span class="method-en">Test</span>
+          <h4>検証し、改善する</h4>
+          <p>公開後の反応を見て、成果につながるまで磨き続けます。</p>
+        </div>
+        <div class="method-photo"><img src="assets/photo/method-test-analytics.jpg" alt="分析画面" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -448,8 +545,10 @@
     <p class="projects-group-label r">Video Production</p>
     <div class="proj-grid">
 
-      <div class="proj-card r">
-        <div class="proj-thumb proj-thumb-video proj-thumb-wt1">
+      <div class="proj-card proj-card--video r" data-video="assets/video/proj-corporate-pr.mp4">
+        <div class="proj-thumb">
+          <img class="proj-poster" src="assets/video/proj-corporate-pr-poster.jpg" alt="企業PR動画の撮影シーン" loading="lazy">
+          <video class="proj-preview-video" muted loop playsinline preload="none"><source src="assets/video/proj-corporate-pr.mp4" type="video/mp4"></video>
           <span class="proj-cat">Corporate PR</span>
           <div class="proj-play">▶</div>
         </div>
@@ -463,8 +562,10 @@
         </div>
       </div>
 
-      <div class="proj-card r d1">
-        <div class="proj-thumb proj-thumb-video proj-thumb-wt2">
+      <div class="proj-card proj-card--video r d1" data-video="assets/video/proj-youtube-regional.mp4">
+        <div class="proj-thumb">
+          <img class="proj-poster" src="assets/video/proj-youtube-regional-poster.jpg" alt="地方創生YouTubeチャンネルの映像" loading="lazy">
+          <video class="proj-preview-video" muted loop playsinline preload="none"><source src="assets/video/proj-youtube-regional.mp4" type="video/mp4"></video>
           <span class="proj-cat">YouTube</span>
           <div class="proj-play">▶</div>
         </div>
@@ -478,8 +579,10 @@
         </div>
       </div>
 
-      <div class="proj-card r d2">
-        <div class="proj-thumb proj-thumb-video proj-thumb-wt3">
+      <div class="proj-card proj-card--video r d2" data-video="assets/video/proj-sns-ad.mp4">
+        <div class="proj-thumb">
+          <img class="proj-poster" src="assets/video/proj-sns-ad-poster.jpg" alt="SNS広告動画のスマートフォン視聴シーン" loading="lazy">
+          <video class="proj-preview-video" muted loop playsinline preload="none"><source src="assets/video/proj-sns-ad.mp4" type="video/mp4"></video>
           <span class="proj-cat">SNS Ad</span>
           <div class="proj-play">▶</div>
         </div>
@@ -498,9 +601,9 @@
     <p class="projects-group-label r">Landing Page</p>
     <div class="proj-grid">
 
-      <div class="proj-card r">
+      <div class="proj-card proj-card--lp r">
         <div class="proj-thumb">
-          <img src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" width="800" height="600" loading="lazy">
+          <img class="proj-poster" src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" loading="lazy">
           <span class="proj-cat">Beauty Salon</span>
         </div>
         <div class="proj-body">
@@ -517,9 +620,9 @@
         </div>
       </div>
 
-      <div class="proj-card r d1">
+      <div class="proj-card proj-card--lp r d1">
         <div class="proj-thumb">
-          <img src="./thumbnails/ai-school-lp.png" alt="AI MASTER SCHOOL" width="800" height="600" loading="lazy">
+          <img class="proj-poster" src="./thumbnails/ai-school-lp.png" alt="AI MASTER SCHOOL" loading="lazy">
           <span class="proj-cat">Education · AI</span>
         </div>
         <div class="proj-body">
@@ -536,9 +639,9 @@
         </div>
       </div>
 
-      <div class="proj-card r d2">
+      <div class="proj-card proj-card--lp r d2">
         <div class="proj-thumb">
-          <img src="./thumbnails/business-design-academy-lp.png" alt="Business Design Academy" width="800" height="600" loading="lazy">
+          <img class="proj-poster" src="./thumbnails/business-design-academy-lp.png" alt="Business Design Academy" loading="lazy">
           <span class="proj-cat">Business School</span>
         </div>
         <div class="proj-body">
@@ -563,79 +666,114 @@
   </div>
 </section>
 
+<!-- BEHIND THE CRAFT -->
+<section id="behind" class="section">
+  <div class="container">
+    <span class="label r">Behind the Craft</span>
+    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">制作の裏側。</h2>
+    <div class="behind-grid">
+      <div class="behind-item r"><img src="assets/photo/behind-camera-rig.jpg" alt="カメラリグを調整するスタッフ" loading="lazy"><span class="behind-cap">撮影現場</span></div>
+      <div class="behind-item r d1"><img src="assets/photo/method-research-notes.jpg" alt="リサーチノート" loading="lazy"><span class="behind-cap">リサーチ</span></div>
+      <div class="behind-item r d2"><img src="assets/video/hero-2-poster.jpg" alt="編集画面のディテール" loading="lazy"><span class="behind-cap">編集</span></div>
+      <div class="behind-item r"><img src="assets/photo/behind-studio-empty.jpg" alt="無人の撮影スタジオ" loading="lazy"><span class="behind-cap">スタジオ</span></div>
+      <div class="behind-item r d1"><img src="assets/photo/behind-craft-detail.jpg" alt="細部にこだわる手作業" loading="lazy"><span class="behind-cap">こだわり</span></div>
+      <div class="behind-item r d2"><img src="assets/video/hero-3-poster.jpg" alt="コーディング画面" loading="lazy"><span class="behind-cap">開発</span></div>
+      <div class="behind-item r"><img src="assets/photo/contact-desk-pen.jpg" alt="デスクでのメモ書き" loading="lazy"><span class="behind-cap">企画メモ</span></div>
+      <div class="behind-item r d1"><img src="assets/photo/manifesto-main.jpg" alt="デザイナーのスケッチ" loading="lazy"><span class="behind-cap">スケッチ</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- PHILOSOPHY -->
-<section id="philosophy" class="section">
+<section id="philosophy" class="section section-alt">
   <div class="container">
     <span class="label r">Philosophy</span>
     <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">大切にしている、<br>4つの価値観。</h2>
     <div class="phil-grid">
       <div class="phil-card r">
-        <div class="phil-num">01</div>
-        <span class="phil-en">Purpose</span>
-        <h4>目的から考える</h4>
-        <p>手段ではなく目的から。何のために作るのかを、常に問い直します。</p>
+        <img src="assets/photo/phil-purpose.jpg" alt="的の中心を射抜いた矢" loading="lazy">
+        <div class="phil-overlay"></div>
+        <div class="phil-content">
+          <div class="phil-num">01</div>
+          <span class="phil-en">Purpose</span>
+          <h4>目的から考える</h4>
+          <p>手段ではなく目的から。何のために作るのかを、常に問い直します。</p>
+        </div>
       </div>
       <div class="phil-card r d1">
-        <div class="phil-num">02</div>
-        <span class="phil-en">Craft</span>
-        <h4>細部まで磨く</h4>
-        <p>余白・整列・言葉の一つひとつまで、丁寧に仕上げます。</p>
+        <img src="assets/photo/phil-craft-hands.jpg" alt="精密な手仕事をする職人" loading="lazy">
+        <div class="phil-overlay"></div>
+        <div class="phil-content">
+          <div class="phil-num">02</div>
+          <span class="phil-en">Craft</span>
+          <h4>細部まで磨く</h4>
+          <p>余白・整列・言葉の一つひとつまで、丁寧に仕上げます。</p>
+        </div>
       </div>
       <div class="phil-card r d2">
-        <div class="phil-num">03</div>
-        <span class="phil-en">Results</span>
-        <h4>成果まで責任を持つ</h4>
-        <p>納品して終わりではなく、成果が出るまで伴走します。</p>
+        <img src="assets/photo/method-test-analytics.jpg" alt="データを分析する様子" loading="lazy">
+        <div class="phil-overlay"></div>
+        <div class="phil-content">
+          <div class="phil-num">03</div>
+          <span class="phil-en">Results</span>
+          <h4>成果まで責任を持つ</h4>
+          <p>納品して終わりではなく、成果が出るまで伴走します。</p>
+        </div>
       </div>
       <div class="phil-card r d3">
-        <div class="phil-num">04</div>
-        <span class="phil-en">Growth</span>
-        <h4>改善し続ける</h4>
-        <p>公開はゴールではなくスタート。検証と改善を続けます。</p>
+        <img src="assets/photo/phil-growth-staircase.jpg" alt="光に向かって続く階段" loading="lazy">
+        <div class="phil-overlay"></div>
+        <div class="phil-content">
+          <div class="phil-num">04</div>
+          <span class="phil-en">Growth</span>
+          <h4>改善し続ける</h4>
+          <p>公開はゴールではなくスタート。検証と改善を続けます。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section section-alt">
-  <div class="container">
-    <div class="contact-wrap">
-      <span class="label r">Contact</span>
-      <h2 class="r">Let's design the<br>reason people act.</h2>
-      <p class="c-sub r">動画制作、LP制作、Web制作、AI活用まで。<br>伝えたい価値を、成果につながる形へ設計します。</p>
-      <a class="c-email-link r" href="mailto:i.love.yoziro0705@gmail.com">i.love.yoziro0705@gmail.com</a>
-      <form class="cform r" onsubmit="return false;">
-        <div class="ff">
-          <label>お名前 / 会社名</label>
-          <input type="text" placeholder="山田 太郎 / 株式会社〇〇">
-        </div>
-        <div class="ff">
-          <label>メールアドレス</label>
-          <input type="email" placeholder="hello@example.com">
-        </div>
-        <div class="ff">
-          <label>ご依頼の種類</label>
-          <select>
-            <option value="">選択してください</option>
-            <option>Creative Strategy（企画・戦略設計）</option>
-            <option>Video Production（映像制作）</option>
-            <option>Landing Page（LP制作）</option>
-            <option>Website（Webサイト制作）</option>
-            <option>AI Workflow（AI活用）</option>
-            <option>System Design（システム設計）</option>
-            <option>その他・複数ご相談</option>
-          </select>
-        </div>
-        <div class="ff">
-          <label>ご相談内容</label>
-          <textarea placeholder="伝えたい価値、ご依頼の背景、ご希望のスケジュール・予算感などをご記入ください。まだ決まっていなくても大丈夫です。"></textarea>
-        </div>
-        <div class="c-submit">
-          <button type="submit" class="btn-primary">Start Project</button>
-        </div>
-      </form>
-    </div>
+<section id="contact">
+  <div class="contact-media" aria-hidden="true">
+    <img src="assets/photo/contact-desk-pen.jpg" alt="">
+  </div>
+  <div class="container contact-wrap">
+    <span class="label r">Contact</span>
+    <h2 class="r">Let's Build Something<br>Worth Remembering.</h2>
+    <p class="c-sub r">動画制作、LP制作、Web制作、AI活用まで。<br>伝えたい価値を、成果につながる形へ設計します。</p>
+    <a class="c-email-link r" href="mailto:i.love.yoziro0705@gmail.com">i.love.yoziro0705@gmail.com</a>
+    <form class="cform r" onsubmit="return false;">
+      <div class="ff">
+        <label>お名前 / 会社名</label>
+        <input type="text" placeholder="山田 太郎 / 株式会社〇〇">
+      </div>
+      <div class="ff">
+        <label>メールアドレス</label>
+        <input type="email" placeholder="hello@example.com">
+      </div>
+      <div class="ff">
+        <label>ご依頼の種類</label>
+        <select>
+          <option value="">選択してください</option>
+          <option>Creative Strategy（企画・戦略設計）</option>
+          <option>Video Production（映像制作）</option>
+          <option>Landing Page（LP制作）</option>
+          <option>Website（Webサイト制作）</option>
+          <option>AI Workflow（AI活用）</option>
+          <option>System Design（システム設計）</option>
+          <option>その他・複数ご相談</option>
+        </select>
+      </div>
+      <div class="ff">
+        <label>ご相談内容</label>
+        <textarea placeholder="伝えたい価値、ご依頼の背景、ご希望のスケジュール・予算感などをご記入ください。まだ決まっていなくても大丈夫です。"></textarea>
+      </div>
+      <div class="c-submit">
+        <button type="submit" class="btn-primary">Start Project</button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -651,25 +789,130 @@
   <div class="f-copy">© 2026 TAKE CRAFT. All rights reserved.</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-  const revEls = document.querySelectorAll('.r');
-  const ro = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
-  }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
-  revEls.forEach(el => ro.observe(el));
+(function () {
+  var hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  menuBtn.addEventListener('click', () => {
+  /* ---------- Lenis smooth scroll ---------- */
+  var lenis = null;
+  if (!reduceMotion && window.Lenis) {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.gsap && window.ScrollTrigger) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+  }
+
+  /* ---------- Header scroll state ---------- */
+  var header = document.getElementById('siteHeader');
+  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 30); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Mobile drawer ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', function () {
     menuBtn.classList.toggle('open');
     mobileNav.classList.toggle('open');
     document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
   });
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menuBtn.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
-  }));
+  mobileNav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      menuBtn.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---------- Custom cursor ---------- */
+  if (hasFinePointer) {
+    var dot = document.getElementById('cursor-dot');
+    var ring = document.getElementById('cursor-ring');
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var rx = mx, ry = my;
+    window.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+    (function loop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    })();
+    var hoverTargets = 'a, button, .btn-primary, .btn-outline, .svc-card, .proj-card, .phil-card, .behind-item, input, textarea, select';
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest(hoverTargets)) ring.classList.add('is-active');
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest(hoverTargets)) ring.classList.remove('is-active');
+    });
+  } else {
+    document.body.style.cursor = 'auto';
+  }
+
+  /* ---------- Hero video rotation ---------- */
+  var heroVideos = document.querySelectorAll('.hero-video');
+  if (heroVideos.length > 1) {
+    var heroIdx = 0;
+    setInterval(function () {
+      heroVideos[heroIdx].classList.remove('is-active');
+      heroIdx = (heroIdx + 1) % heroVideos.length;
+      heroVideos[heroIdx].classList.add('is-active');
+    }, 7000);
+  }
+
+  /* ---------- Project hover video preview ---------- */
+  document.querySelectorAll('.proj-card--video').forEach(function (card) {
+    var video = card.querySelector('.proj-preview-video');
+    if (!video) return;
+    var loaded = false;
+    card.addEventListener('mouseenter', function () {
+      if (!loaded) { video.src = card.getAttribute('data-video'); loaded = true; }
+      card.classList.add('is-playing');
+      video.currentTime = 0;
+      video.play().catch(function () {});
+    });
+    card.addEventListener('mouseleave', function () {
+      card.classList.remove('is-playing');
+      video.pause();
+    });
+  });
+
+  /* ---------- GSAP scroll reveals ---------- */
+  if (window.gsap && window.ScrollTrigger && !reduceMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.r').forEach(function (el) {
+      gsap.fromTo(el, { opacity: 0, y: 32 }, {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    /* Method rows: stagger reveal one at a time */
+    gsap.utils.toArray('.method-row').forEach(function (row, i) {
+      gsap.fromTo(row, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: row, start: 'top 85%' }
+      });
+    });
+
+    /* Subtle parallax on manifesto photo */
+    gsap.to('.manifesto-photo img', {
+      yPercent: 8, ease: 'none',
+      scrollTrigger: { trigger: '#manifesto', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  } else {
+    document.querySelectorAll('.r').forEach(function (el) { el.classList.add('gsap-ready'); });
+  }
+})();
 </script>
 </body>
 </html>
