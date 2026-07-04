@@ -146,6 +146,10 @@
     .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background: linear-gradient(var(--accent), transparent); animation: scrollLine 2.2s ease-in-out infinite; }
     @keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
 
+    .hero-rive-accent { position: absolute; right: 64px; bottom: 100px; width: 84px; height: 84px; z-index: 2; opacity: 0.75; pointer-events: none; }
+    .hero-rive-accent canvas { width: 100%; height: 100%; }
+    @media (max-width: 1180px) { .hero-rive-accent { display: none; } }
+
     /* ── MANIFESTO (split, huge photo) ── */
     #manifesto { background: var(--bg); padding: 0; }
     .manifesto-split { display: grid; grid-template-columns: 1.05fr 1fr; min-height: 92vh; }
@@ -369,6 +373,9 @@
     </video>
   </div>
   <div class="hero-overlay"></div>
+  <div class="hero-rive-accent" aria-hidden="true">
+    <canvas id="riveOrbit" width="168" height="168"></canvas>
+  </div>
   <div class="container hero-inner">
     <div class="hero-badge">Creative Strategy Studio</div>
     <p class="hero-eyebrow">TAKE CRAFT</p>
@@ -786,12 +793,13 @@
     <a href="#projects">PROJECTS</a>
     <a href="#contact">CONTACT</a>
   </nav>
-  <div class="f-copy">© 2026 TAKE CRAFT. All rights reserved.</div>
+  <div class="f-copy">© 2026 TAKE CRAFT. All rights reserved. · Hero animation "Circle Orbiting" by <a href="https://rive.app/@Emsmami/" target="_blank" rel="noopener">Emsmami</a> (Rive Community, CC BY)</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 <script>
 (function () {
   var hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -855,6 +863,17 @@
     });
   } else {
     document.body.style.cursor = 'auto';
+  }
+
+  /* ---------- Rive hero accent (Circle Orbiting by Emsmami, CC BY) ---------- */
+  var riveCanvas = document.getElementById('riveOrbit');
+  if (riveCanvas && window.rive) {
+    new rive.Rive({
+      src: 'assets/rive/circle-orbiting.riv',
+      canvas: riveCanvas,
+      autoplay: true,
+      layout: new rive.Layout({ fit: rive.Fit.Contain }),
+    });
   }
 
   /* ---------- Hero video rotation ---------- */
