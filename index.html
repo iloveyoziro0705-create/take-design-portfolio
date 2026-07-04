@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TAKE movie | 映像制作・LP・Web・SNS運用</title>
+  <meta name="description" content="TAKE CRAFT｜伝えたいを、成果へ。動画・Web・LP・AIを手段に、人が動く理由を設計するクリエイティブ戦略スタジオ。" />
+  <title>TAKE CRAFT | Craft for Results. Creative Strategy Studio.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0B0D10;
-      --surface: #151922;
-      --card: #151922;
-      --border: rgba(255,255,255,0.12);
-      --accent: #38BDF8;
-      --accent-soft: rgba(56,189,248,0.10);
-      --accent-mid: rgba(56,189,248,0.30);
+      --bg: #1E1E1E;
+      --surface: #252525;
+      --card: #252525;
+      --border: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.14);
+      --accent: #2563EB;
+      --accent-soft: rgba(37,99,235,0.10);
+      --accent-mid: rgba(37,99,235,0.35);
       --text: #F5F5F5;
-      --sub: #A7ADB8;
-      --sub2: #5A6272;
+      --sub: #8B8B8B;
+      --sub2: #6B6B6B;
       --dm: 'DM Sans', system-ui, sans-serif;
       --sans: 'Noto Sans JP', system-ui, sans-serif;
-      --radius-lg: 24px;
+      --radius-lg: 20px;
       --radius-md: 16px;
       --radius-sm: 10px;
       --content: 1160px;
-      --py: 120px;
+      --py: 136px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -36,46 +38,46 @@
     h1,h2,h3,h4 { margin-top: 0; }
     p { margin-top: 0; }
     .container { width: min(var(--content), calc(100% - 48px)); margin: 0 auto; }
-    .section { padding: var(--py) 0; }
+    .section { padding: var(--py) 0; position: relative; }
     .section-alt { background: var(--surface); }
 
     .label {
       display: inline-flex; align-items: center; gap: 10px;
       font-family: var(--dm); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+      letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px;
     }
-    .label::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .label::before { content: ''; width: 26px; height: 1px; background: var(--accent); }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 999px;
-      background: var(--accent); color: #0B0D10;
-      font-family: var(--dm); font-weight: 700; font-size: 14px; letter-spacing: 0.04em;
+      padding: 15px 30px; border-radius: 999px;
+      background: var(--accent); color: #F5F5F5;
+      font-family: var(--dm); font-weight: 600; font-size: 14px; letter-spacing: 0.03em;
       border: none; cursor: pointer;
-      box-shadow: 0 0 28px rgba(56,189,248,0.22);
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.4), 0 8px 24px rgba(37,99,235,0.18);
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(56,189,248,0.38); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(37,99,235,0.55), 0 10px 32px rgba(37,99,235,0.28); }
     .btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 999px;
+      padding: 15px 30px; border-radius: 999px;
       background: transparent; color: var(--text);
       font-family: var(--dm); font-weight: 500; font-size: 14px;
-      border: 1px solid var(--border); cursor: pointer;
+      border: 1px solid var(--border-mid); cursor: pointer;
       transition: border-color 0.25s, background 0.25s;
     }
-    .btn-outline:hover { border-color: rgba(56,189,248,0.40); background: var(--accent-soft); }
+    .btn-outline:hover { border-color: rgba(37,99,235,0.45); background: var(--accent-soft); }
 
     /* ── HEADER ── */
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 72px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 76px;
       padding: 0 48px; display: flex; align-items: center; justify-content: space-between;
-      background: rgba(11,13,16,0.90); backdrop-filter: blur(20px);
+      background: rgba(30,30,30,0.86); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-family: var(--dm); font-size: 16px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 36px; font-family: var(--dm); font-size: 13px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub); }
+    .logo { font-family: var(--dm); font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; display: flex; align-items: center; gap: 9px; }
+    .logo-mark { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 40px; font-family: var(--dm); font-size: 12.5px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub); }
     .nav-links a { transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
 
@@ -91,238 +93,141 @@
     .mobile-nav {
       display: none; position: fixed; inset: 0; z-index: 250;
       background: var(--bg); flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-      font-family: var(--dm); font-size: 22px; font-weight: 500; letter-spacing: 0.12em; color: var(--sub);
+      font-family: var(--dm); font-size: 21px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub);
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a:hover { color: var(--text); }
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh; padding-top: 72px;
+      min-height: 100vh; padding-top: 76px;
       display: flex; align-items: center;
-      background:
-        radial-gradient(ellipse 55% 45% at 15% 55%, rgba(56,189,248,0.04), transparent 60%),
-        radial-gradient(ellipse 45% 35% at 85% 25%, rgba(30,60,130,0.14), transparent 55%),
-        var(--bg);
+      position: relative; overflow: hidden;
+      background: var(--bg);
     }
-    .hero-inner { display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: center; padding: 80px 0; }
+    .hero-bg-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 78%);
+    }
+    .hero-bg-orb1 { position: absolute; top: -180px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.16), transparent 68%); z-index: 0; pointer-events: none; }
+    .hero-bg-orb2 { position: absolute; bottom: -220px; left: -160px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%); z-index: 0; pointer-events: none; }
+    .hero-bg-ring { position: absolute; top: 18%; right: 8%; width: 380px; height: 380px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); z-index: 0; pointer-events: none; }
+    .hero-bg-ring2 { position: absolute; top: 30%; right: 14%; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(37,99,235,0.14); z-index: 0; pointer-events: none; }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; padding: 100px 0 96px; }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 16px; border: 1px solid var(--border); border-radius: 999px;
-      font-family: var(--dm); font-size: 11px; letter-spacing: 0.14em; color: var(--sub); margin-bottom: 32px;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 16px; border: 1px solid var(--border-mid); border-radius: 999px;
+      font-family: var(--dm); font-size: 11px; letter-spacing: 0.14em; color: var(--sub); margin-bottom: 36px;
     }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    .hero-content h1 { font-family: var(--dm); font-size: clamp(38px, 5.5vw, 70px); font-weight: 700; line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.01em; }
-    .h1-line1 { display: block; background: linear-gradient(130deg, #F5F5F5 40%, #38BDF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .h1-line2 { display: block; background: linear-gradient(130deg, #F5F5F5 20%, #A7ADB8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-eyebrow { font-family: var(--dm); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); margin-bottom: 18px; }
+    .hero-content h1 { font-family: var(--dm); font-size: clamp(40px, 6vw, 74px); font-weight: 700; line-height: 1.14; margin-bottom: 26px; letter-spacing: -0.01em; color: var(--text); }
+    .hero-content h1 span { display: block; }
+    .hero-content h1 .brand-name { color: var(--text); }
 
-    .hero-sub { font-size: 16px; color: var(--sub); line-height: 2.0; margin-bottom: 40px; max-width: 500px; }
-    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
-    .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 6px 14px; border: 1px solid rgba(255,255,255,0.07); border-radius: 999px;
-      font-family: var(--dm); font-size: 11px; letter-spacing: 0.10em; color: var(--sub2);
-    }
-    .hero-pill::before { content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; opacity: 0.7; }
+    .hero-core { font-size: clamp(16px, 1.6vw, 19px); color: var(--sub); line-height: 1.9; margin-bottom: 8px; max-width: 520px; }
+    .hero-sub { font-family: var(--dm); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sub2); margin-bottom: 44px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    /* Stacked video cards */
-    .hero-visual { position: relative; height: 420px; width: 100%; }
-    .hvc {
-      position: absolute; width: 310px;
-      border-radius: var(--radius-md); overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.60);
-    }
-    .hvc:nth-child(1) { bottom: 0; right: 0; transform: rotate(5deg); z-index: 1; opacity: 0.50; }
-    .hvc:nth-child(2) { bottom: 44px; right: 52px; transform: rotate(-2.5deg); z-index: 2; opacity: 0.78; }
-    .hvc:nth-child(3) { top: 0; right: 88px; transform: rotate(1deg); z-index: 3; }
-
-    .hvc-screen {
-      aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
-    }
-    .hvc-s1 { background: linear-gradient(135deg, #15104a, #0d1a42, #0a1830); }
-    .hvc-s2 { background: linear-gradient(135deg, #0a1a30, #0d1828, #101825); }
-    .hvc-s3 { background: linear-gradient(135deg, #0e1e3a, #0c1830, #0a1020); }
-    .hvc-screen::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(56,189,248,0.07), transparent); }
-    .hvc-play {
-      width: 46px; height: 46px; border-radius: 50%;
-      background: rgba(56,189,248,0.14); border: 1.5px solid rgba(56,189,248,0.55);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 17px; padding-left: 3px; position: relative; z-index: 1;
-    }
-    .hvc-lbl { position: absolute; bottom: 9px; left: 11px; font-family: var(--dm); font-size: 9px; letter-spacing: 0.18em; color: rgba(255,255,255,0.38); text-transform: uppercase; z-index: 1; }
-    .hvc-bar { padding: 10px 14px; background: rgba(0,0,0,0.40); display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(4px); }
-    .hvc-tag { font-family: var(--dm); font-size: 10px; color: var(--accent); letter-spacing: 0.10em; }
-    .hvc-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.65; }
-
-    /* ── ABOUT ── */
-    #about { background: var(--bg); }
-    .about-inner { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start; }
-    .about-lead { font-family: var(--dm); font-size: clamp(26px, 3.2vw, 42px); font-weight: 700; line-height: 1.55; color: var(--text); margin-bottom: 28px; }
-    .about-lead em { font-style: normal; color: var(--accent); }
-    .about-body { font-size: 16px; color: var(--sub); line-height: 2.1; }
-    .about-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-    .about-card-vis {
-      height: 190px;
-      background: linear-gradient(135deg, #0e1e3a, #0c1830, #080f20);
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .about-card-vis::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(56,189,248,0.08), transparent); }
-    .studio-icon { width: 68px; height: 68px; border-radius: 18px; background: var(--accent-soft); border: 1px solid var(--accent-mid); display: grid; place-items: center; font-size: 26px; position: relative; z-index: 1; }
-    .about-card-body { padding: 28px; }
-    .about-card-body h4 { font-family: var(--dm); font-size: 15px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.08em; }
-    .about-card-body > p { font-size: 13px; color: var(--sub); margin-bottom: 20px; line-height: 1.8; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .a-stat { padding: 14px; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06); }
-    .a-stat-num { font-family: var(--dm); font-size: 26px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-    .a-stat-lbl { font-size: 11px; color: var(--sub); letter-spacing: 0.07em; }
+    /* ── MANIFESTO ── */
+    #manifesto { background: var(--surface); }
+    .manifesto-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
+    .manifesto-head h2 { font-family: var(--dm); font-size: clamp(28px, 3.4vw, 46px); font-weight: 700; line-height: 1.3; color: var(--text); }
+    .manifesto-head h2 em { font-style: normal; color: var(--accent); }
+    .manifesto-body p { font-size: 16px; color: var(--sub); line-height: 2.1; margin-bottom: 20px; }
+    .manifesto-founder { display: flex; align-items: center; gap: 18px; margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .mf-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--card); border: 1px solid var(--border); }
+    .mf-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .mf-founder-name { font-family: var(--dm); font-size: 14px; font-weight: 600; color: var(--text); }
+    .mf-founder-role { font-size: 12.5px; color: var(--sub); }
+    .mf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+    .mf-stat { background: var(--card); padding: 26px 24px; }
+    .mf-stat-num { font-family: var(--dm); font-size: 30px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .mf-stat-lbl { font-size: 12px; color: var(--sub); letter-spacing: 0.04em; }
 
     /* ── SERVICE ── */
-    #service { background: var(--surface); }
-    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
-    .svc-card {
-      background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 36px 28px; transition: border-color 0.25s, transform 0.25s, background 0.25s;
-    }
-    .svc-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-4px); background: rgba(56,189,248,0.03); }
-    .svc-badge { display: inline-block; font-family: var(--dm); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-mid); padding: 3px 8px; border-radius: 999px; margin-bottom: 16px; }
-    .svc-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--accent-soft); border: 1px solid var(--accent-mid); display: grid; place-items: center; font-size: 22px; margin-bottom: 24px; }
-    .svc-card h3 { font-family: var(--dm); font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+    #service { background: var(--bg); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .svc-card { background: var(--card); padding: 40px 32px; transition: background 0.25s; }
+    .svc-card:hover { background: rgba(37,99,235,0.045); }
+    .svc-index { font-family: var(--dm); font-size: 12px; color: var(--sub2); letter-spacing: 0.1em; margin-bottom: 28px; }
+    .svc-card h3 { font-family: var(--dm); font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+    .svc-card h3 .svc-en { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
     .svc-card p { font-size: 14px; color: var(--sub); line-height: 1.9; margin-bottom: 0; }
-    .svc-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
-    .svc-tool { padding: 3px 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; font-family: var(--dm); font-size: 10px; color: var(--sub2); letter-spacing: 0.05em; }
 
-    /* ── WHY ── */
-    #why { background: var(--bg); }
-    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 52px; }
-    .why-list { display: flex; flex-direction: column; gap: 14px; }
-    .why-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); transition: border-color 0.2s; }
-    .why-item:hover { border-color: var(--accent-mid); }
-    .why-num { font-family: var(--dm); font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.10em; padding-top: 1px; flex-shrink: 0; }
-    .why-item p { font-size: 14px; color: var(--sub); margin-bottom: 0; line-height: 1.85; }
-    .why-item strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 4px; }
-    .why-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: start; }
-    .why-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 22px; text-align: center; transition: border-color 0.25s, transform 0.25s; }
-    .why-box:hover { border-color: var(--accent-mid); transform: translateY(-3px); }
-    .why-box:last-child { grid-column: 1 / -1; }
-    .why-box-n { font-family: var(--dm); font-size: 42px; font-weight: 300; color: rgba(56,189,248,0.18); line-height: 1; margin-bottom: 10px; }
-    .why-box h4 { font-family: var(--dm); font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-    .why-box p { font-size: 12px; color: var(--sub); margin-bottom: 0; }
+    /* ── METHOD ── */
+    #method { background: var(--surface); }
+    .method-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 64px; position: relative; }
+    .method-steps::before { content: ''; position: absolute; top: 27px; left: 6%; right: 6%; height: 1px; background: linear-gradient(to right, transparent, var(--border-mid) 15%, var(--border-mid) 85%, transparent); }
+    .method-step { text-align: left; padding: 0 18px 0 0; position: relative; }
+    .method-num { width: 54px; height: 54px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border-mid); margin-bottom: 24px; display: grid; place-items: center; font-family: var(--dm); font-size: 13px; font-weight: 500; color: var(--accent); position: relative; z-index: 1; transition: border-color 0.25s, background 0.25s; }
+    .method-step:hover .method-num { border-color: var(--accent-mid); background: var(--accent-soft); }
+    .method-step h4 { font-family: var(--dm); font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .method-step .method-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sub2); margin-bottom: 10px; }
+    .method-step p { font-size: 13px; color: var(--sub); line-height: 1.8; margin-bottom: 0; }
 
-    /* ── WORKFLOW ── */
-    #workflow { background: var(--surface); }
-    .wf-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 64px; position: relative; }
-    .wf-steps::before { content: ''; position: absolute; top: 27px; left: 8%; right: 8%; height: 1px; background: linear-gradient(to right, transparent, var(--accent-mid) 20%, var(--accent-mid) 80%, transparent); }
-    .wf-step { text-align: center; padding: 0 10px; }
-    .wf-dot { width: 54px; height: 54px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); margin: 0 auto 20px; display: grid; place-items: center; font-family: var(--dm); font-size: 13px; font-weight: 500; color: var(--accent); position: relative; z-index: 1; transition: background 0.25s, border-color 0.25s; }
-    .wf-step:hover .wf-dot { background: var(--accent-soft); border-color: var(--accent-mid); }
-    .wf-step h4 { font-family: var(--dm); font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-    .wf-step p { font-size: 12px; color: var(--sub); line-height: 1.7; margin-bottom: 0; }
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg); }
+    .projects-intro { max-width: 640px; margin-bottom: 20px; }
+    .projects-intro p { font-size: 16px; color: var(--sub); line-height: 2.0; margin-bottom: 0; }
+    .projects-group-label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sub2); margin: 64px 0 28px; display: flex; align-items: center; gap: 14px; }
+    .projects-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .projects-group-label:first-of-type { margin-top: 56px; }
 
-    /* ── WORKS ── */
-    #works { background: var(--bg); }
-    .works-intro { max-width: 620px; margin-bottom: 64px; }
-    .works-intro p { font-size: 16px; color: var(--sub); line-height: 2.0; margin-bottom: 0; }
-    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .work-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
-    .work-card:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.28); }
-    .work-thumb { aspect-ratio: 16/9; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .wt-1 { background: linear-gradient(135deg, #1a1035, #0d1535, #0a1225); }
-    .wt-2 { background: linear-gradient(135deg, #0d1e30, #0a1828, #0d1a22); }
-    .wt-3 { background: linear-gradient(135deg, #101828, #0e1828, #0b1220); }
-    .work-thumb::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(56,189,248,0.07), transparent); }
-    .work-play { width: 52px; height: 52px; border-radius: 50%; background: rgba(56,189,248,0.14); border: 1.5px solid rgba(56,189,248,0.50); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 18px; padding-left: 4px; position: relative; z-index: 1; }
-    .work-cat { position: absolute; top: 12px; left: 12px; z-index: 2; background: rgba(11,13,16,0.78); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.10); padding: 4px 11px; border-radius: 999px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.12em; color: var(--sub); }
-    .work-body { padding: 28px; }
-    .work-body h3 { font-family: var(--dm); font-size: 17px; font-weight: 600; margin-bottom: 16px; }
-    .work-rows { display: grid; gap: 10px; }
-    .work-row { display: grid; grid-template-columns: 52px 1fr; gap: 10px; font-size: 13px; align-items: baseline; }
-    .work-lbl { font-family: var(--dm); font-size: 9px; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; padding-top: 1px; }
-    .work-val { color: var(--sub); line-height: 1.7; }
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+    .proj-card:hover { transform: translateY(-6px); border-color: var(--border-mid); }
+    .proj-thumb { aspect-ratio: 4/3; position: relative; overflow: hidden; background: #171717; flex-shrink: 0; }
+    .proj-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.6s; }
+    .proj-card:hover .proj-thumb img { transform: scale(1.05); }
+    .proj-thumb-video { display: flex; align-items: center; justify-content: center; }
+    .proj-play { width: 50px; height: 50px; border-radius: 50%; background: rgba(37,99,235,0.16); border: 1.5px solid rgba(37,99,235,0.5); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 16px; padding-left: 3px; position: relative; z-index: 1; transition: transform 0.4s; }
+    .proj-card:hover .proj-play { transform: scale(1.08); }
+    .proj-cat { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(30,30,30,0.82); backdrop-filter: blur(6px); border: 1px solid var(--border-mid); padding: 5px 12px; border-radius: 999px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.1em; color: var(--sub); }
+    .proj-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
+    .proj-body h3 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+    .proj-rows { display: grid; gap: 10px; margin-bottom: 18px; flex: 1; }
+    .proj-row { display: grid; grid-template-columns: 56px 1fr; gap: 10px; font-size: 12.5px; align-items: baseline; }
+    .proj-lbl { font-family: var(--dm); font-size: 9px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1px; }
+    .proj-val { color: var(--sub); line-height: 1.7; }
+    .proj-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--dm); font-size: 12px; font-weight: 600; color: var(--accent); transition: opacity 0.2s; letter-spacing: 0.03em; margin-top: auto; }
+    .proj-link:hover { opacity: 0.7; }
 
-    /* ── BEHIND ── */
-    #behind { background: var(--surface); }
-    .behind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
-    .bh-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
-    .bh-card:hover { transform: translateY(-4px); border-color: rgba(56,189,248,0.28); }
-    .bh-vis { height: 160px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .bh-v1 { background: linear-gradient(135deg, #121f2a, #0a1520, #0f1a25); }
-    .bh-v2 { background: linear-gradient(135deg, #0f2020, #0a1a18, #0d1e20); }
-    .bh-v3 { background: linear-gradient(135deg, #0f1a28, #0a1522, #0d1828); }
-    .bh-v4 { background: linear-gradient(135deg, #1a1230, #0f0d22, #14102e); }
-    .bh-vis::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(56,189,248,0.07), transparent); }
-    .bh-icon { font-size: 28px; position: relative; z-index: 1; opacity: 0.55; }
-    .bh-body { padding: 24px; }
-    .bh-body h4 { font-family: var(--dm); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .bh-body p { font-size: 13px; color: var(--sub); line-height: 1.85; margin-bottom: 0; }
+    .proj-thumb-wt1 { background: linear-gradient(135deg, #202436, #191c2a, #14151f); }
+    .proj-thumb-wt2 { background: linear-gradient(135deg, #16232a, #131c22, #12181c); }
+    .proj-thumb-wt3 { background: linear-gradient(135deg, #1a1e2a, #171a22, #121319); }
+    .proj-thumb-video::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(37,99,235,0.10), transparent); }
 
-    /* ── WEB ── */
-    #web { background: var(--bg); }
-    .web-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .web-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
-    .web-feat { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 13px; font-weight: 500; transition: border-color 0.2s; }
-    .web-feat::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    .web-feat:hover { border-color: var(--accent-mid); }
-    .web-mockup { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-    .wm-bar { height: 40px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 16px; gap: 8px; }
-    .wm-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .wm-r { background: #e06c75; } .wm-y { background: #e5c07b; } .wm-g { background: #98c379; }
-    .wm-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; height: 260px; }
-    .wm-line { height: 10px; border-radius: 4px; background: rgba(255,255,255,0.05); }
-    .wm-accent-bar { height: 14px; width: 42%; border-radius: 4px; background: rgba(56,189,248,0.18); }
-    .wm-block { flex: 1; border-radius: var(--radius-sm); background: rgba(255,255,255,0.03); }
+    .projects-more { text-align: center; margin-top: 56px; }
 
-    /* ── SNS ── */
-    #sns { background: var(--surface); }
-    .sns-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .sns-platforms { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .plt { display: flex; align-items: center; gap: 10px; padding: 12px 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-md); font-family: var(--dm); font-size: 14px; font-weight: 500; transition: border-color 0.2s; }
-    .plt:hover { border-color: var(--accent-mid); }
-    .plt-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .pd-ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366); }
-    .pd-tt { background: #F5F5F5; }
-    .pd-yt { background: #FF0000; }
-    .sns-items { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
-    .sns-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-md); }
-    .sns-arrow { color: var(--accent); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
-    .sns-item p { font-size: 14px; color: var(--sub); margin-bottom: 0; line-height: 1.8; }
-    .sns-item strong { color: var(--text); font-weight: 500; }
-
-    /* ── PROFILE ── */
-    #profile { background: var(--bg); }
-    .profile-inner { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
-    .prof-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-    .prof-avatar { height: 280px; background: linear-gradient(160deg, #1a1f2e, #0e1320); display: flex; align-items: center; justify-content: center; position: relative; }
-    .prof-avatar::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(56,189,248,0.07), transparent); }
-    .avatar-ph { width: 80px; height: 80px; border-radius: 50%; border: 1px dashed rgba(255,255,255,0.18); display: grid; place-items: center; font-size: 11px; letter-spacing: 0.08em; color: var(--sub2); position: relative; z-index: 1; text-align: center; line-height: 1.5; }
-    .prof-card-body { padding: 28px; }
-    .prof-card-body h3 { font-family: var(--dm); font-size: 20px; font-weight: 700; margin-bottom: 5px; letter-spacing: 0.08em; }
-    .prof-role { font-size: 13px; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.07em; }
-    .prof-card-body > p { font-size: 13px; color: var(--sub); line-height: 1.9; margin-bottom: 16px; }
-    .prof-tools { display: flex; flex-wrap: wrap; gap: 7px; }
-    .prof-tool { padding: 4px 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; font-family: var(--dm); font-size: 10px; color: var(--sub2); letter-spacing: 0.05em; }
-    .profile-copy h2 { font-family: var(--dm); font-size: clamp(26px, 3vw, 38px); font-weight: 700; margin-bottom: 20px; }
-    .profile-bio { font-size: 16px; color: var(--sub); line-height: 2.1; margin-bottom: 36px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-    .stag { padding: 8px 16px; border: 1px solid var(--border); border-radius: 999px; font-family: var(--dm); font-size: 12px; color: var(--sub); letter-spacing: 0.06em; background: var(--card); transition: border-color 0.2s, color 0.2s; }
-    .stag:hover { border-color: var(--accent-mid); color: var(--text); }
-    .stag-main { border-color: var(--accent-mid); color: var(--accent); background: var(--accent-soft); }
+    /* ── PHILOSOPHY ── */
+    #philosophy { background: var(--surface); }
+    .phil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 56px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .phil-card { background: var(--card); padding: 36px 28px; text-align: left; }
+    .phil-num { font-family: var(--dm); font-size: 38px; font-weight: 300; color: rgba(37,99,235,0.22); line-height: 1; margin-bottom: 18px; }
+    .phil-card h4 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .phil-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sub2); margin-bottom: 12px; }
+    .phil-card p { font-size: 13px; color: var(--sub); margin-bottom: 0; line-height: 1.85; }
 
     /* ── CONTACT ── */
-    #contact { background: var(--surface); }
-    .contact-wrap { max-width: 620px; margin: 0 auto; text-align: center; }
-    .contact-wrap h2 { font-family: var(--dm); font-size: clamp(28px, 4vw, 44px); font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
-    .c-sub { font-size: 16px; color: var(--sub); margin-bottom: 16px; line-height: 2.0; }
-    .c-email-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 44px; font-family: var(--dm); font-size: 14px; color: var(--accent); letter-spacing: 0.04em; border-bottom: 1px solid var(--accent-mid); padding-bottom: 2px; transition: opacity 0.2s; }
+    #contact { background: var(--bg); }
+    .contact-wrap { max-width: 640px; margin: 0 auto; text-align: center; }
+    .contact-wrap h2 { font-family: var(--dm); font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 20px; line-height: 1.3; color: var(--text); }
+    .c-sub { font-size: 16px; color: var(--sub); margin-bottom: 18px; line-height: 2.0; }
+    .c-email-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 48px; font-family: var(--dm); font-size: 14px; color: var(--accent); letter-spacing: 0.03em; border-bottom: 1px solid var(--accent-mid); padding-bottom: 2px; transition: opacity 0.2s; }
     .c-email-link:hover { opacity: 0.75; }
     .cform { display: grid; gap: 16px; text-align: left; }
     .ff { display: flex; flex-direction: column; gap: 8px; }
-    .ff label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.12em; color: var(--sub); }
+    .ff label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.1em; color: var(--sub); }
     .ff input, .ff textarea, .ff select {
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md);
       padding: 14px 18px; color: var(--text); font-family: var(--sans); font-size: 14px;
       outline: none; transition: border-color 0.2s; resize: none;
     }
@@ -333,70 +238,40 @@
     .c-submit { margin-top: 8px; }
     .c-submit .btn-primary { width: 100%; justify-content: center; padding: 16px; font-size: 15px; border-radius: var(--radius-md); }
 
-    /* ── LP PORTFOLIO ── */
-    #lp-portfolio { background: var(--bg); }
-    .lp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
-    .lpc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
-    .lpc:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.28); }
-    .lpc-thumb { aspect-ratio: 16/9; position: relative; overflow: hidden; background: #0e1a28; }
-    .lpc-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.5s; }
-    .lpc:hover .lpc-thumb img { transform: scale(1.04); }
-    .lpc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,13,16,0.65) 0%, transparent 55%); pointer-events: none; }
-    .lpc-badge { position: absolute; top: 12px; left: 12px; background: rgba(11,13,16,0.80); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.10); padding: 4px 11px; border-radius: 999px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.12em; color: var(--sub); }
-    .lpc-body { padding: 24px; }
-    .lpc-body h3 { font-family: var(--dm); font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-    .lpc-body > p { font-size: 13px; color: var(--sub); line-height: 1.85; margin-bottom: 16px; }
-    .lpc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
-    .lpc-tag { padding: 3px 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; font-family: var(--dm); font-size: 10px; color: var(--sub2); letter-spacing: 0.05em; }
-    .lpc-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--dm); font-size: 12px; font-weight: 600; color: var(--accent); transition: opacity 0.2s; letter-spacing: 0.04em; }
-    .lpc-link:hover { opacity: 0.7; }
-
     /* ── FOOTER ── */
     footer { padding: 44px 48px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .f-logo { font-family: var(--dm); font-size: 15px; font-weight: 700; letter-spacing: 0.18em; color: var(--sub); }
-    .f-logo span { color: var(--accent); }
-    .f-links { display: flex; gap: 28px; font-family: var(--dm); font-size: 12px; letter-spacing: 0.10em; color: var(--sub2); }
+    .f-logo { font-family: var(--dm); font-size: 13px; font-weight: 700; letter-spacing: 0.18em; color: var(--sub); display: flex; align-items: center; gap: 8px; }
+    .f-links { display: flex; gap: 28px; font-family: var(--dm); font-size: 12px; letter-spacing: 0.08em; color: var(--sub2); }
     .f-links a:hover { color: var(--sub); }
     .f-copy { font-size: 12px; color: var(--sub2); }
 
     /* ── REVEAL ── */
-    .r { opacity: 0; transform: translateY(22px); transition: opacity 0.68s cubic-bezier(0.22,1,0.36,1), transform 0.68s cubic-bezier(0.22,1,0.36,1); }
+    .r { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
     .r.on { opacity: 1; transform: translateY(0); }
     .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.16s; }
     .d3 { transition-delay: 0.24s; } .d4 { transition-delay: 0.32s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      :root { --py: 80px; }
+      :root { --py: 92px; }
       header { padding: 0 24px; }
       .nav-links, .h-cta { display: none; }
       .menu-btn { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 60px; }
-      .hero-visual { height: 280px; order: -1; }
-      .hvc { width: 200px; }
-      .hvc:nth-child(1) { right: 0; bottom: 0; }
-      .hvc:nth-child(2) { right: 28px; bottom: 30px; }
-      .hvc:nth-child(3) { right: 56px; top: 0; }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .service-grid { grid-template-columns: 1fr 1fr; }
-      .why-inner { grid-template-columns: 1fr; gap: 40px; }
-      .wf-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .wf-steps::before { display: none; }
-      .works-grid { grid-template-columns: 1fr; }
-      .behind-grid { grid-template-columns: 1fr 1fr; }
-      .web-inner, .sns-inner, .profile-inner { grid-template-columns: 1fr; gap: 40px; }
-      .lp-grid { grid-template-columns: 1fr 1fr; }
+      .hero-inner { padding: 56px 0 64px; }
+      .manifesto-inner { grid-template-columns: 1fr; gap: 44px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .method-steps { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+      .method-steps::before { display: none; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .phil-grid { grid-template-columns: 1fr 1fr; }
       footer { padding: 32px 24px; }
     }
     @media (max-width: 600px) {
       .container { width: calc(100% - 36px); }
-      .service-grid { grid-template-columns: 1fr; }
-      .behind-grid { grid-template-columns: 1fr; }
-      .web-features { grid-template-columns: 1fr; }
-      .why-boxes { grid-template-columns: 1fr; }
-      .why-box:last-child { grid-column: auto; }
+      .method-steps { grid-template-columns: 1fr 1fr; }
+      .phil-grid { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
-      .lp-grid { grid-template-columns: 1fr; }
+      .mf-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -404,16 +279,15 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">TAKE<span>.</span>movie</div>
+  <a href="#hero" class="logo"><span class="logo-mark">T</span>TAKE CRAFT</a>
   <nav class="nav-links">
-    <a href="#about">ABOUT</a>
+    <a href="#manifesto">BRAND</a>
     <a href="#service">SERVICE</a>
-    <a href="#workflow">WORKFLOW</a>
-    <a href="#works">WORKS</a>
-    <a href="#lp-portfolio">LP実績</a>
+    <a href="#method">METHOD</a>
+    <a href="#projects">PROJECTS</a>
     <a href="#contact">CONTACT</a>
   </nav>
-  <a class="btn-primary h-cta" href="#contact" style="font-size:13px;padding:10px 22px;">相談する</a>
+  <a class="btn-primary h-cta" href="#contact" style="font-size:13px;padding:11px 22px;">Start Project</a>
   <button class="menu-btn" id="menuBtn" aria-label="メニュー">
     <span></span><span></span><span></span>
   </button>
@@ -421,451 +295,303 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#about">ABOUT</a>
+  <a href="#manifesto">BRAND</a>
   <a href="#service">SERVICE</a>
-  <a href="#workflow">WORKFLOW</a>
-  <a href="#works">WORKS</a>
-  <a href="#lp-portfolio">LP実績</a>
+  <a href="#method">METHOD</a>
+  <a href="#projects">PROJECTS</a>
   <a href="#contact">CONTACT</a>
-  <a class="btn-primary" href="#contact" style="margin-top:8px;">相談する</a>
+  <a class="btn-primary" href="#contact" style="margin-top:8px;">Start Project</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-orb1"></div>
+  <div class="hero-bg-orb2"></div>
+  <div class="hero-bg-ring"></div>
+  <div class="hero-bg-ring2"></div>
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge r">PR動画 / 広告動画 / LP制作 / SNS運用</div>
-        <h1>
-          <span class="h1-line1 r d1">映像で伝える。</span>
-          <span class="h1-line2 r d2">その先の届け方まで設計する。</span>
-        </h1>
-        <p class="hero-sub r d2">
-          企業・地方自治体のPR動画・広告動画制作を軸に、<br>
-          LP制作・Webサイト制作・SNS運用まで一貫して対応。<br>
-          映像の力で、ブランドの伝わり方を一緒に整えます。
-        </p>
-        <div class="hero-ctas r d3">
-          <a class="btn-primary" href="#works">制作実績を見る</a>
-          <a class="btn-outline" href="#contact">相談する</a>
-        </div>
-        <div class="hero-pills r d4">
-          <span class="hero-pill">Video Production</span>
-          <span class="hero-pill">Web & LP</span>
-          <span class="hero-pill">SNS Creative</span>
-        </div>
-      </div>
-
-      <div class="hero-visual r d2">
-        <div class="hvc">
-          <div class="hvc-screen hvc-s1">
-            <div class="hvc-play">▶</div>
-            <div class="hvc-lbl">SNS CREATIVE</div>
-          </div>
-          <div class="hvc-bar"><span class="hvc-tag">Instagram · TikTok</span><span class="hvc-dot"></span></div>
-        </div>
-        <div class="hvc">
-          <div class="hvc-screen hvc-s2">
-            <div class="hvc-play">▶</div>
-            <div class="hvc-lbl">EDITING</div>
-          </div>
-          <div class="hvc-bar"><span class="hvc-tag">Post Production</span><span class="hvc-dot"></span></div>
-        </div>
-        <div class="hvc">
-          <div class="hvc-screen hvc-s3">
-            <div class="hvc-play">▶</div>
-            <div class="hvc-lbl">SHOOTING</div>
-          </div>
-          <div class="hvc-bar"><span class="hvc-tag">PR / AD Video</span><span class="hvc-dot"></span></div>
-        </div>
+      <div class="hero-badge r">Creative Strategy Studio</div>
+      <p class="hero-eyebrow r d1">TAKE CRAFT</p>
+      <h1>
+        <span class="r d1">伝えたいを、成果へ。</span>
+      </h1>
+      <p class="hero-core r d2">人が動く理由をデザインする。良い商品でも、良いサービスでも、伝わらなければ選ばれません。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。</p>
+      <p class="hero-sub r d2">Craft for Results.</p>
+      <div class="hero-ctas r d3">
+        <a class="btn-primary" href="#projects">View Projects</a>
+        <a class="btn-outline" href="#contact">Start Project</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
+<!-- BRAND MANIFESTO -->
+<section id="manifesto" class="section">
   <div class="container">
-    <div class="about-inner">
-      <div>
-        <span class="label r">ABOUT</span>
-        <p class="about-lead r">
-          映像を作るだけでなく、<br>
-          <em>届く仕組みごと</em>設計します。
-        </p>
-        <p class="about-body r d1">
-          関東を拠点に、企業や地方自治体のPR動画・広告動画制作を中心に活動する映像クリエイター。映像制作歴4年、制作実績50本以上。<br><br>
-          撮影・編集にとどまらず、LP制作・Webサイト制作・SNS運用まで一貫して対応。「映像を作って終わり」ではなく、見た人が動くまでを設計します。
-        </p>
+    <div class="manifesto-inner">
+      <div class="manifesto-head r">
+        <span class="label">Brand Manifesto</span>
+        <h2>Design is not<br>decoration.<br>It is <em>strategy.</em></h2>
       </div>
-      <div class="r d2">
-        <div class="about-card">
-          <div class="about-card-vis">
-            <div class="studio-icon">▶</div>
+      <div>
+        <div class="manifesto-body r d1">
+          <p>良い商品でも、良いサービスでも、伝わらなければ選ばれません。</p>
+          <p>TAKE CRAFTは、動画・Web・LP・AIを手段として、人が動く理由を設計します。見た目を整えることではなく、成果につながる仕組みをつくることが、私たちの仕事です。</p>
+        </div>
+        <div class="manifesto-founder r d2">
+          <div class="mf-avatar"><img src="images/profile.jpg" alt="TAKE CRAFT Founder"></div>
+          <div>
+            <div class="mf-founder-name">TAKE CRAFT</div>
+            <div class="mf-founder-role">Creative Strategy / Video / Web / AI</div>
           </div>
-          <div class="about-card-body">
-            <h4>TAKE movie</h4>
-            <p>関東拠点。企業・自治体のPR動画・広告動画制作から、LP・Web・SNS運用まで対応するクリエイター。</p>
-            <div class="about-stats">
-              <div class="a-stat"><div class="a-stat-num">50<span style="font-size:16px">本+</span></div><div class="a-stat-lbl">制作実績</div></div>
-              <div class="a-stat"><div class="a-stat-num">4<span style="font-size:16px">年</span></div><div class="a-stat-lbl">制作経験</div></div>
-              <div class="a-stat"><div class="a-stat-num">企業</div><div class="a-stat-lbl">・自治体対応</div></div>
-              <div class="a-stat"><div class="a-stat-num">一貫</div><div class="a-stat-lbl">制作〜運用</div></div>
-            </div>
-          </div>
+        </div>
+        <div class="mf-stats r d3" style="margin-top:24px;">
+          <div class="mf-stat"><div class="mf-stat-num">50<span style="font-size:16px">+</span></div><div class="mf-stat-lbl">制作実績</div></div>
+          <div class="mf-stat"><div class="mf-stat-num">4<span style="font-size:16px">年</span></div><div class="mf-stat-lbl">戦略設計の経験</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE -->
+<!-- SERVICES -->
 <section id="service" class="section section-alt">
   <div class="container">
-    <span class="label r">SERVICE</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(30px,4vw,48px);font-weight:700;margin-bottom:0;">できること</h2>
+    <span class="label r">Services</span>
+    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">できること</h2>
     <div class="service-grid">
       <div class="svc-card r">
-        <div class="svc-badge">MAIN</div>
-        <div class="svc-icon">▶</div>
-        <h3>映像制作</h3>
-        <p>企業PR動画・地方自治体のプロモーション映像・広告動画・SNS向けショート動画まで対応。企画・撮影・編集・カラグレまで一貫して担当します。</p>
-        <div class="svc-tools">
-          <span class="svc-tool">Premiere Pro</span>
-          <span class="svc-tool">After Effects</span>
-          <span class="svc-tool">Photoshop</span>
-        </div>
+        <div class="svc-index">01</div>
+        <h3><span class="svc-en">Creative Strategy</span>クリエイティブ戦略</h3>
+        <p>「何を作るか」の前に「なぜ作るか」から設計。目的・ターゲット・訴求を整理し、成果から逆算した企画をつくります。</p>
       </div>
       <div class="svc-card r d1">
-        <div class="svc-icon">✦</div>
-        <h3>LP制作</h3>
-        <p>映像・サービス・商品の魅力を問い合わせへつなげるランディングページを設計・制作。感情設計からコーディングまで一貫対応します。</p>
-        <div class="svc-tools">
-          <span class="svc-tool">Figma</span>
-          <span class="svc-tool">HTML / CSS</span>
-          <span class="svc-tool">JavaScript</span>
-        </div>
+        <div class="svc-index">02</div>
+        <h3><span class="svc-en">Video Production</span>映像制作</h3>
+        <p>企業PR動画・広告動画・SNSショート動画まで対応。企画・撮影・編集・カラーグレーディングまで一貫して担当します。</p>
       </div>
       <div class="svc-card r d2">
-        <div class="svc-icon">⟨/⟩</div>
-        <h3>Webサイト制作</h3>
-        <p>コーポレートサイト・採用サイト・サービスサイトをデザインから実装まで制作。WordPress対応・レスポンシブ対応も可能です。</p>
-        <div class="svc-tools">
-          <span class="svc-tool">WordPress</span>
-          <span class="svc-tool">HTML / CSS</span>
-          <span class="svc-tool">Figma</span>
-        </div>
+        <div class="svc-index">03</div>
+        <h3><span class="svc-en">Landing Page</span>LP制作</h3>
+        <p>サービス・商品の魅力を問い合わせ・予約へつなげるランディングページを設計・制作。感情設計からコーディングまで対応します。</p>
       </div>
-      <div class="svc-card r d3">
-        <div class="svc-icon">◈</div>
-        <h3>SNS運用</h3>
-        <p>Instagram・TikTok・YouTubeの投稿企画・動画制作・アカウント改善まで対応。制作した映像を最大限に活用する運用設計を行います。</p>
-        <div class="svc-tools">
-          <span class="svc-tool">Instagram</span>
-          <span class="svc-tool">TikTok</span>
-          <span class="svc-tool">YouTube</span>
-        </div>
+      <div class="svc-card r">
+        <div class="svc-index">04</div>
+        <h3><span class="svc-en">Website</span>Webサイト制作</h3>
+        <p>コーポレートサイト・採用サイト・サービスサイトをデザインから実装まで。WordPress・レスポンシブにも対応します。</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why" class="section">
-  <div class="container">
-    <span class="label r">WHY TAKE movie</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(26px,3.5vw,42px);font-weight:700;margin-bottom:0;">制作の目的から、<br>一緒に考えます。</h2>
-    <div class="why-inner">
-      <div class="why-list">
-        <div class="why-item r"><span class="why-num">01</span><p><strong>企画・構成から提案できる</strong>「何を作るか」だけでなく「なぜ作るか」から設計します。台本・絵コンテまで丁寧に提案します。</p></div>
-        <div class="why-item r d1"><span class="why-num">02</span><p><strong>撮影〜編集を一貫して担当</strong>外注なし。撮影・編集・カラグレまで自社で対応するため、ブレのないクオリティを保てます。</p></div>
-        <div class="why-item r d2"><span class="why-num">03</span><p><strong>企業・自治体の実績多数</strong>ビジネス用途・公的機関向けの映像制作に豊富な経験。信頼性の高い映像を制作します。</p></div>
-        <div class="why-item r d3"><span class="why-num">04</span><p><strong>LP・Web導線まで設計できる</strong>映像を見た後に「行動してもらう」仕組みまで一緒に作れます。</p></div>
-        <div class="why-item r d4"><span class="why-num">05</span><p><strong>SNS最適化まで対応</strong>Instagram・TikTok・YouTube向けにサイズ・尺・フックを最適化した配信対応が可能です。</p></div>
+      <div class="svc-card r d1">
+        <div class="svc-index">05</div>
+        <h3><span class="svc-en">AI Workflow</span>AI活用設計</h3>
+        <p>制作・運用フローにAIを組み込み、スピードと品質を両立。生成AIを活用したコンテンツ制作・業務効率化を支援します。</p>
       </div>
-      <div class="why-boxes">
-        <div class="why-box r"><div class="why-box-n">01</div><h4>Planning</h4><p>企画・構成設計</p></div>
-        <div class="why-box r d1"><div class="why-box-n">02</div><h4>Shooting</h4><p>撮影・ディレクション</p></div>
-        <div class="why-box r d2"><div class="why-box-n">03</div><h4>Editing</h4><p>編集・カラグレ</p></div>
-        <div class="why-box r d3"><div class="why-box-n">04</div><h4>Web</h4><p>LP・Webサイト制作</p></div>
-        <div class="why-box r d4"><div class="why-box-n">05</div><h4>SNS</h4><p>運用・改善支援</p></div>
+      <div class="svc-card r d2">
+        <div class="svc-index">06</div>
+        <h3><span class="svc-en">System Design</span>システム設計</h3>
+        <p>予約・診断・料金シミュレーターなど、成果に直結する機能設計を実装。静的サイトを超えた仕組みづくりに対応します。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WORKFLOW -->
-<section id="workflow" class="section section-alt">
+<!-- CRAFT METHOD -->
+<section id="method" class="section">
   <div class="container">
-    <span class="label r">WORKFLOW</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.5vw,44px);font-weight:700;margin-bottom:0;">映像制作の流れ</h2>
-    <div class="wf-steps">
-      <div class="wf-step r"><div class="wf-dot">01</div><h4>ヒアリング</h4><p>目的・ターゲット・予算・納期・使用媒体を確認</p></div>
-      <div class="wf-step r d1"><div class="wf-dot">02</div><h4>企画・構成</h4><p>コンセプト設計・台本・絵コンテを作成しご提案</p></div>
-      <div class="wf-step r d2"><div class="wf-dot">03</div><h4>撮影</h4><p>ロケ・スタジオ撮影・ライティング・音声収録</p></div>
-      <div class="wf-step r d3"><div class="wf-dot">04</div><h4>編集</h4><p>カット編集・カラグレ・BGM・テロップ追加</p></div>
-      <div class="wf-step r d4"><div class="wf-dot">05</div><h4>納品</h4><p>確認・修正対応後、各種形式・解像度で納品</p></div>
-      <div class="wf-step r d4"><div class="wf-dot">06</div><h4>展開・運用</h4><p>SNS投稿・LP連携・広告配信サポートまで対応</p></div>
+    <span class="label r">CRAFT Method</span>
+    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">成果を設計する、<br>5つのステップ。</h2>
+    <div class="method-steps">
+      <div class="method-step r">
+        <div class="method-num">01</div>
+        <span class="method-en">Clarify</span>
+        <h4>目的を明確にする</h4>
+        <p>誰に、何を、なぜ伝えるのか。成果の定義から始めます。</p>
+      </div>
+      <div class="method-step r d1">
+        <div class="method-num">02</div>
+        <span class="method-en">Research</span>
+        <h4>相手を深く知る</h4>
+        <p>ターゲットの課題・心理・行動を丁寧にリサーチします。</p>
+      </div>
+      <div class="method-step r d2">
+        <div class="method-num">03</div>
+        <span class="method-en">Architect</span>
+        <h4>戦略を設計する</h4>
+        <p>伝える順番・構成・導線を、成果から逆算して設計します。</p>
+      </div>
+      <div class="method-step r d3">
+        <div class="method-num">04</div>
+        <span class="method-en">Form</span>
+        <h4>形にして届ける</h4>
+        <p>動画・LP・Webとして制作し、狙った相手に届けます。</p>
+      </div>
+      <div class="method-step r d4">
+        <div class="method-num">05</div>
+        <span class="method-en">Test</span>
+        <h4>検証し、改善する</h4>
+        <p>公開後の反応を見て、成果につながるまで磨き続けます。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WORKS -->
-<section id="works" class="section">
+<!-- SELECTED PROJECTS -->
+<section id="projects" class="section section-alt">
   <div class="container">
-    <span class="label r">WORKS</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.5vw,44px);font-weight:700;margin-bottom:20px;">作品ではなく、<br>課題から見る制作事例。</h2>
-    <div class="works-intro r">
-      <p>完成した映像だけでなく、課題・企画の意図・制作のアプローチ・活用方法まで、プロセスが見える形で掲載しています。</p>
+    <span class="label r">Selected Projects</span>
+    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:20px;color:var(--text);">作品ではなく、<br>課題から見る制作実績。</h2>
+    <div class="projects-intro r">
+      <p>完成した映像・LPだけでなく、課題・狙い・アプローチまで、プロセスが見える形で掲載しています。</p>
     </div>
-    <div class="works-grid">
 
-      <div class="work-card r">
-        <div class="work-thumb wt-1">
-          <div class="work-cat">企業PR</div>
-          <div class="work-play">▶</div>
+    <p class="projects-group-label r">Video Production</p>
+    <div class="proj-grid">
+
+      <div class="proj-card r">
+        <div class="proj-thumb proj-thumb-video proj-thumb-wt1">
+          <span class="proj-cat">Corporate PR</span>
+          <div class="proj-play">▶</div>
         </div>
-        <div class="work-body">
+        <div class="proj-body">
           <h3>企業PR動画</h3>
-          <div class="work-rows">
-            <div class="work-row"><span class="work-lbl">課題</span><span class="work-val">サービスの価値が文章・写真では伝わりにくく、認知拡大に課題があった</span></div>
-            <div class="work-row"><span class="work-lbl">企画</span><span class="work-val">導入事例と利用シーンをドキュメンタリー形式で構成し、リアリティを演出</span></div>
-            <div class="work-row"><span class="work-lbl">制作</span><span class="work-val">Web掲載版・展示会用・SNS短尺版の3バージョンを制作</span></div>
-            <div class="work-row"><span class="work-lbl">活用</span><span class="work-val">コーポレートサイトTOP・営業資料・YouTube広告に展開</span></div>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">サービス認知の拡大</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">サービスの価値が文章・写真では伝わりにくかった</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">導入事例をドキュメンタリー形式で構成し、Web・展示会・SNS向け3バージョンを制作</span></div>
           </div>
         </div>
       </div>
 
-      <div class="work-card r d1">
-        <div class="work-thumb wt-2">
-          <div class="work-cat">YouTube</div>
-          <div class="work-play">▶</div>
+      <div class="proj-card r d1">
+        <div class="proj-thumb proj-thumb-video proj-thumb-wt2">
+          <span class="proj-cat">YouTube</span>
+          <div class="proj-play">▶</div>
         </div>
-        <div class="work-body">
+        <div class="proj-body">
           <h3>地方創生チャンネル YouTube動画</h3>
-          <div class="work-rows">
-            <div class="work-row"><span class="work-lbl">課題</span><span class="work-val">地域の取り組みや魅力をYouTubeで発信しているが、再生数・登録者数が伸び悩んでいた</span></div>
-            <div class="work-row"><span class="work-lbl">企画</span><span class="work-val">地域の人・食・文化・風景をドキュメンタリー形式のシリーズで紹介。サムネイル・タイトル設計も担当</span></div>
-            <div class="work-row"><span class="work-lbl">制作</span><span class="work-val">YouTube長尺版・Instagram Reels短尺版を同時制作。字幕・BGM・カラグレまで一貫対応</span></div>
-            <div class="work-row"><span class="work-lbl">活用</span><span class="work-val">チャンネル登録者数が増加。移住検討者・観光客への情報発信として継続運用中</span></div>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">チャンネル登録者数の増加</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">地域の魅力を発信しているが再生数が伸び悩んでいた</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">人・食・文化・風景をシリーズ化。サムネイル・タイトル設計から字幕・BGMまで一貫制作</span></div>
           </div>
         </div>
       </div>
 
-      <div class="work-card r d2">
-        <div class="work-thumb wt-3">
-          <div class="work-cat">SNS広告</div>
-          <div class="work-play">▶</div>
+      <div class="proj-card r d2">
+        <div class="proj-thumb proj-thumb-video proj-thumb-wt3">
+          <span class="proj-cat">SNS Ad</span>
+          <div class="proj-play">▶</div>
         </div>
-        <div class="work-body">
+        <div class="proj-body">
           <h3>SNS広告動画</h3>
-          <div class="work-rows">
-            <div class="work-row"><span class="work-lbl">課題</span><span class="work-val">既存のSNS広告は静止画のみで、エンゲージ率・クリック率が低い状態だった</span></div>
-            <div class="work-row"><span class="work-lbl">企画</span><span class="work-val">冒頭3秒のフックを設計し、ターゲットの課題感に直接刺さる構成で制作</span></div>
-            <div class="work-row"><span class="work-lbl">制作</span><span class="work-val">Instagram・TikTok・YouTube広告用に縦横比・尺・テキストを最適化</span></div>
-            <div class="work-row"><span class="work-lbl">活用</span><span class="work-val">広告配信後、エンゲージ率が改善。LP・Webサイトへの誘導にも活用</span></div>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">エンゲージ率・クリック率の改善</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">静止画広告のみでエンゲージ率が低い状態だった</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">冒頭3秒のフックを設計し、Instagram・TikTok・YouTube広告用に最適化</span></div>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- BEHIND THE SCENES -->
-<section id="behind" class="section section-alt">
-  <div class="container">
-    <span class="label r">BEHIND THE SCENES</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(26px,3.5vw,42px);font-weight:700;margin-bottom:0;">見えない工程まで、丁寧に。</h2>
-    <div class="behind-grid">
-      <div class="bh-card r"><div class="bh-vis bh-v1"><div class="bh-icon">✎</div></div><div class="bh-body"><h4>企画・構成設計</h4><p>目的・ターゲット・媒体に合わせた台本・絵コンテを丁寧に設計。撮影前に全体の流れを可視化します。</p></div></div>
-      <div class="bh-card r d1"><div class="bh-vis bh-v2"><div class="bh-icon">◎</div></div><div class="bh-body"><h4>撮影・現場設計</h4><p>ロケ選定・ライティング・音声収録まで、撮影現場の全体をディレクション。素材のクオリティにこだわります。</p></div></div>
-      <div class="bh-card r d2"><div class="bh-vis bh-v3"><div class="bh-icon">▶</div></div><div class="bh-body"><h4>編集・カラグレ</h4><p>Premiere Pro・After Effects・Photoshopを駆使し、カット・カラーグレーディング・テロップまで丁寧に仕上げます。</p></div></div>
-      <div class="bh-card r d3"><div class="bh-vis bh-v4"><div class="bh-icon">◈</div></div><div class="bh-body"><h4>LP・Web・SNS展開</h4><p>完成した映像をLP・Webサイト・SNSに最適な形で展開。届ける仕組みまで一貫して設計します。</p></div></div>
-    </div>
-  </div>
-</section>
+    <p class="projects-group-label r">Landing Page</p>
+    <div class="proj-grid">
 
-<!-- WEB / LP -->
-<section id="web" class="section">
-  <div class="container">
-    <div class="web-inner">
-      <div>
-        <span class="label r">WEB & LP DESIGN</span>
-        <h2 class="r" style="font-family:var(--dm);font-size:clamp(24px,3vw,40px);font-weight:700;margin-bottom:20px;line-height:1.4;">映像の魅力を、<br>問い合わせにつなげるWebへ。</h2>
-        <p class="r" style="font-size:15px;color:var(--sub);line-height:2.0;max-width:480px;">映像を作って終わりではなく、見た人が行動しやすいLP・Webサイトまでセットで設計できます。コーポレートサイト・採用サイト・サービスLP・店舗サイトに対応。</p>
-        <div class="web-features r d1">
-          <div class="web-feat">ページ構成設計</div>
-          <div class="web-feat">コピーライティング</div>
-          <div class="web-feat">UIデザイン</div>
-          <div class="web-feat">CTA導線設計</div>
-          <div class="web-feat">スマホ最適化</div>
-          <div class="web-feat">WordPress対応</div>
+      <div class="proj-card r">
+        <div class="proj-thumb">
+          <img src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" width="800" height="600" loading="lazy">
+          <span class="proj-cat">Beauty Salon</span>
         </div>
-      </div>
-      <div class="r d2">
-        <div class="web-mockup">
-          <div class="wm-bar"><div class="wm-dot wm-r"></div><div class="wm-dot wm-y"></div><div class="wm-dot wm-g"></div></div>
-          <div class="wm-body">
-            <div class="wm-line" style="width:50%"></div>
-            <div class="wm-line" style="width:78%"></div>
-            <div class="wm-line" style="width:90%"></div>
-            <div class="wm-accent-bar"></div>
-            <div class="wm-block"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LP PORTFOLIO -->
-<section id="lp-portfolio" class="section">
-  <div class="container">
-    <span class="label r">LP WORKS</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.5vw,44px);font-weight:700;margin-bottom:20px;">LP制作実績</h2>
-    <p class="r" style="font-size:16px;color:var(--sub);line-height:2.0;max-width:600px;margin-bottom:0;">サービス・商品・店舗の魅力を問い合わせ・予約につなげるLP。ターゲット設計からコーディング・本番公開まで一貫対応した実績です。</p>
-    <div class="lp-grid">
-
-      <!-- Hair Salon LUMIA -->
-      <div class="lpc r">
-        <div class="lpc-thumb">
-          <img src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" width="800" height="450" loading="lazy">
-          <div class="lpc-overlay"></div>
-          <span class="lpc-badge">Beauty · Salon</span>
-        </div>
-        <div class="lpc-body">
+        <div class="proj-body">
           <h3>Hair Salon LUMIA</h3>
-          <p>髪質改善特化の完全予約制サロンLP。白×ベージュ×ゴールドのAppleミニマルデザイン。固定CTAバー・スクロールアニメ・LINE 24時間予約導線を完備。</p>
-          <div class="lpc-tags">
-            <span class="lpc-tag">美容室LP</span>
-            <span class="lpc-tag">LINE予約</span>
-            <span class="lpc-tag">スマホ最適化</span>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">新規予約数の増加</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">完全予約制サロンの「安心感」をどう可視化するか</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">白×ベージュ×ゴールドのミニマルデザインとLINE24時間予約導線を実装</span></div>
           </div>
-          <a href="./lumia-lp/" target="_blank" rel="noopener" class="lpc-link">
-            サイトを見る
+          <a href="./lumia-lp/" target="_blank" rel="noopener" class="proj-link">
+            View Project
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- AI MASTER SCHOOL -->
-      <div class="lpc r d1">
-        <div class="lpc-thumb">
-          <img src="./thumbnails/ai-school-lp.png" alt="AI MASTER SCHOOL" width="800" height="450" loading="lazy">
-          <div class="lpc-overlay"></div>
-          <span class="lpc-badge">Education · AI</span>
+      <div class="proj-card r d1">
+        <div class="proj-thumb">
+          <img src="./thumbnails/ai-school-lp.png" alt="AI MASTER SCHOOL" width="800" height="600" loading="lazy">
+          <span class="proj-cat">Education · AI</span>
         </div>
-        <div class="lpc-body">
+        <div class="proj-body">
           <h3>AI MASTER SCHOOL</h3>
-          <p>AIスキル習得オンラインスクールLP。ネイビー×ブルーのテックデザインで5STEPカリキュラム・料金比較・受講生の声まで高訴求設計。</p>
-          <div class="lpc-tags">
-            <span class="lpc-tag">スクールLP</span>
-            <span class="lpc-tag">料金比較表</span>
-            <span class="lpc-tag">FAQ実装</span>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">オンライン講座の申込獲得</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">オンラインスクールへの信頼構築</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">5STEPカリキュラム・料金比較・受講生の声で高訴求設計</span></div>
           </div>
-          <a href="./ai-school-lp/" target="_blank" rel="noopener" class="lpc-link">
-            サイトを見る
+          <a href="./ai-school-lp/" target="_blank" rel="noopener" class="proj-link">
+            View Project
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Business Design Academy -->
-      <div class="lpc r d2">
-        <div class="lpc-thumb">
-          <img src="./thumbnails/business-design-academy-lp.png" alt="Business Design Academy" width="800" height="450" loading="lazy">
-          <div class="lpc-overlay"></div>
-          <span class="lpc-badge">Business School</span>
+      <div class="proj-card r d2">
+        <div class="proj-thumb">
+          <img src="./thumbnails/business-design-academy-lp.png" alt="Business Design Academy" width="800" height="600" loading="lazy">
+          <span class="proj-cat">Business School</span>
         </div>
-        <div class="lpc-body">
+        <div class="proj-body">
           <h3>Business Design Academy</h3>
-          <p>受講料80万円の起業スクールLP。黒×ゴールドのMBAスタイル高級デザイン。全10セクション・FAQアコーディオン・固定CTA実装。</p>
-          <div class="lpc-tags">
-            <span class="lpc-tag">起業スクールLP</span>
-            <span class="lpc-tag">高単価設計</span>
-            <span class="lpc-tag">固定CTA</span>
+          <div class="proj-rows">
+            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">高単価講座の申込獲得</span></div>
+            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">受講料80万円という高額商材への納得感醸成</span></div>
+            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">黒×ゴールドのMBAスタイルデザインと10セクション構成で権威性を演出</span></div>
           </div>
-          <a href="./business-design-academy-lp/" target="_blank" rel="noopener" class="lpc-link">
-            サイトを見る
+          <a href="./business-design-academy-lp/" target="_blank" rel="noopener" class="proj-link">
+            View Project
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
 
     </div>
-    <div class="r" style="text-align:center;margin-top:52px;">
-      <a href="./works.html" class="btn-outline">全LP制作実績を見る &rarr;</a>
+
+    <div class="projects-more r">
+      <a href="./works.html" class="btn-outline">全制作実績を見る（全12作品） &rarr;</a>
     </div>
   </div>
 </section>
 
-
-<!-- SNS -->
-<section id="sns" class="section section-alt">
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="section">
   <div class="container">
-    <div class="sns-inner">
-      <div>
-        <span class="label r">SNS CREATIVE</span>
-        <h2 class="r" style="font-family:var(--dm);font-size:clamp(24px,3vw,40px);font-weight:700;margin-bottom:20px;line-height:1.4;">作った映像を、<br>ちゃんと届けるまで。</h2>
-        <p class="r" style="font-size:15px;color:var(--sub);line-height:2.0;max-width:480px;">Instagram・TikTok・YouTube向けに、投稿企画・ショート動画制作・サムネイル設計・アカウント改善まで対応。制作した映像を最大限に活かす運用設計を行います。</p>
-        <div class="sns-platforms r d1">
-          <div class="plt"><span class="plt-dot pd-ig"></span>Instagram</div>
-          <div class="plt"><span class="plt-dot pd-tt"></span>TikTok</div>
-          <div class="plt"><span class="plt-dot pd-yt"></span>YouTube</div>
-        </div>
+    <span class="label r">Philosophy</span>
+    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">大切にしている、<br>4つの価値観。</h2>
+    <div class="phil-grid">
+      <div class="phil-card r">
+        <div class="phil-num">01</div>
+        <span class="phil-en">Purpose</span>
+        <h4>目的から考える</h4>
+        <p>手段ではなく目的から。何のために作るのかを、常に問い直します。</p>
       </div>
-      <div class="sns-items">
-        <div class="sns-item r"><span class="sns-arrow">▸</span><p><strong>投稿企画・コンテンツ設計</strong> — ターゲットに合わせた投稿カレンダーと動画ネタの企画提案</p></div>
-        <div class="sns-item r d1"><span class="sns-arrow">▸</span><p><strong>ショート動画・リール制作</strong> — 既存素材をSNS向けに再編集。冒頭フックから構成まで最適化</p></div>
-        <div class="sns-item r d2"><span class="sns-arrow">▸</span><p><strong>サムネイル・タイトル設計</strong> — 再生率・クリック率を上げるビジュアルとテキスト設計</p></div>
-        <div class="sns-item r d3"><span class="sns-arrow">▸</span><p><strong>インサイト分析・改善提案</strong> — データをもとに継続的なアカウント改善をサポート</p></div>
+      <div class="phil-card r d1">
+        <div class="phil-num">02</div>
+        <span class="phil-en">Craft</span>
+        <h4>細部まで磨く</h4>
+        <p>余白・整列・言葉の一つひとつまで、丁寧に仕上げます。</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROFILE -->
-<section id="profile" class="section">
-  <div class="container">
-    <div class="profile-inner">
-      <div class="r">
-        <div class="prof-card">
-          <div class="prof-avatar">
-            <img src="images/profile.jpg" alt="TAKE movie" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-          </div>
-          <div class="prof-card-body">
-            <h3>TAKE movie</h3>
-            <p class="prof-role">映像クリエイター / Web Creator</p>
-            <p>関東拠点。企業・自治体のPR動画・広告動画を中心に映像制作4年、制作実績50本以上。LP・Web・SNS運用まで一貫対応。</p>
-            <div class="prof-tools">
-              <span class="prof-tool">Premiere Pro</span>
-              <span class="prof-tool">After Effects</span>
-              <span class="prof-tool">Photoshop</span>
-              <span class="prof-tool">Figma</span>
-              <span class="prof-tool">WordPress</span>
-              <span class="prof-tool">HTML / CSS</span>
-            </div>
-          </div>
-        </div>
+      <div class="phil-card r d2">
+        <div class="phil-num">03</div>
+        <span class="phil-en">Results</span>
+        <h4>成果まで責任を持つ</h4>
+        <p>納品して終わりではなく、成果が出るまで伴走します。</p>
       </div>
-      <div>
-        <span class="label r">PROFILE</span>
-        <h2 class="r" style="font-family:var(--dm);font-size:clamp(24px,3vw,36px);font-weight:700;margin-bottom:20px;">映像クリエイターとして</h2>
-        <p class="profile-bio r d1">
-          関東を拠点に、企業様や地方自治体のPR動画・広告動画・SNS運用を担当する映像クリエイター。映像制作歴4年、制作実績50本以上。<br><br>
-          ただ「綺麗な映像を作る」ではなく、見た人が動く・伝わる映像を追求しています。撮影・編集に加え、LP制作・Webサイト制作・SNS運用まで横断して対応できるため、「映像を作った後の展開」まで含めてご相談いただけます。
-        </p>
-        <div class="skill-tags r d2">
-          <span class="stag stag-main">Video Direction</span>
-          <span class="stag stag-main">Shooting</span>
-          <span class="stag stag-main">Editing</span>
-          <span class="stag stag-main">Color Grading</span>
-          <span class="stag">LP Design</span>
-          <span class="stag">Web Design</span>
-          <span class="stag">SNS Planning</span>
-          <span class="stag">Copywriting</span>
-        </div>
+      <div class="phil-card r d3">
+        <div class="phil-num">04</div>
+        <span class="phil-en">Growth</span>
+        <h4>改善し続ける</h4>
+        <p>公開はゴールではなくスタート。検証と改善を続けます。</p>
       </div>
     </div>
   </div>
@@ -875,9 +601,9 @@
 <section id="contact" class="section section-alt">
   <div class="container">
     <div class="contact-wrap">
-      <span class="label r">CONTACT</span>
-      <h2 class="r">まずは、<br>お気軽にご相談ください。</h2>
-      <p class="c-sub r">映像制作・LP制作・Webサイト制作・SNS運用のご依頼・ご相談を受け付けています。<br>内容がまだ固まっていない段階でも、お気軽にどうぞ。</p>
+      <span class="label r">Contact</span>
+      <h2 class="r">Let's design the<br>reason people act.</h2>
+      <p class="c-sub r">動画制作、LP制作、Web制作、AI活用まで。<br>伝えたい価値を、成果につながる形へ設計します。</p>
       <a class="c-email-link r" href="mailto:i.love.yoziro0705@gmail.com">i.love.yoziro0705@gmail.com</a>
       <form class="cform r" onsubmit="return false;">
         <div class="ff">
@@ -892,21 +618,21 @@
           <label>ご依頼の種類</label>
           <select>
             <option value="">選択してください</option>
-            <option>映像制作（企業PR・サービス紹介）</option>
-            <option>映像制作（自治体PR・観光プロモーション）</option>
-            <option>映像制作（SNS広告・リール動画）</option>
-            <option>LP制作</option>
-            <option>Webサイト制作</option>
-            <option>SNS運用サポート</option>
+            <option>Creative Strategy（企画・戦略設計）</option>
+            <option>Video Production（映像制作）</option>
+            <option>Landing Page（LP制作）</option>
+            <option>Website（Webサイト制作）</option>
+            <option>AI Workflow（AI活用）</option>
+            <option>System Design（システム設計）</option>
             <option>その他・複数ご相談</option>
           </select>
         </div>
         <div class="ff">
           <label>ご相談内容</label>
-          <textarea placeholder="制作したい映像のイメージ、ご依頼の背景、ご希望のスケジュール・予算感などをご記入ください。まだ決まっていなくても大丈夫です。"></textarea>
+          <textarea placeholder="伝えたい価値、ご依頼の背景、ご希望のスケジュール・予算感などをご記入ください。まだ決まっていなくても大丈夫です。"></textarea>
         </div>
         <div class="c-submit">
-          <button type="submit" class="btn-primary">送信する</button>
+          <button type="submit" class="btn-primary">Start Project</button>
         </div>
       </form>
     </div>
@@ -915,15 +641,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo">TAKE<span>.</span>movie</div>
+  <div class="f-logo"><span class="logo-mark" style="width:22px;height:22px;font-size:10px;">T</span>TAKE CRAFT</div>
   <nav class="f-links">
-    <a href="#about">ABOUT</a>
+    <a href="#manifesto">BRAND</a>
     <a href="#service">SERVICE</a>
-    <a href="#works">WORKS</a>
-    <a href="#lp-portfolio">LP実績</a>
+    <a href="#projects">PROJECTS</a>
     <a href="#contact">CONTACT</a>
   </nav>
-  <div class="f-copy">© 2025 TAKE movie. All rights reserved.</div>
+  <div class="f-copy">© 2026 TAKE CRAFT. All rights reserved.</div>
 </footer>
 
 <script>
