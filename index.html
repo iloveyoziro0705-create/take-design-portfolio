@@ -93,6 +93,10 @@
     header.is-scrolled { background: rgba(30,30,30,0.82); backdrop-filter: blur(20px); border-bottom-color: var(--border); }
     .logo { font-family: var(--dm); font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; display: flex; align-items: center; gap: 9px; }
     .logo-mark { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .logo-img { height: 20px; width: auto; display: block; }
+    .hero-logo-img { height: 30px; width: auto; display: block; margin-bottom: 18px; }
+    .brand-signoff { padding: 90px 24px; text-align: center; border-top: 1px solid var(--border); }
+    .brand-signoff img { max-width: 520px; width: 100%; height: auto; margin: 0 auto; }
     .nav-links { display: flex; gap: 40px; font-family: var(--dm); font-size: 12.5px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub); }
     .nav-links a { transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
@@ -335,7 +339,7 @@
 
 <!-- HEADER -->
 <header id="siteHeader">
-  <a href="#hero" class="logo"><span class="logo-mark">T</span>TAKE CRAFT</a>
+  <a href="#hero" class="logo"><img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="logo-img"></a>
   <nav class="nav-links">
     <a href="#manifesto">BRAND</a>
     <a href="#service">SERVICE</a>
@@ -378,7 +382,7 @@
   </div>
   <div class="container hero-inner">
     <div class="hero-badge">Creative Strategy Studio</div>
-    <p class="hero-eyebrow">TAKE CRAFT</p>
+    <img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="hero-logo-img">
     <h1 class="hero-title" id="heroTitle">伝えたいを、成果へ。</h1>
     <p class="hero-core">人が動く理由をデザインする。良い商品でも、良いサービスでも、伝わらなければ選ばれません。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。</p>
     <p class="hero-sub">Design the Reason People Act.</p>
@@ -817,9 +821,14 @@
   </div>
 </section>
 
+<!-- BRAND SIGNOFF -->
+<section class="brand-signoff">
+  <img src="images/logo-full.png" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results.">
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo"><span class="logo-mark" style="width:22px;height:22px;font-size:10px;">T</span>TAKE CRAFT</div>
+  <div class="f-logo"><img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="logo-img" style="height:16px;"></div>
   <nav class="f-links">
     <a href="#manifesto">BRAND</a>
     <a href="#service">SERVICE</a>
