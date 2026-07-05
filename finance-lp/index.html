@@ -135,7 +135,7 @@ header.on{background:rgba(250,250,250,.78);backdrop-filter:blur(16px);border-bot
 .voice{background:linear-gradient(180deg,#EAFBF1 0%,#FFF8EF 100%)}
 .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .voice-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px 26px;text-align:center}
-.voice-card svg{width:104px;height:104px;margin:0 auto 18px}
+.voice-card svg,.voice-card img{width:104px;height:104px;margin:0 auto 18px;object-fit:contain}
 .voice-tag{font-family:"Inter",sans-serif;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--primary);background:rgba(29,78,216,.08);padding:5px 14px;border-radius:999px;display:inline-block;margin-bottom:14px}
 .voice-card p.quote{color:var(--text);font-size:14.5px;line-height:1.9;font-weight:500}
 
@@ -229,64 +229,7 @@ footer .f-logo{color:#fff;font-weight:800;margin-bottom:6px}
       <p class="hero-trust r"><b>●</b> 初回相談 完全無料　　<b>●</b> 最短即日から相談可能</p>
     </div>
     <div class="hero-fig r-scale">
-      <svg viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="240" cy="430" r="210" fill="#EAF0FF"/>
-        <!-- sun -->
-        <circle class="breathe" cx="360" cy="110" r="46" fill="#FFE8B8" style="transform-origin:360px 110px"/>
-        <circle cx="360" cy="110" r="30" fill="#FFD98C"/>
-        <!-- city skyline -->
-        <g opacity=".55" fill="#B9CBEF">
-          <rect x="40" y="300" width="30" height="120"/>
-          <rect x="76" y="270" width="26" height="150"/>
-          <rect x="108" y="310" width="34" height="110"/>
-          <rect x="360" y="290" width="28" height="130"/>
-          <rect x="392" y="255" width="24" height="165"/>
-        </g>
-        <!-- path -->
-        <path d="M60 420 Q240 460 420 400" stroke="#C9D6EE" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="2 22"/>
-        <!-- plant -->
-        <g class="sway" style="transform-origin:96px 420px">
-          <rect x="92" y="400" width="8" height="24" fill="#8CA98A"/>
-          <ellipse cx="86" cy="392" rx="14" ry="8" fill="#8FCB8F" transform="rotate(-25 86 392)"/>
-          <ellipse cx="106" cy="392" rx="14" ry="8" fill="#79BB86" transform="rotate(25 106 392)"/>
-        </g>
-        <!-- protagonist walking -->
-        <g class="bob">
-          <ellipse cx="230" cy="428" rx="46" ry="8" fill="#C9D6EE" opacity=".6"/>
-          <!-- back leg -->
-          <path d="M214 340 L206 420" stroke="#1D4ED8" stroke-width="16" stroke-linecap="round"/>
-          <!-- front leg -->
-          <path d="M244 340 L258 418" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
-          <ellipse cx="258" cy="424" rx="13" ry="7" fill="#111827"/>
-          <ellipse cx="206" cy="426" rx="13" ry="7" fill="#111827"/>
-          <!-- body coat -->
-          <path d="M198 250 Q230 236 262 250 L268 342 Q230 356 192 342 Z" fill="#F59E0B"/>
-          <!-- back arm -->
-          <path d="M204 262 Q182 284 186 320" stroke="#F59E0B" stroke-width="16" fill="none" stroke-linecap="round"/>
-          <!-- front arm swinging -->
-          <path d="M256 262 Q280 278 282 250" stroke="#FBBE52" stroke-width="16" fill="none" stroke-linecap="round"/>
-          <!-- neck -->
-          <rect x="220" y="228" width="20" height="24" rx="8" fill="#FFDAB0"/>
-          <!-- head -->
-          <circle cx="230" cy="204" r="34" fill="#FFDAB0"/>
-          <!-- hair -->
-          <path d="M198 200 C196 168 210 152 230 150 C250 152 264 168 262 200 C262 188 258 174 230 174 C202 174 198 188 198 200 Z" fill="#3B2E2A"/>
-          <!-- eyes -->
-          <circle cx="220" cy="204" r="3.6" fill="#111827"/>
-          <circle cx="240" cy="204" r="3.6" fill="#111827"/>
-          <!-- smile -->
-          <path d="M218 216 Q230 224 242 216" stroke="#B9714B" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          <!-- blush -->
-          <ellipse cx="212" cy="214" rx="6" ry="3.6" fill="#FBBE9E" opacity=".5"/>
-          <ellipse cx="248" cy="214" rx="6" ry="3.6" fill="#FBBE9E" opacity=".5"/>
-        </g>
-        <!-- floating up-arrow graph accent -->
-        <g transform="translate(330,300)" opacity=".9">
-          <rect x="0" y="40" width="10" height="20" rx="3" fill="#93C5FD"/>
-          <rect x="14" y="26" width="10" height="34" rx="3" fill="#60A5FA"/>
-          <rect x="28" y="8" width="10" height="52" rx="3" fill="#2563EB"/>
-        </g>
-      </svg>
+      <img src="images/hero.svg" alt="未来へ歩き出す人のイラスト" style="width:100%;height:auto;">
     </div>
   </div>
 </section>
@@ -346,57 +289,7 @@ footer .f-logo{color:#fff;font-weight:800;margin-bottom:6px}
       </div>
     </div>
     <div class="sol-fig r-scale">
-      <svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="250" width="360" height="8" rx="4" fill="#DCE6FA"/>
-        <!-- client -->
-        <g>
-          <rect x="70" y="150" width="56" height="70" rx="14" fill="#8B7CF0"/>
-          <rect x="90" y="150" width="16" height="70" fill="#fff" opacity=".85"/>
-          <rect x="86" y="140" width="24" height="18" rx="6" fill="#FFDAB0"/>
-          <circle cx="98" cy="112" r="32" fill="#FFDAB0"/>
-          <path d="M61 96 A37 37 0 1 1 135 96 Z" fill="#3B2E2A"/>
-          <circle cx="90" cy="112" r="3.6" fill="#111827"/>
-          <circle cx="106" cy="112" r="3.6" fill="#111827"/>
-          <path d="M78 96 Q90 90 98 94" stroke="#3B2E2A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          <path d="M100 94 Q108 90 118 96" stroke="#3B2E2A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          <path d="M88 128 Q98 122 108 128" stroke="#B9714B" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </g>
-        <!-- speech left -->
-        <rect x="34" y="52" width="86" height="46" rx="12" fill="#fff" stroke="#DCE6FA" stroke-width="1.6"/>
-        <path d="M78 98 L70 110 L88 100" fill="#fff" stroke="#DCE6FA" stroke-width="1.6"/>
-        <rect x="46" y="64" width="60" height="6" rx="3" fill="#E4E9F5"/>
-        <rect x="46" y="76" width="46" height="6" rx="3" fill="#E4E9F5"/>
-        <!-- advisor -->
-        <g>
-          <rect x="292" y="150" width="56" height="70" rx="14" fill="#2563EB"/>
-          <rect x="312" y="150" width="16" height="70" fill="#fff" opacity=".85"/>
-          <rect x="308" y="140" width="24" height="18" rx="6" fill="#FFDAB0"/>
-          <ellipse cx="320" cy="112" rx="32" ry="34" fill="#FFDAB0"/>
-          <path d="M282 95 A38 38 0 1 1 358 95 Z" fill="#5B3A2E"/>
-          <circle cx="312" cy="112" r="3.6" fill="#111827"/>
-          <circle cx="328" cy="112" r="3.6" fill="#111827"/>
-          <path d="M310 124 Q320 132 330 124" stroke="#B9714B" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-          <ellipse cx="304" cy="122" rx="7" ry="4" fill="#FBBE9E" opacity=".5"/>
-          <ellipse cx="336" cy="122" rx="7" ry="4" fill="#FBBE9E" opacity=".5"/>
-        </g>
-        <!-- speech right w/ pie -->
-        <rect x="298" y="46" width="92" height="58" rx="12" fill="#EEF4FF" stroke="#2563EB" stroke-width="1.6"/>
-        <path d="M312 104 L308 116 L322 106" fill="#EEF4FF" stroke="#2563EB" stroke-width="1.6"/>
-        <circle cx="322" cy="66" r="15" fill="#fff" stroke="#DCE6FA" stroke-width="1.4"/>
-        <path d="M322 66 L322 51 A15 15 0 0 1 336 66 Z" fill="#2563EB"/>
-        <path d="M322 66 L336 66 A15 15 0 0 1 314 79 Z" fill="#F59E0B"/>
-        <rect x="346" y="58" width="34" height="6" rx="3" fill="#2563EB" opacity=".3"/>
-        <rect x="346" y="68" width="26" height="6" rx="3" fill="#2563EB" opacity=".3"/>
-        <!-- table/laptop -->
-        <rect x="150" y="180" width="120" height="70" rx="10" fill="#fff" stroke="#DCE6FA" stroke-width="1.6"/>
-        <rect x="164" y="192" width="92" height="46" rx="4" fill="#EEF4FF"/>
-        <rect x="176" y="204" width="12" height="24" fill="#2563EB" rx="2"/>
-        <rect x="192" y="196" width="12" height="32" fill="#8B7CF0" rx="2"/>
-        <rect x="208" y="210" width="12" height="18" fill="#22C55E" rx="2"/>
-        <rect x="224" y="200" width="12" height="28" fill="#2563EB" rx="2" opacity=".5"/>
-        <circle cx="204" cy="170" r="18" fill="#EAFBF1"/>
-        <path d="M197 170 L202 176 L212 164" stroke="#22C55E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img src="images/solution.svg" alt="専門家に相談するイラスト" style="width:100%;height:auto;">
     </div>
   </div>
 </section>
@@ -456,32 +349,7 @@ footer .f-logo{color:#fff;font-weight:800;margin-bottom:6px}
       </div>
     </div>
     <div class="res-fig r-scale">
-      <svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="270" x2="390" y2="270" stroke="#E5E7EB" stroke-width="2"/>
-        <rect x="60" y="220" width="28" height="50" rx="4" fill="#93C5FD"/>
-        <rect x="110" y="190" width="28" height="80" rx="4" fill="#60A5FA"/>
-        <rect x="160" y="150" width="28" height="120" rx="4" fill="#2563EB"/>
-        <rect x="210" y="110" width="28" height="160" rx="4" fill="#8B7CF0"/>
-        <path d="M60 210 Q140 170 188 130 Q230 96 320 70" stroke="#22C55E" stroke-width="4" fill="none" stroke-linecap="round"/>
-        <circle cx="320" cy="70" r="7" fill="#22C55E"/>
-        <!-- plant growth accent -->
-        <g class="sway" style="transform-origin:340px 270px">
-          <rect x="336" y="240" width="8" height="30" fill="#8CA98A"/>
-          <ellipse cx="328" cy="232" rx="16" ry="9" fill="#8FCB8F" transform="rotate(-20 328 232)"/>
-          <ellipse cx="352" cy="230" rx="17" ry="9" fill="#66C27E" transform="rotate(20 352 230)"/>
-          <ellipse cx="340" cy="216" rx="12" ry="16" fill="#3FAF66"/>
-        </g>
-        <!-- small figure celebrating -->
-        <g class="bob" transform="translate(150,60)">
-          <circle cx="30" cy="20" r="16" fill="#FFDAB0"/>
-          <path d="M14 16 C14 4 20 -2 30 -2 C40 -2 46 4 46 16" fill="#3B2E2A"/>
-          <path d="M14 40 Q30 26 46 40 L46 60 L14 60 Z" fill="#F59E0B"/>
-          <path d="M14 30 L2 14 M46 30 L58 14" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
-          <circle cx="24" cy="20" r="2.4" fill="#111827"/>
-          <circle cx="36" cy="20" r="2.4" fill="#111827"/>
-          <path d="M22 26 Q30 32 38 26" stroke="#B9714B" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </g>
-      </svg>
+      <img src="images/results.svg" alt="資産成長のインフォグラフィックイラスト" style="width:100%;height:auto;">
     </div>
   </div>
 </section>
@@ -495,17 +363,17 @@ footer .f-logo{color:#fff;font-weight:800;margin-bottom:6px}
     </div>
     <div class="voice-grid">
       <div class="voice-card r-scale">
-        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#EEF4FF"/><circle cx="60" cy="54" r="30" fill="#FFDAB0"/><path d="M25 39 A35 35 0 1 1 95 39 Z" fill="#3B2E2A"/><rect x="26" y="36" width="8" height="20" rx="4" fill="#3B2E2A"/><rect x="86" y="36" width="8" height="20" rx="4" fill="#3B2E2A"/><circle cx="50" cy="54" r="3.4" fill="#111827"/><circle cx="70" cy="54" r="3.4" fill="#111827"/><path d="M48 66 Q60 74 72 66" stroke="#B9714B" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M18 118 Q60 92 102 118" fill="#2563EB"/></svg>
+        <img src="images/voice-1.svg" alt="40代会社員のイラスト">
         <span class="voice-tag en">40代 · 会社員</span>
         <p class="quote">「老後資金がいくら必要か、初めて『数字』で見えました。漠然とした不安が、具体的な計画に変わりました。」</p>
       </div>
       <div class="voice-card r-scale">
-        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#EAFBF1"/><ellipse cx="60" cy="56" rx="28" ry="30" fill="#FFDAB0"/><path d="M24 41 A36 36 0 1 1 96 41 Z" fill="#5B3A2E"/><ellipse cx="26" cy="48" rx="7" ry="10" fill="#5B3A2E"/><ellipse cx="94" cy="48" rx="7" ry="10" fill="#5B3A2E"/><circle cx="50" cy="56" r="3.2" fill="#111827"/><circle cx="70" cy="56" r="3.2" fill="#111827"/><path d="M48 68 Q60 76 72 68" stroke="#B9714B" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="42" cy="66" rx="6" ry="3.6" fill="#FBBE9E" opacity=".5"/><ellipse cx="78" cy="66" rx="6" ry="3.6" fill="#FBBE9E" opacity=".5"/><path d="M18 118 Q60 90 102 118" fill="#8B7CF0"/></svg>
+        <img src="images/voice-2.svg" alt="30代会社員のイラスト">
         <span class="voice-tag en">30代 · 会社員</span>
         <p class="quote">「NISAを始める後押しをしてもらえました。自分で調べていた時の迷いが、もうありません。」</p>
       </div>
       <div class="voice-card r-scale">
-        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#FFF3E0"/><circle cx="60" cy="56" r="30" fill="#FFDAB0"/><path d="M25 41 A35 35 0 1 1 95 41 Z" fill="#8C8C8C"/><rect x="26" y="38" width="8" height="18" rx="4" fill="#8C8C8C"/><rect x="86" y="38" width="8" height="18" rx="4" fill="#8C8C8C"/><rect x="44" y="46" width="12" height="4" rx="2" fill="#111827"/><rect x="64" y="46" width="12" height="4" rx="2" fill="#111827"/><circle cx="50" cy="56" r="3" fill="#111827"/><circle cx="70" cy="56" r="3" fill="#111827"/><path d="M48 68 Q60 74 72 68" stroke="#B9714B" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M18 118 Q60 92 102 118" fill="#F59E0B"/></svg>
+        <img src="images/voice-3.svg" alt="50代自営業のイラスト">
         <span class="voice-tag en">50代 · 自営業</span>
         <p class="quote">「保険の見直しで、家計に月2万円の余裕ができました。もっと早く相談すればよかったです。」</p>
       </div>
@@ -591,34 +459,14 @@ footer .f-logo{color:#fff;font-weight:800;margin-bottom:6px}
     <div class="lbl r" style="justify-content:center">START NOW</div>
     <h2 class="r">未来への一歩を、<br><span class="grad">踏み出す。</span></h2>
     <p class="r">迷っている時間も、未来へ続いている。<br>まずは無料相談から、あなたの一歩を始めてください。</p>
-    <div class="final-fig r-scale">
+    <div class="final-fig r-scale" style="position:relative;">
       <svg viewBox="0 0 800 340" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle class="breathe" cx="400" cy="150" r="90" fill="#FFE3B0" style="transform-origin:400px 150px"/>
         <g opacity=".5" fill="#F7C88A"><rect x="60" y="230" width="34" height="90"/><rect x="100" y="200" width="28" height="120"/><rect x="640" y="220" width="30" height="100"/><rect x="676" y="190" width="26" height="130"/></g>
         <path d="M0 300 Q400 260 800 300 L800 340 L0 340 Z" fill="#FBE4D5"/>
-        <!-- family walking toward sun -->
-        <g transform="translate(340,220)">
-          <circle cx="30" cy="18" r="16" fill="#FFDAB0"/>
-          <path d="M14 14 C14 2 20 -4 30 -4 C40 -4 46 2 46 14" fill="#3B2E2A"/>
-          <path d="M14 36 Q30 24 46 36 L46 70 L14 70 Z" fill="#2563EB"/>
-          <circle cx="24" cy="18" r="2.4" fill="#111827"/><circle cx="36" cy="18" r="2.4" fill="#111827"/>
-          <path d="M22 24 Q30 30 38 24" stroke="#B9714B" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </g>
-        <g transform="translate(400,230)">
-          <circle cx="30" cy="16" r="14" fill="#FFDAB0"/>
-          <path d="M12 9 A18 18 0 1 1 48 9 Z" fill="#5B3A2E"/>
-          <path d="M16 32 Q30 22 44 32 L44 62 L16 62 Z" fill="#F59E0B"/>
-          <circle cx="24" cy="16" r="2.2" fill="#111827"/><circle cx="36" cy="16" r="2.2" fill="#111827"/>
-          <path d="M23 21 Q30 26 37 21" stroke="#B9714B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        </g>
-        <g transform="translate(452,246)">
-          <circle cx="18" cy="12" r="10" fill="#FFDAB0"/>
-          <path d="M9 8 C9 1 13 -2 18 -2 C23 -2 27 1 27 8" fill="#3B2E2A"/>
-          <path d="M9 22 Q18 15 27 22 L27 46 L9 46 Z" fill="#22C55E"/>
-          <circle cx="14" cy="12" r="1.8" fill="#111827"/><circle cx="22" cy="12" r="1.8" fill="#111827"/>
-        </g>
         <path d="M40 320 Q400 300 760 320" stroke="#F3D2AE" stroke-width="6" fill="none" stroke-dasharray="2 18" stroke-linecap="round"/>
       </svg>
+      <img src="images/final-cta.svg" alt="家族の未来のイラスト" style="position:absolute;left:50%;bottom:2%;transform:translateX(-50%);width:26%;min-width:170px;">
     </div>
     <a href="#" class="btn btn-primary" style="font-size:16px;padding:18px 44px">無料相談を予約する →</a>
   </div>
