@@ -1594,10 +1594,35 @@
     return timer;
   }
 
+  var chatPatterns = [
+    {
+      q: 'AIで資料作成の時間を半分にするには？',
+      a: 'まず目的を1行で定義し、AIに構成案を複数出させます。良い骨子を選び、本文生成→トーン調整→図解提案の順で仕上げれば、初稿までの時間は半分以下になります。'
+    },
+    {
+      q: '副業でAIを使うなら、何から始めればいいですか？',
+      a: 'まずは「文章作成」や「LP構成」など需要が明確な分野を1つ選びます。AIに構成案を複数出させ、実際の案件を想定して仕上げる練習を重ねれば、1ヶ月ほどで提案できるレベルに到達できます。'
+    },
+    {
+      q: 'AIを営業提案に活かすには？',
+      a: 'ヒアリングした相手の課題をAIに渡し、提案の骨子とトークスクリプトを複数パターン生成させます。反応が良かった型を蓄積していけば、提案の質と速度が同時に上がっていきます。'
+    }
+  ];
+
   function runChat(demo) {
+    var userEl = demo.querySelector('.chat-msg.user');
     var textEl = demo.querySelector('.chat-ai-text');
     var caret = demo.querySelector('.caret');
+    var idx = demo.dataset.chatIdx ? parseInt(demo.dataset.chatIdx, 10) : 0;
+    if (demo.dataset.chatStarted) {
+      idx = (idx + 1) % chatPatterns.length;
+    }
+    demo.dataset.chatStarted = '1';
+    demo.dataset.chatIdx = idx;
+    var pattern = chatPatterns[idx];
+    if (userEl) userEl.textContent = pattern.q;
     if (caret) caret.style.opacity = '1';
+    textEl.setAttribute('data-text', pattern.a);
     typeInto(textEl, 22);
   }
 
