@@ -3,679 +3,1325 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI MASTER SCHOOL</title>
+  <title>AI MASTER — 未来へ、進化する。</title>
+  <meta name="description" content="AIを学ぶ、その先へ。AI MASTERは知識ではなく人生を変える実践ブランドスクールです。" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #0b1220;
-      --blue: #2563eb;
-      --sky: #eff6ff;
-      --text: #111827;
-      --sub: #64748b;
-      --line: #e5e7eb;
-      --white: #ffffff;
-      --bg: #f8fafc;
-      --radius: 24px;
-      --shadow: 0 24px 70px rgba(15, 23, 42, .10);
+      --bg: #050505;
+      --surface: #101010;
+      --surface-2: #161616;
+      --line: rgba(255,255,255,.10);
+      --line-soft: rgba(255,255,255,.06);
+      --white: #f5f5f5;
+      --sub: #9a9a9a;
+      --sub-2: #6f6f6f;
+      --blue: #3b82f6;
+      --purple: #7c3aed;
+      --grad: linear-gradient(100deg, #6fa2ff, #a78bfa 55%, #ff9ddc);
+      --grad-solid: linear-gradient(120deg, #3b82f6, #7c3aed);
+      --glass: rgba(255,255,255,.045);
+      --glass-strong: rgba(255,255,255,.08);
+      --radius: 22px;
+      --radius-lg: 30px;
+      --ease: cubic-bezier(.16,1,.3,1);
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: var(--bg); }
     body {
-      font-family: "Noto Sans JP", sans-serif;
-      color: var(--text);
-      background: var(--white);
+      font-family: "Noto Sans JP", "Inter", sans-serif;
+      color: var(--white);
+      background: var(--bg);
       line-height: 1.8;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-    .container {
-      width: min(1120px, 90%);
-      margin: 0 auto;
-    }
-    .section {
-      padding: 110px 0;
-    }
-    .section.gray {
-      background: var(--bg);
-    }
-    .section-head {
-      max-width: 760px;
-      margin: 0 auto 56px;
-      text-align: center;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; display: block; object-fit: cover; }
+    ul { list-style: none; }
+    .en { font-family: "Inter", sans-serif; }
+    .container { width: min(1160px, 90%); margin: 0 auto; position: relative; z-index: 1; }
+    .container-lg { width: min(1360px, 92%); margin: 0 auto; position: relative; z-index: 1; }
+    section { position: relative; }
+    .section { padding: 150px 0; }
+    .section-tight { padding: 100px 0; }
+    .section-head { max-width: 720px; margin: 0 auto 64px; text-align: center; }
+    .section-head.left { margin: 0 0 56px; text-align: left; }
     .label {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .16em;
-      margin-bottom: 12px;
-    }
-    h1, h2, h3 {
-      color: var(--navy);
-      line-height: 1.35;
-      letter-spacing: -.03em;
-    }
-    h1 {
-      font-size: clamp(42px, 7vw, 82px);
-      font-weight: 900;
-    }
-    h2 {
-      font-size: clamp(30px, 4.5vw, 52px);
-      font-weight: 900;
-    }
-    h3 {
-      font-size: 22px;
+      font-family: "Inter", sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #a9c0ff;
+      font-size: 12px;
       font-weight: 800;
+      letter-spacing: .22em;
+      margin-bottom: 18px;
     }
-    p {
-      color: var(--sub);
+    .label::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #a9c0ff);
+    }
+    .section-head:not(.left) .label { justify-content: center; }
+    .section-head.left .label::before { display: none; }
+    h1, h2, h3, h4 {
+      color: var(--white);
+      line-height: 1.28;
+      letter-spacing: -.03em;
+      font-weight: 900;
+    }
+    h1 { font-size: clamp(44px, 7.4vw, 96px); }
+    h2 { font-size: clamp(30px, 4.4vw, 54px); }
+    h3 { font-size: 22px; }
+    p { color: var(--sub); }
+    .grad {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       min-width: 220px;
-      padding: 16px 30px;
+      padding: 17px 32px;
       border-radius: 999px;
       font-weight: 800;
-      transition: .3s ease;
+      font-size: 15px;
+      transition: .35s var(--ease);
+      border: 1px solid transparent;
+      cursor: pointer;
     }
     .btn-primary {
-      background: var(--blue);
+      background: var(--grad-solid);
       color: #fff;
-      box-shadow: 0 16px 36px rgba(37, 99, 235, .28);
+      box-shadow: 0 18px 45px rgba(59,130,246,.28);
     }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: #1d4ed8;
-    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 22px 55px rgba(124,58,237,.4); }
     .btn-outline {
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--navy);
+      background: rgba(255,255,255,.02);
+      color: var(--white);
+      backdrop-filter: blur(8px);
     }
-    .btn-outline:hover {
-      border-color: var(--blue);
-      color: var(--blue);
+    .btn-outline:hover { border-color: #7fa9ff; background: rgba(59,130,246,.08); }
+
+    /* ---------- ambient background fx (site-wide) ---------- */
+    .bg-fx {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
     }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: .8s ease;
+    .bg-fx .grid-layer {
+      position: absolute;
+      inset: -50% -50%;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: .35;
+      animation: grid-pan 60s linear infinite;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 0%, transparent 70%);
     }
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes grid-pan {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(64px, 64px); }
     }
+    .bg-fx .noise-layer {
+      position: absolute;
+      inset: 0;
+      opacity: .045;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+    .bg-fx .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      animation: glow-float 26s ease-in-out infinite;
+    }
+    .bg-fx .glow.g1 { width: 640px; height: 640px; top: 4%; left: -10%; background: radial-gradient(circle, rgba(59,130,246,.20), transparent 70%); }
+    .bg-fx .glow.g2 { width: 720px; height: 720px; top: 45%; right: -14%; background: radial-gradient(circle, rgba(124,58,237,.18), transparent 70%); animation-delay: -8s; }
+    .bg-fx .glow.g3 { width: 560px; height: 560px; bottom: 0%; left: 20%; background: radial-gradient(circle, rgba(59,130,246,.12), transparent 70%); animation-delay: -16s; }
+    @keyframes glow-float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(40px,-30px) scale(1.08); }
+    }
+    .page { position: relative; z-index: 1; }
+
+    /* ---------- header ---------- */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 50;
-      background: rgba(255, 255, 255, .86);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
+      z-index: 90;
+      padding: 18px 0;
+      transition: .4s ease;
+    }
+    header.scrolled {
+      background: rgba(5,5,5,.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 14px 0;
     }
     .nav {
-      width: min(1180px, 92%);
-      height: 74px;
+      width: min(1200px, 92%);
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .logo {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--navy);
-      letter-spacing: -.03em;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .logo span {
-      color: var(--blue);
-    }
+    .logo span { color: var(--blue); }
     .nav-links {
       display: flex;
-      gap: 26px;
+      gap: 30px;
       font-size: 14px;
-      font-weight: 700;
-      color: #475569;
+      font-weight: 600;
+      color: #c7c7c7;
+      font-family: "Inter", sans-serif;
     }
-    .nav-cta {
-      min-width: auto;
-      padding: 10px 22px;
-      font-size: 14px;
-    }
+    .nav-links a { transition: .25s ease; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { min-width: auto; padding: 11px 24px; font-size: 13px; }
+
+    /* ---------- reveal utilities ---------- */
+    .reveal { opacity: 0; transform: translateY(36px); }
+    .reveal-scale { opacity: 0; transform: scale(.92); }
+    .reveal-blur { opacity: 0; filter: blur(18px); transform: scale(.96); }
+    .reveal-mask { overflow: hidden; }
+    .reveal-mask > * { transform: translateY(112%); opacity: 0; }
+    .reveal-line { opacity: 0; transform: translateY(20px); }
+
+    /* ---------- hero ---------- */
     .hero {
-      padding: 140px 0 80px;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      background:
-        radial-gradient(circle at 78% 20%, rgba(37,99,235,.16), transparent 28%),
-        linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+      justify-content: center;
+      text-align: center;
+      padding: 160px 0 150px;
+      overflow: hidden;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 54px;
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, transparent 40%, var(--bg) 96%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-kicker {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .3em;
+      color: #a9c0ff;
+      margin-bottom: 26px;
+      display: inline-flex;
       align-items: center;
+      gap: 12px;
     }
-    .hero-copy {
-      color: var(--blue);
-      font-weight: 900;
-      letter-spacing: .14em;
-      font-size: 13px;
-      margin-bottom: 18px;
+    .hero-kicker::before, .hero-kicker::after {
+      content: "";
+      width: 30px; height: 1px;
+      background: linear-gradient(90deg, transparent, #a9c0ff, transparent);
     }
-    .hero h1 {
-      margin-bottom: 24px;
-    }
-    .hero-text {
-      font-size: 18px;
-      margin-bottom: 34px;
-      max-width: 620px;
+    .hero h1 { margin-bottom: 28px; }
+    .hero h1 .line { display: block; overflow: hidden; }
+    .hero h1 .line span { display: inline-block; }
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      max-width: 560px;
+      margin: 0 auto 44px;
+      color: #b7b7b7;
     }
     .hero-buttons {
       display: flex;
       gap: 16px;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      margin-bottom: 70px;
     }
-    .hero-card {
-      background: #fff;
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      background: var(--glass);
       border: 1px solid var(--line);
-      border-radius: 32px;
-      padding: 18px;
-      box-shadow: var(--shadow);
+      border-radius: 999px;
+      backdrop-filter: blur(20px);
+      padding: 6px;
     }
-    .hero-card img {
-      height: 520px;
-      border-radius: 24px;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: -40px;
-      position: relative;
-      z-index: 2;
-    }
-    .stat {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 18px 45px rgba(15,23,42,.08);
+    .hero-stats .stat {
+      padding: 14px 28px;
       text-align: center;
+      border-right: 1px solid var(--line-soft);
     }
-    .stat strong {
+    .hero-stats .stat:last-child { border-right: none; }
+    .hero-stats strong {
       display: block;
-      font-size: 32px;
-      color: var(--blue);
-      font-weight: 900;
-      line-height: 1.2;
+      font-family: "Inter", sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .stat span {
-      color: var(--sub);
+    .hero-stats span { font-size: 12px; color: var(--sub-2); font-weight: 600; }
+    .scroll-cue {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: .28em;
+      color: var(--sub-2);
+    }
+    .scroll-cue .bar {
+      width: 1px; height: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,.5), transparent);
+      overflow: hidden;
+      position: relative;
+    }
+    .scroll-cue .bar::after {
+      content: "";
+      position: absolute;
+      top: -100%; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg, transparent, #fff);
+      animation: cue-drop 1.8s ease-in-out infinite;
+    }
+    @keyframes cue-drop {
+      0% { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    /* ---------- story chapters ---------- */
+    .story { padding: 130px 0; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .story-grid.rev { grid-template-columns: 1.08fr .92fr; }
+    .story-grid.rev .story-media { order: 2; }
+    .story-media {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,.5);
+    }
+    .story-media img { height: 520px; }
+    .story-media::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.5));
+    }
+    .story-copy p { margin-top: 20px; font-size: 16px; }
+    .story-quote {
+      margin-top: 30px;
+      padding: 26px 28px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--blue);
+      border-radius: 16px;
+      color: var(--white);
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+    }
+    .numbers-row {
+      margin-top: 46px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .numbers-row .num-card {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px 22px;
+      backdrop-filter: blur(12px);
+    }
+    .numbers-row strong {
+      font-family: "Inter", sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      display: block;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .numbers-row span { font-size: 13px; color: var(--sub-2); font-weight: 600; }
+
+    /* ---------- problem beat ---------- */
+    .problem-beat { padding: 70px 0; }
+    .problem-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+    .problem-chips .chip {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 14px 24px;
       font-size: 14px;
       font-weight: 700;
+      color: #d7d7d7;
+      backdrop-filter: blur(10px);
     }
-    .message-grid,
-    .reality-grid {
+
+    /* ---------- AI Future ---------- */
+    .future-panels {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 56px;
-      align-items: center;
-    }
-    .photo-card {
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 14px;
-    }
-    .photo-card img {
-      height: 480px;
-      border-radius: 22px;
-    }
-    .quote-box {
-      margin-top: 28px;
-      padding: 28px;
-      background: var(--sky);
-      border-left: 5px solid var(--blue);
-      border-radius: 18px;
-      color: var(--navy);
-      font-weight: 800;
-    }
-    .problem-list {
-      display: grid;
+      gap: 22px;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 36px;
     }
-    .problem {
-      background: #fff;
+    .future-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 420px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 16px 40px rgba(15,23,42,.06);
-      font-weight: 700;
     }
-    .problem::before {
-      content: "!";
-      display: inline-flex;
+    .future-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      transition: transform 1.2s var(--ease), filter .6s ease;
+      filter: saturate(.85) brightness(.72);
+    }
+    .future-card:hover img { transform: scale(1.08); filter: saturate(1) brightness(.8); }
+    .future-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(5,5,5,.15) 20%, rgba(5,5,5,.92) 92%);
+      z-index: 1;
+    }
+    .future-card-body {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 2;
+      padding: 30px;
+    }
+    .future-card-num {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      color: #a9c0ff;
+      margin-bottom: 10px;
+    }
+    .future-card h3 { font-size: 24px; margin-bottom: 8px; }
+    .future-card p { font-size: 14px; color: #c3c3c3; }
+
+    /* ---------- transformation (before/after) ---------- */
+    .transform-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+    .transform-col {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-end;
+      border: 1px solid var(--line);
+    }
+    .transform-col img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .transform-col.before img { filter: grayscale(85%) brightness(.42) contrast(1.05); }
+    .transform-col.after img { filter: saturate(1.15) brightness(.62); }
+    .transform-col::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(5,5,5,.1), rgba(5,5,5,.94));
+      z-index: 1;
+    }
+    .transform-col.after::before {
+      background: linear-gradient(180deg, rgba(5,5,5,.05), rgba(5,5,5,.85));
+    }
+    .transform-body { position: relative; z-index: 2; padding: 40px; width: 100%; }
+    .transform-tag {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .24em;
+      margin-bottom: 18px;
+    }
+    .transform-col.before .transform-tag { color: #8b8b8b; }
+    .transform-col.after .transform-tag { color: #a9c0ff; }
+    .transform-words { display: flex; flex-direction: column; gap: 14px; }
+    .transform-words span {
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 800;
+      opacity: 0;
+      transform: translateX(-14px);
+    }
+    .transform-col.before .transform-words span { color: #7a7a7a; }
+    .transform-col.after .transform-words span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .transform-divider {
+      width: 100px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--sky);
-      color: var(--blue);
-      margin-right: 8px;
-      font-weight: 900;
-    }
-    .learn-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .learn-card,
-    .result-card,
-    .voice-card,
-    .price-card,
-    .faq-item {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 16px 40px rgba(15,23,42,.06);
-    }
-    .learn-card span {
-      font-size: 28px;
-    }
-    .learn-card h3 {
-      margin: 14px 0 8px;
-    }
-    .curriculum {
       position: relative;
     }
-    .steps {
-      display: grid;
-      gap: 18px;
-      max-width: 860px;
-      margin: 0 auto;
+    .transform-divider .line {
+      width: 1px;
+      height: 0%;
+      background: linear-gradient(180deg, transparent, var(--blue), var(--purple), transparent);
+      box-shadow: 0 0 30px rgba(124,58,237,.6);
     }
-    .step {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 22px;
-      align-items: center;
-      padding: 26px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+    .transform-divider .arrow {
+      position: absolute;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--grad-solid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 40px rgba(124,58,237,.55);
     }
-    .step-num {
-      color: var(--blue);
-      font-weight: 900;
-      letter-spacing: .12em;
+
+    /* ---------- roadmap timeline ---------- */
+    .roadmap-wrap { display: grid; grid-template-columns: 60px 1fr; gap: 0; max-width: 860px; margin: 0 auto; }
+    .roadmap-track { position: relative; }
+    .roadmap-track .track-bg {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: var(--line); transform: translateX(-50%);
     }
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .roadmap-track .track-fill {
+      position: absolute; left: 50%; top: 0; width: 2px; height: 0%;
+      background: linear-gradient(180deg, var(--blue), var(--purple));
+      transform: translateX(-50%);
+      box-shadow: 0 0 16px rgba(59,130,246,.6);
     }
-    .work-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(15,23,42,.06);
+    .roadmap-items { display: flex; flex-direction: column; gap: 90px; }
+    .roadmap-item { position: relative; padding: 4px 0; }
+    .roadmap-dot {
+      position: absolute;
+      left: -60px; top: 6px;
+      width: 60px; height: 60px;
+      transform: translateX(-50%);
+      margin-left: 30px;
     }
-    .work-card img {
-      height: 210px;
+    .roadmap-item { padding-left: 0; }
+    .roadmap-node {
+      position: absolute;
+      left: -30px; top: 0;
+      transform: translateX(-50%);
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid var(--line);
+      transition: .5s ease;
     }
-    .work-card div {
-      padding: 24px;
+    .roadmap-node.on {
+      background: var(--grad-solid);
+      border-color: transparent;
+      box-shadow: 0 0 24px rgba(124,58,237,.7);
     }
-    .voice-grid,
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .voice-tag {
-      display: inline-block;
-      color: var(--blue);
-      background: var(--sky);
-      padding: 6px 12px;
-      border-radius: 999px;
+    .roadmap-week {
+      font-family: "Inter", sans-serif;
       font-size: 13px;
       font-weight: 800;
-      margin-bottom: 14px;
+      letter-spacing: .18em;
+      color: #a9c0ff;
+      margin-bottom: 10px;
     }
+    .roadmap-item h3 { margin-bottom: 10px; }
+    .roadmap-item p { font-size: 15px; max-width: 520px; }
+
+    /* ---------- voice documentary ---------- */
+    .voice-doc-item {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 130px;
+    }
+    .voice-doc-item:last-child { margin-bottom: 0; }
+    .voice-doc-item.rev { grid-template-columns: 1.2fr .8fr; }
+    .voice-doc-item.rev .voice-photo { order: 2; }
+    .voice-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,.5);
+    }
+    .voice-photo img { height: 460px; filter: saturate(1.05); }
+    .voice-tag {
+      font-family: "Inter", sans-serif;
+      display: inline-block;
+      color: #a9c0ff;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.3);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      margin-bottom: 22px;
+    }
+    .voice-doc-item h3 { font-size: clamp(22px, 2.6vw, 32px); margin-bottom: 20px; line-height: 1.5; }
+    .voice-result {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 18px 26px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+    }
+    .voice-result strong {
+      font-family: "Inter", sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .voice-result span { font-size: 13px; color: var(--sub-2); font-weight: 700; }
+
+    /* ---------- works gallery ---------- */
+    .works-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .work-tile {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 320px;
+      border: 1px solid var(--line);
+    }
+    .work-tile img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      transition: transform 1s var(--ease);
+      filter: brightness(.8);
+    }
+    .work-tile:hover img { transform: scale(1.1); }
+    .work-tile::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.9));
+      z-index: 1;
+    }
+    .work-tile-body {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 22px;
+    }
+    .work-tag {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      color: #a9c0ff;
+      margin-bottom: 6px;
+    }
+    .work-tile h4 { font-size: 17px; }
+
+    /* ---------- comparison ---------- */
     .compare-table {
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: #fff;
-      box-shadow: var(--shadow);
+      background: var(--glass);
+      backdrop-filter: blur(12px);
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 22px;
-      border-bottom: 1px solid var(--line);
-      text-align: center;
-    }
-    th {
-      background: var(--navy);
-      color: #fff;
-    }
-    td:first-child {
-      text-align: left;
-      font-weight: 800;
-      color: var(--navy);
-    }
-    .good {
-      color: var(--blue);
-      font-weight: 900;
-    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 22px; border-bottom: 1px solid var(--line-soft); text-align: center; font-size: 14px; }
+    th { background: rgba(255,255,255,.03); font-family: "Inter", sans-serif; font-weight: 800; letter-spacing: .04em; color: var(--white); }
+    td:first-child { text-align: left; font-weight: 700; color: var(--white); }
+    tr:last-child td { border-bottom: none; }
+    .good { color: #7fd0ff; font-weight: 900; }
+
+    /* ---------- price ---------- */
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .price-card {
       text-align: center;
       position: relative;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 28px;
+      backdrop-filter: blur(12px);
     }
     .price-card.recommend {
-      border: 2px solid var(--blue);
-      transform: translateY(-10px);
+      border: 1px solid rgba(59,130,246,.5);
+      background: linear-gradient(180deg, rgba(59,130,246,.08), rgba(124,58,237,.05));
+      transform: translateY(-14px);
     }
     .ribbon {
-      position: absolute;
-      top: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--blue);
-      color: #fff;
-      padding: 6px 18px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
+      position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      background: var(--grad-solid); color: #fff;
+      padding: 6px 18px; border-radius: 999px; font-size: 12px; font-weight: 800;
     }
     .price {
-      font-size: 34px;
-      font-weight: 900;
-      color: var(--blue);
-      margin: 16px 0;
+      font-family: "Inter", sans-serif;
+      font-size: 32px; font-weight: 800; margin: 18px 0;
+      background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .faq-list {
-      max-width: 860px;
-      margin: 0 auto;
-      display: grid;
-      gap: 16px;
+
+    /* ---------- faq ---------- */
+    .faq-list { max-width: 860px; margin: 0 auto; display: grid; gap: 14px; }
+    .faq-item {
+      background: var(--glass); border: 1px solid var(--line); border-radius: 18px; padding: 26px 30px;
+      backdrop-filter: blur(10px);
     }
-    .faq-q {
-      font-weight: 900;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .cta {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(37,99,235,.2), transparent 26%),
-        var(--navy);
-      color: #fff;
+    .faq-q { font-weight: 800; color: var(--white); margin-bottom: 8px; }
+
+    /* ---------- final cta ---------- */
+    .final-cta {
       text-align: center;
+      padding: 180px 0;
+      position: relative;
+      overflow: hidden;
     }
-    .cta h2 {
-      color: #fff;
+    .final-cta-glow {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124,58,237,.22), transparent 70%);
     }
-    .cta p {
-      color: #cbd5e1;
-      margin: 20px 0 34px;
-    }
+    .final-cta h2 { margin-bottom: 24px; }
+    .final-cta p { max-width: 520px; margin: 0 auto 44px; font-size: 16px; }
+
     footer {
-      background: #020617;
-      color: #94a3b8;
+      border-top: 1px solid var(--line-soft);
+      padding: 40px 0;
       text-align: center;
-      padding: 34px 0;
       font-size: 13px;
+      color: var(--sub-2);
     }
     .fixed-cta {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 80;
-      background: var(--blue);
-      color: #fff;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 900;
-      box-shadow: 0 18px 40px rgba(37,99,235,.35);
+      position: fixed; right: 22px; bottom: 22px; z-index: 80;
+      background: var(--grad-solid); color: #fff;
+      padding: 15px 26px; border-radius: 999px; font-weight: 800; font-size: 14px;
+      box-shadow: 0 20px 45px rgba(59,130,246,.35);
     }
-    @media (max-width: 900px) {
-      .section {
-        padding: 84px 0;
-      }
-      .hero {
-        min-height: auto;
-        padding-top: 120px;
-      }
-      .hero-grid,
-      .message-grid,
-      .reality-grid,
-      .stats,
-      .problem-list,
-      .learn-grid,
-      .works-grid,
-      .voice-grid,
+
+    /* ============ Experience AI (kept, retheme'd to global vars) ============ */
+    .ai-exp { padding: 150px 0 160px; }
+    .ai-demo { position: relative; margin-top: 70px; }
+    .ai-demo:first-of-type { margin-top: 0; }
+    .ai-demo-head { max-width: 640px; margin: 0 auto 30px; text-align: center; }
+    .ai-demo-num {
+      display: inline-block; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 800;
+      letter-spacing: .2em; color: #a9c0ff;
+      border: 1px solid rgba(143,166,255,.35); border-radius: 999px; padding: 5px 14px; margin-bottom: 16px;
+    }
+    .ai-demo-head h3 { font-size: clamp(22px, 3vw, 30px); margin-bottom: 10px; }
+    .ai-demo-head p { color: #9aa3c0; font-size: 15px; }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 26px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+      max-width: 880px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .ai-run-btn {
+      display: block; margin: 22px auto 0;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
+      color: #cfe0ff; font-size: 13px; font-weight: 800; letter-spacing: .04em;
+      padding: 11px 22px; border-radius: 999px; cursor: pointer; transition: .25s ease;
+    }
+    .ai-run-btn:hover { border-color: #7fa9ff; color: #fff; box-shadow: 0 0 24px rgba(79,141,255,.35); }
+    .win-bar { display: flex; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .win-bar span:not(.tab) { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); flex-shrink: 0; }
+    .win-bar span:not(.tab):nth-child(1) { background: #ff6159; }
+    .win-bar span:not(.tab):nth-child(2) { background: #ffbd2e; }
+    .win-bar span:not(.tab):nth-child(3) { background: #28c93f; }
+    .chat-body { padding: 30px 30px 10px; min-height: 220px; }
+    .chat-msg { max-width: 82%; padding: 14px 18px; border-radius: 16px; font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .chat-msg.user { margin-left: auto; background: var(--grad-solid); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-msg.ai { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); color: #dfe6ff; border-bottom-left-radius: 4px; }
+    .caret { display: inline-block; width: 2px; height: 1em; background: #9ec1ff; margin-left: 2px; vertical-align: -2px; animation: caret-blink 1s step-end infinite; }
+    @keyframes caret-blink { 50% { opacity: 0; } }
+    .image-gen { padding: 26px 26px 10px; }
+    .prompt-bar { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 14px 18px; font-size: 14px; color: #dfe6ff; margin-bottom: 20px; }
+    .prompt-icon { color: #b48bff; }
+    .image-stage { position: relative; height: 380px; border-radius: 16px; overflow: hidden; background: #0b0f1c; }
+    .image-stage img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transform: scale(1.08); filter: blur(14px); transition: opacity 1.1s ease, transform 1.4s ease, filter 1.4s ease; }
+    .image-stage.done img { opacity: 1; transform: scale(1); filter: blur(0); }
+    .image-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #9ec1ff; font-size: 13px; font-weight: 700; letter-spacing: .08em; background: conic-gradient(from 0deg, rgba(79,141,255,.15), rgba(155,107,255,.25), rgba(79,141,255,.15)); transition: opacity .6s ease; }
+    .image-stage.done .image-loading { opacity: 0; pointer-events: none; }
+    .scan-line { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #9ec1ff, transparent); box-shadow: 0 0 20px 2px rgba(158,193,255,.7); animation: scan-move 1.8s linear infinite; }
+    @keyframes scan-move { 0% { top: 0%; } 100% { top: 100%; } }
+    .code-tabs { gap: 16px; padding: 14px 20px; }
+    .code-tabs .tab { font-size: 12px; font-family: "SFMono-Regular", Menlo, Consolas, monospace; color: #6c7794; padding: 4px 2px; border-bottom: 2px solid transparent; }
+    .code-tabs .tab.active { color: #dfe6ff; border-color: #7fa9ff; }
+    .code-body { padding: 22px 26px 26px; font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; line-height: 1.9; overflow-x: auto; min-height: 240px; }
+    .code-line { opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; white-space: pre; }
+    .code-line.show { opacity: 1; transform: translateY(0); }
+    .code-line .tag { color: #ff8fb1; }
+    .code-line .attr { color: #9ec1ff; }
+    .code-line .str { color: #a4e3a2; }
+    .code-line .prop { color: #b48bff; }
+    .code-line .cm { color: #5d6785; }
+    .video-editor { padding: 22px; }
+    .video-preview { position: relative; height: 280px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
+    .video-preview img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.75); }
+    .video-caption { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.14); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 8px; opacity: 0; transition: opacity .5s ease; }
+    .video-preview.cap-show .video-caption { opacity: 1; }
+    .timeline { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 16px 18px; position: relative; }
+    .track { display: grid; grid-template-columns: 74px 1fr; align-items: center; gap: 12px; height: 30px; }
+    .track + .track { margin-top: 10px; }
+    .track-label { font-size: 11px; color: #7d87a6; font-weight: 800; letter-spacing: .06em; }
+    .track > div:last-child { position: relative; height: 18px; background: rgba(255,255,255,.05); border-radius: 6px; overflow: hidden; }
+    .clip { position: absolute; inset: 2px; border-radius: 5px; background: var(--grad-solid); transform: scaleX(0); transform-origin: left; transition: transform 1.1s ease; }
+    .clip-group { position: absolute; inset: 2px; display: flex; gap: 4px; }
+    .clip-group i { flex: 1; background: rgba(255,255,255,.08); border-radius: 4px; transform: scaleY(0); transition: transform .4s ease, background .4s ease; }
+    .clip-group i.on { background: linear-gradient(180deg, #b48bff, #7fa9ff); transform: scaleY(1); }
+    .cut-marks { display: flex; align-items: center; }
+    .cut-marks i { position: absolute; top: 0; bottom: 0; width: 2px; background: #ff8fb1; opacity: 0; transition: opacity .3s ease; }
+    .cut-marks i.on { opacity: 1; }
+    .waveform { display: flex; align-items: center; gap: 2px; padding: 0 4px; height: 100%; }
+    .waveform i { flex: 1; align-self: stretch; height: 100%; background: #9ec1ff; opacity: .25; border-radius: 2px; transform: scaleY(.2); transition: transform .3s ease, opacity .3s ease; }
+    .waveform i.on { opacity: .9; transform: scaleY(1); }
+    .video-status { margin-top: 16px; text-align: center; font-size: 13px; font-weight: 700; color: #9ec1ff; letter-spacing: .04em; }
+    .video-status .status-done { display: none; color: #a4e3a2; }
+    .video-status.done .status-done { display: inline; }
+    .video-status.done .status-loading { display: none; }
+    .workflow-flow { display: flex; align-items: center; justify-content: center; padding: 60px 30px; gap: 0; }
+    .flow-node { display: flex; flex-direction: column; align-items: center; gap: 12px; color: #7d87a6; font-size: 13px; font-weight: 800; transition: color .4s ease; }
+    .flow-node .flow-icon { width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); font-size: 20px; color: #7d87a6; transition: .4s ease; }
+    .flow-node.on { color: #fff; }
+    .flow-node.on .flow-icon { background: var(--grad-solid); border-color: transparent; color: #fff; box-shadow: 0 0 30px rgba(124,124,255,.55); transform: scale(1.08); }
+    .flow-icon.think i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; display: inline-block; margin: 0 2px; opacity: .4; animation: think-dot 1.2s ease infinite; }
+    .flow-icon.think i:nth-child(2) { animation-delay: .15s; }
+    .flow-icon.think i:nth-child(3) { animation-delay: .3s; }
+    @keyframes think-dot { 0%, 100% { opacity: .25; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+    .flow-line { width: 64px; height: 1px; background: rgba(255,255,255,.12); position: relative; overflow: hidden; margin: 0 4px 30px; }
+    .flow-line::after { content: ""; position: absolute; inset: 0; background: var(--grad-solid); transform: scaleX(0); transform-origin: left; transition: transform .6s ease; }
+    .flow-line.on::after { transform: scaleX(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 980px) {
+      .section { padding: 100px 0; }
+      .story-grid, .story-grid.rev,
+      .future-panels,
+      .transform-grid,
+      .voice-doc-item, .voice-doc-item.rev,
+      .works-gallery-grid,
+      .numbers-row,
       .price-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
       }
-      .nav-links {
-        display: none;
-      }
-      .hero-card img,
-      .photo-card img {
-        height: 360px;
-      }
-      .stats {
-        margin-top: 0;
-      }
-      .step {
-        grid-template-columns: 1fr;
-      }
-      .price-card.recommend {
-        transform: none;
-      }
-      .btn {
-        width: 100%;
-      }
-      th, td {
-        padding: 16px 10px;
-        font-size: 13px;
-      }
-      .fixed-cta {
-        left: 16px;
-        right: 16px;
-        text-align: center;
-      }
+      .story-grid.rev .story-media,
+      .voice-doc-item.rev .voice-photo { order: 0; }
+      .story-media img, .voice-photo img { height: 320px; }
+      .future-card { height: 320px; }
+      .transform-grid { display: flex; flex-direction: column; gap: 24px; }
+      .transform-divider { display: none; }
+      .transform-col { min-height: 320px; }
+      .works-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .work-tile { height: 220px; }
+      .nav-links { display: none; }
+      .hero-stats { flex-wrap: wrap; border-radius: 22px; }
+      .hero-stats .stat { flex: 1 1 40%; border-right: none; border-bottom: 1px solid var(--line-soft); }
+      .roadmap-wrap { grid-template-columns: 34px 1fr; }
+      .roadmap-node { left: -17px; }
+      .track-bg, .track-fill { left: 17px; }
+      .price-card.recommend { transform: none; }
+      .btn { width: 100%; }
+      th, td { padding: 14px 8px; font-size: 12px; }
+      .fixed-cta { left: 16px; right: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
-<header>
+
+<div class="bg-fx">
+  <div class="grid-layer"></div>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+  <div class="noise-layer"></div>
+</div>
+
+<div class="page">
+
+<header id="siteHeader">
   <div class="nav">
     <a href="#" class="logo">AI MASTER<span>.</span></a>
     <nav class="nav-links">
-      <a href="#message">講師</a>
-      <a href="#curriculum">内容</a>
-      <a href="#price">料金</a>
-      <a href="#faq">FAQ</a>
+      <a href="#ai-future">Future</a>
+      <a href="#roadmap">Curriculum</a>
+      <a href="#voice">Voice</a>
+      <a href="#works">Works</a>
+      <a href="#price">Price</a>
     </nav>
-    <a href="#contact" class="btn btn-primary nav-cta">無料相談</a>
+    <a href="#contact" class="btn btn-primary nav-cta">未来を始める</a>
   </div>
 </header>
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="fade-up">
-      <div class="hero-copy">AI PRACTICAL SCHOOL</div>
-      <h1>AIは、<br>才能の差を埋める。</h1>
-      <p class="hero-text">
-        これからの時代に必要なのは、AIを知ることではなく、AIを使いこなすこと。
-        未経験から仕事・副業・事業に活かせる実践的なAI活用術を学べます。
-      </p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">無料個別相談を予約する</a>
-        <a href="#curriculum" class="btn btn-outline">カリキュラムを見る</a>
-      </div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker en">THE NEXT INTELLIGENCE</div>
+    <h1>
+      <span class="line"><span>学ぶ、その先へ。</span></span>
+      <span class="line"><span class="grad">AIと、生きる。</span></span>
+    </h1>
+    <p class="hero-sub">知識のためではなく、人生を変えるために。AI MASTERは、AIという才能を自分のものにする実践ブランドスクールです。</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">未来を始める</a>
+      <a href="#ai-exp" class="btn btn-outline">AIを体験する</a>
     </div>
-    <div class="hero-card fade-up">
-      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80" alt="AI講師">
+    <div class="hero-stats">
+      <div class="stat"><strong class="counter" data-to="1200" data-suffix="+">0</strong><span>卒業生</span></div>
+      <div class="stat"><strong class="counter" data-to="96" data-suffix="%">0</strong><span>満足度</span></div>
+      <div class="stat"><strong class="counter" data-to="80" data-suffix="社">0</strong><span>導入実績</span></div>
+      <div class="stat"><strong class="counter" data-to="5" data-suffix="年">0</strong><span>支援実績</span></div>
     </div>
   </div>
+  <div class="scroll-cue en"><span>SCROLL</span><div class="bar"></div></div>
 </section>
-<div class="container">
-  <div class="stats fade-up">
-    <div class="stat"><strong>1,200+</strong><span>累計受講者</span></div>
-    <div class="stat"><strong>96%</strong><span>受講満足度</span></div>
-    <div class="stat"><strong>80社</strong><span>企業支援実績</span></div>
-    <div class="stat"><strong>5年</strong><span>AI活用支援歴</span></div>
-  </div>
-</div>
-<section class="section" id="message">
-  <div class="container message-grid">
-    <div class="photo-card fade-up">
-      <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="講師メッセージ">
-    </div>
-    <div class="fade-up">
-      <div class="label">MESSAGE</div>
-      <h2>なぜ、<br>AIを教えているのか。</h2>
-      <p>
-        AIは一部の専門家だけのものではありません。
-        文章作成、企画、営業、資料作成、業務改善まで、正しく使えば誰でも仕事の質を上げられます。
-      </p>
-      <p>
-        ただし、独学では「何をどう使えばいいのか」で止まってしまう人が多い。
-        このスクールでは、AIを知識として学ぶのではなく、現場で使える形まで落とし込みます。
-      </p>
-      <div class="quote-box">
-        AIを使う人が、これからの仕事を前に進める。
+
+<!-- ===================== STORY CH.1 : MESSAGE ===================== -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-media reveal-scale">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="講師メッセージ">
+      </div>
+      <div class="story-copy reveal-mask">
+        <div>
+          <div class="label en">WHY</div>
+          <h2>なぜ、<br>AIを教えているのか。</h2>
+          <p>AIは一部の専門家だけのものではありません。文章作成、企画、営業、資料作成、業務改善まで、正しく使えば誰でも仕事の質を上げられます。</p>
+          <p>ただし独学では「何をどう使えばいいのか」で止まってしまう人が多い。このスクールでは、AIを知識として学ぶのではなく、現場で使える形まで落とし込みます。</p>
+          <div class="quote-box story-quote">AIを使う人が、これからの仕事を前に進める。</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<section class="section gray">
-  <div class="container reality-grid">
-    <div class="fade-up">
-      <div class="label">REALITY</div>
-      <h2>AIを知らないことより、<br>AIを使えないことがリスクになる。</h2>
-      <p>
-        生成AIはすでに、文章作成・資料作成・リサーチ・マーケティング・営業・制作現場に入り込んでいます。
-        これから求められるのは、AIを恐れることではなく、目的に合わせて使い分ける力です。
-      </p>
-    </div>
-    <div class="photo-card fade-up">
-      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="AI時代">
+
+<!-- ===================== STORY CH.2 : REALITY + NUMBERS ===================== -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid rev">
+      <div class="story-media reveal-scale">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="AI時代">
+      </div>
+      <div class="story-copy reveal-mask">
+        <div>
+          <div class="label en">REALITY</div>
+          <h2>AIを知らないことより、<br>AIを使えないことが、リスクになる。</h2>
+          <p>生成AIはすでに、文章作成・資料作成・リサーチ・マーケティング・営業・制作現場に入り込んでいます。これから求められるのは、AIを恐れることではなく、目的に合わせて使い分ける力です。</p>
+          <div class="numbers-row">
+            <div class="num-card reveal"><strong class="counter" data-to="340" data-suffix="%">0</strong><span>生成AI利用の伸び率</span></div>
+            <div class="num-card reveal"><strong class="counter" data-to="72" data-suffix="%">0</strong><span>業務でAI活用予定の企業</span></div>
+            <div class="num-card reveal"><strong class="counter" data-to="3" data-suffix="倍">0</strong><span>AI活用者の生産性差</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ===================== PROBLEM BEAT ===================== -->
+<section class="problem-beat">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label en">PROBLEM</div>
+      <h2>こんな迷いは、ありませんか。</h2>
+    </div>
+    <div class="problem-chips reveal">
+      <span class="chip">ChatGPTを触ったけど使いこなせない</span>
+      <span class="chip">何から学べばいいかわからない</span>
+      <span class="chip">仕事にどう活かすか分からない</span>
+      <span class="chip">副業に使えるイメージが湧かない</span>
+      <span class="chip">独学だと正解が分からない</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AI FUTURE ===================== -->
+<section class="section" id="ai-future">
+  <div class="container-lg">
+    <div class="section-head reveal">
+      <div class="label en">AI FUTURE</div>
+      <h2>学ぶ、その先。<br><span class="grad">AIで、何ができるようになるか。</span></h2>
+    </div>
+    <div class="future-panels">
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=80" alt="AI動画制作">
+        <div class="future-card-body">
+          <div class="future-card-num en">01 / VIDEO</div>
+          <h3>AI動画制作</h3>
+          <p>編集ソフトを開かなくても、映像が完成する。</p>
+        </div>
+      </div>
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="AI画像生成">
+        <div class="future-card-body">
+          <div class="future-card-num en">02 / IMAGE</div>
+          <h3>AI画像生成</h3>
+          <p>言葉が、そのままビジュアルになる。</p>
+        </div>
+      </div>
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=1000&q=80" alt="AIライティング">
+        <div class="future-card-body">
+          <div class="future-card-num en">03 / WRITING</div>
+          <h3>AIライティング</h3>
+          <p>コピーも記事も、AIが下書きする。</p>
+        </div>
+      </div>
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1541199249251-f713e6145474?auto=format&fit=crop&w=1000&q=80" alt="AI営業">
+        <div class="future-card-body">
+          <div class="future-card-num en">04 / SALES</div>
+          <h3>AI営業</h3>
+          <p>提案も商談準備も、AIが整える。</p>
+        </div>
+      </div>
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=1000&q=80" alt="AIシステム開発">
+        <div class="future-card-body">
+          <div class="future-card-num en">05 / DEV</div>
+          <h3>AIシステム開発</h3>
+          <p>アイデアが、動くプロダクトになる。</p>
+        </div>
+      </div>
+      <div class="future-card reveal-scale">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1000&q=80" alt="AIデザイン">
+        <div class="future-card-body">
+          <div class="future-card-num en">06 / DESIGN</div>
+          <h3>AIデザイン</h3>
+          <p>構成もUIも、AIと一緒に設計する。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE AI (interactive demos) ===================== -->
+<section class="ai-exp" id="ai-exp">
+  <div class="container">
+    <div class="section-head reveal-blur">
+      <div class="label en">EXPERIENCE AI</div>
+      <h2>Experience AI.<br><span class="grad">AIを、見るから体験するへ。</span></h2>
+    </div>
+
+    <div class="ai-demo" data-demo="chat">
+      <div class="ai-demo-head reveal-mask">
+        <div><span class="ai-demo-num en">LIVE DEMO 01</span>
+        <h3>AI Chat</h3>
+        <p>質問すれば、AIがリアルタイムで考え、答えていく。</p></div>
+      </div>
+      <div class="glass reveal-scale">
+        <div class="win-bar"><span></span><span></span><span></span></div>
+        <div class="chat-body">
+          <div class="chat-msg user">AIで資料作成の時間を半分にするには？</div>
+          <div class="chat-msg ai"><span class="chat-ai-text" data-text="まず目的を1行で定義し、AIに構成案を複数出させます。良い骨子を選び、本文生成→トーン調整→図解提案の順で仕上げれば、初稿までの時間は半分以下になります。"></span><span class="caret"></span></div>
+        </div>
+        <button class="ai-run-btn" data-demo-btn="chat">▶ もう一度生成する</button>
+      </div>
+    </div>
+
+    <div class="ai-demo" data-demo="image">
+      <div class="ai-demo-head reveal-mask">
+        <div><span class="ai-demo-num en">LIVE DEMO 02</span>
+        <h3>Image Generation</h3>
+        <p>言葉を、一枚のビジュアルへ。</p></div>
+      </div>
+      <div class="glass reveal-scale">
+        <div class="image-gen">
+          <div class="prompt-bar"><span class="prompt-icon">✦</span><span class="prompt-text" data-text="夕陽が差し込む、近未来のガラス張りオフィス"></span><span class="caret"></span></div>
+          <div class="image-stage" id="imageStage">
+            <div class="image-loading"><div class="scan-line"></div><span>GENERATING…</span></div>
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80" alt="AI生成イメージ">
+          </div>
+        </div>
+        <button class="ai-run-btn" data-demo-btn="image">▶ もう一度生成する</button>
+      </div>
+    </div>
+
+    <div class="ai-demo" data-demo="code">
+      <div class="ai-demo-head reveal-mask">
+        <div><span class="ai-demo-num en">LIVE DEMO 03</span>
+        <h3>Code Generation</h3>
+        <p>アイデアが、そのままコードになる。</p></div>
+      </div>
+      <div class="glass reveal-scale">
+        <div class="win-bar code-tabs"><span class="tab active">index.html</span><span class="tab">style.css</span><span class="tab">script.js</span></div>
+        <pre class="code-body" id="codeBody"><code
+><div class="code-line"><span class="tag">&lt;section</span> <span class="attr">class</span>=<span class="str">"hero"</span><span class="tag">&gt;</span></div><div class="code-line">  <span class="tag">&lt;h1&gt;</span>AIが、<span class="prop">未来</span>を書く。<span class="tag">&lt;/h1&gt;</span></div><div class="code-line">  <span class="cm">&lt;!-- generated by AI in 1.2s --&gt;</span></div><div class="code-line">  <span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"launch()"</span><span class="tag">&gt;</span></div><div class="code-line">    体験する <span class="tag">&lt;/button&gt;</span></div><div class="code-line"><span class="tag">&lt;/section&gt;</span></div></code></pre>
+        <button class="ai-run-btn" data-demo-btn="code">▶ もう一度生成する</button>
+      </div>
+    </div>
+
+    <div class="ai-demo" data-demo="video">
+      <div class="ai-demo-head reveal-mask">
+        <div><span class="ai-demo-num en">LIVE DEMO 04</span>
+        <h3>Video Creation</h3>
+        <p>編集も字幕もBGMも、AIが仕上げる。</p></div>
+      </div>
+      <div class="glass reveal-scale">
+        <div class="video-editor">
+          <div class="video-preview" id="videoPreview">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80" alt="動画プレビュー">
+            <div class="video-caption">今日から、AIが編集する。</div>
+          </div>
+          <div class="timeline">
+            <div class="track"><span class="track-label">VIDEO</span><div><div class="clip" id="clipVideo"></div></div></div>
+            <div class="track"><span class="track-label">CAPTION</span><div><div class="clip-group" id="clipCaption"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+            <div class="track"><span class="track-label">CUTS</span><div><div class="cut-marks" id="cutMarks"><i style="left:22%"></i><i style="left:48%"></i><i style="left:74%"></i></div></div></div>
+            <div class="track"><span class="track-label">BGM</span><div><div class="waveform" id="waveform"></div></div></div>
+          </div>
+          <div class="video-status" id="videoStatus"><span class="status-loading">字幕を生成中…</span><span class="status-done">✓ 完成</span></div>
+        </div>
+        <button class="ai-run-btn" data-demo-btn="video">▶ もう一度生成する</button>
+      </div>
+    </div>
+
+    <div class="ai-demo" data-demo="workflow">
+      <div class="ai-demo-head reveal-mask">
+        <div><span class="ai-demo-num en">LIVE DEMO 05</span>
+        <h3>Workflow</h3>
+        <p>質問し、考え、出力し、改善する。AIは止まらない。</p></div>
+      </div>
+      <div class="glass reveal-scale" style="max-width:960px;">
+        <div class="workflow-flow" id="workflowFlow">
+          <div class="flow-node" data-n="1"><span class="flow-icon">?</span><span>質問</span></div>
+          <div class="flow-line" data-l="1"></div>
+          <div class="flow-node" data-n="2"><span class="flow-icon think"><i></i><i></i><i></i></span><span>AIが考える</span></div>
+          <div class="flow-line" data-l="2"></div>
+          <div class="flow-node" data-n="3"><span class="flow-icon">✦</span><span>アウトプット</span></div>
+          <div class="flow-line" data-l="3"></div>
+          <div class="flow-node" data-n="4"><span class="flow-icon">↻</span><span>改善</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRANSFORMATION (Before/After) ===================== -->
 <section class="section">
-  <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">PROBLEM</div>
-      <h2>こんな不安はありませんか？</h2>
+  <div class="container-lg">
+    <div class="section-head reveal">
+      <div class="label en">TRANSFORMATION</div>
+      <h2>スキルではなく、<br>人生が変わる。</h2>
     </div>
-    <div class="problem-list">
-      <div class="problem fade-up">ChatGPTを触ったけど使いこなせない</div>
-      <div class="problem fade-up">何から学べばいいかわからない</div>
-      <div class="problem fade-up">仕事にどう活かすか分からない</div>
-      <div class="problem fade-up">副業に使えるイメージが湧かない</div>
-      <div class="problem fade-up">専門用語が多くて挫折しそう</div>
-      <div class="problem fade-up">独学だと正解が分からない</div>
-    </div>
-  </div>
-</section>
-<section class="section gray">
-  <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">WHAT YOU LEARN</div>
-      <h2>AIを使って、<br>仕事の質を上げる。</h2>
-    </div>
-    <div class="learn-grid">
-      <div class="learn-card fade-up"><span>✍️</span><h3>文章作成</h3><p>メール、営業文、記事、SNS投稿を効率化。</p></div>
-      <div class="learn-card fade-up"><span>💡</span><h3>企画作成</h3><p>アイデア出しから構成作成までAIで支援。</p></div>
-      <div class="learn-card fade-up"><span>📊</span><h3>資料作成</h3><p>提案書やプレゼン資料の質と速度を高める。</p></div>
-      <div class="learn-card fade-up"><span>⚙️</span><h3>業務効率化</h3><p>日々の作業をAIで仕組み化する。</p></div>
-    </div>
-  </div>
-</section>
-<section class="section curriculum" id="curriculum">
-  <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">CURRICULUM</div>
-      <h2>実践ベースで学ぶ<br>5STEPカリキュラム</h2>
-    </div>
-    <div class="steps">
-      <div class="step fade-up"><div class="step-num">STEP 01</div><div><h3>AI・ChatGPTの基本</h3><p>AIの仕組みと基本操作を、初心者にも分かる言葉で学習。</p></div></div>
-      <div class="step fade-up"><div class="step-num">STEP 02</div><div><h3>プロンプト設計</h3><p>欲しい答えを引き出す指示文の作り方を習得。</p></div></div>
-      <div class="step fade-up"><div class="step-num">STEP 03</div><div><h3>仕事への活用</h3><p>文章・企画・資料・リサーチなど実務課題で実践。</p></div></div>
-      <div class="step fade-up"><div class="step-num">STEP 04</div><div><h3>副業・案件活用</h3><p>提案文、LP構成、SNS運用、制作補助に応用。</p></div></div>
-      <div class="step fade-up"><div class="step-num">STEP 05</div><div><h3>自分専用ワークフロー構築</h3><p>自分の仕事に合わせたAI活用の型を作成。</p></div></div>
+    <div class="transform-grid">
+      <div class="transform-col before reveal">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Before">
+        <div class="transform-body">
+          <div class="transform-tag en">BEFORE</div>
+          <div class="transform-words">
+            <span>終わらない残業</span>
+            <span>将来への、漠然とした不安</span>
+            <span>変わらない収入</span>
+          </div>
+        </div>
+      </div>
+      <div class="transform-divider">
+        <div class="line" id="transformLine"></div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="transform-col after reveal">
+        <img src="https://images.unsplash.com/photo-1499591934245-40b55745b905?auto=format&fit=crop&w=900&q=80" alt="After">
+        <div class="transform-body">
+          <div class="transform-tag en">AFTER</div>
+          <div class="transform-words">
+            <span>自由な働き方</span>
+            <span>副業という、新しい収入源</span>
+            <span>独立という、選択肢</span>
+            <span>増えていく、自分の時間</span>
+            <span>次に挑戦する理由</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<section class="section gray">
+
+<!-- ===================== ROADMAP (curriculum timeline) ===================== -->
+<section class="section" id="roadmap">
   <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">OUTPUT</div>
-      <h2>学んで終わりではなく、<br>成果物まで作る。</h2>
+    <div class="section-head reveal">
+      <div class="label en">ROADMAP</div>
+      <h2>12週間で、<br>未来への地図を描く。</h2>
     </div>
-    <div class="works-grid">
-      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"><div><h3>提案書</h3><p>AIを使った営業資料・企画資料を作成。</p></div></div>
-      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"><div><h3>LP構成</h3><p>構成案、コピー、訴求設計をAIで制作。</p></div></div>
-      <div class="work-card fade-up"><img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=900&q=80"><div><h3>SNS投稿</h3><p>投稿企画、本文、ハッシュタグまで一気通貫。</p></div></div>
+    <div class="roadmap-wrap">
+      <div class="roadmap-track">
+        <div class="track-bg"></div>
+        <div class="track-fill" id="trackFill"></div>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item reveal">
+          <div class="roadmap-node" data-node="1"></div>
+          <div class="roadmap-week en">WEEK 01</div>
+          <h3>AI・ChatGPTの基礎を、体に入れる。</h3>
+          <p>AIの仕組みと基本操作を、初心者にも分かる言葉で学習。迷いなく触れる状態をつくります。</p>
+        </div>
+        <div class="roadmap-item reveal">
+          <div class="roadmap-node" data-node="2"></div>
+          <div class="roadmap-week en">WEEK 04</div>
+          <h3>プロンプト設計で、思い通りの答えを引き出す。</h3>
+          <p>欲しいアウトプットを引き出す指示文の設計を習得。ここから、AIが「使える道具」に変わります。</p>
+        </div>
+        <div class="roadmap-item reveal">
+          <div class="roadmap-node" data-node="3"></div>
+          <div class="roadmap-week en">WEEK 08</div>
+          <h3>仕事の実務課題を、AIで解決する。</h3>
+          <p>文章・企画・資料・リサーチなど、実際の仕事の課題を題材に実践。副業案件にも応用します。</p>
+        </div>
+        <div class="roadmap-item reveal">
+          <div class="roadmap-node" data-node="4"></div>
+          <div class="roadmap-week en">WEEK 12</div>
+          <h3>自分だけのAIワークフローを、完成させる。</h3>
+          <p>自分の仕事に合わせたAI活用の型を構築。ここから先は、あなた自身のペースで未来へ進めます。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<section class="section">
+
+<!-- ===================== VOICE (documentary) ===================== -->
+<section class="section" id="voice">
   <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">VOICE</div>
-      <h2>受講生の変化</h2>
+    <div class="section-head reveal">
+      <div class="label en">VOICE</div>
+      <h2>受講生の、その後。</h2>
     </div>
-    <div class="voice-grid">
-      <div class="voice-card fade-up"><span class="voice-tag">会社員 / 30代</span><h3>資料作成が半分の時間に</h3><p>AIの使い方が具体的に分かり、仕事で毎日使えるようになりました。</p></div>
-      <div class="voice-card fade-up"><span class="voice-tag">副業希望 / 20代</span><h3>提案文が作れるように</h3><p>副業案件への応募文や構成案をAIで作れるようになりました。</p></div>
-      <div class="voice-card fade-up"><span class="voice-tag">経営者 / 40代</span><h3>業務改善のヒントが増えた</h3><p>社内の文章作成やマニュアル作成にAIを活用できています。</p></div>
+
+    <div class="voice-doc-item">
+      <div class="voice-photo reveal-scale">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80" alt="受講生の声1">
+      </div>
+      <div class="reveal-mask">
+        <div>
+          <span class="voice-tag en">経営者 / 40代</span>
+          <h3>「社内の文章作成やマニュアル作成に、AIを当たり前に使うようになった。」</h3>
+          <p>感覚で判断していた業務改善に、AIという再現性のある武器が加わりました。</p>
+          <div class="voice-result"><strong>+40%</strong><span>社内業務のスピード</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="voice-doc-item rev">
+      <div class="voice-photo reveal-scale">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80" alt="受講生の声2">
+      </div>
+      <div class="reveal-mask">
+        <div>
+          <span class="voice-tag en">副業希望 / 20代</span>
+          <h3>「提案文も構成案も自分で作れるようになって、初めての案件が獲れた。」</h3>
+          <p>独学で止まっていた「使えるところまで」を、実務課題を通して越えられました。</p>
+          <div class="voice-result"><strong>3件</strong><span>初月の受注実績</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="voice-doc-item">
+      <div class="voice-photo reveal-scale">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="受講生の声3">
+      </div>
+      <div class="reveal-mask">
+        <div>
+          <span class="voice-tag en">会社員 / 30代</span>
+          <h3>「資料作成に追われていた夜が、自分のための時間に変わった。」</h3>
+          <p>AIの使い方が具体的に分かり、毎日の業務で当たり前に使えるようになりました。</p>
+          <div class="voice-result"><strong>-50%</strong><span>資料作成にかかる時間</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<section class="section gray">
+
+<!-- ===================== WORKS (graduate gallery) ===================== -->
+<section class="section" id="works">
+  <div class="container-lg">
+    <div class="section-head reveal">
+      <div class="label en">GRADUATE WORKS</div>
+      <h2>卒業生が、実際に作ったもの。</h2>
+    </div>
+    <div class="works-gallery-grid">
+      <div class="work-tile reveal">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=700&q=80" alt="AI動画">
+        <div class="work-tile-body"><div class="work-tag en">AI VIDEO</div><h4>企業紹介AI動画</h4></div>
+      </div>
+      <div class="work-tile reveal">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=80" alt="AI画像">
+        <div class="work-tile-body"><div class="work-tag en">AI IMAGE</div><h4>ブランドビジュアル</h4></div>
+      </div>
+      <div class="work-tile reveal">
+        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=700&q=80" alt="LP制作">
+        <div class="work-tile-body"><div class="work-tag en">LP</div><h4>採用LP構成・制作</h4></div>
+      </div>
+      <div class="work-tile reveal">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Web制作">
+        <div class="work-tile-body"><div class="work-tag en">WEB</div><h4>コーポレートサイト</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPARISON ===================== -->
+<section class="section-tight">
   <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">COMPARISON</div>
+    <div class="section-head reveal">
+      <div class="label en">COMPARISON</div>
       <h2>他スクールとの違い</h2>
     </div>
-    <div class="compare-table fade-up">
+    <div class="compare-table reveal">
       <table>
         <tr><th>項目</th><th>AI MASTER</th><th>一般的な講座</th></tr>
         <tr><td>実践課題</td><td class="good">◎</td><td>△</td></tr>
@@ -687,60 +1333,393 @@
     </div>
   </div>
 </section>
+
+<!-- ===================== PRICE ===================== -->
 <section class="section" id="price">
   <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">PRICE</div>
+    <div class="section-head reveal">
+      <div class="label en">PRICE</div>
       <h2>目的に合わせて選べるプラン</h2>
     </div>
     <div class="price-grid">
-      <div class="price-card fade-up"><h3>入門プラン</h3><div class="price">49,800円</div><p>AIの基本を学びたい方向け</p></div>
-      <div class="price-card recommend fade-up"><div class="ribbon">おすすめ</div><h3>実践プラン</h3><div class="price">98,000円</div><p>仕事や副業で使いたい方向け</p></div>
-      <div class="price-card fade-up"><h3>個別サポートプラン</h3><div class="price">198,000円</div><p>伴走支援で成果物まで作りたい方向け</p></div>
+      <div class="price-card reveal"><h3>入門プラン</h3><div class="price">¥49,800</div><p>AIの基本を学びたい方向け</p></div>
+      <div class="price-card recommend reveal"><div class="ribbon">おすすめ</div><h3>実践プラン</h3><div class="price">¥98,000</div><p>仕事や副業で使いたい方向け</p></div>
+      <div class="price-card reveal"><h3>個別サポートプラン</h3><div class="price">¥198,000</div><p>伴走支援で成果物まで作りたい方向け</p></div>
     </div>
   </div>
 </section>
-<section class="section faq gray" id="faq">
+
+<!-- ===================== FAQ ===================== -->
+<section class="section-tight">
   <div class="container">
-    <div class="section-head fade-up">
-      <div class="label">FAQ</div>
+    <div class="section-head reveal">
+      <div class="label en">FAQ</div>
       <h2>よくある質問</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item fade-up"><div class="faq-q">Q. 未経験でも大丈夫ですか？</div><p>A. はい。基本操作から丁寧に学べます。</p></div>
-      <div class="faq-item fade-up"><div class="faq-q">Q. パソコンが苦手でも大丈夫ですか？</div><p>A. 操作画面を見ながら進めるため安心です。</p></div>
-      <div class="faq-item fade-up"><div class="faq-q">Q. 仕事や副業に使えますか？</div><p>A. 実務課題を通して、仕事に活かせる形で学べます。</p></div>
-      <div class="faq-item fade-up"><div class="faq-q">Q. どのAIツールを学べますか？</div><p>A. ChatGPTを中心に、画像生成AIや資料作成ツールも扱います。</p></div>
+      <div class="faq-item reveal"><div class="faq-q">Q. 未経験でも大丈夫ですか？</div><p>A. はい。基本操作から丁寧に学べます。</p></div>
+      <div class="faq-item reveal"><div class="faq-q">Q. パソコンが苦手でも大丈夫ですか？</div><p>A. 操作画面を見ながら進めるため安心です。</p></div>
+      <div class="faq-item reveal"><div class="faq-q">Q. 仕事や副業に使えますか？</div><p>A. 実務課題を通して、仕事に活かせる形で学べます。</p></div>
+      <div class="faq-item reveal"><div class="faq-q">Q. どのAIツールを学べますか？</div><p>A. ChatGPTを中心に、画像生成AIや資料作成ツールも扱います。</p></div>
     </div>
   </div>
 </section>
-<section class="section cta" id="contact">
-  <div class="container fade-up">
-    <div class="label">FREE CONSULTATION</div>
-    <h2>AI時代を生き抜く力は、<br>今からでも身につく。</h2>
-    <p>
-      まずは無料相談で、あなたに合ったAI活用の始め方を見つけましょう。
-    </p>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final-cta" id="contact">
+  <div class="final-cta-glow"></div>
+  <div class="container reveal">
+    <div class="label en">START NOW</div>
+    <h2>この先の未来を、<br><span class="grad">逃さない。</span></h2>
+    <p>迷っている今も、時間は進んでいる。無料相談で、あなたに合ったAIとの生き方を見つけてください。</p>
     <div class="hero-buttons" style="justify-content:center;">
-      <a href="#" class="btn btn-primary">無料個別相談を予約する</a>
-      <a href="#curriculum" class="btn btn-outline">カリキュラムを見る</a>
+      <a href="#" class="btn btn-primary">未来を変える</a>
+      <a href="#roadmap" class="btn btn-outline">カリキュラムを見る</a>
     </div>
   </div>
 </section>
+
 <footer>
   © 2026 AI MASTER SCHOOL. All Rights Reserved.
 </footer>
-<a href="#contact" class="fixed-cta">無料相談する</a>
+<a href="#contact" class="fixed-cta">未来を始める</a>
+
+</div><!-- /.page -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-  const targets = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- Lenis smooth scroll + GSAP ScrollTrigger bridge ---------------- */
+  var lenis = null;
+  if (window.Lenis && !reduceMotion) {
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      if (lenis) { lenis.scrollTo(target, { offset: -70 }); }
+      else { target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  /* ---------------- header scroll state ---------------- */
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ---------------- generic reveals via GSAP ScrollTrigger ---------------- */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.reveal').forEach(function (el) {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+    gsap.utils.toArray('.reveal-scale').forEach(function (el) {
+      gsap.to(el, {
+        opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+    gsap.utils.toArray('.reveal-blur').forEach(function (el) {
+      gsap.to(el, {
+        opacity: 1, filter: 'blur(0px)', scale: 1, duration: 1.2, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+    gsap.utils.toArray('.reveal-mask').forEach(function (el) {
+      var inner = el.children[0];
+      if (!inner) return;
+      gsap.to(inner, {
+        y: 0, opacity: 1, duration: 1, ease: 'power4.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    /* hero headline line reveal */
+    gsap.utils.toArray('.hero h1 .line span').forEach(function (span, i) {
+      gsap.fromTo(span, { y: '110%', opacity: 0 }, {
+        y: '0%', opacity: 1, duration: 1.1, delay: .3 + i * .15, ease: 'power4.out'
+      });
+    });
+    gsap.fromTo('.hero-kicker', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8, delay: .1 });
+    gsap.fromTo('.hero-sub', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8, delay: .7 });
+    gsap.fromTo('.hero-buttons', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8, delay: .85 });
+    gsap.fromTo('.hero-stats', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .8, delay: 1 });
+
+    /* transform words stagger */
+    gsap.utils.toArray('.transform-col').forEach(function (col) {
+      var words = col.querySelectorAll('.transform-words span');
+      gsap.to(words, {
+        opacity: 1, x: 0, duration: .7, stagger: .12, ease: 'power3.out',
+        scrollTrigger: { trigger: col, start: 'top 75%' }
+      });
+    });
+    gsap.to('#transformLine', {
+      height: '100%', duration: 1,
+      scrollTrigger: { trigger: '.transform-grid', start: 'top 70%' }
+    });
+
+    /* roadmap: draw the track line + light nodes as it scrolls (scrubbed) */
+    gsap.to('#trackFill', {
+      height: '100%', ease: 'none',
+      scrollTrigger: {
+        trigger: '.roadmap-wrap',
+        start: 'top 60%',
+        end: 'bottom 60%',
+        scrub: .6
       }
     });
-  }, { threshold: 0.15 });
-  targets.forEach(target => observer.observe(target));
+    gsap.utils.toArray('.roadmap-node').forEach(function (node) {
+      ScrollTrigger.create({
+        trigger: node,
+        start: 'top 65%',
+        onEnter: function () { node.classList.add('on'); },
+      });
+    });
+
+    /* number counters */
+    gsap.utils.toArray('.counter').forEach(function (el) {
+      var to = parseFloat(el.getAttribute('data-to'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var obj = { val: 0 };
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 92%',
+        once: true,
+        onEnter: function () {
+          gsap.to(obj, {
+            val: to, duration: 1.6, ease: 'power2.out',
+            onUpdate: function () { el.textContent = Math.round(obj.val) + suffix; }
+          });
+        }
+      });
+    });
+  }
+
+  /* ---------------- Hero neural network canvas ---------------- */
+  var heroCanvas = document.getElementById('heroCanvas');
+  if (heroCanvas) {
+    var hctx = heroCanvas.getContext('2d');
+    var hero = document.getElementById('hero');
+    var hParticles = [];
+    var hRunning = false, hRaf;
+
+    function hResize() {
+      heroCanvas.width = hero.offsetWidth;
+      heroCanvas.height = hero.offsetHeight;
+    }
+    function hMake() {
+      var count = reduceMotion ? 0 : Math.min(90, Math.floor((heroCanvas.width * heroCanvas.height) / 18000));
+      hParticles = [];
+      for (var i = 0; i < count; i++) {
+        hParticles.push({
+          x: Math.random() * heroCanvas.width,
+          y: Math.random() * heroCanvas.height,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          r: Math.random() * 1.8 + 0.6
+        });
+      }
+    }
+    function hTick() {
+      if (!hRunning) return;
+      hctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+      var maxDist = 150;
+      for (var i = 0; i < hParticles.length; i++) {
+        var p = hParticles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = heroCanvas.width; if (p.x > heroCanvas.width) p.x = 0;
+        if (p.y < 0) p.y = heroCanvas.height; if (p.y > heroCanvas.height) p.y = 0;
+        for (var j = i + 1; j < hParticles.length; j++) {
+          var q = hParticles[j];
+          var dx = p.x - q.x, dy = p.y - q.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < maxDist) {
+            hctx.strokeStyle = 'rgba(120,150,255,' + ((1 - dist / maxDist) * 0.16) + ')';
+            hctx.lineWidth = 1;
+            hctx.beginPath();
+            hctx.moveTo(p.x, p.y);
+            hctx.lineTo(q.x, q.y);
+            hctx.stroke();
+          }
+        }
+      }
+      for (var k = 0; k < hParticles.length; k++) {
+        var pt = hParticles[k];
+        hctx.beginPath();
+        hctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        hctx.fillStyle = 'rgba(160,180,255,.55)';
+        hctx.fill();
+      }
+      hRaf = requestAnimationFrame(hTick);
+    }
+    hResize(); hMake();
+    window.addEventListener('resize', function () { hResize(); hMake(); });
+    if (!reduceMotion) {
+      hRunning = true;
+      hTick();
+    }
+  }
+
+  /* ---------------- Experience AI: typewriter + demo sequences (unchanged logic) ---------------- */
+  function typeInto(el, speed, onDone) {
+    if (!el) { if (onDone) onDone(); return; }
+    var text = el.getAttribute('data-text') || '';
+    el.textContent = '';
+    var i = 0;
+    var timer = setInterval(function () {
+      i++;
+      el.textContent = text.slice(0, i);
+      if (i >= text.length) {
+        clearInterval(timer);
+        if (onDone) onDone();
+      }
+    }, speed);
+    return timer;
+  }
+
+  function runChat(demo) {
+    var textEl = demo.querySelector('.chat-ai-text');
+    var caret = demo.querySelector('.caret');
+    if (caret) caret.style.opacity = '1';
+    typeInto(textEl, 22);
+  }
+
+  function runImage(demo) {
+    var stage = demo.querySelector('.image-stage');
+    var promptEl = demo.querySelector('.prompt-text');
+    stage.classList.remove('done');
+    typeInto(promptEl, 45, function () {
+      setTimeout(function () { stage.classList.add('done'); }, 1500);
+    });
+  }
+
+  function runCode(demo) {
+    var lines = demo.querySelectorAll('.code-line');
+    lines.forEach(function (l) { l.classList.remove('show'); });
+    var caretEl = demo.querySelector('.code-caret-el');
+    if (caretEl) caretEl.remove();
+    lines.forEach(function (line, idx) {
+      setTimeout(function () {
+        line.classList.add('show');
+        if (idx === lines.length - 1) {
+          var caret = document.createElement('span');
+          caret.className = 'caret code-caret-el';
+          line.appendChild(caret);
+        }
+      }, idx * 380);
+    });
+  }
+
+  function runVideo(demo) {
+    var clip = demo.querySelector('#clipVideo') || demo.querySelector('.clip');
+    var capItems = demo.querySelectorAll('.clip-group i');
+    var cutItems = demo.querySelectorAll('.cut-marks i');
+    var wave = demo.querySelector('.waveform');
+    var preview = demo.querySelector('.video-preview');
+    var status = demo.querySelector('.video-status');
+    var statusText = status.querySelector('.status-loading');
+
+    if (wave && !wave.children.length) {
+      for (var i = 0; i < 24; i++) { wave.appendChild(document.createElement('i')); }
+    }
+    var waveBars = demo.querySelectorAll('.waveform i');
+
+    status.classList.remove('done');
+    capItems.forEach(function (c) { c.classList.remove('on'); });
+    cutItems.forEach(function (c) { c.classList.remove('on'); });
+    waveBars.forEach(function (w) { w.classList.remove('on'); });
+    if (preview) preview.classList.remove('cap-show');
+
+    if (clip) { clip.style.transform = 'scaleX(0)'; requestAnimationFrame(function () { clip.style.transform = 'scaleX(1)'; }); }
+
+    statusText.textContent = '字幕を生成中…';
+    capItems.forEach(function (c, idx) {
+      setTimeout(function () {
+        c.classList.add('on');
+        if (idx === 1 && preview) preview.classList.add('cap-show');
+      }, 500 + idx * 220);
+    });
+
+    setTimeout(function () { statusText.textContent = 'カット編集中…'; }, 2100);
+    cutItems.forEach(function (c, idx) {
+      setTimeout(function () { c.classList.add('on'); }, 2200 + idx * 260);
+    });
+
+    setTimeout(function () { statusText.textContent = 'BGMを追加中…'; }, 3100);
+    waveBars.forEach(function (w, idx) {
+      setTimeout(function () {
+        w.style.transform = 'scaleY(' + (0.25 + Math.random() * 0.75).toFixed(2) + ')';
+        w.classList.add('on');
+      }, 3150 + idx * 35);
+    });
+
+    setTimeout(function () { status.classList.add('done'); }, 4300);
+  }
+
+  function startWorkflow(demo) {
+    var nodes = demo.querySelectorAll('.flow-node');
+    var lines = demo.querySelectorAll('.flow-line');
+    var step = 0;
+    function clear() {
+      nodes.forEach(function (n) { n.classList.remove('on'); });
+      lines.forEach(function (l) { l.classList.remove('on'); });
+    }
+    function advance() {
+      clear();
+      for (var i = 0; i <= step; i++) { if (nodes[i]) nodes[i].classList.add('on'); }
+      for (var j = 0; j < step; j++) { if (lines[j]) lines[j].classList.add('on'); }
+      step++;
+      if (step > nodes.length) step = 0;
+    }
+    advance();
+    return setInterval(advance, 950);
+  }
+
+  var demoRunners = { chat: runChat, image: runImage, code: runCode, video: runVideo };
+  var demos = document.querySelectorAll('.ai-demo[data-demo]');
+  var workflowInterval = null;
+
+  var demoObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var demo = entry.target;
+      var type = demo.getAttribute('data-demo');
+      if (entry.isIntersecting && !demo.dataset.triggered) {
+        demo.dataset.triggered = '1';
+        if (type === 'workflow') {
+          if (!workflowInterval) workflowInterval = startWorkflow(demo);
+        } else if (demoRunners[type]) {
+          demoRunners[type](demo);
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+  demos.forEach(function (d) { demoObserver.observe(d); });
+
+  document.querySelectorAll('[data-demo-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var type = btn.getAttribute('data-demo-btn');
+      var demo = btn.closest('.ai-demo');
+      if (demoRunners[type]) demoRunners[type](demo);
+    });
+  });
+})();
 </script>
 </body>
 </html>
