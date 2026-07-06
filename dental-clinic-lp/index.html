@@ -14,12 +14,12 @@
 <meta property="og:description" content="お子さまからご年配の方まで、家族みんなが安心して通える町の歯科医院。丁寧なカウンセリングと痛みに配慮した治療で、通いたくなる歯医者を目指しています。" />
 <meta property="og:url" content="https://take-design-portfolio.vercel.app/dental-clinic-lp/" />
 <meta property="og:site_name" content="ソラ歯科クリニック" />
-<meta property="og:image" content="https://images.unsplash.com/photo-1632054229377-c5c47de2af5e?auto=format&fit=crop&w=1200&h=630&q=80" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?auto=format&fit=crop&w=1200&h=630&q=80" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="ソラ歯科クリニック｜家族みんなが安心して通える歯医者" />
 <meta name="twitter:description" content="お子さまからご年配の方まで、家族みんなが安心して通える町の歯科医院。" />
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1632054229377-c5c47de2af5e?auto=format&fit=crop&w=1200&h=630&q=80" />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?auto=format&fit=crop&w=1200&h=630&q=80" />
 
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,15 +79,17 @@
   --bg:#ffffff;
   --surface:#f5f7fa;
   --surface-blue:#eff6ff;
+  --surface-blue-2:#e0ecff;
   --primary:#2563eb;
   --primary-dark:#1e40af;
   --text:#1e293b;
   --text-sub:#64748b;
-  --border:#e2e8f0;
+  --border:#e6ebf1;
   --success:#10b981;
-  --radius:16px;
+  --radius:18px;
+  --radius-lg:22px;
   --shadow-soft:0 4px 24px rgba(30,64,175,0.08);
-  --shadow-hover:0 12px 32px rgba(30,64,175,0.14);
+  --shadow-hover:0 16px 40px rgba(30,64,175,0.16);
   --font-b:'Noto Sans JP',sans-serif;
   --font-h:'Zen Maru Gothic','Noto Sans JP',sans-serif;
 }
@@ -106,10 +108,10 @@ a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.section{padding:96px 0;}
+.section{padding:104px 0;}
 .section--tight{padding:72px 0;}
 @media (max-width:768px){
-  .section{padding:64px 0;}
+  .section{padding:68px 0;}
   .section--tight{padding:48px 0;}
 }
 .eyebrow{
@@ -121,18 +123,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   background:var(--surface-blue);
   padding:6px 16px;
   border-radius:999px;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
-.section-header{text-align:center;max-width:640px;margin:0 auto 56px;}
+.section-header{text-align:center;max-width:660px;margin:0 auto 60px;}
 .section-title{
   font-family:var(--font-h);
-  font-size:clamp(24px,4vw,34px);
+  font-size:clamp(28px,4.6vw,40px);
   font-weight:700;
-  line-height:1.5;
-  margin-bottom:16px;
+  line-height:1.45;
+  letter-spacing:-.01em;
+  margin-bottom:18px;
   color:var(--text);
 }
-.section-desc{color:var(--text-sub);font-size:15px;line-height:1.9;}
+.section-desc{color:var(--text-sub);font-size:16px;line-height:1.9;}
+.stat-num{color:var(--primary);font-weight:800;letter-spacing:-.01em;}
 
 /* Buttons */
 .btn{
@@ -140,25 +144,25 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   align-items:center;
   justify-content:center;
   gap:8px;
-  padding:18px 36px;
+  padding:19px 38px;
   border-radius:999px;
   font-weight:700;
   font-size:16px;
-  transition:.25s;
+  transition:.3s cubic-bezier(.16,.84,.44,1);
   white-space:nowrap;
 }
 .btn-primary{
   background:var(--primary);
   color:#fff;
-  box-shadow:0 8px 24px rgba(37,99,235,.28);
+  box-shadow:0 10px 28px rgba(37,99,235,.32);
 }
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,99,235,.36);}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-3px) scale(1.01);box-shadow:0 16px 34px rgba(37,99,235,.4);}
 .btn-outline{
   background:#fff;
   color:var(--primary);
   border:2px solid var(--primary);
 }
-.btn-outline:hover{background:var(--surface-blue);}
+.btn-outline:hover{background:var(--surface-blue);transform:translateY(-3px);}
 .btn-sm{padding:12px 22px;font-size:14px;}
 
 /* Header */
@@ -185,156 +189,252 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 }
 @media (min-width:769px){.nav-tel{display:block;}}
 
+/* Keyframes */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes floatBlob{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(16px,-20px) scale(1.06);}}
+@keyframes floatParticle{0%,100%{transform:translateY(0) translateX(0);opacity:.35;}50%{transform:translateY(-18px) translateX(10px);opacity:1;}}
+@keyframes gradientShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+
 /* Hero */
 .hero{
-  padding:132px 0 72px;
-  background:linear-gradient(180deg,var(--surface-blue) 0%, #fff 100%);
+  position:relative;
+  padding:152px 0 96px;
   overflow:hidden;
+  background:linear-gradient(150deg,#e7f0ff 0%,#f6faff 42%,#ffffff 78%);
+  background-size:220% 220%;
+  animation:gradientShift 18s ease-in-out infinite;
 }
+.hero-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(46px);animation:floatBlob 10s ease-in-out infinite;}
+.hero-blob--1{width:360px;height:360px;background:radial-gradient(circle,#bfdcff 0%,transparent 72%);top:-110px;left:-90px;}
+.hero-blob--2{width:300px;height:300px;background:radial-gradient(circle,#d6e7ff 0%,transparent 72%);bottom:-90px;right:6%;animation-delay:2.2s;}
+.hero-blob--3{width:200px;height:200px;background:radial-gradient(circle,#cfe3ff 0%,transparent 72%);top:38%;right:32%;animation-delay:4.4s;}
+.hero-particle{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 14px 3px rgba(147,197,253,.85);animation:floatParticle 7s ease-in-out infinite;}
+
 .hero-grid{
-  display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:0.82fr 1.18fr;gap:60px;align-items:center;
 }
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:36px;}
-  .hero{padding:112px 0 48px;}
+  .hero{padding:118px 0 48px;}
 }
-.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-.badge{
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
   font-size:12.5px;font-weight:700;color:var(--primary-dark);
-  background:#fff;border:1px solid var(--surface-blue);
-  padding:6px 14px;border-radius:999px;
-  box-shadow:var(--shadow-soft);
+  background:rgba(255,255,255,.7);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.8);
+  padding:7px 16px;border-radius:999px;margin-bottom:22px;
+  opacity:0;animation:fadeInUp .8s cubic-bezier(.16,.84,.44,1) .05s forwards;
 }
 .hero-title{
   font-family:var(--font-h);
-  font-size:clamp(30px,4.4vw,48px);
-  font-weight:700;line-height:1.45;margin-bottom:20px;
+  font-size:clamp(34px,5.4vw,58px);
+  font-weight:700;line-height:1.35;letter-spacing:-.015em;margin-bottom:22px;
+  opacity:0;animation:fadeInUp .85s cubic-bezier(.16,.84,.44,1) .16s forwards;
 }
 .hero-title .accent{color:var(--primary);}
-.hero-sub{font-size:16px;color:var(--text-sub);margin-bottom:32px;max-width:520px;}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px;}
-.hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;color:var(--text-sub);}
-.hero-trust span{display:flex;align-items:center;gap:6px;}
-.hero-visual{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-hover);aspect-ratio:4/5;}
-.hero-visual img{width:100%;height:100%;}
+.hero-sub{
+  font-size:17px;color:var(--text-sub);margin-bottom:30px;max-width:520px;line-height:1.95;
+  opacity:0;animation:fadeInUp .85s cubic-bezier(.16,.84,.44,1) .28s forwards;
+}
+.hero-trustgrid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px 20px;margin-bottom:34px;max-width:480px;
+  opacity:0;animation:fadeInUp .85s cubic-bezier(.16,.84,.44,1) .4s forwards;
+}
+.hero-trust-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text);font-weight:600;}
+.hero-trust-item .dot-icon{
+  width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:var(--shadow-soft);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hero-trust-item .dot-icon svg{width:14px;height:14px;stroke:var(--primary);}
+.hero-cta{
+  display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px;
+  opacity:0;animation:fadeInUp .85s cubic-bezier(.16,.84,.44,1) .52s forwards;
+}
+.hero-info-line{
+  font-size:13px;color:var(--text-sub);
+  opacity:0;animation:fadeInUp .85s cubic-bezier(.16,.84,.44,1) .64s forwards;
+}
+.hero-info-line strong{color:var(--text);font-weight:700;}
+
+.hero-visual{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 24px 64px rgba(30,64,175,.2);aspect-ratio:3/4;isolation:isolate;
+  opacity:0;animation:fadeInUp 1s cubic-bezier(.16,.84,.44,1) .2s forwards;
+}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(185deg,rgba(37,99,235,0) 50%,rgba(15,23,42,.38) 100%);pointer-events:none;}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 100%;filter:saturate(1.08) brightness(1.04) contrast(1.02);}
 .hero-visual-badge{
-  position:absolute;left:20px;bottom:20px;right:20px;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
-  border-radius:14px;padding:14px 18px;
-  display:flex;align-items:center;gap:12px;
-  box-shadow:var(--shadow-soft);
+  position:absolute;left:20px;bottom:20px;right:20px;z-index:2;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(16px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:16px;padding:16px 20px;
+  display:flex;align-items:center;gap:14px;
+  box-shadow:0 10px 32px rgba(15,23,42,.14);
 }
 .hero-visual-badge .icon{
-  width:38px;height:38px;border-radius:50%;background:var(--surface-blue);
+  width:40px;height:40px;border-radius:50%;background:var(--surface-blue);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .hero-visual-badge .icon svg{stroke:var(--primary);}
-.hero-visual-badge strong{display:block;font-size:14px;}
+.hero-visual-badge strong{display:block;font-size:14.5px;}
 .hero-visual-badge span{font-size:12px;color:var(--text-sub);}
 
-/* Icon circle */
+/* Photo tone unify */
+.photo-tone{filter:saturate(1.06) brightness(1.02) contrast(1.01);}
+
+/* Icon circle (unified system) */
 .icon-circle{
   width:56px;height:56px;border-radius:16px;
   background:var(--surface-blue);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:18px;
+  margin-bottom:20px;
+  transition:.25s;
 }
-.icon-circle svg{stroke:var(--primary);}
+.icon-circle svg{stroke:var(--primary);width:24px;height:24px;stroke-width:2;}
+.icon-circle--lg{width:66px;height:66px;border-radius:18px;}
+.icon-circle--lg svg{width:28px;height:28px;}
 
-/* Worry checklist (FEATURE-041) */
-.worry-section{background:var(--surface);}
+/* Worry checklist */
 .worry-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;max-width:840px;margin:0 auto 40px;
 }
 @media (max-width:640px){.worry-grid{grid-template-columns:1fr;}}
 .worry-item{
   display:flex;align-items:flex-start;gap:12px;
-  background:#fff;padding:18px 20px;border-radius:14px;
+  background:#fff;padding:20px 22px;border-radius:var(--radius);
+  border:1px solid var(--border);
   box-shadow:var(--shadow-soft);
   font-size:15px;
+  transition:.25s;
 }
+.worry-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);}
 .worry-item .check{
   width:24px;height:24px;border-radius:50%;background:var(--success);
   color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;
 }
 .worry-bridge{
-  text-align:center;font-weight:700;font-size:18px;color:var(--primary-dark);
+  text-align:center;font-weight:700;font-size:19px;color:var(--primary-dark);
   font-family:var(--font-h);
 }
 
-/* Feature cards (FEATURE-001) */
+/* Feature cards */
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
 @media (max-width:900px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:640px){.feature-grid{grid-template-columns:1fr;}}
 .feature-card{
+  position:relative;
   background:#fff;border:1px solid var(--border);border-radius:var(--radius);
-  padding:32px 26px;transition:.25s;
+  padding:38px 30px;transition:.3s cubic-bezier(.16,.84,.44,1);overflow:hidden;
 }
-.feature-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:transparent;}
-.feature-card h3{font-size:17px;font-weight:700;margin-bottom:10px;}
-.feature-card p{font-size:14.5px;color:var(--text-sub);}
-.feature-card .num{font-size:13px;color:var(--primary);font-weight:700;margin-bottom:6px;}
+.feature-card::before{
+  content:attr(data-num);position:absolute;top:8px;right:18px;
+  font-family:var(--font-h);font-size:56px;font-weight:700;color:var(--surface-blue);
+  z-index:0;line-height:1;
+}
+.feature-card > *{position:relative;z-index:1;}
+.feature-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-6px);border-color:transparent;}
+.feature-card h3{font-size:17.5px;font-weight:700;margin-bottom:10px;}
+.feature-card p{font-size:14.5px;color:var(--text-sub);line-height:1.85;}
 
-/* Treatment menu (診療内容) */
+/* Quote / photo banner */
+.quote-banner{
+  position:relative;overflow:hidden;border-radius:0;
+  min-height:420px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+}
+.quote-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(.62);}
+.quote-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.35),rgba(15,30,60,.72));}
+.quote-banner-content{position:relative;z-index:1;max-width:640px;padding:0 24px;}
+.quote-banner-mark{font-family:var(--font-h);font-size:64px;line-height:1;color:rgba(255,255,255,.5);margin-bottom:8px;}
+.quote-banner-text{font-family:var(--font-h);font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.6;margin-bottom:36px;}
+.quote-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+.quote-stat{text-align:center;}
+.quote-stat .num{font-family:var(--font-h);font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;display:block;}
+.quote-stat .label{font-size:13px;color:rgba(255,255,255,.75);}
+
+/* Treatment menu */
 .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 @media (max-width:900px){.menu-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:480px){.menu-grid{grid-template-columns:1fr 1fr;gap:14px;}}
 .menu-card{
-  background:var(--surface);border-radius:14px;padding:26px 18px;text-align:center;transition:.2s;
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 20px;text-align:center;transition:.3s cubic-bezier(.16,.84,.44,1);
 }
-.menu-card:hover{background:var(--surface-blue);}
-.menu-card .icon-circle{margin:0 auto 14px;background:#fff;}
-.menu-card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
-.menu-card p{font-size:12.5px;color:var(--text-sub);line-height:1.6;}
+.menu-card:hover{background:var(--surface-blue);transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:transparent;}
+.menu-card .icon-circle{margin:0 auto 16px;background:var(--surface-blue);}
+.menu-card:hover .icon-circle{background:#fff;}
+.menu-card h3{font-size:15.5px;font-weight:700;margin-bottom:8px;}
+.menu-card p{font-size:12.5px;color:var(--text-sub);line-height:1.7;}
 
-/* Gallery (院内・設備) */
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
 @media (max-width:900px){.gallery-grid{grid-template-columns:1fr 1fr;}}
-.gallery-item{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:3/4;box-shadow:var(--shadow-soft);}
-.gallery-item img{width:100%;height:100%;transition:.4s;}
-.gallery-item:hover img{transform:scale(1.06);}
+.gallery-item{border-radius:var(--radius-lg);overflow:hidden;position:relative;aspect-ratio:3/4;box-shadow:var(--shadow-soft);}
+.gallery-item img{width:100%;height:100%;transition:.5s cubic-bezier(.16,.84,.44,1);}
+.gallery-item:hover img{transform:scale(1.07);}
 .gallery-caption{
   position:absolute;left:0;right:0;bottom:0;
-  background:linear-gradient(0deg,rgba(15,23,42,.75),transparent);
-  color:#fff;padding:16px 14px 12px;font-size:13.5px;font-weight:700;
+  background:linear-gradient(0deg,rgba(15,23,42,.78),transparent);
+  color:#fff;padding:18px 16px 14px;font-size:13.5px;font-weight:700;
 }
 
-/* Profile (院長紹介) */
+/* Profile */
 .profile-wrap{
-  display:grid;grid-template-columns:0.8fr 1.2fr;gap:48px;align-items:center;
-  background:var(--surface);border-radius:24px;padding:48px;
+  display:grid;grid-template-columns:6fr 4fr;gap:52px;align-items:center;
+  background:linear-gradient(150deg,var(--surface-blue) 0%,#fff 60%);
+  border-radius:28px;padding:52px;border:1px solid var(--border);
 }
-@media (max-width:820px){.profile-wrap{grid-template-columns:1fr;padding:32px 24px;}}
-.profile-photo{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft);aspect-ratio:1/1;}
-.profile-role{color:var(--primary);font-weight:700;font-size:13.5px;margin-bottom:6px;}
-.profile-name{font-family:var(--font-h);font-size:26px;font-weight:700;margin-bottom:18px;}
-.profile-certs{margin-bottom:20px;}
-.profile-certs li{
-  font-size:14px;color:var(--text-sub);padding-left:20px;position:relative;margin-bottom:6px;
+@media (max-width:820px){.profile-wrap{grid-template-columns:1fr;padding:32px 24px;gap:32px;}}
+.profile-photo{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-hover);
+  aspect-ratio:4/5;
 }
-.profile-certs li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--primary);}
+.profile-photo img{width:100%;height:100%;object-fit:cover;object-position:center 100%;filter:saturate(1.06) brightness(1.03);}
+.profile-role{color:var(--primary);font-weight:700;font-size:13.5px;margin-bottom:6px;letter-spacing:.04em;}
+.profile-name{font-family:var(--font-h);font-size:clamp(24px,3vw,30px);font-weight:700;margin-bottom:16px;letter-spacing:-.01em;}
+.profile-lead{font-size:15px;color:var(--text-sub);margin-bottom:26px;line-height:1.9;}
+.profile-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px;}
+@media (max-width:480px){.profile-info-grid{grid-template-columns:1fr;}}
+.profile-info-item{display:flex;gap:12px;align-items:flex-start;}
+.profile-info-item .ic{
+  width:38px;height:38px;border-radius:11px;background:#fff;box-shadow:var(--shadow-soft);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.profile-info-item .ic svg{width:18px;height:18px;stroke:var(--primary);}
+.profile-info-item h4{font-size:13px;color:var(--text-sub);font-weight:700;margin-bottom:3px;}
+.profile-info-item p{font-size:13.5px;color:var(--text);line-height:1.6;}
 .profile-message{
   font-size:15px;line-height:2;color:var(--text);
   border-left:3px solid var(--primary);padding-left:18px;
+  background:rgba(255,255,255,.6);border-radius:0 12px 12px 0;padding:16px 18px;
 }
 
-/* Voice (VOICE-001) */
+/* Voice - Google review style */
 .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 @media (max-width:900px){.voice-grid{grid-template-columns:1fr;}}
-.voice-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 26px;}
-.voice-stars{color:#f59e0b;font-size:14px;margin-bottom:14px;letter-spacing:2px;}
-.voice-body{font-size:14.5px;color:var(--text);margin-bottom:20px;line-height:1.9;}
-.voice-author{display:flex;align-items:center;gap:12px;}
-.voice-avatar{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,var(--primary),#60a5fa);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;
+.voice-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;
+  transition:.3s cubic-bezier(.16,.84,.44,1);display:flex;flex-direction:column;
 }
-.voice-name{font-size:13.5px;font-weight:700;}
-.voice-meta{font-size:12px;color:var(--text-sub);}
-.voice-note{text-align:center;font-size:12.5px;color:var(--text-sub);margin-top:28px;}
+.voice-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-5px);}
+.voice-top{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.voice-avatar{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),#60a5fa);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;
+}
+.voice-name{font-size:14px;font-weight:700;}
+.voice-when{font-size:12px;color:var(--text-sub);}
+.voice-stars{color:#f59e0b;font-size:14px;margin:10px 0 14px;letter-spacing:2px;}
+.voice-body{font-size:14.5px;color:var(--text);margin-bottom:18px;line-height:1.9;flex-grow:1;}
+.voice-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.voice-tag{
+  font-size:11.5px;font-weight:700;color:var(--primary-dark);background:var(--surface-blue);
+  padding:5px 12px;border-radius:999px;
+}
+.voice-note{text-align:center;font-size:12.5px;color:var(--text-sub);margin-top:32px;}
 
-/* Flow (FLOW-003) */
+/* Flow */
 .flow-list{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative;}
 @media (max-width:900px){.flow-list{grid-template-columns:1fr;gap:0;}}
 .flow-step{text-align:center;position:relative;padding:0 8px;}
@@ -346,16 +446,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   .flow-step:last-child{border-bottom:none;}
 }
 .flow-num{
-  width:52px;height:52px;border-radius:50%;
+  width:54px;height:54px;border-radius:50%;
   background:var(--primary);color:#fff;
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-weight:700;font-size:19px;
-  margin:0 auto 16px;flex-shrink:0;
+  font-family:var(--font-h);font-weight:700;font-size:20px;
+  margin:0 auto 18px;flex-shrink:0;
+  box-shadow:0 8px 20px rgba(37,99,235,.3);
 }
 @media (max-width:900px){.flow-num{margin:0;}}
 .flow-step h3{font-size:14.5px;font-weight:700;margin-bottom:8px;}
-.flow-step p{font-size:12.5px;color:var(--text-sub);}
-.flow-arrow{display:none;}
+.flow-step p{font-size:12.5px;color:var(--text-sub);line-height:1.7;}
 @media (min-width:901px){
   .flow-step:not(:last-child)::after{
     content:"›";position:absolute;right:-16px;top:14px;color:var(--border);font-size:28px;font-weight:700;
@@ -366,9 +466,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
 @media (max-width:820px){.access-grid{grid-template-columns:1fr;}}
 .access-map{
-  border-radius:18px;overflow:hidden;background:linear-gradient(135deg,var(--surface-blue),var(--surface));
+  border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--surface-blue),var(--surface));
   min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:32px;text-align:center;color:var(--primary-dark);gap:12px;
+  padding:32px;text-align:center;color:var(--primary-dark);gap:12px;border:1px solid var(--border);
 }
 .info-table{width:100%;border-collapse:collapse;}
 .info-table th,.info-table td{
@@ -376,11 +476,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 }
 .info-table th{width:110px;color:var(--text-sub);font-weight:700;}
 .hours-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13.5px;}
-.hours-table th,.hours-table td{padding:8px 6px;text-align:center;border:1px solid var(--border);}
+.hours-table th,.hours-table td{padding:9px 6px;text-align:center;border:1px solid var(--border);}
 .hours-table th{background:var(--surface);font-weight:700;}
 .hours-table .closed{color:#cbd5e1;}
 
-/* FAQ (FAQ-001 accordion) */
+/* FAQ */
 .faq-list{max-width:760px;margin:0 auto;}
 .faq-item{border-bottom:1px solid var(--border);}
 .faq-q{
@@ -392,7 +492,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .faq-icon{transition:.25s;flex-shrink:0;color:var(--primary);}
 .faq-item.open .faq-icon{transform:rotate(45deg);}
 .faq-a{
-  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
   font-size:14.5px;color:var(--text-sub);line-height:1.9;
 }
 .faq-item.open .faq-a{max-height:240px;}
@@ -400,22 +500,34 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 /* Final CTA */
 .final-cta{
-  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
-  color:#fff;text-align:center;border-radius:28px;padding:64px 32px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary) 60%,#1d4fd6);
+  background-size:200% 200%;animation:gradientShift 14s ease-in-out infinite;
+  color:#fff;text-align:center;border-radius:32px;padding:20px 32px 56px;
 }
-.final-cta h2{font-family:var(--font-h);font-size:clamp(22px,3.6vw,32px);margin-bottom:14px;}
-.final-cta p{color:#dbeafe;margin-bottom:36px;font-size:15px;}
-.ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:0 auto 24px;}
+.cta-offer-ribbon{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:var(--primary-dark);font-weight:800;font-size:13.5px;
+  padding:10px 22px;border-radius:0 0 16px 16px;margin-bottom:36px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+.final-cta h2{font-family:var(--font-h);font-size:clamp(24px,3.8vw,34px);margin-bottom:14px;letter-spacing:-.01em;}
+.final-cta p{color:#dbeafe;margin-bottom:38px;font-size:15.5px;}
+.ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:740px;margin:0 auto 28px;}
 @media (max-width:640px){.ch-grid{grid-template-columns:1fr;}}
 .ch-item{
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
-  border-radius:16px;padding:22px 16px;color:#fff;transition:.2s;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);
+  border-radius:18px;padding:26px 18px;color:#fff;transition:.3s cubic-bezier(.16,.84,.44,1);
 }
-.ch-item:hover{background:rgba(255,255,255,.18);transform:translateY(-3px);}
+.ch-item:hover{background:rgba(255,255,255,.2);transform:translateY(-4px);}
 .ch-item.primary{background:#fff;color:var(--primary-dark);}
-.ch-icon{font-size:22px;margin-bottom:8px;display:block;}
-.ch-label{font-weight:700;font-size:15px;display:block;margin-bottom:2px;}
-.ch-note{font-size:12px;opacity:.8;}
+.ch-item.primary:hover{background:#f0f6ff;}
+.ch-icon{margin:0 auto 10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;}
+.ch-icon svg{width:26px;height:26px;}
+.ch-label{font-weight:700;font-size:16px;display:block;margin-bottom:3px;}
+.ch-note{font-size:12.5px;opacity:.85;}
+.cta-reassure{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-bottom:8px;}
+.cta-reassure span{font-size:12.5px;color:#dbeafe;display:flex;align-items:center;gap:6px;}
 .cta-assurance{font-size:13px;color:#dbeafe;}
 
 /* Footer */
@@ -432,7 +544,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
   padding:10px 14px;gap:10px;
 }
 @media (max-width:768px){.sticky-cta{display:flex;}}
-.sticky-cta a{flex:1;text-align:center;padding:14px 8px;border-radius:12px;font-weight:700;font-size:14px;}
+.sticky-cta a{flex:1;text-align:center;padding:14px 8px;border-radius:12px;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.sticky-cta a svg{width:16px;height:16px;}
 .sticky-cta .tel{background:var(--surface);color:var(--text);}
 .sticky-cta .web{background:var(--primary);color:#fff;}
 
@@ -447,14 +560,31 @@ a:focus-visible,button:focus-visible{
   border-radius:6px;
 }
 
+/* Scroll reveal (safe implementation) */
+.reveal-up{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,.84,.44,1),transform .7s cubic-bezier(.16,.84,.44,1);}
+.reveal-up.in{opacity:1;transform:translateY(0);}
+.reveal-up.d1{transition-delay:.08s;}
+.reveal-up.d2{transition-delay:.16s;}
+.reveal-up.d3{transition-delay:.24s;}
+.reveal-up.d4{transition-delay:.32s;}
+.reveal-up.d5{transition-delay:.4s;}
+.reveal-up.d6{transition-delay:.48s;}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
+  .reveal-up,.hero-title,.hero-sub,.hero-trustgrid,.hero-cta,.hero-info-line,.hero-eyebrow,.hero-visual{
+    opacity:1!important;transform:none!important;animation:none!important;
+  }
+  .hero,.final-cta{animation:none!important;}
+  .hero-blob,.hero-particle{animation:none!important;}
 }
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip-link">メインコンテンツへスキップ</a>
+
+<noscript><style>.reveal-up{opacity:1!important;transform:none!important;}</style></noscript>
 
 <header class="header">
   <div class="header-inner">
@@ -473,16 +603,21 @@ a:focus-visible,button:focus-visible{
 
 <main id="main">
 
-  <!-- ① Hero (HERO-049) -->
+  <!-- ① Hero (HERO-049 ブラッシュアップ版) -->
   <section class="hero" id="top">
+    <div class="hero-decor" aria-hidden="true">
+      <div class="hero-blob hero-blob--1"></div>
+      <div class="hero-blob hero-blob--2"></div>
+      <div class="hero-blob hero-blob--3"></div>
+      <div class="hero-particle" style="width:6px;height:6px;top:18%;left:38%;animation-delay:.2s;"></div>
+      <div class="hero-particle" style="width:4px;height:4px;top:62%;left:46%;animation-delay:1.4s;"></div>
+      <div class="hero-particle" style="width:8px;height:8px;top:28%;left:60%;animation-delay:2.6s;"></div>
+      <div class="hero-particle" style="width:5px;height:5px;top:74%;left:20%;animation-delay:3.4s;"></div>
+      <div class="hero-particle" style="width:5px;height:5px;top:44%;left:8%;animation-delay:1.9s;"></div>
+    </div>
     <div class="container hero-grid">
       <div>
-        <div class="hero-badges">
-          <span class="badge">開業12年</span>
-          <span class="badge">年間診療5,000件以上</span>
-          <span class="badge">武蔵小杉駅 徒歩5分</span>
-          <span class="badge">土曜診療あり</span>
-        </div>
+        <span class="hero-eyebrow">地域に根ざした、家族の歯科医院</span>
         <h1 class="hero-title">
           痛くなってからじゃない、<br>
           <span class="accent">通いたくなる歯医者</span>へ。
@@ -490,6 +625,13 @@ a:focus-visible,button:focus-visible{
         <p class="hero-sub">
           お子さまからご年配の方まで、家族みんなが安心して通える町の歯科医院。丁寧なカウンセリングで、一人ひとりに合った治療をご提案します。
         </p>
+        <div class="hero-trustgrid">
+          <div class="hero-trust-item"><span class="dot-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>武蔵小杉駅 徒歩5分</div>
+          <div class="hero-trust-item"><span class="dot-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></span>土曜診療あり</div>
+          <div class="hero-trust-item"><span class="dot-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></span>痛みに配慮した治療</div>
+          <div class="hero-trust-item"><span class="dot-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>お子様連れ大歓迎</div>
+          <div class="hero-trust-item"><span class="dot-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 10h8M8 14h5"/></svg></span>WEB予約24時間受付</div>
+        </div>
         <div class="hero-cta">
           <a href="#reserve" class="btn btn-primary">
             24時間WEB予約はこちら
@@ -498,16 +640,13 @@ a:focus-visible,button:focus-visible{
             電話で相談する
           </a>
         </div>
-        <div class="hero-trust">
-          <span>✓ 初診カウンセリングのみもOK</span>
-          <span>✓ お子様連れ大歓迎</span>
-        </div>
+        <p class="hero-info-line">診療時間 <strong>9:30-13:00 / 14:30-19:00</strong>　休診：水・日・祝　<strong>044-722-0180</strong></p>
       </div>
       <div class="hero-visual">
         <img
-          src="https://images.unsplash.com/photo-1632054229377-c5c47de2af5e?auto=format&fit=crop&w=900&q=80"
-          alt="歯科医師に安心した表情で治療を受ける患者様"
-          width="900" height="1125"
+          src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?auto=format&w=900&q=80"
+          alt="ソラ歯科クリニック 院長 中村沙織"
+          width="900" height="1200"
           fetchpriority="high"
         >
         <div class="hero-visual-badge">
@@ -515,70 +654,72 @@ a:focus-visible,button:focus-visible{
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
           </span>
           <div>
-            <strong>痛みに配慮した治療</strong>
-            <span>表面麻酔・電動麻酔器を使用</span>
+            <strong>院長 中村 沙織</strong>
+            <span>痛みに配慮した丁寧な診療</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ② こんなお悩みはありませんか (FEATURE-041) -->
-  <section class="section worry-section">
+  <!-- ② こんなお悩みはありませんか -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">CHECK LIST</span>
         <h2 class="section-title">こんなお悩みはありませんか？</h2>
+        <p class="section-desc">一つでも当てはまる方は、症状が軽いうちにご相談いただくのがおすすめです。</p>
       </div>
       <div class="worry-grid">
-        <div class="worry-item"><span class="check">✓</span>虫歯を放置してしまっている</div>
-        <div class="worry-item"><span class="check">✓</span>歯ぐきから血が出ることがある</div>
-        <div class="worry-item"><span class="check">✓</span>歯並び・かみ合わせが気になる</div>
-        <div class="worry-item"><span class="check">✓</span>何年も歯科検診を受けていない</div>
-        <div class="worry-item"><span class="check">✓</span>歯の黄ばみ・着色が気になる</div>
-        <div class="worry-item"><span class="check">✓</span>子どもが歯医者を怖がって嫌がる</div>
-        <div class="worry-item"><span class="check">✓</span>以前の治療の痛みが忘れられない</div>
-        <div class="worry-item"><span class="check">✓</span>どこの歯医者に通えばいいかわからない</div>
+        <div class="worry-item reveal-up d1"><span class="check">✓</span>虫歯を放置してしまっている</div>
+        <div class="worry-item reveal-up d1"><span class="check">✓</span>歯ぐきから血が出ることがある</div>
+        <div class="worry-item reveal-up d2"><span class="check">✓</span>歯並び・かみ合わせが気になる</div>
+        <div class="worry-item reveal-up d2"><span class="check">✓</span>何年も歯科検診を受けていない</div>
+        <div class="worry-item reveal-up d3"><span class="check">✓</span>歯の黄ばみ・着色が気になる</div>
+        <div class="worry-item reveal-up d3"><span class="check">✓</span>子どもが歯医者を怖がって嫌がる</div>
+        <div class="worry-item reveal-up d4"><span class="check">✓</span>以前の治療の痛みが忘れられない</div>
+        <div class="worry-item reveal-up d4"><span class="check">✓</span>どこの歯医者に通えばいいかわからない</div>
       </div>
-      <p class="worry-bridge">一つでも当てはまる方は、まずはお気軽にご相談ください。</p>
+      <p class="worry-bridge reveal-up">一つでも当てはまる方は、まずはお気軽にご相談ください。</p>
     </div>
   </section>
 
-  <!-- ③ 当院が選ばれる理由 (FEATURE-001) -->
-  <section class="section">
+  <!-- ③ 当院が選ばれる理由 -->
+  <section class="section" style="background:var(--surface-blue);">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">WHY CHOOSE US</span>
         <h2 class="section-title">ソラ歯科クリニックが<br>選ばれる理由</h2>
+        <p class="section-desc">「安心・清潔・丁寧」を軸に、家族みんなが通いやすい医院づくりを行っています。</p>
       </div>
       <div class="feature-grid">
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></div>
+        <div class="feature-card reveal-up d1" data-num="01">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></div>
           <h3>痛みに配慮した丁寧な治療</h3>
           <p>麻酔前の表面麻酔・電動麻酔器を使用し、できる限り痛みの少ない治療を心がけています。</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h8M8 14h5"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
+        <div class="feature-card reveal-up d2" data-num="02">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h8M8 14h5"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
           <h3>納得できるカウンセリング</h3>
           <p>治療前に必ず時間をとり、レントゲン画像を見ながらわかりやすくご説明します。</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <div class="feature-card reveal-up d3" data-num="03">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
           <h3>お子さまも安心の小児歯科</h3>
           <p>キッズスペース完備。歯医者に慣れることから始める「慣らし診療」も行っています。</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="feature-card reveal-up d1" data-num="04">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h3>土曜診療・駅から徒歩5分</h3>
           <p>お仕事や学校帰りにも通いやすい立地と診療時間。夜19時まで診療しています。</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg></div>
+        <div class="feature-card reveal-up d2" data-num="05">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg></div>
           <h3>清潔な院内・最新設備</h3>
           <p>口腔外バキューム・滅菌システムを導入し、院内感染対策を徹底しています。</p>
         </div>
-        <div class="feature-card">
-          <div class="icon-circle" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <div class="feature-card reveal-up d3" data-num="06">
+          <div class="icon-circle icon-circle--lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
           <h3>料金を明確にご案内</h3>
           <p>保険診療・自費診療とも治療前に料金をご提示。想定外の費用が発生しません。</p>
         </div>
@@ -586,76 +727,102 @@ a:focus-visible,button:focus-visible{
     </div>
   </section>
 
+  <!-- 写真背景バナー -->
+  <div class="quote-banner reveal-up">
+    <img src="https://images.unsplash.com/photo-1648775507324-b48dd3791fa5?auto=format&fit=crop&w=1600&q=80" alt="坪庭のある明るい院内スペース" loading="lazy">
+    <div class="quote-banner-content">
+      <p class="quote-banner-mark" aria-hidden="true">&ldquo;</p>
+      <p class="quote-banner-text">笑顔で通える歯医者であること。<br>それが、私たちの一番の願いです。</p>
+      <div class="quote-stats">
+        <div class="quote-stat"><span class="num" data-countup="12">0</span><span class="label">年の実績</span></div>
+        <div class="quote-stat"><span class="num" data-countup="5000" data-suffix="+">0</span><span class="label">年間診療件数</span></div>
+        <div class="quote-stat"><span class="num" data-countup="98" data-suffix="%">0</span><span class="label">再来院率</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ④ 診療内容 -->
-  <section class="section" style="background:var(--surface);">
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">TREATMENT</span>
         <h2 class="section-title">診療内容</h2>
         <p class="section-desc">お子さまからご年配の方まで、幅広い診療メニューをご用意しています。</p>
       </div>
       <div class="menu-grid">
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></div><h3>虫歯治療</h3><p>できるだけ削らない・痛みの少ない治療を心がけています</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 4 9 4 13a8 8 0 0016 0c0-4-4-7-8-11z"/></svg></div><h3>歯周病治療</h3><p>歯ぐきの状態を検査し、進行に応じたケアをご提案</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>定期検診</h3><p>虫歯・歯周病を未然に防ぐための定期チェック</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div><h3>クリーニング</h3><p>専用機器で歯石・着色汚れを丁寧に除去</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2.3 6.9L22 12l-6.7 2.1L13 21l-2.3-6.9L4 12l6.7-2.1z"/></svg></div><h3>ホワイトニング</h3><p>白さの持続を重視したオフィス・ホームケア対応</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>小児歯科</h3><p>キッズスペース完備、慣らし診療からスタート</p></div>
-        <div class="menu-card"><div class="icon-circle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 00-5 5c0 2 1 3 1 5 0 3-2 4-2 7a3 3 0 006 0c0-2 1-3 1-3s1 1 1 3a3 3 0 006 0c0-3-2-4-2-7 0-2 1-3 1-5a5 5 0 00-5-5"/></svg></div><h3>予防歯科</h3><p>フッ素塗布・シーラントで将来のリスクを軽減</p></div>
+        <div class="menu-card reveal-up d1"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></div><h3>虫歯治療</h3><p>できるだけ削らない・痛みの少ない治療を心がけています</p></div>
+        <div class="menu-card reveal-up d2"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 4 9 4 13a8 8 0 0016 0c0-4-4-7-8-11z"/></svg></div><h3>歯周病治療</h3><p>歯ぐきの状態を検査し、進行に応じたケアをご提案</p></div>
+        <div class="menu-card reveal-up d3"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>定期検診</h3><p>虫歯・歯周病を未然に防ぐための定期チェック</p></div>
+        <div class="menu-card reveal-up d4"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div><h3>クリーニング</h3><p>専用機器で歯石・着色汚れを丁寧に除去</p></div>
+        <div class="menu-card reveal-up d1"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2.3 6.9L22 12l-6.7 2.1L13 21l-2.3-6.9L4 12l6.7-2.1z"/></svg></div><h3>ホワイトニング</h3><p>白さの持続を重視したオフィス・ホームケア対応</p></div>
+        <div class="menu-card reveal-up d2"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3>小児歯科</h3><p>キッズスペース完備、慣らし診療からスタート</p></div>
+        <div class="menu-card reveal-up d3"><div class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 00-5 5c0 2 1 3 1 5 0 3-2 4-2 7a3 3 0 006 0c0-2 1-3 1-3s1 1 1 3a3 3 0 006 0c0-3-2-4-2-7 0-2 1-3 1-5a5 5 0 00-5-5"/></svg></div><h3>予防歯科</h3><p>フッ素塗布・シーラントで将来のリスクを軽減</p></div>
       </div>
     </div>
   </section>
 
   <!-- ⑤ 院内・設備紹介 -->
-  <section class="section">
+  <section class="section" style="background:var(--surface);">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">CLINIC & EQUIPMENT</span>
         <h2 class="section-title">院内・設備紹介</h2>
         <p class="section-desc">清潔で落ち着いた空間づくりにこだわっています。</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1648775507324-b48dd3791fa5?auto=format&fit=crop&w=600&q=80" alt="坪庭のある明るい待合スペース" width="600" height="800">
+        <div class="gallery-item reveal-up d1">
+          <img class="photo-tone" loading="lazy" src="https://images.unsplash.com/photo-1648775507324-b48dd3791fa5?auto=format&fit=crop&w=600&q=80" alt="坪庭のある明るい待合スペース" width="600" height="800">
           <div class="gallery-caption">受付・待合スペース</div>
         </div>
-        <div class="gallery-item">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="清潔な診察室と最新の歯科用チェア" width="600" height="800">
+        <div class="gallery-item reveal-up d2">
+          <img class="photo-tone" loading="lazy" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="清潔な診察室と最新の歯科用チェア" width="600" height="800">
           <div class="gallery-caption">診察室</div>
         </div>
-        <div class="gallery-item">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1643660527098-559f89e45a92?auto=format&fit=crop&w=600&q=80" alt="自然光の入る明るいカウンセリングルーム" width="600" height="800">
+        <div class="gallery-item reveal-up d3">
+          <img class="photo-tone" loading="lazy" src="https://images.unsplash.com/photo-1643660527098-559f89e45a92?auto=format&fit=crop&w=600&q=80" alt="自然光の入る明るいカウンセリングルーム" width="600" height="800">
           <div class="gallery-caption">カウンセリングルーム</div>
         </div>
-        <div class="gallery-item">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1752842936210-dd34c42ff484?auto=format&fit=crop&w=600&q=80" alt="滅菌済みの歯科治療器具" width="600" height="800">
+        <div class="gallery-item reveal-up d4">
+          <img class="photo-tone" loading="lazy" src="https://images.unsplash.com/photo-1752842936210-dd34c42ff484?auto=format&fit=crop&w=600&q=80" alt="滅菌済みの歯科治療器具" width="600" height="800">
           <div class="gallery-caption">衛生管理・滅菌設備</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ⑥ 院長紹介 (PROF-001) -->
-  <section class="section" style="background:var(--surface);">
+  <!-- ⑥ 院長紹介 -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">DOCTOR PROFILE</span>
         <h2 class="section-title">院長紹介</h2>
       </div>
-      <div class="profile-wrap">
+      <div class="profile-wrap reveal-up">
         <div class="profile-photo">
-          <img src="https://images.unsplash.com/photo-1758600587683-d86675a2f6e9?auto=format&fit=crop&crop=faces&w=600&h=600&q=80" alt="院長 中村沙織の写真" loading="lazy" width="600" height="600">
+          <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?auto=format&w=800&q=80" alt="院長 中村沙織の写真" loading="lazy" width="800" height="1000">
         </div>
         <div>
           <p class="profile-role">院長</p>
           <h3 class="profile-name">中村 沙織</h3>
-          <ul class="profile-certs">
-            <li>日本歯科大学 歯学部卒業</li>
-            <li>都内歯科医院にて9年間の臨床研修</li>
-            <li>2014年 ソラ歯科クリニック開院</li>
-            <li>日本歯周病学会 会員</li>
-            <li>日本口腔インプラント学会 会員</li>
-          </ul>
+          <p class="profile-lead">患者様の「笑顔」と「これからの健康」を守るために、一人ひとりに向き合う診療を大切にしています。</p>
+          <div class="profile-info-grid">
+            <div class="profile-info-item">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5 6 5c2 0 3.5 1.2 4 2 .5-.8 2-2 4-2 4 0 5.2 4 3.5 7.5C19 16.65 12 21 12 21z"/></svg></span>
+              <div><h4>理念</h4><p>痛くなる前に相談できる歯科医院に</p></div>
+            </div>
+            <div class="profile-info-item">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a5 5 0 100-10 5 5 0 000 10z"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></span>
+              <div><h4>資格</h4><p>日本歯周病学会 会員<br>日本口腔インプラント学会 会員</p></div>
+            </div>
+            <div class="profile-info-item">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+              <div><h4>経歴</h4><p>日本歯科大学卒業／都内歯科医院にて9年間の臨床研修／2014年 当院開院</p></div>
+            </div>
+            <div class="profile-info-item">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+              <div><h4>専門分野</h4><p>小児歯科・歯周病治療・予防歯科</p></div>
+            </div>
+          </div>
           <blockquote class="profile-message">
             「歯科医院は"痛くなったら行く場所"ではなく、"痛くなる前に相談できる場所"でありたい。そう考え、この医院を開きました。お子さまからご年配の方まで、ご家族皆さまが気軽に立ち寄れる、町のかかりつけ歯科を目指しています。」
           </blockquote>
@@ -664,45 +831,58 @@ a:focus-visible,button:focus-visible{
     </div>
   </section>
 
-  <!-- ⑦ 患者様の声 (VOICE-001) -->
-  <section class="section">
+  <!-- ⑦ 患者様の声 -->
+  <section class="section" style="background:var(--surface-blue);">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">VOICE</span>
         <h2 class="section-title">患者様の声</h2>
+        <p class="section-desc">実際にご来院いただいた患者様からいただいたお声です。</p>
       </div>
       <div class="voice-grid">
-        <div class="voice-card">
-          <div class="voice-stars">★★★★★</div>
-          <p class="voice-body">「先生が丁寧に説明してくださるので、治療内容に納得して通えています。痛みも思っていたより少なく安心しました。」</p>
-          <div class="voice-author">
+        <div class="voice-card reveal-up d1">
+          <div class="voice-top">
             <div class="voice-avatar" aria-hidden="true">T</div>
             <div>
-              <p class="voice-name">T.様（40代女性）</p>
-              <p class="voice-meta">定期検診・クリーニングで通院</p>
+              <p class="voice-name">T.様</p>
+              <p class="voice-when">来院から2週間</p>
             </div>
           </div>
-        </div>
-        <div class="voice-card">
           <div class="voice-stars">★★★★★</div>
-          <p class="voice-body">「子どもが歯医者嫌いでしたが、スタッフの方が優しく声をかけてくださり、今では自分から通いたいと言っています。」</p>
-          <div class="voice-author">
+          <p class="voice-body">「先生が丁寧に説明してくださるので、治療内容に納得して通えています。痛みも思っていたより少なく安心しました。」</p>
+          <div class="voice-tags">
+            <span class="voice-tag">40代女性</span>
+            <span class="voice-tag">定期検診・クリーニング</span>
+          </div>
+        </div>
+        <div class="voice-card reveal-up d2">
+          <div class="voice-top">
             <div class="voice-avatar" aria-hidden="true">M</div>
             <div>
-              <p class="voice-name">M.様（30代女性・お子様と来院）</p>
-              <p class="voice-meta">小児歯科で通院</p>
+              <p class="voice-name">M.様</p>
+              <p class="voice-when">来院から1ヶ月</p>
             </div>
           </div>
-        </div>
-        <div class="voice-card">
           <div class="voice-stars">★★★★★</div>
-          <p class="voice-body">「土曜日も診療しているので、仕事帰りに無理なく通院できました。駐車場もあり助かっています。」</p>
-          <div class="voice-author">
+          <p class="voice-body">「子どもが歯医者嫌いでしたが、スタッフの方が優しく声をかけてくださり、今では自分から通いたいと言っています。」</p>
+          <div class="voice-tags">
+            <span class="voice-tag">30代女性・お子様と来院</span>
+            <span class="voice-tag">小児歯科</span>
+          </div>
+        </div>
+        <div class="voice-card reveal-up d3">
+          <div class="voice-top">
             <div class="voice-avatar" aria-hidden="true">K</div>
             <div>
-              <p class="voice-name">K.様（50代男性）</p>
-              <p class="voice-meta">虫歯治療で通院</p>
+              <p class="voice-name">K.様</p>
+              <p class="voice-when">来院から3ヶ月</p>
             </div>
+          </div>
+          <div class="voice-stars">★★★★★</div>
+          <p class="voice-body">「土曜日も診療しているので、仕事帰りに無理なく通院できました。駐車場もあり助かっています。」</p>
+          <div class="voice-tags">
+            <span class="voice-tag">50代男性</span>
+            <span class="voice-tag">虫歯治療</span>
           </div>
         </div>
       </div>
@@ -710,35 +890,35 @@ a:focus-visible,button:focus-visible{
     </div>
   </section>
 
-  <!-- ⑧ ご予約〜診療までの流れ (FLOW-003) -->
-  <section class="section" style="background:var(--surface);">
+  <!-- ⑧ ご予約〜診療までの流れ -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">FLOW</span>
         <h2 class="section-title">ご予約〜診療までの流れ</h2>
       </div>
       <div class="flow-list">
-        <div class="flow-step">
+        <div class="flow-step reveal-up d1">
           <div class="flow-num">1</div>
           <h3>ご予約</h3>
           <p>WEBまたはお電話で24時間受付</p>
         </div>
-        <div class="flow-step">
+        <div class="flow-step reveal-up d2">
           <div class="flow-num">2</div>
           <h3>受付・問診票</h3>
           <p>来院後、簡単な問診票にご記入</p>
         </div>
-        <div class="flow-step">
+        <div class="flow-step reveal-up d3">
           <div class="flow-num">3</div>
           <h3>カウンセリング・検査</h3>
           <p>レントゲン等でお口の状態を確認</p>
         </div>
-        <div class="flow-step">
+        <div class="flow-step reveal-up d4">
           <div class="flow-num">4</div>
           <h3>ご説明・ご相談</h3>
           <p>治療計画と料金を分かりやすくご案内</p>
         </div>
-        <div class="flow-step">
+        <div class="flow-step reveal-up d5">
           <div class="flow-num">5</div>
           <h3>治療開始</h3>
           <p>ご納得いただいてから治療を行います</p>
@@ -748,20 +928,21 @@ a:focus-visible,button:focus-visible{
   </section>
 
   <!-- ⑨ 診療時間・アクセス -->
-  <section class="section" id="access">
+  <section class="section" id="access" style="background:var(--surface);">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">ACCESS</span>
         <h2 class="section-title">診療時間・アクセス</h2>
+        <p class="section-desc">武蔵小杉駅から徒歩5分、通いやすい立地です。</p>
       </div>
       <div class="access-grid">
-        <div class="access-map" role="img" aria-label="ソラ歯科クリニック周辺地図イメージ">
+        <div class="access-map reveal-up d1" role="img" aria-label="ソラ歯科クリニック周辺地図イメージ">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <strong>武蔵小杉駅 徒歩5分</strong>
           <span style="font-size:13px;">神奈川県川崎市中原区新丸子東2-3-1<br>みどりビル1F</span>
           <span style="font-size:12px;color:var(--text-sub);">※実際のGoogleマップは公開時に埋め込みます</span>
         </div>
-        <div>
+        <div class="reveal-up d2">
           <table class="info-table">
             <tr><th>医院名</th><td>ソラ歯科クリニック</td></tr>
             <tr><th>住所</th><td>神奈川県川崎市中原区新丸子東2-3-1 みどりビル1F</td></tr>
@@ -779,14 +960,15 @@ a:focus-visible,button:focus-visible{
     </div>
   </section>
 
-  <!-- ⑩ FAQ (FAQ-001) -->
-  <section class="section" style="background:var(--surface);">
+  <!-- ⑩ FAQ -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">FAQ</span>
         <h2 class="section-title">よくあるご質問</h2>
+        <p class="section-desc">初めての方が抱きやすい疑問にお答えします。</p>
       </div>
-      <div class="faq-list" id="faq-list" role="region" aria-label="よくあるご質問一覧">
+      <div class="faq-list reveal-up" id="faq-list" role="region" aria-label="よくあるご質問一覧">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
             <span><span class="q-mark">Q.</span>保険診療は行っていますか？</span>
@@ -834,27 +1016,37 @@ a:focus-visible,button:focus-visible{
   </section>
 
   <!-- ⑪ 最終CTA -->
-  <section class="section" id="reserve">
+  <section class="section" id="reserve" style="background:var(--surface);">
     <div class="container">
-      <div class="final-cta">
+      <div class="final-cta reveal-up">
+        <span class="cta-offer-ribbon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6M2 7h20v5H2zM12 22V7M12 7c-1-3-3.5-5-5.5-3.5S6 7 12 7zM12 7c1-3 3.5-5 5.5-3.5S18 7 12 7z"/></svg>
+          初診カウンセリング無料実施中
+        </span>
         <h2>まずはお気軽にご相談ください</h2>
         <p>初診カウンセリングのみのご予約も歓迎しています。</p>
         <div class="ch-grid">
           <a href="#" class="ch-item primary">
-            <span class="ch-icon" aria-hidden="true">🗓</span>
+            <span class="ch-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4M9 14l2 2 4-4"/></svg></span>
             <span class="ch-label">WEB予約</span>
             <span class="ch-note">24時間受付中</span>
           </a>
           <a href="tel:0447220180" class="ch-item">
-            <span class="ch-icon" aria-hidden="true">📞</span>
+            <span class="ch-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
             <span class="ch-label">電話で予約</span>
             <span class="ch-note">044-722-0180</span>
           </a>
           <a href="#" class="ch-item">
-            <span class="ch-icon" aria-hidden="true">💬</span>
+            <span class="ch-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
             <span class="ch-label">LINEで相談</span>
             <span class="ch-note">気軽にご質問を</span>
           </a>
+        </div>
+        <div class="cta-reassure">
+          <span>✓ 土曜診療あり</span>
+          <span>✓ 駅徒歩5分</span>
+          <span>✓ キッズスペース完備</span>
+          <span>✓ 料金明瞭</span>
         </div>
         <p class="cta-assurance">「痛くなる前に、気軽に通える歯医者」を目指しています。</p>
       </div>
@@ -885,8 +1077,14 @@ a:focus-visible,button:focus-visible{
 </footer>
 
 <div class="sticky-cta">
-  <a href="tel:0447220180" class="tel">📞 電話で予約</a>
-  <a href="#reserve" class="web">🗓 WEB予約</a>
+  <a href="tel:0447220180" class="tel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    電話で予約
+  </a>
+  <a href="#reserve" class="web">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+    WEB予約
+  </a>
 </div>
 
 <script>
@@ -905,6 +1103,71 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.setAttribute('aria-expanded', String(!isOpen));
   });
 });
+
+// Scroll reveal (safe: fallback + defensive timeout)
+(function(){
+  var revealEls = document.querySelectorAll('.reveal-up');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // Defensive fallback: ensure nothing stays permanently hidden
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      document.querySelectorAll('.reveal-up:not(.in)').forEach(function(el){
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 200) el.classList.add('in');
+      });
+    }, 1200);
+  });
+})();
+
+// Count-up numbers (quote banner stats)
+(function(){
+  var counters = document.querySelectorAll('[data-countup]');
+  if (!counters.length) return;
+  var animated = new WeakSet();
+  function animate(el){
+    var target = parseInt(el.getAttribute('data-countup'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var val = Math.floor(eased * target);
+      el.textContent = val.toLocaleString('ja-JP') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('ja-JP') + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && !animated.has(entry.target)) {
+          animated.add(entry.target);
+          animate(entry.target);
+          io2.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function(el){ io2.observe(el); });
+  } else {
+    counters.forEach(animate);
+  }
+})();
 </script>
 
 </body>
