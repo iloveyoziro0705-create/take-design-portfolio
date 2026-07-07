@@ -240,8 +240,8 @@ section{padding:var(--sp) 0}
 .overview{background:var(--w)}
 .ov-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .ov-vis{background:var(--surf);border-radius:var(--r-lg);
-  padding:48px;display:flex;align-items:center;justify-content:center;
-  position:relative;min-height:360px}
+  padding:40px;display:flex;align-items:center;justify-content:center;
+  position:relative}
 .ov-pts{display:grid;gap:24px;margin-top:36px}
 .ov-pt{display:flex;gap:16px;align-items:flex-start}
 .ov-pt-ic{width:40px;height:40px;border-radius:10px;
@@ -495,8 +495,10 @@ footer{background:var(--tx);padding:72px 0 44px}
   transition:color var(--tr)}
 .ft-col li a:hover{color:#fff}
 .ft-btm{border-top:1px solid rgba(255,255,255,.1);padding-top:32px;
-  display:flex;justify-content:space-between;align-items:center;gap:16px}
+  display:flex;flex-direction:column;gap:6px}
 .ft-copy{font-size:12px;color:rgba(255,255,255,.28)}
+.ft-copy a{color:rgba(255,255,255,.4);text-decoration:underline}
+.ft-copy a:hover{color:rgba(255,255,255,.7)}
 
 /* ── Fixed CTA Button ─────────────────────────────────────────── */
 .fixed-cta{position:fixed;bottom:32px;right:32px;z-index:900;
