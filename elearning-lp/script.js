@@ -55,12 +55,22 @@ const statsEl = document.querySelector('.stats');
 if (statsEl) statObs.observe(statsEl);
 
 /* ── FAQ Accordion ───────────────────────────────────────────── */
+function toggleFaq(q) {
+  const item = q.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.fi.open').forEach(f => {
+    f.classList.remove('open');
+    f.querySelector('.fq').setAttribute('aria-expanded', 'false');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+    q.setAttribute('aria-expanded', 'true');
+  }
+}
 document.querySelectorAll('.fq').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.fi.open').forEach(f => f.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+  q.addEventListener('click', () => toggleFaq(q));
+  q.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(q); }
   });
 });
 
