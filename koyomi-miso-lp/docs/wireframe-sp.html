@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>暦みそ ―KOYOMI― LPワイヤーフレーム（スマホ版）</title>
+<style>
+  :root{
+    --paper:#F7F3EA;      /* 生成り（本番カラー仮反映） */
+    --ink:#2B2621;        /* 墨 */
+    --ink-soft:#6B5F4F;   /* 枯れ木色 */
+    --line:#C9BFA8;
+    --img-fill:#E3DAC4;
+    --img-hatch:#D3C7A8;
+    --accent-wood:#B08D5B;
+    --accent-deepgreen:#2F4A3C;
+    --accent-wakakusa:#8FA672;
+    --accent-clay:#B5502F; /* 朱・差し色 */
+    --line-green:#06C755;  /* LINE公式カラー固定 */
+    --note-bg:#F4EBE3;
+    --note-border:#B5502F;
+    --note-text:#8A4327;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#EDE6D6;
+    font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;
+    color:var(--ink);
+  }
+  .frame-label{
+    text-align:center;
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:.15em;
+    margin:24px auto 6px;
+  }
+  .page{
+    max-width:428px;
+    margin:0 auto 24px;
+    background:var(--paper);
+    box-shadow:0 8px 30px rgba(0,0,0,.15);
+    position:relative;
+  }
+  .section{
+    padding:32px 22px;
+    border-bottom:1px dashed var(--line);
+    position:relative;
+  }
+  .tag{
+    display:inline-block;
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:10px;
+    letter-spacing:.08em;
+    color:#fff;
+    background:var(--accent-deepgreen);
+    padding:3px 9px;
+    border-radius:2px;
+    margin-bottom:12px;
+  }
+  .pattern{
+    display:inline-block;
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:9.5px;
+    letter-spacing:.05em;
+    color:var(--accent-wood);
+    border:1px solid var(--accent-wood);
+    padding:2px 7px;
+    border-radius:10px;
+    margin-left:6px;
+  }
+  .img-box{
+    width:100%;
+    border-radius:4px;
+    background:repeating-linear-gradient(45deg,var(--img-fill),var(--img-fill) 10px,var(--img-hatch) 10px,var(--img-hatch) 20px);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--ink-soft);
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:11px;line-height:1.7;padding:16px;
+    border:1px solid var(--line);
+  }
+  .eyecatch{
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:13px;color:var(--accent-clay);margin:16px 0 8px;font-weight:700;line-height:1.8;
+  }
+  h1{font-size:23px;line-height:1.7;margin:6px 0 12px;font-weight:700;}
+  h2.sub{
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:13px;font-weight:500;color:var(--ink-soft);line-height:1.9;margin:0 0 20px;
+  }
+  h2.headline{font-size:19px;line-height:1.7;margin:0 0 16px;font-weight:700;}
+  h3.node-title{font-size:15px;line-height:1.6;margin:0 0 8px;font-weight:700;color:var(--accent-deepgreen);}
+  p.lead{
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:13.5px;line-height:2.0;color:var(--ink);margin:0 0 16px;
+  }
+  blockquote{
+    font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;
+    font-size:14.5px;line-height:2.1;letter-spacing:.04em;
+    border-left:3px solid var(--accent-wood);
+    padding:4px 0 4px 18px;margin:0 0 20px;color:var(--ink);
+  }
+  .btn{
+    display:block;width:100%;text-align:center;background:var(--line-green);color:#fff;
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-weight:700;
+    font-size:14px;padding:16px 10px;border-radius:4px;margin-top:10px;
+    box-shadow:0 3px 0 #048c3d;
+  }
+  .btn-note{
+    text-align:center;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:10px;color:var(--ink-soft);margin-top:6px;
+  }
+  .icon-row{display:flex;gap:8px;margin-bottom:14px;}
+  .icon-box{
+    flex:1;aspect-ratio:1/1;background:var(--img-fill);border:1px solid var(--line);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;
+  }
+  .story-node{display:flex;gap:14px;margin-bottom:26px;position:relative;padding-left:4px;}
+  .story-node::before{
+    content:"";position:absolute;left:15px;top:34px;bottom:-26px;width:1px;background:var(--line);
+  }
+  .story-node:last-child::before{display:none;}
+  .story-num{
+    flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--accent-deepgreen);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-family:"Hiragino Kaku Gothic ProN",sans-serif;
+  }
+  .masonry{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+  .masonry .img-box.lg{width:100%;height:210px;}
+  .masonry .img-box.md{width:calc(50% - 5px);height:140px;}
+  .masonry .img-box.sm{width:calc(33% - 7px);height:90px;}
+  .footnote{
+    background:var(--note-bg);border:1px dashed var(--note-border);color:var(--note-text);
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:10.5px;line-height:1.8;
+    border-radius:4px;padding:10px 12px;margin:14px 0;
+  }
+  .season-block{
+    display:flex;gap:12px;align-items:center;margin-bottom:14px;padding:14px;
+    border:1px solid var(--line);border-radius:6px;background:var(--card);
+  }
+  .season-icon{
+    flex-shrink:0;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:22px;background:var(--img-fill);
+  }
+  .offer-card{
+    background:var(--card);border:1px solid var(--accent-clay);border-radius:6px;padding:16px;margin-bottom:16px;
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:12.5px;line-height:1.9;
+  }
+  .offer-card .offer-title{font-weight:700;color:var(--accent-clay);margin-bottom:8px;font-size:13.5px;}
+  .benefit-list{list-style:none;padding:0;margin:0 0 16px;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:12.5px;line-height:1.8;}
+  .benefit-list li{padding:9px 0;border-bottom:1px dotted var(--line);}
+  .voice-card{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px;margin-bottom:14px;
+  }
+  .voice-quote{font-family:"Hiragino Mincho ProN","Noto Serif JP",serif;font-size:14px;line-height:1.9;font-weight:700;margin-bottom:8px;}
+  .voice-meta{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:10.5px;color:var(--ink-soft);}
+  .faq-item{border-bottom:1px solid var(--line);padding:14px 0;}
+  .faq-q{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-weight:700;font-size:13px;display:flex;gap:8px;}
+  .faq-q::before{content:"Q";color:var(--accent-wood);}
+  .faq-a{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:12.5px;line-height:1.8;color:var(--ink-soft);margin-top:6px;padding-left:16px;}
+  .anno{
+    background:var(--note-bg);border:1px dashed var(--note-border);color:var(--note-text);
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:10.5px;line-height:1.8;
+    border-radius:4px;padding:10px 12px;margin-top:12px;
+  }
+  .anno::before{content:"🖊 デザイナー注記　";font-weight:700;}
+  .fixed-cta{
+    position:sticky;bottom:0;left:0;right:0;background:var(--paper);
+    border-top:1px solid var(--line);padding:10px 16px 14px;box-shadow:0 -6px 20px rgba(0,0,0,.12);
+    z-index:5;
+  }
+  .fixed-cta .btn{margin-top:4px;font-size:13px;padding:13px 10px;}
+  .concentric{
+    position:absolute;border-radius:50%;border:1.5px solid var(--accent-wood);opacity:.35;
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-label">SCROLL WIREFRAME — 暦みそ ―KOYOMI― スマホ版（375〜428px想定）</div>
+<div class="page">
+
+  <!-- 01 Hero -->
+  <div class="section">
+    <span class="tag">01 / Hero</span><span class="pattern">HERO-008反転</span>
+    <div class="img-box" style="height:280px;">
+      朝7〜8時・逆光の食卓。湯気の立つ味噌汁の椀、木のお椀、季節野菜、40〜60代女性の手元<br>（画面いっぱい・下部は暗めグラデーションで文字視認性確保）
+    </div>
+    <div class="eyecatch">二十四節気とともにめぐる、<br>食べる暦。</div>
+    <h1>今日という季節を、<br>一杯の味噌汁で感じる暮らしへ。</h1>
+    <h2 class="sub">代々受け継がれた発酵の知恵と、二十四節気の暮らし方。<br>薬膳味噌ブランド「暦みそ ―KOYOMI―」</h2>
+    <div class="btn">LINEで暦のレシピ帖を受け取る</div>
+    <div class="btn-note">今だけ｜二十四節気の薬膳味噌汁レシピ12選をプレゼント中</div>
+    <div class="anno">写真はHero単体でブランド世界観が伝わる完成度を目指す最重要カット。コピーは白〜生成り、写真下部のみ暗幕グラデーション（rgba(43,38,33,.55)程度）で可読性確保。スクロール誘導は最小限（矢印は使わず、次セクションの背景がわずかに見切れる程度で十分）。</div>
+  </div>
+
+  <!-- 02 共感 -->
+  <div class="section">
+    <span class="tag">02 / 共感</span><span class="pattern">文章体（PASONA型ブレンド）</span>
+    <h2 class="headline">こんな毎日、<br>過ごしていませんか。</h2>
+    <p class="lead">
+      朝の身支度に、少し時間がかかるようになった。<br>
+      季節が変わるたびに、なんとなく体が重い。<br>
+      「体にいいこと」はしたい、でも忙しくて凝ったことまでは手が回らない——
+    </p>
+    <p class="lead">
+      一つでも心当たりがあれば、それは特別なことではありません。<br>
+      毎日の食卓が、少しだけ季節から遠ざかっているだけ。<br>
+      <strong>暦とともにめぐる、一杯のお味噌汁から始めてみませんか。</strong>
+    </p>
+    <div class="anno">チェックボックス形式は不採用。文章として連なる問いかけにすることで通販LP的な圧迫感を回避（Art Direction Board 16-①）。背景は白、装飾は最小限で「呼吸区間」として機能させる。写真は入れず、余白のみで魅せる唯一のセクション。</div>
+  </div>
+
+  <!-- 03 薬膳とは -->
+  <div class="section" style="background:linear-gradient(rgba(43,38,33,.42),rgba(43,38,33,.5)),var(--img-fill);color:#fff;">
+    <span class="tag" style="background:rgba(255,255,255,.2);">03 / 薬膳とは</span><span class="pattern" style="color:#fff;border-color:#fff;">FEATURE-015</span>
+    <div class="img-box" style="height:200px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff;">
+      木目まな板の上に並ぶ季節の食材（全幅背景写真として使用・このボックスはテキストオーバーレイの下地イメージ）
+    </div>
+    <h2 class="headline" style="color:#fff;margin-top:16px;">薬膳とは、難しいことではありません。</h2>
+    <p class="lead" style="color:#F7F3EA;">
+      季節の巡りに合わせて、その時期の体に合う食材を選ぶ。<br>
+      それだけで、薬膳はもう始まっています。<br>
+      二十四節気は、先人たちが遺した「食べる暦」なのです。
+    </p>
+    <div class="anno">背景全面画像+テキストオーバーレイ型（FEATURE-015）。実装時は画像に木目テクスチャオーバーレイ（opacity.05）を薄く重ね、和紙の質感を演出。文字色は生成り#F7F3EAで統一。</div>
+  </div>
+
+  <!-- 04 ブランドストーリー -->
+  <div class="section">
+    <span class="tag">04 / ブランドストーリー</span><span class="pattern">FEATURE-047+046</span>
+    <h2 class="headline">暦みそが生まれるまで。</h2>
+
+    <div class="story-node">
+      <div class="story-num">壱</div>
+      <div style="flex:1;">
+        <h3 class="node-title">記憶</h3>
+        <div class="img-box" style="height:110px;margin-bottom:8px;">セピア調・祖母の味噌桶（回想シーン）</div>
+        <p class="lead" style="margin-bottom:0;">昔、祖母が仕込んでいた味噌桶の匂いを覚えている。<br>寒い朝、湯気の向こうに祖母の背中があった。</p>
+      </div>
+    </div>
+
+    <div class="story-node">
+      <div class="story-num">弐</div>
+      <div style="flex:1;">
+        <h3 class="node-title">気づき</h3>
+        <div class="img-box" style="height:110px;margin-bottom:8px;">暦・二十四節気表のクローズアップ</div>
+        <p class="lead" style="margin-bottom:0;">二十四節気という、日本人が千年以上大切にしてきた暦。<br>その日その日の「食べる知恵」が、今の暮らしから静かに消えかけている。</p>
+      </div>
+    </div>
+
+    <div class="story-node">
+      <div class="story-num">参</div>
+      <div style="flex:1;">
+        <h3 class="node-title">継承</h3>
+        <div class="img-box" style="height:110px;margin-bottom:8px;">九州の味噌蔵・杜氏の手元（木桶仕込み）</div>
+        <p class="lead" style="margin-bottom:0;">九州の小さな味噌蔵で、杜氏が語ってくれた言葉。<br>「味噌は、待つことでしか生まれない。」</p>
+      </div>
+    </div>
+
+    <div class="story-node">
+      <div class="story-num">四</div>
+      <div style="flex:1;">
+        <h3 class="node-title">約束</h3>
+        <div class="img-box" style="height:110px;margin-bottom:8px;">現代の食卓・湯気の立つ椀</div>
+        <p class="lead" style="margin-bottom:0;">一杯の味噌汁から、今日という季節を感じてほしい。<br>それが、暦みそが届けたい暮らしです。</p>
+      </div>
+    </div>
+    <div class="anno">縦タイムライン（FEATURE-047）+ 問題→理想→解決の感情導線（FEATURE-046）を統合。各節に大小混在の写真を配置し均等グリッドを回避。「参」の杜氏写真は顔を写さず手元中心でも可（写真ディレクション方針に準拠）。</div>
+  </div>
+
+  <!-- 05 こだわり -->
+  <div class="section">
+    <span class="tag">05 / こだわり</span><span class="pattern">FEATURE-051 Masonry</span>
+    <h2 class="headline">素材と、手間へのこだわり。</h2>
+    <div class="masonry">
+      <div class="img-box lg">大豆・糀の素材ドアップ写真（最大サイズ）</div>
+      <div class="img-box md">木桶仕込みの様子</div>
+      <div class="img-box md">発酵中の味噌表面</div>
+      <div class="img-box sm">糀</div>
+      <div class="img-box sm">木べら</div>
+      <div class="img-box sm">陶器の器</div>
+    </div>
+    <p class="lead">昔ながらの木桶でじっくりと時間をかけて仕込む製法。派手な演出は必要ありません。素材そのものが持つ力を、丁寧な手間で引き出しています。</p>
+    <div class="anno">大(1)・中(2)・小(3)の非対称混在で雑誌レイアウトを再現。均等グリッド・カード配置は禁止（ブリーフ必須要件）。写真優先順位は「素材のドアップ＞製法・手元＞ディテール」（IND-002飲食の知見準拠）。</div>
+  </div>
+
+  <!-- 05.5 発酵の科学（新設・軽量脚注型） -->
+  <div class="section" style="padding-top:18px;padding-bottom:18px;">
+    <span class="tag">05.5 / 発酵の科学</span><span class="pattern">脚注型（ブレンド要素）</span>
+    <h3 class="node-title" style="font-size:14px;">発酵という、時間が生み出す力。</h3>
+    <p class="lead" style="font-size:12.5px;margin-bottom:6px;">味噌の発酵過程では、麹菌の働きにより大豆のタンパク質がアミノ酸に分解され、うま味と栄養価がともに高まることが知られています。</p>
+    <div class="footnote">📌 補足：一般的な味噌の発酵科学に関する公的資料を出典明記の上で使用予定（実データ提供後に差し替え）。「治る」「効く」等の断定表現は使用しません。</div>
+    <div class="anno">大地のムクナの「研究データ引用」の型を踏襲しつつ、比較表・インフォグラフィックは不採用。1〜2行の脚注として四季の薬膳の直前に軽量挿入し、雑誌の脚注のような扱いにとどめる（薬機法チェック表 Art Direction Board 16-③準拠）。</div>
+  </div>
+
+  <!-- 06 四季の薬膳 -->
+  <div class="section">
+    <span class="tag">06 / 四季の薬膳</span><span class="pattern">FEATURE-015派生（季節別背景遷移）</span>
+    <h2 class="headline">めぐる季節、めぐる味噌。</h2>
+    <div class="season-block">
+      <div class="season-icon">🌱</div>
+      <div><strong>春（立春〜）</strong><p class="lead" style="margin:4px 0 0;font-size:12px;">若菜と味噌のやさしい一杯。芽吹きの季節に寄り添う味わい。</p></div>
+    </div>
+    <div class="season-block">
+      <div class="season-icon">🌿</div>
+      <div><strong>夏（夏至〜）</strong><p class="lead" style="margin:4px 0 0;font-size:12px;">生姜を効かせた、汗ばむ季節の一杯。</p></div>
+    </div>
+    <div class="season-block">
+      <div class="season-icon">🍂</div>
+      <div><strong>秋（白露〜）</strong><p class="lead" style="margin:4px 0 0;font-size:12px;">根菜をたっぷり、実りの季節を味わう一杯。</p></div>
+    </div>
+    <div class="season-block">
+      <div class="season-icon">❄️</div>
+      <div><strong>冬（冬至〜）</strong><p class="lead" style="margin:4px 0 0;font-size:12px;">かぼちゃと味噌の、体を温める一杯。</p></div>
+    </div>
+    <div class="anno">背景色はセクション内で若草→深緑へ縦グラデーション遷移（カラー設計7章の背景の流れに対応）。PC版ではタブ切り替え、SP版では縦積み4ブロックを採用（実装コスト・スクロール快適性のバランスによりSPは縦積み固定を推奨）。</div>
+  </div>
+
+  <!-- 07 LINE登録特典 -->
+  <div class="section">
+    <span class="tag">07 / LINE登録特典</span><span class="pattern">CTA-L-002（メインオファー）</span>
+    <h2 class="headline">公式LINEにご登録いただくと、<br>こんな暮らしが届きます。</h2>
+    <div class="img-box" style="height:190px;margin-bottom:14px;">
+      スマホ画面モックアップ＋LINEトーク画面イメージ／「暦のレシピ帖」PDF表紙を斜めに重ねて配置
+    </div>
+    <div class="offer-card">
+      <div class="offer-title">【無料】暦のレシピ帖<br>二十四節気の薬膳味噌汁レシピ12選</div>
+      各節気に合わせた味噌汁レシピをまとめたPDFです。「今日は何の節気か」がひと目でわかる暦カレンダー付き。献立に迷ったときのお守りとして、そのまま保存してお使いいただけます。
+    </div>
+    <ul class="benefit-list">
+      <li>🥣 毎日の味噌汁でできる、季節に寄り添う暮らしのコツ</li>
+      <li>📖 二十四節気ごとの薬膳レシピを定期的にお届け</li>
+      <li>🌾 味噌蔵の様子や発酵の物語など、つくり手のストーリー</li>
+      <li>🎁 登録者限定のお知らせ（先行案内・季節の便り）</li>
+    </ul>
+    <p class="lead">売り込みばかりのLINEではありません。「今日という季節」にまつわる話を、無理のないペースでお届けします。もちろん、いつでもブロックしていただいて構いません。</p>
+    <div class="btn">暦のレシピ帖を無料でもらう（公式LINE登録）</div>
+    <div class="anno">PDF特典の中身が数秒でイメージできるよう、レシピページのプレビューを1〜2点小さく差し込む（大地のムクナ方式を踏襲）。安心文言は必須（LINE登録ハードルを下げる一文）。</div>
+  </div>
+
+  <!-- 08 愛用者の声 -->
+  <div class="section">
+    <span class="tag">08 / 愛用者の声</span><span class="pattern">可変カード数レイアウト</span>
+    <h2 class="headline">「暦みそ」を選んだ方たちの声。</h2>
+    <div class="voice-card">
+      <div class="img-box" style="height:80px;margin-bottom:10px;">食卓・味噌汁の器の写真（顔写真の代わり）</div>
+      <div class="voice-quote">「朝の一杯が、季節を感じる時間になりました。」</div>
+      <div class="voice-meta">東京都／40代女性／M様（掲載許可確認済み・個人の感想です）</div>
+    </div>
+    <div class="voice-card">
+      <div class="img-box" style="height:80px;margin-bottom:10px;">木のお椀と湯気の写真（顔写真の代わり）</div>
+      <div class="voice-quote">「暦を意識するようになって、食卓が楽しくなりました。」</div>
+      <div class="voice-meta">福岡県／50代女性／S様（掲載許可確認済み・個人の感想です）</div>
+    </div>
+    <div class="anno">サンプルコピーにつき本番では実データに差し替え。2件から成立する可変レイアウトとし、声が増え次第カード追加可能な構成にする（大地のムクナ運用ルール準拠）。「個人の感想です」の明記は薬機法対応上必須。</div>
+  </div>
+
+  <!-- 09 FAQ -->
+  <div class="section">
+    <span class="tag">09 / FAQ</span>
+    <h2 class="headline">よくあるご質問</h2>
+    <div class="faq-item">
+      <div class="faq-q">どんな内容がLINEに届きますか？</div>
+      <div class="faq-a">二十四節気に合わせた薬膳レシピや、味噌蔵の様子など、暮らしにまつわる話をゆっくりお届けします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">配信頻度はどれくらいですか？</div>
+      <div class="faq-a">目安として月に2〜4回程度、季節の変わり目を中心にお届けします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">費用はかかりますか？</div>
+      <div class="faq-a">LINE登録・レシピ帖の受け取りはすべて無料です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">いつでも解除できますか？</div>
+      <div class="faq-a">はい、いつでもブロックしていただけます。無理な引き止めは一切ありません。</div>
+    </div>
+    <div class="anno">アコーディオン形式（1カラム・余白広め）。飾りは最小限にし、静けさのトーンを維持する。</div>
+  </div>
+
+  <!-- 10 最終CTA -->
+  <div class="section" style="border-bottom:none;padding-bottom:24px;position:relative;overflow:hidden;">
+    <span class="concentric" style="width:120px;height:120px;top:-20px;right:-30px;"></span>
+    <span class="concentric" style="width:60px;height:60px;top:20px;right:10px;"></span>
+    <span class="tag">10 / 最終CTA</span><span class="pattern">CTA-L-002</span>
+    <div class="img-box" style="height:170px;margin:8px 0 16px;">
+      朝の食卓、湯気の立つ味噌汁を前に座る後ろ姿／柔らかい朝の光（Heroと世界観統一）
+    </div>
+    <h2 class="headline">今日の一杯から、<br>暦とめぐる暮らしを。</h2>
+    <p class="lead" style="font-size:11.5px;color:var(--accent-clay);">※プレゼントPDFは、LINEの仕様変更により予告なく終了する場合がございます。気になった今のうちにお受け取りください。</p>
+    <p class="lead">特別なことをしなくていい。難しい知識もいりません。<br>二十四節気とともにめぐる、一杯の味噌汁から。<br>その暮らしの豊かさを、今日はあなたに少しだけおすそ分けさせてください。</p>
+    <div class="btn" style="font-size:15px;padding:18px 10px;">【無料】公式LINEを友だち追加して、暦のレシピ帖をもらう</div>
+    <div class="btn-note">登録者限定・二十四節気の薬膳味噌汁レシピ12選プレゼント中</div>
+    <div class="anno">同心円シンボル（ブランドパターン）を装飾として右上に淡く配置。ページ内で最も目立つCTAサイズにする。</div>
+  </div>
+
+</div>
+
+<!-- スマホ固定CTA（scrollY>500pxでフェードイン想定） -->
+<div class="page" style="position:sticky;bottom:0;box-shadow:none;">
+  <div class="fixed-cta">
+    <div style="font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;font-size:11px;color:var(--ink-soft);">暦のレシピ帖、無料でお届け中</div>
+    <div class="btn">LINEで受け取る</div>
+  </div>
+</div>
+<div class="frame-label" style="margin-top:0;">↑ CTA-L-004：scrollY 500px以降でtranslateY(100%→0)フェードイン、hoikushi-mikata-lp方式を踏襲</div>
+
+<div style="text-align:center;padding:20px;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;font-size:11px;color:var(--ink-soft);">
+※本ワイヤーフレームは構成・文言・レイアウト確認用です。配色は本番カラーを仮反映していますが最終調整はPhase3（High Fidelity Design）で行います。
+</div>
+
+</body>
+</html>
