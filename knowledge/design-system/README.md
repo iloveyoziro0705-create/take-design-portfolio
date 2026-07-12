@@ -30,59 +30,62 @@ knowledge/design-system/
 
 ## ライブラリ一覧
 
+**状態の凡例**: ✅ 完成（体系的パターン網羅済み） / 🟡 実例収録中（実制作LPの裏付けあり・件数はこれから蓄積） / 🔜 準備中（未着手）
+**2026-07-12**: 過去に制作した12件のLP（ai-school-lp / beauty-salon-lp / business-design-academy-lp / career-compass-lp / dental-clinic-lp / elearning-lp / finance-lp / hoikushi-mikata-lp / lumia-lp / mirai-ryo-lp / rapas-lp / restaurant-lp）を分析し、各ファイル末尾の「実案件からの知見」セクションに実装パターン・実測CSS値・調達フローを追記。既存内容は変更・削除せず追記のみ。
+
 ### layouts/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
 | hero-layout-library.md | Hero Section 55パターン | ✅ 完成 |
 | hero-ranking.md | HeroランキングCV/デザイン/モバイル | ✅ 完成 |
 | hero-pattern-map.md | Hero業種×CV目的マップ | ✅ 完成 |
-| cta-layout-library.md | CTAセクションレイアウト | 🔜 準備中 |
-| feature-layout-library.md | Featureセクションレイアウト 55パターン | ✅ 完成 |
+| cta-layout-library.md | CTAセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| feature-layout-library.md | Featureセクションレイアウト 55パターン + 実装事例マッピング | ✅ 完成 |
 | feature-ranking.md | FeatureランキングCV/デザイン/スマホ/汎用性 | ✅ 完成 |
 | feature-pattern-map.md | Feature業種×CV目的マップ | ✅ 完成 |
-| voice-layout-library.md | Voiceセクションレイアウト | 🔜 準備中 |
-| faq-layout-library.md | FAQセクションレイアウト | 🔜 準備中 |
-| flow-layout-library.md | Flowセクションレイアウト | 🔜 準備中 |
-| pricing-layout-library.md | Pricingセクションレイアウト | 🔜 準備中 |
-| profile-layout-library.md | Profileセクションレイアウト | 🔜 準備中 |
-| contact-layout-library.md | Contactセクションレイアウト | 🔜 準備中 |
-| footer-layout-library.md | Footerセクションレイアウト | 🔜 準備中 |
+| voice-layout-library.md | Voiceセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| faq-layout-library.md | FAQセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| flow-layout-library.md | Flowセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| pricing-layout-library.md | Pricingセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| profile-layout-library.md | Profileセクションレイアウト | 🟡 実例収録中（実例少数・要蓄積） |
+| contact-layout-library.md | Contactセクションレイアウト | 🟡 実例収録中（12LP分析済） |
+| footer-layout-library.md | Footerセクションレイアウト | 🟡 実例収録中（12LP分析済） |
 
 ### photo/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| photo-composition-library.md | 写真構図パターン | 🔜 準備中 |
-| visual-composition-rules.md | ビジュアル選定・加工ルール | 🔜 準備中 |
+| photo-composition-library.md | 写真構図パターン | 🟡 実例収録中（12LP分析済） |
+| visual-composition-rules.md | ビジュアル選定・加工ルール | 🟡 実例収録中（写真/イラスト調達フロー含む） |
 
 ### components/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| ui-component-library.md | コンポーネント統合インデックス | 🔜 準備中 |
-| button-library.md | ボタンパターン | 🔜 準備中 |
-| card-library.md | カードパターン | 🔜 準備中 |
-| form-library.md | フォームパターン | 🔜 準備中 |
-| badge-library.md | バッジ・タグパターン | 🔜 準備中 |
-| icon-library.md | アイコン使用ルール | 🔜 準備中 |
+| ui-component-library.md | コンポーネント統合インデックス | 🟡 実例収録中（12LP分析済） |
+| button-library.md | ボタンパターン | 🟡 実例収録中（12LP分析済） |
+| card-library.md | カードパターン | 🟡 実例収録中（12LP分析済） |
+| form-library.md | フォームパターン | 🟡 実例収録中（実例少数・要蓄積） |
+| badge-library.md | バッジ・タグパターン | 🟡 実例収録中（12LP分析済） |
+| icon-library.md | アイコン使用ルール | 🟡 実例収録中（12LP分析済） |
 
 ### motion/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| motion-library.md | アニメーション・トランジション | 🔜 準備中 |
+| motion-library.md | アニメーション・トランジション | 🟡 実例収録中（GSAP/ScrollTrigger/Rive実装含む） |
 
 ### spacing/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| spacing-library.md | 余白スケール・セクション間距離 | 🔜 準備中 |
+| spacing-library.md | 余白スケール・セクション間距離 | 🟡 実例収録中（12LP分析済） |
 
 ### typography/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| typography-library.md | フォント・スケール・業種別推奨 | 🔜 準備中 |
+| typography-library.md | フォント・スケール・業種別推奨 | 🟡 実例収録中（12LP分析済） |
 
 ### colors/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| color-system.md | カラーシステム・業種別パレット | 🔜 準備中 |
+| color-system.md | カラーシステム・業種別パレット | 🟡 実例収録中（12案件の実hex値対応表あり） |
 
 ---
 

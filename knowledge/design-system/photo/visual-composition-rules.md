@@ -33,3 +33,147 @@
 ## 参照先
 
 `knowledge/design-system/photo/photo-composition-library.md` — 構図パターン詳細
+
+---
+
+## 実案件からの知見（2026-07-12 追加）
+
+過去の制作セッション（TAKE CRAFTブランドサイト、歯科クリニックLP、LearnCore(elearning-lp)、finance-lp等）で実際に確立した、写真・イラスト素材の調達フロー／加工ルール／配置ルールの実践知見。時系列で状況が変化している項目（特にBot対策）は、いつ・何が起きたかを明記して矛盾なく整理する。
+
+### 選定ルール：フリー素材サイトの調達フロー（時系列で状況が変化）
+
+**重要：Pexels/UnsplashともにBot検知が年々強化されており、時期によって使える手法が変わっている。以下は判明した経緯そのままを記録する。**
+
+- **Pexels**: 2026-07-07時点で、PlaywrightのheadlessブラウザからCloudflareのBot検証（"Performing security verification"のチャレンジ画面）でブロックされ、検索結果を取得できないことを確認済み。Pexelsを使う場合は先に軽く疎通確認し、ブロックされていたらUnsplashに切り替える。
+- **Unsplash（基本フロー）**: `https://unsplash.com/s/photos/{query}` をPlaywrightで開き、`img[src*="images.unsplash.com/photo-"]` を抽出する（`plus.unsplash.com` のURLはUnsplash+の有料素材なので必ず除外する）。
+- **Unsplash（2026-07-08時点で追加のBot対策が必要になった）**: この日から「Oh noes! Access Denied」というBotStopper系のBot検知がUnsplashにも追加された。突破には以下の組み合わせが有効：
+  - `chromium.launch({args:['--disable-blink-features=AutomationControlled']})` でheadless検出用フラグを無効化
+  - 実際のデスクトップChromeのUser-Agentを明示的にセット
+  - `navigator.webdriver` を `undefined` に上書きする `initScript`（`addInitScript`）をページ読み込み前に注入
+- **正しい写真ページURL・撮影者名の取得方法**: 画像の直接URL（`images.unsplash.com/photo-{id}`）から `/photos/{id}` に直接アクセスすると404になる。検索結果ページの `a[href*="/photos/"]` のhrefから正しいスラッグを取得すること。
+- **CDN URLの形式**: `https://images.unsplash.com/photo-{timestamp}-{hash}?w={w}&q=80&auto=format`。サイズは用途に合わせて指定（hero: 1920x1080程度、avatar: 400x400、OGP: 1200x630等）。
+- **ライセンス**: Pexels/Unsplashはどちらも商用利用可・帰属表示不要。
+
+### 選定ルール：`&crop=faces&h=` パラメータの弊害
+
+`&crop=faces&h=` を付けると顔検出が失敗した場合に不自然な位置でクロップされることがある（2026-07-07に実際発生：人物を写したはずが木々ばかりが写り人物が小さくなる事故が起きた）。**人物写真は `w=` のみを指定して自然比率のまま取得し、位置調整はCSS側の `object-fit:cover` + `object-position` で行う方が確実。** position値（例: `center 100%` = 下寄せ）は複数パターンを試してから本採用するのがよい。
+
+### 選定ルール：同一人物を複数箇所で使いたい場合
+
+Hero写真と院長紹介写真など、同じLP内の複数箇所で同一人物の写真が必要になるケースがある。Unsplashには同一モデル・同一撮影シリーズの別カットが複数枚アップロードされていることがあり、服装・背景・ポーズが同じ候補を探すことで、無料素材のまま「同一人物の別カット2枚以上」を確保できる（2026-07-07、歯科クリニックLPのブラッシュアップで実際に発見・採用した手法）。
+
+### 選定ルール：人種・民族確認のモンタージュ手法
+
+人物写真の人種確認は alt テキストや検索クエリの語句だけに頼らない（Unsplashのスラッグ名・alt文言は実際の被写体の人種を正しく反映していないことがある）。**複数候補を1枚のHTMLモンタージュ画像（グリッド+ラベル）にまとめてPlaywrightでスクリーンショットし、目視確認するフロー**が効率的。
+
+**特定の人種を指定された場合の検索テクニック**（2026-07-08、歯科クリニックLPで「日本人にしてほしい」という追加依頼から確立）:
+- 単純な `"japanese woman"` / `"japanese man"` のような2語クエリは、カジュアルな一般ポートレート・ライフスタイル写真としては明確に日本人らしい高品質な結果が返る。
+- しかし `"japanese dentist"` `"japanese doctor patient"` のように**業種・シチュエーションを掛け合わせた複合クエリは0件、無関係な結果、または全員マスク着用で顔が見えない**結果になりがちで、医療・クリニック系の「日本人×専門職」構図の調達は難易度が高い。
+- フォールバックとして `"korean doctor smiling portrait"` `"east asian doctor smiling scrubs"` のように国籍を東アジア圏に広げたクエリが実用的な妥協案になる（完全な日本人保証はできないが、はっきり明るい印象の東アジア系の顔立ちの候補が得られる）。
+- **同じ検索語でも、異なるqueryを続けて叩くとUnsplashが前回検索結果をキャッシュしたまま返すことがあり、全く無関係な写真セット（別のqueryの結果と完全一致）が返るバグを実際に踏んだ。** 予期しない内容（例: 検索語と無関係なファッション/コスプレ写真ばかり）が返った場合は、そのクエリ回だけ再実行して結果が変わるか確認すること。
+- 最終選定は必ず上記のモンタージュ化＋目視確認を行う。
+
+### 選定ルール：フリーイラスト素材（unDraw vs Storyset の使い分け）
+
+**重要な訂正（2026-07-08判明）**: 当初「undraw.coを標準採用」としていたが、実際にダウンロード・レンダリングして検証したところ、**unDrawのイラストはほぼ全て顔のパーツが描かれない/後ろ向き・横向きの抽象的な人物表現**であることが判明した（"online-learning"等で実確認）。「表情がはっきり分かるイラストが欲しい」という要件には unDraw は不向き。
+
+- **unDraw（undraw.co）**: ミニマルで帰属表示不要（MIT的ライセンス）。ただし人物の表情はほぼ描かれない。「ミニマルで帰属表示不要でよい」場合に採用。
+  - 取得フロー: JS SPAだが `curl` でイラスト個別ページのHTMLを直接取得すれば `cdn.undraw.co/illustrations/{slug}.svg` の直URLがgrepで拾える（WebFetch不要）。標準アクセントカラー `#6c63ff` / `#ff6584` を `sed` でブランドカラーのhexに置換して使う。
+- **Storyset（storyset.com、運営元Freepik）**: 目・眉・口まで描かれた表情豊かなイラストを提供。「表情のある/温かみのあるイラストが欲しい」場合に採用。
+  - 取得フロー: `curl` で storyset.com のイラスト個別ページHTMLを取得 → `https://stories.freepiklabs.com/storage/{id}/{filename}.svg` 形式の直リンクをgrepで抽出 → ダウンロード → アクセントカラーのhexを `sed` でブランドカラーに置換。
+  - **注意: StorysetはFreepikライセンスのため、無料利用には帰属表示（footerへのクレジットリンク等）が必須。** unDrawとは異なりライセンス要件がある点に注意。
+- **使い分けの判断基準**: 「表情のある/温かみのある」→ Storyset（要帰属表示）。「ミニマルで帰属表示不要でよい」→ unDraw。
+
+### 加工ルール：SVGイラストを`<img>`化する際のアスペクト比崩れバグ
+
+`<img width="750" height="500" style="width:100%;max-width:Npx">` のように**幅だけをCSSで制約し `height:auto` を明示しない**と、`height:auto`が指定されない限りブラウザはHTML属性のheight値をそのまま使ってしまい、特にモバイル幅で縦に大きく間延びするバグが実際に発生した（LearnCore/elearning-lpで発生・修正済み）。**SVG/画像をレスポンシブ表示する際は、幅制約と必ずセットで `height:auto` も指定すること。**
+
+### 加工ルール：ロゴ背景の透過処理（numpy不使用環境）
+
+環境にnumpyが無い場合でも、PIL単体で透過処理ができる。`ImageChops.lighter` / `ImageChops.darker` を使い、`.point()` でしきい値処理を行うフローが確立済み（TAKE CRAFTメインロゴのPNG化で実践）。今後同様のロゴ加工依頼が来た場合はこの方法を使う。
+
+### 加工ルール：オーバーレイ透明度の実測値（実LPコードから抽出）
+
+Hero画像上にテキストを重ねる際の可読性確保パターン。実案件では `<img>`側のCSSオーバーレイではなく、**背景画像として `linear-gradient(...)` と `url()` を重ねてセットする手法**が主流：
+
+```css
+/* restaurant-lp: Hero（暗めの単色グラデーションで下部を強調） */
+.hero {
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-xxxx?auto=format&fit=crop&w=1800&q=80")
+    center/cover;
+}
+
+/* business-design-academy-lp: Final CTA背景（暗さ均一のオーバーレイ） */
+.final-cta-bg {
+  background: linear-gradient(rgba(11,15,25,.65), rgba(11,15,25,.65)), url('./assets/final-cta.jpg');
+  background-size: cover;
+  background-position: center;
+}
+```
+
+実測されたrgba値の傾向：
+- **単色暗転オーバーレイ**は `rgba(0,0,0,.45)`〜`rgba(0,0,0,.82)` の範囲で使われている。上部を薄く（`.45`〜`.65`）、下部やテキスト重畳部を濃く（`.75`〜`.82`）する2段階グラデーションが定番（`linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75))`のように上下で濃度を変える）。
+- 動画/画像サムネイルを暗くしてラベルを載せる場合は `filter: brightness(.75)` を`<img>`に直接かける手法も使われている（ai-school-lp の動画プレビューサムネイル）。
+- カード等の装飾グラデーション（白のハイライトなど）は薄め：`linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 60%)`のように角度付き・透明フェードアウトで光沢感を出す。
+
+### 加工ルール：画像未着手時のプレースホルダー実装パターン（beauty-salon-lpより抽出）
+
+CLAUDE.mdの「画像が届く前にLPを作る場合はプレースホルダーを作っておく」フローの具体的なコード実装。`<img>`をラップしたコンテナに、画像読み込み失敗時のフォールバック表示を仕込み、実運用でも壊れない形にする：
+
+```css
+.hero-img-placeholder { position: relative; overflow: hidden; }
+.hero-img-placeholder > img {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  border-radius: var(--radius-lg);
+}
+.img-fallback {
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; font-size: 11px; color: var(--sub);
+  width: 100%; height: 100%; padding: 20px; text-align: center;
+  position: absolute; inset: 0; z-index: 1;
+}
+```
+
+```html
+<div class="hero-img-placeholder">
+  <img src="./assets/images/fv-hero.jpg"
+       alt="フェイシャルサロン Luminos Skin の施術イメージ"
+       loading="eager"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="img-fallback">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" opacity=".35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <span>fv-hero.jpg を<br>assets/images/ に配置</span>
+  </div>
+</div>
+```
+
+ポイント：
+- `<img>` の `onerror` 属性で自身を非表示にし、直後の兄弟要素（フォールバックdiv）を表示する1行トリック（`this.nextElementSibling.style.display='flex'`）。
+- 画像ファイルがまだアップロードされていない/パスが間違っている状態でも、崩れたレイアウトにならず「どのファイルをどこに置けばよいか」がブラウザ上でそのまま案内表示される。
+- ユーザーが後から画像をアップロードすれば、コード側は一切変更不要で自動的に実画像へ切り替わる（`<img>`のsrcパスは最初から本番想定のパスにしておく）。
+- CLAUDE.mdに記載の「①Claudeがフォルダを用意→②ユーザーがアップロード→③ClaudeがHTMLに組み込む」フローのうち、①〜②の間の見た目の空白期間を埋める実装として有効。
+
+### 配置ルール：object-fit/object-position/aspect-ratioの標準組み合わせ
+
+実LP群で最も頻出する「画像を親要素いっぱいに敷き詰めてトリミングする」定型パターン：
+
+```css
+.card-img { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius); }
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+```
+
+人物写真で顔が見切れる事故を防ぐため、`object-position: center top`（上寄せ）や `object-position: top` を人物ポートレートに使うケースが複数LPで確認されている（beauty-salon-lp / business-design-academy-lp / hoikushi-mikata-lp）。逆に汎用的な図解・スクリーンショット系は `object-position: center center`（デフォルト）でよい。
+
+### Production QA観点（配置・加工品質のチェック基準）
+
+LP完成後の自己採点フローの一部として、画像関連は以下を確認する（歯科クリニックLP・LearnCoreで実践済みの10項目採点のうち画像に関連する観点）：
+- レスポンシブ時に `aspect-ratio` の切り替えがあるか（PC/タブレット/モバイルで縦横比が不自然に伸びていないか）
+- `object-fit:cover` 適用箇所で人物の顔が見切れていないか（`object-position`で要調整）
+- Hero等のオーバーレイでテキストのコントラスト比が十分か（前述のrgba値レンジを参考に調整）
+- SVGイラストの `height:auto` 未指定によるモバイル間延びバグが無いか
+- alt属性が内容を正しく説明しているか（人種・業種に配慮した記述になっているか）
