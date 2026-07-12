@@ -169,6 +169,38 @@ CLAUDE.mdの「画像が届く前にLPを作る場合はプレースホルダー
 
 人物写真で顔が見切れる事故を防ぐため、`object-position: center top`（上寄せ）や `object-position: top` を人物ポートレートに使うケースが複数LPで確認されている（beauty-salon-lp / business-design-academy-lp / hoikushi-mikata-lp）。逆に汎用的な図解・スクリーンショット系は `object-position: center center`（デフォルト）でよい。
 
+### 選定ルール：日本人モデル写真の優先調達先（2026-07-12 追加・最優先）
+
+**2026年7月12日以降、人物写真素材を調達する際はUnsplash/Pexelsより先に、まず以下の日本国内フリー素材サイト3つを優先して探すこと。** これまでUnsplash中心の運用だったが、日本人らしい被写体を確実に得たい・業種特化(ビジネスシーン等)の写真が欲しい場合、海外サイトでの英語複合クエリ調達("japanese dentist"等が0件になりがちな問題、前述の「特定の人種・民族を指定された場合の検索テクニック」参照)より、そもそも日本人モデルのみを扱う国内サイトの方が確実で速い。3サイトとも `curl` に素直に応答し(`--disable-blink-features`等のBot回避策は現時点で不要、通常のブラウザUser-Agentを付ければ200が返る)、Playwrightを使わずcurlだけで検索〜URL抽出まで完結できる。
+
+#### 1. ぱくたそ(pakutaso.com) — 日本人モデル最大手・カジュアル〜ビジネスまで幅広い
+- **検索URL**: `https://www.pakutaso.com/search.html?search={URLエンコードした日本語キーワード}`(例: `search.html?search=%E5%A5%B3%E6%80%A7`＝「女性」)※`/search?q=`ではなく`/search.html?search=`が正しいパスなので注意(前者は404になる)
+- **検索結果ページ**: 記事URLパターン `https://www.pakutaso.com/{数字}{英数字}post-{ID}.html` の形式でヒットが並ぶ。`grep -oE 'href="https://www\.pakutaso\.com/[0-9a-z]+post-[0-9]+\.html"'` 等で抽出できる
+- **画像URL**: 各記事ページの `og:image` に `https://www.pakutaso.com/shared/img/thumb/{ファイル名}.jpg` 形式の直リンクがある。より大きいサイズ(S/M/L)やトリミング機能は記事ページ内のダウンロードボタン経由(curlでは取得しづらいのでPlaywrightでボタンクリックのネットワークリクエストを傍受するか、まずはthumbサイズで用が足りるか確認)
+- **ライセンス**(`/userpolicy.html`で確認済み): 商用利用可、クレジット表記は二次配布や書籍装丁以外では不要(任意で推奨)。ロイヤリティフリーだがCC0ではない＝素材そのものの再配布・販売は不可。日本語で連絡が取れない利用者は利用不可という特殊条項があるが、日本国内での通常のLP制作用途では問題にならない
+- **強み**: 「モデル一覧」ページ(`/model.html`)から特定モデルの別カットをまとめて探せるため、「同一人物を複数箇所で使いたい」ケース(Hero写真と院長紹介写真など)でぱくたそなら体系的に解決しやすい
+
+#### 2. おしごとピクチャーズ(free-images.jp) — ビジネス・オフィスシーンに強い、WordPress製
+- **検索URL**: `https://free-images.jp/?s={URLエンコードした日本語キーワード}`(WordPress標準検索)
+- **カテゴリ**: `https://free-images.jp/category/{カテゴリ名}/`(例: `business-office`, `beauty-fashion`, `character-family`)で業種別に絞り込み可能
+- **画像詳細ページURL**: `https://free-images.jp/{カテゴリ}/{ID}/`(例: `business-office/1095/`)
+- **画像直リンク**: 詳細ページの `og:image` に `https://free-images.jp/wp-content/uploads/{年}/{月}/{ID}.jpg` 形式の高解像度直リンクがある(実測2560×1463px確認済み)。ダウンロードボタン(`.download-button`)からも同URLに到達する
+- **ライセンス**(`/terms-of-service/`で確認済み): 商用・非商用問わず無料、会員登録・クレジット表記不要、加工・編集可。禁止事項は素材そのものの販売・レンタル・譲渡・再配布・再販売・シェア
+- **強み**: 「ビジネス・オフィス」「スーツ姿」等、業種特化のビジネスシーン写真が充実している(elearning-lp/finance-lp/career-compass-lpのようなBtoB・金融・キャリア系LPで特に有用)
+
+#### 3. graphon(graphon.jp) — 写真＋テクスチャ素材、検索がシンプル
+- **検索URL**: `https://graphon.jp/main/search?search_str={URLエンコードした日本語キーワード}`
+- **画像詳細ページURL**: `https://graphon.jp/main/photo/{ID}`
+- **サムネイル**: `https://graphon.jp/img/photo_s/{ID}_s.JPG`、**フル画像**: `https://graphon.jp/img/photo/{ID}.JPG`(詳細ページの`og:image`から取得可)
+- **ダウンロード**: `https://graphon.jp/main/image_download?id={ID}`
+- **ライセンス**(`/main/about`で確認済み): 商用・非商用問わず無料、登録・クレジット表記不要(任意で歓迎)。禁止事項は素材そのものの再配布のみ
+- **強み**: 人物以外にテクスチャ・風景素材も同一サイトで揃うため、背景装飾素材を探すときにも流用できる
+
+#### 調達フローの優先順位(2026-07-12以降の標準運用)
+1. まず ぱくたそ / おしごとピクチャーズ / graphon の3サイトを**日本語キーワード**で検索する(キーワードは業種名そのものでよく、Unsplashで問題になった「英語複合クエリが0件になる」問題が起きにくい)
+2. 3サイトで見つからない特殊な構図・海外向けの雰囲気が必要な場合のみ、従来通りUnsplash(`&crop=faces`回避・Bot対策込みのフロー、上記参照)にフォールバックする
+3. いずれのサイトも `curl -A "{デスクトップChromeのUA}"` で直接HTMLを取得できるため、Unsplash/Pexelsで必要だったPlaywrightのBot回避策(`--disable-blink-features=AutomationControlled`等)は不要。まずcurlで試し、JSレンダリングが必要な箇所(ぱくたそのダウンロードボタン等)にぶつかった場合のみPlaywrightに切り替える
+
 ### Production QA観点（配置・加工品質のチェック基準）
 
 LP完成後の自己採点フローの一部として、画像関連は以下を確認する（歯科クリニックLP・LearnCoreで実践済みの10項目採点のうち画像に関連する観点）：
