@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>暦みそ ―KOYOMI― | 二十四節気とともにめぐる、食べる暦</title>
+<meta name="description" content="代々受け継がれた発酵の知恵と、二十四節気の暮らし方。薬膳味噌ブランド「暦みそ ―KOYOMI―」の公式LINEにご登録いただくと、二十四節気の薬膳味噌汁レシピ12選を無料でプレゼント。">
+<link rel="canonical" href="https://take-design-portfolio.vercel.app/koyomi-miso-lp/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="暦みそ ―KOYOMI― | 二十四節気とともにめぐる、食べる暦">
+<meta property="og:description" content="代々受け継がれた発酵の知恵と、二十四節気の暮らし方。公式LINE登録で薬膳味噌汁レシピ12選を無料プレゼント。">
+<meta property="og:image" content="https://take-design-portfolio.vercel.app/koyomi-miso-lp/images/hero-miso-steam.jpg">
+<meta property="og:url" content="https://take-design-portfolio.vercel.app/koyomi-miso-lp/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "暦みそ ―KOYOMI―",
+  "description": "二十四節気とともにめぐる、食べる暦。薬膳味噌ブランド。",
+  "url": "https://take-design-portfolio.vercel.app/koyomi-miso-lp/"
+}
+</script>
+
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --white:#FDFCF9;
+    --wood:#B08D5B;
+    --wood-dark:#8A6A42;
+    --deepgreen:#2F4A3C;
+    --wakakusa:#8FA672;
+    --clay:#B5502F;
+    --ink:#2B2621;
+    --ink-sub:#6B5F4F;
+    --line:#DCD3BE;
+    --line-green:#06C755;
+    --note-bg:#F4EBE3;
+    --note-border:#B5502F;
+    --note-text:#8A4327;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans JP",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  .skip-link{
+    position:absolute;top:-48px;left:12px;background:var(--deepgreen);color:#fff;
+    padding:12px 20px;border-radius:4px;z-index:200;transition:top .2s ease;
+    font-size:14px;text-decoration:none;
+  }
+  .skip-link:focus{top:12px;}
+
+  :focus-visible{outline:3px solid var(--clay);outline-offset:2px;}
+
+  h1,h2,h3{font-family:"Noto Serif JP",serif;font-weight:700;margin:0;}
+  p{margin:0;}
+
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  @media (max-width:768px){ .section{padding:56px 0;} }
+
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:.08em;color:var(--clay);font-weight:700;margin-bottom:16px;
+  }
+  h2.headline{font-size:clamp(26px,3.2vw,38px);line-height:1.6;text-align:center;margin-bottom:20px;}
+  .section-lead{font-size:16px;line-height:1.9;color:var(--ink-sub);text-align:center;max-width:640px;margin:0 auto 48px;}
+
+  /* ===== 湯気・葉 texture ===== */
+  .washi-bg{position:relative;}
+  .washi-bg::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== reveal animation ===== */
+  .reveal-up{opacity:0;transform:translateY(24px) scale(.98);
+    transition:opacity .7s cubic-bezier(.16,.84,.44,1),transform .7s cubic-bezier(.16,.84,.44,1);}
+  .reveal-up.in{opacity:1;transform:translateY(0) scale(1);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal-up{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ===== buttons ===== */
+  .btn-line{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--line-green);color:#fff;
+    font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px;letter-spacing:.05em;
+    padding:17px 38px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;
+    box-shadow:0 8px 24px rgba(6,199,85,.28);transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .btn-line:hover,.btn-line:focus-visible{transform:translateY(-3px);box-shadow:0 12px 28px rgba(6,199,85,.4);}
+  .btn-ghost{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--deepgreen);
+    border:1.5px solid var(--deepgreen);font-family:"Noto Serif JP",serif;font-weight:700;font-size:14px;
+    padding:14px 32px;border-radius:4px;text-decoration:none;transition:background .3s ease,color .3s ease;
+  }
+  .btn-ghost:hover,.btn-ghost:focus-visible{background:var(--deepgreen);color:#fff;}
+  .btn-note{font-size:11.5px;color:var(--ink-sub);margin-top:12px;letter-spacing:.02em;}
+
+  /* ===== 中間反復CTA（CTA-L-006） ===== */
+  .mid-cta{
+    max-width:640px;margin:48px auto 0;text-align:center;padding:32px 28px;
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  }
+  .mid-cta p{font-size:13.5px;color:var(--ink-sub);margin-bottom:16px;}
+  .mid-cta .btn-line{font-size:13.5px;padding:14px 30px;}
+
+  /* ===== 01 Hero ===== */
+  .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr;}
+  .hero-photo{position:relative;min-height:56vh;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:55% 35%;position:absolute;inset:0;}
+  .hero-photo .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,38,33,0) 35%,rgba(43,38,33,.74) 78%,rgba(43,38,33,.9) 100%);}
+  .hero-copy{position:relative;padding:36px 24px 40px;color:var(--white);z-index:2;margin-top:-160px;}
+  .hero-copy .eyebrow{color:#E8B88F;}
+  .hero h1{font-size:clamp(26px,6vw,34px);line-height:1.7;margin-bottom:14px;color:#FDFCF9;}
+  .hero-sub{font-size:13px;line-height:1.85;color:#E5DDCB;margin-bottom:22px;}
+  .hero .btn-line{width:100%;}
+  .hero .btn-note{color:#D8CDB8;text-align:center;}
+
+  @media (min-width:900px){
+    .hero{grid-template-columns:44% 56%;min-height:100vh;align-items:stretch;}
+    .hero-copy{
+      grid-column:1;grid-row:1;margin-top:0;padding:0 64px;display:flex;flex-direction:column;justify-content:center;
+      background:var(--paper);color:var(--ink);position:relative;
+    }
+    .hero-copy .eyebrow{color:var(--clay);}
+    .hero h1{color:var(--ink);font-size:clamp(34px,3.6vw,48px);}
+    .hero-sub{color:var(--ink-sub);font-size:15px;max-width:420px;}
+    .hero .btn-line{width:fit-content;padding:18px 40px;}
+    .hero .btn-note{color:var(--ink-sub);text-align:left;}
+    .hero-photo{grid-column:2;grid-row:1;min-height:100%;}
+    .hero-photo .scrim{display:none;}
+  }
+  .concentric{position:absolute;border-radius:50%;border:1.5px solid rgba(176,141,91,.5);pointer-events:none;}
+
+  /* ===== 02 共感 ===== */
+  .empathy{background:var(--white);}
+  .empathy .container{max-width:680px;text-align:center;}
+  .empathy p{font-size:16px;line-height:2.0;margin-bottom:24px;}
+
+  /* ===== 03 薬膳とは ===== */
+  .yakuzen{
+    position:relative;color:#fff;padding:110px 0;background-size:cover;background-position:center;
+    background-image:linear-gradient(rgba(43,38,33,.5),rgba(43,38,33,.58)),url("images/ingredients-daizu-miso.jpg");
+  }
+  .yakuzen .container{max-width:620px;text-align:center;}
+  .yakuzen h2{color:#fff;}
+  .yakuzen p{color:#F0E9D8;font-size:16px;line-height:1.95;}
+
+  /* ===== 04 ブランドストーリー ===== */
+  .story-node{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:56px;align-items:center;}
+  .story-node:last-child{margin-bottom:0;}
+  .story-visual{border-radius:6px;overflow:hidden;min-height:220px;position:relative;}
+  .story-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .story-visual.texture{
+    background:linear-gradient(135deg,var(--deepgreen),#1d3128);display:flex;align-items:center;justify-content:center;
+  }
+  .story-visual.texture::after{
+    content:"";position:absolute;inset:0;opacity:.15;
+    background-image:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5) 0,transparent 45%),radial-gradient(circle at 75% 70%,rgba(255,255,255,.3) 0,transparent 40%);
+  }
+  .story-num{
+    width:38px;height:38px;border-radius:50%;background:var(--deepgreen);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:14px;font-family:"Noto Serif JP",serif;
+  }
+  .story-body h3{font-size:18px;color:var(--deepgreen);margin-bottom:10px;}
+  .story-body p{font-size:14.5px;line-height:1.9;}
+  @media (min-width:900px){
+    .story-node{grid-template-columns:1fr 1fr;gap:56px;}
+    .story-node:nth-child(even){direction:rtl;}
+    .story-node:nth-child(even) > *{direction:ltr;}
+    .story-visual{min-height:320px;}
+  }
+
+  /* ===== 05 こだわり Masonry ===== */
+  .masonry{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:140px;gap:10px;margin-bottom:32px;}
+  .masonry img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
+  .m-lg{grid-column:span 2;grid-row:span 2;}
+  .m-sm{grid-row:span 1;}
+  @media (min-width:900px){
+    .masonry{grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:16px;}
+    .m-lg{grid-column:span 3;grid-row:span 4;}
+    .m-tall{grid-column:span 1;grid-row:span 4;}
+    .m-md{grid-column:span 2;grid-row:span 3;}
+    .m-sm{grid-column:span 2;grid-row:span 2;}
+  }
+  .kodawari-lead{max-width:640px;margin:0 auto;text-align:center;font-size:15.5px;color:var(--ink-sub);}
+
+  /* ===== 05.5 発酵の科学 ===== */
+  .kagaku{padding:56px 0;}
+  .kagaku .container{max-width:680px;text-align:center;}
+  .kagaku h3{font-size:16px;color:var(--deepgreen);margin-bottom:10px;}
+  .kagaku p{font-size:14px;color:var(--ink-sub);margin-bottom:14px;}
+  .footnote{
+    display:inline-block;background:var(--note-bg);border:1px dashed var(--note-border);color:var(--note-text);
+    font-size:11.5px;line-height:1.8;border-radius:4px;padding:10px 16px;
+  }
+
+  /* ===== 06 四季 ===== */
+  .season{background:linear-gradient(180deg,var(--wakakusa) 0%,var(--deepgreen) 100%);color:#fff;}
+  .season h2{color:#fff;}
+  .season-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media (min-width:900px){ .season-grid{grid-template-columns:repeat(4,1fr);gap:24px;} }
+  .season-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:28px 20px;text-align:center;backdrop-filter:blur(2px);}
+  .season-icon{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;}
+  .season-card strong{font-size:15px;display:block;margin-bottom:8px;}
+  .season-card p{font-size:13px;color:#EAF2EA;line-height:1.8;}
+
+  /* ===== 07 LINE特典 ===== */
+  .offer{background:var(--white);}
+  .offer-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+  @media (min-width:900px){ .offer-grid{grid-template-columns:1fr 1fr;gap:64px;} }
+  .offer-visual{border-radius:8px;overflow:hidden;aspect-ratio:2/3;max-height:520px;}
+  .offer-visual img{width:100%;height:100%;object-fit:cover;}
+  .offer-card{background:var(--paper);border:1px solid var(--clay);border-radius:6px;padding:22px;margin-bottom:20px;}
+  .offer-card .tt{font-family:"Noto Serif JP",serif;font-weight:700;color:var(--clay);font-size:15px;margin-bottom:10px;}
+  .offer-card p{font-size:13px;line-height:1.85;color:var(--ink-sub);}
+  .benefit-list{list-style:none;padding:0;margin:0 0 20px;}
+  .benefit-list li{padding:10px 0;border-bottom:1px dotted var(--line);font-size:14px;}
+  .offer-note{font-size:13.5px;color:var(--ink-sub);margin-bottom:20px;}
+
+  /* ===== 08 声 ===== */
+  .voice-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media (min-width:900px){ .voice-grid{grid-template-columns:1fr 1fr;gap:32px;} }
+  .voice-card{display:grid;grid-template-columns:100px 1fr;gap:18px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:20px;}
+  .voice-card img{width:100%;height:100px;object-fit:cover;border-radius:4px;}
+  .voice-quote{font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px;line-height:1.8;margin-bottom:8px;}
+  .voice-meta{font-size:11px;color:var(--ink-sub);}
+
+  /* ===== 09 FAQ ===== */
+  .faq-wrap{max-width:760px;margin:0 auto;}
+  details.faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+  details.faq-item summary{
+    font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;gap:10px;align-items:baseline;
+  }
+  details.faq-item summary::-webkit-details-marker{display:none;}
+  details.faq-item summary::before{content:"Q";color:var(--wood);flex-shrink:0;}
+  details.faq-item summary::after{content:"+";margin-left:auto;color:var(--ink-sub);font-size:18px;}
+  details.faq-item[open] summary::after{content:"–";}
+  .faq-a{font-size:14px;line-height:1.9;color:var(--ink-sub);margin-top:10px;padding-left:20px;}
+
+  /* ===== 10 最終CTA ===== */
+  .final-cta{position:relative;overflow:hidden;text-align:center;}
+  .final-cta .visual{border-radius:8px;overflow:hidden;max-width:900px;margin:0 auto 32px;max-height:320px;}
+  .final-cta .visual img{width:100%;height:100%;object-fit:cover;max-height:320px;}
+  .final-note{font-size:12px;color:var(--clay);margin-bottom:18px;}
+  .final-cta p.lead{font-size:15px;line-height:1.95;max-width:560px;margin:0 auto 28px;}
+
+  /* ===== 固定CTA ===== */
+  .fixed-cta{
+    position:fixed;left:0;right:0;bottom:0;background:var(--white);border-top:1px solid var(--line);
+    padding:12px 16px 16px;box-shadow:0 -6px 20px rgba(0,0,0,.12);z-index:50;
+    transform:translateY(100%);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s ease;
+  }
+  .fixed-cta.show{transform:translateY(0);opacity:1;}
+  .fixed-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:480px;margin:0 auto;}
+  .fixed-cta-inner span{font-size:11.5px;color:var(--ink-sub);white-space:nowrap;}
+  .fixed-cta .btn-line{padding:12px 20px;font-size:13px;flex-shrink:0;}
+  @media (min-width:900px){
+    .fixed-cta{left:auto;right:24px;bottom:24px;max-width:380px;border-radius:8px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.18);}
+  }
+
+  footer{background:var(--ink);color:#D8CDB8;padding:40px 0;text-align:center;font-size:12px;line-height:2;}
+  footer a{color:#E8B88F;}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<main id="main">
+
+  <!-- 01 Hero -->
+  <section class="hero" aria-label="ファーストビュー">
+    <div class="hero-photo">
+      <img src="images/hero-miso-steam.jpg" alt="湯気の立つ味噌汁と木のテーブル" width="1600" height="1371" fetchpriority="high">
+      <div class="scrim" aria-hidden="true"></div>
+    </div>
+    <div class="hero-copy">
+      <span class="concentric" style="width:70px;height:70px;top:-10px;left:20px;" aria-hidden="true"></span>
+      <p class="eyebrow">二十四節気とともにめぐる、食べる暦。</p>
+      <h1>今日という季節を、<br>一杯の味噌汁で<br>感じる暮らしへ。</h1>
+      <p class="hero-sub">代々受け継がれた発酵の知恵と、二十四節気の暮らし方。<br>薬膳味噌ブランド「暦みそ ―KOYOMI―」</p>
+      <a class="btn-line" href="https://lin.ee/xxxxxxx" rel="noopener">LINEで暦のレシピ帖を受け取る</a>
+      <p class="btn-note">今だけ｜二十四節気の薬膳味噌汁レシピ12選をプレゼント中</p>
+    </div>
+  </section>
+
+  <!-- 02 共感 -->
+  <section class="section empathy" aria-labelledby="empathy-h">
+    <div class="container reveal-up">
+      <h2 id="empathy-h" class="headline">こんな毎日、<br>過ごしていませんか。</h2>
+      <p>
+        朝の身支度に、少し時間がかかるようになった。<br>
+        季節が変わるたびに、なんとなく体が重い。<br>
+        「体にいいこと」はしたい、でも忙しくて凝ったことまでは手が回らない——
+      </p>
+      <p>
+        一つでも心当たりがあれば、それは特別なことではありません。<br>
+        毎日の食卓が、少しだけ季節から遠ざかっているだけ。<br>
+        <strong>暦とともにめぐる、一杯のお味噌汁から始めてみませんか。</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 03 薬膳とは -->
+  <section class="yakuzen" aria-labelledby="yakuzen-h">
+    <div class="container reveal-up">
+      <h2 id="yakuzen-h" class="headline">薬膳とは、<br class="yakuzen-br">難しいことではありません。</h2>
+      <p>
+        季節の巡りに合わせて、その時期の体に合う食材を選ぶ。<br>
+        それだけで、薬膳はもう始まっています。<br>
+        二十四節気は、先人たちが遺した「食べる暦」なのです。
+      </p>
+    </div>
+  </section>
+
+  <!-- 04 ブランドストーリー -->
+  <section class="section" aria-labelledby="story-h">
+    <div class="container">
+      <h2 id="story-h" class="headline reveal-up">暦みそが生まれるまで。</h2>
+
+      <div class="story-node reveal-up">
+        <div class="story-visual texture" aria-hidden="true"></div>
+        <div class="story-body">
+          <div class="story-num">壱</div>
+          <h3>記憶</h3>
+          <p>昔、祖母が仕込んでいた味噌桶の匂いを覚えている。<br>寒い朝、湯気の向こうに祖母の背中があった。</p>
+        </div>
+      </div>
+
+      <div class="story-node reveal-up">
+        <div class="story-visual texture" aria-hidden="true"></div>
+        <div class="story-body">
+          <div class="story-num">弐</div>
+          <h3>気づき</h3>
+          <p>二十四節気という、日本人が千年以上大切にしてきた暦。<br>その日その日の「食べる知恵」が、今の暮らしから静かに消えかけている。</p>
+        </div>
+      </div>
+
+      <div class="story-node reveal-up">
+        <div class="story-visual">
+          <img src="images/wood-table-prep.jpg" alt="木のテーブルで仕込みの下ごしらえをする様子" width="1600" height="1067" loading="lazy">
+        </div>
+        <div class="story-body">
+          <div class="story-num">参</div>
+          <h3>継承</h3>
+          <p>九州の小さな味噌蔵で、杜氏が語ってくれた言葉。<br>「味噌は、待つことでしか生まれない。」</p>
+        </div>
+      </div>
+
+      <div class="story-node reveal-up">
+        <div class="story-visual">
+          <img src="images/lifestyle-kitchen.jpg" alt="台所で味噌汁の味を確かめる様子" width="1600" height="2400" loading="lazy">
+        </div>
+        <div class="story-body">
+          <div class="story-num">四</div>
+          <h3>約束</h3>
+          <p>一杯の味噌汁から、今日という季節を感じてほしい。<br>それが、暦みそが届けたい暮らしです。</p>
+        </div>
+      </div>
+
+      <div class="mid-cta reveal-up">
+        <p>この物語をもっと知りたい方へ。二十四節気の薬膳レシピ帖を無料でお届けしています。</p>
+        <a class="btn-line" href="https://lin.ee/xxxxxxx" rel="noopener">LINEで暦のレシピ帖を受け取る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 こだわり -->
+  <section class="section washi-bg" style="background:var(--white);" aria-labelledby="kodawari-h">
+    <div class="container">
+      <h2 id="kodawari-h" class="headline reveal-up">素材と、手間へのこだわり。</h2>
+      <div class="masonry reveal-up">
+        <img class="m-lg" src="images/ingredients-daizu-miso.jpg" alt="大豆と味噌の素材写真" width="1600" height="2400" loading="lazy">
+        <img class="m-tall" src="images/wood-table-prep.jpg" alt="木のテーブルでの仕込み作業" width="1600" height="1067" loading="lazy">
+        <img class="m-md" src="images/hero-miso-steam.jpg" alt="湯気の立つ味噌汁" width="1600" height="1371" loading="lazy">
+        <img class="m-sm" src="images/miso-daizu-alt.jpg" alt="黒い器に盛られた味噌と大豆" width="1600" height="1067" loading="lazy">
+      </div>
+      <p class="kodawari-lead">昔ながらの木桶でじっくりと時間をかけて仕込む製法。派手な演出は必要ありません。素材そのものが持つ力を、丁寧な手間で引き出しています。</p>
+
+      <div class="mid-cta reveal-up">
+        <p>薬膳のある暮らしを、今日から少しずつ。</p>
+        <a class="btn-line" href="https://lin.ee/xxxxxxx" rel="noopener">薬膳のある暮らしを始める</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05.5 発酵の科学 -->
+  <section class="kagaku" aria-labelledby="kagaku-h">
+    <div class="container reveal-up">
+      <h3 id="kagaku-h">発酵という、時間が生み出す力。</h3>
+      <p>味噌の発酵過程では、麹菌の働きにより大豆のタンパク質がアミノ酸に分解され、うま味と栄養価がともに高まることが知られています。</p>
+      <span class="footnote">※一般的な味噌の発酵に関する知見をもとに紹介しています。効果を保証するものではありません。</span>
+    </div>
+  </section>
+
+  <!-- 06 四季 -->
+  <section class="section season" aria-labelledby="season-h">
+    <div class="container">
+      <h2 id="season-h" class="headline reveal-up">めぐる季節、めぐる味噌。</h2>
+      <div class="season-grid reveal-up">
+        <div class="season-card"><div class="season-icon" aria-hidden="true">🌱</div><strong>春（立春〜）</strong><p>若菜と味噌のやさしい一杯。芽吹きの季節に寄り添う味わい。</p></div>
+        <div class="season-card"><div class="season-icon" aria-hidden="true">🌿</div><strong>夏（夏至〜）</strong><p>生姜を効かせた、汗ばむ季節の一杯。</p></div>
+        <div class="season-card"><div class="season-icon" aria-hidden="true">🍂</div><strong>秋（白露〜）</strong><p>根菜をたっぷり、実りの季節を味わう一杯。</p></div>
+        <div class="season-card"><div class="season-icon" aria-hidden="true">❄️</div><strong>冬（冬至〜）</strong><p>かぼちゃと味噌の、体を温める一杯。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 LINE登録特典 -->
+  <section class="section offer" aria-labelledby="offer-h">
+    <div class="container">
+      <div class="offer-grid">
+        <div class="reveal-up">
+          <h2 id="offer-h" class="headline" style="text-align:left;">公式LINEにご登録いただくと、<br class="offer-br">こんな暮らしが届きます。</h2>
+          <div class="offer-card">
+            <p class="tt">【無料】暦のレシピ帖<br>二十四節気の薬膳味噌汁レシピ12選</p>
+            <p>各節気に合わせた味噌汁レシピをまとめたPDFです。「今日は何の節気か」がひと目でわかる暦カレンダー付き。献立に迷ったときのお守りとして、そのまま保存してお使いいただけます。</p>
+          </div>
+          <ul class="benefit-list">
+            <li>🥣 毎日の味噌汁でできる、季節に寄り添う暮らしのコツ</li>
+            <li>📖 二十四節気ごとの薬膳レシピを定期的にお届け</li>
+            <li>🌾 味噌蔵の様子や発酵の物語など、つくり手のストーリー</li>
+            <li>🎁 登録者限定のお知らせ（先行案内・季節の便り）</li>
+          </ul>
+          <p class="offer-note">売り込みばかりのLINEではありません。「今日という季節」にまつわる話を、無理のないペースでお届けします。もちろん、いつでもブロックしていただいて構いません。</p>
+          <a class="btn-line" href="https://lin.ee/xxxxxxx" rel="noopener">暦のレシピ帖を無料でもらう（公式LINE登録）</a>
+        </div>
+        <div class="offer-visual reveal-up">
+          <img src="images/ingredients-daizu-miso.jpg" alt="暦のレシピ帖のイメージ素材" width="1600" height="2400" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 愛用者の声 -->
+  <section class="section" style="background:var(--paper);" aria-labelledby="voice-h">
+    <div class="container">
+      <h2 id="voice-h" class="headline reveal-up">「暦みそ」を選んだ方たちの声。</h2>
+      <div class="voice-grid reveal-up">
+        <div class="voice-card">
+          <img src="images/lifestyle-kitchen.jpg" alt="" width="400" height="400" loading="lazy">
+          <div>
+            <p class="voice-quote">「朝の一杯が、季節を感じる時間になりました。」</p>
+            <p class="voice-meta">東京都／40代女性／M様（掲載許可確認済み・個人の感想です）</p>
+          </div>
+        </div>
+        <div class="voice-card">
+          <img src="images/wood-table-prep.jpg" alt="" width="400" height="400" loading="lazy">
+          <div>
+            <p class="voice-quote">「暦を意識するようになって、食卓が楽しくなりました。」</p>
+            <p class="voice-meta">福岡県／50代女性／S様（掲載許可確認済み・個人の感想です）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 FAQ -->
+  <section class="section" style="background:var(--white);" aria-labelledby="faq-h">
+    <div class="container">
+      <h2 id="faq-h" class="headline reveal-up">よくあるご質問</h2>
+      <div class="faq-wrap reveal-up">
+        <details class="faq-item">
+          <summary>どんな内容がLINEに届きますか？</summary>
+          <p class="faq-a">二十四節気に合わせた薬膳レシピや、味噌蔵の様子など、暮らしにまつわる話をゆっくりお届けします。</p>
+        </details>
+        <details class="faq-item">
+          <summary>配信頻度はどれくらいですか？</summary>
+          <p class="faq-a">目安として月に2〜4回程度、季節の変わり目を中心にお届けします。</p>
+        </details>
+        <details class="faq-item">
+          <summary>費用はかかりますか？</summary>
+          <p class="faq-a">LINE登録・レシピ帖の受け取りはすべて無料です。</p>
+        </details>
+        <details class="faq-item">
+          <summary>いつでも解除できますか？</summary>
+          <p class="faq-a">はい、いつでもブロックしていただけます。無理な引き止めは一切ありません。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 最終CTA -->
+  <section class="section final-cta" style="background:var(--paper);" aria-labelledby="final-h">
+    <span class="concentric" style="width:180px;height:180px;top:-40px;right:-40px;" aria-hidden="true"></span>
+    <span class="concentric" style="width:90px;height:90px;top:40px;right:80px;" aria-hidden="true"></span>
+    <div class="container">
+      <div class="visual reveal-up">
+        <img src="images/hero-miso-steam.jpg" alt="朝の食卓、湯気の立つ味噌汁" width="1600" height="1371" loading="lazy">
+      </div>
+      <h2 id="final-h" class="headline reveal-up">今日の一杯から、<br>暦とめぐる暮らしを。</h2>
+      <p class="final-note reveal-up">※プレゼントPDFは、LINEの仕様変更により予告なく終了する場合がございます。気になった今のうちにお受け取りください。</p>
+      <p class="lead reveal-up">特別なことをしなくていい。難しい知識もいりません。<br>二十四節気とともにめぐる、一杯の味噌汁から。<br>その暮らしの豊かさを、今日はあなたに少しだけおすそ分けさせてください。</p>
+      <a class="btn-line reveal-up" href="https://lin.ee/xxxxxxx" rel="noopener" style="font-size:16px;padding:19px 44px;">【無料】公式LINEを友だち追加して、暦のレシピ帖をもらう</a>
+      <p class="btn-note reveal-up">登録者限定・二十四節気の薬膳味噌汁レシピ12選プレゼント中</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>暦みそ ―KOYOMI―</p>
+    <p>写真素材：ぱくたそ（<a href="https://www.pakutaso.com/" rel="noopener">pakutaso.com</a>）</p>
+    <p>&copy; 2026 KOYOMI. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta" id="fixedCta" aria-hidden="true">
+  <div class="fixed-cta-inner">
+    <span>暦のレシピ帖、無料でお届け中</span>
+    <a class="btn-line" href="https://lin.ee/xxxxxxx" rel="noopener">LINEで受け取る</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  // reveal on scroll
+  var revealEls = document.querySelectorAll('.reveal-up');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  // fixed CTA on scroll
+  var fixedCta = document.getElementById('fixedCta');
+  var shown = false;
+  function onScroll(){
+    var should = window.scrollY > 500;
+    if (should !== shown) {
+      shown = should;
+      fixedCta.classList.toggle('show', should);
+      fixedCta.setAttribute('aria-hidden', should ? 'false' : 'true');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
