@@ -168,13 +168,6 @@
   .story-node:last-child{margin-bottom:0;}
   .story-visual{border-radius:6px;overflow:hidden;min-height:220px;position:relative;}
   .story-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
-  .story-visual.texture{
-    background:linear-gradient(135deg,var(--deepgreen),#1d3128);display:flex;align-items:center;justify-content:center;
-  }
-  .story-visual.texture::after{
-    content:"";position:absolute;inset:0;opacity:.15;
-    background-image:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5) 0,transparent 45%),radial-gradient(circle at 75% 70%,rgba(255,255,255,.3) 0,transparent 40%);
-  }
   .story-num{
     width:38px;height:38px;border-radius:50%;background:var(--deepgreen);color:#fff;
     display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:14px;font-family:"Noto Serif JP",serif;
@@ -336,7 +329,9 @@
       <h2 id="story-h" class="headline reveal-up">暦みそが生まれるまで。</h2>
 
       <div class="story-node reveal-up">
-        <div class="story-visual texture" aria-hidden="true"></div>
+        <div class="story-visual">
+          <img src="images/showa-kitchen.jpg" alt="昭和レトロな台所に置かれたアルミポットと花柄のグラス" width="1600" height="1066" loading="lazy">
+        </div>
         <div class="story-body">
           <div class="story-num">壱</div>
           <h3>記憶</h3>
@@ -345,7 +340,9 @@
       </div>
 
       <div class="story-node reveal-up">
-        <div class="story-visual texture" aria-hidden="true"></div>
+        <div class="story-visual">
+          <img src="images/washitsu-kakejiku.jpg" alt="掛け軸と茶器が置かれた和室の床の間" width="1600" height="1093" loading="lazy">
+        </div>
         <div class="story-body">
           <div class="story-num">弐</div>
           <h3>気づき</h3>
