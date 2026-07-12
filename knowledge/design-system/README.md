@@ -36,7 +36,7 @@ knowledge/design-system/
 ### layouts/
 | ファイル | 内容 | 状態 |
 |---------|------|------|
-| hero-layout-library.md | Hero Section 55パターン | ✅ 完成 |
+| hero-layout-library.md | Hero Section 57パターン（2026-07-12: Pinterest調査でHERO-056/057追加） | ✅ 完成 |
 | hero-ranking.md | HeroランキングCV/デザイン/モバイル | ✅ 完成 |
 | hero-pattern-map.md | Hero業種×CV目的マップ | ✅ 完成 |
 | cta-layout-library.md | CTAセクションレイアウト | 🟡 実例収録中（12LP分析済） |
