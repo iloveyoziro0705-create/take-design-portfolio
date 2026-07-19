@@ -118,14 +118,12 @@
     background:linear-gradient(180deg,#fff 0%,#fbfaf6 100%);
   }
   .hero .container{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:32px;
+    display:flex;
+    flex-direction:column;
     align-items:center;
+    text-align:center;
   }
-  @media(min-width:900px){
-    .hero .container{grid-template-columns:1.05fr .95fr;gap:48px;}
-  }
+  .hero-text{max-width:660px;display:flex;flex-direction:column;align-items:center;}
   .hero-pill{
     display:inline-flex;
     align-items:center;
@@ -193,16 +191,58 @@
   }
   .btn-outline-navy:hover{background:var(--navy-900);color:#fff;transform:translateY(-3px);}
   .btn-block{width:100%;}
-  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
-  .hero-note{font-size:12px;color:var(--text-sub);margin-top:16px;letter-spacing:.02em;}
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin-bottom:16px;}
 
-  .hero-media{position:relative;}
-  .hero-media img{
-    border-radius:4px;
+  /* ---- hero image: displayed below the copy, edges dissolving into dots ---- */
+  .hero-media-frame{
+    position:relative;
+    width:100%;
+    max-width:620px;
+    margin:8px auto 0;
+  }
+  .hero-media-img{
+    display:block;
+    width:100%;
+    -webkit-mask-image:radial-gradient(ellipse 74% 80% at 50% 42%, #000 55%, rgba(0,0,0,.45) 75%, transparent 96%);
+    mask-image:radial-gradient(ellipse 74% 80% at 50% 42%, #000 55%, rgba(0,0,0,.45) 75%, transparent 96%);
+    filter:drop-shadow(0 24px 40px rgba(4,18,58,.16));
+  }
+  .hero-media-frame::after{
+    content:"";
+    position:absolute;inset:0;
+    pointer-events:none;
+    background-image:radial-gradient(circle, var(--gold) 1.3px, transparent 1.6px);
+    background-size:9px 9px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 86% at 50% 42%, transparent 56%, #000 74%, transparent 94%);
+    mask-image:radial-gradient(ellipse 80% 86% at 50% 42%, transparent 56%, #000 74%, transparent 94%);
+    opacity:.65;
+  }
+  .hero-note-overlay{
+    position:absolute;
+    left:50%;
+    bottom:26px;
+    transform:translateX(-50%);
+    z-index:3;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    color:var(--navy-900);
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.02em;
+    padding:9px 18px;
+    border-radius:999px;
     border:1px solid rgba(180,130,44,.4);
-    box-shadow:var(--shadow);
-    padding:6px;
-    background:#fff;
+    box-shadow:0 10px 24px rgba(4,18,58,.18);
+    white-space:nowrap;
+    max-width:90%;
+  }
+  .hero-note-overlay i{color:var(--gold);}
+  @media(max-width:480px){
+    .hero-note-overlay{font-size:10.5px;padding:8px 14px;white-space:normal;text-align:center;}
   }
 
   /* ================= PROBLEMS ================= */
@@ -728,7 +768,7 @@
 <!-- ========== HERO ========== -->
 <section class="hero" id="hero">
   <div class="container">
-    <div>
+    <div class="hero-text">
       <div class="hero-pill reveal">
         <i class="fa-solid fa-award"></i>
         <span>元リクルートトップセールスが教える！</span>
@@ -745,10 +785,10 @@
         <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
         <a href="#subsidy" class="btn btn-outline-navy"><i class="fa-solid fa-percent"></i>助成金対象か診断する</a>
       </div>
-      <p class="hero-note reveal reveal-delay-4">オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
     </div>
-    <div class="hero-media reveal reveal-delay-2">
-      <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
+    <div class="hero-media-frame reveal reveal-delay-4">
+      <img class="hero-media-img" src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
+      <p class="hero-note-overlay"><i class="fa-solid fa-circle-check"></i>オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
     </div>
   </div>
 </section>
