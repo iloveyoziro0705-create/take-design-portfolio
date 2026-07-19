@@ -304,6 +304,9 @@
     margin:0 auto 18px;
     transition:background .3s ease, color .3s ease, border-color .3s ease;
   }
+  .icon-circle img{width:60%;height:60%;object-fit:contain;}
+  /* standalone image badges (already include their own circle/tile in the source art) */
+  .badge-img{display:block;width:64px;height:64px;margin:0 auto 18px;object-fit:contain;}
   .problem-card:hover .icon-circle,.reason-card:hover .icon-circle{
     background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);
   }
@@ -370,7 +373,7 @@
     transition:border-color .3s ease, background .3s ease;
   }
   .checklist-item:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);}
-  .checklist-item i{color:var(--gold-light);font-size:16px;margin-top:3px;flex-shrink:0;}
+  .checklist-item img{width:40px;height:40px;flex-shrink:0;object-fit:contain;}
   .checklist-item h4{font-size:14px;font-weight:700;margin-bottom:3px;}
   .checklist-item p{font-size:12px;color:#c8cee0;line-height:1.6;}
   .icon-mini-row{
@@ -387,11 +390,11 @@
     gap:8px;
     background:rgba(255,255,255,.08);
     border-radius:999px;
-    padding:9px 16px;
+    padding:8px 16px 8px 8px;
     font-size:12px;
     font-weight:700;
   }
-  .icon-mini i{color:var(--gold-light);}
+  .icon-mini img{width:26px;height:26px;object-fit:contain;}
 
   /* ================= AI DX SECTION ================= */
   .aidx{background:var(--gray-bg);}
@@ -438,7 +441,7 @@
     transition:background .3s ease, border-color .3s ease;
   }
   .aidx-icon-item:hover{background:rgba(217,180,102,.12);border-color:var(--gold-light);}
-  .aidx-icon-item i{color:var(--gold-light);font-size:22px;margin-bottom:8px;}
+  .aidx-icon-item img{width:52px;height:52px;object-fit:contain;margin-bottom:8px;border-radius:10px;}
   .aidx-icon-item span{display:block;font-size:11.5px;font-weight:700;color:#fff;}
   .aidx-core{
     position:relative;
@@ -701,7 +704,7 @@
     border-top:2px solid var(--gold);
   }
   .info-bar span{display:flex;align-items:center;gap:8px;}
-  .info-bar i{color:var(--gold-light);}
+  .info-bar img{width:22px;height:22px;object-fit:contain;}
 
   /* ================= FINAL CTA ================= */
   .final-cta{
@@ -807,31 +810,31 @@
     <div class="card-grid cols-5">
       <div class="problem-card reveal">
         <div class="problem-num">01</div>
-        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
+        <div class="icon-circle"><img src="./images/icons/prob-01-trophy.png" alt=""></div>
         <h3>トップ営業だけが売れている</h3>
         <p>成果が個人に依存し、属人化している</p>
       </div>
       <div class="problem-card reveal reveal-delay-1">
         <div class="problem-num">02</div>
-        <div class="icon-circle"><i class="fa-solid fa-user-lock"></i></div>
+        <div class="icon-circle"><img src="./images/icons/prob-02-userlock.png" alt=""></div>
         <h3>ノウハウが個人の中にある</h3>
         <p>共有されず、再現できないブラックボックス化</p>
       </div>
       <div class="problem-card reveal reveal-delay-2">
         <div class="problem-num">03</div>
-        <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="icon-circle"><img src="./images/icons/prob-03-chart.png" alt=""></div>
         <h3>売れる理由を説明できない</h3>
         <p>再現性がなく、指導も感覚や経験に頼ってしまう</p>
       </div>
       <div class="problem-card reveal reveal-delay-3">
         <div class="problem-num">04</div>
-        <div class="icon-circle"><i class="fa-solid fa-sitemap"></i></div>
+        <div class="icon-circle"><img src="./images/icons/prob-04-sitemap.png" alt=""></div>
         <h3>新人教育はトップ営業任せ</h3>
         <p>教育の仕組みがなく、育成が属人化している</p>
       </div>
       <div class="problem-card reveal reveal-delay-4">
         <div class="problem-num">05</div>
-        <div class="icon-circle"><i class="fa-solid fa-database"></i></div>
+        <div class="icon-circle"><img src="./images/icons/prob-05-database.png" alt=""></div>
         <h3>ノウハウが会社に蓄積されない</h3>
         <p>資産にならず、失われ続ける状態になっている</p>
       </div>
@@ -843,31 +846,31 @@
       </div>
       <div class="checklist-grid">
         <div class="checklist-item">
-          <i class="fa-solid fa-circle-check"></i>
+          <img src="./images/icons/check-01-target.png" alt="">
           <div><h4>勝ちパターンを資産化</h4><p>トップ営業の思考・行動・トークを分析し、成果につながる「型」を仕組み化。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-circle-check"></i>
+          <img src="./images/icons/check-02-book.png" alt="">
           <div><h4>全員が学べる・使える</h4><p>ノウハウをマニュアル化・共有し、誰でも同じ再現性で実践できる。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-circle-check"></i>
+          <img src="./images/icons/check-03-cycle.png" alt="">
           <div><h4>再現性のある営業組織</h4><p>属人化を解消し、仕組みで成果を生み出す強い営業組織を構築。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-circle-check"></i>
+          <img src="./images/icons/check-04-run.png" alt="">
           <div><h4>新人が早く育つ</h4><p>体系化された教育プログラムで、早期戦力化を実現。</p></div>
         </div>
         <div class="checklist-item" style="grid-column:1 / -1;">
-          <i class="fa-solid fa-circle-check"></i>
+          <img src="./images/icons/check-05-chart.png" alt="">
           <div><h4>売上が安定・拡大</h4><p>営業力の底上げで、売上のムラをなくし、持続的な成長を実現。</p></div>
         </div>
       </div>
       <div class="icon-mini-row">
-        <span class="icon-mini"><i class="fa-solid fa-chart-line"></i>データで分析</span>
-        <span class="icon-mini"><i class="fa-solid fa-eye"></i>AIで可視化</span>
-        <span class="icon-mini"><i class="fa-solid fa-trophy"></i>勝ちパターン化</span>
-        <span class="icon-mini"><i class="fa-solid fa-people-group"></i>全社で共有・活用</span>
+        <span class="icon-mini"><img src="./images/icons/mini-01-chart.png" alt="">データで分析</span>
+        <span class="icon-mini"><img src="./images/icons/mini-02-brain.png" alt="">AIで可視化</span>
+        <span class="icon-mini"><img src="./images/icons/mini-03-bulb.png" alt="">勝ちパターン化</span>
+        <span class="icon-mini"><img src="./images/icons/mini-04-people.png" alt="">全社で共有・活用</span>
       </div>
     </div>
   </div>
@@ -887,11 +890,11 @@
     <div class="aidx-panel reveal">
       <div class="aidx-core">AI</div>
       <div class="aidx-icons">
-        <div class="aidx-icon-item"><i class="fa-solid fa-magnifying-glass-chart"></i><span>顧客分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-chart-line"></i><span>データ分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-comments"></i><span>トーク分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-people-arrows"></i><span>ロープレ分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-file-lines"></i><span>資料改善</span></div>
+        <div class="aidx-icon-item"><img src="./images/icons/aidx-01-customer.png" alt=""><span>顧客分析</span></div>
+        <div class="aidx-icon-item"><img src="./images/icons/aidx-02-data.png" alt=""><span>データ分析</span></div>
+        <div class="aidx-icon-item"><img src="./images/icons/aidx-03-talk.png" alt=""><span>トーク分析</span></div>
+        <div class="aidx-icon-item"><img src="./images/icons/aidx-04-roleplay.png" alt=""><span>ロープレ分析</span></div>
+        <div class="aidx-icon-item"><img src="./images/icons/aidx-05-doc.png" alt=""><span>資料改善</span></div>
       </div>
     </div>
 
@@ -901,21 +904,21 @@
     <div class="step-flow">
       <div class="step-item reveal">
         <span class="step-num">01</span>
-        <div class="step-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div class="step-circle"><img src="./images/icons/step3-01-search.png" alt=""></div>
         <h4>AI営業分析</h4>
         <p>営業を見える化</p>
       </div>
       <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
       <div class="step-item reveal reveal-delay-1">
         <span class="step-num">02</span>
-        <div class="step-circle"><i class="fa-solid fa-trophy"></i></div>
+        <div class="step-circle"><img src="./images/icons/step3-02-trophy.png" alt=""></div>
         <h4>勝ちパターン分析</h4>
         <p>成果につながる型を抽出</p>
       </div>
       <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
       <div class="step-item reveal reveal-delay-2">
         <span class="step-num">03</span>
-        <div class="step-circle"><i class="fa-solid fa-building"></i></div>
+        <div class="step-circle"><img src="./images/icons/step3-03-building.png" alt=""></div>
         <h4>営業資産化</h4>
         <p>会社全体で共有・活用</p>
       </div>
@@ -925,32 +928,32 @@
     <div class="micro-step-flow">
       <div class="micro-step-item reveal">
         <span class="n">01</span>
-        <div class="icon-circle"><i class="fa-solid fa-inbox"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-01-inbox.png" alt=""></div>
         <p>データ収集</p>
       </div>
       <div class="micro-step-item reveal reveal-delay-1">
         <span class="n">02</span>
-        <div class="icon-circle"><i class="fa-solid fa-brain"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-02-brain.png" alt=""></div>
         <p>AI分析</p>
       </div>
       <div class="micro-step-item reveal reveal-delay-2">
         <span class="n">03</span>
-        <div class="icon-circle"><i class="fa-solid fa-puzzle-piece"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-03-puzzle.png" alt=""></div>
         <p>因数分解</p>
       </div>
       <div class="micro-step-item reveal reveal-delay-3">
         <span class="n">04</span>
-        <div class="icon-circle"><i class="fa-solid fa-bullseye"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-04-target.png" alt=""></div>
         <p>パターン化</p>
       </div>
       <div class="micro-step-item reveal reveal-delay-4">
         <span class="n">05</span>
-        <div class="icon-circle"><i class="fa-solid fa-clapperboard"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-05-doc.png" alt=""></div>
         <p>コンテンツ化</p>
       </div>
       <div class="micro-step-item reveal">
         <span class="n">06</span>
-        <div class="icon-circle"><i class="fa-solid fa-people-group"></i></div>
+        <div class="icon-circle"><img src="./images/icons/micro-06-people.png" alt=""></div>
         <p>共有・活用</p>
       </div>
     </div>
@@ -977,27 +980,27 @@
     <div class="card-grid cols-5">
       <div class="reason-card reveal">
         <div class="problem-num">01</div>
-        <div class="icon-circle"><i class="fa-solid fa-brain"></i></div>
+        <div class="icon-circle"><img src="./images/icons/reason-01-ai.png" alt=""></div>
         <h3>AIでトップ営業を分析</h3>
       </div>
       <div class="reason-card reveal reveal-delay-1">
         <div class="problem-num">02</div>
-        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
+        <div class="icon-circle"><img src="./images/icons/reason-02-trophy.png" alt=""></div>
         <h3>勝ちパターンを資産化</h3>
       </div>
       <div class="reason-card reveal reveal-delay-2">
         <div class="problem-num">03</div>
-        <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="icon-circle"><img src="./images/icons/reason-03-chart.png" alt=""></div>
         <h3>誰でも成果を再現</h3>
       </div>
       <div class="reason-card reveal reveal-delay-3">
         <div class="problem-num">04</div>
-        <div class="icon-circle"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <div class="icon-circle"><img src="./images/icons/reason-04-chalkboard.png" alt=""></div>
         <h3>新人育成が早くなる</h3>
       </div>
       <div class="reason-card reveal reveal-delay-4">
         <div class="problem-num">05</div>
-        <div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div class="icon-circle"><img src="./images/icons/reason-05-cycle.png" alt=""></div>
         <h3>営業DXが定着する</h3>
       </div>
     </div>
@@ -1030,12 +1033,12 @@
           <h3>この研修で身につく6つのスキル</h3>
           <p class="tab-lead">AIとデータを武器に、成果を生み出す営業人材へ。</p>
           <div class="skill-grid">
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-flag"></i></div><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-arrow-trend-up"></i></div><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-01-search.png" alt=""></div><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-02-trophy.png" alt=""></div><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-03-flag.png" alt=""></div><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-04-doc.png" alt=""></div><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-05-chat.png" alt=""></div><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
+            <div class="skill-item"><div class="icon-circle"><img src="./images/icons/skill-06-cycle.png" alt=""></div><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
           </div>
         </div>
       </div>
@@ -1046,12 +1049,12 @@
           <h3>研修カリキュラム(全6回)</h3>
           <p class="tab-lead">6回で営業DX人材を育成</p>
           <div class="curriculum-flow">
-            <div class="curriculum-item"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div><p>営業課題分析</p></div>
-            <div class="curriculum-item"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-user-tie"></i></div><p>トップセールス分析</p></div>
-            <div class="curriculum-item"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><p>勝ちパターン資産化</p></div>
-            <div class="curriculum-item"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-id-card"></i></div><p>プロフィール・ストーリー設計</p></div>
-            <div class="curriculum-item"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-people-group"></i></div><p>営業ロープレ実践・改善</p></div>
-            <div class="curriculum-item"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><p>営業DX診断・成果発表</p></div>
+            <div class="curriculum-item"><span class="n">01</span><div class="icon-circle"><img src="./images/icons/curr-01-search.png" alt=""></div><p>営業課題分析</p></div>
+            <div class="curriculum-item"><span class="n">02</span><div class="icon-circle"><img src="./images/icons/curr-02-person.png" alt=""></div><p>トップセールス分析</p></div>
+            <div class="curriculum-item"><span class="n">03</span><div class="icon-circle"><img src="./images/icons/curr-03-doccheck.png" alt=""></div><p>勝ちパターン資産化</p></div>
+            <div class="curriculum-item"><span class="n">04</span><div class="icon-circle"><img src="./images/icons/curr-04-profile.png" alt=""></div><p>プロフィール・ストーリー設計</p></div>
+            <div class="curriculum-item"><span class="n">05</span><div class="icon-circle"><img src="./images/icons/curr-05-chat.png" alt=""></div><p>営業ロープレ実践・改善</p></div>
+            <div class="curriculum-item"><span class="n">06</span><div class="icon-circle"><img src="./images/icons/curr-06-chart.png" alt=""></div><p>営業DX診断・成果発表</p></div>
           </div>
         </div>
       </div>
@@ -1062,11 +1065,11 @@
           <h3>この研修で会社に残るもの</h3>
           <p class="tab-lead">学ぶだけでは終わらない。会社に営業資産が残る。</p>
           <div class="asset-grid">
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-book-open"></i></div><p>営業マニュアル</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-comment-dots"></i></div><p>営業トーク集</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-medal"></i></div><p>成功事例集</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><p>営業資料テンプレート</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-clipboard-check"></i></div><p>営業DX改善シート</p></div>
+            <div class="asset-item"><div class="icon-circle"><img src="./images/icons/asset-01-book.png" alt=""></div><p>営業マニュアル</p></div>
+            <div class="asset-item"><div class="icon-circle"><img src="./images/icons/asset-02-chat.png" alt=""></div><p>営業トーク集</p></div>
+            <div class="asset-item"><div class="icon-circle"><img src="./images/icons/asset-03-trophy.png" alt=""></div><p>成功事例集</p></div>
+            <div class="asset-item"><div class="icon-circle"><img src="./images/icons/asset-04-board.png" alt=""></div><p>営業資料テンプレート</p></div>
+            <div class="asset-item"><div class="icon-circle"><img src="./images/icons/asset-05-clipboard.png" alt=""></div><p>営業DX改善シート</p></div>
           </div>
         </div>
       </div>
@@ -1093,17 +1096,17 @@
     </p>
     <div class="merit-grid">
       <div class="merit-item reveal">
-        <div class="icon-circle"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div class="icon-circle"><img src="./images/icons/merit-01-chart.png" alt=""></div>
         <h4>営業力向上</h4>
         <p>AIで勝ちパターンを再現し、成果につながる営業組織へ</p>
       </div>
       <div class="merit-item reveal reveal-delay-1">
-        <div class="icon-circle"><i class="fa-solid fa-coins"></i></div>
+        <div class="icon-circle"><img src="./images/icons/merit-02-coins.png" alt=""></div>
         <h4>助成金でコスト削減</h4>
         <p>助成金の活用で、研修費用の負担を大幅に軽減</p>
       </div>
       <div class="merit-item reveal reveal-delay-2">
-        <div class="icon-circle"><i class="fa-solid fa-people-group"></i></div>
+        <div class="icon-circle"><img src="./images/icons/merit-03-people.png" alt=""></div>
         <h4>人材の定着・成長</h4>
         <p>学びの機会を提供し、自律的に成長する人材へ</p>
       </div>
@@ -1113,16 +1116,16 @@
       助成金の申請サポートもお任せください！
     </p>
     <div class="apply-flow">
-      <div class="apply-item reveal"><span class="problem-num">01</span><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>ヒアリング</p></div>
-      <div class="apply-item reveal reveal-delay-1"><span class="problem-num">02</span><div class="icon-circle"><i class="fa-solid fa-clipboard-list"></i></div><p>助成金のご提案</p></div>
-      <div class="apply-item reveal reveal-delay-2"><span class="problem-num">03</span><div class="icon-circle"><i class="fa-solid fa-file-signature"></i></div><p>申請サポート</p></div>
-      <div class="apply-item reveal reveal-delay-3"><span class="problem-num">04</span><div class="icon-circle"><i class="fa-solid fa-handshake"></i></div><p>研修スタート</p></div>
+      <div class="apply-item reveal"><span class="problem-num">01</span><div class="icon-circle"><img src="./images/icons/apply-01-doc.png" alt=""></div><p>ヒアリング</p></div>
+      <div class="apply-item reveal reveal-delay-1"><span class="problem-num">02</span><div class="icon-circle"><img src="./images/icons/apply-02-clipboard.png" alt=""></div><p>助成金のご提案</p></div>
+      <div class="apply-item reveal reveal-delay-2"><span class="problem-num">03</span><div class="icon-circle"><img src="./images/icons/apply-03-pencil.png" alt=""></div><p>申請サポート</p></div>
+      <div class="apply-item reveal reveal-delay-3"><span class="problem-num">04</span><div class="icon-circle"><img src="./images/icons/apply-04-handshake.png" alt=""></div><p>研修スタート</p></div>
     </div>
 
     <div class="info-bar reveal">
-      <span><i class="fa-solid fa-desktop"></i>オンライン相談OK</span>
-      <span><i class="fa-solid fa-clock"></i>所要時間：約30分</span>
-      <span><i class="fa-solid fa-file-lines"></i>資料はすぐにお送りします</span>
+      <span><img src="./images/icons/infobar-01-online.png" alt="">オンライン相談OK</span>
+      <span><img src="./images/icons/infobar-02-clock.png" alt="">所要時間：約30分</span>
+      <span><img src="./images/icons/infobar-03-doc.png" alt="">資料はすぐにお送りします</span>
     </div>
   </div>
 </section>
