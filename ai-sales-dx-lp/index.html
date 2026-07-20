@@ -47,6 +47,22 @@
   .center{text-align:center;}
   .gold-text{color:var(--gold);}
   .red-text{color:var(--red);}
+  .emph{font-size:1.18em;font-weight:900;display:inline-block;}
+  .emph-num{font-size:1.6em;font-weight:900;display:inline-block;line-height:1;vertical-align:-.08em;}
+
+  /* ---------- Headline background photo (decorative, blurred + faded, scoped to copy block only) ---------- */
+  .copy-bg-block{
+    position:relative;overflow:hidden;
+    margin:-6px -8px 24px;padding:18px 8px 22px;border-radius:var(--radius);
+  }
+  .copy-bg-img{
+    position:absolute;inset:0;z-index:0;
+    background-size:cover;background-position:center;
+    filter:blur(5px) saturate(1.05);opacity:.26;
+    -webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, #000 38%, transparent 92%);
+    mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, #000 38%, transparent 92%);
+  }
+  .copy-bg-block > *:not(.copy-bg-img){position:relative;z-index:1;}
 
   /* ---------- Reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);}
@@ -385,7 +401,7 @@
     </div>
     <h1 class="reveal reveal-delay-1">
       トップ営業が辞めても、<br>
-      <span class="gold-text">売上が落ちない</span><br>
+      <span class="gold-text emph">売上が落ちない</span><br>
       会社へ。
     </h1>
     <p class="hero-sub reveal reveal-delay-2">
@@ -404,7 +420,10 @@
 
   <!-- ========== 3-STEP SUMMARY ========== -->
   <section class="three-step" id="three-step">
-    <h2 class="flourish-title reveal">AIが実現する<span class="gold-text">3</span>つの営業DX</h2>
+    <div class="copy-bg-block">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-aidx.jpg');"></div>
+      <h2 class="flourish-title reveal">AIが実現する<span class="gold-text emph-num">3</span>つの営業DX</h2>
+    </div>
     <div class="three-row">
       <div class="three-item reveal">
         <div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
@@ -428,14 +447,17 @@
       </div>
     </div>
     <div class="banner-panel reveal">
-      <p>AIで営業の「属人化」をなくし、<br><span class="gold-text">再現性のある営業組織</span>へ。</p>
+      <p>AIで営業の「属人化」をなくし、<br><span class="gold-text emph">再現性のある営業組織</span>へ。</p>
     </div>
   </section>
 
   <!-- ========== PROBLEMS ========== -->
   <section class="problems" id="problems">
-    <h2 class="reveal">トップ営業が辞めたら、<br>あなたの会社に<br><span class="red-text">何が残りますか？</span></h2>
-    <span class="problem-sub reveal">多くの会社では…</span>
+    <div class="copy-bg-block">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-problems.jpg');"></div>
+      <h2 class="reveal">トップ営業が辞めたら、<br>あなたの会社に<br><span class="red-text emph">何が残りますか？</span></h2>
+      <span class="problem-sub reveal">多くの会社では…</span>
+    </div>
 
     <div class="problem-list">
       <div class="problem-card reveal">
@@ -471,7 +493,10 @@
     </div>
 
     <div class="checklist-panel reveal">
-      <div class="checklist-title">AIで営業ノウハウを<span class="gold-text">会社の資産</span>へ。<br>誰でも成果を出せる組織に変わる。</div>
+      <div class="copy-bg-block" style="margin:-8px -8px 20px;">
+        <div class="copy-bg-img" style="background-image:url('./images/bg-checklist.jpg');opacity:.16;"></div>
+        <div class="checklist-title" style="margin-bottom:0;">AIで営業ノウハウを<span class="gold-text emph">会社の資産</span>へ。<br>誰でも成果を出せる組織に変わる。</div>
+      </div>
       <div class="checklist-list">
         <div class="checklist-item">
           <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-bullseye"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
@@ -504,13 +529,19 @@
   </section>
 
   <section class="big-banner" id="big-banner">
-    <p class="reveal">営業力は<span class="gold-text">「人」</span>から<br><span class="gold-text">「仕組み」</span>へ。<br>未来の<span class="gold-text">売上</span>をつくる。</p>
+    <div class="copy-bg-block" style="margin:-6px 0;padding:22px 10px;">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-growth.jpg');opacity:.3;"></div>
+      <p class="reveal">営業力は<span class="gold-text emph">「人」</span>から<br><span class="gold-text emph">「仕組み」</span>へ。<br>未来の<span class="gold-text emph">売上</span>をつくる。</p>
+    </div>
   </section>
 
   <!-- ========== AI-DX ========== -->
   <section class="aidx" id="ai-dx">
-    <h2 class="section-title reveal">AIでトップセールスの<br>「勝ちパターン」を見える化し、<br><span class="gold-text">会社の資産</span>にする。</h2>
-    <p class="section-lead reveal">AIが分析・分解・可視化することで、誰でも成果を出せる営業組織を実現します。</p>
+    <div class="copy-bg-block">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-network.jpg');opacity:.3;"></div>
+      <h2 class="section-title reveal">AIでトップセールスの<br>「勝ちパターン」を見える化し、<br><span class="gold-text emph">会社の資産</span>にする。</h2>
+      <p class="section-lead reveal">AIが分析・分解・可視化することで、誰でも成果を出せる営業組織を実現します。</p>
+    </div>
 
     <div class="aidx-panel reveal">
       <div class="aidx-core">AI</div>
@@ -523,7 +554,7 @@
       </div>
     </div>
 
-    <p class="subhead-line reveal">AIでトップセールスの「勝ちパターン」を<br>資産化する<span class="gold-text">6</span>ステップ</p>
+    <p class="subhead-line reveal">AIでトップセールスの「勝ちパターン」を<br>資産化する<span class="gold-text emph-num">6</span>ステップ</p>
     <div class="six-step-grid">
       <div class="six-step-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-inbox"></i></div><p>データ収集</p></div>
       <div class="six-step-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-brain"></i></div><p>AI分析</p></div>
@@ -533,7 +564,7 @@
       <div class="six-step-item reveal"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-users"></i></div><p>共有・活用</p></div>
     </div>
 
-    <div class="skills-banner reveal"><p>この研修で身につく<span class="gold-text">6</span>つのスキル</p></div>
+    <div class="skills-banner reveal"><p>この研修で身につく<span class="gold-text emph-num">6</span>つのスキル</p></div>
     <div class="skill-grid">
       <div class="skill-item reveal"><i class="fa-solid fa-magnifying-glass-chart"></i><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
       <div class="skill-item reveal reveal-delay-1"><i class="fa-solid fa-trophy"></i><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
@@ -547,12 +578,12 @@
 
   <!-- ========== REASONS ========== -->
   <section class="reasons" id="reasons">
-    <h2 class="section-title reveal">この研修で、<br>営業の<span class="gold-text">未来</span>が<br>変わります。</h2>
+    <h2 class="section-title reveal">この研修で、<br>営業の<span class="gold-text emph">未来</span>が<br>変わります。</h2>
     <p class="section-lead reveal">AIで営業の「属人化」をなくし、再現性のある営業組織へ。</p>
     <div class="reasons-photo reveal reveal-delay-1">
       <img src="./images/reasons-team.jpg" alt="営業の未来が変わるチームイメージ">
     </div>
-    <p class="flourish-title reveal">この研修が選ばれる<span class="gold-text">5</span>つの理由</p>
+    <p class="flourish-title reveal">この研修が選ばれる<span class="gold-text emph-num">5</span>つの理由</p>
     <div class="reason-grid">
       <div class="reason-card reveal"><span class="num-badge">01</span><div class="icon-circle"><i class="fa-solid fa-robot"></i></div><h3>AIでトップ営業を分析</h3></div>
       <div class="reason-card reveal reveal-delay-1"><span class="num-badge">02</span><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><h3>勝ちパターンを資産化</h3></div>
@@ -561,16 +592,19 @@
       <div class="reason-card wide reveal reveal-delay-4"><span class="num-badge">05</span><div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div><h3>営業DXが定着する</h3></div>
     </div>
     <div class="banner-panel reveal">
-      <p>営業力は、<br><span class="gold-text">仕組み</span>でつくる時代へ。</p>
+      <p>営業力は、<br><span class="gold-text emph">仕組み</span>でつくる時代へ。</p>
     </div>
   </section>
 
   <!-- ========== CURRICULUM ========== -->
   <section class="curriculum" id="curriculum">
-    <h2 class="section-title reveal">研修カリキュラム</h2>
-    <p class="curriculum-sub reveal"><span class="gold-text">6</span>回で営業DX人材を育成</p>
+    <div class="copy-bg-block">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-training.jpg');opacity:.3;"></div>
+      <h2 class="section-title reveal">研修カリキュラム</h2>
+      <p class="curriculum-sub reveal"><span class="gold-text emph-num">6</span>回で営業DX人材を育成</p>
+    </div>
 
-    <p class="flourish-title reveal" style="margin-top:30px;">研修カリキュラム（全<span class="gold-text">6</span>回）</p>
+    <p class="flourish-title reveal" style="margin-top:30px;">研修カリキュラム（全<span class="gold-text emph-num">6</span>回）</p>
     <div class="curr-grid">
       <div class="curr-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div><p>営業課題分析</p></div>
       <div class="curr-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-user"></i></div><p>トップセールス分析</p></div>
@@ -590,13 +624,16 @@
     </div>
 
     <div class="banner-panel reveal">
-      <p>学ぶだけでは終わらない。<br>会社に<span class="gold-text">営業資産</span>が残る。</p>
+      <p>学ぶだけでは終わらない。<br>会社に<span class="gold-text emph">営業資産</span>が残る。</p>
     </div>
   </section>
 
   <!-- ========== SUBSIDY ========== -->
   <section class="subsidy" id="subsidy">
-    <h2 class="section-title reveal">助成金でお得に受講</h2>
+    <div class="copy-bg-block">
+      <div class="copy-bg-img" style="background-image:url('./images/bg-finance.jpg');opacity:.3;"></div>
+      <h2 class="section-title reveal">助成金でお得に受講</h2>
+    </div>
 
     <div class="subsidy-card reveal">
       <div class="subsidy-head">研修費用の助成</div>
@@ -647,7 +684,7 @@
 
   <!-- ========== FINAL CTA ========== -->
   <section class="final-cta" id="final-cta">
-    <h2 class="reveal">営業力は<br>人ではなく<br><span class="gold-text">仕組み</span>になる。</h2>
+    <h2 class="reveal">営業力は<br>人ではなく<br><span class="gold-text emph">仕組み</span>になる。</h2>
     <p class="final-lead reveal reveal-delay-1">元リクルートトップセールスの営業ノウハウを、<br>あなたの会社の資産にしませんか？</p>
     <a href="#" class="btn btn-gold reveal reveal-delay-2"><i class="fa-solid fa-file-lines"></i>資料請求</a>
     <div class="final-photo reveal reveal-delay-2">
