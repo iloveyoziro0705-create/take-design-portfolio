@@ -46,8 +46,12 @@
     -webkit-font-smoothing:antialiased;
   }
   img{max-width:100%;display:block;}
-  .page{max-width:var(--max);margin:0 auto;background:var(--white);position:relative;box-shadow:0 0 60px rgba(4,18,58,.14);overflow:hidden;}
-  section{padding:64px 24px;}
+  .page{max-width:var(--max);margin:0 auto;position:relative;}
+  section{
+    padding:56px 24px;margin:0 14px 20px;border-radius:28px;overflow:hidden;position:relative;
+    box-shadow:0 10px 30px rgba(4,18,58,.09);
+  }
+  .hero{margin-top:20px;}
   .center{text-align:center;}
   .gold-text{color:var(--gold);}
   .red-text{color:var(--red);}
@@ -213,11 +217,17 @@
   .three-arrow svg{width:16px;height:16px;}
 
   .banner-panel{
-    position:relative;margin-top:36px;background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
-    color:#fff;border-radius:var(--radius);padding:30px 22px;text-align:center;overflow:hidden;
+    position:relative;margin-top:36px;background:linear-gradient(155deg,#ffffff,var(--gold-pale) 260%);
+    color:var(--navy-900);border:1.5px solid rgba(180,130,44,.35);border-radius:var(--radius);
+    padding:38px 24px 32px;text-align:center;overflow:hidden;
+    box-shadow:0 16px 36px rgba(138,100,32,.14), inset 0 1px 0 rgba(255,255,255,.8);
   }
-  .banner-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
-  .banner-panel p{font-family:var(--serif);font-weight:700;font-size:16.5px;line-height:1.85;}
+  .banner-panel::before{
+    content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);
+    width:44px;height:2px;background:var(--gold-foil);background-size:220% 100%;
+  }
+  .banner-panel p{font-family:var(--serif);font-weight:700;font-size:16.5px;line-height:1.85;color:var(--navy-900);}
+  .banner-panel .gold-text,.banner-panel .emph{color:var(--gold-deep);}
 
   /* ================= PROBLEMS ================= */
   .problems{background:#fff;}
@@ -280,9 +290,19 @@
   .mini-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px 8px 8px;font-size:11.5px;font-weight:700;}
   .mini-pill svg{color:var(--gold-light);width:15px;height:15px;}
 
-  /* ---- 人から仕組みへ banner ---- */
-  .big-banner{background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;}
-  .big-banner p{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.75;}
+  /* ---- 人から仕組みへ banner (luxurious white summary) ---- */
+  .big-banner{
+    background:linear-gradient(155deg,#ffffff,var(--gold-pale) 280%);
+    color:var(--navy-900);text-align:center;
+    border:1.5px solid rgba(180,130,44,.35);
+    box-shadow:0 16px 36px rgba(138,100,32,.14), inset 0 1px 0 rgba(255,255,255,.8);
+  }
+  .big-banner::before{
+    content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
+    width:44px;height:2px;background:var(--gold-foil);background-size:220% 100%;
+  }
+  .big-banner p{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.8;color:var(--navy-900);}
+  .big-banner .gold-text,.big-banner .emph{color:var(--gold-deep);}
 
   /* ================= AI-DX ================= */
   .aidx{position:relative;background:linear-gradient(180deg,#fff 0%,var(--blue-pale) 100%);}
@@ -632,10 +652,7 @@
   </section>
 
   <section class="big-banner" id="big-banner">
-    <div class="copy-bg-block" style="margin:-6px 0;padding:26px 12px;">
-      <div class="copy-bg-img" style="background-image:url('./images/bg-growth.jpg');opacity:.3;"></div>
-      <p class="reveal">営業力は<span class="gold-text emph">「人」</span>から<br><span class="gold-text emph">「仕組み」</span>へ。<br>未来の<span class="gold-text emph">売上</span>をつくる。</p>
-    </div>
+    <p class="reveal">営業力は<span class="gold-text emph">「人」</span>から<br><span class="gold-text emph">「仕組み」</span>へ。<br>未来の<span class="gold-text emph">売上</span>をつくる。</p>
   </section>
 
   <!-- ========== AI-DX ========== -->
