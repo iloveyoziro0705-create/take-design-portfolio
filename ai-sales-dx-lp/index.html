@@ -47,22 +47,27 @@
   .center{text-align:center;}
   .gold-text{color:var(--gold);}
   .red-text{color:var(--red);}
-  .emph{font-size:1.18em;font-weight:900;display:inline-block;}
-  .emph-num{font-size:1.6em;font-weight:900;display:inline-block;line-height:1;vertical-align:-.08em;}
+  .emph{font-size:1.42em;font-weight:900;display:inline-block;line-height:1.25;}
+  .emph-num{font-size:2.2em;font-weight:900;display:inline-block;line-height:1;vertical-align:-.12em;}
 
   /* ---------- Headline background photo (decorative, blurred + faded, scoped to copy block only) ---------- */
   .copy-bg-block{
     position:relative;overflow:hidden;
-    margin:-6px -8px 24px;padding:18px 8px 22px;border-radius:var(--radius);
+    margin:-6px -8px 24px;padding:22px 14px 24px;border-radius:var(--radius);
+    background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
   }
+  .copy-bg-block::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;z-index:2;}
   .copy-bg-img{
     position:absolute;inset:0;z-index:0;
     background-size:cover;background-position:center;
-    filter:blur(5px) saturate(1.05);opacity:.26;
+    filter:blur(4px) saturate(1.1);opacity:.34;
     -webkit-mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, #000 38%, transparent 92%);
     mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, #000 38%, transparent 92%);
   }
   .copy-bg-block > *:not(.copy-bg-img){position:relative;z-index:1;}
+  /* already-navy panels (checklist / big-banner): skip the extra card treatment */
+  .checklist-panel .copy-bg-block,.big-banner .copy-bg-block{background:none;}
+  .checklist-panel .copy-bg-block::before,.big-banner .copy-bg-block::before{display:none;}
 
   /* ---------- Reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);}
@@ -92,8 +97,8 @@
 
   /* ---------- Eyebrow / headings ---------- */
   .flourish-title{
-    text-align:center;font-family:var(--serif);font-weight:900;
-    font-size:18px;color:var(--navy-900);line-height:1.6;
+    text-align:center;font-family:var(--serif);font-weight:700;
+    font-size:17px;color:var(--navy-900);line-height:1.6;
     position:relative;padding:0 30px;margin-bottom:8px;
   }
   .flourish-title::before,.flourish-title::after{
@@ -102,8 +107,8 @@
   .flourish-title::before{left:0;}
   .flourish-title::after{right:0;}
   h2.section-title{
-    font-family:var(--serif);font-size:22px;font-weight:900;color:var(--navy-900);
-    line-height:1.55;letter-spacing:.01em;text-align:center;
+    font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy-900);
+    line-height:1.5;letter-spacing:.01em;text-align:center;
   }
   p.section-lead{font-size:12.5px;color:var(--text-sub);text-align:center;margin-top:10px;line-height:1.85;}
 
@@ -147,7 +152,7 @@
     margin-bottom:16px;box-shadow:0 8px 20px rgba(4,18,58,.18);
   }
   .hero-pill i{color:var(--gold-light);}
-  .hero h1{font-size:25px;font-weight:900;color:var(--navy-900);line-height:1.5;margin-bottom:16px;letter-spacing:.01em;}
+  .hero h1{font-size:24px;font-weight:700;color:var(--navy-900);line-height:1.4;margin-bottom:16px;letter-spacing:.01em;}
   .hero-sub{font-size:12.5px;color:var(--text-sub);line-height:1.9;margin-bottom:22px;}
   .hero-media{
     position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
@@ -180,7 +185,7 @@
 
   /* ================= PROBLEMS ================= */
   .problems{background:var(--gray-bg);}
-  .problems h2{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--navy-900);text-align:center;line-height:1.6;}
+  .problems h2{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--navy-900);text-align:center;line-height:1.6;}
   .problem-sub{
     display:block;text-align:center;background:#fff;color:var(--text-sub);font-size:11.5px;font-weight:700;
     padding:6px 14px;border-radius:2px;margin:14px auto 24px;width:fit-content;border:1px solid var(--border);
@@ -229,7 +234,7 @@
   .big-banner{
     background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;
   }
-  .big-banner p{font-family:var(--serif);font-weight:900;font-size:20px;line-height:1.7;}
+  .big-banner p{font-family:var(--serif);font-weight:700;font-size:18px;line-height:1.7;}
 
   /* ================= AI-DX ================= */
   .aidx{position:relative;background:var(--white);}
@@ -270,7 +275,7 @@
   .skills-banner{
     margin-top:38px;background:var(--navy-900);color:#fff;text-align:center;padding:16px;border-radius:var(--radius);
   }
-  .skills-banner p{font-family:var(--serif);font-weight:900;font-size:16px;}
+  .skills-banner p{font-family:var(--serif);font-weight:700;font-size:15px;}
   .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
   .skill-item{
     display:flex;align-items:center;gap:10px;background:var(--gray-bg);border:1px solid var(--border);
@@ -381,6 +386,18 @@
     .sticky-cta{bottom:14px;}
     .sticky-cta .btn{padding:13px 20px;font-size:12.5px;}
   }
+
+  /* ---------- Text colors inside navy copy-bg-block cards ---------- */
+  .copy-bg-block h1,
+  .copy-bg-block h2.section-title,
+  .copy-bg-block h2:not(.section-title),
+  .copy-bg-block .flourish-title,
+  .copy-bg-block .curriculum-sub{color:#fff;}
+  .copy-bg-block .flourish-title::before,.copy-bg-block .flourish-title::after{background:var(--gold-light);}
+  .copy-bg-block p.section-lead{color:#c8cee0;}
+  .copy-bg-block .problem-sub{background:rgba(255,255,255,.1);color:#e4e8f5;border-color:rgba(255,255,255,.25);}
+  .checklist-panel .copy-bg-block h1,.checklist-panel .copy-bg-block h2,
+  .big-banner .copy-bg-block p{color:inherit;}
 </style>
 </head>
 <body>
