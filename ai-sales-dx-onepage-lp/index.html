@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI営業DXリスキリング研修｜元リクルートトップセールスが教える営業DX</title>
+<meta name="description" content="AIでトップセールスの「勝ちパターン」を見える化し、会社の資産にする研修。助成金で最大75%お得に受講可能。">
+<link rel="canonical" href="https://take-design-portfolio.vercel.app/ai-sales-dx-onepage-lp/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#04123a;
+    --navy-800:#0b2050;
+    --navy-700:#152a5e;
+    --blue-accent:#1f5fd6;
+    --gold-deep:#8a6420;
+    --gold:#b4822c;
+    --gold-light:#d9b466;
+    --gold-pale:#f0dfb2;
+    --gray-page:#eef0f4;
+    --gray-bg:#f8f5ef;
+    --white:#ffffff;
+    --text:#1a2333;
+    --text-sub:#5a6478;
+    --red:#d6362a;
+    --border:#e6e0d0;
+    --radius:8px;
+    --shadow:0 10px 28px rgba(4,18,58,0.10);
+    --serif:"Noto Serif JP",serif;
+    --gold-grad:linear-gradient(135deg,var(--gold-light),var(--gold));
+    --gold-foil:linear-gradient(120deg,var(--gold-deep) 0%,var(--gold) 32%,var(--gold-pale) 50%,var(--gold) 68%,var(--gold-deep) 100%);
+    --max:480px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans JP",sans-serif;
+    color:var(--text);
+    background:var(--gray-page);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  .page{max-width:var(--max);margin:0 auto;background:var(--white);position:relative;box-shadow:0 0 60px rgba(4,18,58,0.12);overflow:hidden;}
+  section{padding:44px 20px;}
+  svg{display:block;}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-delay-1{transition-delay:.08s;}
+  .reveal-delay-2{transition-delay:.16s;}
+  .reveal-delay-3{transition-delay:.24s;}
+  .reveal-delay-4{transition-delay:.32s;}
+
+  .gold-text{color:var(--gold);}
+  .red-text{color:var(--red);}
+  .eyebrow{display:flex;align-items:center;justify-content:center;gap:9px;font-family:var(--serif);font-size:11.5px;font-weight:600;letter-spacing:.28em;color:var(--gold);margin-bottom:12px;}
+  .eyebrow::before,.eyebrow::after{content:"";display:block;width:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent);}
+  h2.sec-title{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--navy-900);text-align:center;line-height:1.6;letter-spacing:.01em;}
+  p.sec-lead{font-size:12.5px;color:var(--text-sub);text-align:center;margin-top:10px;line-height:1.8;}
+
+  /* ---------- Buttons ---------- */
+  .btn-gold{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:16px 18px;border-radius:999px;
+    background:var(--gold-foil);background-size:220% 100%;background-position:0% 0%;
+    color:var(--navy-900);
+    font-weight:900;font-size:15px;text-decoration:none;
+    box-shadow:0 10px 24px rgba(138,100,32,0.38);
+    border:none;cursor:pointer;transition:background-position .5s ease;
+  }
+  .btn-gold:active{background-position:100% 0%;}
+  .btn-gold svg{flex-shrink:0;}
+  .btn-outline{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:15px 18px;border-radius:999px;
+    background:var(--white);color:var(--navy-800);
+    font-weight:700;font-size:13.5px;text-decoration:none;
+    border:1px solid var(--border);
+  }
+  .btn-outline-white{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:15px 18px;border-radius:999px;
+    background:rgba(255,255,255,.08);color:#fff;
+    font-weight:700;font-size:13.5px;text-decoration:none;
+    border:1px solid rgba(255,255,255,.35);
+  }
+
+  /* ---------- Header (brandbar, navy) ---------- */
+  .gh-header{
+    position:sticky;top:0;z-index:50;
+    max-width:var(--max);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:12px 16px;background:var(--navy-900);
+    border-bottom:2px solid var(--gold);
+  }
+  .gh-brand{display:flex;align-items:center;gap:8px;overflow:hidden;}
+  .gh-brand-name{font-weight:700;font-size:12.5px;color:#fff;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .gh-brand-badge{
+    flex-shrink:0;display:inline-block;padding:4px 10px;border-radius:20px;
+    background:var(--gold-grad);color:var(--navy-900);font-size:10px;font-weight:700;white-space:nowrap;
+  }
+  .gh-burger{
+    flex-shrink:0;width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .gh-menu{
+    max-width:var(--max);margin:0 auto;background:#fff;border-bottom:1px solid var(--border);
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .gh-menu.open{max-height:320px;}
+  .gh-menu a{display:block;padding:13px 20px;font-size:13.5px;font-weight:700;color:var(--navy-800);text-decoration:none;border-top:1px solid var(--border);}
+
+  /* ---------- Hero ---------- */
+  .gh-hero{padding-top:28px;}
+  .gh-badge-trophy{
+    display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));color:var(--gold-pale);
+    border:1px solid rgba(217,180,102,.55);
+    font-size:11px;font-weight:700;margin-bottom:16px;
+    box-shadow:0 8px 20px rgba(4,18,58,.18);
+  }
+  .gh-hero h1{font-size:24px;font-weight:900;color:var(--navy-900);line-height:1.5;margin-bottom:14px;letter-spacing:.01em;}
+  .gh-hero-sub{font-size:12.5px;color:var(--text-sub);line-height:1.9;margin-bottom:22px;}
+  .gh-hero-media{
+    position:relative;border-radius:var(--radius);overflow:hidden;margin-bottom:18px;
+    aspect-ratio:3/4;background:var(--navy-900);box-shadow:var(--shadow);
+  }
+  .gh-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .gh-hero-note-overlay{
+    position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;
+    display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
+    color:var(--navy-900);font-size:10px;font-weight:700;padding:8px 13px;border-radius:999px;
+    border:1px solid rgba(180,130,44,.4);box-shadow:0 8px 20px rgba(4,18,58,.16);white-space:nowrap;
+  }
+  .gh-hero-note-overlay svg{width:12px;height:12px;color:var(--gold);flex-shrink:0;}
+
+  .gh-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+  .gh-feature-item{
+    background:var(--gray-bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px 8px;text-align:center;
+  }
+  .gh-feature-item img{width:26px;height:26px;margin:0 auto 8px;object-fit:contain;}
+  .gh-feature-item span{display:block;font-size:11.5px;font-weight:700;color:var(--navy-900);line-height:1.4;}
+  .gh-feature-item small{display:block;font-size:9.5px;color:var(--text-sub);margin-top:3px;line-height:1.4;}
+
+  .gh-hero-note{text-align:center;font-size:11px;color:var(--text-sub);margin-top:12px;line-height:1.7;}
+
+  /* ---------- Accordion (shared: problems / skill / curriculum) ---------- */
+  .gh-acc-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;background:#fff;}
+  .gh-acc-head{
+    width:100%;display:flex;align-items:center;gap:10px;padding:13px 14px;background:none;border:none;cursor:pointer;text-align:left;
+  }
+  .gh-acc-icon{width:30px;height:30px;flex-shrink:0;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;}
+  .gh-acc-icon img{width:60%;height:60%;object-fit:contain;}
+  .gh-acc-num{font-family:var(--serif);font-size:11px;font-weight:700;color:var(--gold);flex-shrink:0;}
+  .gh-acc-title{flex:1;font-size:12.5px;font-weight:700;color:var(--navy-900);}
+  .gh-acc-head svg{width:16px;height:16px;color:var(--text-sub);flex-shrink:0;transition:transform .3s ease;}
+  .gh-acc-item.open .gh-acc-head svg{transform:rotate(180deg);}
+  .gh-acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .gh-acc-item.open .gh-acc-body{max-height:120px;}
+  .gh-acc-body p{padding:0 14px 15px 54px;font-size:11.5px;color:var(--text-sub);line-height:1.7;}
+
+  /* ---------- Problems header ---------- */
+  .gh-problems{background:var(--white);}
+  .gh-problems h2{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy-900);text-align:center;line-height:1.6;margin-bottom:6px;}
+  .gh-problem-sub{display:block;text-align:center;background:var(--gray-bg);color:var(--text-sub);font-size:11.5px;font-weight:700;padding:6px 14px;border-radius:2px;margin:12px auto 22px;width:fit-content;}
+
+  /* ---------- Checklist panel (transition) ---------- */
+  .gh-checklist{
+    position:relative;margin-top:30px;background:linear-gradient(160deg,var(--navy-900),var(--navy-700));
+    color:#fff;border-radius:var(--radius);padding:26px 18px;overflow:hidden;
+  }
+  .gh-checklist::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .gh-checklist-title{font-family:var(--serif);text-align:center;font-size:15.5px;font-weight:700;line-height:1.7;margin-bottom:20px;}
+  .gh-checklist-list{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+  .gh-checklist-item{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.28);border-radius:var(--radius);padding:12px 14px;}
+  .gh-checklist-item img{width:28px;height:28px;flex-shrink:0;object-fit:contain;margin-top:1px;}
+  .gh-checklist-item h4{font-size:12.5px;font-weight:700;margin-bottom:3px;}
+  .gh-checklist-item p{font-size:11px;color:#c8cee0;line-height:1.6;}
+  .gh-mini-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);}
+  .gh-mini-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border-radius:999px;padding:7px 13px 7px 7px;font-size:10.5px;font-weight:700;}
+  .gh-mini-pill img{width:20px;height:20px;object-fit:contain;}
+
+  /* ---------- AI DX ---------- */
+  .gh-aidx{position:relative;background:radial-gradient(circle at 25% 15%,var(--navy-700) 0%,var(--navy-900) 55%,#030d2c 100%);color:#fff;overflow:hidden;}
+  .gh-aidx::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .gh-aidx::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(217,180,102,.16) 1px,transparent 1.5px);background-size:20px 20px;opacity:.5;pointer-events:none;}
+  .gh-aidx h2, .gh-aidx .eyebrow{color:inherit;}
+  .gh-aidx h2.sec-title{color:#fff;}
+  .gh-aidx p.sec-lead{color:#c7cfe5;}
+  .gh-aidx-panel{position:relative;margin:24px 0 8px;display:flex;flex-direction:column;gap:12px;align-items:center;}
+  .gh-aidx-orb{
+    width:100px;height:100px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,var(--gold-light),var(--gold));
+    display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:var(--navy-900);
+    box-shadow:0 0 0 7px rgba(217,180,102,.14),0 0 40px rgba(217,180,102,.35);
+    margin:0 auto 6px;
+  }
+  .gh-aidx-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+  .gh-aidx-badges span{
+    display:inline-flex;align-items:center;gap:7px;padding:8px 13px 8px 8px;border-radius:999px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.35);font-size:11px;font-weight:700;
+  }
+  .gh-aidx-badges img{width:24px;height:24px;object-fit:contain;border-radius:6px;}
+
+  .gh-aidx-subhead{position:relative;text-align:center;font-family:var(--serif);font-weight:700;font-size:14.5px;margin:32px 0 20px;line-height:1.7;}
+  .gh-step-flow{position:relative;display:flex;flex-direction:column;gap:16px;}
+  .gh-step-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(217,180,102,.25);border-radius:var(--radius);padding:12px 14px;}
+  .gh-step-circle{flex-shrink:0;width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;}
+  .gh-step-circle img{width:60%;height:60%;object-fit:contain;}
+  .gh-step-item .step-num{font-family:var(--serif);color:var(--gold-light);font-weight:600;font-size:11px;display:block;margin-bottom:2px;}
+  .gh-step-item h4{font-size:13px;font-weight:700;margin-bottom:2px;}
+  .gh-step-item p{font-size:10.5px;color:#c7cfe5;}
+
+  .gh-micro-divider{position:relative;text-align:center;color:#b9c2dc;font-size:11px;font-weight:700;margin:30px 0 18px;}
+  .gh-micro-flow{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 8px;}
+  .gh-micro-item{text-align:center;}
+  .gh-micro-circle{width:44px;height:44px;margin:0 auto 7px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(217,180,102,.3);display:flex;align-items:center;justify-content:center;}
+  .gh-micro-circle img{width:55%;height:55%;object-fit:contain;}
+  .gh-micro-item span.n{display:block;font-family:var(--serif);color:var(--gold-light);font-size:10px;font-weight:600;margin-bottom:3px;}
+  .gh-micro-item p{font-size:10px;font-weight:700;color:#fff;line-height:1.4;}
+
+  /* ---------- Reasons ---------- */
+  .gh-reasons{background:var(--white);}
+  .gh-reasons-photo{border-radius:var(--radius);overflow:hidden;margin-bottom:24px;aspect-ratio:4/3;box-shadow:var(--shadow);}
+  .gh-reasons-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+  .gh-reasons-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 6px;margin-top:22px;}
+  .gh-reason-item{text-align:center;}
+  .gh-reason-item .icon-circle{width:44px;height:44px;margin:0 auto 8px;border-radius:50%;background:#fff;border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;}
+  .gh-reason-item img{width:55%;height:55%;object-fit:contain;}
+  .gh-reason-item span{display:block;font-size:10.5px;font-weight:700;color:var(--navy-900);line-height:1.4;}
+  .gh-banner-strip{margin-top:30px;background:linear-gradient(135deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;padding:22px 18px;border-radius:var(--radius);font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.7;}
+
+  /* ---------- Program (skill / curriculum / asset) ---------- */
+  .gh-program{background:var(--gray-bg);}
+  .gh-program-sub{font-size:14px;font-weight:900;color:var(--navy-900);text-align:center;margin:30px 0 14px;}
+  .gh-program-sub:first-of-type{margin-top:6px;}
+  .gh-asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;text-align:center;margin-top:6px;}
+  .gh-asset-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px 10px;}
+  .gh-asset-item .icon-circle{width:42px;height:42px;margin:0 auto 8px;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;}
+  .gh-asset-item img{width:55%;height:55%;object-fit:contain;}
+  .gh-asset-item p{font-size:11.5px;font-weight:700;color:var(--navy-900);}
+
+  /* ---------- Subsidy ---------- */
+  .gh-subsidy{background:var(--white);}
+  .gh-subsidy-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:28px;border:1px solid var(--gold-light);}
+  .gh-subsidy-head{background:var(--navy-900);color:#fff;text-align:center;font-weight:700;font-size:13px;letter-spacing:.04em;padding:13px;}
+  .gh-subsidy-body{background:linear-gradient(160deg,#fff,var(--gold-pale) 220%);padding:22px 18px;display:flex;align-items:center;gap:14px;}
+  .gh-subsidy-body svg{width:34px;height:34px;color:var(--gold);flex-shrink:0;}
+  .gh-subsidy-num{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--gold-deep);line-height:1;}
+  .gh-subsidy-num small{font-size:15px;font-weight:700;}
+  .gh-subsidy-num .label{display:block;font-size:11px;font-weight:700;color:var(--text-sub);margin-bottom:2px;}
+  .gh-subsidy-real{margin-left:auto;text-align:right;font-size:11px;color:var(--text-sub);line-height:1.6;}
+  .gh-subsidy-real b{font-family:var(--serif);font-size:17px;color:var(--navy-900);}
+  .gh-subsidy-cta{padding:16px;background:#fff;}
+
+  .gh-subsidy h3{font-size:14px;font-weight:900;color:var(--navy-900);text-align:center;margin-bottom:16px;}
+  .gh-merit-list{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
+  .gh-merit-item{display:flex;gap:12px;align-items:flex-start;}
+  .gh-icon-badge{width:38px;height:38px;border-radius:50%;background:var(--navy-900);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .gh-icon-badge img{width:55%;height:55%;object-fit:contain;filter:brightness(0) invert(1);}
+  .gh-merit-item h4{font-size:13px;font-weight:900;color:var(--navy-900);margin-bottom:3px;}
+  .gh-merit-item p{font-size:11.5px;color:var(--text-sub);line-height:1.6;}
+
+  .gh-apply-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+  .gh-apply-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:11px 15px;}
+  .gh-apply-icon{width:32px;height:32px;flex-shrink:0;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;}
+  .gh-apply-icon img{width:55%;height:55%;object-fit:contain;}
+  .gh-num-badge{width:22px;height:22px;border-radius:50%;background:var(--navy-900);color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .gh-apply-item p{font-size:12px;font-weight:700;color:var(--navy-900);}
+
+  .gh-info-bar{display:flex;flex-direction:column;gap:9px;background:var(--navy-900);border-radius:var(--radius);padding:16px 18px;border-top:2px solid var(--gold);}
+  .gh-info-bar span{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;color:#fff;}
+  .gh-info-bar img{width:20px;height:20px;flex-shrink:0;object-fit:contain;filter:brightness(0) saturate(100%) invert(85%) sepia(15%) saturate(700%) hue-rotate(354deg) brightness(101%) contrast(93%);}
+
+  /* ---------- Results ---------- */
+  .gh-results{background:var(--gray-bg);}
+  .gh-results-card{background:linear-gradient(160deg,var(--navy-900),var(--navy-700));border-radius:var(--radius);padding:24px 18px;color:#fff;}
+  .gh-results-card h3{font-family:var(--serif);text-align:center;font-size:15px;font-weight:700;margin-bottom:18px;}
+  .gh-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
+  .gh-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:14px 6px;text-align:center;}
+  .gh-stat svg{width:20px;height:20px;color:var(--gold-light);margin:0 auto 8px;}
+  .gh-stat .num{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--gold-light);}
+  .gh-stat .num small{font-size:11px;font-weight:700;}
+  .gh-stat p{font-size:10.5px;font-weight:700;margin-top:4px;}
+  .gh-stat small.desc{display:block;font-size:8.5px;color:#b9c2dc;margin-top:4px;line-height:1.4;}
+
+  /* ---------- Final CTA ---------- */
+  .gh-final-cta{background:radial-gradient(circle at 25% 20%,var(--navy-700),var(--navy-900) 70%);color:#fff;text-align:center;}
+  .gh-final-cta h2{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.7;margin-bottom:16px;}
+  .gh-final-lead{font-size:12.5px;color:#c8cee0;margin-bottom:22px;line-height:1.8;}
+  .gh-final-badges{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+  .gh-final-badges span{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);font-size:11px;font-weight:700;}
+  .gh-final-badges svg{width:14px;height:14px;color:var(--gold-light);}
+  .gh-final-photo{border-radius:var(--radius);overflow:hidden;margin:22px 0 16px;aspect-ratio:4/3;}
+  .gh-final-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
+  .gh-final-list{display:flex;flex-direction:column;gap:8px;text-align:left;margin-bottom:6px;}
+  .gh-final-list span{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:12px 14px;font-size:12px;font-weight:700;}
+  .gh-final-list svg{width:16px;height:16px;color:var(--gold-light);flex-shrink:0;}
+
+  /* ---------- Footer ---------- */
+  .gh-footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:26px 20px;}
+  .gh-footer p{font-size:11px;letter-spacing:.03em;}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="gh-header">
+    <div class="gh-brand">
+      <span class="gh-brand-name">AI営業DXリスキリング研修</span>
+    </div>
+    <span class="gh-brand-badge">助成金対象</span>
+    <button class="gh-burger" id="ghBurger" aria-label="メニュー">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+  <nav class="gh-menu" id="ghMenu">
+    <a href="#hero">トップ</a>
+    <a href="#problems">研修の特徴</a>
+    <a href="#program">スキル・カリキュラム</a>
+    <a href="#subsidy">助成金</a>
+    <a href="#results">導入事例</a>
+    <a href="#final-cta">資料請求</a>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="gh-hero" id="hero">
+    <div class="gh-badge-trophy reveal">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4M17 5h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4"/></svg>
+      元リクルートトップセールスが教える！
+    </div>
+    <h1 class="reveal reveal-delay-1">
+      トップ営業が辞めても、<br>
+      <span class="gold-text">売上が落ちない会社へ。</span>
+    </h1>
+    <p class="gh-hero-sub reveal reveal-delay-2">
+      トップセールスをAIで分析し、勝ちパターンを会社の資産へ。AIで営業の「属人化」をなくし、再現性のある営業組織を実現する研修プログラムです。
+    </p>
+    <div class="gh-hero-media reveal reveal-delay-2">
+      <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
+      <p class="gh-hero-note-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>オンライン相談OK・約30分</p>
+    </div>
+    <div class="gh-feature-row reveal reveal-delay-3">
+      <div class="gh-feature-item">
+        <img src="./images/icons/step3-01-search.png" alt="">
+        <span>AI営業分析</span><small>営業を見える化</small>
+      </div>
+      <div class="gh-feature-item">
+        <img src="./images/icons/step3-02-trophy.png" alt="">
+        <span>勝ちパターン分析</span><small>成果につながる型を抽出</small>
+      </div>
+      <div class="gh-feature-item">
+        <img src="./images/icons/step3-03-building.png" alt="">
+        <span>営業資産化</span><small>会社全体で共有・活用</small>
+      </div>
+    </div>
+    <a href="#final-cta" class="btn-gold reveal reveal-delay-4">
+      無料で資料を受け取る
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m10 8 4 4-4 4"/></svg>
+    </a>
+    <p class="gh-hero-note reveal reveal-delay-4">助成金対象なら無料診断も可能！オンライン相談30分対応</p>
+  </section>
+
+  <!-- ========== PROBLEMS (accordion) ========== -->
+  <section class="gh-problems" id="problems">
+    <span class="eyebrow reveal">PROBLEM</span>
+    <h2 class="reveal">トップ営業が辞めたら、あなたの会社に<br><span class="red-text">何が残りますか？</span></h2>
+    <span class="gh-problem-sub reveal">多くの会社では…</span>
+    <div id="problemAccordion">
+      <div class="gh-acc-item reveal">
+        <button class="gh-acc-head">
+          <span class="gh-acc-icon"><img src="./images/icons/prob-01-trophy.png" alt=""></span>
+          <span class="gh-acc-title">トップ営業だけが売れている</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="gh-acc-body"><p>成果が個人に依存し、属人化している</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-1">
+        <button class="gh-acc-head">
+          <span class="gh-acc-icon"><img src="./images/icons/prob-02-userlock.png" alt=""></span>
+          <span class="gh-acc-title">ノウハウが個人の中にある</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="gh-acc-body"><p>共有されず、再現できないブラックボックス化</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-2">
+        <button class="gh-acc-head">
+          <span class="gh-acc-icon"><img src="./images/icons/prob-03-chart.png" alt=""></span>
+          <span class="gh-acc-title">売れる理由を説明できない</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="gh-acc-body"><p>再現性がなく、指導も感覚や経験に頼ってしまう</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-3">
+        <button class="gh-acc-head">
+          <span class="gh-acc-icon"><img src="./images/icons/prob-04-sitemap.png" alt=""></span>
+          <span class="gh-acc-title">新人教育はトップ営業任せ</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="gh-acc-body"><p>教育の仕組みがなく、育成が属人化している</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-4">
+        <button class="gh-acc-head">
+          <span class="gh-acc-icon"><img src="./images/icons/prob-05-database.png" alt=""></span>
+          <span class="gh-acc-title">ノウハウが会社に蓄積されない</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="gh-acc-body"><p>資産にならず、失われ続ける状態になっている</p></div>
+      </div>
+    </div>
+
+    <div class="gh-checklist reveal">
+      <div class="gh-checklist-title">AIで営業ノウハウを<span class="gold-text">会社の資産</span>へ。<br>誰でも成果を出せる組織に変わる。</div>
+      <div class="gh-checklist-list">
+        <div class="gh-checklist-item">
+          <img src="./images/icons/check-01-target.png" alt="">
+          <div><h4>勝ちパターンを資産化</h4><p>トップ営業の思考・行動・トークを分析し、成果につながる「型」を仕組み化。</p></div>
+        </div>
+        <div class="gh-checklist-item">
+          <img src="./images/icons/check-02-book.png" alt="">
+          <div><h4>全員が学べる・使える</h4><p>ノウハウをマニュアル化・共有し、誰でも同じ再現性で実践できる。</p></div>
+        </div>
+        <div class="gh-checklist-item">
+          <img src="./images/icons/check-03-cycle.png" alt="">
+          <div><h4>再現性のある営業組織</h4><p>属人化を解消し、仕組みで成果を生み出す強い営業組織を構築。</p></div>
+        </div>
+        <div class="gh-checklist-item">
+          <img src="./images/icons/check-04-run.png" alt="">
+          <div><h4>新人が早く育つ</h4><p>体系化された教育プログラムで、早期戦力化を実現。</p></div>
+        </div>
+        <div class="gh-checklist-item">
+          <img src="./images/icons/check-05-chart.png" alt="">
+          <div><h4>売上が安定・拡大</h4><p>営業力の底上げで、売上のムラをなくし、持続的な成長を実現。</p></div>
+        </div>
+      </div>
+      <div class="gh-mini-row">
+        <span class="gh-mini-pill"><img src="./images/icons/mini-01-chart.png" alt="">データで分析</span>
+        <span class="gh-mini-pill"><img src="./images/icons/mini-02-brain.png" alt="">AIで可視化</span>
+        <span class="gh-mini-pill"><img src="./images/icons/mini-03-bulb.png" alt="">勝ちパターン化</span>
+        <span class="gh-mini-pill"><img src="./images/icons/mini-04-people.png" alt="">全社で共有・活用</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AI営業DXとは ========== -->
+  <section class="gh-aidx" id="ai-dx">
+    <span class="eyebrow reveal">AI SALES DX</span>
+    <h2 class="sec-title reveal">AIでトップセールスの「勝ちパターン」を<br>見える化し、会社の資産にする。</h2>
+    <p class="sec-lead reveal">AIが分析・分解・可視化することで、誰でも成果を出せる営業組織を実現します。</p>
+    <div class="gh-aidx-panel reveal reveal-delay-1">
+      <div class="gh-aidx-orb">AI</div>
+      <div class="gh-aidx-badges">
+        <span><img src="./images/icons/aidx-01-customer.png" alt="">顧客分析</span>
+        <span><img src="./images/icons/aidx-02-data.png" alt="">データ分析</span>
+        <span><img src="./images/icons/aidx-03-talk.png" alt="">トーク分析</span>
+        <span><img src="./images/icons/aidx-04-roleplay.png" alt="">ロープレ分析</span>
+        <span><img src="./images/icons/aidx-05-doc.png" alt="">資料改善</span>
+      </div>
+    </div>
+
+    <p class="gh-aidx-subhead reveal">AIでトップセールスの「勝ちパターン」を<br>資産化する3ステップ</p>
+    <div class="gh-step-flow">
+      <div class="gh-step-item reveal">
+        <span class="gh-step-circle"><img src="./images/icons/step3-01-search.png" alt=""></span>
+        <div><span class="step-num">01</span><h4>AI営業分析</h4><p>営業を見える化</p></div>
+      </div>
+      <div class="gh-step-item reveal reveal-delay-1">
+        <span class="gh-step-circle"><img src="./images/icons/step3-02-trophy.png" alt=""></span>
+        <div><span class="step-num">02</span><h4>勝ちパターン分析</h4><p>成果につながる型を抽出</p></div>
+      </div>
+      <div class="gh-step-item reveal reveal-delay-2">
+        <span class="gh-step-circle"><img src="./images/icons/step3-03-building.png" alt=""></span>
+        <div><span class="step-num">03</span><h4>営業資産化</h4><p>会社全体で共有・活用</p></div>
+      </div>
+    </div>
+
+    <div class="gh-micro-divider reveal">この3ステップを、さらに6つの工程に分解して実行します</div>
+    <div class="gh-micro-flow">
+      <div class="gh-micro-item reveal"><span class="n">01</span><span class="gh-micro-circle"><img src="./images/icons/micro-01-inbox.png" alt=""></span><p>データ収集</p></div>
+      <div class="gh-micro-item reveal reveal-delay-1"><span class="n">02</span><span class="gh-micro-circle"><img src="./images/icons/micro-02-brain.png" alt=""></span><p>AI分析</p></div>
+      <div class="gh-micro-item reveal reveal-delay-2"><span class="n">03</span><span class="gh-micro-circle"><img src="./images/icons/micro-03-puzzle.png" alt=""></span><p>因数分解</p></div>
+      <div class="gh-micro-item reveal reveal-delay-3"><span class="n">04</span><span class="gh-micro-circle"><img src="./images/icons/micro-04-target.png" alt=""></span><p>パターン化</p></div>
+      <div class="gh-micro-item reveal reveal-delay-4"><span class="n">05</span><span class="gh-micro-circle"><img src="./images/icons/micro-05-doc.png" alt=""></span><p>コンテンツ化</p></div>
+      <div class="gh-micro-item reveal"><span class="n">06</span><span class="gh-micro-circle"><img src="./images/icons/micro-06-people.png" alt=""></span><p>共有・活用</p></div>
+    </div>
+  </section>
+
+  <!-- ========== この研修が選ばれる5つの理由 ========== -->
+  <section class="gh-reasons" id="reasons">
+    <span class="eyebrow reveal">WHY US</span>
+    <h2 class="sec-title reveal">この研修で、<br>営業の未来が変わります。</h2>
+    <p class="sec-lead reveal">AIで営業の「属人化」をなくし、再現性のある営業組織へ。</p>
+    <div class="gh-reasons-photo reveal reveal-delay-1">
+      <img src="./images/reasons-team.jpg" alt="営業の未来が変わるチームイメージ">
+    </div>
+    <p class="gh-program-sub" style="margin-top:0;">この研修が選ばれる<span class="gold-text">5</span>つの理由</p>
+    <div class="gh-reasons-row">
+      <div class="gh-reason-item reveal"><span class="icon-circle"><img src="./images/icons/reason-01-ai.png" alt=""></span><span>AIでトップ営業を分析</span></div>
+      <div class="gh-reason-item reveal reveal-delay-1"><span class="icon-circle"><img src="./images/icons/reason-02-trophy.png" alt=""></span><span>勝ちパターンを資産化</span></div>
+      <div class="gh-reason-item reveal reveal-delay-2"><span class="icon-circle"><img src="./images/icons/reason-03-chart.png" alt=""></span><span>誰でも成果を再現</span></div>
+      <div class="gh-reason-item reveal reveal-delay-3"><span class="icon-circle"><img src="./images/icons/reason-04-chalkboard.png" alt=""></span><span>新人育成が早くなる</span></div>
+      <div class="gh-reason-item reveal reveal-delay-4"><span class="icon-circle"><img src="./images/icons/reason-05-cycle.png" alt=""></span><span>営業DXが定着する</span></div>
+    </div>
+    <div class="gh-banner-strip reveal">営業力は、<span class="gold-text">仕組み</span>でつくる時代へ。</div>
+  </section>
+
+  <!-- ========== PROGRAM (skill / curriculum / asset) ========== -->
+  <section class="gh-program" id="program">
+    <span class="eyebrow reveal">PROGRAM</span>
+    <h2 class="sec-title reveal">この研修で得られるもの</h2>
+    <p class="sec-lead reveal">スキル・カリキュラム・成果物を1つのプログラムで。</p>
+
+    <p class="gh-program-sub reveal">身につく<span class="gold-text">6</span>つのスキル</p>
+    <div id="skillAccordion">
+      <div class="gh-acc-item reveal">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-01-search.png" alt=""></span><span class="gh-acc-title">AI営業分析力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>AIで営業データを分析し、課題を可視化する力</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-1">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-02-trophy.png" alt=""></span><span class="gh-acc-title">勝ちパターン発見力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>成果につながる営業の「型」を見つけ出す力</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-2">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-03-flag.png" alt=""></span><span class="gh-acc-title">営業ストーリー設計力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>顧客に響くシナリオを組み立てる力</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-3">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-04-doc.png" alt=""></span><span class="gh-acc-title">営業資料設計力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>伝わる資料を構築し、成約率を高める力</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-4">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-05-chat.png" alt=""></span><span class="gh-acc-title">営業コミュニケーション力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>信頼関係を築き、成約につなげる対話力</p></div>
+      </div>
+      <div class="gh-acc-item reveal">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/skill-06-cycle.png" alt=""></span><span class="gh-acc-title">営業DX推進力</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>AI・データを活用し、営業を最適化する力</p></div>
+      </div>
+    </div>
+
+    <p class="gh-program-sub reveal">研修カリキュラム（全<span class="gold-text">6</span>回）</p>
+    <div id="currAccordion">
+      <div class="gh-acc-item reveal">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-01-search.png" alt=""></span><span class="gh-acc-title">営業課題分析</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>自社の営業課題をヒアリングし、現状を可視化する</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-1">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-02-person.png" alt=""></span><span class="gh-acc-title">トップセールス分析</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>トップ営業の思考・行動・トークをAIで分析する</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-2">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-03-doccheck.png" alt=""></span><span class="gh-acc-title">勝ちパターン資産化</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>分析結果から成果につながる「型」を抽出し資産化する</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-3">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-04-profile.png" alt=""></span><span class="gh-acc-title">プロフィール・ストーリー設計</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>顧客に響く営業ストーリーと資料を設計する</p></div>
+      </div>
+      <div class="gh-acc-item reveal reveal-delay-4">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-05-chat.png" alt=""></span><span class="gh-acc-title">営業ロープレ実践・改善</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>実践ロープレを繰り返し、トークの精度を高める</p></div>
+      </div>
+      <div class="gh-acc-item reveal">
+        <button class="gh-acc-head"><span class="gh-acc-icon"><img src="./images/icons/curr-06-chart.png" alt=""></span><span class="gh-acc-title">営業DX診断・成果発表</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="gh-acc-body"><p>成果を診断し、社内に共有・定着させる</p></div>
+      </div>
+    </div>
+
+    <p class="gh-program-sub reveal">この研修で会社に残るもの</p>
+    <div class="gh-asset-grid">
+      <div class="gh-asset-item reveal"><span class="icon-circle"><img src="./images/icons/asset-01-book.png" alt=""></span><p>営業マニュアル</p></div>
+      <div class="gh-asset-item reveal reveal-delay-1"><span class="icon-circle"><img src="./images/icons/asset-02-chat.png" alt=""></span><p>営業トーク集</p></div>
+      <div class="gh-asset-item reveal reveal-delay-2"><span class="icon-circle"><img src="./images/icons/asset-03-trophy.png" alt=""></span><p>成功事例集</p></div>
+      <div class="gh-asset-item reveal reveal-delay-3"><span class="icon-circle"><img src="./images/icons/asset-04-board.png" alt=""></span><p>営業資料テンプレート</p></div>
+      <div class="gh-asset-item reveal reveal-delay-4" style="grid-column:1 / -1;"><span class="icon-circle"><img src="./images/icons/asset-05-clipboard.png" alt=""></span><p>営業DX改善シート</p></div>
+    </div>
+  </section>
+
+  <!-- ========== SUBSIDY ========== -->
+  <section class="gh-subsidy" id="subsidy">
+    <span class="eyebrow reveal">SUBSIDY</span>
+    <h2 class="sec-title reveal" style="margin-bottom:20px;">助成金でお得に受講</h2>
+
+    <div class="gh-subsidy-card reveal">
+      <div class="gh-subsidy-head">研修費用の助成</div>
+      <div class="gh-subsidy-body">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4M17 5h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4"/></svg>
+        <div class="gh-subsidy-num"><span class="label">最大</span>75<small>%助成</small></div>
+        <div class="gh-subsidy-real">実質負担<br>約<b>8.2</b>万円〜<br><span style="font-size:9.5px;">(※条件あり)</span></div>
+      </div>
+      <div class="gh-subsidy-cta">
+        <a href="#final-cta" class="btn-gold">
+          自社が対象か無料で確認する
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <h3>研修導入で得られる3つのメリット</h3>
+    <div class="gh-merit-list">
+      <div class="gh-merit-item reveal">
+        <div class="gh-icon-badge"><img src="./images/icons/merit-01-chart.png" alt=""></div>
+        <div><h4>営業力向上</h4><p>AIで勝ちパターンを再現し、成果につながる営業組織へ</p></div>
+      </div>
+      <div class="gh-merit-item reveal reveal-delay-1">
+        <div class="gh-icon-badge"><img src="./images/icons/merit-02-coins.png" alt=""></div>
+        <div><h4>助成金でコスト削減</h4><p>助成金の活用で、研修費用の負担を大幅に軽減</p></div>
+      </div>
+      <div class="gh-merit-item reveal reveal-delay-2">
+        <div class="gh-icon-badge"><img src="./images/icons/merit-03-people.png" alt=""></div>
+        <div><h4>人材の定着・成長</h4><p>学びの機会を提供し、自律的に成長する人材へ</p></div>
+      </div>
+    </div>
+
+    <h3>助成金の申請サポートもお任せください！</h3>
+    <div class="gh-apply-list">
+      <div class="gh-apply-item reveal"><span class="gh-num-badge">01</span><span class="gh-apply-icon"><img src="./images/icons/apply-01-doc.png" alt=""></span><p>ヒアリング</p></div>
+      <div class="gh-apply-item reveal reveal-delay-1"><span class="gh-num-badge">02</span><span class="gh-apply-icon"><img src="./images/icons/apply-02-clipboard.png" alt=""></span><p>助成金のご提案</p></div>
+      <div class="gh-apply-item reveal reveal-delay-2"><span class="gh-num-badge">03</span><span class="gh-apply-icon"><img src="./images/icons/apply-03-pencil.png" alt=""></span><p>申請サポート</p></div>
+      <div class="gh-apply-item reveal reveal-delay-3"><span class="gh-num-badge">04</span><span class="gh-apply-icon"><img src="./images/icons/apply-04-handshake.png" alt=""></span><p>研修スタート</p></div>
+    </div>
+
+    <div class="gh-info-bar reveal">
+      <span><img src="./images/icons/infobar-01-online.png" alt="">オンライン相談OK</span>
+      <span><img src="./images/icons/infobar-02-clock.png" alt="">所要時間：約30分</span>
+      <span><img src="./images/icons/infobar-03-doc.png" alt="">資料はすぐにお送りします</span>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS ========== -->
+  <section class="gh-results" id="results">
+    <div class="gh-results-card reveal">
+      <h3>導入企業の成果</h3>
+      <div class="gh-stats-row">
+        <div class="gh-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6 13.5 15.5l-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+          <div class="num">2.8<small>倍</small></div>
+          <p>成約率</p>
+          <small class="desc">研修後3ヶ月で成約率が大幅に改善</small>
+        </div>
+        <div class="gh-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 3h6"/></svg>
+          <div class="num">50<small>%削減</small></div>
+          <p>新人戦力化期間</p>
+          <small class="desc">早期に即戦力化できる人材が増加</small>
+        </div>
+        <div class="gh-stat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 15a9 9 0 1 1-3.6-11.8"/><path d="M21 12a9 9 0 0 0-9-9v9z"/></svg>
+          <div class="num">35<small>%向上</small></div>
+          <p>営業生産性</p>
+          <small class="desc">データ活用で業務効率が向上</small>
+        </div>
+      </div>
+      <a href="#final-cta" class="btn-outline-white">
+        導入事例をもっと見る
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="gh-final-cta" id="final-cta">
+    <h2 class="reveal">営業力は<br>人ではなく<br><span class="gold-text">仕組み</span>になる。</h2>
+    <p class="gh-final-lead reveal reveal-delay-1">元リクルートトップセールスの営業ノウハウを、<br>あなたの会社の資産にしませんか？</p>
+    <div class="gh-final-badges reveal reveal-delay-1">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+        無料で資料提供
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+        助成金相談OK
+      </span>
+    </div>
+    <a href="#" class="btn-gold reveal reveal-delay-2">
+      資料請求
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m10 8 4 4-4 4"/></svg>
+    </a>
+    <div class="gh-final-photo reveal reveal-delay-2">
+      <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
+    </div>
+    <div class="gh-final-list reveal reveal-delay-3">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+        無料で資料提供
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+        助成金相談OK
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 9-6 3 6 3V9Z"/></svg>
+        オンライン30分で相談可能
+      </span>
+    </div>
+  </section>
+
+  <footer class="gh-footer">
+    <p>AI営業DXリスキリング研修</p>
+  </footer>
+
+</div>
+
+<script>
+// --- Scroll reveal ---
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+revealEls.forEach(el=>revealObserver.observe(el));
+
+// --- Hamburger menu ---
+const burger = document.getElementById('ghBurger');
+const menu = document.getElementById('ghMenu');
+burger.addEventListener('click', ()=>{
+  menu.classList.toggle('open');
+});
+menu.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', ()=> menu.classList.remove('open'));
+});
+
+// --- Accordions (single open at a time, per group) ---
+function setupAccordion(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const items = container.querySelectorAll('.gh-acc-item');
+  items.forEach(item=>{
+    const head = item.querySelector('.gh-acc-head');
+    head.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      items.forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+}
+setupAccordion('problemAccordion');
+setupAccordion('skillAccordion');
+setupAccordion('currAccordion');
+
+document.querySelector('#problemAccordion .gh-acc-item')?.classList.add('open');
+document.querySelector('#skillAccordion .gh-acc-item')?.classList.add('open');
+document.querySelector('#currAccordion .gh-acc-item')?.classList.add('open');
+</script>
+
+</body>
+</html>
