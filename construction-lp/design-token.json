@@ -1,0 +1,262 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "meta": {
+    "name": "Construction LP Design System",
+    "version": "1.0.0",
+    "source": "ChatGPT Image 2026年7月20日 10_41_31.png（○○建設株式会社 LP）を解析して再構築",
+    "note": "社名・対応エリア名等はダミー（○○表記）。実運用時はテキストのみ差し替え、トークン・レイアウトは変更しない。"
+  },
+  "color": {
+    "brand": {
+      "navy": {
+        "900": { "value": "#0A1B30", "type": "color", "description": "Navyの最も暗いトーン。ボタンのpressed/hover状態、影の色相元" },
+        "800": { "value": "#0F2440", "type": "color", "description": "Primary Navy。ヘッダーCTA・電話ボタン・スタッツ帯・フッターCTA・カードアイコン背景の基準色" },
+        "700": { "value": "#16324F", "type": "color", "description": "Navyのやや明るいトーン。カード見出しテキスト等" },
+        "600": { "value": "#1C3A5E", "type": "color", "description": "Navyのアクセントトーン。バッジ枠線など" },
+        "100": { "value": "#E7ECF1", "type": "color", "description": "Navyの極薄トーン。セクション背景の微差分用" }
+      },
+      "orange": {
+        "700": { "value": "#A8560F", "type": "color", "description": "Orangeのpressed/hover状態" },
+        "600": { "value": "#CC6A1B", "type": "color", "description": "Accent Orange。無料見積りボタン・LINE CTA・強調文字・チェックアイコンの基準色" },
+        "500": { "value": "#DE7A28", "type": "color", "description": "Orangeのやや明るいトーン。グラデーションやシャイン演出用" },
+        "100": { "value": "#FBEADC", "type": "color", "description": "Orangeの極薄トーン。ホバー背景など" }
+      },
+      "gold": {
+        "500": { "value": "#C9A66B", "type": "color", "description": "実績スタッツ帯の月桂樹(laurel)アイコン色" }
+      }
+    },
+    "neutral": {
+      "white": { "value": "#FFFFFF", "type": "color" },
+      "background": { "value": "#FDFDFC", "type": "color", "description": "ページ背景（純白よりわずかに温かい白）" },
+      "cream": { "value": "#F2EFE7", "type": "color", "description": "信頼バッジ（相見積もり歓迎 等）のピル背景" },
+      "surface": { "value": "#F6F7F8", "type": "color", "description": "カード外周のセクション背景など" },
+      "border": { "value": "#E6E8EC", "type": "color", "description": "薄い罫線・区切り線" },
+      "border-strong": { "value": "#CBD0D6", "type": "color", "description": "アウトライン系ボタンや枠線の強調罫線" }
+    },
+    "text": {
+      "heading": { "value": "#14213D", "type": "color", "description": "見出し・キャッチコピーのテキストカラー（ほぼ黒に近いNavy）" },
+      "body": { "value": "#4A4F57", "type": "color", "description": "本文・説明文" },
+      "caption": { "value": "#878C94", "type": "color", "description": "補足・キャプション（受付時間、注釈など）" },
+      "on-navy": { "value": "#FFFFFF", "type": "color", "description": "Navy背景上の文字色" },
+      "on-orange": { "value": "#FFFFFF", "type": "color", "description": "Orange背景上の文字色" },
+      "link-accent": { "value": "#CC6A1B", "type": "color", "description": "強調ワード（「強くする」等）に使うアクセント文字色" }
+    },
+    "semantic": {
+      "primary": { "value": "{color.brand.navy.800}", "type": "color" },
+      "secondary": { "value": "{color.brand.orange.600}", "type": "color" },
+      "accent": { "value": "{color.brand.orange.600}", "type": "color" },
+      "success": { "value": "{color.brand.orange.600}", "type": "color", "description": "チェックマーク（信頼訴求）に使用。緑ではなくブランドOrangeを踏襲" },
+      "info": { "value": "{color.brand.navy.800}", "type": "color" }
+    }
+  },
+  "spacing": {
+    "0": { "value": "0px" },
+    "1": { "value": "4px" },
+    "2": { "value": "8px" },
+    "3": { "value": "12px" },
+    "4": { "value": "16px" },
+    "5": { "value": "20px" },
+    "6": { "value": "24px" },
+    "8": { "value": "32px" },
+    "10": { "value": "40px" },
+    "12": { "value": "48px" },
+    "14": { "value": "56px" },
+    "16": { "value": "64px" },
+    "20": { "value": "80px" },
+    "24": { "value": "96px" },
+    "30": { "value": "120px" },
+    "40": { "value": "160px" }
+  },
+  "radius": {
+    "none": { "value": "0px" },
+    "sm": { "value": "8px", "description": "小型バッジ、対応エリアピルの角丸" },
+    "md": { "value": "12px", "description": "セクション見出し内の小要素" },
+    "lg": { "value": "16px", "description": "サービスカード、Before/Afterコンテナの角丸" },
+    "xl": { "value": "20px", "description": "大型CTAボタンの角丸" },
+    "full": { "value": "9999px", "description": "円形バッジ・ピル型ボタン・丸アイコン" }
+  },
+  "border": {
+    "width": {
+      "hairline": { "value": "1px" },
+      "thin": { "value": "1.5px", "description": "円形アイコンバッジの外枠" },
+      "regular": { "value": "2px", "description": "アウトラインボタン" }
+    },
+    "style": { "default": { "value": "solid" } }
+  },
+  "shadow": {
+    "card": {
+      "value": {
+        "offsetX": "0px",
+        "offsetY": "8px",
+        "blur": "24px",
+        "spread": "-4px",
+        "color": "rgba(15, 36, 64, 0.12)"
+      },
+      "description": "サービスカード・Before/Afterコンテナの浮遊影"
+    },
+    "cta-button": {
+      "value": {
+        "offsetX": "0px",
+        "offsetY": "10px",
+        "blur": "20px",
+        "spread": "-6px",
+        "color": "rgba(204, 106, 27, 0.45)"
+      },
+      "description": "オレンジ大型CTAボタンの発光影（LINE見積りボタン）"
+    },
+    "cta-button-navy": {
+      "value": {
+        "offsetX": "0px",
+        "offsetY": "10px",
+        "blur": "20px",
+        "spread": "-6px",
+        "color": "rgba(15, 36, 64, 0.35)"
+      },
+      "description": "Navy大型CTAボタン（電話ボタン）の影"
+    },
+    "icon-badge": {
+      "value": {
+        "offsetX": "0px",
+        "offsetY": "4px",
+        "blur": "12px",
+        "spread": "0px",
+        "color": "rgba(15, 36, 64, 0.08)"
+      },
+      "description": "円形アイコンバッジ(現地調査無料 等)の影"
+    },
+    "sticky-footer": {
+      "value": {
+        "offsetX": "0px",
+        "offsetY": "-4px",
+        "blur": "16px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.15)"
+      },
+      "description": "下部固定フッターCTAの上側影"
+    }
+  },
+  "font": {
+    "family": {
+      "heading": { "value": "'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif", "description": "見出し・キャッチコピー用（丸みのあるゴシック）" },
+      "body": { "value": "'Noto Sans JP', 'Hiragino Sans', sans-serif", "description": "本文・UI用" }
+    },
+    "weight": {
+      "regular": { "value": "400" },
+      "medium": { "value": "500" },
+      "bold": { "value": "700" },
+      "black": { "value": "900" }
+    },
+    "size": {
+      "caption": { "value": "12px" },
+      "small": { "value": "14px" },
+      "body": { "value": "16px" },
+      "body-lg": { "value": "18px" },
+      "h5": { "value": "20px" },
+      "h4": { "value": "24px" },
+      "h3": { "value": "28px" },
+      "h2": { "value": "32px" },
+      "h1": { "value": "40px" },
+      "display": { "value": "44px" }
+    },
+    "lineHeight": {
+      "tight": { "value": "1.2" },
+      "snug": { "value": "1.35" },
+      "normal": { "value": "1.6" },
+      "relaxed": { "value": "1.8" }
+    },
+    "letterSpacing": {
+      "tight": { "value": "-0.02em" },
+      "normal": { "value": "0em" },
+      "wide": { "value": "0.05em" },
+      "wider": { "value": "0.1em" }
+    },
+    "styles": {
+      "hero-headline": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.black}",
+        "fontSize": "{font.size.display}",
+        "lineHeight": "{font.lineHeight.tight}",
+        "letterSpacing": "{font.letterSpacing.tight}",
+        "color": "{color.text.heading}",
+        "textAlign": "left"
+      },
+      "section-title": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.bold}",
+        "fontSize": "{font.size.h2}",
+        "lineHeight": "{font.lineHeight.tight}",
+        "letterSpacing": "{font.letterSpacing.normal}",
+        "color": "{color.text.heading}",
+        "textAlign": "center"
+      },
+      "card-title": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.bold}",
+        "fontSize": "{font.size.h4}",
+        "lineHeight": "{font.lineHeight.snug}",
+        "color": "{color.text.heading}",
+        "textAlign": "left"
+      },
+      "body-text": {
+        "fontFamily": "{font.family.body}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{font.size.body}",
+        "lineHeight": "{font.lineHeight.relaxed}",
+        "color": "{color.text.body}",
+        "textAlign": "left"
+      },
+      "caption-text": {
+        "fontFamily": "{font.family.body}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.caption}",
+        "lineHeight": "{font.lineHeight.normal}",
+        "color": "{color.text.caption}",
+        "textAlign": "left"
+      },
+      "button-label": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.bold}",
+        "fontSize": "{font.size.h5}",
+        "lineHeight": "{font.lineHeight.tight}",
+        "color": "{color.text.on-navy}",
+        "textAlign": "center"
+      },
+      "stat-number": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.black}",
+        "fontSize": "{font.size.h1}",
+        "lineHeight": "{font.lineHeight.tight}",
+        "color": "{color.text.on-navy}",
+        "textAlign": "center"
+      }
+    }
+  },
+  "grid": {
+    "mobile": { "minWidth": "0px", "maxWidth": "599px", "columns": 1, "margin": "20px", "gutter": "16px", "container": "fluid" },
+    "tablet": { "minWidth": "600px", "maxWidth": "1023px", "columns": 2, "margin": "32px", "gutter": "20px", "container": "900px" },
+    "desktop": { "minWidth": "1024px", "maxWidth": "none", "columns": 3, "margin": "auto", "gutter": "24px", "container": "900px" }
+  },
+  "zIndex": {
+    "base": { "value": 0 },
+    "card": { "value": 10 },
+    "header": { "value": 100 },
+    "stickyFooter": { "value": 200 },
+    "modal": { "value": 300 }
+  },
+  "animation": {
+    "duration": {
+      "fast": { "value": "150ms" },
+      "base": { "value": "250ms" },
+      "slow": { "value": "400ms" }
+    },
+    "easing": {
+      "standard": { "value": "cubic-bezier(0.4, 0, 0.2, 1)" },
+      "emphasized": { "value": "cubic-bezier(0.2, 0, 0, 1)" }
+    },
+    "patterns": {
+      "fadeInUp": { "value": "opacity 0 -> 1, translateY(16px) -> 0, duration=base, easing=standard" },
+      "buttonHover": { "value": "translateY(0) -> translateY(-2px), shadow.cta-button strengthens, duration=fast" },
+      "iconScaleHover": { "value": "scale(1) -> scale(1.05), duration=fast" }
+    }
+  }
+}
