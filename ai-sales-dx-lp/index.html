@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 <style>
   :root{
     --navy-900:#04123a;
@@ -19,15 +19,18 @@
     --gold:#b4822c;
     --gold-light:#d9b466;
     --gold-pale:#f0dfb2;
+    --blue-pale:#eef4fb;
     --gray-page:#eef0f0;
-    --gray-bg:#f8f5ef;
+    --gray-bg:#f4f2ec;
     --white:#ffffff;
     --text:#1a2333;
-    --text-sub:#4a5468;
+    --text-sub:#57627a;
     --red:#d6362a;
-    --border:#e6e0d0;
-    --radius:10px;
-    --shadow:0 14px 34px rgba(4,18,58,0.12);
+    --border:rgba(4,18,58,.1);
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow:0 16px 36px rgba(4,18,58,0.12);
+    --shadow-sm:0 6px 18px rgba(4,18,58,0.08);
     --serif:"Noto Serif JP",serif;
     --gold-foil:linear-gradient(120deg,var(--gold-deep) 0%,var(--gold) 32%,var(--gold-pale) 50%,var(--gold) 68%,var(--gold-deep) 100%);
     --max:480px;
@@ -38,22 +41,24 @@
     font-family:"Noto Sans JP",sans-serif;
     color:var(--text);
     background:var(--gray-page);
-    line-height:1.75;
+    line-height:1.8;
+    letter-spacing:.01em;
     -webkit-font-smoothing:antialiased;
   }
   img{max-width:100%;display:block;}
   .page{max-width:var(--max);margin:0 auto;background:var(--white);position:relative;box-shadow:0 0 60px rgba(4,18,58,.14);overflow:hidden;}
-  section{padding:48px 22px;}
+  section{padding:64px 24px;}
   .center{text-align:center;}
   .gold-text{color:var(--gold);}
   .red-text{color:var(--red);}
-  .emph{font-size:1.42em;font-weight:900;display:inline-block;line-height:1.25;}
-  .emph-num{font-size:2.2em;font-weight:900;display:inline-block;line-height:1;vertical-align:-.12em;}
+  .emph{font-size:1.4em;font-weight:900;display:inline-block;line-height:1.3;}
+  .emph-num{font-size:2.3em;font-weight:900;display:inline-block;line-height:1;vertical-align:-.12em;}
+  svg.lucide{display:inline-block;vertical-align:middle;stroke-width:1.8;}
 
   /* ---------- Headline background photo (decorative, blurred + faded, scoped to copy block only) ---------- */
   .copy-bg-block{
     position:relative;overflow:hidden;
-    margin:-6px -8px 24px;padding:22px 14px 24px;border-radius:var(--radius);
+    margin:-6px -8px 28px;padding:26px 16px 28px;border-radius:var(--radius);
     background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
   }
   .copy-bg-block::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;z-index:2;}
@@ -65,13 +70,12 @@
     mask-image:radial-gradient(ellipse 100% 100% at 50% 50%, #000 38%, transparent 92%);
   }
   .copy-bg-block > *:not(.copy-bg-img){position:relative;z-index:1;}
-  /* already-navy panels (checklist / big-banner): skip the extra card treatment */
   .checklist-panel .copy-bg-block,.big-banner .copy-bg-block{background:none;}
   .checklist-panel .copy-bg-block::before,.big-banner .copy-bg-block::before{display:none;}
 
-  /* ---------- Reveal animation ---------- */
-  .reveal{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);}
-  .reveal.in{opacity:1;transform:translateY(0) scale(1);}
+  /* ---------- Reveal / fade-up animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
   .reveal-delay-1{transition-delay:.08s;}
   .reveal-delay-2{transition-delay:.16s;}
   .reveal-delay-3{transition-delay:.24s;}
@@ -86,306 +90,380 @@
     max-width:var(--max);margin:0 auto;
     background:var(--navy-900);color:#fff;
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 18px;border-bottom:2px solid var(--gold);
+    padding:15px 20px;border-bottom:2px solid var(--gold);
   }
-  .brandbar span.name{font-weight:700;font-size:13px;letter-spacing:.01em;}
+  .brandbar span.name{font-weight:700;font-size:13.5px;letter-spacing:.01em;}
   .brandbar .badge-tag{
     background:var(--gold-foil);background-size:220% 100%;
-    color:var(--navy-900);font-size:10.5px;font-weight:700;
+    color:var(--navy-900);font-size:11px;font-weight:700;
     padding:5px 12px;border-radius:20px;white-space:nowrap;
   }
 
   /* ---------- Eyebrow / headings ---------- */
   .flourish-title{
     text-align:center;font-family:var(--serif);font-weight:700;
-    font-size:17px;color:var(--navy-900);line-height:1.6;
-    position:relative;padding:0 30px;margin-bottom:8px;
+    font-size:19px;color:var(--navy-900);line-height:1.6;
+    position:relative;padding:0 32px;margin-bottom:10px;
   }
   .flourish-title::before,.flourish-title::after{
-    content:"";position:absolute;top:50%;width:18px;height:1px;background:var(--gold);transform:translateY(-50%);
+    content:"";position:absolute;top:50%;width:20px;height:1px;background:var(--gold);transform:translateY(-50%);
   }
   .flourish-title::before{left:0;}
   .flourish-title::after{right:0;}
   h2.section-title{
-    font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy-900);
-    line-height:1.5;letter-spacing:.01em;text-align:center;
+    font-family:var(--serif);font-size:23px;font-weight:700;color:var(--navy-900);
+    line-height:1.55;letter-spacing:.01em;text-align:center;
   }
-  p.section-lead{font-size:12.5px;color:var(--text-sub);text-align:center;margin-top:10px;line-height:1.85;}
+  p.section-lead{font-size:14.5px;color:var(--text-sub);text-align:center;margin-top:12px;line-height:1.9;}
 
-  /* ---------- Buttons ---------- */
+  /* ---------- Buttons / CTA ---------- */
   .btn{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    width:100%;padding:16px 18px;border-radius:999px;
-    font-weight:700;font-size:14.5px;text-decoration:none;border:none;cursor:pointer;
-    transition:transform .25s ease, box-shadow .25s ease, background-position .5s ease;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;min-height:58px;padding:16px 20px;border-radius:16px;
+    font-weight:700;font-size:15.5px;letter-spacing:.02em;text-decoration:none;border:none;cursor:pointer;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background-position .5s ease;
   }
   .btn-gold{
     background:var(--gold-foil);background-size:220% 100%;background-position:0% 0%;
-    color:var(--navy-900);box-shadow:0 10px 26px rgba(138,100,32,.38);
+    color:var(--navy-900);
+    box-shadow:0 4px 0 var(--gold-deep), 0 14px 30px rgba(138,100,32,.4), inset 0 1px 0 rgba(255,255,255,.5);
   }
-  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(138,100,32,.46);background-position:100% 0%;}
-  .btn-outline-navy{background:transparent;color:var(--navy-900);border:1px solid var(--navy-900);}
-  .btn-outline-navy:hover{background:var(--navy-900);color:#fff;transform:translateY(-3px);}
-  .btn-outline-white{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.35);}
-  .btn-row{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--gold-deep), 0 18px 36px rgba(138,100,32,.48), inset 0 1px 0 rgba(255,255,255,.5);background-position:100% 0%;}
+  .btn-gold:active{transform:translateY(1px);box-shadow:0 2px 0 var(--gold-deep), 0 8px 18px rgba(138,100,32,.4);}
+  .btn-outline-navy{background:#fff;color:var(--navy-900);border:1.5px solid var(--navy-900);}
+  .btn-outline-navy:hover{background:var(--navy-900);color:#fff;transform:translateY(-2px);}
+  .btn-outline-white{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+  .btn-row{display:flex;flex-direction:column;gap:14px;margin:28px 0 8px;}
+  .btn i,.btn svg{flex-shrink:0;}
+  .btn-arrow{transition:transform .3s ease;}
+  .btn:hover .btn-arrow{animation:arrowNudge .8s ease infinite;}
+  @keyframes arrowNudge{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
 
-  /* ---------- Icon components ---------- */
+  /* ---------- Icon components (unified sizing) ---------- */
   .icon-circle{
-    width:58px;height:58px;border-radius:50%;background:#fff;border:1px solid var(--navy-900);
-    color:var(--navy-900);display:flex;align-items:center;justify-content:center;font-size:20px;
-    margin:0 auto 12px;flex-shrink:0;
+    width:60px;height:60px;border-radius:50%;background:#fff;border:1px solid var(--navy-900);
+    color:var(--navy-900);display:flex;align-items:center;justify-content:center;
+    margin:0 auto 14px;flex-shrink:0;
     transition:background .3s ease, color .3s ease, border-color .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
   }
+  .icon-circle svg{width:24px;height:24px;}
+  .icon-circle.sm{width:44px;height:44px;}
+  .icon-circle.sm svg{width:19px;height:19px;}
   .num-badge{
     display:inline-flex;align-items:center;justify-content:center;
-    width:24px;height:24px;border-radius:50%;background:var(--navy-900);color:#fff;
-    font-family:var(--serif);font-weight:700;font-size:11px;margin-bottom:10px;
+    width:26px;height:26px;border-radius:50%;background:var(--navy-900);color:#fff;
+    font-family:var(--serif);font-weight:700;font-size:11.5px;margin-bottom:12px;
   }
+
+  /* ---------- Card base (unified) ---------- */
+  .card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-light);}
+  .card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.08) rotate(-5deg);}
 
   /* ================= HERO ================= */
-  .hero{padding-top:30px;}
+  .hero{padding-top:36px;padding-bottom:52px;position:relative;overflow:hidden;background:#fff;}
+  .hero::before{
+    content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle, rgba(217,180,102,.16) 0%, rgba(217,180,102,.05) 45%, transparent 72%);
+    pointer-events:none;z-index:0;
+  }
+  .hero > *{position:relative;z-index:1;}
   .hero-pill{
-    display:inline-flex;align-items:center;gap:8px;
+    display:inline-flex;align-items:center;gap:9px;
     background:linear-gradient(135deg,var(--navy-900),var(--navy-700));
     color:var(--gold-pale);border:1px solid rgba(217,180,102,.55);
-    padding:9px 16px;border-radius:999px;font-weight:600;font-size:11.5px;
-    margin-bottom:16px;box-shadow:0 8px 20px rgba(4,18,58,.18);
+    padding:10px 18px;border-radius:999px;font-weight:600;font-size:12.5px;
+    margin-bottom:20px;box-shadow:0 8px 20px rgba(4,18,58,.18);
   }
-  .hero-pill i{color:var(--gold-light);}
-  .hero h1{font-size:24px;font-weight:700;color:var(--navy-900);line-height:1.4;margin-bottom:16px;letter-spacing:.01em;}
-  .hero-sub{font-size:12.5px;color:var(--text-sub);line-height:1.9;margin-bottom:22px;}
+  .hero-pill svg{color:var(--gold-light);width:15px;height:15px;}
+  .hero h1{font-size:29px;font-weight:700;color:var(--navy-900);line-height:1.5;margin-bottom:20px;letter-spacing:.02em;}
+  .hero-sub{font-size:15px;color:var(--text-sub);line-height:1.95;margin-bottom:28px;}
   .hero-media{
-    position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
-    aspect-ratio:3/4;background:var(--navy-900);margin-bottom:6px;
+    position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 50px rgba(4,18,58,.22);
+    aspect-ratio:4/5;background:var(--navy-900);margin-bottom:8px;
   }
-  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 12%;filter:saturate(1.03);}
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 90% 60% at 50% 8%, transparent 55%, rgba(4,18,58,.38) 100%);
+    pointer-events:none;
+  }
   .hero-note{
-    display:flex;align-items:center;justify-content:center;gap:7px;
-    text-align:center;font-size:10.5px;color:var(--text-sub);margin-top:14px;line-height:1.7;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    text-align:center;font-size:12px;color:var(--text-sub);margin-top:18px;line-height:1.8;
   }
-  .hero-note i{color:var(--gold);}
+  .hero-note svg{color:var(--gold);width:15px;height:15px;flex-shrink:0;}
 
   /* ================= 3-STEP SUMMARY ================= */
-  .three-step{background:var(--white);}
-  .three-step .flourish-title{margin-bottom:26px;}
+  .three-step{background:var(--blue-pale);}
+  .three-step .flourish-title{margin-bottom:30px;}
   .three-row{display:flex;justify-content:space-between;gap:6px;}
   .three-item{flex:1;text-align:center;}
-  .three-item .icon-circle{width:52px;height:52px;font-size:18px;}
-  .three-item .n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:11px;margin-bottom:4px;}
-  .three-item h4{font-size:11.5px;font-weight:700;color:var(--navy-900);line-height:1.4;}
-  .three-item p{font-size:9.5px;color:var(--text-sub);margin-top:3px;line-height:1.4;}
-  .three-arrow{display:flex;align-items:center;color:var(--gold);font-size:13px;padding-top:20px;}
+  .three-item .icon-circle{width:56px;height:56px;}
+  .three-item .icon-circle svg{width:22px;height:22px;}
+  .three-item .n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:12px;margin-bottom:5px;}
+  .three-item h4{font-size:12.5px;font-weight:700;color:var(--navy-900);line-height:1.4;}
+  .three-item p{font-size:10.5px;color:var(--text-sub);margin-top:4px;line-height:1.5;}
+  .three-arrow{display:flex;align-items:center;color:var(--gold);padding-top:22px;}
+  .three-arrow svg{width:16px;height:16px;}
 
   .banner-panel{
-    position:relative;margin-top:32px;background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
-    color:#fff;border-radius:var(--radius);padding:26px 20px;text-align:center;overflow:hidden;
+    position:relative;margin-top:36px;background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
+    color:#fff;border-radius:var(--radius);padding:30px 22px;text-align:center;overflow:hidden;
   }
   .banner-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
-  .banner-panel p{font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.8;}
+  .banner-panel p{font-family:var(--serif);font-weight:700;font-size:16.5px;line-height:1.85;}
 
   /* ================= PROBLEMS ================= */
-  .problems{background:var(--gray-bg);}
-  .problems h2{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--navy-900);text-align:center;line-height:1.6;}
+  .problems{background:#fff;}
+  .problems h2{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--navy-900);text-align:center;line-height:1.65;}
   .problem-sub{
-    display:block;text-align:center;background:#fff;color:var(--text-sub);font-size:11.5px;font-weight:700;
-    padding:6px 14px;border-radius:2px;margin:14px auto 24px;width:fit-content;border:1px solid var(--border);
+    display:block;text-align:center;background:#fff;color:var(--text-sub);font-size:12.5px;font-weight:700;
+    padding:7px 16px;border-radius:2px;margin:16px auto 28px;width:fit-content;border:1px solid var(--border);
   }
-  .problem-list{display:flex;flex-direction:column;gap:12px;}
+  /* ---- accordion (mobile-first) ---- */
+  .problem-list{display:flex;flex-direction:column;gap:16px;}
   .problem-card{
-    background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    overflow:hidden;
   }
-  .problem-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-light);}
-  .problem-card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.08) rotate(-5deg);}
-  .problem-card h3{font-size:14.5px;color:var(--navy-900);margin-bottom:5px;font-weight:700;}
-  .problem-card p{font-size:12px;color:var(--text-sub);}
+  .problem-head{
+    width:100%;display:flex;align-items:center;gap:14px;text-align:left;
+    background:none;border:none;cursor:pointer;font:inherit;color:inherit;
+    padding:16px 18px;min-height:48px;
+  }
+  .problem-head .icon-circle{margin:0;width:48px;height:48px;flex-shrink:0;}
+  .problem-head .icon-circle svg{width:20px;height:20px;}
+  .problem-head-text{flex:1;}
+  .problem-head .num-badge{margin:0 0 4px;}
+  .problem-card h3{font-size:15px;color:var(--navy-900);font-weight:700;line-height:1.4;}
+  .problem-chev{color:var(--text-sub);flex-shrink:0;transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+  .problem-chev svg{width:20px;height:20px;}
+  .problem-card.open .problem-chev{transform:rotate(180deg);color:var(--gold);}
+  .problem-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.8,.2,1);}
+  .problem-card.open .problem-body{max-height:120px;}
+  .problem-body p{padding:0 18px 20px 80px;font-size:13.5px;color:var(--text-sub);line-height:1.8;}
 
   /* ---- checklist ---- */
   .checklist-panel{
-    position:relative;margin-top:30px;background:linear-gradient(160deg,var(--navy-900),var(--navy-700));
-    color:#fff;border-radius:var(--radius);padding:28px 20px;overflow:hidden;
+    position:relative;margin-top:34px;background:linear-gradient(160deg,var(--navy-900),var(--navy-700));
+    color:#fff;border-radius:var(--radius);padding:32px 22px;overflow:hidden;
   }
   .checklist-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
-  .checklist-title{font-family:var(--serif);text-align:center;font-size:16px;font-weight:700;line-height:1.8;margin-bottom:22px;}
-  .checklist-list{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
+  .checklist-title{font-family:var(--serif);text-align:center;font-size:17px;font-weight:700;line-height:1.85;margin-bottom:26px;}
+  .checklist-list{display:flex;flex-direction:column;gap:14px;margin-bottom:26px;}
   .checklist-item{
-    display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.06);
-    border:1px solid rgba(217,180,102,.28);border-radius:var(--radius);padding:14px 16px;
+    display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);
+    border:1px solid rgba(217,180,102,.28);border-radius:var(--radius-sm);padding:16px 18px;
     transition:border-color .3s ease, background .3s ease, transform .3s ease;
   }
   .checklist-item:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);transform:translateY(-3px);}
   .checklist-icon-wrap{position:relative;flex-shrink:0;}
   .checklist-icon{
-    width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(217,180,102,.4);
-    display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--gold-light);
+    width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(217,180,102,.4);
+    display:flex;align-items:center;justify-content:center;color:var(--gold-light);
   }
+  .checklist-icon svg{width:17px;height:17px;}
   .checklist-check{
-    position:absolute;bottom:-3px;right:-3px;width:16px;height:16px;border-radius:50%;
-    background:var(--gold);color:var(--navy-900);display:flex;align-items:center;justify-content:center;font-size:8px;
+    position:absolute;bottom:-3px;right:-3px;width:17px;height:17px;border-radius:50%;
+    background:var(--gold);color:var(--navy-900);display:flex;align-items:center;justify-content:center;
     border:2px solid var(--navy-900);
   }
-  .checklist-item h4{font-size:13px;font-weight:700;margin-bottom:3px;}
-  .checklist-item p{font-size:11px;color:#c8cee0;line-height:1.6;}
-  .mini-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);}
-  .mini-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border-radius:999px;padding:7px 13px 7px 7px;font-size:10.5px;font-weight:700;}
-  .mini-pill i{color:var(--gold-light);font-size:13px;}
+  .checklist-check svg{width:9px;height:9px;}
+  .checklist-item h4{font-size:14px;font-weight:700;margin-bottom:4px;}
+  .checklist-item p{font-size:12.5px;color:#c8cee0;line-height:1.7;}
+  .mini-row{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);}
+  .mini-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px 8px 8px;font-size:11.5px;font-weight:700;}
+  .mini-pill svg{color:var(--gold-light);width:15px;height:15px;}
 
   /* ---- 人から仕組みへ banner ---- */
-  .big-banner{
-    background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;
-  }
-  .big-banner p{font-family:var(--serif);font-weight:700;font-size:18px;line-height:1.7;}
+  .big-banner{background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;}
+  .big-banner p{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.75;}
 
   /* ================= AI-DX ================= */
-  .aidx{position:relative;background:var(--white);}
+  .aidx{position:relative;background:linear-gradient(180deg,#fff 0%,var(--blue-pale) 100%);}
   .aidx h2.section-title{margin-bottom:0;}
   .aidx-panel{
-    position:relative;margin:26px 0;background:radial-gradient(circle at 22% 18%,var(--navy-700) 0%,var(--navy-900) 55%,#030d2c 100%);
-    border-radius:var(--radius);padding:32px 18px 26px;overflow:hidden;
+    position:relative;margin:30px 0;background:radial-gradient(circle at 22% 18%,var(--navy-700) 0%,var(--navy-900) 55%,#030d2c 100%);
+    border-radius:var(--radius);padding:44px 20px 32px;overflow:hidden;
   }
-  .aidx-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .aidx-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;z-index:2;}
   .aidx-panel::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(217,180,102,.16) 1px,transparent 1.5px);background-size:20px 20px;opacity:.5;pointer-events:none;}
   .aidx-core{
-    position:relative;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:50%;
+    position:relative;display:flex;align-items:center;justify-content:center;width:128px;height:128px;border-radius:50%;
     background:radial-gradient(circle at 30% 30%,var(--gold-light),var(--gold));color:var(--navy-900);
-    font-weight:900;font-size:22px;box-shadow:0 0 0 7px rgba(217,180,102,.14),0 0 40px rgba(217,180,102,.35);
-    margin:0 auto 24px;animation:orbPulse 3s ease-in-out infinite;
+    font-weight:900;font-size:30px;font-family:var(--serif);
+    box-shadow:0 0 0 10px rgba(217,180,102,.14),0 0 60px rgba(217,180,102,.4);
+    margin:0 auto 36px;animation:orbPulse 3s ease-in-out infinite;z-index:1;
+  }
+  .aidx-core::before{
+    content:"";position:absolute;inset:-22px;border-radius:50%;
+    border:1px solid rgba(217,180,102,.3);animation:ringPulse 3s ease-in-out infinite;
   }
   @keyframes orbPulse{
-    0%,100%{box-shadow:0 0 0 7px rgba(217,180,102,.14),0 0 40px rgba(217,180,102,.35);}
-    50%{box-shadow:0 0 0 12px rgba(217,180,102,.2),0 0 56px rgba(217,180,102,.5);}
+    0%,100%{box-shadow:0 0 0 10px rgba(217,180,102,.14),0 0 60px rgba(217,180,102,.4);}
+    50%{box-shadow:0 0 0 18px rgba(217,180,102,.2),0 0 84px rgba(217,180,102,.6);}
   }
-  .aidx-badges{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  @keyframes ringPulse{
+    0%,100%{transform:scale(1);opacity:.6;}
+    50%{transform:scale(1.12);opacity:0;}
+  }
+  .aidx-badges{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
   .aidx-badges span{
-    display:inline-flex;align-items:center;gap:7px;padding:8px 12px 8px 8px;border-radius:999px;
-    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.35);font-size:11px;font-weight:700;color:#fff;
+    display:inline-flex;align-items:center;gap:8px;padding:10px 14px 10px 10px;border-radius:999px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.35);font-size:12px;font-weight:700;color:#fff;
   }
-  .aidx-badges i{color:var(--gold-light);font-size:14px;}
+  .aidx-badges svg{color:var(--gold-light);width:16px;height:16px;}
 
   .subhead-line{
-    text-align:center;font-family:var(--serif);font-weight:700;color:var(--navy-900);font-size:15.5px;
-    line-height:1.7;margin:34px 0 22px;
+    text-align:center;font-family:var(--serif);font-weight:700;color:var(--navy-900);font-size:16.5px;
+    line-height:1.75;margin:40px 0 26px;
   }
-  .six-step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 10px;}
+  .six-step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 12px;}
   .six-step-item{text-align:center;}
-  .six-step-item .icon-circle{width:52px;height:52px;font-size:18px;}
-  .six-step-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:12px;margin-bottom:4px;}
-  .six-step-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
+  .six-step-item .icon-circle{width:56px;height:56px;}
+  .six-step-item .icon-circle svg{width:22px;height:22px;}
+  .six-step-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:13px;margin-bottom:5px;}
+  .six-step-item p{font-size:12.5px;color:var(--navy-900);font-weight:700;}
 
   .skills-banner{
-    margin-top:38px;background:var(--navy-900);color:#fff;text-align:center;padding:16px;border-radius:var(--radius);
+    margin-top:44px;background:var(--navy-900);color:#fff;text-align:center;padding:18px;border-radius:var(--radius);
   }
-  .skills-banner p{font-family:var(--serif);font-weight:700;font-size:15px;}
-  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
+  .skills-banner p{font-family:var(--serif);font-weight:700;font-size:16px;}
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px;}
   .skill-item{
-    display:flex;align-items:center;gap:10px;background:var(--gray-bg);border:1px solid var(--border);
-    border-radius:var(--radius);padding:12px;transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+    display:flex;align-items:center;gap:11px;background:#fff;
+    padding:14px;
   }
-  .skill-item:hover{border-color:var(--gold-light);transform:translateY(-3px);box-shadow:var(--shadow);}
-  .skill-item i{font-size:16px;color:var(--gold);flex-shrink:0;}
-  .skill-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:11px;}
-  .skill-item h4{font-size:11.5px;color:var(--navy-900);font-weight:700;line-height:1.3;}
-  .skills-lead{text-align:center;font-size:12px;color:var(--text-sub);margin-top:16px;}
+  .skill-item svg{color:var(--gold);flex-shrink:0;width:20px;height:20px;}
+  .skill-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:11.5px;}
+  .skill-item h4{font-size:12.5px;color:var(--navy-900);font-weight:700;line-height:1.35;}
+  .skills-lead{text-align:center;font-size:13px;color:var(--text-sub);margin-top:18px;}
 
-  /* ================= REASONS ================= */
-  .reasons{background:var(--gray-bg);}
-  .reasons-photo{border-radius:var(--radius);overflow:hidden;margin:22px 0 26px;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  /* ================= REASONS (vertical cards) ================= */
+  .reasons{background:linear-gradient(180deg,var(--navy-900),var(--navy-700));color:#fff;}
+  .reasons h2.section-title{color:#fff;}
+  .reasons p.section-lead{color:#c8cee0;}
+  .reasons-photo{border-radius:var(--radius);overflow:hidden;margin:26px 0 30px;box-shadow:var(--shadow);aspect-ratio:4/3;}
   .reasons-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
-  .reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px;}
+  .reasons .flourish-title{color:#fff;}
+  .reasons .flourish-title::before,.reasons .flourish-title::after{background:var(--gold-light);}
+  .reason-list{display:flex;flex-direction:column;gap:14px;margin-top:26px;}
   .reason-card{
-    background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px 12px;text-align:center;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display:flex;align-items:center;gap:16px;padding:18px 20px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.28);
   }
-  .reason-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-light);}
-  .reason-card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.08) rotate(-5deg);}
-  .reason-card.wide{grid-column:1 / -1;}
-  .reason-card h3{font-size:13px;font-weight:700;color:var(--navy-900);}
+  .reason-card:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);}
+  .reason-card .icon-circle{margin:0;flex-shrink:0;background:rgba(255,255,255,.08);border-color:rgba(217,180,102,.4);color:var(--gold-light);}
+  .reason-card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);}
+  .reason-card .num-badge{background:var(--gold);color:var(--navy-900);margin:0 0 6px;}
+  .reason-card h3{font-size:15px;font-weight:700;color:#fff;line-height:1.4;}
 
   /* ================= CURRICULUM ================= */
-  .curriculum{background:var(--white);}
-  .curriculum h2.section-title{margin-bottom:2px;}
-  .curriculum-sub{text-align:center;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:14.5px;margin-top:10px;}
-  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 10px;margin-top:24px;}
-  .curr-item{text-align:center;}
-  .curr-item .icon-circle{width:52px;height:52px;font-size:18px;background:var(--gray-bg);border:1px solid var(--navy-900);}
-  .curr-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:12px;margin-bottom:4px;}
-  .curr-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
+  .curriculum{background:#fff;}
+  .curriculum h2.section-title{margin-bottom:4px;}
+  .curriculum-sub{text-align:center;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:15.5px;margin-top:12px;}
+  .curr-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px;}
+  .curr-item{
+    display:flex;align-items:center;gap:16px;padding:18px 20px;
+  }
+  .curr-item .icon-circle{margin:0;flex-shrink:0;background:var(--gray-bg);border:1px solid var(--navy-900);}
+  .curr-num{font-family:var(--serif);font-weight:900;font-size:28px;color:var(--gold-pale);-webkit-text-stroke:1.5px var(--gold);flex-shrink:0;width:44px;text-align:center;}
+  .curr-item p{font-size:13.5px;color:var(--navy-900);font-weight:700;flex:1;}
 
-  .asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px;}
-  .asset-item{background:var(--gray-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 8px;text-align:center;}
+  .asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px;}
+  .asset-item{padding:20px 10px;text-align:center;}
   .asset-item .icon-circle{background:#fff;border:1px solid var(--navy-900);}
-  .asset-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
+  .asset-item p{font-size:12.5px;color:var(--navy-900);font-weight:700;}
   .asset-item.wide{grid-column:1 / -1;}
+
+  /* ================= RESULTS ================= */
+  .results{background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;}
+  .results .eyebrow{font-family:var(--serif);color:var(--gold-light);font-size:12.5px;font-weight:700;letter-spacing:.28em;margin-bottom:12px;}
+  .results h2{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:34px;}
+  .results-grid{display:flex;flex-direction:column;gap:16px;}
+  .result-item{
+    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.28);border-radius:var(--radius);
+    padding:26px 20px;display:flex;align-items:center;gap:18px;text-align:left;
+  }
+  .result-item svg{color:var(--gold-light);width:30px;height:30px;flex-shrink:0;}
+  .result-num{font-family:var(--serif);font-weight:900;font-size:44px;color:var(--gold-light);line-height:1;white-space:nowrap;}
+  .result-num small{font-size:18px;font-weight:700;}
+  .result-item h4{font-size:14px;font-weight:700;margin-top:4px;}
+  .result-item p{font-size:11.5px;color:#b9c2dc;margin-top:3px;line-height:1.6;}
 
   /* ================= SUBSIDY ================= */
   .subsidy{background:var(--gray-bg);}
-  .subsidy-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:22px 0 26px;border:1px solid var(--gold-light);}
-  .subsidy-head{background:var(--navy-900);color:#fff;text-align:center;font-weight:700;font-size:13px;letter-spacing:.03em;padding:13px;}
-  .subsidy-body{background:linear-gradient(160deg,#fff,var(--gold-pale) 220%);padding:24px 18px;text-align:center;}
-  .subsidy-num-line{display:flex;align-items:flex-end;justify-content:center;gap:6px;}
-  .subsidy-label{font-size:13px;font-weight:700;color:var(--text-sub);padding-bottom:10px;}
-  .subsidy-num{font-family:var(--serif);font-size:56px;font-weight:900;color:var(--gold);line-height:1;white-space:nowrap;}
-  .subsidy-num sup{font-size:24px;margin:0 2px;}
-  .subsidy-num small{font-size:24px;font-weight:700;}
-  .subsidy-real{
-    display:inline-block;margin-top:16px;border:1px solid var(--gold);border-radius:2px;padding:12px 22px;
-    font-weight:700;font-size:13.5px;color:var(--navy-900);
+  .subsidy-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:26px 0 30px;}
+  .subsidy-head{background:var(--navy-900);color:#fff;text-align:center;font-weight:700;font-size:13.5px;letter-spacing:.03em;padding:14px;}
+  .subsidy-body{background:linear-gradient(165deg,var(--navy-900),var(--navy-700));padding:32px 20px;text-align:center;}
+  .subsidy-num-line{display:flex;align-items:flex-end;justify-content:center;gap:8px;}
+  .subsidy-label{font-size:14px;font-weight:700;color:#c8cee0;padding-bottom:14px;}
+  .subsidy-num{
+    font-family:var(--serif);font-size:76px;font-weight:900;line-height:1;white-space:nowrap;color:var(--gold-light);
   }
-  .subsidy-real b{font-family:var(--serif);color:var(--gold-deep);font-size:24px;}
-  .subsidy-cta{padding:16px;background:#fff;}
+  .subsidy-num sup{font-size:30px;margin:0 2px;}
+  .subsidy-num small{font-size:28px;font-weight:700;}
+  .subsidy-real{
+    display:inline-block;margin-top:20px;border:1px solid rgba(217,180,102,.5);border-radius:8px;padding:14px 24px;
+    font-weight:700;font-size:14.5px;color:#fff;background:rgba(255,255,255,.05);
+  }
+  .subsidy-real b{font-family:var(--serif);color:var(--gold-light);font-size:26px;}
+  .subsidy-cta{padding:18px;background:#fff;}
 
-  .subsidy h3{font-size:14.5px;font-weight:900;color:var(--navy-900);text-align:center;margin-bottom:18px;}
-  .merit-list{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
-  .merit-item{display:flex;gap:13px;align-items:flex-start;}
-  .icon-badge{width:38px;height:38px;border-radius:50%;background:var(--navy-900);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-  .icon-badge i{color:#fff;font-size:15px;}
-  .merit-item h4{font-size:13.5px;font-weight:900;color:var(--navy-900);margin-bottom:3px;}
-  .merit-item p{font-size:11.5px;color:var(--text-sub);line-height:1.6;}
+  .subsidy h3{font-size:15.5px;font-weight:900;color:var(--navy-900);text-align:center;margin-bottom:20px;}
+  .merit-list{display:flex;flex-direction:column;gap:14px;margin-bottom:36px;}
+  .merit-item{display:flex;gap:14px;align-items:flex-start;background:#fff;padding:18px;}
+  .icon-badge{width:40px;height:40px;border-radius:50%;background:var(--navy-900);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .icon-badge svg{color:#fff;width:17px;height:17px;}
+  .merit-item h4{font-size:14.5px;font-weight:900;color:var(--navy-900);margin-bottom:4px;}
+  .merit-item p{font-size:12.5px;color:var(--text-sub);line-height:1.7;}
 
-  .apply-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
-  .apply-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:12px 15px;}
-  .apply-num{width:22px;height:22px;border-radius:50%;background:var(--navy-900);color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .apply-icon{width:32px;height:32px;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .apply-icon i{font-size:13px;color:var(--navy-900);}
-  .apply-item p{font-size:12.5px;font-weight:700;color:var(--navy-900);}
+  .apply-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+  .apply-item{display:flex;align-items:center;gap:13px;background:#fff;padding:14px 18px;min-height:48px;}
+  .apply-num{width:24px;height:24px;border-radius:50%;background:var(--navy-900);color:#fff;font-size:10.5px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .apply-icon{width:34px;height:34px;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .apply-icon svg{width:14px;height:14px;color:var(--navy-900);}
+  .apply-item p{font-size:13.5px;font-weight:700;color:var(--navy-900);}
 
-  .info-bar{display:flex;flex-direction:column;gap:10px;background:var(--navy-900);border-radius:var(--radius);padding:18px 20px;border-top:2px solid var(--gold);}
-  .info-bar span{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;color:#fff;}
-  .info-bar i{color:var(--gold-light);font-size:14px;flex-shrink:0;}
+  .info-bar{display:flex;flex-direction:column;gap:12px;background:var(--navy-900);border-radius:var(--radius);padding:20px 22px;border-top:2px solid var(--gold);}
+  .info-bar span{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;color:#fff;}
+  .info-bar svg{color:var(--gold-light);width:16px;height:16px;flex-shrink:0;}
 
   /* ================= FINAL CTA ================= */
   .final-cta{background:radial-gradient(circle at 22% 18%,var(--navy-700),var(--navy-900) 70%);color:#fff;text-align:center;}
-  .final-cta h2{font-family:var(--serif);font-size:22px;font-weight:900;line-height:1.7;margin-bottom:16px;}
-  .final-lead{font-size:12.5px;color:#c8cee0;margin-bottom:24px;line-height:1.8;}
-  .final-photo{border-radius:var(--radius);overflow:hidden;margin:24px 0 18px;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  .final-cta h2{font-family:var(--serif);font-size:23px;font-weight:900;line-height:1.75;margin-bottom:18px;}
+  .final-lead{font-size:14px;color:#c8cee0;margin-bottom:28px;line-height:1.9;}
+  .final-photo{border-radius:var(--radius);overflow:hidden;margin:28px 0 20px;box-shadow:var(--shadow);aspect-ratio:4/3;}
   .final-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%;}
-  .final-list{display:flex;flex-direction:column;gap:9px;text-align:left;margin-top:18px;}
-  .final-list span{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:13px 15px;font-size:12px;font-weight:700;}
-  .final-list i{color:var(--gold-light);font-size:15px;flex-shrink:0;}
+  .final-list{display:flex;flex-direction:column;gap:10px;text-align:left;margin-top:20px;}
+  .final-list span{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;font-weight:700;}
+  .final-list svg{color:var(--gold-light);width:17px;height:17px;flex-shrink:0;}
 
   /* ================= FOOTER ================= */
-  .site-footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:28px 20px;font-size:11.5px;letter-spacing:.03em;}
+  .site-footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:32px 20px;font-size:12px;letter-spacing:.03em;}
 
   /* ================= STICKY CTA ================= */
   .sticky-cta{
-    position:fixed;left:50%;bottom:20px;z-index:90;opacity:0;
-    transform:translateX(-50%) translateY(30px);
+    position:fixed;left:50%;bottom:22px;z-index:90;opacity:0;
+    transform:translateX(-50%) translateY(30px);width:calc(100% - 44px);max-width:436px;
     animation:stickyCtaIn .7s cubic-bezier(.2,.8,.2,1) .9s forwards;
   }
   .sticky-cta .btn{
-    width:auto;padding:15px 28px;border-radius:999px;font-size:14px;white-space:nowrap;
-    box-shadow:0 12px 30px rgba(138,100,32,.4);
+    min-height:60px;border-radius:16px;font-size:15px;
+    box-shadow:0 4px 0 var(--gold-deep), 0 16px 34px rgba(138,100,32,.42), inset 0 1px 0 rgba(255,255,255,.5);
     animation:ctaPulse 2.6s ease-in-out 1.6s infinite;
   }
   @keyframes stickyCtaIn{from{opacity:0;transform:translateX(-50%) translateY(30px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
   @keyframes ctaPulse{
-    0%,100%{box-shadow:0 12px 30px rgba(138,100,32,.4),0 0 0 0 rgba(180,130,44,.45);}
-    50%{box-shadow:0 12px 30px rgba(138,100,32,.4),0 0 0 12px rgba(180,130,44,0);}
+    0%,100%{box-shadow:0 4px 0 var(--gold-deep), 0 16px 34px rgba(138,100,32,.42), 0 0 0 0 rgba(180,130,44,.45);}
+    50%{box-shadow:0 4px 0 var(--gold-deep), 0 16px 34px rgba(138,100,32,.42), 0 0 0 12px rgba(180,130,44,0);}
   }
-  @media(max-width:480px){
-    .sticky-cta{bottom:14px;}
-    .sticky-cta .btn{padding:13px 20px;font-size:12.5px;}
-  }
+  .sticky-cta .btn-arrow{animation:arrowNudge 1.6s ease infinite;}
 
   /* ---------- Text colors inside navy copy-bg-block cards ---------- */
   .copy-bg-block h1,
@@ -398,6 +476,19 @@
   .copy-bg-block .problem-sub{background:rgba(255,255,255,.1);color:#e4e8f5;border-color:rgba(255,255,255,.25);}
   .checklist-panel .copy-bg-block h1,.checklist-panel .copy-bg-block h2,
   .big-banner .copy-bg-block p{color:inherit;}
+
+  /* ---------- Card class application (uniform padding / radius / shadow / hover) ---------- */
+  .problem-card,.skill-item,.curr-item,.asset-item,.merit-item,.apply-item{
+    border-radius:var(--radius-sm);
+  }
+  .problem-card,.skill-item,.curr-item,.asset-item,.merit-item,.apply-item{
+    background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-sm);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+  }
+  .problem-card:hover,.skill-item:hover,.curr-item:hover,.asset-item:hover{
+    transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-light);
+  }
+  .reason-card,.checklist-item{border-radius:var(--radius-sm);}
 </style>
 </head>
 <body>
@@ -414,7 +505,7 @@
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
     <div class="hero-pill reveal">
-      <i class="fa-solid fa-award"></i>元リクルートトップセールスが教える！
+      <i data-lucide="award"></i>元リクルートトップセールスが教える！
     </div>
     <h1 class="reveal reveal-delay-1">
       トップ営業が辞めても、<br>
@@ -429,10 +520,10 @@
       <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
     </div>
     <div class="btn-row reveal reveal-delay-3">
-      <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
-      <a href="#subsidy" class="btn btn-outline-navy"><i class="fa-solid fa-percent"></i>助成金対象か診断する</a>
+      <a href="#final-cta" class="btn btn-gold"><i data-lucide="file-text"></i>無料で資料を受け取る<i data-lucide="arrow-right" class="btn-arrow"></i></a>
+      <a href="#subsidy" class="btn btn-outline-navy"><i data-lucide="percent"></i>助成金対象か診断する</a>
     </div>
-    <p class="hero-note reveal reveal-delay-4"><i class="fa-solid fa-circle-check"></i>オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
+    <p class="hero-note reveal reveal-delay-4"><i data-lucide="check-circle"></i>オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
   </section>
 
   <!-- ========== 3-STEP SUMMARY ========== -->
@@ -443,21 +534,21 @@
     </div>
     <div class="three-row">
       <div class="three-item reveal">
-        <div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div class="icon-circle"><i data-lucide="search"></i></div>
         <span class="n">01</span>
         <h4>AI営業分析</h4>
         <p>営業を見える化</p>
       </div>
-      <div class="three-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+      <div class="three-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="three-item reveal reveal-delay-1">
-        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
+        <div class="icon-circle"><i data-lucide="trophy"></i></div>
         <span class="n">02</span>
         <h4>勝ちパターン分析</h4>
         <p>成果につながる型を抽出</p>
       </div>
-      <div class="three-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+      <div class="three-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="three-item reveal reveal-delay-2">
-        <div class="icon-circle"><i class="fa-solid fa-building"></i></div>
+        <div class="icon-circle"><i data-lucide="building-2"></i></div>
         <span class="n">03</span>
         <h4>営業資産化</h4>
         <p>会社全体で共有・活用</p>
@@ -468,7 +559,7 @@
     </div>
   </section>
 
-  <!-- ========== PROBLEMS ========== -->
+  <!-- ========== PROBLEMS (accordion) ========== -->
   <section class="problems" id="problems">
     <div class="copy-bg-block">
       <div class="copy-bg-img" style="background-image:url('./images/bg-problems.jpg');"></div>
@@ -476,36 +567,46 @@
       <span class="problem-sub reveal">多くの会社では…</span>
     </div>
 
-    <div class="problem-list">
-      <div class="problem-card reveal">
-        <span class="num-badge">01</span>
-        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
-        <h3>トップ営業だけが売れている</h3>
-        <p>成果が個人に依存し、属人化している</p>
+    <div class="problem-list" id="problemAccordion">
+      <div class="problem-card reveal open">
+        <button class="problem-head">
+          <span class="icon-circle"><i data-lucide="trophy"></i></span>
+          <span class="problem-head-text"><span class="num-badge">01</span><h3>トップ営業だけが売れている</h3></span>
+          <span class="problem-chev"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="problem-body"><p>成果が個人に依存し、属人化している</p></div>
       </div>
       <div class="problem-card reveal reveal-delay-1">
-        <span class="num-badge">02</span>
-        <div class="icon-circle"><i class="fa-solid fa-user-lock"></i></div>
-        <h3>ノウハウが個人の中にある</h3>
-        <p>共有されず、再現できないブラックボックス化</p>
+        <button class="problem-head">
+          <span class="icon-circle"><i data-lucide="lock"></i></span>
+          <span class="problem-head-text"><span class="num-badge">02</span><h3>ノウハウが個人の中にある</h3></span>
+          <span class="problem-chev"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="problem-body"><p>共有されず、再現できないブラックボックス化</p></div>
       </div>
       <div class="problem-card reveal reveal-delay-2">
-        <span class="num-badge">03</span>
-        <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>売れる理由を説明できない</h3>
-        <p>再現性がなく、指導も感覚や経験に頼ってしまう</p>
+        <button class="problem-head">
+          <span class="icon-circle"><i data-lucide="trending-up"></i></span>
+          <span class="problem-head-text"><span class="num-badge">03</span><h3>売れる理由を説明できない</h3></span>
+          <span class="problem-chev"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="problem-body"><p>再現性がなく、指導も感覚や経験に頼ってしまう</p></div>
       </div>
       <div class="problem-card reveal reveal-delay-3">
-        <span class="num-badge">04</span>
-        <div class="icon-circle"><i class="fa-solid fa-sitemap"></i></div>
-        <h3>新人教育はトップ営業任せ</h3>
-        <p>教育の仕組みがなく、育成が属人化している</p>
+        <button class="problem-head">
+          <span class="icon-circle"><i data-lucide="network"></i></span>
+          <span class="problem-head-text"><span class="num-badge">04</span><h3>新人教育はトップ営業任せ</h3></span>
+          <span class="problem-chev"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="problem-body"><p>教育の仕組みがなく、育成が属人化している</p></div>
       </div>
       <div class="problem-card reveal reveal-delay-4">
-        <span class="num-badge">05</span>
-        <div class="icon-circle"><i class="fa-solid fa-database"></i></div>
-        <h3>ノウハウが会社に蓄積されない</h3>
-        <p>資産にならず、失われ続ける状態になっている</p>
+        <button class="problem-head">
+          <span class="icon-circle"><i data-lucide="database"></i></span>
+          <span class="problem-head-text"><span class="num-badge">05</span><h3>ノウハウが会社に蓄積されない</h3></span>
+          <span class="problem-chev"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="problem-body"><p>資産にならず、失われ続ける状態になっている</p></div>
       </div>
     </div>
 
@@ -516,37 +617,37 @@
       </div>
       <div class="checklist-list">
         <div class="checklist-item">
-          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-bullseye"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i data-lucide="target"></i></span><span class="checklist-check"><i data-lucide="check"></i></span></div>
           <div><h4>勝ちパターンを資産化</h4><p>トップ営業の思考・行動・トークを分析し、成果につながる「型」を仕組み化。</p></div>
         </div>
         <div class="checklist-item">
-          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-book-open"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i data-lucide="book-open"></i></span><span class="checklist-check"><i data-lucide="check"></i></span></div>
           <div><h4>全員が学べる・使える</h4><p>ノウハウをマニュアル化・共有し、誰でも同じ再現性で実践できる。</p></div>
         </div>
         <div class="checklist-item">
-          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-arrows-rotate"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i data-lucide="refresh-cw"></i></span><span class="checklist-check"><i data-lucide="check"></i></span></div>
           <div><h4>再現性のある営業組織</h4><p>属人化を解消し、仕組みで成果を生み出す強い営業組織を構築。</p></div>
         </div>
         <div class="checklist-item">
-          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-person-running"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i data-lucide="zap"></i></span><span class="checklist-check"><i data-lucide="check"></i></span></div>
           <div><h4>新人が早く育つ</h4><p>体系化された教育プログラムで、早期戦力化を実現。</p></div>
         </div>
         <div class="checklist-item">
-          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-chart-line"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i data-lucide="trending-up"></i></span><span class="checklist-check"><i data-lucide="check"></i></span></div>
           <div><h4>売上が安定・拡大</h4><p>営業力の底上げで、売上のムラをなくし、持続的な成長を実現。</p></div>
         </div>
       </div>
       <div class="mini-row">
-        <span class="mini-pill"><i class="fa-solid fa-chart-column"></i>データで分析</span>
-        <span class="mini-pill"><i class="fa-solid fa-brain"></i>AIで可視化</span>
-        <span class="mini-pill"><i class="fa-solid fa-lightbulb"></i>勝ちパターン化</span>
-        <span class="mini-pill"><i class="fa-solid fa-users"></i>全社で共有・活用</span>
+        <span class="mini-pill"><i data-lucide="bar-chart-3"></i>データで分析</span>
+        <span class="mini-pill"><i data-lucide="brain"></i>AIで可視化</span>
+        <span class="mini-pill"><i data-lucide="lightbulb"></i>勝ちパターン化</span>
+        <span class="mini-pill"><i data-lucide="users"></i>全社で共有・活用</span>
       </div>
     </div>
   </section>
 
   <section class="big-banner" id="big-banner">
-    <div class="copy-bg-block" style="margin:-6px 0;padding:22px 10px;">
+    <div class="copy-bg-block" style="margin:-6px 0;padding:26px 12px;">
       <div class="copy-bg-img" style="background-image:url('./images/bg-growth.jpg');opacity:.3;"></div>
       <p class="reveal">営業力は<span class="gold-text emph">「人」</span>から<br><span class="gold-text emph">「仕組み」</span>へ。<br>未来の<span class="gold-text emph">売上</span>をつくる。</p>
     </div>
@@ -563,37 +664,37 @@
     <div class="aidx-panel reveal">
       <div class="aidx-core">AI</div>
       <div class="aidx-badges">
-        <span><i class="fa-solid fa-user-group"></i>顧客分析</span>
-        <span><i class="fa-solid fa-chart-line"></i>データ分析</span>
-        <span><i class="fa-solid fa-comments"></i>トーク分析</span>
-        <span><i class="fa-solid fa-people-arrows"></i>ロープレ分析</span>
-        <span><i class="fa-solid fa-file-lines"></i>資料改善</span>
+        <span><i data-lucide="users-round"></i>顧客分析</span>
+        <span><i data-lucide="trending-up"></i>データ分析</span>
+        <span><i data-lucide="message-square"></i>トーク分析</span>
+        <span><i data-lucide="repeat"></i>ロープレ分析</span>
+        <span><i data-lucide="file-text"></i>資料改善</span>
       </div>
     </div>
 
     <p class="subhead-line reveal">AIでトップセールスの「勝ちパターン」を<br>資産化する<span class="gold-text emph-num">6</span>ステップ</p>
     <div class="six-step-grid">
-      <div class="six-step-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-inbox"></i></div><p>データ収集</p></div>
-      <div class="six-step-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-brain"></i></div><p>AI分析</p></div>
-      <div class="six-step-item reveal reveal-delay-2"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-puzzle-piece"></i></div><p>因数分解</p></div>
-      <div class="six-step-item reveal reveal-delay-3"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-bullseye"></i></div><p>パターン化</p></div>
-      <div class="six-step-item reveal reveal-delay-4"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><p>コンテンツ化</p></div>
-      <div class="six-step-item reveal"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-users"></i></div><p>共有・活用</p></div>
+      <div class="six-step-item reveal"><span class="n">01</span><div class="icon-circle"><i data-lucide="inbox"></i></div><p>データ収集</p></div>
+      <div class="six-step-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i data-lucide="brain"></i></div><p>AI分析</p></div>
+      <div class="six-step-item reveal reveal-delay-2"><span class="n">03</span><div class="icon-circle"><i data-lucide="puzzle"></i></div><p>因数分解</p></div>
+      <div class="six-step-item reveal reveal-delay-3"><span class="n">04</span><div class="icon-circle"><i data-lucide="target"></i></div><p>パターン化</p></div>
+      <div class="six-step-item reveal reveal-delay-4"><span class="n">05</span><div class="icon-circle"><i data-lucide="file-text"></i></div><p>コンテンツ化</p></div>
+      <div class="six-step-item reveal"><span class="n">06</span><div class="icon-circle"><i data-lucide="users"></i></div><p>共有・活用</p></div>
     </div>
 
     <div class="skills-banner reveal"><p>この研修で身につく<span class="gold-text emph-num">6</span>つのスキル</p></div>
     <div class="skill-grid">
-      <div class="skill-item reveal"><i class="fa-solid fa-magnifying-glass-chart"></i><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
-      <div class="skill-item reveal reveal-delay-1"><i class="fa-solid fa-trophy"></i><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
-      <div class="skill-item reveal reveal-delay-2"><i class="fa-solid fa-flag"></i><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
-      <div class="skill-item reveal reveal-delay-3"><i class="fa-solid fa-file-lines"></i><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
-      <div class="skill-item reveal reveal-delay-4"><i class="fa-solid fa-comments"></i><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
-      <div class="skill-item reveal"><i class="fa-solid fa-arrows-rotate"></i><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
+      <div class="skill-item reveal"><i data-lucide="search"></i><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-1"><i data-lucide="trophy"></i><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-2"><i data-lucide="flag"></i><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-3"><i data-lucide="file-text"></i><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-4"><i data-lucide="message-square"></i><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
+      <div class="skill-item reveal"><i data-lucide="refresh-cw"></i><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
     </div>
     <p class="skills-lead reveal">AIとデータを武器に、成果を生み出す営業人材へ。</p>
   </section>
 
-  <!-- ========== REASONS ========== -->
+  <!-- ========== REASONS (vertical cards) ========== -->
   <section class="reasons" id="reasons">
     <h2 class="section-title reveal">この研修で、<br>営業の<span class="gold-text emph">未来</span>が<br>変わります。</h2>
     <p class="section-lead reveal">AIで営業の「属人化」をなくし、再現性のある営業組織へ。</p>
@@ -601,14 +702,14 @@
       <img src="./images/reasons-team.jpg" alt="営業の未来が変わるチームイメージ">
     </div>
     <p class="flourish-title reveal">この研修が選ばれる<span class="gold-text emph-num">5</span>つの理由</p>
-    <div class="reason-grid">
-      <div class="reason-card reveal"><span class="num-badge">01</span><div class="icon-circle"><i class="fa-solid fa-robot"></i></div><h3>AIでトップ営業を分析</h3></div>
-      <div class="reason-card reveal reveal-delay-1"><span class="num-badge">02</span><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><h3>勝ちパターンを資産化</h3></div>
-      <div class="reason-card reveal reveal-delay-2"><span class="num-badge">03</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><h3>誰でも成果を再現</h3></div>
-      <div class="reason-card reveal reveal-delay-3"><span class="num-badge">04</span><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><h3>新人育成が早くなる</h3></div>
-      <div class="reason-card wide reveal reveal-delay-4"><span class="num-badge">05</span><div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div><h3>営業DXが定着する</h3></div>
+    <div class="reason-list">
+      <div class="reason-card reveal"><div class="icon-circle"><i data-lucide="bot"></i></div><div><span class="num-badge">01</span><h3>AIでトップ営業を分析</h3></div></div>
+      <div class="reason-card reveal reveal-delay-1"><div class="icon-circle"><i data-lucide="trophy"></i></div><div><span class="num-badge">02</span><h3>勝ちパターンを資産化</h3></div></div>
+      <div class="reason-card reveal reveal-delay-2"><div class="icon-circle"><i data-lucide="trending-up"></i></div><div><span class="num-badge">03</span><h3>誰でも成果を再現</h3></div></div>
+      <div class="reason-card reveal reveal-delay-3"><div class="icon-circle"><i data-lucide="presentation"></i></div><div><span class="num-badge">04</span><h3>新人育成が早くなる</h3></div></div>
+      <div class="reason-card reveal reveal-delay-4"><div class="icon-circle"><i data-lucide="refresh-cw"></i></div><div><span class="num-badge">05</span><h3>営業DXが定着する</h3></div></div>
     </div>
-    <div class="banner-panel reveal">
+    <div class="banner-panel reveal" style="margin-top:34px;">
       <p>営業力は、<br><span class="gold-text emph">仕組み</span>でつくる時代へ。</p>
     </div>
   </section>
@@ -621,27 +722,47 @@
       <p class="curriculum-sub reveal"><span class="gold-text emph-num">6</span>回で営業DX人材を育成</p>
     </div>
 
-    <p class="flourish-title reveal" style="margin-top:30px;">研修カリキュラム（全<span class="gold-text emph-num">6</span>回）</p>
+    <p class="flourish-title reveal" style="margin-top:34px;">研修カリキュラム（全<span class="gold-text emph-num">6</span>回）</p>
     <div class="curr-grid">
-      <div class="curr-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div><p>営業課題分析</p></div>
-      <div class="curr-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-user"></i></div><p>トップセールス分析</p></div>
-      <div class="curr-item reveal reveal-delay-2"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><p>勝ちパターン資産化</p></div>
-      <div class="curr-item reveal reveal-delay-3"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-id-card"></i></div><p>プロフィール・ストーリー設計</p></div>
-      <div class="curr-item reveal reveal-delay-4"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業ロープレ実践・改善</p></div>
-      <div class="curr-item reveal"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><p>営業DX診断・成果発表</p></div>
+      <div class="curr-item reveal"><span class="curr-num">01</span><div class="icon-circle sm"><i data-lucide="search"></i></div><p>営業課題分析</p></div>
+      <div class="curr-item reveal reveal-delay-1"><span class="curr-num">02</span><div class="icon-circle sm"><i data-lucide="user"></i></div><p>トップセールス分析</p></div>
+      <div class="curr-item reveal reveal-delay-2"><span class="curr-num">03</span><div class="icon-circle sm"><i data-lucide="file-check"></i></div><p>勝ちパターン資産化</p></div>
+      <div class="curr-item reveal reveal-delay-3"><span class="curr-num">04</span><div class="icon-circle sm"><i data-lucide="contact"></i></div><p>プロフィール・ストーリー設計</p></div>
+      <div class="curr-item reveal reveal-delay-4"><span class="curr-num">05</span><div class="icon-circle sm"><i data-lucide="message-square"></i></div><p>営業ロープレ実践・改善</p></div>
+      <div class="curr-item reveal"><span class="curr-num">06</span><div class="icon-circle sm"><i data-lucide="trending-up"></i></div><p>営業DX診断・成果発表</p></div>
     </div>
 
-    <p class="flourish-title reveal" style="margin-top:38px;">この研修で会社に残るもの</p>
+    <p class="flourish-title reveal" style="margin-top:42px;">この研修で会社に残るもの</p>
     <div class="asset-grid">
-      <div class="asset-item reveal"><div class="icon-circle"><i class="fa-solid fa-book"></i></div><p>営業マニュアル</p></div>
-      <div class="asset-item reveal reveal-delay-1"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業トーク集</p></div>
-      <div class="asset-item reveal reveal-delay-2"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><p>成功事例集</p></div>
-      <div class="asset-item reveal reveal-delay-3"><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><p>営業資料テンプレート</p></div>
-      <div class="asset-item wide reveal reveal-delay-4"><div class="icon-circle"><i class="fa-solid fa-clipboard-list"></i></div><p>営業DX改善シート</p></div>
+      <div class="asset-item reveal"><div class="icon-circle"><i data-lucide="book"></i></div><p>営業マニュアル</p></div>
+      <div class="asset-item reveal reveal-delay-1"><div class="icon-circle"><i data-lucide="message-square"></i></div><p>営業トーク集</p></div>
+      <div class="asset-item reveal reveal-delay-2"><div class="icon-circle"><i data-lucide="trophy"></i></div><p>成功事例集</p></div>
+      <div class="asset-item reveal reveal-delay-3"><div class="icon-circle"><i data-lucide="presentation"></i></div><p>営業資料テンプレート</p></div>
+      <div class="asset-item wide reveal reveal-delay-4"><div class="icon-circle"><i data-lucide="clipboard-list"></i></div><p>営業DX改善シート</p></div>
     </div>
 
-    <div class="banner-panel reveal">
+    <div class="banner-panel reveal" style="margin-top:34px;">
       <p>学ぶだけでは終わらない。<br>会社に<span class="gold-text emph">営業資産</span>が残る。</p>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS ========== -->
+  <section class="results" id="results">
+    <span class="eyebrow reveal">RESULTS</span>
+    <h2 class="reveal">導入企業の成果</h2>
+    <div class="results-grid">
+      <div class="result-item reveal">
+        <i data-lucide="trending-up"></i>
+        <div><div class="result-num"><span class="count-up" data-target="2.8" data-decimal="1">0.0</span><small>倍</small></div><h4>成約率</h4><p>研修後3ヶ月で成約率が大幅に改善</p></div>
+      </div>
+      <div class="result-item reveal reveal-delay-1">
+        <i data-lucide="clock"></i>
+        <div><div class="result-num"><span class="count-up" data-target="50">0</span><small>%削減</small></div><h4>新人戦力化期間</h4><p>早期に即戦力化できる人材が増加</p></div>
+      </div>
+      <div class="result-item reveal reveal-delay-2">
+        <i data-lucide="bar-chart-3"></i>
+        <div><div class="result-num"><span class="count-up" data-target="35">0</span><small>%向上</small></div><h4>営業生産性</h4><p>データ活用で業務効率が向上</p></div>
+      </div>
     </div>
   </section>
 
@@ -659,11 +780,11 @@
           <span class="subsidy-label">最大</span>
           <span class="subsidy-num">75<sup>%</sup><small>助成</small></span>
         </div>
-        <div class="subsidy-real">実質負担 約<b>8.2</b>万円〜<br><span style="font-size:10.5px;">(※条件あり)</span></div>
+        <div class="subsidy-real">実質負担 約<b>8.2</b>万円〜<br><span style="font-size:11px;opacity:.8;">(※条件あり)</span></div>
       </div>
       <div class="subsidy-cta">
         <a href="#final-cta" class="btn btn-gold">
-          自社が対象か無料で確認する<i class="fa-solid fa-chevron-right"></i>
+          自社が対象か無料で確認する<i data-lucide="arrow-right" class="btn-arrow"></i>
         </a>
       </div>
     </div>
@@ -671,31 +792,31 @@
     <h3>研修導入で得られる3つのメリット</h3>
     <div class="merit-list">
       <div class="merit-item reveal">
-        <div class="icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="icon-badge"><i data-lucide="trending-up"></i></div>
         <div><h4>営業力向上</h4><p>AIで勝ちパターンを再現し、成果につながる営業組織へ</p></div>
       </div>
       <div class="merit-item reveal reveal-delay-1">
-        <div class="icon-badge"><i class="fa-solid fa-coins"></i></div>
+        <div class="icon-badge"><i data-lucide="coins"></i></div>
         <div><h4>助成金でコスト削減</h4><p>助成金の活用で、研修費用の負担を大幅に軽減</p></div>
       </div>
       <div class="merit-item reveal reveal-delay-2">
-        <div class="icon-badge"><i class="fa-solid fa-users"></i></div>
+        <div class="icon-badge"><i data-lucide="users"></i></div>
         <div><h4>人材の定着・成長</h4><p>学びの機会を提供し、自律的に成長する人材へ</p></div>
       </div>
     </div>
 
     <h3>助成金の申請サポートもお任せください！</h3>
     <div class="apply-list">
-      <div class="apply-item reveal"><span class="apply-num">01</span><span class="apply-icon"><i class="fa-solid fa-file-lines"></i></span><p>ヒアリング</p></div>
-      <div class="apply-item reveal reveal-delay-1"><span class="apply-num">02</span><span class="apply-icon"><i class="fa-solid fa-clipboard-list"></i></span><p>助成金のご提案</p></div>
-      <div class="apply-item reveal reveal-delay-2"><span class="apply-num">03</span><span class="apply-icon"><i class="fa-solid fa-pen"></i></span><p>申請サポート</p></div>
-      <div class="apply-item reveal reveal-delay-3"><span class="apply-num">04</span><span class="apply-icon"><i class="fa-solid fa-handshake"></i></span><p>研修スタート</p></div>
+      <div class="apply-item reveal"><span class="apply-num">01</span><span class="apply-icon"><i data-lucide="file-text"></i></span><p>ヒアリング</p></div>
+      <div class="apply-item reveal reveal-delay-1"><span class="apply-num">02</span><span class="apply-icon"><i data-lucide="clipboard-list"></i></span><p>助成金のご提案</p></div>
+      <div class="apply-item reveal reveal-delay-2"><span class="apply-num">03</span><span class="apply-icon"><i data-lucide="pen-line"></i></span><p>申請サポート</p></div>
+      <div class="apply-item reveal reveal-delay-3"><span class="apply-num">04</span><span class="apply-icon"><i data-lucide="handshake"></i></span><p>研修スタート</p></div>
     </div>
 
     <div class="info-bar reveal">
-      <span><i class="fa-solid fa-video"></i>オンライン相談OK</span>
-      <span><i class="fa-solid fa-clock"></i>所要時間：約30分</span>
-      <span><i class="fa-solid fa-file-lines"></i>資料はすぐにお送りします</span>
+      <span><i data-lucide="video"></i>オンライン相談OK</span>
+      <span><i data-lucide="clock"></i>所要時間：約30分</span>
+      <span><i data-lucide="file-text"></i>資料はすぐにお送りします</span>
     </div>
   </section>
 
@@ -703,14 +824,14 @@
   <section class="final-cta" id="final-cta">
     <h2 class="reveal">営業力は<br>人ではなく<br><span class="gold-text emph">仕組み</span>になる。</h2>
     <p class="final-lead reveal reveal-delay-1">元リクルートトップセールスの営業ノウハウを、<br>あなたの会社の資産にしませんか？</p>
-    <a href="#" class="btn btn-gold reveal reveal-delay-2"><i class="fa-solid fa-file-lines"></i>資料請求</a>
+    <a href="#" class="btn btn-gold reveal reveal-delay-2"><i data-lucide="file-text"></i>資料請求<i data-lucide="arrow-right" class="btn-arrow"></i></a>
     <div class="final-photo reveal reveal-delay-2">
       <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
     </div>
     <div class="final-list reveal reveal-delay-3">
-      <span><i class="fa-solid fa-file-lines"></i>無料で資料提供</span>
-      <span><i class="fa-solid fa-percent"></i>助成金相談OK</span>
-      <span><i class="fa-solid fa-video"></i>オンライン30分で相談可能</span>
+      <span><i data-lucide="file-text"></i>無料で資料提供</span>
+      <span><i data-lucide="percent"></i>助成金相談OK</span>
+      <span><i data-lucide="video"></i>オンライン30分で相談可能</span>
     </div>
   </section>
 
@@ -722,32 +843,79 @@
 
 <!-- ========== STICKY CTA（常時・中央下部） ========== -->
 <div class="sticky-cta">
-  <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
+  <a href="#final-cta" class="btn btn-gold"><i data-lucide="file-text"></i>無料で資料を受け取る<i data-lucide="arrow-right" class="btn-arrow"></i></a>
 </div>
 
 <script>
-// --- Scroll reveal ---
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:0.12, rootMargin:'0px 0px -30px 0px'});
-revealEls.forEach(el=>revealObserver.observe(el));
+function initPage(){
+  // --- Lucide icons ---
+  if(window.lucide){ lucide.createIcons(); }
 
-// --- Scroll progress bar ---
-const scrollProgress = document.getElementById('scrollProgress');
-function updateScrollProgress(){
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  scrollProgress.style.width = pct + '%';
+  // --- Scroll reveal ---
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -30px 0px'});
+  revealEls.forEach(el=>revealObserver.observe(el));
+
+  // --- Scroll progress bar ---
+  const scrollProgress = document.getElementById('scrollProgress');
+  function updateScrollProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateScrollProgress, {passive:true});
+  updateScrollProgress();
+
+  // --- Problems accordion ---
+  const accItems = document.querySelectorAll('#problemAccordion .problem-card');
+  accItems.forEach(item=>{
+    const head = item.querySelector('.problem-head');
+    head.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      accItems.forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // --- Count up (subsidy % + results numbers) ---
+  const countEls = document.querySelectorAll('.count-up');
+  const countObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const decimal = parseInt(el.dataset.decimal || '0');
+        const duration = 1400;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now-start)/duration, 1);
+          const eased = 1 - Math.pow(1-progress, 3);
+          const value = target * eased;
+          el.textContent = decimal > 0 ? value.toFixed(decimal) : Math.round(value);
+          if(progress < 1) requestAnimationFrame(tick);
+          else el.textContent = decimal > 0 ? target.toFixed(decimal) : target;
+        }
+        requestAnimationFrame(tick);
+        countObserver.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  countEls.forEach(el=>countObserver.observe(el));
 }
-window.addEventListener('scroll', updateScrollProgress, {passive:true});
-updateScrollProgress();
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initPage);
+}else{
+  initPage();
+}
 </script>
 
 </body>
