@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://take-design-portfolio.vercel.app/ai-sales-dx-lp/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   :root{
@@ -19,1128 +19,623 @@
     --gold:#b4822c;
     --gold-light:#d9b466;
     --gold-pale:#f0dfb2;
+    --gray-page:#eef0f0;
     --gray-bg:#f8f5ef;
     --white:#ffffff;
     --text:#1a2333;
     --text-sub:#4a5468;
     --red:#d6362a;
-    --radius:6px;
-    --shadow:0 16px 40px rgba(4,18,58,0.12);
+    --border:#e6e0d0;
+    --radius:10px;
+    --shadow:0 14px 34px rgba(4,18,58,0.12);
     --serif:"Noto Serif JP",serif;
     --gold-foil:linear-gradient(120deg,var(--gold-deep) 0%,var(--gold) 32%,var(--gold-pale) 50%,var(--gold) 68%,var(--gold-deep) 100%);
+    --max:480px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
     font-family:"Noto Sans JP",sans-serif;
     color:var(--text);
-    background:var(--white);
+    background:var(--gray-page);
     line-height:1.75;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
   img{max-width:100%;display:block;}
-  .container{max-width:1120px;margin:0 auto;padding:0 20px;}
-  section{padding:64px 0;}
-  @media(min-width:768px){section{padding:96px 0;}}
+  .page{max-width:var(--max);margin:0 auto;background:var(--white);position:relative;box-shadow:0 0 60px rgba(4,18,58,.14);overflow:hidden;}
+  section{padding:48px 22px;}
+  .center{text-align:center;}
+  .gold-text{color:var(--gold);}
+  .red-text{color:var(--red);}
 
   /* ---------- Reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);}
   .reveal.in{opacity:1;transform:translateY(0) scale(1);}
-  .reveal-delay-1{transition-delay:.1s;}
-  .reveal-delay-2{transition-delay:.2s;}
-  .reveal-delay-3{transition-delay:.3s;}
-  .reveal-delay-4{transition-delay:.4s;}
+  .reveal-delay-1{transition-delay:.08s;}
+  .reveal-delay-2{transition-delay:.16s;}
+  .reveal-delay-3{transition-delay:.24s;}
+  .reveal-delay-4{transition-delay:.32s;}
 
-  /* ---------- Top brand bar ---------- */
+  /* ---------- Scroll progress bar ---------- */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--gold-foil);background-size:220% 100%;z-index:100;pointer-events:none;}
+
+  /* ---------- Header ---------- */
   .brandbar{
-    background:var(--navy-900);
-    color:#fff;
-    font-weight:700;
-    font-size:13px;
-    letter-spacing:.03em;
-    padding:10px 0;
     position:sticky;top:0;z-index:60;
+    max-width:var(--max);margin:0 auto;
+    background:var(--navy-900);color:#fff;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:13px 18px;border-bottom:2px solid var(--gold);
   }
-  .brandbar .container{display:flex;align-items:center;justify-content:space-between;}
+  .brandbar span.name{font-weight:700;font-size:13px;letter-spacing:.01em;}
   .brandbar .badge-tag{
-    background:linear-gradient(135deg,var(--gold-light),var(--gold));
-    color:var(--navy-900);
-    font-size:11px;
-    padding:3px 10px;
-    border-radius:20px;
-    font-weight:700;
+    background:var(--gold-foil);background-size:220% 100%;
+    color:var(--navy-900);font-size:10.5px;font-weight:700;
+    padding:5px 12px;border-radius:20px;white-space:nowrap;
   }
 
-  /* ---------- Section heading ---------- */
-  .eyebrow{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    color:var(--gold);
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:12.5px;
-    letter-spacing:.32em;
-    margin-bottom:18px;
-    padding-bottom:0;
-    border-bottom:none;
+  /* ---------- Eyebrow / headings ---------- */
+  .flourish-title{
+    text-align:center;font-family:var(--serif);font-weight:900;
+    font-size:18px;color:var(--navy-900);line-height:1.6;
+    position:relative;padding:0 30px;margin-bottom:8px;
   }
-  .eyebrow::before,.eyebrow::after{
-    content:"";
-    display:block;
-    width:26px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold));
+  .flourish-title::before,.flourish-title::after{
+    content:"";position:absolute;top:50%;width:18px;height:1px;background:var(--gold);transform:translateY(-50%);
   }
-  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent);}
-  .section-title{
-    font-family:var(--serif);
-    font-size:25px;
-    font-weight:700;
-    color:var(--navy-900);
-    line-height:1.6;
-    letter-spacing:.02em;
-    margin-bottom:16px;
+  .flourish-title::before{left:0;}
+  .flourish-title::after{right:0;}
+  h2.section-title{
+    font-family:var(--serif);font-size:22px;font-weight:900;color:var(--navy-900);
+    line-height:1.55;letter-spacing:.01em;text-align:center;
   }
-  @media(min-width:768px){.section-title{font-size:33px;}}
-  .section-lead{
-    color:var(--text-sub);
-    font-size:15px;
-    margin-bottom:40px;
-  }
-  .center{text-align:center;}
-  .gold-text{color:var(--gold);}
+  p.section-lead{font-size:12.5px;color:var(--text-sub);text-align:center;margin-top:10px;line-height:1.85;}
 
-  /* ================= HERO ================= */
-  .hero{
-    padding:40px 0 56px;
-    background:linear-gradient(180deg,#fff 0%,#fbfaf6 100%);
-  }
-  .hero .container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-  .hero-text{max-width:660px;display:flex;flex-direction:column;align-items:center;}
-  .hero-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));
-    color:var(--gold-pale);
-    border:1px solid rgba(217,180,102,.55);
-    padding:9px 20px;
-    border-radius:999px;
-    font-weight:600;
-    font-size:12.5px;
-    letter-spacing:.06em;
-    margin-bottom:22px;
-    box-shadow:0 10px 28px rgba(4,18,58,.18), inset 0 1px 0 rgba(255,255,255,.08);
-  }
-  .hero-pill i{color:var(--gold-light);font-size:13px;}
-  @media(min-width:768px){.hero-pill{font-size:13.5px;}}
-  .hero-title{
-    font-size:29px;
-    font-weight:900;
-    color:var(--navy-900);
-    line-height:1.5;
-    letter-spacing:.01em;
-    margin-bottom:22px;
-  }
-  @media(min-width:600px){.hero-title{font-size:35px;}}
-  @media(min-width:900px){.hero-title{font-size:40px;}}
-  .hero-title .gold-text{
-    background:linear-gradient(180deg,transparent 60%, rgba(180,130,44,.25) 60%);
-  }
-  .hero-sub{
-    font-size:15px;
-    color:var(--text-sub);
-    margin-bottom:30px;
-  }
-  @media(min-width:768px){.hero-sub{font-size:16px;}}
+  /* ---------- Buttons ---------- */
   .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    font-weight:700;
-    font-size:14.5px;
-    letter-spacing:.04em;
-    padding:16px 30px;
-    border-radius:6px;
-    text-decoration:none;
-    border:none;
-    cursor:pointer;
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-  }
-  .btn-gold{
-    background:var(--gold-foil);
-    background-size:220% 100%;
-    background-position:0% 0%;
-    color:var(--navy-900);
-    box-shadow:0 10px 26px rgba(138,100,32,.38);
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    width:100%;padding:16px 18px;border-radius:999px;
+    font-weight:700;font-size:14.5px;text-decoration:none;border:none;cursor:pointer;
     transition:transform .25s ease, box-shadow .25s ease, background-position .5s ease;
   }
-  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(138,100,32,.48);background-position:100% 0%;}
-  .btn-outline-navy{
-    background:transparent;
-    color:var(--navy-900);
-    border:1px solid var(--navy-900);
+  .btn-gold{
+    background:var(--gold-foil);background-size:220% 100%;background-position:0% 0%;
+    color:var(--navy-900);box-shadow:0 10px 26px rgba(138,100,32,.38);
   }
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(138,100,32,.46);background-position:100% 0%;}
+  .btn-outline-navy{background:transparent;color:var(--navy-900);border:1px solid var(--navy-900);}
   .btn-outline-navy:hover{background:var(--navy-900);color:#fff;transform:translateY(-3px);}
-  .btn-block{width:100%;}
-  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin-bottom:16px;}
+  .btn-outline-white{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.35);}
+  .btn-row{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
 
-  /* ---- hero image: displayed below the copy, edges dissolving into dots ---- */
-  .hero-media-frame{
-    position:relative;
-    width:100%;
-    max-width:620px;
-    margin:8px auto 0;
-  }
-  .hero-media-img{
-    display:block;
-    width:100%;
-    -webkit-mask-image:radial-gradient(ellipse 74% 80% at 50% 42%, #000 55%, rgba(0,0,0,.45) 75%, transparent 96%);
-    mask-image:radial-gradient(ellipse 74% 80% at 50% 42%, #000 55%, rgba(0,0,0,.45) 75%, transparent 96%);
-    filter:drop-shadow(0 24px 40px rgba(4,18,58,.16));
-  }
-  .hero-media-frame::after{
-    content:"";
-    position:absolute;inset:0;
-    pointer-events:none;
-    background-image:radial-gradient(circle, var(--gold) 1.3px, transparent 1.6px);
-    background-size:9px 9px;
-    -webkit-mask-image:radial-gradient(ellipse 80% 86% at 50% 42%, transparent 56%, #000 74%, transparent 94%);
-    mask-image:radial-gradient(ellipse 80% 86% at 50% 42%, transparent 56%, #000 74%, transparent 94%);
-    opacity:.65;
-  }
-  .hero-note-overlay{
-    position:absolute;
-    left:50%;
-    bottom:26px;
-    transform:translateX(-50%);
-    z-index:3;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    color:var(--navy-900);
-    font-size:11.5px;
-    font-weight:700;
-    letter-spacing:.02em;
-    padding:9px 18px;
-    border-radius:999px;
-    border:1px solid rgba(180,130,44,.4);
-    box-shadow:0 10px 24px rgba(4,18,58,.18);
-    white-space:nowrap;
-    max-width:90%;
-  }
-  .hero-note-overlay i{color:var(--gold);}
-  @media(max-width:480px){
-    .hero-note-overlay{font-size:10.5px;padding:8px 14px;white-space:normal;text-align:center;}
-  }
-
-  /* ================= PROBLEMS ================= */
-  .problems{background:var(--white);}
-  .problem-title{
-    font-size:24px;
-    font-weight:900;
-    color:var(--navy-900);
-    line-height:1.5;
-    margin-bottom:8px;
-  }
-  @media(min-width:768px){.problem-title{font-size:30px;}}
-  .problem-title .red{color:var(--red);}
-  .problem-sub{
-    display:inline-block;
-    background:var(--gray-bg);
-    color:var(--text-sub);
-    font-size:12.5px;
-    font-weight:700;
-    letter-spacing:.05em;
-    padding:7px 16px;
-    border-radius:2px;
-    margin:16px 0 36px;
-  }
-  .card-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  @media(min-width:600px){.card-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:900px){.card-grid.cols-5{grid-template-columns:repeat(5,1fr);}}
-  @media(min-width:900px){.card-grid.cols-3{grid-template-columns:repeat(3,1fr);}}
-
-  .problem-card{
-    background:var(--white);
-    border:1px solid #ece6d8;
-    border-radius:4px;
-    padding:30px 18px;
-    text-align:center;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  }
-  .problem-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-light);}
-  .problem-num{
-    font-family:var(--serif);
-    color:var(--gold);
-    font-weight:600;
-    font-size:15px;
-    letter-spacing:.05em;
-    margin-bottom:10px;
-  }
+  /* ---------- Icon components ---------- */
   .icon-circle{
-    width:62px;height:62px;
-    border-radius:50%;
-    background:#fff;
-    border:1px solid var(--navy-900);
-    color:var(--navy-900);
-    display:flex;align-items:center;justify-content:center;
-    font-size:21px;
-    margin:0 auto 18px;
+    width:58px;height:58px;border-radius:50%;background:#fff;border:1px solid var(--navy-900);
+    color:var(--navy-900);display:flex;align-items:center;justify-content:center;font-size:20px;
+    margin:0 auto 12px;flex-shrink:0;
     transition:background .3s ease, color .3s ease, border-color .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
   }
-  /* standalone image badges (already include their own circle/tile in the source art) */
-  .badge-img{display:block;width:64px;height:64px;margin:0 auto 18px;object-fit:contain;}
-  .problem-card:hover .icon-circle,.reason-card:hover .icon-circle{
-    background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.1) rotate(-6deg);
+  .num-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;border-radius:50%;background:var(--navy-900);color:#fff;
+    font-family:var(--serif);font-weight:700;font-size:11px;margin-bottom:10px;
   }
-  .problem-card h3{font-size:15px;color:var(--navy-900);margin-bottom:6px;font-weight:700;}
-  .problem-card p{font-size:12.5px;color:var(--text-sub);}
 
-  /* transition banner */
-  .banner{
+  /* ================= HERO ================= */
+  .hero{padding-top:30px;}
+  .hero-pill{
+    display:inline-flex;align-items:center;gap:8px;
     background:linear-gradient(135deg,var(--navy-900),var(--navy-700));
-    color:#fff;
-    text-align:center;
-    padding:36px 20px;
-    border-radius:4px;
-    margin-top:44px;
-    font-family:var(--serif);
-    font-weight:700;
-    font-size:19px;
-    line-height:1.7;
+    color:var(--gold-pale);border:1px solid rgba(217,180,102,.55);
+    padding:9px 16px;border-radius:999px;font-weight:600;font-size:11.5px;
+    margin-bottom:16px;box-shadow:0 8px 20px rgba(4,18,58,.18);
   }
-  @media(min-width:768px){.banner{font-size:23px;padding:44px 20px;}}
-  .banner .gold-text{color:var(--gold-light);}
+  .hero-pill i{color:var(--gold-light);}
+  .hero h1{font-size:25px;font-weight:900;color:var(--navy-900);line-height:1.5;margin-bottom:16px;letter-spacing:.01em;}
+  .hero-sub{font-size:12.5px;color:var(--text-sub);line-height:1.9;margin-bottom:22px;}
+  .hero-media{
+    position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    aspect-ratio:3/4;background:var(--navy-900);margin-bottom:6px;
+  }
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .hero-note{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    text-align:center;font-size:10.5px;color:var(--text-sub);margin-top:14px;line-height:1.7;
+  }
+  .hero-note i{color:var(--gold);}
 
-  /* transition checklist panel (課題→解決の橋渡し) */
+  /* ================= 3-STEP SUMMARY ================= */
+  .three-step{background:var(--white);}
+  .three-step .flourish-title{margin-bottom:26px;}
+  .three-row{display:flex;justify-content:space-between;gap:6px;}
+  .three-item{flex:1;text-align:center;}
+  .three-item .icon-circle{width:52px;height:52px;font-size:18px;}
+  .three-item .n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:11px;margin-bottom:4px;}
+  .three-item h4{font-size:11.5px;font-weight:700;color:var(--navy-900);line-height:1.4;}
+  .three-item p{font-size:9.5px;color:var(--text-sub);margin-top:3px;line-height:1.4;}
+  .three-arrow{display:flex;align-items:center;color:var(--gold);font-size:13px;padding-top:20px;}
+
+  .banner-panel{
+    position:relative;margin-top:32px;background:linear-gradient(150deg,var(--navy-900),var(--navy-700));
+    color:#fff;border-radius:var(--radius);padding:26px 20px;text-align:center;overflow:hidden;
+  }
+  .banner-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .banner-panel p{font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.8;}
+
+  /* ================= PROBLEMS ================= */
+  .problems{background:var(--gray-bg);}
+  .problems h2{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--navy-900);text-align:center;line-height:1.6;}
+  .problem-sub{
+    display:block;text-align:center;background:#fff;color:var(--text-sub);font-size:11.5px;font-weight:700;
+    padding:6px 14px;border-radius:2px;margin:14px auto 24px;width:fit-content;border:1px solid var(--border);
+  }
+  .problem-list{display:flex;flex-direction:column;gap:12px;}
+  .problem-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .problem-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-light);}
+  .problem-card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.08) rotate(-5deg);}
+  .problem-card h3{font-size:14.5px;color:var(--navy-900);margin-bottom:5px;font-weight:700;}
+  .problem-card p{font-size:12px;color:var(--text-sub);}
+
+  /* ---- checklist ---- */
   .checklist-panel{
-    position:relative;
-    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));
-    color:#fff;
-    border-radius:4px;
-    margin-top:44px;
-    padding:36px 22px;
-    overflow:hidden;
+    position:relative;margin-top:30px;background:linear-gradient(160deg,var(--navy-900),var(--navy-700));
+    color:#fff;border-radius:var(--radius);padding:28px 20px;overflow:hidden;
   }
-  .checklist-panel::before{
-    content:"";
-    position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--gold-foil);
-    background-size:220% 100%;
-  }
-  @media(min-width:768px){.checklist-panel{padding:52px 44px;}}
-  .checklist-panel .banner-title{
-    text-align:center;
-    font-family:var(--serif);
-    font-weight:700;
-    font-size:19px;
-    line-height:1.7;
-    margin-bottom:32px;
-  }
-  @media(min-width:768px){.checklist-panel .banner-title{font-size:23px;}}
-  .checklist-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-    margin-bottom:32px;
-  }
-  @media(min-width:700px){.checklist-grid{grid-template-columns:repeat(2,1fr);}}
+  .checklist-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .checklist-title{font-family:var(--serif);text-align:center;font-size:16px;font-weight:700;line-height:1.8;margin-bottom:22px;}
+  .checklist-list{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;}
   .checklist-item{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(217,180,102,.25);
-    border-radius:4px;
-    padding:16px 18px;
+    display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.06);
+    border:1px solid rgba(217,180,102,.28);border-radius:var(--radius);padding:14px 16px;
     transition:border-color .3s ease, background .3s ease, transform .3s ease;
   }
   .checklist-item:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);transform:translateY(-3px);}
-  .checklist-item i{width:40px;flex-shrink:0;font-size:22px;line-height:1.3;color:var(--gold-light);text-align:center;}
-  .checklist-item h4{font-size:14px;font-weight:700;margin-bottom:3px;}
-  .checklist-item p{font-size:12px;color:#c8cee0;line-height:1.6;}
-  .icon-mini-row{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-    padding-top:24px;
-    border-top:1px solid rgba(255,255,255,.12);
+  .checklist-icon-wrap{position:relative;flex-shrink:0;}
+  .checklist-icon{
+    width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(217,180,102,.4);
+    display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--gold-light);
   }
-  .icon-mini{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:rgba(255,255,255,.08);
-    border-radius:999px;
-    padding:8px 16px 8px 8px;
-    font-size:12px;
-    font-weight:700;
+  .checklist-check{
+    position:absolute;bottom:-3px;right:-3px;width:16px;height:16px;border-radius:50%;
+    background:var(--gold);color:var(--navy-900);display:flex;align-items:center;justify-content:center;font-size:8px;
+    border:2px solid var(--navy-900);
   }
-  .icon-mini i{font-size:15px;color:var(--gold-light);}
+  .checklist-item h4{font-size:13px;font-weight:700;margin-bottom:3px;}
+  .checklist-item p{font-size:11px;color:#c8cee0;line-height:1.6;}
+  .mini-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);}
+  .mini-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border-radius:999px;padding:7px 13px 7px 7px;font-size:10.5px;font-weight:700;}
+  .mini-pill i{color:var(--gold-light);font-size:13px;}
 
-  /* ================= AI DX SECTION ================= */
-  .aidx{background:var(--gray-bg);}
+  /* ---- 人から仕組みへ banner ---- */
+  .big-banner{
+    background:linear-gradient(150deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center;
+  }
+  .big-banner p{font-family:var(--serif);font-weight:900;font-size:20px;line-height:1.7;}
+
+  /* ================= AI-DX ================= */
+  .aidx{position:relative;background:var(--white);}
+  .aidx h2.section-title{margin-bottom:0;}
   .aidx-panel{
-    position:relative;
-    background:radial-gradient(circle at 20% 15%, var(--navy-700) 0%, var(--navy-900) 55%, #030d2c 100%);
-    border-radius:6px;
-    padding:48px 20px 40px;
-    margin-bottom:48px;
-    overflow:hidden;
+    position:relative;margin:26px 0;background:radial-gradient(circle at 22% 18%,var(--navy-700) 0%,var(--navy-900) 55%,#030d2c 100%);
+    border-radius:var(--radius);padding:32px 18px 26px;overflow:hidden;
   }
-  .aidx-panel::before{
-    content:"";
-    position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--gold-foil);
-    background-size:220% 100%;
-  }
-  .aidx-panel::after{
-    content:"";
-    position:absolute;inset:0;
-    background-image:radial-gradient(rgba(217,180,102,.16) 1px, transparent 1.5px);
-    background-size:22px 22px;
-    opacity:.5;
-    pointer-events:none;
-  }
-  .aidx-icons{
-    position:relative;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px;
-    margin:0 auto;
-    max-width:640px;
-  }
-  .aidx-icon-item{
-    position:relative;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(217,180,102,.35);
-    border-radius:4px;
-    padding:16px 10px;
-    width:110px;
-    text-align:center;
-    backdrop-filter:blur(2px);
-    transition:background .3s ease, border-color .3s ease, transform .3s ease;
-  }
-  .aidx-icon-item:hover{background:rgba(217,180,102,.12);border-color:var(--gold-light);transform:translateY(-4px);}
-  .aidx-icon-item i{display:inline-block;font-size:26px;color:var(--gold-light);margin-bottom:8px;}
-  .aidx-icon-item span{display:block;font-size:11.5px;font-weight:700;color:#fff;}
+  .aidx-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-foil);background-size:220% 100%;}
+  .aidx-panel::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(217,180,102,.16) 1px,transparent 1.5px);background-size:20px 20px;opacity:.5;pointer-events:none;}
   .aidx-core{
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:96px;height:96px;
-    border-radius:50%;
-    background:radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold));
-    color:var(--navy-900);
-    font-weight:900;
-    font-size:24px;
-    box-shadow:0 0 0 8px rgba(217,180,102,.14), 0 0 40px rgba(217,180,102,.35);
-    margin:0 auto 32px;
-    animation:orbPulse 3s ease-in-out infinite;
+    position:relative;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,var(--gold-light),var(--gold));color:var(--navy-900);
+    font-weight:900;font-size:22px;box-shadow:0 0 0 7px rgba(217,180,102,.14),0 0 40px rgba(217,180,102,.35);
+    margin:0 auto 24px;animation:orbPulse 3s ease-in-out infinite;
   }
   @keyframes orbPulse{
-    0%,100%{box-shadow:0 0 0 8px rgba(217,180,102,.14), 0 0 40px rgba(217,180,102,.35);}
-    50%{box-shadow:0 0 0 14px rgba(217,180,102,.2), 0 0 60px rgba(217,180,102,.5);}
+    0%,100%{box-shadow:0 0 0 7px rgba(217,180,102,.14),0 0 40px rgba(217,180,102,.35);}
+    50%{box-shadow:0 0 0 12px rgba(217,180,102,.2),0 0 56px rgba(217,180,102,.5);}
   }
-  .aidx-lines{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-    pointer-events:none;
+  .aidx-badges{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+  .aidx-badges span{
+    display:inline-flex;align-items:center;gap:7px;padding:8px 12px 8px 8px;border-radius:999px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(217,180,102,.35);font-size:11px;font-weight:700;color:#fff;
   }
+  .aidx-badges i{color:var(--gold-light);font-size:14px;}
 
-  .micro-step-flow{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px 14px;
-    margin-top:8px;
+  .subhead-line{
+    text-align:center;font-family:var(--serif);font-weight:700;color:var(--navy-900);font-size:15.5px;
+    line-height:1.7;margin:34px 0 22px;
   }
-  @media(min-width:700px){.micro-step-flow{grid-template-columns:repeat(3,1fr);}}
-  @media(min-width:1000px){.micro-step-flow{grid-template-columns:repeat(6,1fr);}}
-  .micro-step-item{text-align:center;}
-  .micro-step-item .icon-circle{
-    width:56px;height:56px;font-size:18px;
-    background:#fff;color:var(--navy-900);border:2px solid var(--navy-900);
-  }
-  .micro-step-item span.n{font-family:var(--serif);color:var(--gold);font-weight:600;font-size:14px;display:block;margin-bottom:6px;letter-spacing:.04em;}
-  .micro-step-item p{font-size:12px;color:var(--navy-900);font-weight:700;}
-  .aidx-subhead{
-    text-align:center;font-family:var(--serif);font-weight:700;color:var(--navy-900);font-size:17px;margin-bottom:28px;letter-spacing:.02em;
-  }
-  .aidx-divider{
-    text-align:center;color:var(--text-sub);font-size:12.5px;font-weight:700;letter-spacing:.04em;
-    margin:56px 0 24px;
-    position:relative;
-  }
+  .six-step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 10px;}
+  .six-step-item{text-align:center;}
+  .six-step-item .icon-circle{width:52px;height:52px;font-size:18px;}
+  .six-step-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:12px;margin-bottom:4px;}
+  .six-step-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
 
-  .step-flow{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:24px;
-    counter-reset:step;
+  .skills-banner{
+    margin-top:38px;background:var(--navy-900);color:#fff;text-align:center;padding:16px;border-radius:var(--radius);
   }
-  @media(min-width:900px){
-    .step-flow{display:flex;align-items:flex-start;justify-content:center;gap:4px;}
-  }
-  .step-item{text-align:center;position:relative;padding:0 12px;}
-  @media(min-width:900px){.step-item{flex:0 1 240px;}}
-  .step-circle{
-    width:78px;height:78px;
-    border-radius:50%;
-    background:#fff;
-    border:1px solid var(--navy-900);
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;
-    color:var(--navy-900);
-    margin:0 auto 16px;
-    transition:background .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .step-item:hover .step-circle{background:var(--gold-foil);border-color:var(--gold);}
-  .step-item .step-num{font-family:var(--serif);color:var(--gold);font-weight:600;font-size:15px;display:block;margin-bottom:8px;letter-spacing:.05em;}
-  .step-item h4{font-size:15px;color:var(--navy-900);margin-bottom:4px;font-weight:700;}
-  .step-item p{font-size:12px;color:var(--text-sub);}
-  .step-arrow{
-    display:none;
-  }
-  @media(min-width:900px){
-    .step-arrow{
-      display:flex;align-items:center;justify-content:center;
-      color:var(--gold);font-size:20px;
-      margin-top:29px;
-      flex:0 0 auto;
-    }
-  }
-
-  /* ================= REASONS ================= */
-  .reasons{background:#fff;}
-  .reasons-top{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:28px;
-    align-items:center;
-    margin-bottom:48px;
-  }
-  @media(min-width:900px){.reasons-top{grid-template-columns:1.1fr .9fr;}}
-  .reasons-top img{
-    border-radius:4px;
-    border:1px solid rgba(180,130,44,.4);
-    box-shadow:var(--shadow);
-    padding:6px;
-    background:#fff;
-  }
-  .reason-card{
-    background:#fff;
-    border:1px solid #ece6d8;
-    border-radius:4px;
-    padding:30px 20px;
-    text-align:center;
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  }
-  .reason-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-light);}
-
-  /* ================= TABS ================= */
-  .tabs-section{background:var(--gray-bg);}
-  .tab-nav{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    max-width:640px;
-    margin:0 auto 40px;
-  }
-  @media(min-width:700px){.tab-nav{flex-direction:row;}}
-  .tab-btn{
-    flex:1;
-    background:#fff;
-    border:1px solid #e2dbc9;
-    color:var(--navy-900);
-    font-weight:700;
-    font-size:13.5px;
-    letter-spacing:.02em;
-    padding:16px 12px;
-    border-radius:4px;
-    cursor:pointer;
-    transition:all .25s ease;
-    font-family:inherit;
-  }
-  .tab-btn i{margin-right:6px;color:var(--gold);}
-  .tab-btn.active{
-    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));
-    color:#fff;
-    border-color:var(--navy-900);
-    box-shadow:var(--shadow);
-  }
-  .tab-btn.active i{color:var(--gold-light);}
-  .tab-panels{position:relative;}
-  .tab-panel{display:none;}
-  .tab-panel.active{display:block;animation:tabFade .5s ease;}
-  @keyframes tabFade{
-    from{opacity:0;transform:translateY(14px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .tab-panel-inner{
-    background:#fff;
-    border:1px solid #ece6d8;
-    border-radius:4px;
-    padding:32px 20px;
-    box-shadow:var(--shadow);
-  }
-  @media(min-width:768px){.tab-panel-inner{padding:48px 44px;}}
-  .tab-panel h3{
-    font-family:var(--serif);font-size:20px;color:var(--navy-900);font-weight:700;margin-bottom:6px;text-align:center;
-  }
-  .tab-panel .tab-lead{
-    text-align:center;color:var(--text-sub);font-size:13.5px;margin-bottom:32px;
-  }
-  .skill-grid{display:grid;grid-template-columns:1fr;gap:14px;}
-  @media(min-width:600px){.skill-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:900px){.skill-grid{grid-template-columns:repeat(3,1fr);}}
+  .skills-banner p{font-family:var(--serif);font-weight:900;font-size:16px;}
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
   .skill-item{
-    display:flex;gap:14px;align-items:flex-start;
-    background:var(--gray-bg);
-    border:1px solid #ece6d8;
-    border-radius:4px;
-    padding:16px;
-    transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+    display:flex;align-items:center;gap:10px;background:var(--gray-bg);border:1px solid var(--border);
+    border-radius:var(--radius);padding:12px;transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
   }
   .skill-item:hover{border-color:var(--gold-light);transform:translateY(-3px);box-shadow:var(--shadow);}
-  .skill-item .icon-circle{width:44px;height:44px;font-size:16px;flex-shrink:0;margin:0;}
-  .skill-item h4{font-size:14px;color:var(--navy-900);margin-bottom:2px;font-weight:700;}
-  .skill-item span.n{font-family:var(--serif);color:var(--gold);font-weight:600;font-size:12px;letter-spacing:.04em;}
+  .skill-item i{font-size:16px;color:var(--gold);flex-shrink:0;}
+  .skill-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:11px;}
+  .skill-item h4{font-size:11.5px;color:var(--navy-900);font-weight:700;line-height:1.3;}
+  .skills-lead{text-align:center;font-size:12px;color:var(--text-sub);margin-top:16px;}
 
-  .curriculum-flow{
-    display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:36px;
+  /* ================= REASONS ================= */
+  .reasons{background:var(--gray-bg);}
+  .reasons-photo{border-radius:var(--radius);overflow:hidden;margin:22px 0 26px;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  .reasons-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+  .reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px;}
+  .reason-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px 12px;text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   }
-  @media(min-width:700px){.curriculum-flow{grid-template-columns:repeat(3,1fr);}}
-  @media(min-width:1000px){.curriculum-flow{grid-template-columns:repeat(6,1fr);}}
-  .curriculum-item{text-align:center;}
-  .curriculum-item .icon-circle{background:var(--gray-bg);color:var(--navy-900);border:1px solid var(--navy-900);width:60px;height:60px;font-size:20px;}
-  .curriculum-item span.n{font-family:var(--serif);color:var(--gold);font-weight:600;font-size:14px;display:block;margin-bottom:6px;letter-spacing:.04em;}
-  .curriculum-item p{font-size:12px;color:var(--navy-900);font-weight:700;}
+  .reason-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-light);}
+  .reason-card:hover .icon-circle{background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.08) rotate(-5deg);}
+  .reason-card.wide{grid-column:1 / -1;}
+  .reason-card h3{font-size:13px;font-weight:700;color:var(--navy-900);}
 
-  .asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:center;}
-  @media(min-width:700px){.asset-grid{grid-template-columns:repeat(5,1fr);}}
+  /* ================= CURRICULUM ================= */
+  .curriculum{background:var(--white);}
+  .curriculum h2.section-title{margin-bottom:2px;}
+  .curriculum-sub{text-align:center;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:14.5px;margin-top:10px;}
+  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 10px;margin-top:24px;}
+  .curr-item{text-align:center;}
+  .curr-item .icon-circle{width:52px;height:52px;font-size:18px;background:var(--gray-bg);border:1px solid var(--navy-900);}
+  .curr-item span.n{display:block;font-family:var(--serif);color:var(--gold);font-weight:700;font-size:12px;margin-bottom:4px;}
+  .curr-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
+
+  .asset-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px;}
+  .asset-item{background:var(--gray-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 8px;text-align:center;}
   .asset-item .icon-circle{background:#fff;border:1px solid var(--navy-900);}
-  .asset-item p{font-size:12.5px;color:var(--navy-900);font-weight:700;}
+  .asset-item p{font-size:11.5px;color:var(--navy-900);font-weight:700;}
+  .asset-item.wide{grid-column:1 / -1;}
 
   /* ================= SUBSIDY ================= */
-  .subsidy{background:#fff;}
-  .subsidy-hero{
-    position:relative;
-    text-align:center;
-    background:linear-gradient(135deg,#fbf7ee,#fff);
-    border:1px solid var(--gold-light);
-    border-radius:4px;
-    padding:40px 20px;
-    margin-bottom:40px;
-    overflow:hidden;
-  }
-  .subsidy-hero::before{
-    content:"";
-    position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--gold-foil);background-size:220% 100%;
-  }
-  .subsidy-label{
-    display:inline-block;
-    background:var(--navy-900);
-    color:#fff;
-    font-weight:700;
-    font-size:12.5px;
-    letter-spacing:.06em;
-    padding:7px 18px;
-    border-radius:2px;
-    margin-bottom:16px;
-  }
-  .subsidy-num{
-    font-family:var(--serif);
-    font-size:54px;
-    font-weight:700;
-    color:var(--gold);
-    line-height:1;
-  }
-  @media(min-width:768px){.subsidy-num{font-size:74px;}}
-  .subsidy-num sup{font-size:32px;margin-left:2px;}
+  .subsidy{background:var(--gray-bg);}
+  .subsidy-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin:22px 0 26px;border:1px solid var(--gold-light);}
+  .subsidy-head{background:var(--navy-900);color:#fff;text-align:center;font-weight:700;font-size:13px;letter-spacing:.03em;padding:13px;}
+  .subsidy-body{background:linear-gradient(160deg,#fff,var(--gold-pale) 220%);padding:24px 18px;text-align:center;}
+  .subsidy-num-line{display:flex;align-items:flex-end;justify-content:center;gap:6px;}
+  .subsidy-label{font-size:13px;font-weight:700;color:var(--text-sub);padding-bottom:10px;}
+  .subsidy-num{font-family:var(--serif);font-size:56px;font-weight:900;color:var(--gold);line-height:1;white-space:nowrap;}
+  .subsidy-num sup{font-size:24px;margin:0 2px;}
+  .subsidy-num small{font-size:24px;font-weight:700;}
   .subsidy-real{
-    display:inline-block;
-    margin-top:22px;
-    border:1px solid var(--gold);
-    border-radius:2px;
-    padding:14px 26px;
-    font-weight:700;
-    font-size:14px;
-    color:var(--navy-900);
+    display:inline-block;margin-top:16px;border:1px solid var(--gold);border-radius:2px;padding:12px 22px;
+    font-weight:700;font-size:13.5px;color:var(--navy-900);
   }
-  .subsidy-real b{font-family:var(--serif);color:var(--gold);font-size:27px;font-weight:700;}
-  .merit-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:48px;}
-  @media(min-width:768px){.merit-grid{grid-template-columns:repeat(3,1fr);}}
-  .merit-item{text-align:center;padding:20px;}
-  .merit-item h4{font-size:15px;color:var(--navy-900);margin-bottom:6px;}
-  .merit-item p{font-size:12.5px;color:var(--text-sub);}
-  .apply-flow{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:8px;
-  }
-  @media(min-width:700px){.apply-flow{grid-template-columns:repeat(4,1fr);}}
-  .apply-item{text-align:center;}
-  .apply-item .icon-circle{width:56px;height:56px;font-size:20px;background:var(--gray-bg);color:var(--navy-900);border:1px solid var(--navy-900);}
+  .subsidy-real b{font-family:var(--serif);color:var(--gold-deep);font-size:24px;}
+  .subsidy-cta{padding:16px;background:#fff;}
+
+  .subsidy h3{font-size:14.5px;font-weight:900;color:var(--navy-900);text-align:center;margin-bottom:18px;}
+  .merit-list{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
+  .merit-item{display:flex;gap:13px;align-items:flex-start;}
+  .icon-badge{width:38px;height:38px;border-radius:50%;background:var(--navy-900);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .icon-badge i{color:#fff;font-size:15px;}
+  .merit-item h4{font-size:13.5px;font-weight:900;color:var(--navy-900);margin-bottom:3px;}
+  .merit-item p{font-size:11.5px;color:var(--text-sub);line-height:1.6;}
+
+  .apply-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+  .apply-item{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:12px 15px;}
+  .apply-num{width:22px;height:22px;border-radius:50%;background:var(--navy-900);color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .apply-icon{width:32px;height:32px;border-radius:50%;background:var(--gray-bg);border:1px solid var(--navy-900);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .apply-icon i{font-size:13px;color:var(--navy-900);}
   .apply-item p{font-size:12.5px;font-weight:700;color:var(--navy-900);}
-  .info-bar{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
-    background:var(--navy-900);color:#fff;
-    border-radius:4px;padding:20px;margin-top:32px;
-    font-size:12.5px;font-weight:700;
-    border-top:2px solid var(--gold);
-  }
-  .info-bar span{display:flex;align-items:center;gap:8px;}
-  .info-bar i{font-size:16px;color:var(--gold-light);}
+
+  .info-bar{display:flex;flex-direction:column;gap:10px;background:var(--navy-900);border-radius:var(--radius);padding:18px 20px;border-top:2px solid var(--gold);}
+  .info-bar span{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;color:#fff;}
+  .info-bar i{color:var(--gold-light);font-size:14px;flex-shrink:0;}
 
   /* ================= FINAL CTA ================= */
-  .final-cta{
-    background:radial-gradient(circle at 20% 20%, var(--navy-700), var(--navy-900) 70%);
-    color:#fff;
-    text-align:center;
-  }
-  .final-cta h2{
-    font-family:var(--serif);
-    font-size:26px;font-weight:700;line-height:1.7;letter-spacing:.02em;margin-bottom:26px;
-  }
-  @media(min-width:768px){.final-cta h2{font-size:38px;}}
-  .final-cta h2 .gold-text{color:var(--gold-light);}
-  .final-cta p.lead{font-size:14.5px;color:#c8cee0;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto;}
-  @media(min-width:768px){.final-cta p.lead{font-size:16px;}}
-  .final-btns{display:flex;flex-direction:column;gap:14px;max-width:420px;margin:0 auto;}
-  @media(min-width:600px){.final-btns{flex-direction:row;max-width:none;justify-content:center;}}
-  .final-btns .btn{flex:1;max-width:280px;margin:0 auto;}
-  @media(min-width:600px){.final-btns .btn{margin:0;}}
+  .final-cta{background:radial-gradient(circle at 22% 18%,var(--navy-700),var(--navy-900) 70%);color:#fff;text-align:center;}
+  .final-cta h2{font-family:var(--serif);font-size:22px;font-weight:900;line-height:1.7;margin-bottom:16px;}
+  .final-lead{font-size:12.5px;color:#c8cee0;margin-bottom:24px;line-height:1.8;}
+  .final-photo{border-radius:var(--radius);overflow:hidden;margin:24px 0 18px;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  .final-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%;}
+  .final-list{display:flex;flex-direction:column;gap:9px;text-align:left;margin-top:18px;}
+  .final-list span{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:13px 15px;font-size:12px;font-weight:700;}
+  .final-list i{color:var(--gold-light);font-size:15px;flex-shrink:0;}
 
   /* ================= FOOTER ================= */
-  footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:28px 20px;font-size:12px;letter-spacing:.04em;}
+  .site-footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:28px 20px;font-size:11.5px;letter-spacing:.03em;}
 
-  /* ================= SCROLL PROGRESS BAR ================= */
-  .scroll-progress{
-    position:fixed;top:0;left:0;
-    height:3px;width:0%;
-    background:var(--gold-foil);
-    background-size:220% 100%;
-    z-index:100;
-    pointer-events:none;
-  }
-
-  /* ================= STICKY CTA（常時・中央下部・パルス演出） ================= */
+  /* ================= STICKY CTA ================= */
   .sticky-cta{
-    position:fixed;
-    left:50%;
-    bottom:20px;
-    z-index:90;
-    opacity:0;
+    position:fixed;left:50%;bottom:20px;z-index:90;opacity:0;
     transform:translateX(-50%) translateY(30px);
     animation:stickyCtaIn .7s cubic-bezier(.2,.8,.2,1) .9s forwards;
   }
   .sticky-cta .btn{
-    padding:15px 28px;
-    border-radius:999px;
-    font-size:14px;
-    white-space:nowrap;
+    width:auto;padding:15px 28px;border-radius:999px;font-size:14px;white-space:nowrap;
     box-shadow:0 12px 30px rgba(138,100,32,.4);
     animation:ctaPulse 2.6s ease-in-out 1.6s infinite;
   }
-  @keyframes stickyCtaIn{
-    from{opacity:0; transform:translateX(-50%) translateY(30px);}
-    to{opacity:1; transform:translateX(-50%) translateY(0);}
-  }
+  @keyframes stickyCtaIn{from{opacity:0;transform:translateX(-50%) translateY(30px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
   @keyframes ctaPulse{
-    0%,100%{box-shadow:0 12px 30px rgba(138,100,32,.4), 0 0 0 0 rgba(180,130,44,.45);}
-    50%{box-shadow:0 12px 30px rgba(138,100,32,.4), 0 0 0 12px rgba(180,130,44,0);}
+    0%,100%{box-shadow:0 12px 30px rgba(138,100,32,.4),0 0 0 0 rgba(180,130,44,.45);}
+    50%{box-shadow:0 12px 30px rgba(138,100,32,.4),0 0 0 12px rgba(180,130,44,0);}
   }
   @media(max-width:480px){
     .sticky-cta{bottom:14px;}
     .sticky-cta .btn{padding:13px 20px;font-size:12.5px;}
   }
-
-  /* utility */
-  .mt-8{margin-top:8px;}
-  .fa-fw-icon{width:1.2em;text-align:center;}
 </style>
 </head>
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<div class="brandbar">
-  <div class="container">
-    <span>AI営業DXリスキリング研修</span>
+<div class="page">
+
+  <header class="brandbar">
+    <span class="name">AI営業DXリスキリング研修</span>
     <span class="badge-tag">助成金対象</span>
-  </div>
-</div>
+  </header>
 
-<!-- ========== HERO ========== -->
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-text">
-      <div class="hero-pill reveal">
-        <i class="fa-solid fa-award"></i>
-        <span>元リクルートトップセールスが教える！</span>
-      </div>
-      <h1 class="hero-title reveal reveal-delay-1">
-        トップ営業が辞めても、<br>
-        <span class="gold-text">売上が落ちない会社へ。</span>
-      </h1>
-      <p class="hero-sub reveal reveal-delay-2">
-        トップセールスをAIで分析し、勝ちパターンを会社の資産へ。<br>
-        AIで営業の「属人化」をなくし、再現性のある営業組織を実現する研修プログラムです。
-      </p>
-      <div class="hero-cta-row reveal reveal-delay-3">
-        <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
-        <a href="#subsidy" class="btn btn-outline-navy"><i class="fa-solid fa-percent"></i>助成金対象か診断する</a>
-      </div>
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-pill reveal">
+      <i class="fa-solid fa-award"></i>元リクルートトップセールスが教える！
     </div>
-    <div class="hero-media-frame reveal reveal-delay-4">
-      <img class="hero-media-img" src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
-      <p class="hero-note-overlay"><i class="fa-solid fa-circle-check"></i>オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
+    <h1 class="reveal reveal-delay-1">
+      トップ営業が辞めても、<br>
+      <span class="gold-text">売上が落ちない</span><br>
+      会社へ。
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      トップセールスをAIで分析し、<br>
+      勝ちパターンを<span class="gold-text">会社の資産</span>へ。
+    </p>
+    <div class="hero-media reveal reveal-delay-2">
+      <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
     </div>
-  </div>
-</section>
+    <div class="btn-row reveal reveal-delay-3">
+      <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
+      <a href="#subsidy" class="btn btn-outline-navy"><i class="fa-solid fa-percent"></i>助成金対象か診断する</a>
+    </div>
+    <p class="hero-note reveal reveal-delay-4"><i class="fa-solid fa-circle-check"></i>オンライン相談OK・所要時間約30分・資料はすぐにお送りします</p>
+  </section>
 
-<!-- ========== SECTION2: 営業の課題 ========== -->
-<section class="problems" id="problems">
-  <div class="container">
-    <div class="center">
-      <span class="eyebrow reveal">PROBLEM</span>
-      <h2 class="problem-title reveal">
-        トップ営業が辞めたら、あなたの会社に<br>
-        <span class="red">何が残りますか？</span>
-      </h2>
-      <span class="problem-sub reveal">多くの会社では…</span>
+  <!-- ========== 3-STEP SUMMARY ========== -->
+  <section class="three-step" id="three-step">
+    <h2 class="flourish-title reveal">AIが実現する<span class="gold-text">3</span>つの営業DX</h2>
+    <div class="three-row">
+      <div class="three-item reveal">
+        <div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <span class="n">01</span>
+        <h4>AI営業分析</h4>
+        <p>営業を見える化</p>
+      </div>
+      <div class="three-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+      <div class="three-item reveal reveal-delay-1">
+        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
+        <span class="n">02</span>
+        <h4>勝ちパターン分析</h4>
+        <p>成果につながる型を抽出</p>
+      </div>
+      <div class="three-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+      <div class="three-item reveal reveal-delay-2">
+        <div class="icon-circle"><i class="fa-solid fa-building"></i></div>
+        <span class="n">03</span>
+        <h4>営業資産化</h4>
+        <p>会社全体で共有・活用</p>
+      </div>
     </div>
-    <div class="card-grid cols-5">
+    <div class="banner-panel reveal">
+      <p>AIで営業の「属人化」をなくし、<br><span class="gold-text">再現性のある営業組織</span>へ。</p>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEMS ========== -->
+  <section class="problems" id="problems">
+    <h2 class="reveal">トップ営業が辞めたら、<br>あなたの会社に<br><span class="red-text">何が残りますか？</span></h2>
+    <span class="problem-sub reveal">多くの会社では…</span>
+
+    <div class="problem-list">
       <div class="problem-card reveal">
-        <div class="problem-num">01</div>
+        <span class="num-badge">01</span>
         <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
         <h3>トップ営業だけが売れている</h3>
         <p>成果が個人に依存し、属人化している</p>
       </div>
       <div class="problem-card reveal reveal-delay-1">
-        <div class="problem-num">02</div>
+        <span class="num-badge">02</span>
         <div class="icon-circle"><i class="fa-solid fa-user-lock"></i></div>
         <h3>ノウハウが個人の中にある</h3>
         <p>共有されず、再現できないブラックボックス化</p>
       </div>
       <div class="problem-card reveal reveal-delay-2">
-        <div class="problem-num">03</div>
+        <span class="num-badge">03</span>
         <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
         <h3>売れる理由を説明できない</h3>
         <p>再現性がなく、指導も感覚や経験に頼ってしまう</p>
       </div>
       <div class="problem-card reveal reveal-delay-3">
-        <div class="problem-num">04</div>
+        <span class="num-badge">04</span>
         <div class="icon-circle"><i class="fa-solid fa-sitemap"></i></div>
         <h3>新人教育はトップ営業任せ</h3>
         <p>教育の仕組みがなく、育成が属人化している</p>
       </div>
       <div class="problem-card reveal reveal-delay-4">
-        <div class="problem-num">05</div>
+        <span class="num-badge">05</span>
         <div class="icon-circle"><i class="fa-solid fa-database"></i></div>
         <h3>ノウハウが会社に蓄積されない</h3>
         <p>資産にならず、失われ続ける状態になっている</p>
       </div>
     </div>
+
     <div class="checklist-panel reveal">
-      <div class="banner-title">
-        AIで営業ノウハウを<span class="gold-text">会社の資産</span>へ。<br>
-        誰でも成果を出せる組織に変わる。
-      </div>
-      <div class="checklist-grid">
+      <div class="checklist-title">AIで営業ノウハウを<span class="gold-text">会社の資産</span>へ。<br>誰でも成果を出せる組織に変わる。</div>
+      <div class="checklist-list">
         <div class="checklist-item">
-          <i class="fa-solid fa-bullseye"></i>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-bullseye"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
           <div><h4>勝ちパターンを資産化</h4><p>トップ営業の思考・行動・トークを分析し、成果につながる「型」を仕組み化。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-book-open"></i>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-book-open"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
           <div><h4>全員が学べる・使える</h4><p>ノウハウをマニュアル化・共有し、誰でも同じ再現性で実践できる。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-arrows-rotate"></i>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-arrows-rotate"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
           <div><h4>再現性のある営業組織</h4><p>属人化を解消し、仕組みで成果を生み出す強い営業組織を構築。</p></div>
         </div>
         <div class="checklist-item">
-          <i class="fa-solid fa-person-running"></i>
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-person-running"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
           <div><h4>新人が早く育つ</h4><p>体系化された教育プログラムで、早期戦力化を実現。</p></div>
         </div>
-        <div class="checklist-item" style="grid-column:1 / -1;">
-          <i class="fa-solid fa-chart-line"></i>
+        <div class="checklist-item">
+          <div class="checklist-icon-wrap"><span class="checklist-icon"><i class="fa-solid fa-chart-line"></i></span><span class="checklist-check"><i class="fa-solid fa-check"></i></span></div>
           <div><h4>売上が安定・拡大</h4><p>営業力の底上げで、売上のムラをなくし、持続的な成長を実現。</p></div>
         </div>
       </div>
-      <div class="icon-mini-row">
-        <span class="icon-mini"><i class="fa-solid fa-chart-column"></i>データで分析</span>
-        <span class="icon-mini"><i class="fa-solid fa-brain"></i>AIで可視化</span>
-        <span class="icon-mini"><i class="fa-solid fa-lightbulb"></i>勝ちパターン化</span>
-        <span class="icon-mini"><i class="fa-solid fa-users"></i>全社で共有・活用</span>
+      <div class="mini-row">
+        <span class="mini-pill"><i class="fa-solid fa-chart-column"></i>データで分析</span>
+        <span class="mini-pill"><i class="fa-solid fa-brain"></i>AIで可視化</span>
+        <span class="mini-pill"><i class="fa-solid fa-lightbulb"></i>勝ちパターン化</span>
+        <span class="mini-pill"><i class="fa-solid fa-users"></i>全社で共有・活用</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========== SECTION3: AI営業DXとは ========== -->
-<section class="aidx" id="ai-dx">
-  <div class="container">
-    <div class="center">
-      <span class="eyebrow reveal">AI SALES DX</span>
-      <h2 class="section-title reveal">
-        AIでトップセールスの「勝ちパターン」を<br>見える化し、会社の資産にする。
-      </h2>
-      <p class="section-lead reveal">AIが分析・分解・可視化することで、誰でも成果を出せる営業組織を実現します。</p>
-    </div>
+  <section class="big-banner" id="big-banner">
+    <p class="reveal">営業力は<span class="gold-text">「人」</span>から<br><span class="gold-text">「仕組み」</span>へ。<br>未来の<span class="gold-text">売上</span>をつくる。</p>
+  </section>
+
+  <!-- ========== AI-DX ========== -->
+  <section class="aidx" id="ai-dx">
+    <h2 class="section-title reveal">AIでトップセールスの<br>「勝ちパターン」を見える化し、<br><span class="gold-text">会社の資産</span>にする。</h2>
+    <p class="section-lead reveal">AIが分析・分解・可視化することで、誰でも成果を出せる営業組織を実現します。</p>
 
     <div class="aidx-panel reveal">
       <div class="aidx-core">AI</div>
-      <div class="aidx-icons">
-        <div class="aidx-icon-item"><i class="fa-solid fa-user-group"></i><span>顧客分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-chart-line"></i><span>データ分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-comments"></i><span>トーク分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-people-arrows"></i><span>ロープレ分析</span></div>
-        <div class="aidx-icon-item"><i class="fa-solid fa-file-lines"></i><span>資料改善</span></div>
+      <div class="aidx-badges">
+        <span><i class="fa-solid fa-user-group"></i>顧客分析</span>
+        <span><i class="fa-solid fa-chart-line"></i>データ分析</span>
+        <span><i class="fa-solid fa-comments"></i>トーク分析</span>
+        <span><i class="fa-solid fa-people-arrows"></i>ロープレ分析</span>
+        <span><i class="fa-solid fa-file-lines"></i>資料改善</span>
       </div>
     </div>
 
-    <p class="aidx-subhead reveal">
-      AIでトップセールスの「勝ちパターン」を資産化する3ステップ
-    </p>
-    <div class="step-flow">
-      <div class="step-item reveal">
-        <span class="step-num">01</span>
-        <div class="step-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-        <h4>AI営業分析</h4>
-        <p>営業を見える化</p>
-      </div>
-      <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-      <div class="step-item reveal reveal-delay-1">
-        <span class="step-num">02</span>
-        <div class="step-circle"><i class="fa-solid fa-trophy"></i></div>
-        <h4>勝ちパターン分析</h4>
-        <p>成果につながる型を抽出</p>
-      </div>
-      <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-      <div class="step-item reveal reveal-delay-2">
-        <span class="step-num">03</span>
-        <div class="step-circle"><i class="fa-solid fa-building"></i></div>
-        <h4>営業資産化</h4>
-        <p>会社全体で共有・活用</p>
-      </div>
+    <p class="subhead-line reveal">AIでトップセールスの「勝ちパターン」を<br>資産化する<span class="gold-text">6</span>ステップ</p>
+    <div class="six-step-grid">
+      <div class="six-step-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-inbox"></i></div><p>データ収集</p></div>
+      <div class="six-step-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-brain"></i></div><p>AI分析</p></div>
+      <div class="six-step-item reveal reveal-delay-2"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-puzzle-piece"></i></div><p>因数分解</p></div>
+      <div class="six-step-item reveal reveal-delay-3"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-bullseye"></i></div><p>パターン化</p></div>
+      <div class="six-step-item reveal reveal-delay-4"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><p>コンテンツ化</p></div>
+      <div class="six-step-item reveal"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-users"></i></div><p>共有・活用</p></div>
     </div>
 
-    <div class="aidx-divider reveal">この3ステップを、さらに6つの工程に分解して実行します</div>
-    <div class="micro-step-flow">
-      <div class="micro-step-item reveal">
-        <span class="n">01</span>
-        <div class="icon-circle"><i class="fa-solid fa-inbox"></i></div>
-        <p>データ収集</p>
-      </div>
-      <div class="micro-step-item reveal reveal-delay-1">
-        <span class="n">02</span>
-        <div class="icon-circle"><i class="fa-solid fa-brain"></i></div>
-        <p>AI分析</p>
-      </div>
-      <div class="micro-step-item reveal reveal-delay-2">
-        <span class="n">03</span>
-        <div class="icon-circle"><i class="fa-solid fa-puzzle-piece"></i></div>
-        <p>因数分解</p>
-      </div>
-      <div class="micro-step-item reveal reveal-delay-3">
-        <span class="n">04</span>
-        <div class="icon-circle"><i class="fa-solid fa-bullseye"></i></div>
-        <p>パターン化</p>
-      </div>
-      <div class="micro-step-item reveal reveal-delay-4">
-        <span class="n">05</span>
-        <div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div>
-        <p>コンテンツ化</p>
-      </div>
-      <div class="micro-step-item reveal">
-        <span class="n">06</span>
-        <div class="icon-circle"><i class="fa-solid fa-users"></i></div>
-        <p>共有・活用</p>
-      </div>
+    <div class="skills-banner reveal"><p>この研修で身につく<span class="gold-text">6</span>つのスキル</p></div>
+    <div class="skill-grid">
+      <div class="skill-item reveal"><i class="fa-solid fa-magnifying-glass-chart"></i><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-1"><i class="fa-solid fa-trophy"></i><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-2"><i class="fa-solid fa-flag"></i><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-3"><i class="fa-solid fa-file-lines"></i><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
+      <div class="skill-item reveal reveal-delay-4"><i class="fa-solid fa-comments"></i><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
+      <div class="skill-item reveal"><i class="fa-solid fa-arrows-rotate"></i><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
     </div>
-  </div>
-</section>
+    <p class="skills-lead reveal">AIとデータを武器に、成果を生み出す営業人材へ。</p>
+  </section>
 
-<!-- ========== SECTION4: この研修が選ばれる理由 ========== -->
-<section class="reasons" id="reasons">
-  <div class="container">
-    <div class="reasons-top">
-      <div class="reveal">
-        <span class="eyebrow">WHY US</span>
-        <h2 class="section-title">この研修で、<br>営業の未来が変わります。</h2>
-        <p class="section-lead" style="margin-bottom:0;">AIで営業の「属人化」をなくし、再現性のある営業組織へ。</p>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <img src="./images/reasons-team.jpg" alt="営業の未来が変わるチームイメージ">
-      </div>
+  <!-- ========== REASONS ========== -->
+  <section class="reasons" id="reasons">
+    <h2 class="section-title reveal">この研修で、<br>営業の<span class="gold-text">未来</span>が<br>変わります。</h2>
+    <p class="section-lead reveal">AIで営業の「属人化」をなくし、再現性のある営業組織へ。</p>
+    <div class="reasons-photo reveal reveal-delay-1">
+      <img src="./images/reasons-team.jpg" alt="営業の未来が変わるチームイメージ">
+    </div>
+    <p class="flourish-title reveal">この研修が選ばれる<span class="gold-text">5</span>つの理由</p>
+    <div class="reason-grid">
+      <div class="reason-card reveal"><span class="num-badge">01</span><div class="icon-circle"><i class="fa-solid fa-robot"></i></div><h3>AIでトップ営業を分析</h3></div>
+      <div class="reason-card reveal reveal-delay-1"><span class="num-badge">02</span><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><h3>勝ちパターンを資産化</h3></div>
+      <div class="reason-card reveal reveal-delay-2"><span class="num-badge">03</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><h3>誰でも成果を再現</h3></div>
+      <div class="reason-card reveal reveal-delay-3"><span class="num-badge">04</span><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><h3>新人育成が早くなる</h3></div>
+      <div class="reason-card wide reveal reveal-delay-4"><span class="num-badge">05</span><div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div><h3>営業DXが定着する</h3></div>
+    </div>
+    <div class="banner-panel reveal">
+      <p>営業力は、<br><span class="gold-text">仕組み</span>でつくる時代へ。</p>
+    </div>
+  </section>
+
+  <!-- ========== CURRICULUM ========== -->
+  <section class="curriculum" id="curriculum">
+    <h2 class="section-title reveal">研修カリキュラム</h2>
+    <p class="curriculum-sub reveal"><span class="gold-text">6</span>回で営業DX人材を育成</p>
+
+    <p class="flourish-title reveal" style="margin-top:30px;">研修カリキュラム（全<span class="gold-text">6</span>回）</p>
+    <div class="curr-grid">
+      <div class="curr-item reveal"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div><p>営業課題分析</p></div>
+      <div class="curr-item reveal reveal-delay-1"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-user"></i></div><p>トップセールス分析</p></div>
+      <div class="curr-item reveal reveal-delay-2"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><p>勝ちパターン資産化</p></div>
+      <div class="curr-item reveal reveal-delay-3"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-id-card"></i></div><p>プロフィール・ストーリー設計</p></div>
+      <div class="curr-item reveal reveal-delay-4"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業ロープレ実践・改善</p></div>
+      <div class="curr-item reveal"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><p>営業DX診断・成果発表</p></div>
     </div>
 
-    <p class="center" style="font-weight:900;color:var(--navy-900);font-size:19px;margin-bottom:24px;">
-      この研修が選ばれる<span class="gold-text">5</span>つの理由
-    </p>
-    <div class="card-grid cols-5">
-      <div class="reason-card reveal">
-        <div class="problem-num">01</div>
-        <div class="icon-circle"><i class="fa-solid fa-robot"></i></div>
-        <h3>AIでトップ営業を分析</h3>
-      </div>
-      <div class="reason-card reveal reveal-delay-1">
-        <div class="problem-num">02</div>
-        <div class="icon-circle"><i class="fa-solid fa-trophy"></i></div>
-        <h3>勝ちパターンを資産化</h3>
-      </div>
-      <div class="reason-card reveal reveal-delay-2">
-        <div class="problem-num">03</div>
-        <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>誰でも成果を再現</h3>
-      </div>
-      <div class="reason-card reveal reveal-delay-3">
-        <div class="problem-num">04</div>
-        <div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div>
-        <h3>新人育成が早くなる</h3>
-      </div>
-      <div class="reason-card reveal reveal-delay-4">
-        <div class="problem-num">05</div>
-        <div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div>
-        <h3>営業DXが定着する</h3>
-      </div>
+    <p class="flourish-title reveal" style="margin-top:38px;">この研修で会社に残るもの</p>
+    <div class="asset-grid">
+      <div class="asset-item reveal"><div class="icon-circle"><i class="fa-solid fa-book"></i></div><p>営業マニュアル</p></div>
+      <div class="asset-item reveal reveal-delay-1"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業トーク集</p></div>
+      <div class="asset-item reveal reveal-delay-2"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><p>成功事例集</p></div>
+      <div class="asset-item reveal reveal-delay-3"><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><p>営業資料テンプレート</p></div>
+      <div class="asset-item wide reveal reveal-delay-4"><div class="icon-circle"><i class="fa-solid fa-clipboard-list"></i></div><p>営業DX改善シート</p></div>
     </div>
 
-    <div class="banner reveal">
-      営業力は、<span class="gold-text">仕組み</span>でつくる時代へ。
+    <div class="banner-panel reveal">
+      <p>学ぶだけでは終わらない。<br>会社に<span class="gold-text">営業資産</span>が残る。</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========== SECTION5: タブコンテンツ ========== -->
-<section class="tabs-section" id="tabs-section">
-  <div class="container">
-    <div class="center">
-      <span class="eyebrow reveal">PROGRAM</span>
-      <h2 class="section-title reveal">この研修で得られるもの</h2>
-      <p class="section-lead reveal">スキル・カリキュラム・成果物を1つのプログラムで。</p>
-    </div>
+  <!-- ========== SUBSIDY ========== -->
+  <section class="subsidy" id="subsidy">
+    <h2 class="section-title reveal">助成金でお得に受講</h2>
 
-    <div class="tab-nav reveal">
-      <button class="tab-btn active" data-tab="skill"><i class="fa-solid fa-star"></i>身につくスキル</button>
-      <button class="tab-btn" data-tab="curriculum"><i class="fa-solid fa-calendar-days"></i>研修カリキュラム</button>
-      <button class="tab-btn" data-tab="asset"><i class="fa-solid fa-box-archive"></i>会社に残る成果物</button>
-    </div>
-
-    <div class="tab-panels reveal">
-      <!-- Tab1: 身につくスキル -->
-      <div class="tab-panel active" data-panel="skill">
-        <div class="tab-panel-inner">
-          <h3>この研修で身につく6つのスキル</h3>
-          <p class="tab-lead">AIとデータを武器に、成果を生み出す営業人材へ。</p>
-          <div class="skill-grid">
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div><span class="n">01</span><h4>AI営業分析力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><div><span class="n">02</span><h4>勝ちパターン発見力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-flag"></i></div><div><span class="n">03</span><h4>営業ストーリー設計力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><div><span class="n">04</span><h4>営業資料設計力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><div><span class="n">05</span><h4>営業コミュニケーション力</h4></div></div>
-            <div class="skill-item"><div class="icon-circle"><i class="fa-solid fa-arrows-rotate"></i></div><div><span class="n">06</span><h4>営業DX推進力</h4></div></div>
-          </div>
+    <div class="subsidy-card reveal">
+      <div class="subsidy-head">研修費用の助成</div>
+      <div class="subsidy-body">
+        <div class="subsidy-num-line">
+          <span class="subsidy-label">最大</span>
+          <span class="subsidy-num">75<sup>%</sup><small>助成</small></span>
         </div>
+        <div class="subsidy-real">実質負担 約<b>8.2</b>万円〜<br><span style="font-size:10.5px;">(※条件あり)</span></div>
       </div>
-
-      <!-- Tab2: 研修カリキュラム -->
-      <div class="tab-panel" data-panel="curriculum">
-        <div class="tab-panel-inner">
-          <h3>研修カリキュラム(全6回)</h3>
-          <p class="tab-lead">6回で営業DX人材を育成</p>
-          <div class="curriculum-flow">
-            <div class="curriculum-item"><span class="n">01</span><div class="icon-circle"><i class="fa-solid fa-magnifying-glass"></i></div><p>営業課題分析</p></div>
-            <div class="curriculum-item"><span class="n">02</span><div class="icon-circle"><i class="fa-solid fa-user"></i></div><p>トップセールス分析</p></div>
-            <div class="curriculum-item"><span class="n">03</span><div class="icon-circle"><i class="fa-solid fa-file-circle-check"></i></div><p>勝ちパターン資産化</p></div>
-            <div class="curriculum-item"><span class="n">04</span><div class="icon-circle"><i class="fa-solid fa-id-card"></i></div><p>プロフィール・ストーリー設計</p></div>
-            <div class="curriculum-item"><span class="n">05</span><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業ロープレ実践・改善</p></div>
-            <div class="curriculum-item"><span class="n">06</span><div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div><p>営業DX診断・成果発表</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab3: 会社に残る成果物 -->
-      <div class="tab-panel" data-panel="asset">
-        <div class="tab-panel-inner">
-          <h3>この研修で会社に残るもの</h3>
-          <p class="tab-lead">学ぶだけでは終わらない。会社に営業資産が残る。</p>
-          <div class="asset-grid">
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-book"></i></div><p>営業マニュアル</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-comments"></i></div><p>営業トーク集</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-trophy"></i></div><p>成功事例集</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-chalkboard"></i></div><p>営業資料テンプレート</p></div>
-            <div class="asset-item"><div class="icon-circle"><i class="fa-solid fa-clipboard-list"></i></div><p>営業DX改善シート</p></div>
-          </div>
-        </div>
+      <div class="subsidy-cta">
+        <a href="#final-cta" class="btn btn-gold">
+          自社が対象か無料で確認する<i class="fa-solid fa-chevron-right"></i>
+        </a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ========== 助成金セクション ========== -->
-<section class="subsidy" id="subsidy">
-  <div class="container">
-    <div class="center">
-      <span class="eyebrow reveal">SUBSIDY</span>
-      <h2 class="section-title reveal">助成金でお得に受講</h2>
-    </div>
-
-    <div class="subsidy-hero reveal">
-      <span class="subsidy-label">研修費用の</span>
-      <div class="subsidy-num"><span class="count-up" data-target="75">0</span><sup>%</sup>助成</div>
-      <div class="subsidy-real">実質負担　約 <b><span class="count-up" data-target="8.2" data-decimal="1">0.0</span></b> 万円〜　<span style="font-size:11px;color:var(--text-sub);">(※条件あり)</span></div>
-    </div>
-
-    <p class="center" style="font-weight:900;color:var(--navy-900);font-size:18px;margin-bottom:24px;">
-      研修導入で得られる3つのメリット
-    </p>
-    <div class="merit-grid">
+    <h3>研修導入で得られる3つのメリット</h3>
+    <div class="merit-list">
       <div class="merit-item reveal">
-        <div class="icon-circle"><i class="fa-solid fa-chart-line"></i></div>
-        <h4>営業力向上</h4>
-        <p>AIで勝ちパターンを再現し、成果につながる営業組織へ</p>
+        <div class="icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+        <div><h4>営業力向上</h4><p>AIで勝ちパターンを再現し、成果につながる営業組織へ</p></div>
       </div>
       <div class="merit-item reveal reveal-delay-1">
-        <div class="icon-circle"><i class="fa-solid fa-coins"></i></div>
-        <h4>助成金でコスト削減</h4>
-        <p>助成金の活用で、研修費用の負担を大幅に軽減</p>
+        <div class="icon-badge"><i class="fa-solid fa-coins"></i></div>
+        <div><h4>助成金でコスト削減</h4><p>助成金の活用で、研修費用の負担を大幅に軽減</p></div>
       </div>
       <div class="merit-item reveal reveal-delay-2">
-        <div class="icon-circle"><i class="fa-solid fa-users"></i></div>
-        <h4>人材の定着・成長</h4>
-        <p>学びの機会を提供し、自律的に成長する人材へ</p>
+        <div class="icon-badge"><i class="fa-solid fa-users"></i></div>
+        <div><h4>人材の定着・成長</h4><p>学びの機会を提供し、自律的に成長する人材へ</p></div>
       </div>
     </div>
 
-    <p class="center" style="font-weight:900;color:var(--navy-900);font-size:16px;margin-bottom:24px;">
-      助成金の申請サポートもお任せください！
-    </p>
-    <div class="apply-flow">
-      <div class="apply-item reveal"><span class="problem-num">01</span><div class="icon-circle"><i class="fa-solid fa-file-lines"></i></div><p>ヒアリング</p></div>
-      <div class="apply-item reveal reveal-delay-1"><span class="problem-num">02</span><div class="icon-circle"><i class="fa-solid fa-clipboard-list"></i></div><p>助成金のご提案</p></div>
-      <div class="apply-item reveal reveal-delay-2"><span class="problem-num">03</span><div class="icon-circle"><i class="fa-solid fa-pen"></i></div><p>申請サポート</p></div>
-      <div class="apply-item reveal reveal-delay-3"><span class="problem-num">04</span><div class="icon-circle"><i class="fa-solid fa-handshake"></i></div><p>研修スタート</p></div>
+    <h3>助成金の申請サポートもお任せください！</h3>
+    <div class="apply-list">
+      <div class="apply-item reveal"><span class="apply-num">01</span><span class="apply-icon"><i class="fa-solid fa-file-lines"></i></span><p>ヒアリング</p></div>
+      <div class="apply-item reveal reveal-delay-1"><span class="apply-num">02</span><span class="apply-icon"><i class="fa-solid fa-clipboard-list"></i></span><p>助成金のご提案</p></div>
+      <div class="apply-item reveal reveal-delay-2"><span class="apply-num">03</span><span class="apply-icon"><i class="fa-solid fa-pen"></i></span><p>申請サポート</p></div>
+      <div class="apply-item reveal reveal-delay-3"><span class="apply-num">04</span><span class="apply-icon"><i class="fa-solid fa-handshake"></i></span><p>研修スタート</p></div>
     </div>
 
     <div class="info-bar reveal">
@@ -1148,34 +643,31 @@
       <span><i class="fa-solid fa-clock"></i>所要時間：約30分</span>
       <span><i class="fa-solid fa-file-lines"></i>資料はすぐにお送りします</span>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========== FINAL CTA ========== -->
-<section class="final-cta" id="final-cta">
-  <div class="container">
-    <h2 class="reveal">
-      営業力は<br>
-      人ではなく<br>
-      <span class="gold-text">仕組み</span>になる。
-    </h2>
-    <p class="lead reveal reveal-delay-1">
-      元リクルートトップセールスの営業ノウハウを、<br>あなたの会社の資産にしませんか？
-    </p>
-    <div class="final-btns reveal reveal-delay-2">
-      <a href="#" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>資料請求</a>
-      <a href="#" class="btn" style="background:#fff;color:var(--navy-900);"><i class="fa-solid fa-percent"></i>助成金相談</a>
-      <a href="#" class="btn btn-outline-navy" style="color:#fff;border-color:#fff;"><i class="fa-solid fa-video"></i>オンライン30分</a>
+  <!-- ========== FINAL CTA ========== -->
+  <section class="final-cta" id="final-cta">
+    <h2 class="reveal">営業力は<br>人ではなく<br><span class="gold-text">仕組み</span>になる。</h2>
+    <p class="final-lead reveal reveal-delay-1">元リクルートトップセールスの営業ノウハウを、<br>あなたの会社の資産にしませんか？</p>
+    <a href="#" class="btn btn-gold reveal reveal-delay-2"><i class="fa-solid fa-file-lines"></i>資料請求</a>
+    <div class="final-photo reveal reveal-delay-2">
+      <img src="./images/hero-consultant.jpg" alt="AIでトップセールスを分析するコンサルタント">
     </div>
-  </div>
-</section>
+    <div class="final-list reveal reveal-delay-3">
+      <span><i class="fa-solid fa-file-lines"></i>無料で資料提供</span>
+      <span><i class="fa-solid fa-percent"></i>助成金相談OK</span>
+      <span><i class="fa-solid fa-video"></i>オンライン30分で相談可能</span>
+    </div>
+  </section>
 
-<footer>
-  <p>AI営業DXリスキリング研修</p>
-</footer>
+  <footer class="site-footer">
+    <p>AI営業DXリスキリング研修</p>
+  </footer>
 
-<!-- ========== STICKY CTA ========== -->
-<div class="sticky-cta" id="stickyCta">
+</div>
+
+<!-- ========== STICKY CTA（常時・中央下部） ========== -->
+<div class="sticky-cta">
   <a href="#final-cta" class="btn btn-gold"><i class="fa-solid fa-file-lines"></i>無料で資料を受け取る</a>
 </div>
 
@@ -1189,22 +681,8 @@ const revealObserver = new IntersectionObserver((entries)=>{
       revealObserver.unobserve(entry.target);
     }
   });
-},{threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+},{threshold:0.12, rootMargin:'0px 0px -30px 0px'});
 revealEls.forEach(el=>revealObserver.observe(el));
-
-// --- Tabs ---
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabPanels = document.querySelectorAll('.tab-panel');
-tabBtns.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const target = btn.dataset.tab;
-    tabBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    tabPanels.forEach(p=>{
-      p.classList.toggle('active', p.dataset.panel === target);
-    });
-  });
-});
 
 // --- Scroll progress bar ---
 const scrollProgress = document.getElementById('scrollProgress');
@@ -1216,31 +694,6 @@ function updateScrollProgress(){
 }
 window.addEventListener('scroll', updateScrollProgress, {passive:true});
 updateScrollProgress();
-
-// --- Count up ---
-const countEls = document.querySelectorAll('.count-up');
-const countObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const el = entry.target;
-      const target = parseFloat(el.dataset.target);
-      const decimal = parseInt(el.dataset.decimal || '0');
-      const duration = 1400;
-      const start = performance.now();
-      function tick(now){
-        const progress = Math.min((now-start)/duration, 1);
-        const eased = 1 - Math.pow(1-progress, 3);
-        const value = target * eased;
-        el.textContent = decimal > 0 ? value.toFixed(decimal) : Math.round(value);
-        if(progress < 1) requestAnimationFrame(tick);
-        else el.textContent = decimal > 0 ? target.toFixed(decimal) : target;
-      }
-      requestAnimationFrame(tick);
-      countObserver.unobserve(el);
-    }
-  });
-},{threshold:0.5});
-countEls.forEach(el=>countObserver.observe(el));
 </script>
 
 </body>
