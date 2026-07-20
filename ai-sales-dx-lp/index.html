@@ -45,8 +45,8 @@
   @media(min-width:768px){section{padding:96px 0;}}
 
   /* ---------- Reveal animation ---------- */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);}
+  .reveal.in{opacity:1;transform:translateY(0) scale(1);}
   .reveal-delay-1{transition-delay:.1s;}
   .reveal-delay-2{transition-delay:.2s;}
   .reveal-delay-3{transition-delay:.3s;}
@@ -302,12 +302,12 @@
     display:flex;align-items:center;justify-content:center;
     font-size:21px;
     margin:0 auto 18px;
-    transition:background .3s ease, color .3s ease, border-color .3s ease;
+    transition:background .3s ease, color .3s ease, border-color .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
   }
   /* standalone image badges (already include their own circle/tile in the source art) */
   .badge-img{display:block;width:64px;height:64px;margin:0 auto 18px;object-fit:contain;}
   .problem-card:hover .icon-circle,.reason-card:hover .icon-circle{
-    background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);
+    background:var(--gold-foil);border-color:var(--gold);color:var(--navy-900);transform:scale(1.1) rotate(-6deg);
   }
   .problem-card h3{font-size:15px;color:var(--navy-900);margin-bottom:6px;font-weight:700;}
   .problem-card p{font-size:12.5px;color:var(--text-sub);}
@@ -369,9 +369,9 @@
     border:1px solid rgba(217,180,102,.25);
     border-radius:4px;
     padding:16px 18px;
-    transition:border-color .3s ease, background .3s ease;
+    transition:border-color .3s ease, background .3s ease, transform .3s ease;
   }
-  .checklist-item:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);}
+  .checklist-item:hover{border-color:var(--gold-light);background:rgba(255,255,255,.1);transform:translateY(-3px);}
   .checklist-item i{width:40px;flex-shrink:0;font-size:22px;line-height:1.3;color:var(--gold-light);text-align:center;}
   .checklist-item h4{font-size:14px;font-weight:700;margin-bottom:3px;}
   .checklist-item p{font-size:12px;color:#c8cee0;line-height:1.6;}
@@ -437,9 +437,9 @@
     width:110px;
     text-align:center;
     backdrop-filter:blur(2px);
-    transition:background .3s ease, border-color .3s ease;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
   }
-  .aidx-icon-item:hover{background:rgba(217,180,102,.12);border-color:var(--gold-light);}
+  .aidx-icon-item:hover{background:rgba(217,180,102,.12);border-color:var(--gold-light);transform:translateY(-4px);}
   .aidx-icon-item i{display:inline-block;font-size:26px;color:var(--gold-light);margin-bottom:8px;}
   .aidx-icon-item span{display:block;font-size:11.5px;font-weight:700;color:#fff;}
   .aidx-core{
@@ -455,6 +455,11 @@
     font-size:24px;
     box-shadow:0 0 0 8px rgba(217,180,102,.14), 0 0 40px rgba(217,180,102,.35);
     margin:0 auto 32px;
+    animation:orbPulse 3s ease-in-out infinite;
+  }
+  @keyframes orbPulse{
+    0%,100%{box-shadow:0 0 0 8px rgba(217,180,102,.14), 0 0 40px rgba(217,180,102,.35);}
+    50%{box-shadow:0 0 0 14px rgba(217,180,102,.2), 0 0 60px rgba(217,180,102,.5);}
   }
   .aidx-lines{
     position:absolute;inset:0;
@@ -613,9 +618,9 @@
     border:1px solid #ece6d8;
     border-radius:4px;
     padding:16px;
-    transition:border-color .3s ease;
+    transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
   }
-  .skill-item:hover{border-color:var(--gold-light);}
+  .skill-item:hover{border-color:var(--gold-light);transform:translateY(-3px);box-shadow:var(--shadow);}
   .skill-item .icon-circle{width:44px;height:44px;font-size:16px;flex-shrink:0;margin:0;}
   .skill-item h4{font-size:14px;color:var(--navy-900);margin-bottom:2px;font-weight:700;}
   .skill-item span.n{font-family:var(--serif);color:var(--gold);font-weight:600;font-size:12px;letter-spacing:.04em;}
@@ -727,30 +732,45 @@
   /* ================= FOOTER ================= */
   footer{background:var(--navy-900);color:#8b95b8;text-align:center;padding:28px 20px;font-size:12px;letter-spacing:.04em;}
 
-  /* ================= STICKY CTA ================= */
+  /* ================= SCROLL PROGRESS BAR ================= */
+  .scroll-progress{
+    position:fixed;top:0;left:0;
+    height:3px;width:0%;
+    background:var(--gold-foil);
+    background-size:220% 100%;
+    z-index:100;
+    pointer-events:none;
+  }
+
+  /* ================= STICKY CTA（常時・中央下部・パルス演出） ================= */
   .sticky-cta{
     position:fixed;
-    left:0;right:0;bottom:0;
-    z-index:80;
-    background:#fff;
-    border-top:2px solid var(--gold);
-    box-shadow:0 -8px 24px rgba(4,18,58,.12);
-    padding:12px 16px;
-    transform:translateY(120%);
-    transition:transform .4s ease;
+    left:50%;
+    bottom:20px;
+    z-index:90;
+    opacity:0;
+    transform:translateX(-50%) translateY(30px);
+    animation:stickyCtaIn .7s cubic-bezier(.2,.8,.2,1) .9s forwards;
   }
-  .sticky-cta.visible{transform:translateY(0);}
-  .sticky-cta .btn{width:100%;font-size:14.5px;padding:14px 18px;}
-  @media(min-width:900px){
-    .sticky-cta{
-      left:auto;right:28px;bottom:28px;
-      width:280px;
-      border-radius:4px;
-      border:1px solid #ece6d8;
-      border-top:2px solid var(--gold);
-      transform:translateY(160%);
-    }
-    .sticky-cta.visible{transform:translateY(0);}
+  .sticky-cta .btn{
+    padding:15px 28px;
+    border-radius:999px;
+    font-size:14px;
+    white-space:nowrap;
+    box-shadow:0 12px 30px rgba(138,100,32,.4);
+    animation:ctaPulse 2.6s ease-in-out 1.6s infinite;
+  }
+  @keyframes stickyCtaIn{
+    from{opacity:0; transform:translateX(-50%) translateY(30px);}
+    to{opacity:1; transform:translateX(-50%) translateY(0);}
+  }
+  @keyframes ctaPulse{
+    0%,100%{box-shadow:0 12px 30px rgba(138,100,32,.4), 0 0 0 0 rgba(180,130,44,.45);}
+    50%{box-shadow:0 12px 30px rgba(138,100,32,.4), 0 0 0 12px rgba(180,130,44,0);}
+  }
+  @media(max-width:480px){
+    .sticky-cta{bottom:14px;}
+    .sticky-cta .btn{padding:13px 20px;font-size:12.5px;}
   }
 
   /* utility */
@@ -759,6 +779,8 @@
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <div class="brandbar">
   <div class="container">
@@ -1184,29 +1206,16 @@ tabBtns.forEach(btn=>{
   });
 });
 
-// --- Sticky CTA visibility ---
-const stickyCta = document.getElementById('stickyCta');
-const heroEl = document.getElementById('hero');
-const finalCtaEl = document.getElementById('final-cta');
-let pastHero = false;
-let inFinalCta = false;
-
-function updateSticky(){
-  stickyCta.classList.toggle('visible', pastHero && !inFinalCta);
+// --- Scroll progress bar ---
+const scrollProgress = document.getElementById('scrollProgress');
+function updateScrollProgress(){
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = pct + '%';
 }
-new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-    updateSticky();
-  });
-},{threshold:0}).observe(heroEl);
-
-new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    inFinalCta = entry.isIntersecting;
-    updateSticky();
-  });
-},{threshold:0.2}).observe(finalCtaEl);
+window.addEventListener('scroll', updateScrollProgress, {passive:true});
+updateScrollProgress();
 
 // --- Count up ---
 const countEls = document.querySelectorAll('.count-up');
