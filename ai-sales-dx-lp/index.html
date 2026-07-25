@@ -115,8 +115,11 @@
   /* ---- Fixed-canvas scaling: the whole design below is authored at a constant 500px width
      and uniformly scaled via #scaleOuter/#lpWrapper JS, so no element here should depend on
      viewport width (vw/clamp/media queries) — that would double-shrink on top of the scale. ---- */
-  #scaleOuter { width: 100%; overflow: hidden; }
-  #lpWrapper { width: 500px; margin: 0 auto; transform-origin: top center; }
+  #scaleOuter { width: 100%; overflow: hidden; position: relative; }
+  /* left:50% + margin-left:-250px (half of the 500px design width) centers this box even when
+     it's wider than its container — plain "margin:0 auto" collapses to 0 (left-aligned) in that
+     case, which put the scale's center-origin off, cutting off the right edge. */
+  #lpWrapper { width: 500px; position: relative; left: 50%; margin-left: -250px; transform-origin: top center; }
 </style>
 </head>
 <body>
@@ -889,7 +892,11 @@
     if (!wrapper || !outer) return;
 
     function applyScale() {
-      var scale = Math.min(1, window.innerWidth / DESIGN_WIDTH);
+      // Use the outer container's actual content width (not window.innerWidth), since
+      // innerWidth includes the scrollbar gutter and would throw the centering off by
+      // roughly half the scrollbar's width.
+      var containerWidth = outer.clientWidth || document.documentElement.clientWidth;
+      var scale = Math.min(1, containerWidth / DESIGN_WIDTH);
       wrapper.style.transform = 'scale(' + scale + ')';
       outer.style.height = (wrapper.offsetHeight * scale) + 'px';
       if (floatingCtaInner) {
