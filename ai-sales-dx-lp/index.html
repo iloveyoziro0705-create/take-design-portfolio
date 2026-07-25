@@ -19,7 +19,7 @@
 
   /* ---- Tabs ---- */
   .tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
-  .tab { cursor: pointer; background: #0a1b3d; border: 1.5px solid #0a1b3d; border-bottom: none; border-radius: 10px 10px 0 0; padding: 12px 2px 16px; text-align: center; color: #ffffff; font-size: clamp(9px, 2.9vw, 11px); font-weight: 700; position: relative; letter-spacing: -0.02em; min-width: 0; }
+  .tab { cursor: pointer; background: #0a1b3d; border: 1.5px solid #0a1b3d; border-bottom: none; border-radius: 10px 10px 0 0; padding: 12px 2px 16px; text-align: center; color: #ffffff; font-size: 11px; font-weight: 700; position: relative; letter-spacing: -0.02em; min-width: 0; }
   .tab .chevron { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); color: #c99429; font-size: 9px; }
   .tab.active { background: linear-gradient(180deg, #e2b658 0%, #c89428 100%); border-color: #c99429; }
   .tab.active .chevron { color: #ffffff; }
@@ -95,40 +95,34 @@
     .cta-btn::before { animation: none; display: none; }
   }
 
-  @media (max-width: 420px) {
-    .fv-headline { font-size: 30px !important; }
-    .fv-headline-accent { font-size: 42px !important; }
-    .metric-number { font-size: 38px !important; }
-    .metric-unit { font-size: 18px !important; }
-    .metric-icon { width: 24px !important; height: 24px !important; }
-    .subsidy-big-number { font-size: 54px !important; }
-    .subsidy-big-unit { font-size: 22px !important; }
-    .section-title { font-size: 22px !important; }
-    .section-h2 { font-size: 22px !important; }
+  /* ---- Floating CTA: always-on bottom bar, docks into the final CTA button on scroll ---- */
+  .floating-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(238,242,248,0) 0%, rgba(238,242,248,0.85) 35%, rgba(238,242,248,0.85) 100%);
+    transition: opacity 0.28s ease, transform 0.28s ease;
   }
-  @media (max-width: 360px) {
-    .fv-headline { font-size: 26px !important; }
-    .fv-headline-accent { font-size: 36px !important; }
-    .metric-number { font-size: 32px !important; }
-    .subsidy-big-number { font-size: 46px !important; }
+  .floating-cta-inner { max-width: 460px; margin: 0 auto; transform-origin: bottom center; }
+  .floating-cta.is-hidden { opacity: 0; transform: translateY(14px); pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .floating-cta { transition: none; }
   }
-  @media (max-width: 340px) {
-    .metric-number { font-size: 26px !important; }
-    .metric-unit { font-size: 15px !important; }
-    .metric-icon { width: 18px !important; height: 18px !important; }
-    .metric-card { padding: 10px 4px 12px !important; }
-    .metric-card > div { gap: 2px !important; }
-    .metric-approx { font-size: 9px !important; margin-bottom: 6px !important; }
-    .subsidy-big-number { font-size: 30px !important; }
-    .subsidy-big-unit { font-size: 15px !important; }
-    .subsidy-card { padding: 10px 3px 12px !important; }
-    .subsidy-card > div { gap: 1px !important; }
-  }
+
+  /* ---- Fixed-canvas scaling: the whole design below is authored at a constant 500px width
+     and uniformly scaled via #scaleOuter/#lpWrapper JS, so no element here should depend on
+     viewport width (vw/clamp/media queries) — that would double-shrink on top of the scale. ---- */
+  #scaleOuter { width: 100%; overflow: hidden; }
+  #lpWrapper { width: 500px; margin: 0 auto; transform-origin: top center; }
 </style>
 </head>
 <body>
 
-<div style="max-width: 500px; margin: 0 auto; background: #ffffff; box-shadow: 0 0 40px rgba(10,27,61,0.08); font-family: 'Noto Sans JP', sans-serif; color: #0a1b3d;">
+<div id="scaleOuter">
+<div id="lpWrapper" style="background: #ffffff; box-shadow: 0 0 40px rgba(10,27,61,0.08); font-family: 'Noto Sans JP', sans-serif; color: #0a1b3d;">
 
   <!-- ============ HEADER ============ -->
   <div style="background: #0a1b3d; padding: 12px 20px;">
@@ -141,7 +135,7 @@
       <img src="assets/bg/01_hero_team_city_3840x2160.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% top; pointer-events: none;">
     </div>
     <div style="position: relative; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.92) 28%, rgba(255,255,255,0.4) 55%, rgba(255,255,255,0) 80%); padding: 26px 22px 26px;">
-      <div style="display: inline-block; position: relative; margin-top: 24px; padding: 14px clamp(16px, 8vw, 34px); color: #ffffff; font-size: clamp(13px, 4.2vw, 17px); font-weight: 700; letter-spacing: 0.01em; transform: rotate(-3deg); transform-origin: left center; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));">
+      <div style="display: inline-block; position: relative; margin-top: 24px; padding: 14px 34px; color: #ffffff; font-size: 17px; font-weight: 700; letter-spacing: 0.01em; transform: rotate(-3deg); transform-origin: left center; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));">
         <img src="assets/decor/fv_gold_ribbon.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; z-index: 0;">
         <span style="position: relative; z-index: 1;">元リクルートトップセールスが教える！</span>
       </div>
@@ -158,7 +152,7 @@
       </p>
       <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 24px;">
         <div class="metric-card" style="background: #ffffff; border: 1.5px solid #d4a24a; border-radius: 12px; padding: 12px 8px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 2px 6px rgba(212,162,74,0.12);">
-          <div style="font-size: clamp(9px, 2.8vw, 11px); font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">研修費用の最大</div>
+          <div style="font-size: 11px; font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">研修費用の最大</div>
           <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px;">
             <img src="assets/icons/01_fv_subsidy_rate.png" class="metric-icon" style="width: 30px; height: 30px; object-fit: contain; flex-shrink: 0; margin-bottom: 4px;" alt="">
             <span class="metric-number" style="font-family: 'Noto Serif JP', serif; font-size: 44px; font-weight: 900; color: #c99429; letter-spacing: -0.05em; line-height: 0.9;">75</span>
@@ -169,7 +163,7 @@
           </div>
         </div>
         <div class="metric-card" style="background: #ffffff; border: 1.5px solid #d4a24a; border-radius: 12px; padding: 12px 8px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 2px 6px rgba(212,162,74,0.12);">
-          <div style="font-size: clamp(9px, 2.8vw, 11px); font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">実質負担 <span style="font-size: 8px; font-weight: 700; color: #6c7791;">※条件あり</span></div>
+          <div style="font-size: 11px; font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">実質負担 <span style="font-size: 8px; font-weight: 700; color: #6c7791;">※条件あり</span></div>
           <div style="display: flex; align-items: flex-end; justify-content: center; gap: 3px;">
             <img src="assets/icons/02_fv_actual_cost.png" class="metric-icon" style="width: 30px; height: 30px; object-fit: contain; flex-shrink: 0; margin-bottom: 4px;" alt="">
             <span class="metric-approx" style="font-size: 11px; font-weight: 900; color: #0a1b3d; align-self: flex-end; margin-bottom: 10px;">約</span>
@@ -181,7 +175,7 @@
           </div>
         </div>
         <div class="metric-card" style="background: #ffffff; border: 1.5px solid #d4a24a; border-radius: 12px; padding: 12px 8px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 2px 6px rgba(212,162,74,0.12);">
-          <div style="font-size: clamp(9px, 2.8vw, 11px); font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">オンライン相談 所要</div>
+          <div style="font-size: 11px; font-weight: 900; color: #0a1b3d; line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.02em;">オンライン相談 所要</div>
           <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px;">
             <svg viewBox="0 0 24 24" class="metric-icon" style="width: 30px; height: 30px; flex-shrink: 0; margin-bottom: 4px;" fill="none" stroke="#0a1b3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="9"></circle>
@@ -247,41 +241,41 @@
     </div>
     <div class="problem-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;">
       <div style="background: #ffffff; padding: 8px 5px 10px; position: relative; text-align: center; border-right: 1.5px solid #cddffb;">
-        <div style="position: relative; width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); margin: 0 auto 8px;">
+        <div style="position: relative; width: 54px; height: 54px; margin: 0 auto 8px;">
           <div style="position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 2;">01</div>
-          <img src="assets/icons/07_problem_ai_head.png" style="width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); object-fit: contain; display: block;" alt="">
+          <img src="assets/icons/07_problem_ai_head.png" style="width: 54px; height: 54px; object-fit: contain; display: block;" alt="">
         </div>
         <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; line-height: 1.4; margin-bottom: 9px; letter-spacing: -0.02em;">トップ営業だけが<br>売れている</div>
         <div style="font-size: 10.5px; font-weight: 700; color: #4a5876; line-height: 1.6; letter-spacing: 0.01em;">成果が個人に依存し、属人化している</div>
       </div>
       <div style="background: #ffffff; padding: 8px 5px 10px; position: relative; text-align: center; border-right: 1.5px solid #cddffb;">
-        <div style="position: relative; width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); margin: 0 auto 8px;">
+        <div style="position: relative; width: 54px; height: 54px; margin: 0 auto 8px;">
           <div style="position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 2;">02</div>
-          <img src="assets/icons/08_problem_person_lock.png" style="width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); object-fit: contain; display: block;" alt="">
+          <img src="assets/icons/08_problem_person_lock.png" style="width: 54px; height: 54px; object-fit: contain; display: block;" alt="">
         </div>
         <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; line-height: 1.4; margin-bottom: 9px; letter-spacing: -0.02em;">ノウハウが<br>個人の中にある</div>
         <div style="font-size: 10.5px; font-weight: 700; color: #4a5876; line-height: 1.6; letter-spacing: 0.01em;">共有されず、再現できないブラックボックス化</div>
       </div>
       <div style="background: #ffffff; padding: 8px 5px 10px; position: relative; text-align: center; border-right: 1.5px solid #cddffb;">
-        <div style="position: relative; width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); margin: 0 auto 8px;">
+        <div style="position: relative; width: 54px; height: 54px; margin: 0 auto 8px;">
           <div style="position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 2;">03</div>
-          <img src="assets/icons/09_problem_unknown_chart.png" style="width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); object-fit: contain; display: block;" alt="">
+          <img src="assets/icons/09_problem_unknown_chart.png" style="width: 54px; height: 54px; object-fit: contain; display: block;" alt="">
         </div>
         <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; line-height: 1.4; margin-bottom: 9px; letter-spacing: -0.02em;">売れる理由を説明できない</div>
         <div style="font-size: 10.5px; font-weight: 700; color: #4a5876; line-height: 1.6; letter-spacing: 0.01em;">再現性がなく、指導も感覚や経験に頼ってしまう</div>
       </div>
       <div style="background: #ffffff; padding: 8px 5px 10px; position: relative; text-align: center; border-right: 1.5px solid #cddffb;">
-        <div style="position: relative; width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); margin: 0 auto 8px;">
+        <div style="position: relative; width: 54px; height: 54px; margin: 0 auto 8px;">
           <div style="position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 2;">04</div>
-          <img src="assets/icons/10_problem_education.png" style="width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); object-fit: contain; display: block;" alt="">
+          <img src="assets/icons/10_problem_education.png" style="width: 54px; height: 54px; object-fit: contain; display: block;" alt="">
         </div>
         <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; line-height: 1.4; margin-bottom: 9px; letter-spacing: -0.02em;">新人教育はトップ営業任せ</div>
         <div style="font-size: 10.5px; font-weight: 700; color: #4a5876; line-height: 1.6; letter-spacing: 0.01em;">教育の仕組みがなく、育成が属人化している</div>
       </div>
       <div style="background: #ffffff; padding: 8px 5px 10px; position: relative; text-align: center; border-right: 1.5px solid #cddffb;">
-        <div style="position: relative; width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); margin: 0 auto 8px;">
+        <div style="position: relative; width: 54px; height: 54px; margin: 0 auto 8px;">
           <div style="position: absolute; top: -6px; left: -6px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; z-index: 2;">05</div>
-          <img src="assets/icons/11_problem_database.png" style="width: clamp(36px, 14vw, 54px); height: clamp(36px, 14vw, 54px); object-fit: contain; display: block;" alt="">
+          <img src="assets/icons/11_problem_database.png" style="width: 54px; height: 54px; object-fit: contain; display: block;" alt="">
         </div>
         <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; line-height: 1.4; margin-bottom: 9px; letter-spacing: -0.02em;">ノウハウが会社に蓄積されない</div>
         <div style="font-size: 10.5px; font-weight: 700; color: #4a5876; line-height: 1.6; letter-spacing: 0.01em;">資産にならず、失われ続ける状態になっている</div>
@@ -343,37 +337,37 @@
       <div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; grid-template-rows: auto auto; gap: 12px 4px; align-items: center;">
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">01</div>
-          <img src="assets/icons/17_step_data_collection.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/17_step_data_collection.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">データ収集</div>
         </div>
         <div style="color: #c99429; font-size: 14px; font-weight: 900;">▶</div>
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">02</div>
-          <img src="assets/icons/18_step_ai_analysis.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/18_step_ai_analysis.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">AI分析</div>
         </div>
         <div style="color: #c99429; font-size: 14px; font-weight: 900;">▶</div>
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">03</div>
-          <img src="assets/icons/19_step_factor_breakdown.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/19_step_factor_breakdown.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">因数分解</div>
         </div>
 
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">04</div>
-          <img src="assets/icons/20_step_pattern.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/20_step_pattern.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">パターン化</div>
         </div>
         <div style="color: #c99429; font-size: 14px; font-weight: 900;">▶</div>
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">05</div>
-          <img src="assets/icons/21_step_content.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/21_step_content.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">コンテンツ化</div>
         </div>
         <div style="color: #c99429; font-size: 14px; font-weight: 900;">▶</div>
         <div style="background: #ffffff; border: 1px solid #d0d6e2; border-radius: 10px; padding: 14px 6px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative;">
           <div style="position: absolute; top: -10px; left: -8px; width: 22px; height: 22px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center;">06</div>
-          <img src="assets/icons/22_step_share.png" style="width: clamp(40px, 15vw, 64px); height: clamp(40px, 15vw, 64px); object-fit: contain;" alt="">
+          <img src="assets/icons/22_step_share.png" style="width: 64px; height: 64px; object-fit: contain;" alt="">
           <div style="font-size: 12px; font-weight: 700; color: #0a1b3d; letter-spacing: -0.02em;">共有・活用</div>
         </div>
       </div>
@@ -862,7 +856,7 @@
 
     <div style="text-align: center; font-size: 12px; color: #f0d38a; margin-bottom: 12px; font-weight: 700;">＼ まずは資料を見るだけでもOK ／</div>
 
-    <a href="#form" class="cta-btn" style="display: block; text-decoration: none; background: linear-gradient(180deg, #e2b658 0%, #c89428 100%); border-radius: 12px; padding: 22px 20px; box-shadow: 0 6px 16px rgba(201,148,41,0.35), 0 0 0 1px rgba(240,211,138,0.5);">
+    <a href="#form" id="finalCtaBtn" class="cta-btn" style="display: block; text-decoration: none; background: linear-gradient(180deg, #e2b658 0%, #c89428 100%); border-radius: 12px; padding: 22px 20px; box-shadow: 0 6px 16px rgba(201,148,41,0.35), 0 0 0 1px rgba(240,211,138,0.5);">
       <div style="text-align: center; color: #ffffff; font-size: 21px; font-weight: 900; letter-spacing: 0.02em;">無料で研修資料を受け取る</div>
       <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #c99429; font-size: 15px; font-weight: 900;">→</div>
     </a>
@@ -871,8 +865,43 @@
   </div>
 
 </div>
+</div>
+
+<!-- ============ FLOATING CTA (docks into the final CTA button at page bottom) ============ -->
+<div id="floatingCta" class="floating-cta">
+  <div class="floating-cta-inner">
+    <a href="#form" id="floatingCtaBtn" class="cta-btn" style="display: block; text-decoration: none; background: linear-gradient(180deg, #e2b658 0%, #c89428 100%); border-radius: 12px; padding: 22px 20px; box-shadow: 0 6px 16px rgba(201,148,41,0.35), 0 0 0 1px rgba(240,211,138,0.5);">
+      <div style="text-align: center; color: #ffffff; font-size: 21px; font-weight: 900; letter-spacing: 0.02em;">無料で研修資料を受け取る</div>
+      <div style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #c99429; font-size: 15px; font-weight: 900;">→</div>
+    </a>
+  </div>
+</div>
 
 <script>
+  // ---- Fixed-canvas scaling: the LP is authored at a constant 500px width; on narrower
+  // screens the whole thing is uniformly scaled down (like shrinking an image) so layout,
+  // line breaks and text position never change — only the overall size does.
+  (function () {
+    var DESIGN_WIDTH = 500;
+    var wrapper = document.getElementById('lpWrapper');
+    var outer = document.getElementById('scaleOuter');
+    var floatingCtaInner = document.querySelector('.floating-cta-inner');
+    if (!wrapper || !outer) return;
+
+    function applyScale() {
+      var scale = Math.min(1, window.innerWidth / DESIGN_WIDTH);
+      wrapper.style.transform = 'scale(' + scale + ')';
+      outer.style.height = (wrapper.offsetHeight * scale) + 'px';
+      if (floatingCtaInner) {
+        floatingCtaInner.style.transform = 'scale(' + scale + ')';
+      }
+    }
+    window.addEventListener('resize', applyScale);
+    window.addEventListener('load', applyScale);
+    applyScale();
+    window.__applyLpScale = applyScale;
+  })();
+
   document.querySelectorAll('.tab').forEach(function (tabEl) {
     tabEl.addEventListener('click', function () {
       var idx = tabEl.getAttribute('data-tab');
@@ -880,6 +909,7 @@
       document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
       tabEl.classList.add('active');
       document.querySelector('.tab-panel[data-panel="' + idx + '"]').classList.add('active');
+      if (window.__applyLpScale) window.__applyLpScale();
     });
   });
 
@@ -896,6 +926,37 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
   }
+
+  // ---- Floating CTA: dock into the real final CTA button once their positions coincide ----
+  (function () {
+    var floatingCta = document.getElementById('floatingCta');
+    var floatingBtn = document.getElementById('floatingCtaBtn');
+    var finalBtn = document.getElementById('finalCtaBtn');
+    if (!floatingCta || !floatingBtn || !finalBtn) return;
+
+    var ticking = false;
+    function updateFloatingCta() {
+      ticking = false;
+      var finalTop = finalBtn.getBoundingClientRect().top;
+      var floatingTop = floatingBtn.getBoundingClientRect().top;
+      // Once the real button rises to (or above) the floating button's own position,
+      // hide the floating one so the real button shows through in exactly the same spot.
+      if (finalTop <= floatingTop) {
+        floatingCta.classList.add('is-hidden');
+      } else {
+        floatingCta.classList.remove('is-hidden');
+      }
+    }
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateFloatingCta);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateFloatingCta();
+  })();
 </script>
 </body>
 </html>
