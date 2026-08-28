@@ -72,6 +72,50 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  /* ---- Subsidy section: staggered image pop-in ---- */
+  @keyframes subsidyPop {
+    0% { opacity: 0; transform: translateY(22px) scale(0.94); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .subsidy-item {
+    opacity: 0;
+    animation: subsidyPop 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    animation-play-state: paused;
+  }
+  .reveal.is-visible .subsidy-item { animation-play-state: running; }
+  .subsidy-item.d1 { animation-delay: 0.02s; }
+  .subsidy-item.d2 { animation-delay: 0.10s; }
+  .subsidy-item.d3 { animation-delay: 0.18s; }
+  .subsidy-item.d4 { animation-delay: 0.26s; }
+  .subsidy-item.d5 { animation-delay: 0.34s; }
+  .subsidy-item.d6 { animation-delay: 0.42s; }
+  .subsidy-item.d7 { animation-delay: 0.50s; }
+  .subsidy-item.d8 { animation-delay: 0.58s; }
+  .subsidy-item.d9 { animation-delay: 0.66s; }
+
+  @keyframes subsidyArrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(7px); }
+  }
+  .subsidy-arrow { animation: subsidyArrowBounce 1.5s ease-in-out infinite; }
+
+  @keyframes subsidyGlow {
+    0%, 100% { box-shadow: 0 4px 14px rgba(201,148,41,0.22), 0 0 0 0 rgba(201,148,41,0.35); }
+    50% { box-shadow: 0 4px 20px rgba(201,148,41,0.4), 0 0 0 7px rgba(201,148,41,0); }
+  }
+  .subsidy-glow { border-radius: 16px; animation: subsidyGlow 2.2s ease-in-out infinite; }
+
+  @keyframes subsidyNumberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .subsidy-headline { animation: subsidyNumberPulse 2.6s ease-in-out infinite; animation-delay: 0.9s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .subsidy-item { opacity: 1; animation: none; }
+    .subsidy-arrow, .subsidy-glow, .subsidy-headline { animation: none; }
+  }
+
   /* ---- Final CTA button: glow pulse + shine sweep ---- */
   .cta-btn { position: relative; overflow: hidden; animation: ctaPulse 2.4s ease-in-out infinite; transition: transform 0.25s ease; }
   .cta-btn:hover { transform: translateY(-2px) scale(1.02); }
@@ -704,101 +748,42 @@
   </div>
 
   <!-- ============ SUBSIDY UTILIZATION ============ -->
-  <div class="reveal" style="background: #ffffff; padding: 22px 18px 26px;">
-    <div style="text-align: center; font-family: 'Noto Sans JP', sans-serif; font-size: 24px; font-weight: 900; color: #0a1b3d; margin-bottom: 6px; letter-spacing: 0.01em; line-height: 1.4;">
-      助成金を活用して、お得に受講
-    </div>
-    <div style="text-align: center; font-size: 12.5px; font-weight: 700; color: #4a5876; margin-bottom: 18px; line-height: 1.6">
-      対象となる助成金を活用することで、研修費用の負担を大幅に抑えられます。
+  <div class="reveal" style="background: #ffffff; padding: 24px 18px 8px;">
+    <img class="subsidy-item d1" src="assets/subsidy2/01_section_title.png" style="display: block; width: 52%; min-width: 220px; margin: 0 auto 16px; max-width: 100%;" alt="助成金でお得に受講">
+
+    <div class="subsidy-headline" style="width: 100%; margin: 0 0 18px;">
+      <img class="subsidy-item d2" src="assets/subsidy2/02_main_headline.png" style="display: block; width: 100%;" alt="最大75%助成で、実質負担を大幅に軽減！">
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin-bottom: 22px;">
-      <div class="subsidy-card" style="background: #ffffff; border: 2px solid #d4a24a; border-radius: 14px; padding: 14px 8px 16px; text-align: center; box-shadow: 0 4px 12px rgba(212,162,74,0.18); position: relative;">
-        <div style="display: inline-block; background: #0a1b3d; color: #ffffff; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 999px; margin-bottom: 6px; letter-spacing: 0.06em;">研修費用の</div>
-        <div style="display: flex; align-items: flex-end; justify-content: center; gap: 3px; line-height: 0.9;">
-          <span style="font-size: 12px; font-weight: 900; color: #0a1b3d; margin-bottom: 8px;">最大</span>
-          <span class="subsidy-big-number" style="font-family: 'Noto Serif JP', serif; font-size: 64px; font-weight: 900; color: #c99429; letter-spacing: -0.06em; line-height: 0.85;">75</span>
-          <div style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1;">
-            <span class="subsidy-big-unit" style="font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 900; color: #c99429; line-height: 0.85;">%</span>
-            <span style="font-size: 11px; font-weight: 900; color: #0a1b3d; margin-top: 5px; letter-spacing: 0.04em;">助成</span>
-          </div>
-        </div>
-      </div>
-      <div style="width: 38px; height: 38px; background: #c99429; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; box-shadow: 0 3px 8px rgba(201,148,41,0.35);">→</div>
-      <div class="subsidy-card" style="background: #ffffff; border: 2px solid #d4a24a; border-radius: 14px; padding: 14px 8px 16px; text-align: center; box-shadow: 0 4px 12px rgba(212,162,74,0.18); position: relative;">
-        <div style="display: inline-block; background: #0a1b3d; color: #ffffff; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 999px; margin-bottom: 6px; letter-spacing: 0.06em;">実質負担</div>
-        <div style="display: flex; align-items: flex-end; justify-content: center; gap: 3px; line-height: 0.9;">
-          <span style="font-size: 12px; font-weight: 900; color: #0a1b3d; margin-bottom: 8px;">約</span>
-          <span class="subsidy-big-number" style="font-family: 'Noto Serif JP', serif; font-size: 64px; font-weight: 900; color: #c99429; letter-spacing: -0.06em; line-height: 0.85;">8.2</span>
-          <div style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1;">
-            <span class="subsidy-big-unit" style="line-height: 0.85; visibility: hidden; font-size: 26px;">　</span>
-            <span style="font-size: 11px; font-weight: 900; color: #0a1b3d; margin-top: 5px; letter-spacing: 0.04em;">万円〜</span>
-          </div>
-        </div>
-        <div style="font-size: 9px; font-weight: 700; color: #6c7791; margin-top: 4px;">※条件あり</div>
-      </div>
+    <div style="display: grid; grid-template-columns: 445fr 550fr 490fr; gap: 7px; margin-bottom: 20px;">
+      <img class="subsidy-item d3" src="assets/subsidy2/03_training_hours_18h.png" style="width: 100%; display: block;" alt="研修時間 全18時間">
+      <img class="subsidy-item d4" src="assets/subsidy2/04_company_payment_400000.png" style="width: 100%; display: block;" alt="企業がお支払いする金額 1名あたり400,000円（税込）">
+      <img class="subsidy-item d5" src="assets/subsidy2/05_training_time_30min.png" style="width: 100%; display: block;" alt="研修時間 約30分/回">
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-bottom: 18px;">
-      <div style="height: 1px; background: #d4a24a;"></div>
-      <div style="font-size: 15px; font-weight: 900; color: #0a1b3d">費用面でも安心できる<span style="color: #c99429;">3つ</span>のメリット</div>
-      <div style="height: 1px; background: #d4a24a;"></div>
+    <img class="subsidy-item d6" src="assets/subsidy2/06_subsidy_breakdown.png" style="display: block; width: 100%; margin-bottom: 4px;" alt="助成金活用時の内訳　助成率75%最大助成　①助成額300,000円　②定額加算18,000円　助成金合計318,000円">
+
+    <div class="subsidy-item d7" style="display: flex; justify-content: center; margin: 8px 0;">
+      <div class="subsidy-arrow" style="width: 0; height: 0; border-left: 17px solid transparent; border-right: 17px solid transparent; border-top: 20px solid #0a1b3d;"></div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 16px; background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 14px 16px;">
-        <img src="assets/icons/37_subsidy_sales_improvement.png" style="width: 56px; height: 56px; object-fit: contain; flex-shrink: 0;" alt="">
-        <div style="font-size: 17px; font-weight: 700; color: #0a1b3d;">営業力向上</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 16px; background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 14px 16px;">
-        <img src="assets/icons/38_subsidy_cost_reduction.png" style="width: 56px; height: 56px; object-fit: contain; flex-shrink: 0;" alt="">
-        <div style="font-size: 17px; font-weight: 700; color: #0a1b3d;">助成金でコスト削減</div>
-      </div>
-      <div style="display: flex; align-items: center; gap: 16px; background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 14px 16px;">
-        <img src="assets/icons/39_subsidy_people_growth.png" style="width: 56px; height: 56px; object-fit: contain; flex-shrink: 0;" alt="">
-        <div style="font-size: 17px; font-weight: 700; color: #0a1b3d;">人材の定着・成長</div>
-      </div>
+    <div class="subsidy-glow" style="width: 100%; margin-bottom: 20px;">
+      <img class="subsidy-item d8" src="assets/subsidy2/07_effective_cost_82000.png" style="display: block; width: 100%;" alt="企業の実質負担額　実質1名あたり82,000円（税込）で研修をご受講いただけます！　最大75%助成">
     </div>
   </div>
 
-  <!-- ============ SUPPORT 4-STEP (light) ============ -->
-  <div class="reveal" style="background: #ffffff; padding: 8px 14px 28px;">
-    <div style="background: #f0f6ff; border: 1.5px solid #cddffb; border-radius: 14px; padding: 18px 14px 18px;">
-    <div style="text-align: center; font-size: 18px; font-weight: 900; color: #0a1b3d; margin-bottom: 6px">
-      助成金の申請サポートもお任せください
-    </div>
-    <div style="text-align: center; font-size: 12.5px; font-weight: 700; color: #4a5876; margin-bottom: 16px; line-height: 1.6;">
-      複雑な手続きも、専門スタッフが分かりやすくご案内します。
-    </div>
+  <!-- ============ SUPPORT 4-STEP ============ -->
+  <div class="reveal" style="background: #ffffff; padding: 8px 18px 28px;">
+    <img class="subsidy-item d1" src="assets/subsidy2/08_support_heading.png" style="display: block; width: 100%; margin-bottom: 16px;" alt="助成金の申請サポートもお任せください！">
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-      <div style="background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 16px 12px 18px; text-align: center; position: relative;">
-        <div style="position: absolute; top: 10px; left: 10px; width: 24px; height: 24px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center;">01</div>
-        <img src="assets/icons/40_support_hearing.png" style="width: 62px; height: 62px; object-fit: contain; margin: 4px auto 10px; display: block;" alt="">
-        <div style="font-size: 15.5px; font-weight: 700; color: #0a1b3d;">ヒアリング</div>
-      </div>
-      <div style="background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 16px 12px 18px; text-align: center; position: relative;">
-        <div style="position: absolute; top: 10px; left: 10px; width: 24px; height: 24px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center;">02</div>
-        <img src="assets/icons/41_support_proposal.png" style="width: 62px; height: 62px; object-fit: contain; margin: 4px auto 10px; display: block;" alt="">
-        <div style="font-size: 15.5px; font-weight: 700; color: #0a1b3d;">助成金のご提案</div>
-      </div>
-      <div style="background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 16px 12px 18px; text-align: center; position: relative;">
-        <div style="position: absolute; top: 10px; left: 10px; width: 24px; height: 24px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center;">03</div>
-        <img src="assets/icons/42_support_application.png" style="width: 62px; height: 62px; object-fit: contain; margin: 4px auto 10px; display: block;" alt="">
-        <div style="font-size: 15.5px; font-weight: 700; color: #0a1b3d;">申請サポート</div>
-      </div>
-      <div style="background: #ffffff; border: 1.5px solid #cddffb; border-radius: 12px; padding: 16px 12px 18px; text-align: center; position: relative;">
-        <div style="position: absolute; top: 10px; left: 10px; width: 24px; height: 24px; background: #0a1b3d; color: #ffffff; border-radius: 50%; font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center;">04</div>
-        <img src="assets/icons/43_support_training_start.png" style="width: 62px; height: 62px; object-fit: contain; margin: 4px auto 10px; display: block;" alt="">
-        <div style="font-size: 15.5px; font-weight: 700; color: #0a1b3d;">研修スタート</div>
-      </div>
+      <img class="subsidy-item d2" src="assets/subsidy2/09_step01_hearing.png" style="width: 100%; border-radius: 12px; display: block;" alt="01 ヒアリング 現状の課題や研修の目的を確認">
+      <img class="subsidy-item d3" src="assets/subsidy2/10_step02_subsidy_proposal.png" style="width: 100%; border-radius: 12px; display: block;" alt="02 助成金のご提案 貴社に最適な助成金をご提案します">
+      <img class="subsidy-item d4" src="assets/subsidy2/11_step03_application_support.png" style="width: 100%; border-radius: 12px; display: block;" alt="03 申請サポート 申請書類の作成から提出までサポート">
+      <img class="subsidy-item d5" src="assets/subsidy2/12_step04_training_start.png" style="width: 100%; border-radius: 12px; display: block;" alt="04 研修スタート 助成金の活用が決定後、研修を開始します">
     </div>
 
-    <div style="margin-top: 16px; background: #fff8ea; border: 1.5px solid #f0d38a; border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px;">
-      <img src="assets/icons/44_support_shield.png" style="width: 26px; height: 26px; object-fit: contain; flex-shrink: 0;" alt="">
-      <div style="font-size: 11px; font-weight: 700; color: #0a1b3d;">助成金の確認から申請まで、専門スタッフが丁寧にサポートします。</div>
-    </div>
-    </div>
+    <img class="subsidy-item d6" src="assets/subsidy2/13_disclaimer.png" style="display: block; width: 100%; margin-top: 18px;" alt="※助成金の適用には条件があります。詳しくはお問い合わせください。">
   </div>
 
   <!-- ============ FINAL CTA (dark navy) ============ -->
