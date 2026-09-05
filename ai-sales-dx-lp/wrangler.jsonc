@@ -1,0 +1,19 @@
+{
+  // Cloudflare Workers Static Assets 設定
+  // このファイルは ai-sales-dx-lp ディレクトリ単体で完結する構成にしてあります。
+  // Cloudflare Workers Builds 側で「Root directory = ai-sales-dx-lp」「Deploy command = npx wrangler deploy」
+  // を指定すると、このディレクトリ内で wrangler が実行され、以下の設定が使われます。
+  //
+  // name は既存の Cloudflare Worker「ai-sales-dx」と完全に一致させています。
+  // 名前が一致する Worker への deploy は「新規作成」ではなく「既存 Worker の更新」として扱われるため、
+  // 本番URL https://ai-sales-dx.site-projects.workers.dev/ はそのまま維持されます。
+  "name": "ai-sales-dx",
+  "compatibility_date": "2026-09-05",
+
+  // Worker スクリプト（main）は指定せず、静的アセットのみを配信する
+  // "Assets-only Worker" として構成。index.html と assets/ 配下の画像・CSS等を
+  // 一切変更せずそのまま配信します。
+  "assets": {
+    "directory": "./"
+  }
+}
