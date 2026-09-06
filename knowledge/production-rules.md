@@ -171,14 +171,14 @@ LP制作依頼を受けた場合、**以下の順番で必ず実施する（ス�
 
 | セクション | 参照ライブラリ | 状態 |
 |-----------|-------------|------|
-| Hero | layouts/hero-layout-library.md | 完成（55パターン）|
-| CTA | layouts/cta-layout-library.md | 準備中 |
-| Feature | layouts/feature-layout-library.md | 完成（55パターン）|
-| Voice | layouts/voice-layout-library.md | 準備中 |
-| FAQ | layouts/faq-layout-library.md | 準備中 |
-| Flow | layouts/flow-layout-library.md | 準備中 |
-| Pricing | layouts/pricing-layout-library.md | 準備中 |
-| Profile | layouts/profile-layout-library.md | 準備中 |
+| Hero | layouts/hero-layout-library.md | 完成（105パターン、独立knowledge統合済み）|
+| CTA | layouts/cta-layout-library.md | 完成（55パターン、独立knowledge統合済み）|
+| Feature | layouts/feature-layout-library.md | 完成（69パターン、独立knowledge統合済み）|
+| Voice | layouts/voice-layout-library.md | 完成（61パターン、独立knowledge統合済み）|
+| FAQ | layouts/faq-layout-library.md | 完成（58パターン、独立knowledge統合済み）|
+| Flow | layouts/flow-layout-library.md | 完成（61パターン、独立knowledge統合済み）|
+| Pricing | layouts/pricing-layout-library.md | 完成（60パターン、独立knowledge統合済み）|
+| Profile | layouts/profile-layout-library.md | 完成（62パターン、独立knowledge統合済み）|
 | Contact | layouts/contact-layout-library.md | 準備中 |
 | Footer | layouts/footer-layout-library.md | 準備中 |
 
@@ -746,6 +746,34 @@ Case Study保存（case-studies/）
 
 ---
 
+## セクション別 制作ルール補足（Legacy knowledge統合）
+
+> 出典：独立knowledge（旧 `~/local/bin/knowledge/design-system/`）の各ライブラリ末尾に散在していた「AGENTS.md追記内容」「Production Rules追記内容」を、STEP 3.5の参照ルールを補足する形で集約したもの。独立側の該当ファイルは既にPart D統合でportfolio側design-system配下へ内容移植済みのため、ここでは重複する一般原則（ライブラリ参照・ゼロ設計禁止など）は繰り返さず、**まだ本ファイルに明文化されていなかった具体的ルールのみ**を追記する。
+
+### 新規パターンID追加時の必須ゲート
+
+`design-system/layouts/` `design-system/components/` 配下のいずれのライブラリに新規パターンを追加する場合も、以下を省略しないこと。
+
+1. 既存パターン全件と比較し、統合できないか必ず検討する（類似パターンがある場合は新規ID化しない）
+2. 統合できないと判断した場合のみ、各ライブラリで定義されたスコア評価軸（10項目）を実施してからIDを付与する
+3. 付与したIDは対応する `*-pattern-map.md` と `*-ranking.md` の両方に反映する（ライブラリ単独での追加を禁止）
+
+### セクション別の設計上の注意点
+
+| セクション | 注意点 |
+|-----------|--------|
+| CTA | ボタン単体ではなく、セクション全体（見出し・オファー・安心材料を含む）を1つの設計単位として扱う |
+| Voice | 制作前に利用可能な素材を確認する：顔写真の有無／Before-After写真の有無／動画証言の有無／Googleレビューの有無／年代・性別属性の有無／長文証言（5行以上）の有無／会社名・ロゴの有無（BtoB）／星評価・件数の有無 |
+| Flow | ステップ数は3〜4を最適とする（5以上は分割または省略を検討）。スマホでは縦1列への変換を必ず実装する |
+| FAQ | 「よくある質問の一覧」ではなく「CTA直前の不安解消セクション」として設計する。CTA直前に置くFAQには、末尾にCTA誘導を必ず付ける |
+| Pricing | 「価格の表示」ではなく「価格への納得と決断を生む意思決定セクション」として設計する。CTA直前に置くPricingには、末尾にCTA誘導を必ず付ける |
+
+### セクション参照順序の補足
+
+STEP 3.5の選定手順に対する補足として、以下の隣接関係を優先する：Hero → Feature → Voice → CTA、および Flow → FAQ → Pricing。
+
+---
+
 ## 更新履歴
 
 | 日付 | 内容 |
@@ -753,3 +781,4 @@ Case Study保存（case-studies/）
 | 2026-06-24 | 初版作成。分析フェーズ完了・制作標準化フェーズ移行に伴い制定。 |
 | 2026-06-27 | v2.0: Asset Management System 2.0 統合。STEP 7.5 素材計画を追加。制作フローを更新。 |
 | 2026-06-28 | v3.1: Feature Layout Library（55パターン）完成。STEP 3.5にFeature選定フローを追加。 |
+| 2026-09-06 | 独立knowledge統合（Part D）に伴い「セクション別 制作ルール補足」を追加。新規パターンID追加時の必須ゲート、CTA/Voice/Flow/FAQ/Pricingの設計上の注意点、セクション参照順序の補足を明文化。 |
