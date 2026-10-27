@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thanks/
+
+Sitemap: https://takecraft-web.vercel.app/sitemap.xml

@@ -1,23 +1,27 @@
 #!/usr/bin/env node
 /**
- * TAKE CRAFT 営業用LP（/web-services/）生成スクリプト
+ * TAKE CRAFT 営業用LP 生成スクリプト
  *
  * 使い方:  node scripts/build-web-services.mjs
  *          GA4_ID=G-XXXXXXX node scripts/build-web-services.mjs   … GA4 を有効化（未指定なら計測コードを出力しない）
- * 生成物:  web-services/index.html, web-services/thanks/index.html
+ * 生成物:  web-services-site/（独立した Vercel プロジェクト takecraft-web のルート）
+ *          index.html, thanks/index.html, robots.txt, sitemap.xml と、LP が使う画像を assets/ にコピー
+ *          公開URL: https://takecraft-web.vercel.app/ （旧 take-design-portfolio.vercel.app/web-services/ は 301 転送）
  *
  * 掲載内容は data/web-services.mjs、実績は data/works.mjs を参照。生成された HTML は直接編集しない。
- * ポートフォリオ（scripts/build.mjs）とは独立。デザイントークンの値だけ揃えている（web-services/assets/ws.css）。
+ * ポートフォリオ（scripts/build.mjs）とは独立。デザイントークンの値だけ揃えている（web-services-site/assets/ws.css）。
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WORKS, TYPES } from '../data/works.mjs';
 import { SERVICES, INQUIRY, BUDGETS, NEEDS, REASONS, IMPROVE, PLANS, PLAN_TERMS, OPTIONS, FLOW, FAQ, WORK_PICKS, FIX_WORK, yen } from '../data/web-services.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://take-design-portfolio.vercel.app';
-const PATH = '/web-services/';
+const SITE = 'https://takecraft-web.vercel.app';
+const PORTFOLIO = 'https://take-design-portfolio.vercel.app';
+const PATH = '/';
+const OUT = 'web-services-site';
 const BRAND = 'TAKE CRAFT';
 const V = '20261027-1';
 const GA4_ID = (process.env.GA4_ID || '').trim();
@@ -53,21 +57,21 @@ ${robots ? `<meta name="robots" content="${robots}">` : ''}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${SITE}${path}">
-<meta property="og:image" content="${SITE}/web-services/assets/og-web-services.png">
+<meta property="og:image" content="${SITE}/assets/og-web-services.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F5F4F0">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="${FONT_CSS}" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="${FONT_CSS}"></noscript>
-<link rel="stylesheet" href="/web-services/assets/ws.css?v=${V}">
+<link rel="stylesheet" href="/assets/ws.css?v=${V}">
 <script>document.documentElement.classList.add('js')</script>
-<script src="/web-services/assets/ws.js?v=${V}" defer></script>
+<script src="/assets/ws.js?v=${V}" defer></script>
 ${ga}
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>`;
@@ -81,7 +85,7 @@ function header() {
     <a class="wordmark" href="${PATH}" aria-label="${BRAND} Web制作・保守サービス トップ"><span class="wordmark__sq" aria-hidden="true"></span>${BRAND}<span class="wordmark__sub">Web Services</span></a>
     <nav class="ws-nav" aria-label="ページ内ナビゲーション"><ul>${nav.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}</ul></nav>
     <div class="ws-header__aux">
-      <a class="ws-header__link" href="/works.html" data-track="portfolio_click" data-where="header">制作実績</a>
+      <a class="ws-header__link" href="${PORTFOLIO}/works.html" data-track="portfolio_click" data-where="header">制作実績</a>
       <a class="btn btn--sm" href="#contact" data-track="cta_click" data-where="header">無料相談<span class="btn__icon">${ARROW}</span></a>
     </div>
   </div>
@@ -92,12 +96,12 @@ function footer() {
   return `<footer class="ws-footer">
   <div class="wrap ws-footer__in">
     <div>
-      <a class="wordmark" href="/" aria-label="${BRAND} ポートフォリオ"><span class="wordmark__sq" aria-hidden="true"></span>${BRAND}</a>
+      <a class="wordmark" href="${PORTFOLIO}/" aria-label="${BRAND} ポートフォリオ"><span class="wordmark__sq" aria-hidden="true"></span>${BRAND}</a>
       <p class="ws-footer__copy">伝えたいを、成果へ。<span lang="en">Craft for Results.</span></p>
     </div>
     <nav aria-label="フッターナビゲーション"><ul>
-      <li><a href="/">ポートフォリオ</a></li><li><a href="/works.html" data-track="portfolio_click" data-where="footer">制作実績</a></li>
-      <li><a href="#pricing">料金</a></li><li><a href="#plans">保守プラン</a></li><li><a href="#contact">お問い合わせ</a></li><li><a href="/privacy.html">プライバシーポリシー</a></li>
+      <li><a href="${PORTFOLIO}/">ポートフォリオ</a></li><li><a href="${PORTFOLIO}/works.html" data-track="portfolio_click" data-where="footer">制作実績</a></li>
+      <li><a href="#pricing">料金</a></li><li><a href="#plans">保守プラン</a></li><li><a href="#contact">お問い合わせ</a></li><li><a href="${PORTFOLIO}/privacy.html">プライバシーポリシー</a></li>
     </ul></nav>
     <p class="ws-footer__c">&copy; ${new Date().getFullYear()} ${BRAND}</p>
   </div>
@@ -123,7 +127,7 @@ function workCards() {
         <p class="wcard__tags"><span class="tag tag--${w.type}">${TYPES[w.type].label}</span><span class="wcard__cat">${w.type === 'client' ? 'クライアントワーク' : '自主制作'}</span></p>
         <h3 class="wcard__title">${esc(w.title.split('｜').join(' '))}</h3>
         <dl class="wcard__meta"><dt>目的</dt><dd>${esc(w.purpose)}</dd><dt>担当</dt><dd>${esc((w.roles || w.role.split('・')).slice(0, 4).join('・'))}</dd></dl>
-        <a class="arrow-link" href="/works/${w.slug}.html" data-track="portfolio_click" data-where="works_${w.slug}">制作の詳細を見る ${ARROW}</a>
+        <a class="arrow-link" href="${PORTFOLIO}/works/${w.slug}.html" data-track="portfolio_click" data-where="works_${w.slug}">制作の詳細を見る ${ARROW}</a>
       </div>
     </article>`;
   const f = FIX_WORK;
@@ -166,7 +170,7 @@ function page() {
       description: 'LP制作・ホームページ制作・既存サイトの修正・WordPress保守を、企画から公開後の改善まで一貫して担当する個人クリエイティブスタジオ。',
       hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Web制作・保守サービス', itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name }, priceSpecification: { '@type': s.monthly ? 'UnitPriceSpecification' : 'PriceSpecification', price: s.price, minPrice: s.price, priceCurrency: 'JPY', valueAddedTaxIncluded: true, ...(s.monthly ? { unitText: 'MONTH' } : {}) } })) } },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
-    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: BRAND, item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: 'Web制作・保守サービス', item: SITE + PATH }] },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: BRAND, item: PORTFOLIO + '/' }, { '@type': 'ListItem', position: 2, name: 'Web制作・保守サービス', item: SITE + '/' }] },
   ];
   const hero = WORKS.find((w) => w.slug === 'araidashi-workshop');
 
@@ -238,7 +242,7 @@ ${header()}
   <div class="wrap">
     <div class="sec__head"><p class="label">Works</p><h2 id="worksTitle" class="sec__title">制作力は、実績で確かめてください。</h2><p class="sec__lead">クライアントワークと自主制作（コンセプト作品）は区別して表記しています。制作の背景や工夫は、ポートフォリオの詳細ページでご覧いただけます。</p></div>
     <div class="wcards">${workCards()}</div>
-    <p class="works__more"><a class="btn btn--ghost" href="/works.html" data-track="portfolio_click" data-where="works_all">ポートフォリオで全${WORKS.length}件の実績を見る<span class="btn__icon">${ARROW}</span></a></p>
+    <p class="works__more"><a class="btn btn--ghost" href="${PORTFOLIO}/works.html" data-track="portfolio_click" data-where="works_all">ポートフォリオで全${WORKS.length}件の実績を見る<span class="btn__icon">${ARROW}</span></a></p>
   </div>
 </section>
 
@@ -307,12 +311,12 @@ ${header()}
 <!-- 11 制作者紹介 -->
 <section class="sec sec--white" aria-labelledby="aboutTitle">
   <div class="wrap about">
-    <img class="about__img" src="/images/profile.jpg" width="400" height="400" alt="カメラを構えるTAKE CRAFTの制作者" loading="lazy" decoding="async">
+    <img class="about__img" src="/assets/profile.jpg" width="400" height="400" alt="カメラを構えるTAKE CRAFTの制作者" loading="lazy" decoding="async">
     <div>
       <p class="label">About</p>
       <h2 id="aboutTitle" class="sec__title">相談から実装まで、<br class="br-pc">一人の担当者が向き合います。</h2>
       <p class="sec__lead">TAKE CRAFTは個人で運営するクリエイティブスタジオです。ヒアリングから構成、デザイン、実装、公開後の改善まで、一貫して対応します。Webサイトだけでなく、映像やAIを活用した制作もお引き受けしています。</p>
-      <a class="arrow-link" href="/#about" data-track="portfolio_click" data-where="about">制作の考え方・プロフィールを見る ${ARROW}</a>
+      <a class="arrow-link" href="${PORTFOLIO}/#about" data-track="portfolio_click" data-where="about">制作の考え方・プロフィールを見る ${ARROW}</a>
     </div>
   </div>
 </section>
@@ -333,7 +337,7 @@ ${header()}
       <p class="label">Contact</p>
       <h2 id="contactTitle" class="sec__title">無料相談・お見積もり</h2>
       <p class="sec__lead">内容を確認のうえ、メールでご連絡します。相談・見積もりは無料です。</p>
-      <ul class="contact__points" role="list"><li>${CHECK}内容が固まっていなくても大丈夫です</li><li>${CHECK}他社が制作したサイトのご相談も承ります</li><li>${CHECK}<span>映像・その他のご相談は<a href="/#contact">ポートフォリオのフォーム</a>からも受け付けています</span></li></ul>
+      <ul class="contact__points" role="list"><li>${CHECK}内容が固まっていなくても大丈夫です</li><li>${CHECK}他社が制作したサイトのご相談も承ります</li><li>${CHECK}<span>映像・その他のご相談は<a href="${PORTFOLIO}/#contact">ポートフォリオのフォーム</a>からも受け付けています</span></li></ul>
     </div>
     <form class="form" id="wsForm" action="/api/contact" method="post" novalidate>
       <input type="hidden" name="t" value="">
@@ -352,7 +356,7 @@ ${header()}
         <div class="field"><label class="field__label" for="f-deadline">ご希望納期 <span class="opt">任意</span></label><input class="input" id="f-deadline" name="deadline" type="text" maxlength="60" placeholder="例）12月中旬まで"></div>
       </div>
       <div class="field"><label class="field__label" for="f-message">ご相談内容 <span class="req">必須</span></label><textarea class="input" id="f-message" name="message" required maxlength="4000" aria-describedby="err-message" placeholder="例）お問い合わせフォームが送信できなくなったので直したい／新サービスのLPを作りたい　など"></textarea><p class="field__error" id="err-message" role="alert"></p></div>
-      <div class="field"><label class="check"><input type="checkbox" name="agree" id="f-agree" value="on" aria-describedby="err-agree"><span><a href="/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span></label><p class="field__error" id="err-agree" role="alert"></p></div>
+      <div class="field"><label class="check"><input type="checkbox" name="agree" id="f-agree" value="on" aria-describedby="err-agree"><span><a href="${PORTFOLIO}/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span></label><p class="field__error" id="err-agree" role="alert"></p></div>
       <div class="form__submit"><button class="btn btn--submit" type="submit">送信する<span class="btn__icon">${ARROW}</span></button></div>
       <div class="form-status" id="wsStatus" role="status" aria-live="polite"></div>
     </form>
@@ -376,7 +380,7 @@ ${header()}
       <p class="label">Thank you</p>
       <h1 class="sec__title">お問い合わせを受け付けました。</h1>
       <p class="sec__lead">内容を確認のうえ、メールでご連絡します。しばらく経っても連絡がない場合は、迷惑メールフォルダもご確認ください。</p>
-      <div class="btn-row">${cta('Web制作・保守サービスへ戻る', { href: PATH, where: 'thanks', ghost: true })}<a class="btn btn--ghost" href="/works.html" data-track="portfolio_click" data-where="thanks">制作実績を見る<span class="btn__icon">${ARROW}</span></a></div>
+      <div class="btn-row">${cta('Web制作・保守サービスへ戻る', { href: PATH, where: 'thanks', ghost: true })}<a class="btn btn--ghost" href="${PORTFOLIO}/works.html" data-track="portfolio_click" data-where="thanks">制作実績を見る<span class="btn__icon">${ARROW}</span></a></div>
     </div>
   </section>
 </main>
@@ -386,7 +390,20 @@ ${footer()}
 `;
 }
 
-const out = (p, s) => { const f = join(ROOT, p); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s); };
-out('web-services/index.html', page());
-out('web-services/thanks/index.html', thanks());
-console.log(`built web-services (GA4: ${GA4_ID || 'off'})`);
+const out = (p, s) => { const f = join(ROOT, OUT, p); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s); };
+out('index.html', page());
+out('thanks/index.html', thanks());
+out('robots.txt', `User-agent: *\nAllow: /\nDisallow: /thanks/\n\nSitemap: ${SITE}/sitemap.xml\n`);
+out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE}/</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod></url>\n</urlset>\n`);
+
+// LP が使う画像だけをポートフォリオからコピー（独立したドメインで配信するため）
+const copy = (from, to) => { const src = join(ROOT, from); if (!existsSync(src)) throw new Error('missing ' + from); const dst = join(ROOT, OUT, to); mkdirSync(dirname(dst), { recursive: true }); copyFileSync(src, dst); };
+const prefixes = [...WORK_PICKS.map((s) => WORKS.find((w) => w.slug === s).images.prefix), FIX_WORK.shot];
+for (const p of new Set(prefixes)) {
+  for (const w of [640, 960, 1280]) copy(`assets/works/${p}-desktop-1-${w}.webp`, `assets/works/${p}-desktop-1-${w}.webp`);
+  copy(`assets/works/${p}-phone-1-420.webp`, `assets/works/${p}-phone-1-420.webp`);
+}
+copy('images/profile.jpg', 'assets/profile.jpg');
+copy('favicon.svg', 'favicon.svg');
+copy('assets/og/apple-touch-icon.png', 'assets/apple-touch-icon.png');
+console.log(`built ${OUT}/ (GA4: ${GA4_ID || 'off'})`);

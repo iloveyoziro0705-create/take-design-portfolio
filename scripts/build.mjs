@@ -24,15 +24,14 @@ const ASSET_V = '20261027-3';
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap';
 
 /* ───────── 営業用LP（Web制作・保守サービス）との連携 ─────────
- * ポートフォリオ＝制作力の証明、営業用LP（/web-services/）＝サービス内容・料金・依頼方法。
- * 営業用LPは別プロジェクト。web-services/index.html がこのリポジトリに追加されるとビルド時に自動で有効化され、
- * ヘッダー補助導線・Creative Fields・Web/LP実績詳細・フッターにリンクが出る。未公開の間はリンクを一切出さない。
- * 強制的に切り替える場合は  SALES_LP=on|off node scripts/build.mjs
- * ※ contact のアンカーは営業用LP完成後に実際の ID を確認して合わせること。 */
+ * ポートフォリオ＝制作力の証明、営業用LP＝サービス内容・料金・依頼方法。
+ * 営業用LPは独立した Vercel プロジェクト takecraft-web（https://takecraft-web.vercel.app/、ソースは web-services-site/）。
+ * ヘッダー補助導線・Creative Fields・Web/LP実績詳細・フッター・Explore にリンクを出す。
+ * 一時的にリンクを消す場合は  SALES_LP=off node scripts/build.mjs
+ * 旧URL（このサイトの /web-services/）は vercel.json で新URLへ 301 転送している。 */
 const SALES_LP = (() => {
-  const exists = existsSync(join(ROOT, 'web-services/index.html'));
-  const env = process.env.SALES_LP;
-  return { enabled: env === 'on' ? true : env === 'off' ? false : exists, path: '/web-services/', contact: '/web-services/#contact' };
+  const base = 'https://takecraft-web.vercel.app';
+  return { enabled: process.env.SALES_LP !== 'off', path: `${base}/`, contact: `${base}/#contact`, host: 'takecraft-web.vercel.app' };
 })();
 
 /* ───────── Creative Fields（制作領域）─────────
@@ -666,19 +665,19 @@ ${header()}
   </div></section>
   <div class="wrap" style="padding-bottom:var(--section)">
     <div class="prose">
-      <p>${BRAND}（以下「当スタジオ」）は、お問い合わせ等でお預かりする個人情報を、以下の方針に基づき適切に取り扱います。</p>
+      <p>${BRAND}（以下「当スタジオ」）は、本サイト${SALES_LP.enabled ? `および Web制作・保守サービスサイト（${SALES_LP.host}）` : ''}でお預かりする個人情報を、以下の方針に基づき適切に取り扱います。</p>
       <h2>1. 取得する情報</h2>
       <p>お問い合わせの際にご入力いただく、お名前・メールアドレス・会社名（任意）・ご相談内容を取得します。</p>
       <h2>2. 利用目的</h2>
       <ul><li>お問い合わせへの回答・ご連絡のため</li><li>ご依頼内容の確認、お見積り・ご提案のため</li></ul>
       <h2>3. 送信方法について</h2>
       <p>トップページのお問い合わせフォームは、入力内容をお使いのメールアプリに引き渡す方式です。フォームの入力内容が本サイトのサーバーに保存されることはありません。送信はお客様のメールアプリから行われます。</p>
-      ${SALES_LP.enabled ? `<p>Web制作・保守サービスページ（/web-services/）のお問い合わせフォームは、入力内容を本サイトのサーバー（Vercel）経由で、メール配信サービス Resend（Resend, Inc.）を通じて当スタジオにメールで送信します。入力内容をデータベース等に保存することはありません。</p>` : ''}
+      ${SALES_LP.enabled ? `<p>Web制作・保守サービスサイト（${SALES_LP.host}）のお問い合わせフォームは、入力内容を本サイトのサーバー（Vercel）経由で、メール配信サービス Resend（Resend, Inc.）を通じて当スタジオにメールで送信します。入力内容をデータベース等に保存することはありません。</p>` : ''}
       <h2>4. 第三者への提供</h2>
       <p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
       <h2>5. 外部サービス</h2>
-      <p>本サイトはVercel社のホスティングを利用しており、アクセス時の一般的な通信ログが同社のサービス上で処理される場合があります。また、Webフォントの表示にGoogle Fonts、動画の再生にYouTube（再生ボタンを押した場合のみ）を利用しています。${SALES_LP.enabled ? 'Web制作・保守サービスページのお問い合わせの送信には Resend を利用しています。' : ''}</p>
-      ${process.env.GA4_ID ? '<p>Web制作・保守サービスページでは、利用状況の把握のため Google アナリティクス（Google LLC）を利用しています。Cookie を用いて匿名の利用データを収集しますが、個人を特定する情報は含みません。ブラウザの設定で Cookie を無効にすることで収集を拒否できます。</p>' : ''}
+      <p>本サイトはVercel社のホスティングを利用しており、アクセス時の一般的な通信ログが同社のサービス上で処理される場合があります。また、Webフォントの表示にGoogle Fonts、動画の再生にYouTube（再生ボタンを押した場合のみ）を利用しています。${SALES_LP.enabled ? `Web制作・保守サービスサイト（${SALES_LP.host}）はVercel社のホスティングを利用し、お問い合わせの送信には Resend を利用しています。` : ''}</p>
+      ${process.env.GA4_ID ? '<p>Web制作・保守サービスサイトでは、利用状況の把握のため Google アナリティクス（Google LLC）を利用しています。Cookie を用いて匿名の利用データを収集しますが、個人を特定する情報は含みません。ブラウザの設定で Cookie を無効にすることで収集を拒否できます。</p>' : ''}
       <h2>6. 開示・訂正・削除</h2>
       <p>ご本人からの個人情報の開示・訂正・削除のご依頼には、本人確認のうえ対応します。</p>
       <h2>7. お問い合わせ窓口</h2>
@@ -726,7 +725,7 @@ out('privacy.html', pagePrivacy());
 out('404.html', page404());
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = ['/', '/works.html', '/video-works.html', ...WORKS.map(workUrl), ...(SALES_LP.enabled ? [SALES_LP.path] : []), '/privacy.html'];
+const urls = ['/', '/works.html', '/video-works.html', ...WORKS.map(workUrl), '/privacy.html'];
 out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 

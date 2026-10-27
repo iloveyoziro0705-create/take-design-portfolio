@@ -1,16 +1,16 @@
 /**
- * 営業用LP（/web-services/）お問い合わせ送信 API — Vercel Functions（Node.js）
+ * 営業用LP（https://takecraft-web.vercel.app/）お問い合わせ送信 API — Vercel Functions（Node.js）
  *
  * POST /api/contact
  *   - JSON（JavaScript から fetch）→ { ok: true } / { ok: false, error, fields? }
- *   - フォームの通常送信（JavaScript 無効時）→ 成功で /web-services/thanks/ へ 303、失敗でエラーページ
+ *   - フォームの通常送信（JavaScript 無効時）→ 成功で /thanks/ へ 303、失敗でエラーページ
  *
  * 環境変数（Vercel の Project Settings → Environment Variables。コードに直接書かない）
  *   RESEND_API_KEY      必須  Resend の API キー
  *   CONTACT_TO          必須  通知メールの宛先
  *   CONTACT_FROM        任意  送信元（既定: "TAKE CRAFT <onboarding@resend.dev>"。独自ドメイン認証後に変更）
  *   AUTO_REPLY          任意  "on" で問い合わせ者へ自動返信（CONTACT_FROM が認証済み独自ドメインのときのみ有効にする）
- *   ALLOWED_ORIGINS     任意  カンマ区切り。既定は本番ドメイン＋このデプロイのURL
+ *   ALLOWED_ORIGINS     任意  カンマ区切り。既定は https://takecraft-web.vercel.app ＋このデプロイのURL
  *
  * スパム対策：ハニーポット項目 / 表示から送信までの最短時間 / Origin 確認 / サーバー側の入力検証 / 本文長の上限
  */
@@ -53,10 +53,10 @@ function allowedOrigin(req) {
   const origin = req.headers.origin || '';
   if (!origin) return true; // 一部ブラウザ・通常のフォーム送信では付かない場合がある（他の対策で補う）
   const list = (process.env.ALLOWED_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean);
-  list.push('https://take-design-portfolio.vercel.app');
+  list.push('https://takecraft-web.vercel.app');
   if (process.env.VERCEL_URL) list.push(`https://${process.env.VERCEL_URL}`);
   if (process.env.VERCEL_BRANCH_URL) list.push(`https://${process.env.VERCEL_BRANCH_URL}`);
-  if (process.env.VERCEL_ENV !== 'production') list.push('http://localhost:3000', 'http://127.0.0.1:4173', 'http://127.0.0.1:4180');
+  if (process.env.VERCEL_ENV !== 'production') list.push('http://localhost:3000', 'http://127.0.0.1:4173', 'http://127.0.0.1:4180', 'http://127.0.0.1:4181');
   return list.includes(origin);
 }
 
@@ -82,9 +82,9 @@ module.exports = async function handler(req, res) {
   const wantsHtml = !String(req.headers['content-type'] || '').includes('application/json');
   const reply = (status, json) => {
     if (wantsHtml) {
-      if (json.ok) { res.statusCode = 303; res.setHeader('Location', '/web-services/thanks/'); return res.end(); }
+      if (json.ok) { res.statusCode = 303; res.setHeader('Location', '/thanks/'); return res.end(); }
       res.statusCode = status; res.setHeader('Content-Type', 'text/html; charset=utf-8');
-      return res.end(`<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>送信できませんでした</title><p>送信できませんでした。お手数ですが、前のページに戻って入力内容をご確認ください。</p><p><a href="/web-services/#contact">お問い合わせフォームへ戻る</a></p>`);
+      return res.end(`<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>送信できませんでした</title><p>送信できませんでした。お手数ですが、前のページに戻って入力内容をご確認ください。</p><p><a href="/#contact">お問い合わせフォームへ戻る</a></p>`);
     }
     res.statusCode = status; res.setHeader('Content-Type', 'application/json; charset=utf-8'); res.setHeader('Cache-Control', 'no-store');
     return res.end(JSON.stringify(json));
@@ -118,7 +118,7 @@ module.exports = async function handler(req, res) {
     d.message,
     '',
     '---',
-    `送信元：/web-services/ お問い合わせフォーム（${new Date().toISOString()}）`,
+    `送信元：takecraft-web.vercel.app お問い合わせフォーム（${new Date().toISOString()}）`,
   ];
   const from = process.env.CONTACT_FROM || 'TAKE CRAFT <onboarding@resend.dev>';
   try {
@@ -126,7 +126,7 @@ module.exports = async function handler(req, res) {
     if (process.env.AUTO_REPLY === 'on') {
       await sendMail({
         from, to: [d.email], subject: '【TAKE CRAFT】お問い合わせありがとうございます',
-        text: [`${d.name} 様`, '', 'TAKE CRAFT へのお問い合わせありがとうございます。', '以下の内容で受け付けました。内容を確認のうえ、メールでご連絡します。', '', ...lines.slice(0, 10), '', 'TAKE CRAFT', 'https://take-design-portfolio.vercel.app/web-services/'].join('\n'),
+        text: [`${d.name} 様`, '', 'TAKE CRAFT へのお問い合わせありがとうございます。', '以下の内容で受け付けました。内容を確認のうえ、メールでご連絡します。', '', ...lines.slice(0, 10), '', 'TAKE CRAFT', 'https://takecraft-web.vercel.app/'].join('\n'),
       }).catch(() => {}); // 自動返信の失敗で受付自体を失敗にしない
     }
   } catch (e) {

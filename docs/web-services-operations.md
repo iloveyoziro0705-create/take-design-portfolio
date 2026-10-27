@@ -1,27 +1,32 @@
-# 営業用LP（/web-services/）運用マニュアル
+# 営業用LP 運用マニュアル
+
+公開URL：**https://takecraft-web.vercel.app/**（Vercel プロジェクト `takecraft-web`）
+旧URL `https://take-design-portfolio.vercel.app/web-services/` はポートフォリオの `vercel.json` で新URLへ 301 転送しています。
 
 ## 1. 構成
 
 | 役割 | ファイル |
 |---|---|
 | 掲載データ（料金・プラン・FAQ・実績の選定） | `data/web-services.mjs` |
-| ページ生成 | `scripts/build-web-services.mjs` → `web-services/index.html`, `web-services/thanks/index.html` |
-| デザイン・動き | `web-services/assets/ws.css`, `web-services/assets/ws.js` |
-| 送信API（Vercel Functions） | `api/contact.js` |
-| OGP画像 | `web-services/assets/og-web-services.png` |
+| ページ生成 | `scripts/build-web-services.mjs` → `web-services-site/`（index.html・thanks/・robots.txt・sitemap.xml、使用画像をコピー） |
+| デザイン・動き | `web-services-site/assets/ws.css`, `web-services-site/assets/ws.js` |
+| 送信API（Vercel Functions） | `web-services-site/api/contact.js` |
+| OGP画像 | `web-services-site/assets/og-web-services.png` |
 
-ポートフォリオ（`scripts/build.mjs`）とは独立しています。ポートフォリオ側は `web-services/index.html` があると、ヘッダー「Services」・Creative Fields・フッター・Web/LP実績の詳細ページに、LPへの導線を自動で表示します。
+ポートフォリオ（`scripts/build.mjs`）とは別のサイトです。ポートフォリオ側は `SALES_LP`（build.mjs）でLPのURLを持ち、ヘッダー「Services」・Creative Fields・フッター・Web/LP実績の詳細ページに導線を表示します（`SALES_LP=off` で非表示）。
+
+**デプロイ**：LPはポートフォリオの master push では更新されません。`node scripts/build-web-services.mjs` → コミット → `web-services-site/` を `takecraft-web` プロジェクトへデプロイ（`cd web-services-site && npx vercel deploy --prod`。初回のみ `npx vercel link --project takecraft-web`）。
 
 ## 2. 文言・料金を変更する
 
 1. `data/web-services.mjs` を編集する（料金は数値で持っているので、ファーストビュー・料金一覧・構造化データに同じ値が出ます）
 2. `node scripts/build-web-services.mjs` を実行する
-3. 料金を変えたら、`web-services/assets/og-web-services.png`（OGP画像）の料金表記も確認する
+3. 料金を変えたら、`web-services-site/assets/og-web-services.png`（OGP画像）の料金表記も確認する
 4. CSS/JSを変えたら、`build-web-services.mjs` の `V` を上げる（キャッシュ対策）
 
 実績を差し替えるときは `WORK_PICKS`（ポートフォリオの slug）を編集します。自主制作は自動的に「Concept Work／自主制作」と表示されます。
 
-## 3. 環境変数（Vercel → Project Settings → Environment Variables）
+## 3. 環境変数（Vercel の **takecraft-web** プロジェクト → Settings → Environment Variables）
 
 | 名前 | 必須 | 内容 |
 |---|---|---|
@@ -30,7 +35,7 @@
 | `CONTACT_FROM` | – | 送信元。未設定時は `TAKE CRAFT <onboarding@resend.dev>`。独自ドメインを Resend で認証したら `TAKE CRAFT <contact@独自ドメイン>` に変更 |
 | `AUTO_REPLY` | – | `on` で問い合わせ者へ自動返信。**独自ドメイン認証後のみ有効化**（onboarding@resend.dev からは自分以外に送れないため） |
 | `ALLOWED_ORIGINS` | – | 送信を受け付ける Origin を追加する場合（独自ドメイン導入時など）。カンマ区切り |
-| `GA4_ID` | – | **ビルド時**の値。`GA4_ID=G-XXXXXXX node scripts/build-web-services.mjs` で計測タグを出力。プライバシーポリシーにも追記されるよう `GA4_ID=... node scripts/build.mjs` も実行 |
+| `GA4_ID` | – | **ビルド時**の値。`GA4_ID=G-XXXXXXX node scripts/build-web-services.mjs` で計測タグを出力。プライバシーポリシー（ポートフォリオ側）にも追記されるよう `GA4_ID=... node scripts/build.mjs` も実行 |
 
 環境変数を追加・変更したら、Vercel で再デプロイすると反映されます。
 `RESEND_API_KEY` / `CONTACT_TO` が未設定の間、フォームは「送信できませんでした」と表示し、ポートフォリオのフォームを案内します（送信内容は失われません）。
@@ -64,5 +69,5 @@ GA4 管理画面で `generate_lead` を「キーイベント」に設定して�
 
 ## 6. 公開・確認の手順
 1. 作業ブランチでコミット → プレビューデプロイで確認（フォームはプレビューにも環境変数を設定すると動作します）
-2. 承認後に master へ反映（Vercel が本番を自動デプロイ）
+2. 承認後、`takecraft-web` に本番デプロイ（ポートフォリオ側の変更がある場合は master へ反映）
 3. 公開後、実際にフォームから1件送信し、通知メールの到着を確認する

@@ -105,7 +105,7 @@
         if (j.ok) {
           track('generate_lead', { service: svc });
           try { sessionStorage.setItem('ws_sent', svc); } catch (e) {}
-          window.location.href = '/web-services/thanks/';
+          window.location.href = '/thanks/';
           return;
         }
         if (j.error === 'validation' && j.fields) { Object.keys(j.fields).forEach(function (k) { setErr(k, j.fields[k]); }); throw new Error('validation'); }
@@ -113,7 +113,7 @@
       })
       .catch(function (err) {
         sending = false; submit.disabled = false; submit.innerHTML = submitHTML;
-        var msg = err.message === 'validation' ? '入力内容をご確認ください。' : '送信できませんでした。時間をおいてもう一度お試しください。解決しない場合は、お手数ですが <a href="/#contact">ポートフォリオのお問い合わせ</a> からご連絡ください。';
+        var msg = err.message === 'validation' ? '入力内容をご確認ください。' : '送信できませんでした。時間をおいてもう一度お試しください。解決しない場合は、お手数ですが <a href="https://take-design-portfolio.vercel.app/#contact">ポートフォリオのお問い合わせ</a> からご連絡ください。';
         show('error', '<p><strong>' + msg + '</strong></p>');
       });
   });

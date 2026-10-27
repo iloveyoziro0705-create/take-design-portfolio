@@ -17,11 +17,12 @@
 - 総合問い合わせフォーム（/#contact、mailto）は映像・AIの相談窓口として維持する。送信先は変更しない
 - Tools & Skills（`TOOLS`）は使用経験を確認できたものだけ載せる（2026-10-27 確認済み）
 
-## 営業用LP（/web-services/）
+## 営業用LP（https://takecraft-web.vercel.app/ ・Vercel プロジェクト takecraft-web）
 
-- データ `data/web-services.mjs` → `node scripts/build-web-services.mjs`。生成物 `web-services/index.html`・`thanks/` は直接編集しない
-- 送信API `api/contact.js`（Vercel Functions + Resend）。秘密情報は環境変数のみ。詳細は `docs/web-services-operations.md`
-- LP を生成したあとは `node scripts/build.mjs` も実行（ポートフォリオ側の導線・プライバシーポリシー・sitemap が更新される）
+- データ `data/web-services.mjs` → `node scripts/build-web-services.mjs` → 生成先 `web-services-site/`（独立サイトのルート。index.html・thanks/ は直接編集しない）
+- 送信API `web-services-site/api/contact.js`（Vercel Functions + Resend）。環境変数は takecraft-web 側に設定。詳細は `docs/web-services-operations.md`
+- LP は master push では更新されない。`web-services-site/` を takecraft-web へ CLI デプロイ（要ユーザー了承）
+- 旧URL `/web-services/` はポートフォリオの `vercel.json` で 301 転送。ポートフォリオの導線は build.mjs の `SALES_LP`
 
 ## フォルダ構成ルール
 

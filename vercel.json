@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/web-services",
+      "destination": "https://takecraft-web.vercel.app/",
+      "permanent": true
+    },
+    {
+      "source": "/web-services/thanks",
+      "destination": "https://takecraft-web.vercel.app/thanks/",
+      "permanent": true
+    },
+    {
+      "source": "/web-services/:path*",
+      "destination": "https://takecraft-web.vercel.app/",
+      "permanent": true
+    }
+  ]
+}
