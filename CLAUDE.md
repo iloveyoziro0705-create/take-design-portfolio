@@ -1,12 +1,23 @@
 # TAKE Design Portfolio — プロジェクトルール
 
+## ポートフォリオ本体（2026-10 リニューアル以降）
+
+ルートの `index.html` / `works.html` / `video-works.html` / `works/*.html` / `privacy.html` / `404.html` / `sitemap.xml` / `robots.txt` は **生成物**。直接編集しない。
+
+- 実績の追加・修正：`data/works.mjs`（区分 client / concept、確認できた事実のみ記載）
+- サービス・文言・テンプレート：`scripts/build.mjs`
+- デザインシステム：`assets/css/site.css`（トークンは `:root`）、挙動：`assets/js/site.js`
+- 実績画像：`assets/works/<slug>-pc1〜3.webp` / `-sp.webp`（pc1 と動画 thumb は `-640` `-960` 縮小版も必要）
+- 編集後は `node scripts/build.mjs` を実行。CSS/JS を変えたら `build.mjs` の `ASSET_V` を上げる
+- 将来のサービス専用LPは、公開後に `SERVICES[].lp` にパスを入れるとリンクが表示される（未公開のうちは null のまま）
+
 ## フォルダ構成ルール
 
 このリポジトリでは、LPごとにフォルダを分けて管理する。
 
 ```
 take-design-portfolio/
-├── index.html              ← TAKE Design portfolio（触らない）
+├── index.html              ← ポートフォリオ（生成物。上の節を参照）
 ├── restaurant-lp/
 │   └── index.html          ← レストランオープンLP
 └── [新しいLP名]/
@@ -15,7 +26,7 @@ take-design-portfolio/
 
 ### 新しいLPを作るとき
 
-- ルートの `index.html` は **絶対に上書きしない**
+- ルートの `index.html` を LP で **上書きしない**（ポートフォリオは build.mjs で生成）
 - 必ず `[案件名]/index.html` という形で新しいフォルダを作成する
 - フォルダ名の例：`beauty-salon-lp/`、`dental-lp/`、`gym-lp/` など
 

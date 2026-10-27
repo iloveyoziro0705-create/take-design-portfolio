@@ -1,979 +1,374 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TAKE CRAFT｜伝えたいを、成果へ。人が動く理由をデザインするクリエイティブ戦略スタジオ。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。" />
-  <title>TAKE CRAFT | Craft for Results. Creative Strategy Studio.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #1E1E1E;
-      --surface: #252525;
-      --card: #252525;
-      --border: rgba(255,255,255,0.08);
-      --border-mid: rgba(255,255,255,0.16);
-      --accent: #2563EB;
-      --accent-soft: rgba(37,99,235,0.10);
-      --accent-mid: rgba(37,99,235,0.38);
-      --text: #F5F5F5;
-      --sub: #8B8B8B;
-      --sub2: #6B6B6B;
-      --dm: 'DM Sans', system-ui, sans-serif;
-      --sans: 'Noto Sans JP', system-ui, sans-serif;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --content: 1200px;
-      --py: 148px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: auto; }
-    body { margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; cursor: none; }
-    img, video { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-    h1,h2,h3,h4 { margin-top: 0; }
-    p { margin-top: 0; }
-    .container { width: min(var(--content), calc(100% - 48px)); margin: 0 auto; }
-    .section { padding: var(--py) 0; position: relative; }
-    .section-alt { background: var(--surface); }
-    .split { overflow: hidden; }
-
-    @media (hover: none) { body { cursor: auto; } }
-
-    /* ── CUSTOM CURSOR ── */
-    #cursor-dot, #cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
-    #cursor-dot { width: 6px; height: 6px; background: var(--accent); }
-    #cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(37,99,235,0.5); transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s; }
-    #cursor-ring.is-active { width: 64px; height: 64px; background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.7); }
-    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
-
-    /* ── LENIS ── */
-    html.lenis, html.lenis body { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto; }
-
-    .label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--dm); font-size: 11px; font-weight: 500;
-      letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px;
-    }
-    .label::before { content: ''; width: 26px; height: 1px; background: var(--accent); }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 32px; border-radius: 999px;
-      background: var(--accent); color: #F5F5F5;
-      font-family: var(--dm); font-weight: 600; font-size: 14px; letter-spacing: 0.03em;
-      border: none; cursor: none;
-      box-shadow: 0 0 0 1px rgba(37,99,235,0.4), 0 8px 28px rgba(37,99,235,0.20);
-      transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(37,99,235,0.6), 0 14px 36px rgba(37,99,235,0.32); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 32px; border-radius: 999px;
-      background: transparent; color: var(--text);
-      font-family: var(--dm); font-weight: 500; font-size: 14px;
-      border: 1px solid var(--border-mid); cursor: none;
-      transition: border-color 0.3s, background 0.3s, transform 0.3s cubic-bezier(.2,.8,.2,1);
-    }
-    .btn-outline:hover { border-color: rgba(37,99,235,0.5); background: var(--accent-soft); transform: translateY(-3px); }
-
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 76px;
-      padding: 0 48px; display: flex; align-items: center; justify-content: space-between;
-      background: transparent; backdrop-filter: none;
-      border-bottom: 1px solid transparent;
-      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
-    }
-    header.is-scrolled { background: rgba(30,30,30,0.82); backdrop-filter: blur(20px); border-bottom-color: var(--border); }
-    .logo { font-family: var(--dm); font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; display: flex; align-items: center; gap: 9px; }
-    .logo-mark { width: 26px; height: 26px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
-    .logo-img { height: 20px; width: auto; display: block; }
-    .hero-logo-img { height: 30px; width: auto; display: block; margin-bottom: 18px; }
-    .brand-signoff { padding: 90px 24px; text-align: center; border-top: 1px solid var(--border); }
-    .brand-signoff img { max-width: 520px; width: 100%; height: auto; margin: 0 auto; }
-    .nav-links { display: flex; gap: 40px; font-family: var(--dm); font-size: 12.5px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub); }
-    .nav-links a { transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-
-    .menu-btn {
-      display: none; flex-direction: column; justify-content: center; gap: 5px;
-      width: 32px; height: 32px; cursor: none; background: none; border: none; padding: 0; z-index: 300;
-    }
-    .menu-btn span { display: block; height: 1.5px; background: var(--text); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
-    .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .menu-btn.open span:nth-child(2) { opacity: 0; }
-    .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    .mobile-nav {
-      display: none; position: fixed; inset: 0; z-index: 250;
-      background: var(--bg); flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-      font-family: var(--dm); font-size: 21px; font-weight: 500; letter-spacing: 0.10em; color: var(--sub);
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a:hover { color: var(--text); }
-
-    /* ── HERO ── */
-    #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; align-items: flex-end; background: #000; }
-    .hero-media { position: absolute; inset: 0; z-index: 0; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.8s ease; }
-    .hero-video.is-active { opacity: 1; }
-    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(15,15,15,0.55) 45%, rgba(10,10,10,0.92) 100%); }
-    .hero-inner { position: relative; z-index: 2; width: 100%; padding: 100px 0 88px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px;
-      font-family: var(--dm); font-size: 11px; letter-spacing: 0.14em; color: rgba(245,245,245,0.85); margin-bottom: 32px;
-      backdrop-filter: blur(6px); background: rgba(0,0,0,0.2);
-    }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2.2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-
-    .hero-eyebrow { font-family: var(--dm); font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.7); margin-bottom: 18px; }
-    .hero-title { font-family: var(--dm); font-size: clamp(42px, 7vw, 88px); font-weight: 700; line-height: 1.1; margin-bottom: 26px; letter-spacing: -0.01em; color: #fff; max-width: 16ch; }
-    .hero-title .line { display: block; overflow: hidden; }
-    .hero-title .line span { display: inline-block; will-change: transform; }
-
-    .hero-core { font-size: clamp(15px, 1.4vw, 18px); color: rgba(245,245,245,0.68); line-height: 1.9; margin-bottom: 8px; max-width: 480px; }
-    .hero-sub { font-family: var(--dm); font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 44px; }
-    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 64px; }
-    .hero-outline-inverse { border-color: rgba(255,255,255,0.28); }
-    .hero-outline-inverse:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
-
-    .hero-scroll { display: flex; align-items: center; gap: 14px; font-family: var(--dm); font-size: 10px; letter-spacing: 0.24em; color: rgba(245,245,245,0.5); }
-    .hero-scroll-line { width: 1px; height: 46px; background: linear-gradient(rgba(255,255,255,0.6), transparent); position: relative; overflow: hidden; }
-    .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background: linear-gradient(var(--accent), transparent); animation: scrollLine 2.2s ease-in-out infinite; }
-    @keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
-
-    .hero-rive-accent { position: absolute; right: 64px; bottom: 100px; width: 84px; height: 84px; z-index: 2; opacity: 0.75; pointer-events: none; }
-    .hero-rive-accent canvas { width: 100%; height: 100%; }
-    @media (max-width: 1180px) { .hero-rive-accent { display: none; } }
-
-    /* ── MANIFESTO (split, huge photo) ── */
-    #manifesto { background: var(--bg); padding: 0; }
-    .manifesto-split { display: grid; grid-template-columns: 1.05fr 1fr; min-height: 92vh; }
-    .manifesto-photo { position: relative; overflow: hidden; }
-    .manifesto-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .manifesto-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, rgba(30,30,30,0.5) 100%); }
-    .manifesto-text { display: flex; flex-direction: column; justify-content: center; padding: 96px 72px; }
-    .manifesto-text h2 { font-family: var(--dm); font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; line-height: 1.32; color: var(--text); margin-bottom: 32px; }
-    .manifesto-text h2 em { font-style: normal; color: var(--accent); }
-    .manifesto-body p { font-size: 16px; color: var(--sub); line-height: 2.1; margin-bottom: 20px; }
-    .manifesto-founder { display: flex; align-items: center; gap: 18px; margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .mf-avatar { width: 54px; height: 54px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--card); border: 1px solid var(--border); }
-    .mf-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .mf-founder-name { font-family: var(--dm); font-size: 14px; font-weight: 600; color: var(--text); }
-    .mf-founder-role { font-size: 12.5px; color: var(--sub); }
-    .mf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-top: 28px; }
-    .mf-stat { background: var(--card); padding: 22px 22px; }
-    .mf-stat-num { font-family: var(--dm); font-size: 28px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 8px; }
-    .mf-stat-lbl { font-size: 12px; color: var(--sub); letter-spacing: 0.04em; }
-
-    /* ── SERVICES (photo cards) ── */
-    #service { background: var(--surface); }
-    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
-    .svc-card { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
-    .svc-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
-    .svc-card:hover img { transform: scale(1.08); }
-    .svc-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,15,15,0.92) 0%, rgba(15,15,15,0.55) 45%, rgba(15,15,15,0.15) 100%); }
-    .svc-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; }
-    .svc-index { font-family: var(--dm); font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.14em; margin-bottom: 12px; }
-    .svc-en { display: block; font-family: var(--dm); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .svc-content h3 { font-family: var(--dm); font-size: 19px; font-weight: 600; margin-bottom: 10px; color: #fff; }
-    .svc-content p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 0; max-width: 30ch; }
-
-    /* ── METHOD (steps with photos) ── */
-    #method { background: var(--bg); }
-    .method-list { margin-top: 64px; display: flex; flex-direction: column; }
-    .method-row { display: grid; grid-template-columns: 64px 1fr 200px; gap: 40px; align-items: center; padding: 40px 0; border-top: 1px solid var(--border); }
-    .method-row:last-child { border-bottom: 1px solid var(--border); }
-    .method-num { font-family: var(--dm); font-size: 15px; color: var(--accent); border: 1px solid var(--border-mid); border-radius: 50%; width: 54px; height: 54px; display: grid; place-items: center; }
-    .method-copy .method-en { display: block; font-family: var(--dm); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sub2); margin-bottom: 10px; }
-    .method-copy h4 { font-family: var(--dm); font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-    .method-copy p { font-size: 14px; color: var(--sub); line-height: 1.8; max-width: 46ch; }
-    .method-photo { width: 200px; aspect-ratio: 4/3; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
-    .method-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ── PROJECTS ── */
-    #projects { background: var(--surface); }
-    .projects-intro { max-width: 640px; margin-bottom: 20px; }
-    .projects-intro p { font-size: 16px; color: var(--sub); line-height: 2.0; margin-bottom: 0; }
-    .projects-group-label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sub2); margin: 72px 0 32px; display: flex; align-items: center; gap: 14px; }
-    .projects-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .projects-group-label:first-of-type { margin-top: 64px; }
-
-    .proj-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
-    .proj-card {
-      position: relative; border-radius: var(--radius-lg); overflow: hidden;
-      background: var(--card); border: 1px solid var(--border);
-      display: grid; grid-template-columns: 1.3fr 1fr;
-      min-height: 380px;
-    }
-    .proj-card.proj-card--lp { grid-template-columns: 1fr 1.3fr; }
-    .proj-card.proj-card--lp .proj-thumb { order: 2; }
-    .proj-card.proj-card--lp .proj-body { order: 1; }
-
-    .proj-thumb { position: relative; overflow: hidden; background: #171717; }
-    .proj-thumb img, .proj-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .proj-preview-video { opacity: 0; transition: opacity 0.5s ease; }
-    .proj-card.is-playing .proj-preview-video { opacity: 1; }
-    .proj-card.is-playing .proj-poster { opacity: 0; }
-    .proj-poster { transition: opacity 0.5s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
-    .proj-card--lp .proj-poster { transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
-    .proj-card--lp:hover .proj-poster { transform: translateY(-8%) scale(1.03); }
-    .proj-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 58px; height: 58px; border-radius: 50%; background: rgba(37,99,235,0.18); border: 1.5px solid rgba(37,99,235,0.55); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 17px; padding-left: 3px; z-index: 2; transition: opacity 0.4s, transform 0.4s; }
-    .proj-card.is-playing .proj-play { opacity: 0; transform: translate(-50%,-50%) scale(0.8); }
-    .proj-cat { position: absolute; top: 18px; left: 18px; z-index: 3; background: rgba(20,20,20,0.75); backdrop-filter: blur(6px); border: 1px solid var(--border-mid); padding: 6px 14px; border-radius: 999px; font-family: var(--dm); font-size: 10.5px; letter-spacing: 0.1em; color: #fff; }
-    .proj-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-    .proj-body h3 { font-family: var(--dm); font-size: 22px; font-weight: 600; margin-bottom: 24px; color: var(--text); }
-    .proj-rows { display: grid; gap: 14px; margin-bottom: 24px; }
-    .proj-row { display: grid; grid-template-columns: 78px 1fr; gap: 12px; font-size: 13.5px; align-items: baseline; }
-    .proj-lbl { font-family: var(--dm); font-size: 10px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; padding-top: 1px; }
-    .proj-val { color: var(--sub); line-height: 1.75; }
-    .proj-link { display: inline-flex; align-items: center; gap: 7px; font-family: var(--dm); font-size: 13px; font-weight: 600; color: var(--accent); transition: gap 0.25s; letter-spacing: 0.03em; width: fit-content; }
-    .proj-link:hover { gap: 11px; }
-
-    .projects-more { text-align: center; margin-top: 64px; }
-
-    /* ── BEHIND THE CRAFT (masonry) ── */
-    #behind { background: var(--bg); }
-    .behind-grid { columns: 3 260px; column-gap: 20px; margin-top: 56px; }
-    .behind-item { break-inside: avoid; margin-bottom: 20px; border-radius: var(--radius-md); overflow: hidden; position: relative; border: 1px solid var(--border); }
-    .behind-item img { width: 100%; height: auto; display: block; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
-    .behind-item:hover img { transform: scale(1.06); }
-    .behind-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: linear-gradient(0deg, rgba(10,10,10,0.85), transparent); font-family: var(--dm); font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); }
-
-    /* ── PHILOSOPHY (photo cards) ── */
-    #philosophy { background: var(--surface); }
-    .phil-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
-    .phil-card { position: relative; aspect-ratio: 3/4; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
-    .phil-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.9s cubic-bezier(.2,.8,.2,1); }
-    .phil-card:hover img { transform: scale(1.08); }
-    .phil-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,10,0.90) 0%, rgba(10,10,10,0.35) 55%, rgba(10,10,10,0.05) 100%); }
-    .phil-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px; }
-    .phil-num { font-family: var(--dm); font-size: 30px; font-weight: 300; color: rgba(37,99,235,0.55); line-height: 1; margin-bottom: 14px; }
-    .phil-en { display: block; font-family: var(--dm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
-    .phil-content h4 { font-family: var(--dm); font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #fff; }
-    .phil-content p { font-size: 12.5px; color: rgba(255,255,255,0.65); margin-bottom: 0; line-height: 1.8; }
-
-    /* ── CONTACT (huge photo) ── */
-    #contact { position: relative; padding: 0; overflow: hidden; min-height: 90vh; display: flex; align-items: center; }
-    .contact-media { position: absolute; inset: 0; z-index: 0; }
-    .contact-media img { width: 100%; height: 100%; object-fit: cover; }
-    .contact-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.80) 60%, rgba(10,10,10,0.95) 100%); }
-    .contact-wrap { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; text-align: center; padding: 120px 24px; }
-    .contact-wrap h2 { font-family: var(--dm); font-size: clamp(30px, 4.4vw, 52px); font-weight: 700; margin-bottom: 20px; line-height: 1.28; color: #fff; }
-    .c-sub { font-size: 16px; color: rgba(245,245,245,0.65); margin-bottom: 18px; line-height: 2.0; }
-    .c-email-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 48px; font-family: var(--dm); font-size: 14px; color: var(--accent); letter-spacing: 0.03em; border-bottom: 1px solid var(--accent-mid); padding-bottom: 2px; transition: opacity 0.2s; }
-    .c-email-link:hover { opacity: 0.75; }
-    .cform { display: grid; gap: 16px; text-align: left; }
-    .ff { display: flex; flex-direction: column; gap: 8px; }
-    .ff label { font-family: var(--dm); font-size: 12px; letter-spacing: 0.1em; color: rgba(245,245,245,0.6); }
-    .ff input, .ff textarea, .ff select {
-      background: rgba(37,37,37,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-md);
-      padding: 14px 18px; color: var(--text); font-family: var(--sans); font-size: 14px;
-      outline: none; transition: border-color 0.2s; resize: none;
-    }
-    .ff input::placeholder, .ff textarea::placeholder { color: var(--sub2); }
-    .ff input:focus, .ff textarea:focus, .ff select:focus { border-color: var(--accent-mid); }
-    .ff textarea { min-height: 130px; }
-    .ff select { appearance: none; cursor: none; }
-    .c-submit { margin-top: 8px; }
-    .c-submit .btn-primary { width: 100%; justify-content: center; padding: 17px; font-size: 15px; border-radius: var(--radius-md); }
-
-    /* ── FOOTER ── */
-    footer { padding: 44px 48px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .f-logo { font-family: var(--dm); font-size: 13px; font-weight: 700; letter-spacing: 0.18em; color: var(--sub); display: flex; align-items: center; gap: 8px; }
-    .f-links { display: flex; gap: 28px; font-family: var(--dm); font-size: 12px; letter-spacing: 0.08em; color: var(--sub2); }
-    .f-links a:hover { color: var(--sub); }
-    .f-copy { font-size: 12px; color: var(--sub2); }
-
-    /* ── REVEAL (GSAP-driven; base state) ── */
-    .r { opacity: 0; transform: translateY(28px); }
-    .r.gsap-ready { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      :root { --py: 96px; }
-      body { cursor: auto; }
-      #cursor-dot, #cursor-ring { display: none; }
-      header { padding: 0 24px; }
-      .nav-links, .h-cta { display: none; }
-      .menu-btn { display: flex; }
-      .manifesto-split { grid-template-columns: 1fr; min-height: auto; }
-      .manifesto-photo { height: 50vh; }
-      .manifesto-text { padding: 56px 28px; }
-      .service-grid { grid-template-columns: 1fr 1fr; }
-      .method-row { grid-template-columns: 48px 1fr; }
-      .method-photo { display: none; }
-      .proj-card, .proj-card.proj-card--lp { grid-template-columns: 1fr; }
-      .proj-card .proj-thumb, .proj-card.proj-card--lp .proj-thumb { order: -1; aspect-ratio: 16/10; }
-      .proj-card .proj-body, .proj-card.proj-card--lp .proj-body { order: 1; padding: 28px; }
-      .behind-grid { columns: 2 200px; }
-      .phil-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 32px 24px; }
-    }
-    @media (max-width: 600px) {
-      .container { width: calc(100% - 36px); }
-      .service-grid { grid-template-columns: 1fr; }
-      .behind-grid { columns: 1; }
-      .phil-grid { grid-template-columns: 1fr; }
-      .hero-ctas { flex-direction: column; }
-      .mf-stats { grid-template-columns: 1fr; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .r { opacity: 1 !important; transform: none !important; }
-      .hero-scroll-line::after { animation: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAKE CRAFT | 伝えたいを、成果へ。— Web・LP・映像のクリエイティブスタジオ</title>
+<meta name="description" content="TAKE CRAFTは、Web・LP・映像・AIを横断し、企画から実装、公開後の改善まで一貫して担当する個人クリエイティブスタジオです。人が動く理由を設計し、成果につながる制作を行います。">
+<link rel="canonical" href="https://take-design-portfolio.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAKE CRAFT">
+<meta property="og:title" content="TAKE CRAFT | 伝えたいを、成果へ。— Web・LP・映像のクリエイティブスタジオ">
+<meta property="og:description" content="TAKE CRAFTは、Web・LP・映像・AIを横断し、企画から実装、公開後の改善まで一貫して担当する個人クリエイティブスタジオです。人が動く理由を設計し、成果につながる制作を行います。">
+<meta property="og:url" content="https://take-design-portfolio.vercel.app/">
+<meta property="og:image" content="https://take-design-portfolio.vercel.app/assets/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F4F0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/site.css?v=20261027">
+<script>document.documentElement.classList.add('js')</script>
+<script src="/assets/js/site.js?v=20261027" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TAKE CRAFT","url":"https://take-design-portfolio.vercel.app/","inLanguage":"ja"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"TAKE CRAFT","url":"https://take-design-portfolio.vercel.app/","email":"i.love.yoziro0705@gmail.com","slogan":"伝えたいを、成果へ。 Craft for Results.","description":"Web・LP・映像・クリエイティブ・AI活用を横断し、企画から実装、公開後の改善まで一貫して担当する個人クリエイティブスタジオ。","knowsAbout":["Webデザイン","LP制作","映像制作","WordPress保守","AI活用"]}</script>
 </head>
 <body>
-
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<!-- HEADER -->
-<header id="siteHeader">
-  <a href="#hero" class="logo"><img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="logo-img"></a>
-  <nav class="nav-links">
-    <a href="#manifesto">BRAND</a>
-    <a href="#service">SERVICE</a>
-    <a href="#method">METHOD</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
-  <a class="btn-primary h-cta" href="#contact" style="font-size:13px;padding:11px 22px;">Start Project</a>
-  <button class="menu-btn" id="menuBtn" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </button>
+<a class="skip-link" href="#main">本文へスキップ</a>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TAKE CRAFT ホーム"><span class="wordmark__sq" aria-hidden="true"></span>TAKE CRAFT</a>
+    <nav class="gnav" aria-label="グローバルナビゲーション"><ul><li><a href="/#works" data-nav="works">Works<small>実績</small></a></li><li><a href="/#services" data-nav="services">Services<small>サービス</small></a></li><li><a href="/#approach" data-nav="approach">Approach<small>進め方</small></a></li><li><a href="/#about" data-nav="about">About<small>スタジオについて</small></a></li></ul></nav>
+    <a class="btn header-cta" href="/#contact">相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="drawer">Menu<span class="menu-toggle__bars" aria-hidden="true"></span></button>
+  </div>
 </header>
-
-<!-- MOBILE MENU -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="#manifesto">BRAND</a>
-  <a href="#service">SERVICE</a>
-  <a href="#method">METHOD</a>
-  <a href="#projects">PROJECTS</a>
-  <a href="#contact">CONTACT</a>
-  <a class="btn-primary" href="#contact" style="margin-top:8px;">Start Project</a>
+<div class="drawer" id="drawer" aria-label="メニュー" hidden>
+  <nav aria-label="モバイルナビゲーション"><ul><li><a href="/#works">Works<span>実績</span></a></li><li><a href="/#services">Services<span>サービス</span></a></li><li><a href="/#approach">Approach<span>進め方</span></a></li><li><a href="/#about">About<span>スタジオについて</span></a></li><li><a href="/#contact">Contact<span>お問い合わせ</span></a></li></ul></nav>
+  <div style="display:grid;gap:1rem">
+    <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <p class="drawer__meta">Web / LP / Video / Creative / AI</p>
+  </div>
 </div>
+<main id="main">
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-media">
-    <video class="hero-video is-active" autoplay muted loop playsinline poster="assets/video/hero-1-poster.jpg">
-      <source src="assets/video/hero-1-web.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-2-poster.jpg">
-      <source src="assets/video/hero-2-web.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-3-poster.jpg">
-      <source src="assets/video/hero-3-web.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-rive-accent" aria-hidden="true">
-    <canvas id="riveOrbit" width="168" height="168"></canvas>
-  </div>
-  <div class="container hero-inner">
-    <div class="hero-badge">Creative Strategy Studio</div>
-    <img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="hero-logo-img">
-    <h1 class="hero-title" id="heroTitle">伝えたいを、成果へ。</h1>
-    <p class="hero-core">人が動く理由をデザインする。良い商品でも、良いサービスでも、伝わらなければ選ばれません。動画・Web・LP・AIを手段に、成果につながる伝え方を設計します。</p>
-    <p class="hero-sub">Design the Reason People Act.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="#projects">View Projects</a>
-      <a class="btn-outline hero-outline-inverse" href="#contact">Start Project</a>
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero__meta">
+      <span class="label label--dot">TAKE CRAFT — Creative Studio</span>
+      <ul class="hero__disciplines" aria-label="対応領域"><li>Web</li><li>LP</li><li>Video</li><li>Creative</li><li>AI</li></ul>
     </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="hero-scroll-line"></span>
-      SCROLL
-    </div>
-  </div>
-</section>
-
-<!-- BRAND MANIFESTO -->
-<section id="manifesto">
-  <div class="manifesto-split">
-    <div class="manifesto-photo r">
-      <img src="assets/photo/manifesto-main.jpg" alt="暗いスタジオで植物のスケッチを描くデザイナーの手元" loading="lazy">
-    </div>
-    <div class="manifesto-text">
-      <span class="label r">Brand Manifesto</span>
-      <h2 class="r d1">Design is not<br>decoration.<br>It is <em>strategy.</em></h2>
-      <div class="manifesto-body r d2">
-        <p>良い商品でも、良いサービスでも、伝わらなければ選ばれません。</p>
-        <p>TAKE CRAFTは、動画・Web・LP・AIを手段として、人が動く理由を設計します。見た目を整えることではなく、成果につながる仕組みをつくることが、私たちの仕事です。</p>
+    <div class="hero__body">
+      <div class="hero__title">
+        <h1 id="heroTitle" class="h-display"><span class="line"><span>伝えたいを、</span></span><span class="line"><span>成果へ。</span></span></h1>
+        <p class="hero__en" lang="en">Craft for Results.</p>
       </div>
-      <div class="manifesto-founder r d3">
-        <div class="mf-avatar"><img src="images/profile.jpg" alt="TAKE CRAFT" loading="lazy"></div>
-        <div>
-          <div class="mf-founder-name">TAKE CRAFT</div>
-          <div class="mf-founder-role">Creative Strategy / Video / Web / AI</div>
+      <div class="hero__side">
+        <div class="hero__reel" id="heroReel">
+          <div class="hero__reel-col" aria-hidden="true"><figure class=""><img src="/assets/works/ai-sales-dx-pc1-640.webp" width="640" height="400" alt="" decoding="async"></figure><figure class=""><img src="/assets/works/koyomi-miso-pc1-640.webp" width="640" height="400" alt="" decoding="async"></figure><figure class=""><img src="/assets/works/mirai-ryo-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/futurenest-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/lumia-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/ai-sales-dx-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/koyomi-miso-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/mirai-ryo-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/futurenest-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/lumia-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure></div>
+          <div class="hero__reel-col" aria-hidden="true"><figure class=""><img src="/assets/works/sakura-pc1-640.webp" width="640" height="400" alt="" decoding="async"></figure><figure class="sp"><img src="/assets/works/aivoyance-sp.webp" width="600" height="1298" alt="" decoding="async"></figure><figure class=""><img src="/assets/works/learncore-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class="sp"><img src="/assets/works/trattoria-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/business-design-academy-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/sakura-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class="sp"><img src="/assets/works/aivoyance-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/learncore-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure><figure class="sp"><img src="/assets/works/trattoria-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></figure><figure class=""><img src="/assets/works/business-design-academy-pc1-640.webp" width="640" height="400" alt="" loading="lazy" decoding="async"></figure></div>
+          <span class="hero__reel-caption" aria-hidden="true">Selected screens</span>
+          <button class="reel-pause" type="button" aria-pressed="false" aria-label="実績画面のスクロールを一時停止"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z" fill="currentColor"/></svg></button>
         </div>
       </div>
-      <div class="mf-stats r d3">
-        <div class="mf-stat"><div class="mf-stat-num">50<span style="font-size:16px">+</span></div><div class="mf-stat-lbl">制作実績</div></div>
-        <div class="mf-stat"><div class="mf-stat-num">4<span style="font-size:16px">年</span></div><div class="mf-stat-lbl">戦略設計の経験</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="service" class="section section-alt">
-  <div class="container">
-    <span class="label r">Services</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">できること</h2>
-    <div class="service-grid">
-      <div class="svc-card r">
-        <img src="assets/photo/method-clarify-whiteboard.jpg" alt="ホワイトボードで戦略を整理する様子" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">Creative Strategy</span>
-          <h3>クリエイティブ戦略</h3>
-          <p>「何を作るか」の前に「なぜ作るか」から設計します。</p>
-        </div>
-      </div>
-      <div class="svc-card r d1">
-        <img src="assets/video/proj-corporate-pr-poster.jpg" alt="企業PR動画の撮影現場" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">Video Production</span>
-          <h3>映像制作</h3>
-          <p>企画・撮影・編集・カラーグレーディングまで一貫対応。</p>
-        </div>
-      </div>
-      <div class="svc-card r d2">
-        <img src="assets/photo/method-architect-code.jpg" alt="LP実装画面" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">Landing Page</span>
-          <h3>LP制作</h3>
-          <p>感情設計からコーディングまで、成果につながるLPを。</p>
-        </div>
-      </div>
-      <div class="svc-card r">
-        <img src="assets/photo/svc-website-code.jpg" alt="Webサイトのコーディング画面" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">Website</span>
-          <h3>Webサイト制作</h3>
-          <p>コーポレート・採用・サービスサイトをデザインから実装まで。</p>
-        </div>
-      </div>
-      <div class="svc-card r d1">
-        <img src="assets/photo/svc-ai-workflow.jpg" alt="AIワークフローの抽象的なインターフェース" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">AI Workflow</span>
-          <h3>AI活用設計</h3>
-          <p>制作・運用フローにAIを組み込み、スピードと品質を両立。</p>
-        </div>
-      </div>
-      <div class="svc-card r d2">
-        <img src="assets/photo/method-test-analytics.jpg" alt="データ分析画面" loading="lazy">
-        <div class="svc-overlay"></div>
-        <div class="svc-content">
-          <span class="svc-en">System Design</span>
-          <h3>システム設計</h3>
-          <p>予約・診断・料金シミュレーターなど機能面まで設計。</p>
+      <div class="hero__foot">
+        <p class="hero__lead lead">人が動く理由を設計し、成果につながる形にする。Web・LP・映像・AIを横断して、企画から実装、公開後の改善まで一貫して担当する個人クリエイティブスタジオです。</p>
+        <div class="btn-row">
+          <a class="btn" href="#works">制作実績を見る<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+          <a class="btn btn--ghost" href="#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CRAFT METHOD -->
-<section id="method" class="section">
-  <div class="container">
-    <span class="label r">CRAFT Method</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">成果を設計する、<br>5つのステップ。</h2>
-    <div class="method-list">
-      <div class="method-row r">
-        <div class="method-num">01</div>
-        <div class="method-copy">
-          <span class="method-en">Clarify</span>
-          <h4>目的を明確にする</h4>
-          <p>誰に、何を、なぜ伝えるのか。成果の定義から始めます。</p>
-        </div>
-        <div class="method-photo"><img src="assets/photo/method-clarify-whiteboard.jpg" alt="ホワイトボードでの整理" loading="lazy"></div>
+<section class="section intro" id="intro" aria-labelledby="introTitle">
+  <div class="wrap">
+    <div class="intro__grid">
+      <h2 id="introTitle" class="intro__copy reveal"><span>デザインは、</span><span class="sub">飾るためではない。</span><span class="indent">人が動く理由を、<br class="br-sp">設計する。</span></h2>
+      <div class="intro__text reveal">
+        <p class="lead">良い商品やサービスでも、伝わらなければ選ばれません。見た目を整えることがゴールではなく、読み手が迷わず次の行動に移れる状態をつくること。それが TAKE CRAFT の仕事です。</p>
+        <p class="body-2">誰に、何を、どの順番で伝えるか。構成とコピーを先に決め、そのうえでデザイン・映像・実装を選びます。</p>
       </div>
-      <div class="method-row r">
-        <div class="method-num">02</div>
-        <div class="method-copy">
-          <span class="method-en">Research</span>
-          <h4>相手を深く知る</h4>
-          <p>ターゲットの課題・心理・行動を丁寧にリサーチします。</p>
-        </div>
-        <div class="method-photo"><img src="assets/photo/method-research-notes.jpg" alt="リサーチノート" loading="lazy"></div>
-      </div>
-      <div class="method-row r">
-        <div class="method-num">03</div>
-        <div class="method-copy">
-          <span class="method-en">Architect</span>
-          <h4>戦略を設計する</h4>
-          <p>伝える順番・構成・導線を、成果から逆算して設計します。</p>
-        </div>
-        <div class="method-photo"><img src="assets/photo/method-architect-code.jpg" alt="設計画面" loading="lazy"></div>
-      </div>
-      <div class="method-row r">
-        <div class="method-num">04</div>
-        <div class="method-copy">
-          <span class="method-en">Form</span>
-          <h4>形にして届ける</h4>
-          <p>動画・LP・Webとして制作し、狙った相手に届けます。</p>
-        </div>
-        <div class="method-photo"><img src="assets/video/hero-1-poster.jpg" alt="編集画面" loading="lazy"></div>
-      </div>
-      <div class="method-row r">
-        <div class="method-num">05</div>
-        <div class="method-copy">
-          <span class="method-en">Test</span>
-          <h4>検証し、改善する</h4>
-          <p>公開後の反応を見て、成果につながるまで磨き続けます。</p>
-        </div>
-        <div class="method-photo"><img src="assets/photo/method-test-analytics.jpg" alt="分析画面" loading="lazy"></div>
-      </div>
+      <dl class="intro__facts reveal">
+        <div><dt>Public works</dt><dd>19<small>件</small></dd></div>
+        <div><dt>Client work</dt><dd>4<small>件</small></dd></div>
+        <div><dt>Concept work</dt><dd>15<small>件</small></dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- SELECTED PROJECTS -->
-<section id="projects" class="section section-alt">
-  <div class="container">
-    <span class="label r">Selected Projects</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:20px;color:var(--text);">作品ではなく、<br>課題から見る制作実績。</h2>
-    <div class="projects-intro r">
-      <p>完成した映像・LPだけでなく、課題・狙い・アプローチまで、プロセスが見える形で掲載しています。</p>
+<section class="section is-dark" id="works" data-theme="dark" aria-labelledby="worksTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label label--dot"><span class="label__num">01</span>Selected Works</span>
+      <h2 id="worksTitle" class="h2 sec-head__title reveal">課題と狙いから見る、<br>制作実績。</h2>
+      <p class="sec-head__note lead reveal">完成物だけでなく、何のために、どう考えて作ったのかまで掲載しています。クライアントワークと自主制作（コンセプト作品）は区別して表記しています。</p>
     </div>
+    <div class="featured">
+      <article class="work work--wide reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/ai-sales-dx-pc1.webp" srcset="/assets/works/ai-sales-dx-pc1-640.webp 640w, /assets/works/ai-sales-dx-pc1-960.webp 960w, /assets/works/ai-sales-dx-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/ai-sales-dx-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">01</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h3 class="work__title"><a href="/works/ai-sales-dx.html">AI営業DXリスキリング研修</a></h3>
+    <p class="work__purpose">トップセールスの知見をAIで資産化する法人研修LP。完成デザイン画像を忠実に再現し、研修内容をタブ切替式のカードUIで整理しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>法人向け研修の問い合わせ獲得</dd>
+      <dt>Role</dt><dd>デザインカンプからのHTML/CSS/JavaScript実装・レスポンシブ設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/regional-documentary-thumb.webp" srcset="/assets/works/regional-documentary-thumb-640.webp 640w, /assets/works/regional-documentary-thumb-960.webp 960w, /assets/works/regional-documentary-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">02</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h3 class="work__title"><a href="/works/regional-documentary.html">地域創生チャンネル動画</a></h3>
+    <p class="work__purpose">過疎地域の集落に暮らす夫婦の営みを追ったドキュメンタリー。土地の記憶と人の温度が伝わる構成で制作しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>地域の魅力を伝え、関係人口を増やす</dd>
+      <dt>Role</dt><dd>構成・映像制作</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/koyomi-miso-pc1.webp" srcset="/assets/works/koyomi-miso-pc1-640.webp 640w, /assets/works/koyomi-miso-pc1-960.webp 960w, /assets/works/koyomi-miso-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/koyomi-miso-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">03</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h3 class="work__title"><a href="/works/koyomi-miso.html">暦みそ ―KOYOMI―</a></h3>
+    <p class="work__purpose">薬膳味噌ブランドの公式LINE登録LP。通販的な訴求ではなく、二十四節気にまつわるブランドストーリーで「薬膳のある暮らし」への共感を育てる雑誌的なデザインにしました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>公式LINEへの登録獲得</dd>
+      <dt>Role</dt><dd>アートディレクション・構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work work--wide reveal" data-cats="lp system" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/mirai-ryo-pc1.webp" srcset="/assets/works/mirai-ryo-pc1-640.webp 640w, /assets/works/mirai-ryo-pc1-960.webp 960w, /assets/works/mirai-ryo-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/mirai-ryo-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">04</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
+    <h3 class="work__title"><a href="/works/mirai-ryo.html">ミライ寮</a></h3>
+    <p class="work__purpose">住み込み求人マッチングLP。30秒診断クイズで4タイプに分岐し、タイプに合わせた求人・寮情報を提案します。ライフシミュレーターも実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>住み込み求人への応募獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・診断ロジック設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/sns-short-ad-thumb.webp" srcset="/assets/works/sns-short-ad-thumb-640.webp 640w, /assets/works/sns-short-ad-thumb-960.webp 960w, /assets/works/sns-short-ad-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">05</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h3 class="work__title"><a href="/works/sns-short-ad.html">SNS用広告ショート動画</a></h3>
+    <p class="work__purpose">縦型ショート広告。冒頭の推薦コメントと、テロップ・効果音によるテンポで離脱を防ぎ、購買動機まで惹きつける構成にしました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>通販商材の購入（CV）率向上</dd>
+      <dt>Role</dt><dd>構成・編集</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/futurenest-pc1.webp" srcset="/assets/works/futurenest-pc1-640.webp 640w, /assets/works/futurenest-pc1-960.webp 960w, /assets/works/futurenest-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/futurenest-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">06</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h3 class="work__title"><a href="/works/futurenest.html">FutureNest</a></h3>
+    <p class="work__purpose">写真を使わず、全編イラストで構成したストーリーテリング型LP。不安→出会い→解決→未来と時間帯・配色が変化し、主人公が一歩ずつ前へ進む絵本のような体験を設計しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>無料相談の予約獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・ストーリー設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+    </div>
+    <div class="featured__foot">
+      <div class="legend" aria-label="表記について">
+        <span><span class="tag tag--client">Client Work</span>クライアントワーク</span>
+        <span><span class="tag tag--concept">Concept Work</span>自主制作</span>
+      </div>
+      <a class="btn" href="/works.html">すべての実績を見る（19件）<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    </div>
+  </div>
+</section>
 
-    <p class="projects-group-label r">Video Production</p>
-    <div class="proj-grid">
+<section class="section" id="services" aria-labelledby="servicesTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label label--dot"><span class="label__num">02</span>Services</span>
+      <h2 id="servicesTitle" class="h2 sec-head__title reveal">相談できること。</h2>
+      <p class="sec-head__note lead reveal">新規制作だけでなく、既存サイトの改修や運用の相談も受け付けています。領域をまたぐ相談もそのままどうぞ。</p>
+    </div>
+    <div class="services"><article class="svc reveal">
+      <span class="svc__num">01</span>
+      <h3 class="svc__title"><span class="en">Web Design & Development</span><span class="ja">Webサイト制作</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">目的と情報設計から考え、デザインとコーディングまで一貫して担当します。更新しやすい構造で納品します。</p>
+        <ul class="svc__list" role="list"><li>コーポレートサイト</li><li>サービスサイト</li><li>リニューアル</li><li>レスポンシブ対応</li></ul>
+        
+        
+      </div>
+    </article><article class="svc reveal">
+      <span class="svc__num">02</span>
+      <h3 class="svc__title"><span class="en">Landing Page</span><span class="ja">LP制作</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">誰に、何を、どの順番で伝えるか。構成とCTA設計から入り、HTML / CSS / JavaScript の実装まで行います。</p>
+        <ul class="svc__list" role="list"><li>LP構成</li><li>UIデザイン</li><li>HTML / CSS / JavaScript実装</li><li>CTA設計</li><li>フォーム導線</li></ul>
+        <p class="svc__proof">関連する実績：<a href="/works.html?category=lp">LP制作の実績を見る</a></p>
+        
+      </div>
+    </article><article class="svc reveal">
+      <span class="svc__num">03</span>
+      <h3 class="svc__title"><span class="en">Website Maintenance</span><span class="ja">運用・保守・改修</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">公開後のサイトを、壊さずに直す。既存の構成を確認したうえで、必要な範囲だけを丁寧に改修します。</p>
+        <ul class="svc__list" role="list"><li>WordPress運用・保守</li><li>テキスト・画像更新</li><li>既存ページ改修</li><li>フォーム修正</li><li>スパム対策</li><li>軽微な不具合対応</li></ul>
+        
+        
+      </div>
+    </article><article class="svc reveal">
+      <span class="svc__num">04</span>
+      <h3 class="svc__title"><span class="en">Video & Creative</span><span class="ja">映像・クリエイティブ制作</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">YouTube・SNS広告・採用動画まで。見る人が離脱しない構成と編集で、伝えたいことを最後まで届けます。</p>
+        <ul class="svc__list" role="list"><li>動画企画・構成</li><li>撮影・編集</li><li>広告動画</li><li>SNSクリエイティブ</li></ul>
+        <p class="svc__proof">関連する実績：<a href="/works.html?category=video">映像制作の実績を見る</a></p>
+        
+      </div>
+    </article><article class="svc reveal">
+      <span class="svc__num">05</span>
+      <h3 class="svc__title"><span class="en">AI & Workflow</span><span class="ja">AI活用・機能実装</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">AIを使った制作フローの効率化や、診断・シミュレーターなどWeb上の機能実装に対応します。</p>
+        <ul class="svc__list" role="list"><li>AIを活用した制作効率化</li><li>コンテンツ制作ワークフロー</li><li>診断・シミュレーター実装</li><li>Web関連の機能実装</li></ul>
+        <p class="svc__proof">関連する実績：<a href="/works.html?category=system">機能実装の実績を見る</a></p>
+        
+      </div>
+    </article><article class="svc reveal">
+      <span class="svc__num">06</span>
+      <h3 class="svc__title"><span class="en">Creative Strategy</span><span class="ja">情報設計・改善提案</span></h3>
+      <div class="svc__body">
+        <p class="svc__desc">作る前に「なぜ伝わらないのか」を整理します。構成・コピー・導線を見直し、成果に近づく改善を提案します。</p>
+        <ul class="svc__list" role="list"><li>情報設計</li><li>コンテンツ構成</li><li>コピー改善</li><li>UX改善</li><li>CV導線設計</li></ul>
+        
+        
+      </div>
+    </article></div>
+    <div class="services__note"><p class="caption">内容・規模・スケジュールに応じて、対応範囲とお見積りを個別にご提案します。</p></div>
+  </div>
+</section>
 
-      <div class="proj-card proj-card--video r">
-        <a class="proj-thumb" href="https://youtu.be/ZLlG-Oz4asw" target="_blank" rel="noopener" aria-label="地域創生チャンネル動画をYouTubeで見る">
-          <img class="proj-poster" src="https://i.ytimg.com/vi/ZLlG-Oz4asw/maxresdefault.jpg" alt="地域創生チャンネル動画のワンシーン" loading="lazy">
-          <span class="proj-cat">YouTube · Regional</span>
-          <div class="proj-play">▶</div>
-        </a>
-        <div class="proj-body">
-          <h3>地域創生チャンネル動画</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">地域の魅力を伝え、関係人口を増やす</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">過疎地域の日常を、押しつけがましくなく魅力的に伝える難しさ</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">集落に暮らす夫婦の営みをドキュメンタリー形式で記録し、土地の記憶と人の温度が伝わる構成で制作</span></div>
+<section class="section is-dark" id="approach" data-theme="dark" aria-labelledby="approachTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label label--dot"><span class="label__num">03</span>Approach — CRAFT Method</span>
+      <h2 id="approachTitle" class="h2 sec-head__title reveal">成果から逆算する、<br>5つの工程。</h2>
+    </div>
+    <ol class="craft" role="list">
+      <li class="craft__item reveal"><span class="craft__letter en" aria-hidden="true">C</span><div class="craft__content"><h3 class="craft__word" lang="en">Clarify<span lang="ja">目的を定める</span></h3><p class="craft__desc">誰に、何を、なぜ伝えるのか。「何をもって成果とするか」を最初に決めます。</p></div></li><li class="craft__item reveal"><span class="craft__letter en" aria-hidden="true">R</span><div class="craft__content"><h3 class="craft__word" lang="en">Research<span lang="ja">相手を知る</span></h3><p class="craft__desc">読み手の悩み・心理・行動を調べ、伝わらない理由を見つけます。</p></div></li><li class="craft__item reveal"><span class="craft__letter en" aria-hidden="true">A</span><div class="craft__content"><h3 class="craft__word" lang="en">Architect<span lang="ja">構造を設計する</span></h3><p class="craft__desc">伝える順番・構成・導線を、成果から逆算して組み立てます。</p></div></li><li class="craft__item reveal"><span class="craft__letter en" aria-hidden="true">F</span><div class="craft__content"><h3 class="craft__word" lang="en">Form<span lang="ja">形にする</span></h3><p class="craft__desc">デザイン・映像・実装へ落とし込み、細部まで仕上げて届けます。</p></div></li><li class="craft__item reveal"><span class="craft__letter en" aria-hidden="true">T</span><div class="craft__content"><h3 class="craft__word" lang="en">Test<span lang="ja">確かめて磨く</span></h3><p class="craft__desc">公開後の反応を見て、直すべき箇所を見極め、改善を続けます。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section is-white" id="about" aria-labelledby="aboutTitle">
+  <div class="wrap">
+    <div class="about__grid">
+      <div class="about__lead">
+        <span class="label label--dot"><span class="label__num">04</span>About / Philosophy</span>
+        <h2 id="aboutTitle" class="h2 reveal">ひとりで、<br>最後まで責任を持つ。</h2>
+        <p class="lead reveal">TAKE CRAFT は、個人で運営するクリエイティブスタジオです。ヒアリングから構成、デザイン、実装、公開後の改善まで、同じ人間が一貫して担当します。窓口と制作者が同じだから、意図が途中で薄まりません。</p>
+        <div class="about__portrait reveal">
+          <img src="/images/profile.jpg" width="400" height="400" alt="カメラを構えるTAKE CRAFTの制作者" loading="lazy" decoding="async">
+          <p><strong>TAKE CRAFT</strong>Creative Direction / Web / LP / Video / AI</p>
+        </div>
+      </div>
+      <ul class="principles" role="list">
+        <li class="reveal"><span class="n en">01</span><h3>目的から考える</h3><p>「何を作るか」の前に「何のために作るか」を確認します。</p></li><li class="reveal"><span class="n en">02</span><h3>見た目だけで終わらせない</h3><p>美しさは手段です。読みやすさと行動のしやすさまで設計します。</p></li><li class="reveal"><span class="n en">03</span><h3>実装まで自分で担う</h3><p>デザインとコードを同じ人間が扱うため、意図がずれません。</p></li><li class="reveal"><span class="n en">04</span><h3>公開後の改善まで考える</h3><p>公開はスタート。直しやすい構造で作り、改善を前提にします。</p></li><li class="reveal"><span class="n en">05</span><h3>Webと映像を横断する</h3><p>LPに動画を、動画にLPを。媒体をまたいで最適な伝え方を選びます。</p></li><li class="reveal"><span class="n en">06</span><h3>技術とクリエイティブを組み合わせる</h3><p>AIや機能実装も、伝わる体験のための道具として使います。</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section is-dark" id="contact" data-theme="dark" aria-labelledby="contactTitle">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="contact__intro">
+        <span class="label label--dot"><span class="label__num">05</span>Contact</span>
+        <h2 id="contactTitle" class="contact__title">まずは、<br>相談してみる。</h2>
+        <p class="lead">内容が固まっていなくても大丈夫です。「何から始めればいいか分からない」という段階からご相談ください。</p>
+        <ol class="contact__steps" role="list">
+          <li><b>01</b>フォームから内容を送信</li>
+          <li><b>02</b>内容を確認し、メールでご連絡</li>
+          <li><b>03</b>ヒアリング・ご提案・お見積り</li>
+        </ol>
+        <p class="contact__mail">メールで直接のご連絡：<a href="mailto:i.love.yoziro0705@gmail.com">i.love.yoziro0705@gmail.com</a></p>
+      </div>
+      <div class="contact__form">
+        <form class="form" id="contactForm" novalidate data-endpoint="" data-mailto="i.love.yoziro0705@gmail.com">
+          <fieldset class="field">
+            <legend class="field__label">ご相談の種類 <span class="req">必須</span></legend>
+            <div class="chips" role="group">
+              <label class="chip"><input type="checkbox" name="type" value="LP制作" aria-describedby="err-type"><span>LP制作</span></label><label class="chip"><input type="checkbox" name="type" value="Webサイト制作"><span>Webサイト制作</span></label><label class="chip"><input type="checkbox" name="type" value="サイト改修"><span>サイト改修</span></label><label class="chip"><input type="checkbox" name="type" value="運用・保守"><span>運用・保守</span></label><label class="chip"><input type="checkbox" name="type" value="動画制作"><span>動画制作</span></label><label class="chip"><input type="checkbox" name="type" value="AI / Webシステム"><span>AI / Webシステム</span></label><label class="chip"><input type="checkbox" name="type" value="その他"><span>その他</span></label>
+            </div>
+            <p class="field__hint">複数選択できます。</p>
+            <p class="field__error" id="err-type" role="alert"></p>
+          </fieldset>
+          <div class="field">
+            <label class="field__label" for="f-name">お名前 <span class="req">必須</span></label>
+            <input class="input" id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="err-name">
+            <p class="field__error" id="err-name" role="alert"></p>
           </div>
-          <a href="https://youtu.be/ZLlG-Oz4asw" target="_blank" rel="noopener" class="proj-link">
-            YouTubeで見る
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-card proj-card--video r d1">
-        <a class="proj-thumb" href="https://youtu.be/sDX5KMMNj3U" target="_blank" rel="noopener" aria-label="地域密着型バラエティチャンネル動画をYouTubeで見る">
-          <img class="proj-poster" src="https://i.ytimg.com/vi/sDX5KMMNj3U/maxresdefault.jpg" alt="地域密着型バラエティチャンネル動画のワンシーン" loading="lazy">
-          <span class="proj-cat">YouTube · Variety</span>
-          <div class="proj-play">▶</div>
-        </a>
-        <div class="proj-body">
-          <h3>地域密着型バラエティチャンネル動画</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">チャンネルの企画力・編集力を伝える</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">地域密着型バラエティという、テンポと親しみやすさの両立が求められる編集</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">出演者の掛け合いを活かしたテンポの良いカット編集とテロップ演出で、地域番組らしい親近感を設計</span></div>
+          <div class="field">
+            <label class="field__label" for="f-email">メールアドレス <span class="req">必須</span></label>
+            <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="200" aria-describedby="err-email">
+            <p class="field__error" id="err-email" role="alert"></p>
           </div>
-          <a href="https://youtu.be/sDX5KMMNj3U" target="_blank" rel="noopener" class="proj-link">
-            YouTubeで見る
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-card proj-card--video r d2">
-        <a class="proj-thumb" href="https://youtube.com/shorts/nYlNnb79cpA" target="_blank" rel="noopener" aria-label="SNS用広告ショート動画をYouTubeで見る">
-          <img class="proj-poster" src="https://i.ytimg.com/vi/nYlNnb79cpA/maxresdefault.jpg" alt="SNS用広告ショート動画のワンシーン" loading="lazy">
-          <span class="proj-cat">Shorts · Ad</span>
-          <div class="proj-play">▶</div>
-        </a>
-        <div class="proj-body">
-          <h3>SNS用広告ショート動画</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">通販商材のCV(購入)率向上</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">縦型ショートで、冒頭数秒で離脱されず購買動機まで惹きつける設計</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">推薦コメントを冒頭に配置し、テロップ・効果音でテンポを作る構成で視聴維持率を最適化</span></div>
+          <div class="field">
+            <label class="field__label" for="f-company">会社名・屋号 <span class="opt">任意</span></label>
+            <input class="input" id="f-company" name="company" type="text" autocomplete="organization" maxlength="120">
           </div>
-          <a href="https://youtube.com/shorts/nYlNnb79cpA" target="_blank" rel="noopener" class="proj-link">
-            YouTubeで見る
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-card proj-card--video r d3">
-        <a class="proj-thumb" href="https://youtu.be/GG1ahVI9C0M" target="_blank" rel="noopener" aria-label="企業採用動画をYouTubeで見る">
-          <img class="proj-poster" src="https://i.ytimg.com/vi/GG1ahVI9C0M/maxresdefault.jpg" alt="企業採用動画のワンシーン" loading="lazy">
-          <span class="proj-cat">Corporate · Recruiting</span>
-          <div class="proj-play">▶</div>
-        </a>
-        <div class="proj-body">
-          <h3>企業採用動画</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">採用エントリー数の増加とミスマッチの低減</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">求人票だけでは伝わらない、社風や働く人のリアルな雰囲気</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">社員インタビューと職場風景を織り交ぜ、入社後の働くイメージが湧く構成で制作</span></div>
+          <div class="field">
+            <label class="field__label" for="f-message">ご相談内容 <span class="req">必須</span></label>
+            <textarea class="input" id="f-message" name="message" required maxlength="4000" aria-describedby="hint-message err-message" placeholder="例）既存サイトのお問い合わせフォームを直したい／新サービスのLPを作りたい　など"></textarea>
+            <p class="field__hint" id="hint-message">背景・ご希望の時期・ご予算感など、分かる範囲でご記入ください。</p>
+            <p class="field__error" id="err-message" role="alert"></p>
           </div>
-          <a href="https://youtu.be/GG1ahVI9C0M" target="_blank" rel="noopener" class="proj-link">
-            YouTubeで見る
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="projects-more r">
-      <a href="./video-works.html" class="btn-outline">全ての動画実績を見る（全4本） &rarr;</a>
-    </div>
-
-    <p class="projects-group-label r">Landing Page</p>
-    <div class="proj-grid">
-
-      <div class="proj-card proj-card--lp r">
-        <div class="proj-thumb">
-          <img class="proj-poster" src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" loading="lazy">
-          <span class="proj-cat">Beauty Salon</span>
-        </div>
-        <div class="proj-body">
-          <h3>Hair Salon LUMIA</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">新規予約数の増加</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">完全予約制サロンの「安心感」をどう可視化するか</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">白×ベージュ×ゴールドのミニマルデザインとLINE24時間予約導線を実装</span></div>
+          <div class="hp" aria-hidden="true"><label>ウェブサイト<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="field">
+            <label class="check"><input type="checkbox" name="agree" id="f-agree" aria-describedby="err-agree"><span><a href="/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span></label>
+            <p class="field__error" id="err-agree" role="alert"></p>
           </div>
-          <a href="./lumia-lp/" target="_blank" rel="noopener" class="proj-link">
-            View Project
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-card proj-card--lp r d1">
-        <div class="proj-thumb">
-          <img class="proj-poster" src="./thumbnails/ai-school-lp.png" alt="AIvoyance" loading="lazy">
-          <span class="proj-cat">Education · AI</span>
-        </div>
-        <div class="proj-body">
-          <h3><span style="color:var(--accent);letter-spacing:.07em;">AI</span>voyance</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">オンライン講座の申込獲得</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">オンラインスクールへの信頼構築</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">5STEPカリキュラム・料金比較・受講生の声で高訴求設計</span></div>
+          <div class="form__submit">
+            <button class="btn" type="submit">内容を確認して送信する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></button>
+            <p class="form__note">送信ボタンを押すと、入力内容が記入された状態でお使いのメールアプリが開きます。メールアプリから送信して完了です。</p>
           </div>
-          <a href="./ai-school-lp/" target="_blank" rel="noopener" class="proj-link">
-            View Project
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-card proj-card--lp r d2">
-        <div class="proj-thumb">
-          <img class="proj-poster" src="./thumbnails/finance-lp.png" alt="FutureNest" loading="lazy">
-          <span class="proj-cat">Finance · Storybook</span>
-        </div>
-        <div class="proj-body">
-          <h3>FutureNest</h3>
-          <div class="proj-rows">
-            <div class="proj-row"><span class="proj-lbl">Goal</span><span class="proj-val">無料相談の予約獲得</span></div>
-            <div class="proj-row"><span class="proj-lbl">Challenge</span><span class="proj-val">「金融LP」の堅さを消し、主人公が未来へ歩く物語として体験させる</span></div>
-            <div class="proj-row"><span class="proj-lbl">Solution</span><span class="proj-val">写真を使わずイラストのみで構成。不安→出会い→解決→未来と時間帯・色が変化するストーリーテリング設計</span></div>
-          </div>
-          <a href="./finance-lp/" target="_blank" rel="noopener" class="proj-link">
-            View Project
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="projects-more r">
-      <a href="./works.html" class="btn-outline">全制作実績を見る（全15作品） &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- BEHIND THE CRAFT -->
-<section id="behind" class="section">
-  <div class="container">
-    <span class="label r">Behind the Craft</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">制作の裏側。</h2>
-    <div class="behind-grid">
-      <div class="behind-item r"><img src="assets/photo/behind-camera-rig.jpg" alt="カメラリグを調整するスタッフ" loading="lazy"><span class="behind-cap">撮影現場</span></div>
-      <div class="behind-item r d1"><img src="assets/photo/method-research-notes.jpg" alt="リサーチノート" loading="lazy"><span class="behind-cap">リサーチ</span></div>
-      <div class="behind-item r d2"><img src="assets/video/hero-2-poster.jpg" alt="編集画面のディテール" loading="lazy"><span class="behind-cap">編集</span></div>
-      <div class="behind-item r"><img src="assets/photo/behind-studio-empty.jpg" alt="無人の撮影スタジオ" loading="lazy"><span class="behind-cap">スタジオ</span></div>
-      <div class="behind-item r d1"><img src="assets/photo/behind-craft-detail.jpg" alt="細部にこだわる手作業" loading="lazy"><span class="behind-cap">こだわり</span></div>
-      <div class="behind-item r d2"><img src="assets/video/hero-3-poster.jpg" alt="コーディング画面" loading="lazy"><span class="behind-cap">開発</span></div>
-      <div class="behind-item r"><img src="assets/photo/contact-desk-pen.jpg" alt="デスクでのメモ書き" loading="lazy"><span class="behind-cap">企画メモ</span></div>
-      <div class="behind-item r d1"><img src="assets/photo/manifesto-main.jpg" alt="デザイナーのスケッチ" loading="lazy"><span class="behind-cap">スケッチ</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PHILOSOPHY -->
-<section id="philosophy" class="section section-alt">
-  <div class="container">
-    <span class="label r">Philosophy</span>
-    <h2 class="r" style="font-family:var(--dm);font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-bottom:0;color:var(--text);">大切にしている、<br>4つの価値観。</h2>
-    <div class="phil-grid">
-      <div class="phil-card r">
-        <img src="assets/photo/phil-purpose.jpg" alt="的の中心を射抜いた矢" loading="lazy">
-        <div class="phil-overlay"></div>
-        <div class="phil-content">
-          <div class="phil-num">01</div>
-          <span class="phil-en">Purpose</span>
-          <h4>目的から考える</h4>
-          <p>手段ではなく目的から。何のために作るのかを、常に問い直します。</p>
-        </div>
-      </div>
-      <div class="phil-card r d1">
-        <img src="assets/photo/phil-craft-hands.jpg" alt="精密な手仕事をする職人" loading="lazy">
-        <div class="phil-overlay"></div>
-        <div class="phil-content">
-          <div class="phil-num">02</div>
-          <span class="phil-en">Craft</span>
-          <h4>細部まで磨く</h4>
-          <p>余白・整列・言葉の一つひとつまで、丁寧に仕上げます。</p>
-        </div>
-      </div>
-      <div class="phil-card r d2">
-        <img src="assets/photo/method-test-analytics.jpg" alt="データを分析する様子" loading="lazy">
-        <div class="phil-overlay"></div>
-        <div class="phil-content">
-          <div class="phil-num">03</div>
-          <span class="phil-en">Results</span>
-          <h4>成果まで責任を持つ</h4>
-          <p>納品して終わりではなく、成果が出るまで伴走します。</p>
-        </div>
-      </div>
-      <div class="phil-card r d3">
-        <img src="assets/photo/phil-growth-staircase.jpg" alt="光に向かって続く階段" loading="lazy">
-        <div class="phil-overlay"></div>
-        <div class="phil-content">
-          <div class="phil-num">04</div>
-          <span class="phil-en">Growth</span>
-          <h4>改善し続ける</h4>
-          <p>公開はゴールではなくスタート。検証と改善を続けます。</p>
-        </div>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
       </div>
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-media" aria-hidden="true">
-    <img src="assets/photo/contact-desk-pen.jpg" alt="">
+</main>
+<footer class="site-footer is-dark" data-theme="dark">
+  <div class="wrap">
+    <div class="footer__sign">
+      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
+      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    </div>
+    <div class="footer__grid">
+      <nav class="footer__nav" aria-label="フッターナビゲーション"><ul>
+        <li><a href="/">Home</a></li><li><a href="/works.html">Works 制作実績</a></li><li><a href="/video-works.html">Video Works 映像実績</a></li>
+        <li><a href="/#services">Services サービス</a></li><li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul></nav>
+      <p class="footer__copy">&copy; 2026 TAKE CRAFT. All rights reserved.</p>
+    </div>
   </div>
-  <div class="container contact-wrap">
-    <span class="label r">Contact</span>
-    <h2 class="r">Let's Build Something<br>Worth Remembering.</h2>
-    <p class="c-sub r">動画制作、LP制作、Web制作、AI活用まで。<br>伝えたい価値を、成果につながる形へ設計します。</p>
-    <a class="c-email-link r" href="mailto:i.love.yoziro0705@gmail.com">i.love.yoziro0705@gmail.com</a>
-    <form class="cform r" onsubmit="return false;">
-      <div class="ff">
-        <label>お名前 / 会社名</label>
-        <input type="text" placeholder="山田 太郎 / 株式会社〇〇">
-      </div>
-      <div class="ff">
-        <label>メールアドレス</label>
-        <input type="email" placeholder="hello@example.com">
-      </div>
-      <div class="ff">
-        <label>ご依頼の種類</label>
-        <select>
-          <option value="">選択してください</option>
-          <option>Creative Strategy（企画・戦略設計）</option>
-          <option>Video Production（映像制作）</option>
-          <option>Landing Page（LP制作）</option>
-          <option>Website（Webサイト制作）</option>
-          <option>AI Workflow（AI活用）</option>
-          <option>System Design（システム設計）</option>
-          <option>その他・複数ご相談</option>
-        </select>
-      </div>
-      <div class="ff">
-        <label>ご相談内容</label>
-        <textarea placeholder="伝えたい価値、ご依頼の背景、ご希望のスケジュール・予算感などをご記入ください。まだ決まっていなくても大丈夫です。"></textarea>
-      </div>
-      <div class="c-submit">
-        <button type="submit" class="btn-primary">Start Project</button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<!-- BRAND SIGNOFF -->
-<section class="brand-signoff">
-  <img src="images/logo-full.png" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results.">
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="f-logo"><img src="images/logo-wordmark.png" alt="TAKE CRAFT" class="logo-img" style="height:16px;"></div>
-  <nav class="f-links">
-    <a href="#manifesto">BRAND</a>
-    <a href="#service">SERVICE</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
-  <div class="f-copy">© 2026 TAKE CRAFT. All rights reserved. · Hero animation "Circle Orbiting" by <a href="https://rive.app/@Emsmami/" target="_blank" rel="noopener">Emsmami</a> (Rive Community, CC BY)</div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
-<script>
-(function () {
-  var hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- Lenis smooth scroll ---------- */
-  var lenis = null;
-  if (!reduceMotion && window.Lenis) {
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    if (window.gsap && window.ScrollTrigger) {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
-  }
-
-  /* ---------- Header scroll state ---------- */
-  var header = document.getElementById('siteHeader');
-  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 30); }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* ---------- Mobile drawer ---------- */
-  var menuBtn = document.getElementById('menuBtn');
-  var mobileNav = document.getElementById('mobileNav');
-  menuBtn.addEventListener('click', function () {
-    menuBtn.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-  });
-  mobileNav.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      menuBtn.classList.remove('open');
-      mobileNav.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-
-  /* ---------- Custom cursor ---------- */
-  if (hasFinePointer) {
-    var dot = document.getElementById('cursor-dot');
-    var ring = document.getElementById('cursor-ring');
-    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    var rx = mx, ry = my;
-    window.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
-    (function loop() {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
-      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(loop);
-    })();
-    var hoverTargets = 'a, button, .btn-primary, .btn-outline, .svc-card, .proj-card, .phil-card, .behind-item, input, textarea, select';
-    document.addEventListener('mouseover', function (e) {
-      if (e.target.closest(hoverTargets)) ring.classList.add('is-active');
-    });
-    document.addEventListener('mouseout', function (e) {
-      if (e.target.closest(hoverTargets)) ring.classList.remove('is-active');
-    });
-  } else {
-    document.body.style.cursor = 'auto';
-  }
-
-  /* ---------- Rive hero accent (Circle Orbiting by Emsmami, CC BY) ---------- */
-  var riveCanvas = document.getElementById('riveOrbit');
-  if (riveCanvas && window.rive) {
-    new rive.Rive({
-      src: 'assets/rive/circle-orbiting.riv',
-      canvas: riveCanvas,
-      autoplay: true,
-      layout: new rive.Layout({ fit: rive.Fit.Contain }),
-    });
-  }
-
-  /* ---------- Hero video rotation ---------- */
-  var heroVideos = document.querySelectorAll('.hero-video');
-  if (heroVideos.length > 1) {
-    var heroIdx = 0;
-    setInterval(function () {
-      heroVideos[heroIdx].classList.remove('is-active');
-      heroIdx = (heroIdx + 1) % heroVideos.length;
-      heroVideos[heroIdx].classList.add('is-active');
-    }, 7000);
-  }
-
-  /* ---------- Project hover video preview ---------- */
-  document.querySelectorAll('.proj-card--video').forEach(function (card) {
-    var video = card.querySelector('.proj-preview-video');
-    if (!video) return;
-    var loaded = false;
-    card.addEventListener('mouseenter', function () {
-      if (!loaded) { video.src = card.getAttribute('data-video'); loaded = true; }
-      card.classList.add('is-playing');
-      video.currentTime = 0;
-      video.play().catch(function () {});
-    });
-    card.addEventListener('mouseleave', function () {
-      card.classList.remove('is-playing');
-      video.pause();
-    });
-  });
-
-  /* ---------- GSAP scroll reveals ---------- */
-  if (window.gsap && window.ScrollTrigger && !reduceMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.utils.toArray('.r').forEach(function (el) {
-      gsap.fromTo(el, { opacity: 0, y: 32 }, {
-        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' }
-      });
-    });
-
-    /* Method rows: stagger reveal one at a time */
-    gsap.utils.toArray('.method-row').forEach(function (row, i) {
-      gsap.fromTo(row, { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: row, start: 'top 85%' }
-      });
-    });
-
-    /* Subtle parallax on manifesto photo */
-    gsap.to('.manifesto-photo img', {
-      yPercent: 8, ease: 'none',
-      scrollTrigger: { trigger: '#manifesto', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-  } else {
-    document.querySelectorAll('.r').forEach(function (el) { el.classList.add('gsap-ready'); });
-  }
-})();
-</script>
 </body>
 </html>

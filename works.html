@@ -1,427 +1,369 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TAKE CRAFTの制作実績一覧。LP制作からWebシステム構築まで、全作品を掲載しています。">
-  <title>制作実績一覧 | TAKE CRAFT</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg:     '#1E1E1E',
-            surf:   '#252525',
-            card:   '#252525',
-            accent: '#2563EB',
-            alt:    '#60a5fa',
-            adk:    '#1d4ed8',
-          },
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-
-    .rev { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
-    .rev.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-
-    .ch { transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
-    .ch:hover { transform: translateY(-4px); border-color: rgba(37,99,235,.4) !important; box-shadow: 0 12px 48px rgba(37,99,235,.10); }
-
-    .tov { background: linear-gradient(to top, rgba(8,8,8,.85) 0%, rgba(8,8,8,.1) 60%, transparent 100%); }
-
-    .badge-fn  { background: rgba(37,99,235,.85); color: #fff; }
-    .badge-sim { background: rgba(16,185,129,.85); color: #fff; }
-
-    .slbl { font-size: 10.5px; font-weight: 700; letter-spacing: .45em; text-transform: uppercase; color: rgba(37,99,235,.85); }
-
-    .thumb-img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-
-    #nav { transition: background .3s, backdrop-filter .3s, border-color .3s; }
-    .nav-a { font-size: 13px; color: rgba(240,240,240,.5); transition: color .2s; }
-    .nav-a:hover { color: #fff; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>制作実績一覧 | TAKE CRAFT</title>
+<meta name="description" content="LP制作・映像制作・機能実装まで、TAKE CRAFTの制作実績をカテゴリー別に掲載しています。各実績の背景・狙い・工夫は詳細ページでご覧いただけます。">
+<link rel="canonical" href="https://take-design-portfolio.vercel.app/works.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAKE CRAFT">
+<meta property="og:title" content="制作実績一覧 | TAKE CRAFT">
+<meta property="og:description" content="LP制作・映像制作・機能実装まで、TAKE CRAFTの制作実績をカテゴリー別に掲載しています。各実績の背景・狙い・工夫は詳細ページでご覧いただけます。">
+<meta property="og:url" content="https://take-design-portfolio.vercel.app/works.html">
+<meta property="og:image" content="https://take-design-portfolio.vercel.app/assets/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F4F0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/og/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/site.css?v=20261027">
+<script>document.documentElement.classList.add('js')</script>
+<script src="/assets/js/site.js?v=20261027" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://take-design-portfolio.vercel.app/"},{"@type":"ListItem","position":2,"name":"制作実績","item":"https://take-design-portfolio.vercel.app/works.html"}]}</script>
 </head>
-<body class="bg-bg text-white">
-
-<!-- ═══════════════════════════════════
-     HEADER
-═══════════════════════════════════ -->
-<header id="nav" class="fixed top-0 left-0 right-0 z-50" style="border-bottom:1px solid transparent;">
-  <div class="max-w-6xl mx-auto px-6 sm:px-10 flex items-center justify-between" style="height:64px;">
-    <a href="./index.html" class="flex items-center gap-2.5 select-none">
-      <img src="./images/logo-wordmark.png" alt="TAKE CRAFT" style="height:18px;width:auto;display:block;">
-    </a>
-    <a href="./index.html" class="inline-flex items-center gap-1.5 nav-a">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-      トップへ戻る
-    </a>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="TAKE CRAFT ホーム"><span class="wordmark__sq" aria-hidden="true"></span>TAKE CRAFT</a>
+    <nav class="gnav" aria-label="グローバルナビゲーション"><ul><li><a href="/#works" data-nav="works" aria-current="page">Works<small>実績</small></a></li><li><a href="/#services" data-nav="services">Services<small>サービス</small></a></li><li><a href="/#approach" data-nav="approach">Approach<small>進め方</small></a></li><li><a href="/#about" data-nav="about">About<small>スタジオについて</small></a></li></ul></nav>
+    <a class="btn header-cta" href="/#contact">相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="drawer">Menu<span class="menu-toggle__bars" aria-hidden="true"></span></button>
   </div>
 </header>
-
-
-<!-- ═══════════════════════════════════
-     HERO
-═══════════════════════════════════ -->
-<section style="background:#1E1E1E;padding:120px 0 72px;">
-  <div class="max-w-6xl mx-auto px-6 sm:px-10">
-    <div class="rev in">
-      <p class="slbl mb-3">Works</p>
-      <h1 class="font-black text-white mb-3" style="font-size:clamp(1.8rem,4vw,2.8rem);">制作実績一覧</h1>
-      <p class="text-[13.5px]" style="color:rgba(240,240,240,.42);">LP制作からWebシステム構築まで、全<span class="text-white font-bold">15</span>作品を掲載しています。</p>
-    </div>
+<div class="drawer" id="drawer" aria-label="メニュー" hidden>
+  <nav aria-label="モバイルナビゲーション"><ul><li><a href="/#works">Works<span>実績</span></a></li><li><a href="/#services">Services<span>サービス</span></a></li><li><a href="/#approach">Approach<span>進め方</span></a></li><li><a href="/#about">About<span>スタジオについて</span></a></li><li><a href="/#contact">Contact<span>お問い合わせ</span></a></li></ul></nav>
+  <div style="display:grid;gap:1rem">
+    <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <p class="drawer__meta">Web / LP / Video / Creative / AI</p>
   </div>
-</section>
-
-
-<!-- ═══════════════════════════════════
-     ALL WORKS GRID
-═══════════════════════════════════ -->
-<section style="background:#1E1E1E;padding:0 0 104px;">
-  <div class="max-w-6xl mx-auto px-6 sm:px-10">
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <!-- 01 Hair Salon LUMIA -->
-      <div class="rev ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/lumia-lp.jpg" alt="Hair Salon LUMIA" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
+</div>
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="/">Home</a></li><li aria-current="page">制作実績</li></ol></nav>
+      <div class="page-hero__grid">
+        <div class="page-hero__title"><span class="label label--dot">Works</span><h1 class="h1" style="margin-top:1rem">制作実績</h1></div>
+        <div class="page-hero__note">
+          <p class="body-2">LP制作・映像制作・機能実装まで、TAKE CRAFTの制作実績をカテゴリー別に掲載しています。各実績の背景・狙い・工夫は詳細ページでご覧いただけます。</p>
+          <div class="legend" style="margin-top:1.25rem">
+            <span><span class="tag tag--client">Client Work</span>クライアントワーク</span>
+            <span><span class="tag tag--concept">Concept Work</span>自主制作</span>
           </div>
         </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Hair Salon · 渋谷区</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">Hair Salon LUMIA</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">髪質改善特化の完全予約制サロンLP。白×ベージュ×ゴールドのAppleミニマルデザイン。固定CTAバー・スクロールアニメ・FAQアコーディオン・LINE24時間予約導線を実装。</p>
-          <a href="./lumia-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
       </div>
-
-      <!-- 02 さくら整骨院 -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/sakura-lp.png" alt="さくら整骨院" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-            <span class="badge-sim text-[10px] font-black px-2.5 py-1 rounded-full">シミュレーター</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Clinic · 大阪市北区</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">さくら整骨院</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">整骨院LP＋料金シミュレーター実装。保険種別・通院頻度でリアルタイム計算。FAQアコーディオン付き。</p>
-          <a href="https://sakura-seikotsuin-b3au.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 03 TRATTORIA LUCENTE -->
-      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/trattoria-lp.png" alt="TRATTORIA LUCENTE" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Restaurant · 東京・恵比寿</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">TRATTORIA LUCENTE</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">完全予約制28席の薪火イタリアンLP。黒×ゴールドのダークラグジュアリーデザイン。松竹梅コース設計・WEB予約導線を実装。</p>
-          <a href="https://trattoria-lucente.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 04 レストランオープンLP -->
-      <div class="rev ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/restaurant-lp.png" alt="レストランオープンLP" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Restaurant · 新規オープン</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">レストランオープンLP</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">旬の食材と洗練された空間を演出するダイニングのオープンLP。ヒーロー・コンセプト・メニュー・ギャラリー・WEB予約CTAをダークゴールドデザインで構成。</p>
-          <a href="./restaurant-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 05 Luminos Skin -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/beauty-salon-lp.png" alt="Luminos Skin" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Facial Salon · 渋谷</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">Luminos Skin</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">プライベートフェイシャルサロンのLP。完全個室・女性スタッフのみ・勧誘なしを訴求。ピンク×ベージュのラグジュアリーデザインで初回5,980円オファーまで一貫設計。</p>
-          <a href="./beauty-salon-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 06 AIvoyance -->
-      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/ai-school-lp.png" alt="AIvoyance" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Education · AIスクール</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5"><span style="color:#60a5fa;letter-spacing:.07em;">AI</span>voyance</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">AIスキルを身につけるオンラインスクールのLP。ネイビー×ブルーのテックデザインで、5STEPカリキュラム・料金比較・受講生の声まで網羅した高訴求構成。</p>
-          <a href="./ai-school-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 07 FutureNest -->
-      <div class="rev ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/finance-lp.png" alt="FutureNest" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Finance · 資産相談サービス</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">FutureNest</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">写真を使わず、全編オリジナルイラストで構成したストーリーテリング型LP。不安→出会い→解決→未来と時間帯・配色が変化し、主人公が一歩ずつ前へ進む絵本のような体験を設計。</p>
-          <a href="./finance-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 08 企業向けe-Learningサービス LP -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/elearning-lp.png" alt="企業向けe-Learningサービス LP" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">e-Learning · SaaS · 人材育成</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">企業向けe-Learningサービス LP</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">社員研修・DX教育・リスキリングを支援するSaaS型e-LearningプラットフォームのLP。ダッシュボードUIビジュアルやBefore/After比較など、信頼感と先進性を両立したデザイン。</p>
-          <a href="./elearning-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 09 保育士のミカタ -->
-      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/hoikushi-mikata-lp.png" alt="保育士のミカタ" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Review Service · 保育士向け</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">保育士のミカタ</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">保育士向け口コミ・ランキング・比較サービスのLP。ピンク基調の女性向けやさしいデザインで、口コミ閲覧・ランキング・比較の3機能を自然に訴求。</p>
-          <a href="./hoikushi-mikata-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 10 ミライ寮 -->
-      <div class="rev ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/mirai-ryo-lp.png" alt="ミライ寮" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-            <span class="badge-sim text-[10px] font-black px-2.5 py-1 rounded-full">診断クイズ</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Job · Housing · 住み込み求人</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">ミライ寮</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">住み込み求人マッチングLP。30秒診断クイズで4タイプに分岐し、パーソナライズされた求人・寮情報を提案。ライフシミュレーター・タイプ別LP構成。</p>
-          <a href="https://take-design-portfolio-ja17.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 12 RAPAS 採用LP -->
-      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/rapas-lp.png" alt="RAPAS採用LP" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Recruitment · 採用LP</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">株式会社RAPAS 採用LP</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">在宅ワーク募集の採用LP。主婦・副業・シニア向けのソフトブルー×コーラルデザイン。全国5,000名以上の実績訴求・プライバシーマーク表示・4STEPフロー・FAQアコーディオン実装。</p>
-          <a href="./rapas-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 11 Business Design Academy -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/business-design-academy-lp.png" alt="Business Design Academy" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Business School · 起業支援</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">Business Design Academy</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">受講料80万円の起業スクールLP。黒×ゴールドのMBAスクール風高級デザイン。事業設計から販売導線まで10セクション構成、FAQアコーディオン・固定CTA実装。</p>
-          <a href="./business-design-academy-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 13 ソラ歯科クリニック -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/dental-clinic-lp.png" alt="ソラ歯科クリニック" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Dental Clinic · 武蔵小杉</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">ソラ歯科クリニック</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">家族みんなが安心して通える歯科医院の集客LP。白×ブルーのApple的ミニマルデザインで、WEB予約率最大化を狙った11セクション構成。電話・WEB・LINEの3チャネルCTA実装。</p>
-          <a href="./dental-clinic-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 14 暦みそ ―KOYOMI― -->
-      <div class="rev d2 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/koyomi-miso-lp.jpg" alt="暦みそ ―KOYOMI―" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Food Brand · 薬膳味噌</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">暦みそ ―KOYOMI―</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">薬膳味噌ブランドの公式LINE登録LP。通販的な訴求ではなく、二十四節気にまつわるブランドストーリーで「薬膳のある暮らし」への共感を育てる雑誌的デザイン。Art Direction Board〜デザインカンプまでの4フェーズ制作プロセスを経て実装。</p>
-          <a href="./koyomi-miso-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- 15 AI営業DXリスキリング研修 -->
-      <div class="rev d1 ch rounded-2xl overflow-hidden" style="background:#252525;border:1px solid rgba(255,255,255,.06);">
-        <div class="relative overflow-hidden" style="aspect-ratio:16/9;">
-          <img src="./thumbnails/ai-sales-dx-lp.jpg" alt="AI営業DXリスキリング研修" class="thumb-img">
-          <div class="tov absolute inset-0"></div>
-          <div class="absolute top-3 left-3 flex gap-1.5">
-            <span class="badge-fn text-[10px] font-black px-2.5 py-1 rounded-full">機能付き</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <p class="text-[10px] font-bold tracking-[.3em] uppercase mb-1.5" style="color:rgba(37,99,235,.75);">Reskilling Program · 法人研修</p>
-          <h3 class="font-bold text-white text-[15px] mb-1.5">AI営業DXリスキリング研修</h3>
-          <p class="text-[12.5px] mb-4 leading-relaxed" style="color:rgba(240,240,240,.42);">元リクルートトップセールスの知見をAIで資産化する法人研修LP。完成デザイン画像を1px単位で再現し、研修内容をタブ切替式のカードUIで整理。スクロール連動アニメーション・CTAの発光演出に加え、320px幅の小型スマホでも崩れないレスポンシブ対応まで実装。ネイビー×ゴールドの信頼感あるトーンを踏襲。</p>
-          <a href="./ai-sales-dx-lp/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-[12px] font-bold hover:text-white transition-colors" style="color:#60a5fa;">
-            サイトを見る
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-      </div>
-
     </div>
-
-    <!-- Back to top -->
-    <div class="text-center mt-16">
-      <a href="./index.html" class="inline-flex items-center gap-2 font-bold text-[13px] px-7 py-3.5 rounded-xl transition-all hover:border-accent hover:text-white" style="border:1px solid rgba(255,255,255,.1);color:rgba(240,240,240,.5);">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        トップページへ戻る
-      </a>
-    </div>
-
+  </section>
+  <div class="filter" role="region" aria-label="カテゴリーで絞り込み">
+  <div class="wrap filter__inner">
+    <span class="filter__label" id="filterLabel">Filter</span>
+    <ul class="filter__list" role="list" aria-labelledby="filterLabel">
+      <li><button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All<sup>19</sup></button></li>
+      <li><button class="filter__btn" type="button" data-filter="lp" aria-pressed="false">Landing Page<sup>15</sup></button></li><li><button class="filter__btn" type="button" data-filter="video" aria-pressed="false">Video<sup>4</sup></button></li><li><button class="filter__btn" type="button" data-filter="system" aria-pressed="false">AI / System<sup>2</sup></button></li>
+    </ul>
+    <p class="filter__count" id="filterCount" aria-live="polite">19件を表示</p>
   </div>
-</section>
-
-
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
-<footer style="background:#181818;border-top:1px solid rgba(255,255,255,.05);padding:28px 0;">
-  <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <div class="flex items-center gap-2.5">
-      <img src="./images/logo-wordmark.png" alt="TAKE CRAFT" style="height:14px;width:auto;display:block;opacity:.85;">
-      <span class="text-[13px] font-bold" style="color:rgba(240,240,240,.4);">— Creative Strategy Studio</span>
+</div>
+  <div class="wrap">
+    <div class="works-list" id="worksList" data-default="all">
+      <article class="work" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/regional-documentary-thumb.webp" srcset="/assets/works/regional-documentary-thumb-640.webp 640w, /assets/works/regional-documentary-thumb-960.webp 960w, /assets/works/regional-documentary-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">01</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h2 class="work__title"><a href="/works/regional-documentary.html">地域創生チャンネル動画</a></h2>
+    <p class="work__purpose">過疎地域の集落に暮らす夫婦の営みを追ったドキュメンタリー。土地の記憶と人の温度が伝わる構成で制作しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>地域の魅力を伝え、関係人口を増やす</dd>
+      <dt>Role</dt><dd>構成・映像制作</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/regional-variety-thumb.webp" srcset="/assets/works/regional-variety-thumb-640.webp 640w, /assets/works/regional-variety-thumb-960.webp 960w, /assets/works/regional-variety-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">02</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h2 class="work__title"><a href="/works/regional-variety.html">地域密着型バラエティチャンネル動画</a></h2>
+    <p class="work__purpose">出演者の掛け合いを活かしたテンポの良いカット編集とテロップ演出で、地域番組らしい親近感を設計しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>チャンネルの企画力・編集力を伝える</dd>
+      <dt>Role</dt><dd>編集・テロップ演出</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/sns-short-ad-thumb.webp" srcset="/assets/works/sns-short-ad-thumb-640.webp 640w, /assets/works/sns-short-ad-thumb-960.webp 960w, /assets/works/sns-short-ad-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">03</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h2 class="work__title"><a href="/works/sns-short-ad.html">SNS用広告ショート動画</a></h2>
+    <p class="work__purpose">縦型ショート広告。冒頭の推薦コメントと、テロップ・効果音によるテンポで離脱を防ぎ、購買動機まで惹きつける構成にしました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>通販商材の購入（CV）率向上</dd>
+      <dt>Role</dt><dd>構成・編集</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="video" data-type="client">
+    <span class="work__media" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/corporate-recruiting-thumb.webp" srcset="/assets/works/corporate-recruiting-thumb-640.webp 640w, /assets/works/corporate-recruiting-thumb-960.webp 960w, /assets/works/corporate-recruiting-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
+      <span class="work__play"><i>&#9654;</i>Video</span></span>
+    <div class="work__head"><span class="work__index">04</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <h2 class="work__title"><a href="/works/corporate-recruiting.html">企業採用動画</a></h2>
+    <p class="work__purpose">社員インタビューと職場風景を織り交ぜ、求人票だけでは伝わらない社風や働く人の雰囲気を伝える構成で制作しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>採用エントリー数の増加とミスマッチの低減</dd>
+      <dt>Role</dt><dd>構成・映像制作</dd>
+      
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/ai-sales-dx-pc1.webp" srcset="/assets/works/ai-sales-dx-pc1-640.webp 640w, /assets/works/ai-sales-dx-pc1-960.webp 960w, /assets/works/ai-sales-dx-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/ai-sales-dx-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">05</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/ai-sales-dx.html">AI営業DXリスキリング研修</a></h2>
+    <p class="work__purpose">トップセールスの知見をAIで資産化する法人研修LP。完成デザイン画像を忠実に再現し、研修内容をタブ切替式のカードUIで整理しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>法人向け研修の問い合わせ獲得</dd>
+      <dt>Role</dt><dd>デザインカンプからのHTML/CSS/JavaScript実装・レスポンシブ設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/koyomi-miso-pc1.webp" srcset="/assets/works/koyomi-miso-pc1-640.webp 640w, /assets/works/koyomi-miso-pc1-960.webp 960w, /assets/works/koyomi-miso-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/koyomi-miso-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">06</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/koyomi-miso.html">暦みそ ―KOYOMI―</a></h2>
+    <p class="work__purpose">薬膳味噌ブランドの公式LINE登録LP。通販的な訴求ではなく、二十四節気にまつわるブランドストーリーで「薬膳のある暮らし」への共感を育てる雑誌的なデザインにしました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>公式LINEへの登録獲得</dd>
+      <dt>Role</dt><dd>アートディレクション・構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp system" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/mirai-ryo-pc1.webp" srcset="/assets/works/mirai-ryo-pc1-640.webp 640w, /assets/works/mirai-ryo-pc1-960.webp 960w, /assets/works/mirai-ryo-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/mirai-ryo-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">07</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
+    <h2 class="work__title"><a href="/works/mirai-ryo.html">ミライ寮</a></h2>
+    <p class="work__purpose">住み込み求人マッチングLP。30秒診断クイズで4タイプに分岐し、タイプに合わせた求人・寮情報を提案します。ライフシミュレーターも実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>住み込み求人への応募獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・診断ロジック設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/futurenest-pc1.webp" srcset="/assets/works/futurenest-pc1-640.webp 640w, /assets/works/futurenest-pc1-960.webp 960w, /assets/works/futurenest-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/futurenest-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">08</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/futurenest.html">FutureNest</a></h2>
+    <p class="work__purpose">写真を使わず、全編イラストで構成したストーリーテリング型LP。不安→出会い→解決→未来と時間帯・配色が変化し、主人公が一歩ずつ前へ進む絵本のような体験を設計しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>無料相談の予約獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・ストーリー設計</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp system" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/sakura-pc1.webp" srcset="/assets/works/sakura-pc1-640.webp 640w, /assets/works/sakura-pc1-960.webp 960w, /assets/works/sakura-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/sakura-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">09</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
+    <h2 class="work__title"><a href="/works/sakura-seikotsuin.html">さくら整骨院</a></h2>
+    <p class="work__purpose">交通事故・むちうちに対応する整骨院のLP。保険種別と通院頻度からリアルタイムに計算する料金シミュレーターを実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>交通事故後の来院・予約の獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・料金シミュレーター実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/lumia-pc1.webp" srcset="/assets/works/lumia-pc1-640.webp 640w, /assets/works/lumia-pc1-960.webp 960w, /assets/works/lumia-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/lumia-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">10</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/lumia.html">Hair Salon LUMIA</a></h2>
+    <p class="work__purpose">髪質改善に特化した完全予約制サロンのLP。白×ベージュ×ゴールドのミニマルなデザインで、LINE24時間予約への導線を設計しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>新規予約数の増加</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/aivoyance-pc1.webp" srcset="/assets/works/aivoyance-pc1-640.webp 640w, /assets/works/aivoyance-pc1-960.webp 960w, /assets/works/aivoyance-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/aivoyance-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">11</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/aivoyance.html">AIvoyance</a></h2>
+    <p class="work__purpose">AIスキルを身につけるオンラインスクールのLP。ネイビー×ブルーのテックデザインで、カリキュラム・料金比較・受講生の声まで網羅した構成です。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>オンライン講座の申込獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/trattoria-pc1.webp" srcset="/assets/works/trattoria-pc1-640.webp 640w, /assets/works/trattoria-pc1-960.webp 960w, /assets/works/trattoria-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/trattoria-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">12</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/trattoria-lucente.html">TRATTORIA LUCENTE</a></h2>
+    <p class="work__purpose">完全予約制28席の薪火イタリアンのLP。黒×ゴールドのダークラグジュアリーなデザインで、コース設計とWEB予約導線を実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>コース予約の獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/learncore-pc1.webp" srcset="/assets/works/learncore-pc1-640.webp 640w, /assets/works/learncore-pc1-960.webp 960w, /assets/works/learncore-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/learncore-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">13</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/learncore.html">企業向けe-Learningサービス LP</a></h2>
+    <p class="work__purpose">社員研修・DX教育・リスキリングを支援するSaaS型e-LearningプラットフォームのLP。ダッシュボードUIのビジュアルやBefore/After比較で、信頼感と先進性を両立しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>無料デモの申込獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/luminos-skin-pc1.webp" srcset="/assets/works/luminos-skin-pc1-640.webp 640w, /assets/works/luminos-skin-pc1-960.webp 960w, /assets/works/luminos-skin-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/luminos-skin-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">14</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/luminos-skin.html">Luminos Skin</a></h2>
+    <p class="work__purpose">プライベートフェイシャルサロンのLP。完全個室・女性スタッフのみ・勧誘なしを訴求し、ピンク×ベージュのデザインで初回オファーまで一貫して設計しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>初回オファーの予約獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/hoikushi-mikata-pc1.webp" srcset="/assets/works/hoikushi-mikata-pc1-640.webp 640w, /assets/works/hoikushi-mikata-pc1-960.webp 960w, /assets/works/hoikushi-mikata-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/hoikushi-mikata-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">15</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/hoikushi-mikata.html">保育士のミカタ</a></h2>
+    <p class="work__purpose">保育士向けの口コミ・ランキング・比較サービスのLP。やさしいトーンのデザインで、口コミ閲覧・ランキング・比較の3機能を自然に訴求しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>口コミサービスの利用開始</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/rapas-pc1.webp" srcset="/assets/works/rapas-pc1-640.webp 640w, /assets/works/rapas-pc1-960.webp 960w, /assets/works/rapas-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/rapas-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">16</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/rapas-recruit.html">株式会社RAPAS 採用LP</a></h2>
+    <p class="work__purpose">在宅ワーク募集の採用LP。主婦・副業・シニア向けのソフトブルー×コーラルのデザインで、4STEPフロー・FAQアコーディオンを実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>在宅ワークへの応募獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/business-design-academy-pc1.webp" srcset="/assets/works/business-design-academy-pc1-640.webp 640w, /assets/works/business-design-academy-pc1-960.webp 960w, /assets/works/business-design-academy-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/business-design-academy-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">17</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/business-design-academy.html">Business Design Academy</a></h2>
+    <p class="work__purpose">起業スクールのLP。黒×ゴールドの高級感あるデザインで、事業設計から販売導線までを段階的に示す構成にし、FAQアコーディオンと固定CTAを実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>高単価スクールの申込獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/sola-dental-pc1.webp" srcset="/assets/works/sola-dental-pc1-640.webp 640w, /assets/works/sola-dental-pc1-960.webp 960w, /assets/works/sola-dental-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/sola-dental-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">18</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/sola-dental.html">ソラ歯科クリニック</a></h2>
+    <p class="work__purpose">家族みんなが安心して通える歯科医院の集客LP。白×ブルーのミニマルなデザインで、電話・WEB・LINEの3チャネルの予約導線を実装しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>WEB予約の獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
+<article class="work reveal" data-cats="lp" data-type="concept">
+    <span class="work__media work__media--framed" aria-hidden="true">
+      <img class="work__pc" src="/assets/works/restaurant-pc1.webp" srcset="/assets/works/restaurant-pc1-640.webp 640w, /assets/works/restaurant-pc1-960.webp 960w, /assets/works/restaurant-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+      <img class="work__sp" src="/assets/works/restaurant-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
+    <div class="work__head"><span class="work__index">19</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/restaurant-opening.html">レストランオープンLP</a></h2>
+    <p class="work__purpose">旬の食材と洗練された空間を演出するダイニングのオープンLP。コンセプト・メニュー・ギャラリー・WEB予約CTAをダークゴールドのデザインで構成しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>オープン時のWEB予約獲得</dd>
+      <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+  </article>
     </div>
-    <p class="text-[11px]" style="color:rgba(240,240,240,.18);">&copy; 2024 All Rights Reserved.</p>
+    <p class="works-empty" id="worksEmpty" hidden>該当する実績はありません。</p>
+  </div>
+  <section class="is-dark" data-theme="dark" aria-labelledby="ctaTitle">
+    <div class="wrap cta-band">
+      <h2 class="cta-band__title" id="ctaTitle">似たような課題があれば、<br>まずは相談してみてください。</h2>
+      <div><p class="body-2">新規制作・リニューアル・既存サイトの改修や運用まで。内容が固まっていない段階でも大丈夫です。</p>
+      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer is-dark" data-theme="dark">
+  <div class="wrap">
+    <div class="footer__sign">
+      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
+      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    </div>
+    <div class="footer__grid">
+      <nav class="footer__nav" aria-label="フッターナビゲーション"><ul>
+        <li><a href="/">Home</a></li><li><a href="/works.html">Works 制作実績</a></li><li><a href="/video-works.html">Video Works 映像実績</a></li>
+        <li><a href="/#services">Services サービス</a></li><li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul></nav>
+      <p class="footer__copy">&copy; 2026 TAKE CRAFT. All rights reserved.</p>
+    </div>
   </div>
 </footer>
-
-
-<script>
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
-  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
-
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    const past = window.scrollY > 40;
-    nav.style.background = past ? 'rgba(8,8,8,.92)' : 'transparent';
-    nav.style.backdropFilter = past ? 'blur(18px)' : '';
-    nav.style.borderBottomColor = past ? 'rgba(255,255,255,.06)' : 'transparent';
-  }, { passive: true });
-</script>
-
 </body>
 </html>
