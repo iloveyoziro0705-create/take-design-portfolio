@@ -1,5 +1,10 @@
 # TAKE Design Portfolio — プロジェクトルール
 
+## 本番デプロイ
+
+ユーザーから「デプロイして」と依頼されたら `scripts/deploy.sh portfolio|lp|all` を**絶対パスで単独実行**する（`cd ... &&` を前に付けない。許可ルールが一致しなくなる）。
+事前に変更をコミット（master）してから実行すること。スクリプトが master・未コミットなし・生成物最新を確認し、反映後に本番のHTML一致を確認する。
+
 ## ポートフォリオ本体（2026-10 リニューアル以降）
 
 ルートの `index.html` / `works.html` / `video-works.html` / `works/*.html` / `privacy.html` / `404.html` / `sitemap.xml` / `robots.txt` は **生成物**。直接編集しない。

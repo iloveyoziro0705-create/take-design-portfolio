@@ -15,7 +15,7 @@
 
 ポートフォリオ（`scripts/build.mjs`）とは別のサイトです。ポートフォリオ側は `SALES_LP`（build.mjs）でLPのURLを持ち、ヘッダー「Services」・Creative Fields・フッター・Web/LP実績の詳細ページに導線を表示します（`SALES_LP=off` で非表示）。
 
-**デプロイ**：LPはポートフォリオの master push では更新されません。`node scripts/build-web-services.mjs` → コミット → `web-services-site/` を `takecraft-web` プロジェクトへデプロイ（`cd web-services-site && npx vercel deploy --prod`。初回のみ `npx vercel link --project takecraft-web`）。
+**デプロイ**：`scripts/deploy.sh lp`（ポートフォリオは `portfolio`、両方は `all`）。LPはポートフォリオの master push では更新されません。手動の場合：`node scripts/build-web-services.mjs` → コミット → `web-services-site/` を `takecraft-web` プロジェクトへデプロイ（`cd web-services-site && npx vercel deploy --prod`。初回のみ `npx vercel link --project takecraft-web`）。
 
 ## 2. 文言・料金を変更する
 
