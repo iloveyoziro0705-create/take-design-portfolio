@@ -23,9 +23,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261027">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261027-3">
 <script>document.documentElement.classList.add('js')</script>
-<script src="/assets/js/site.js?v=20261027" defer></script>
+<script src="/assets/js/site.js?v=20261027-3" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://take-design-portfolio.vercel.app/"},{"@type":"ListItem","position":2,"name":"制作実績","item":"https://take-design-portfolio.vercel.app/works.html"}]}</script>
 </head>
 <body>
@@ -33,13 +33,16 @@
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="TAKE CRAFT ホーム"><span class="wordmark__sq" aria-hidden="true"></span>TAKE CRAFT</a>
-    <nav class="gnav" aria-label="グローバルナビゲーション"><ul><li><a href="/#works" data-nav="works" aria-current="page">Works<small>実績</small></a></li><li><a href="/#services" data-nav="services">Services<small>サービス</small></a></li><li><a href="/#approach" data-nav="approach">Approach<small>進め方</small></a></li><li><a href="/#about" data-nav="about">About<small>スタジオについて</small></a></li></ul></nav>
-    <a class="btn header-cta" href="/#contact">相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <nav class="gnav" aria-label="グローバルナビゲーション"><ul><li><a href="/#works" data-nav="works" aria-current="page">Works<small>実績</small></a></li><li><a href="/#fields" data-nav="fields">Creative Fields<small>制作領域</small></a></li><li><a href="/#approach" data-nav="approach">Approach<small>進め方</small></a></li><li><a href="/#about" data-nav="about">About<small>スタジオについて</small></a></li></ul></nav>
+    <div class="header-aux">
+      
+      <a class="btn header-cta" href="/#contact">Contact<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    </div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="drawer">Menu<span class="menu-toggle__bars" aria-hidden="true"></span></button>
   </div>
 </header>
 <div class="drawer" id="drawer" aria-label="メニュー" hidden>
-  <nav aria-label="モバイルナビゲーション"><ul><li><a href="/#works">Works<span>実績</span></a></li><li><a href="/#services">Services<span>サービス</span></a></li><li><a href="/#approach">Approach<span>進め方</span></a></li><li><a href="/#about">About<span>スタジオについて</span></a></li><li><a href="/#contact">Contact<span>お問い合わせ</span></a></li></ul></nav>
+  <nav aria-label="モバイルナビゲーション"><ul><li><a href="/#works">Works<span>実績</span></a></li><li><a href="/#fields">Creative Fields<span>制作領域</span></a></li><li><a href="/#approach">Approach<span>進め方</span></a></li><li><a href="/#about">About<span>スタジオについて</span></a></li><li><a href="/#contact">Contact<span>お問い合わせ</span></a></li></ul></nav>
   <div style="display:grid;gap:1rem">
     <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
     <p class="drawer__meta">Web / LP / Video / Creative / AI</p>
@@ -65,279 +68,485 @@
   <div class="wrap filter__inner">
     <span class="filter__label" id="filterLabel">Filter</span>
     <ul class="filter__list" role="list" aria-labelledby="filterLabel">
-      <li><button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All<sup>19</sup></button></li>
-      <li><button class="filter__btn" type="button" data-filter="lp" aria-pressed="false">Landing Page<sup>15</sup></button></li><li><button class="filter__btn" type="button" data-filter="video" aria-pressed="false">Video<sup>4</sup></button></li><li><button class="filter__btn" type="button" data-filter="system" aria-pressed="false">AI / System<sup>2</sup></button></li>
+      <li><button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All<sup>20</sup></button></li>
+      <li><button class="filter__btn" type="button" data-filter="lp" aria-pressed="false">Landing Page<sup>16</sup></button></li><li><button class="filter__btn" type="button" data-filter="video" aria-pressed="false">Video<sup>4</sup></button></li><li><button class="filter__btn" type="button" data-filter="system" aria-pressed="false">AI / System<sup>2</sup></button></li>
     </ul>
-    <p class="filter__count" id="filterCount" aria-live="polite">19件を表示</p>
+    <p class="filter__count" id="filterCount" aria-live="polite">20件を表示</p>
   </div>
 </div>
   <div class="wrap">
     <div class="works-list" id="worksList" data-default="all">
-      <article class="work" data-cats="video" data-type="client">
+      <article class="work" data-cats="lp" data-type="client">
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#2B2824">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">yabuhara-ind.co.jp/araidashi_yabuhara/workshop</span></div>
+      <img class="browser__screen" src="/assets/works/araidashi-workshop-desktop-1-1280.webp" srcset="/assets/works/araidashi-workshop-desktop-1-640.webp 640w, /assets/works/araidashi-workshop-desktop-1-960.webp 960w, /assets/works/araidashi-workshop-desktop-1-1280.webp 1280w, /assets/works/araidashi-workshop-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" fetchpriority="high" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/araidashi-workshop-phone-1.webp" srcset="/assets/works/araidashi-workshop-phone-1-420.webp 420w, /assets/works/araidashi-workshop-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">01</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <h2 class="work__title"><a href="/works/araidashi-workshop.html"><span class="t-line">The Araidashi</span><span class="sr-only">｜</span><span class="t-line t-line--sub">出張施工ワークショップLP</span></a></h2>
+    <p class="work__purpose">洗い出し施工の魅力と、出張施工ワークショップの内容を伝えるLP。施工写真を活かした情報設計と、スマートフォンでの閲覧体験を重視し、構成からデザイン、実装、問い合わせ導線まで制作しました。</p>
+    <dl class="work__meta">
+      <dt>Purpose</dt><dd>設計事務所からのワークショップ開催の問い合わせ獲得</dd>
+      <dt>Role</dt><dd>構成設計・LPデザイン・HTML / CSS / JavaScript・レスポンシブ対応 ほか</dd>
+      
+      <dt>Year</dt><dd>2026</dd>
+    </dl>
+    <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
+  </article>
+<article class="work" data-cats="video" data-type="client">
     <span class="work__media" aria-hidden="true">
       <img class="work__pc" src="/assets/works/regional-documentary-thumb.webp" srcset="/assets/works/regional-documentary-thumb-640.webp 640w, /assets/works/regional-documentary-thumb-960.webp 960w, /assets/works/regional-documentary-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
       <span class="work__play"><i>&#9654;</i>Video</span></span>
-    <div class="work__head"><span class="work__index">01</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">02</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
     <h2 class="work__title"><a href="/works/regional-documentary.html">地域創生チャンネル動画</a></h2>
     <p class="work__purpose">過疎地域の集落に暮らす夫婦の営みを追ったドキュメンタリー。土地の記憶と人の温度が伝わる構成で制作しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>地域の魅力を伝え、関係人口を増やす</dd>
       <dt>Role</dt><dd>構成・映像制作</dd>
       
+      
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
-<article class="work" data-cats="video" data-type="client">
+<article class="work reveal" data-cats="video" data-type="client">
     <span class="work__media" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/regional-variety-thumb.webp" srcset="/assets/works/regional-variety-thumb-640.webp 640w, /assets/works/regional-variety-thumb-960.webp 960w, /assets/works/regional-variety-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+      <img class="work__pc" src="/assets/works/regional-variety-thumb.webp" srcset="/assets/works/regional-variety-thumb-640.webp 640w, /assets/works/regional-variety-thumb-960.webp 960w, /assets/works/regional-variety-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
       <span class="work__play"><i>&#9654;</i>Video</span></span>
-    <div class="work__head"><span class="work__index">02</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">03</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
     <h2 class="work__title"><a href="/works/regional-variety.html">地域密着型バラエティチャンネル動画</a></h2>
     <p class="work__purpose">出演者の掛け合いを活かしたテンポの良いカット編集とテロップ演出で、地域番組らしい親近感を設計しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>チャンネルの企画力・編集力を伝える</dd>
       <dt>Role</dt><dd>編集・テロップ演出</dd>
       
+      
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="video" data-type="client">
     <span class="work__media" aria-hidden="true">
       <img class="work__pc" src="/assets/works/sns-short-ad-thumb.webp" srcset="/assets/works/sns-short-ad-thumb-640.webp 640w, /assets/works/sns-short-ad-thumb-960.webp 960w, /assets/works/sns-short-ad-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
       <span class="work__play"><i>&#9654;</i>Video</span></span>
-    <div class="work__head"><span class="work__index">03</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">04</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
     <h2 class="work__title"><a href="/works/sns-short-ad.html">SNS用広告ショート動画</a></h2>
     <p class="work__purpose">縦型ショート広告。冒頭の推薦コメントと、テロップ・効果音によるテンポで離脱を防ぎ、購買動機まで惹きつける構成にしました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>通販商材の購入（CV）率向上</dd>
       <dt>Role</dt><dd>構成・編集</dd>
       
+      
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="video" data-type="client">
     <span class="work__media" aria-hidden="true">
       <img class="work__pc" src="/assets/works/corporate-recruiting-thumb.webp" srcset="/assets/works/corporate-recruiting-thumb-640.webp 640w, /assets/works/corporate-recruiting-thumb-960.webp 960w, /assets/works/corporate-recruiting-thumb.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
       <span class="work__play"><i>&#9654;</i>Video</span></span>
-    <div class="work__head"><span class="work__index">04</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">05</span><span class="tag tag--client">Client Work</span><span class="tag tag--cat">Video</span></div>
     <h2 class="work__title"><a href="/works/corporate-recruiting.html">企業採用動画</a></h2>
     <p class="work__purpose">社員インタビューと職場風景を織り交ぜ、求人票だけでは伝わらない社風や働く人の雰囲気を伝える構成で制作しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>採用エントリー数の増加とミスマッチの低減</dd>
       <dt>Role</dt><dd>構成・映像制作</dd>
       
+      
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/ai-sales-dx-pc1.webp" srcset="/assets/works/ai-sales-dx-pc1-640.webp 640w, /assets/works/ai-sales-dx-pc1-960.webp 960w, /assets/works/ai-sales-dx-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/ai-sales-dx-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">05</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1D2433">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/ai-sales-dx-lp</span></div>
+      <img class="browser__screen" src="/assets/works/ai-sales-dx-desktop-1-1280.webp" srcset="/assets/works/ai-sales-dx-desktop-1-640.webp 640w, /assets/works/ai-sales-dx-desktop-1-960.webp 960w, /assets/works/ai-sales-dx-desktop-1-1280.webp 1280w, /assets/works/ai-sales-dx-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/ai-sales-dx-phone-1.webp" srcset="/assets/works/ai-sales-dx-phone-1-420.webp 420w, /assets/works/ai-sales-dx-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">06</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/ai-sales-dx.html">AI営業DXリスキリング研修</a></h2>
     <p class="work__purpose">トップセールスの知見をAIで資産化する法人研修LP。完成デザイン画像を忠実に再現し、研修内容をタブ切替式のカードUIで整理しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>法人向け研修の問い合わせ獲得</dd>
       <dt>Role</dt><dd>デザインカンプからのHTML/CSS/JavaScript実装・レスポンシブ設計</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/koyomi-miso-pc1.webp" srcset="/assets/works/koyomi-miso-pc1-640.webp 640w, /assets/works/koyomi-miso-pc1-960.webp 960w, /assets/works/koyomi-miso-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/koyomi-miso-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">06</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#2C2820">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/koyomi-miso-lp</span></div>
+      <img class="browser__screen" src="/assets/works/koyomi-miso-desktop-1-1280.webp" srcset="/assets/works/koyomi-miso-desktop-1-640.webp 640w, /assets/works/koyomi-miso-desktop-1-960.webp 960w, /assets/works/koyomi-miso-desktop-1-1280.webp 1280w, /assets/works/koyomi-miso-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/koyomi-miso-phone-1.webp" srcset="/assets/works/koyomi-miso-phone-1-420.webp 420w, /assets/works/koyomi-miso-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">07</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/koyomi-miso.html">暦みそ ―KOYOMI―</a></h2>
     <p class="work__purpose">薬膳味噌ブランドの公式LINE登録LP。通販的な訴求ではなく、二十四節気にまつわるブランドストーリーで「薬膳のある暮らし」への共感を育てる雑誌的なデザインにしました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>公式LINEへの登録獲得</dd>
       <dt>Role</dt><dd>アートディレクション・構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp system" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/mirai-ryo-pc1.webp" srcset="/assets/works/mirai-ryo-pc1-640.webp 640w, /assets/works/mirai-ryo-pc1-960.webp 960w, /assets/works/mirai-ryo-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/mirai-ryo-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">07</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1C2730">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/mirai-ryo-lp</span></div>
+      <img class="browser__screen" src="/assets/works/mirai-ryo-desktop-1-1280.webp" srcset="/assets/works/mirai-ryo-desktop-1-640.webp 640w, /assets/works/mirai-ryo-desktop-1-960.webp 960w, /assets/works/mirai-ryo-desktop-1-1280.webp 1280w, /assets/works/mirai-ryo-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/mirai-ryo-phone-1.webp" srcset="/assets/works/mirai-ryo-phone-1-420.webp 420w, /assets/works/mirai-ryo-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">08</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
     <h2 class="work__title"><a href="/works/mirai-ryo.html">ミライ寮</a></h2>
     <p class="work__purpose">住み込み求人マッチングLP。30秒診断クイズで4タイプに分岐し、タイプに合わせた求人・寮情報を提案します。ライフシミュレーターも実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>住み込み求人への応募獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・診断ロジック設計</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/futurenest-pc1.webp" srcset="/assets/works/futurenest-pc1-640.webp 640w, /assets/works/futurenest-pc1-960.webp 960w, /assets/works/futurenest-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/futurenest-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">08</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#22273A">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/finance-lp</span></div>
+      <img class="browser__screen" src="/assets/works/futurenest-desktop-1-1280.webp" srcset="/assets/works/futurenest-desktop-1-640.webp 640w, /assets/works/futurenest-desktop-1-960.webp 960w, /assets/works/futurenest-desktop-1-1280.webp 1280w, /assets/works/futurenest-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/futurenest-phone-1.webp" srcset="/assets/works/futurenest-phone-1-420.webp 420w, /assets/works/futurenest-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">09</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/futurenest.html">FutureNest</a></h2>
     <p class="work__purpose">写真を使わず、全編イラストで構成したストーリーテリング型LP。不安→出会い→解決→未来と時間帯・配色が変化し、主人公が一歩ずつ前へ進む絵本のような体験を設計しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>無料相談の予約獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・ストーリー設計</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp system" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/sakura-pc1.webp" srcset="/assets/works/sakura-pc1-640.webp 640w, /assets/works/sakura-pc1-960.webp 960w, /assets/works/sakura-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/sakura-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">09</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1D2A24">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">sakura-seikotsuin-b3au.vercel.app</span></div>
+      <img class="browser__screen" src="/assets/works/sakura-desktop-1-1280.webp" srcset="/assets/works/sakura-desktop-1-640.webp 640w, /assets/works/sakura-desktop-1-960.webp 960w, /assets/works/sakura-desktop-1-1280.webp 1280w, /assets/works/sakura-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/sakura-phone-1.webp" srcset="/assets/works/sakura-phone-1-420.webp 420w, /assets/works/sakura-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">10</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page / AI / System</span></div>
     <h2 class="work__title"><a href="/works/sakura-seikotsuin.html">さくら整骨院</a></h2>
     <p class="work__purpose">交通事故・むちうちに対応する整骨院のLP。保険種別と通院頻度からリアルタイムに計算する料金シミュレーターを実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>交通事故後の来院・予約の獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装・料金シミュレーター実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/lumia-pc1.webp" srcset="/assets/works/lumia-pc1-640.webp 640w, /assets/works/lumia-pc1-960.webp 960w, /assets/works/lumia-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/lumia-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">10</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#2B2723">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/lumia-lp</span></div>
+      <img class="browser__screen" src="/assets/works/lumia-desktop-1-1280.webp" srcset="/assets/works/lumia-desktop-1-640.webp 640w, /assets/works/lumia-desktop-1-960.webp 960w, /assets/works/lumia-desktop-1-1280.webp 1280w, /assets/works/lumia-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/lumia-phone-1.webp" srcset="/assets/works/lumia-phone-1-420.webp 420w, /assets/works/lumia-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">11</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/lumia.html">Hair Salon LUMIA</a></h2>
     <p class="work__purpose">髪質改善に特化した完全予約制サロンのLP。白×ベージュ×ゴールドのミニマルなデザインで、LINE24時間予約への導線を設計しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>新規予約数の増加</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/aivoyance-pc1.webp" srcset="/assets/works/aivoyance-pc1-640.webp 640w, /assets/works/aivoyance-pc1-960.webp 960w, /assets/works/aivoyance-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/aivoyance-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">11</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1A1B2C">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/ai-school-lp</span></div>
+      <img class="browser__screen" src="/assets/works/aivoyance-desktop-1-1280.webp" srcset="/assets/works/aivoyance-desktop-1-640.webp 640w, /assets/works/aivoyance-desktop-1-960.webp 960w, /assets/works/aivoyance-desktop-1-1280.webp 1280w, /assets/works/aivoyance-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/aivoyance-phone-1.webp" srcset="/assets/works/aivoyance-phone-1-420.webp 420w, /assets/works/aivoyance-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">12</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/aivoyance.html">AIvoyance</a></h2>
     <p class="work__purpose">AIスキルを身につけるオンラインスクールのLP。ネイビー×ブルーのテックデザインで、カリキュラム・料金比較・受講生の声まで網羅した構成です。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>オンライン講座の申込獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/trattoria-pc1.webp" srcset="/assets/works/trattoria-pc1-640.webp 640w, /assets/works/trattoria-pc1-960.webp 960w, /assets/works/trattoria-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/trattoria-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">12</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#272219">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">trattoria-lucente.vercel.app</span></div>
+      <img class="browser__screen" src="/assets/works/trattoria-desktop-1-1280.webp" srcset="/assets/works/trattoria-desktop-1-640.webp 640w, /assets/works/trattoria-desktop-1-960.webp 960w, /assets/works/trattoria-desktop-1-1280.webp 1280w, /assets/works/trattoria-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/trattoria-phone-1.webp" srcset="/assets/works/trattoria-phone-1-420.webp 420w, /assets/works/trattoria-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">13</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/trattoria-lucente.html">TRATTORIA LUCENTE</a></h2>
     <p class="work__purpose">完全予約制28席の薪火イタリアンのLP。黒×ゴールドのダークラグジュアリーなデザインで、コース設計とWEB予約導線を実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>コース予約の獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/learncore-pc1.webp" srcset="/assets/works/learncore-pc1-640.webp 640w, /assets/works/learncore-pc1-960.webp 960w, /assets/works/learncore-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/learncore-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">13</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1C2532">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/elearning-lp</span></div>
+      <img class="browser__screen" src="/assets/works/learncore-desktop-1-1280.webp" srcset="/assets/works/learncore-desktop-1-640.webp 640w, /assets/works/learncore-desktop-1-960.webp 960w, /assets/works/learncore-desktop-1-1280.webp 1280w, /assets/works/learncore-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/learncore-phone-1.webp" srcset="/assets/works/learncore-phone-1-420.webp 420w, /assets/works/learncore-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">14</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/learncore.html">企業向けe-Learningサービス LP</a></h2>
     <p class="work__purpose">社員研修・DX教育・リスキリングを支援するSaaS型e-LearningプラットフォームのLP。ダッシュボードUIのビジュアルやBefore/After比較で、信頼感と先進性を両立しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>無料デモの申込獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/luminos-skin-pc1.webp" srcset="/assets/works/luminos-skin-pc1-640.webp 640w, /assets/works/luminos-skin-pc1-960.webp 960w, /assets/works/luminos-skin-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/luminos-skin-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">14</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#2D2527">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/beauty-salon-lp</span></div>
+      <img class="browser__screen" src="/assets/works/luminos-skin-desktop-1-1280.webp" srcset="/assets/works/luminos-skin-desktop-1-640.webp 640w, /assets/works/luminos-skin-desktop-1-960.webp 960w, /assets/works/luminos-skin-desktop-1-1280.webp 1280w, /assets/works/luminos-skin-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/luminos-skin-phone-1.webp" srcset="/assets/works/luminos-skin-phone-1-420.webp 420w, /assets/works/luminos-skin-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">15</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/luminos-skin.html">Luminos Skin</a></h2>
     <p class="work__purpose">プライベートフェイシャルサロンのLP。完全個室・女性スタッフのみ・勧誘なしを訴求し、ピンク×ベージュのデザインで初回オファーまで一貫して設計しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>初回オファーの予約獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/hoikushi-mikata-pc1.webp" srcset="/assets/works/hoikushi-mikata-pc1-640.webp 640w, /assets/works/hoikushi-mikata-pc1-960.webp 960w, /assets/works/hoikushi-mikata-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/hoikushi-mikata-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">15</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#2D2328">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/hoikushi-mikata-lp</span></div>
+      <img class="browser__screen" src="/assets/works/hoikushi-mikata-desktop-1-1280.webp" srcset="/assets/works/hoikushi-mikata-desktop-1-640.webp 640w, /assets/works/hoikushi-mikata-desktop-1-960.webp 960w, /assets/works/hoikushi-mikata-desktop-1-1280.webp 1280w, /assets/works/hoikushi-mikata-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/hoikushi-mikata-phone-1.webp" srcset="/assets/works/hoikushi-mikata-phone-1-420.webp 420w, /assets/works/hoikushi-mikata-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">16</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/hoikushi-mikata.html">保育士のミカタ</a></h2>
     <p class="work__purpose">保育士向けの口コミ・ランキング・比較サービスのLP。やさしいトーンのデザインで、口コミ閲覧・ランキング・比較の3機能を自然に訴求しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>口コミサービスの利用開始</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/rapas-pc1.webp" srcset="/assets/works/rapas-pc1-640.webp 640w, /assets/works/rapas-pc1-960.webp 960w, /assets/works/rapas-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/rapas-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">16</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1C2632">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/rapas-lp</span></div>
+      <img class="browser__screen" src="/assets/works/rapas-desktop-1-1280.webp" srcset="/assets/works/rapas-desktop-1-640.webp 640w, /assets/works/rapas-desktop-1-960.webp 960w, /assets/works/rapas-desktop-1-1280.webp 1280w, /assets/works/rapas-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/rapas-phone-1.webp" srcset="/assets/works/rapas-phone-1-420.webp 420w, /assets/works/rapas-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">17</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/rapas-recruit.html">株式会社RAPAS 採用LP</a></h2>
     <p class="work__purpose">在宅ワーク募集の採用LP。主婦・副業・シニア向けのソフトブルー×コーラルのデザインで、4STEPフロー・FAQアコーディオンを実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>在宅ワークへの応募獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/business-design-academy-pc1.webp" srcset="/assets/works/business-design-academy-pc1-640.webp 640w, /assets/works/business-design-academy-pc1-960.webp 960w, /assets/works/business-design-academy-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/business-design-academy-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">17</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#201E19">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/business-design-academy-lp</span></div>
+      <img class="browser__screen" src="/assets/works/business-design-academy-desktop-1-1280.webp" srcset="/assets/works/business-design-academy-desktop-1-640.webp 640w, /assets/works/business-design-academy-desktop-1-960.webp 960w, /assets/works/business-design-academy-desktop-1-1280.webp 1280w, /assets/works/business-design-academy-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/business-design-academy-phone-1.webp" srcset="/assets/works/business-design-academy-phone-1-420.webp 420w, /assets/works/business-design-academy-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">18</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/business-design-academy.html">Business Design Academy</a></h2>
     <p class="work__purpose">起業スクールのLP。黒×ゴールドの高級感あるデザインで、事業設計から販売導線までを段階的に示す構成にし、FAQアコーディオンと固定CTAを実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>高単価スクールの申込獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/sola-dental-pc1.webp" srcset="/assets/works/sola-dental-pc1-640.webp 640w, /assets/works/sola-dental-pc1-960.webp 960w, /assets/works/sola-dental-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/sola-dental-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">18</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#1C272F">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/dental-clinic-lp</span></div>
+      <img class="browser__screen" src="/assets/works/sola-dental-desktop-1-1280.webp" srcset="/assets/works/sola-dental-desktop-1-640.webp 640w, /assets/works/sola-dental-desktop-1-960.webp 960w, /assets/works/sola-dental-desktop-1-1280.webp 1280w, /assets/works/sola-dental-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/sola-dental-phone-1.webp" srcset="/assets/works/sola-dental-phone-1-420.webp 420w, /assets/works/sola-dental-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">19</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/sola-dental.html">ソラ歯科クリニック</a></h2>
     <p class="work__purpose">家族みんなが安心して通える歯科医院の集客LP。白×ブルーのミニマルなデザインで、電話・WEB・LINEの3チャネルの予約導線を実装しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>WEB予約の獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
 <article class="work reveal" data-cats="lp" data-type="concept">
-    <span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="/assets/works/restaurant-pc1.webp" srcset="/assets/works/restaurant-pc1-640.webp 640w, /assets/works/restaurant-pc1-960.webp 960w, /assets/works/restaurant-pc1.webp 1280w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
-      <img class="work__sp" src="/assets/works/restaurant-sp.webp" width="600" height="1298" alt="" loading="lazy" decoding="async"></span>
-    <div class="work__head"><span class="work__index">19</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
+    <span class="work__media work__media--device" aria-hidden="true"><div class="device device--card" style="--tone:#28231C">
+    <div class="device__stage">
+      <div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">take-design-portfolio.vercel.app/restaurant-lp</span></div>
+      <img class="browser__screen" src="/assets/works/restaurant-desktop-1-1280.webp" srcset="/assets/works/restaurant-desktop-1-640.webp 640w, /assets/works/restaurant-desktop-1-960.webp 960w, /assets/works/restaurant-desktop-1-1280.webp 1280w, /assets/works/restaurant-desktop-1-1920.webp 1920w" sizes="(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw" width="1280" height="800" alt="" loading="lazy" decoding="async">
+    </div>
+      <img class="device__phone" src="/assets/works/restaurant-phone-1.webp" srcset="/assets/works/restaurant-phone-1-420.webp 420w, /assets/works/restaurant-phone-1.webp 782w" sizes="(min-width: 900px) 12vw, 30vw" width="782" height="1600" alt="" loading="lazy" decoding="async">
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div></span>
+    <div class="work__body">
+    
+    <div class="work__head"><span class="work__index">20</span><span class="tag tag--concept">Concept Work</span><span class="tag tag--cat">Landing Page</span></div>
     <h2 class="work__title"><a href="/works/restaurant-opening.html">レストランオープンLP</a></h2>
     <p class="work__purpose">旬の食材と洗練された空間を演出するダイニングのオープンLP。コンセプト・メニュー・ギャラリー・WEB予約CTAをダークゴールドのデザインで構成しました。</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>オープン時のWEB予約獲得</dd>
       <dt>Role</dt><dd>構成設計・デザイン・HTML/CSS/JavaScript実装</dd>
+      
       <dt>Year</dt><dd>2026</dd>
     </dl>
     <span class="work__more">詳しく見る <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span>
+    </div>
   </article>
     </div>
     <p class="works-empty" id="worksEmpty" hidden>該当する実績はありません。</p>
@@ -346,20 +555,26 @@
     <div class="wrap cta-band">
       <h2 class="cta-band__title" id="ctaTitle">似たような課題があれば、<br>まずは相談してみてください。</h2>
       <div><p class="body-2">新規制作・リニューアル・既存サイトの改修や運用まで。内容が固まっていない段階でも大丈夫です。</p>
-      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a></div>
+      <div class="btn-row"><a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      </div></div>
     </div>
   </section>
 </main>
 <footer class="site-footer is-dark" data-theme="dark">
   <div class="wrap">
-    <div class="footer__sign">
-      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
-      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+    <div class="footer__cta">
+      <p class="footer__cta-en" lang="en">Let's craft something meaningful.</p>
+      <p class="footer__cta-title">次のアイデアを、<br class="br-sp">形に。</p>
+      <div class="btn-row">
+        <a class="btn" href="/#contact">制作について相談する<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+        <a class="btn btn--ghost" href="/works.html">すべての実績を見る<span class="btn__icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></a>
+      </div>
     </div>
     <div class="footer__grid">
+      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="TAKE CRAFT — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
       <nav class="footer__nav" aria-label="フッターナビゲーション"><ul>
         <li><a href="/">Home</a></li><li><a href="/works.html">Works 制作実績</a></li><li><a href="/video-works.html">Video Works 映像実績</a></li>
-        <li><a href="/#services">Services サービス</a></li><li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/#fields">Creative Fields 制作領域</a></li><li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
       </ul></nav>
       <p class="footer__copy">&copy; 2026 TAKE CRAFT. All rights reserved.</p>
     </div>

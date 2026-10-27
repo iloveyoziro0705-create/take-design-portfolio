@@ -19,28 +19,48 @@ const SITE = 'https://take-design-portfolio.vercel.app';
 const BRAND = 'TAKE CRAFT';
 const EMAIL = 'i.love.yoziro0705@gmail.com';
 const YEAR = new Date().getFullYear();
-const ASSET_V = '20261027';
+const ASSET_V = '20261027-3';
 // Webフォントは描画をブロックしないよう非同期で読み込む（display=swap でフォールバック表示→差し替え）
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap';
 
-/* ───────── Services ─────────
- * lp: 将来のサービス専用LPのパス。ページが公開されるまで null のまま（リンクは出ない）。
- * proof: 対応実績として一覧へ飛ばすカテゴリー（公開実績があるものだけ）。 */
-const SERVICES = [
-  { en: 'Web Design & Development', ja: 'Webサイト制作', desc: '目的と情報設計から考え、デザインとコーディングまで一貫して担当します。更新しやすい構造で納品します。', items: ['コーポレートサイト', 'サービスサイト', 'リニューアル', 'レスポンシブ対応'], proof: null, lp: null },
-  { en: 'Landing Page', ja: 'LP制作', desc: '誰に、何を、どの順番で伝えるか。構成とCTA設計から入り、HTML / CSS / JavaScript の実装まで行います。', items: ['LP構成', 'UIデザイン', 'HTML / CSS / JavaScript実装', 'CTA設計', 'フォーム導線'], proof: 'lp', lp: null },
-  { en: 'Website Maintenance', ja: '運用・保守・改修', desc: '公開後のサイトを、壊さずに直す。既存の構成を確認したうえで、必要な範囲だけを丁寧に改修します。', items: ['WordPress運用・保守', 'テキスト・画像更新', '既存ページ改修', 'フォーム修正', 'スパム対策', '軽微な不具合対応'], proof: null, lp: null },
-  { en: 'Video & Creative', ja: '映像・クリエイティブ制作', desc: 'YouTube・SNS広告・採用動画まで。見る人が離脱しない構成と編集で、伝えたいことを最後まで届けます。', items: ['動画企画・構成', '撮影・編集', '広告動画', 'SNSクリエイティブ'], proof: 'video', lp: null },
-  { en: 'AI & Workflow', ja: 'AI活用・機能実装', desc: 'AIを使った制作フローの効率化や、診断・シミュレーターなどWeb上の機能実装に対応します。', items: ['AIを活用した制作効率化', 'コンテンツ制作ワークフロー', '診断・シミュレーター実装', 'Web関連の機能実装'], proof: 'system', lp: null },
-  { en: 'Creative Strategy', ja: '情報設計・改善提案', desc: '作る前に「なぜ伝わらないのか」を整理します。構成・コピー・導線を見直し、成果に近づく改善を提案します。', items: ['情報設計', 'コンテンツ構成', 'コピー改善', 'UX改善', 'CV導線設計'], proof: null, lp: null },
+/* ───────── 営業用LP（Web制作・保守サービス）との連携 ─────────
+ * ポートフォリオ＝制作力の証明、営業用LP（/web-services/）＝サービス内容・料金・依頼方法。
+ * 営業用LPは別プロジェクト。web-services/index.html がこのリポジトリに追加されるとビルド時に自動で有効化され、
+ * ヘッダー補助導線・Creative Fields・Web/LP実績詳細・フッターにリンクが出る。未公開の間はリンクを一切出さない。
+ * 強制的に切り替える場合は  SALES_LP=on|off node scripts/build.mjs
+ * ※ contact のアンカーは営業用LP完成後に実際の ID を確認して合わせること。 */
+const SALES_LP = (() => {
+  const exists = existsSync(join(ROOT, 'web-services/index.html'));
+  const env = process.env.SALES_LP;
+  return { enabled: env === 'on' ? true : env === 'off' ? false : exists, path: '/web-services/', contact: '/web-services/#contact' };
+})();
+
+/* ───────── Creative Fields（制作領域）─────────
+ * サービス説明・料金は営業用LPの役割。ここでは「対応できる領域」と関連実績だけを示す。
+ * cat: 関連実績として一覧へ飛ばすカテゴリー（data/works.mjs の categories） */
+const FIELDS = [
+  { en: 'Web & Landing Page', ja: 'Web・LP制作', lead: 'デザインから実装まで、ひとりで担う。', desc: '構成とデザインを決めたら、そのままHTML / CSS / JavaScriptで形にします。PCとスマートフォンの両方で、意図どおりに動くところまでが仕事です。', items: ['Webサイト制作', 'LP制作', 'レスポンシブ実装', 'Webサイト改修', 'UI/UX設計'], cat: 'lp', sales: true },
+  { en: 'Video & Motion', ja: '映像・モーション', lead: '伝えるための映像表現を設計する。', desc: 'YouTube、SNS広告、採用動画まで。最初の数秒で離脱させない構成と、最後まで見てもらうための編集を組み立てます。', items: ['動画企画', '撮影・編集', '広告動画', 'ショート動画', 'モーショングラフィックス'], cat: 'video' },
+  { en: 'AI & Creative Technology', ja: 'AI・クリエイティブテクノロジー', lead: 'AIと技術で、制作の可能性を広げる。', desc: 'AIを制作工程に組み込み、検証と改善のスピードを上げます。診断やシミュレーターなど、Web上で動く機能の実装にも対応します。', items: ['AI活用', 'クリエイティブ制作支援', 'Web機能実装', '制作フロー効率化', '自動化の仕組みづくり'], cat: 'system', note: '関連実績は、診断・シミュレーターを実装した自主制作です。' },
+  { en: 'Creative Direction & Strategy', ja: 'ディレクション・情報設計', lead: '目的から逆算して、つくるものを決める。', desc: '誰に、何を、どの順番で伝えるか。作る前に構成とコピーを整理し、行動につながる導線まで設計します。', items: ['情報設計', '企画・構成', 'UI/UX', 'コピー改善', 'CV導線設計'], cat: null },
+];
+
+/* ───────── Tools & Skills ─────────
+ * 実際の使用経験を確認できたものだけを載せる（2026-10-27 ユーザー確認済み）。実績が主役なので控えめに見せる。 */
+const TOOLS = [
+  { en: 'Design', ja: 'デザイン', use: '構成案・UIデザイン・画像制作', fields: 'Web & LP / Direction', items: ['Figma', 'Photoshop'] },
+  { en: 'Web', ja: 'Web制作', use: 'コーディング・CMS構築・既存サイトの改修', fields: 'Web & LP', items: ['HTML / CSS / JavaScript', 'WordPress / PHP', 'STUDIO'] },
+  { en: 'Video', ja: '映像', use: '編集・テロップ・モーション', fields: 'Video & Motion', items: ['Premiere Pro', 'After Effects'] },
+  { en: 'AI & Creative', ja: 'AI・クリエイティブ', use: '素材制作の補助・実装と検証の効率化', fields: 'AI & Technology', items: ['Adobe Firefly', 'Claude Code'] },
+  { en: 'Development & Deployment', ja: '開発・公開', use: 'バージョン管理・公開・表示検証', fields: 'Web & LP', items: ['GitHub', 'Vercel', 'Cloudflare', 'Playwright'] },
 ];
 
 const CRAFT = [
-  { l: 'C', en: 'Clarify', ja: '目的を定める', d: '誰に、何を、なぜ伝えるのか。「何をもって成果とするか」を最初に決めます。' },
-  { l: 'R', en: 'Research', ja: '相手を知る', d: '読み手の悩み・心理・行動を調べ、伝わらない理由を見つけます。' },
-  { l: 'A', en: 'Architect', ja: '構造を設計する', d: '伝える順番・構成・導線を、成果から逆算して組み立てます。' },
-  { l: 'F', en: 'Form', ja: '形にする', d: 'デザイン・映像・実装へ落とし込み、細部まで仕上げて届けます。' },
-  { l: 'T', en: 'Test', ja: '確かめて磨く', d: '公開後の反応を見て、直すべき箇所を見極め、改善を続けます。' },
+  { l: 'C', en: 'Clarify', ja: '目的を定める', d: '誰に、何を、なぜ伝えるのか。何をもって「伝わった」とするかを、最初に言葉にします。' },
+  { l: 'R', en: 'Research', ja: '相手を知る', d: '読み手の悩みや迷い、行動のきっかけを調べ、伝わらない理由を見つけます。' },
+  { l: 'A', en: 'Architect', ja: '情報を設計する', d: '伝える順番と導線を、読み手の動きから逆算して組み立てます。' },
+  { l: 'F', en: 'Form', ja: '形にする', d: 'デザイン・映像・実装へ落とし込み、PCでもスマートフォンでも細部まで仕上げます。' },
+  { l: 'T', en: 'Test', ja: '確かめて磨く', d: '実際の表示と反応を確かめ、直すべき箇所を見極めて改善を重ねます。' },
 ];
 
 const PRINCIPLES = [
@@ -64,7 +84,46 @@ const img = (name) => `/assets/works/${name}.webp`;
 // 一覧・カード用：640w / 960w / 1280w を出し分け（*-pc1 と *-thumb のみ縮小版あり）
 const srcset = (name) => `${img(name + '-640')} 640w, ${img(name + '-960')} 960w, ${img(name)} 1280w`;
 const CARD_SIZES = '(min-width: 1200px) 50vw, (min-width: 700px) 50vw, 100vw';
+
+/* ───────── ProjectDeviceMockup ─────────
+ * PC（ブラウザウィンドウ）を背面、スマートフォン（実機フレーム合成画像）を右手前に重ねる共通コンポーネント。
+ * 画像は data/works.mjs の images.prefix から決まる:
+ *   desktop … <prefix>-desktop-<n>-{640,960,1280,1920}.webp（n=1 のみ全サイズ、2/3 は 960/1920）
+ *   phone   … <prefix>-phone-<n>.webp（782w、フレーム合成済み）/ <prefix>-phone-1-420.webp
+ * size: 'card' | 'lead' | 'hero'  → CSS 側で配置と比率を切り替える（container query）
+ * tone: ステージ背景色（data の tone）。画像が読み込めなくてもステージとフレームは崩れない。 */
+const desktopSrc = (prefix, n, w) => img(`${prefix}-desktop-${n}-${w}`);
+const desktopSet = (prefix, n) => (n === 1 ? [640, 960, 1280, 1920] : [960, 1920]).map((w) => `${desktopSrc(prefix, n, w)} ${w}w`).join(', ');
+const hostOf = (u) => (u.startsWith('./') ? `take-design-portfolio.vercel.app/${u.slice(2)}` : u.replace(/^https?:\/\//, '')).replace(/\/$/, '');
+
+function browserFrame(w, n, { alt = '', sizes = '100vw', lazy = true, priority = false } = {}) {
+  const p = w.images.prefix;
+  return `<div class="browser">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span class="browser__url">${esc(hostOf(w.url))}</span></div>
+      <img class="browser__screen" src="${desktopSrc(p, n, n === 1 ? 1280 : 1920)}" srcset="${desktopSet(p, n)}" sizes="${sizes}" width="1280" height="800" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ''}${priority ? ' fetchpriority="high"' : ''} decoding="async">
+    </div>`;
+}
+
+function phoneFrame(w, n, { alt = '', sizes = '30vw', lazy = true, cls = 'phone' } = {}) {
+  const p = w.images.prefix;
+  const set = n === 1 ? ` srcset="${img(p + '-phone-1-420')} 420w, ${img(p + '-phone-1')} 782w" sizes="${sizes}"` : '';
+  return `<img class="${cls}" src="${img(`${p}-phone-${n}`)}"${set} width="782" height="1600" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ''} decoding="async">`;
+}
+
+function deviceMockup(w, { size = 'card', lazy = true, alt = false } = {}) {
+  const sizes = { card: CARD_SIZES, lead: '(min-width: 900px) 62vw, 100vw', hero: '(min-width: 1440px) 1100px, 80vw' }[size];
+  const phoneSizes = { card: '(min-width: 900px) 12vw, 30vw', lead: '(min-width: 900px) 15vw, 30vw', hero: '(min-width: 900px) 260px, 30vw' }[size];
+  return `<div class="device device--${size}" style="--tone:${w.tone || '#222'}">
+    <div class="device__stage">
+      ${browserFrame(w, 1, { alt: alt ? `${w.title}：PC表示（Desktop View）` : '', sizes, lazy, priority: !lazy })}
+      ${phoneFrame(w, 1, { alt: alt ? `${w.title}：スマートフォン表示（Mobile View）` : '', sizes: phoneSizes, lazy, cls: 'device__phone' })}
+    </div>
+    <span class="device__label device__label--pc" aria-hidden="true">Desktop</span><span class="device__label device__label--sp" aria-hidden="true">Mobile</span>
+  </div>`;
+}
 const pad = (n) => String(n).padStart(2, '0');
+// 「ブランド｜案件名」形式のタイトルは2行に分け、案件名の途中で改行させない
+const titleHtml = (t) => (t.includes('｜') ? t.split('｜').map((x, i) => `<span class="t-line${i ? ' t-line--sub' : ''}">${esc(x)}</span>`).join('<span class="sr-only">｜</span>') : esc(t));
 const catLabels = (w) => w.categories.map((c) => CATEGORIES[c].label).join(' / ');
 
 const ICON = {
@@ -76,7 +135,7 @@ const ICON = {
 
 const NAV = [
   { id: 'works', en: 'Works', ja: '実績', href: '/#works' },
-  { id: 'services', en: 'Services', ja: 'サービス', href: '/#services' },
+  { id: 'fields', en: 'Creative Fields', ja: '制作領域', href: '/#fields' },
   { id: 'approach', en: 'Approach', ja: '進め方', href: '/#approach' },
   { id: 'about', en: 'About', ja: 'スタジオについて', href: '/#about' },
 ];
@@ -117,14 +176,17 @@ ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</sc
 
 function header(current = '') {
   const items = NAV.map((n) => `<li><a href="${n.href}" data-nav="${n.id}"${current === n.id ? ' aria-current="page"' : ''}>${n.en}<small>${n.ja}</small></a></li>`).join('');
-  const drawerItems = [...NAV, { id: 'contact', en: 'Contact', ja: 'お問い合わせ', href: '/#contact' }]
+  const drawerItems = [...NAV, ...(SALES_LP.enabled ? [{ id: 'services', en: 'Services', ja: 'サービス・料金', href: SALES_LP.path }] : []), { id: 'contact', en: 'Contact', ja: 'お問い合わせ', href: '/#contact' }]
     .map((n) => `<li><a href="${n.href}">${n.en}<span>${n.ja}</span></a></li>`).join('');
   return `<a class="skip-link" href="#main">本文へスキップ</a>
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="${BRAND} ホーム"><span class="wordmark__sq" aria-hidden="true"></span>${BRAND}</a>
     <nav class="gnav" aria-label="グローバルナビゲーション"><ul>${items}</ul></nav>
-    <a class="btn header-cta" href="/#contact">相談する<span class="btn__icon">${ICON.arrow}</span></a>
+    <div class="header-aux">
+      ${SALES_LP.enabled ? `<a class="header-aux__link" href="${SALES_LP.path}">Services<small>サービス・料金</small></a>` : ''}
+      <a class="btn header-cta" href="/#contact">Contact<span class="btn__icon">${ICON.arrow}</span></a>
+    </div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="drawer">Menu<span class="menu-toggle__bars" aria-hidden="true"></span></button>
   </div>
 </header>
@@ -140,14 +202,19 @@ function header(current = '') {
 function footer() {
   return `<footer class="site-footer is-dark" data-theme="dark">
   <div class="wrap">
-    <div class="footer__sign">
-      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="${BRAND} — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
-      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon">${ICON.arrow}</span></a>
+    <div class="footer__cta">
+      <p class="footer__cta-en" lang="en">Let's craft something meaningful.</p>
+      <p class="footer__cta-title">次のアイデアを、<br class="br-sp">形に。</p>
+      <div class="btn-row">
+        <a class="btn" href="/#contact">制作について相談する<span class="btn__icon">${ICON.arrow}</span></a>
+        ${SALES_LP.enabled ? `<a class="btn btn--ghost" href="${SALES_LP.path}">Web制作・保守サービスを見る<span class="btn__icon">${ICON.arrow}</span></a>` : `<a class="btn btn--ghost" href="/works.html">すべての実績を見る<span class="btn__icon">${ICON.arrow}</span></a>`}
+      </div>
     </div>
     <div class="footer__grid">
+      <img class="footer__logo" src="/images/logo-full.png" width="1017" height="304" alt="${BRAND} — 伝えたいを、成果へ。Craft for Results." loading="lazy" decoding="async">
       <nav class="footer__nav" aria-label="フッターナビゲーション"><ul>
         <li><a href="/">Home</a></li><li><a href="/works.html">Works 制作実績</a></li><li><a href="/video-works.html">Video Works 映像実績</a></li>
-        <li><a href="/#services">Services サービス</a></li><li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/#fields">Creative Fields 制作領域</a></li>${SALES_LP.enabled ? `<li><a href="${SALES_LP.path}">Web Services サービス・料金</a></li>` : ''}<li><a href="/#contact">Contact お問い合わせ</a></li><li><a href="/privacy.html">Privacy Policy</a></li>
       </ul></nav>
       <p class="footer__copy">&copy; ${YEAR} ${BRAND}. All rights reserved.</p>
     </div>
@@ -168,52 +235,68 @@ function workCard(w, i, { variant = '', headingLevel = 3, lazy = true } = {}) {
       <img class="work__pc" src="${img(w.slug + '-thumb')}" srcset="${srcset(w.slug + '-thumb')}" sizes="${CARD_SIZES}" width="1280" height="720" alt=""${L} decoding="async">
       <span class="work__play"><i>&#9654;</i>Video</span></span>`;
   } else {
-    media = `<span class="work__media work__media--framed" aria-hidden="true">
-      <img class="work__pc" src="${img(w.images.pc[0])}" srcset="${srcset(w.images.pc[0])}" sizes="${CARD_SIZES}" width="1280" height="800" alt=""${L} decoding="async">
-      <img class="work__sp" src="${img(w.images.sp)}" width="600" height="1298" alt=""${L} decoding="async"></span>`;
+    media = `<span class="work__media work__media--device" aria-hidden="true">${deviceMockup(w, { size: variant === 'lead' ? 'lead' : 'card', lazy })}</span>`;
   }
   const H = `h${headingLevel}`;
   // ファーストビューに入るカード（lazy=false）は LCP を遅らせないよう reveal を付けない
   return `<article class="work${variant ? ' work--' + variant : ''}${lazy ? ' reveal' : ''}" data-cats="${w.categories.join(' ')}" data-type="${w.type}">
     ${media}
+    <div class="work__body">
+    ${variant === 'lead' ? '<p class="work__eyebrow">Featured Project — 代表作品</p>' : ''}
     <div class="work__head"><span class="work__index">${pad(i + 1)}</span>${tags(w)}</div>
-    <${H} class="work__title"><a href="${workUrl(w)}">${esc(w.title)}</a></${H}>
+    <${H} class="work__title"><a href="${workUrl(w)}">${titleHtml(w.title)}</a></${H}>
     <p class="work__purpose">${esc(w.summary)}</p>
     <dl class="work__meta">
       <dt>Purpose</dt><dd>${esc(w.purpose)}</dd>
-      <dt>Role</dt><dd>${esc(w.role)}</dd>
+      <dt>Role</dt><dd>${esc(w.roles ? w.roles.slice(0, 4).join('・') + ' ほか' : w.role)}</dd>
+      ${variant === 'lead' ? `<dt>Tech</dt><dd>${esc(w.tech.slice(0, 4).join(' / '))}</dd>` : ''}
       ${w.year ? `<dt>Year</dt><dd>${w.year}</dd>` : ''}
     </dl>
     <span class="work__more">詳しく見る ${ICON.arrow}</span>
+    </div>
   </article>`;
 }
 
 /* ───────── pages ───────── */
 function pageIndex() {
   const featured = FEATURED_ORDER.map((s) => bySlug[s]);
-  const variants = ['wide', '', '', 'wide', '', ''];
-  const reelA = ['ai-sales-dx', 'koyomi-miso', 'mirai-ryo', 'futurenest', 'lumia'].map((s) => bySlug[s]);
-  const reelB = ['sakura-seikotsuin', 'aivoyance', 'learncore', 'trattoria-lucente', 'business-design-academy'].map((s) => bySlug[s]);
+  const variants = ['lead', 'wide', '', '', 'wide', '', ''];
+  const reelA = ['araidashi-workshop', 'koyomi-miso', 'mirai-ryo', 'futurenest', 'lumia'].map((s) => bySlug[s]);
+  const reelB = ['ai-sales-dx', 'sakura-seikotsuin', 'aivoyance', 'learncore', 'trattoria-lucente'].map((s) => bySlug[s]);
   const reelCol = (list, sp) => {
     const fig = (w, k, eager) => {
       const isSp = sp && k % 2 === 1;
-      return `<figure class="${isSp ? 'sp' : ''}"><img src="${img(isSp ? w.images.sp : w.images.pc[0] + '-640')}" width="${isSp ? 600 : 640}" height="${isSp ? 1298 : 400}" alt=""${eager ? '' : ' loading="lazy"'} decoding="async"></figure>`;
+      return `<figure class="${isSp ? 'sp' : ''}"><img src="${isSp ? img(w.images.prefix + '-phone-1-420') : desktopSrc(w.images.prefix, 1, 640)}" width="${isSp ? 420 : 640}" height="${isSp ? 860 : 400}" alt=""${eager ? '' : ' loading="lazy"'} decoding="async"></figure>`;
     };
     // 2周分並べて translateY(-50%) でシームレスにループさせる
     return `<div class="hero__reel-col" aria-hidden="true">${list.map((w, k) => fig(w, k, k < 2)).join('')}${list.map((w, k) => fig(w, k, false)).join('')}</div>`;
   };
   const counts = { all: WORKS.length, client: WORKS.filter((w) => w.type === 'client').length, concept: WORKS.filter((w) => w.type === 'concept').length };
 
-  const services = SERVICES.map((s, i) => `<article class="svc reveal">
-      <span class="svc__num">${pad(i + 1)}</span>
-      <h3 class="svc__title"><span class="en">${s.en}</span><span class="ja">${s.ja}</span></h3>
-      <div class="svc__body">
-        <p class="svc__desc">${s.desc}</p>
-        <ul class="svc__list" role="list">${s.items.map((t) => `<li>${t}</li>`).join('')}</ul>
-        ${s.proof ? `<p class="svc__proof">関連する実績：<a href="/works.html?category=${s.proof}">${CATEGORIES[s.proof].ja}の実績を見る</a></p>` : ''}
-        ${s.lp ? `<a class="arrow-link" href="${s.lp}">${s.ja}について詳しく ${ICON.arrow}</a>` : ''}
+  const worksIn = (cat) => WORKS.filter((w) => w.categories.includes(cat));
+  const fields = FIELDS.map((f, i) => {
+    const rel = f.cat ? worksIn(f.cat) : [];
+    const picks = [...rel.filter((w) => w.type === 'client'), ...rel.filter((w) => w.type !== 'client')].slice(0, 3);
+    return `<article class="field-card reveal">
+      <div class="field-card__head"><span class="field-card__num en">${pad(i + 1)}</span><h3 class="field-card__title"><span class="en" lang="en">${f.en}</span><span class="ja">${f.ja}</span></h3></div>
+      <p class="field-card__lead">${f.lead}</p>
+      <p class="field-card__desc">${f.desc}</p>
+      <ul class="field-card__items" role="list">${f.items.map((t) => `<li>${t}</li>`).join('')}</ul>
+      <div class="field-card__foot">
+        ${picks.length ? `<p class="field-card__rel-label">関連する実績</p><ul class="field-card__rel" role="list">${picks.map((w) => `<li><a href="${workUrl(w)}"><span class="tag tag--${w.type}">${w.type === 'client' ? 'Client' : 'Concept'}</span>${esc(w.title.split('｜')[0])}</a></li>`).join('')}</ul>` : `<p class="field-card__rel-label">関連する実績</p><p class="field-card__note">すべての実績で、課題・目的・制作方針を公開しています。</p>`}
+        ${f.note ? `<p class="field-card__note">${f.note}</p>` : ''}
+        <div class="field-card__links">
+          <a class="arrow-link" href="${f.cat ? `/works.html?category=${f.cat}` : '/works.html'}">${f.cat ? `${CATEGORIES[f.cat].ja}の実績（${rel.length}件）` : `すべての実績（${WORKS.length}件）`} ${ICON.arrow}</a>
+          ${f.sales && SALES_LP.enabled ? `<a class="arrow-link arrow-link--sub" href="${SALES_LP.path}">サービス・料金を確認する ${ICON.arrow}</a>` : ''}
+        </div>
       </div>
-    </article>`).join('');
+    </article>`;
+  }).join('');
+  const tools = TOOLS.map((t) => `<div class="tools__row reveal">
+      <h3 class="tools__group"><span class="en" lang="en">${t.en}</span><span class="ja">${t.ja}</span></h3>
+      <ul class="tools__items" role="list">${t.items.map((x) => `<li lang="en">${x}</li>`).join('')}</ul>
+      <p class="tools__use">${t.use}<span>${t.fields}</span></p>
+    </div>`).join('');
 
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: BRAND, url: SITE + '/', inLanguage: 'ja' },
@@ -248,26 +331,9 @@ ${header()}
         <p class="hero__lead lead">人が動く理由を設計し、成果につながる形にする。Web・LP・映像・AIを横断して、企画から実装、公開後の改善まで一貫して担当する個人クリエイティブスタジオです。</p>
         <div class="btn-row">
           <a class="btn" href="#works">制作実績を見る<span class="btn__icon">${ICON.arrow}</span></a>
-          <a class="btn btn--ghost" href="#contact">プロジェクトを相談する<span class="btn__icon">${ICON.arrow}</span></a>
+          <a class="btn btn--ghost" href="${SALES_LP.enabled ? SALES_LP.path : '#fields'}">制作・サービスについて<span class="btn__icon">${ICON.arrow}</span></a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section intro" id="intro" aria-labelledby="introTitle">
-  <div class="wrap">
-    <div class="intro__grid">
-      <h2 id="introTitle" class="intro__copy reveal"><span>デザインは、</span><span class="sub">飾るためではない。</span><span class="indent">人が動く理由を、<br class="br-sp">設計する。</span></h2>
-      <div class="intro__text reveal">
-        <p class="lead">良い商品やサービスでも、伝わらなければ選ばれません。見た目を整えることがゴールではなく、読み手が迷わず次の行動に移れる状態をつくること。それが TAKE CRAFT の仕事です。</p>
-        <p class="body-2">誰に、何を、どの順番で伝えるか。構成とコピーを先に決め、そのうえでデザイン・映像・実装を選びます。</p>
-      </div>
-      <dl class="intro__facts reveal">
-        <div><dt>Public works</dt><dd>${counts.all}<small>件</small></dd></div>
-        <div><dt>Client work</dt><dd>${counts.client}<small>件</small></dd></div>
-        <div><dt>Concept work</dt><dd>${counts.concept}<small>件</small></dd></div>
-      </dl>
     </div>
   </div>
 </section>
@@ -277,7 +343,10 @@ ${header()}
     <div class="sec-head">
       <span class="label label--dot"><span class="label__num">01</span>Selected Works</span>
       <h2 id="worksTitle" class="h2 sec-head__title reveal">課題と狙いから見る、<br>制作実績。</h2>
-      <p class="sec-head__note lead reveal">完成物だけでなく、何のために、どう考えて作ったのかまで掲載しています。クライアントワークと自主制作（コンセプト作品）は区別して表記しています。</p>
+      <div class="sec-head__note reveal">
+        <p class="lead">完成物だけでなく、何のために、どう考えて作ったのかまで掲載しています。クライアントワークと自主制作（コンセプト作品）は区別して表記しています。</p>
+        <dl class="works-count"><div><dt>Public works</dt><dd>${counts.all}</dd></div><div><dt>Client work</dt><dd>${counts.client}</dd></div><div><dt>Concept work</dt><dd>${counts.concept}</dd></div></dl>
+      </div>
     </div>
     <div class="featured">
       ${featured.map((w, i) => workCard(w, i, { variant: variants[i] })).join('\n')}
@@ -292,15 +361,14 @@ ${header()}
   </div>
 </section>
 
-<section class="section" id="services" aria-labelledby="servicesTitle">
+<section class="section" id="fields" aria-labelledby="fieldsTitle">
   <div class="wrap">
     <div class="sec-head">
-      <span class="label label--dot"><span class="label__num">02</span>Services</span>
-      <h2 id="servicesTitle" class="h2 sec-head__title reveal">相談できること。</h2>
-      <p class="sec-head__note lead reveal">新規制作だけでなく、既存サイトの改修や運用の相談も受け付けています。領域をまたぐ相談もそのままどうぞ。</p>
+      <span class="label label--dot"><span class="label__num">02</span>Creative Fields</span>
+      <h2 id="fieldsTitle" class="h2 sec-head__title reveal">制作領域。</h2>
+      <p class="sec-head__note lead reveal">Web、映像、AI、ディレクション。領域をまたいで、目的にいちばん合う伝え方を選びます。</p>
     </div>
-    <div class="services">${services}</div>
-    <div class="services__note"><p class="caption">内容・規模・スケジュールに応じて、対応範囲とお見積りを個別にご提案します。</p></div>
+    <div class="fields">${fields}</div>
   </div>
 </section>
 
@@ -316,13 +384,25 @@ ${header()}
   </div>
 </section>
 
+<section class="section" id="tools" aria-labelledby="toolsTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label label--dot"><span class="label__num">04</span>Tools &amp; Skills</span>
+      <h2 id="toolsTitle" class="h2 sec-head__title reveal">制作を支える道具。</h2>
+      <p class="sec-head__note lead reveal">デザイン、実装、映像、AI、公開・検証まで。道具は目的のために選び、制作の質と速さを両立させます。</p>
+    </div>
+    <div class="tools">${tools}</div>
+  </div>
+</section>
+
 <section class="section is-white" id="about" aria-labelledby="aboutTitle">
   <div class="wrap">
     <div class="about__grid">
       <div class="about__lead">
-        <span class="label label--dot"><span class="label__num">04</span>About / Philosophy</span>
-        <h2 id="aboutTitle" class="h2 reveal">ひとりで、<br>最後まで責任を持つ。</h2>
+        <span class="label label--dot"><span class="label__num">05</span>About / Philosophy</span>
+        <h2 id="aboutTitle" class="h2 about__title reveal"><span>デザインは、<br>飾るためではない。</span><span>人が動く理由を、<br>設計する。</span></h2>
         <p class="lead reveal">TAKE CRAFT は、個人で運営するクリエイティブスタジオです。ヒアリングから構成、デザイン、実装、公開後の改善まで、同じ人間が一貫して担当します。窓口と制作者が同じだから、意図が途中で薄まりません。</p>
+        <p class="body-2 reveal">Webと映像を横断し、AIも制作の道具として取り入れながら、見た目の美しさと、読み手が迷わず行動できる設計の両方にこだわります。</p>
         <div class="about__portrait reveal">
           <img src="/images/profile.jpg" width="400" height="400" alt="カメラを構えるTAKE CRAFTの制作者" loading="lazy" decoding="async">
           <p><strong>${BRAND}</strong>Creative Direction / Web / LP / Video / AI</p>
@@ -348,7 +428,7 @@ function contactSection() {
   <div class="wrap">
     <div class="contact__grid">
       <div class="contact__intro">
-        <span class="label label--dot"><span class="label__num">05</span>Contact</span>
+        <span class="label label--dot"><span class="label__num">06</span>Explore / Contact</span>
         <h2 id="contactTitle" class="contact__title">まずは、<br>相談してみる。</h2>
         <p class="lead">内容が固まっていなくても大丈夫です。「何から始めればいいか分からない」という段階からご相談ください。</p>
         <ol class="contact__steps" role="list">
@@ -357,6 +437,12 @@ function contactSection() {
           <li><b>03</b>ヒアリング・ご提案・お見積り</li>
         </ol>
         <p class="contact__mail">メールで直接のご連絡：<a href="mailto:${EMAIL}">${EMAIL}</a></p>
+        <p class="caption">Web・LPだけでなく、映像・AI活用・その他のご相談もこのフォームで受け付けています。</p>
+        <nav class="explore" aria-label="ほかのページを見る"><p class="explore__label">Explore</p><ul role="list">
+          <li><a href="/works.html">すべての制作実績<span>${WORKS.length}</span></a></li>
+          <li><a href="/video-works.html">映像制作実績<span>${WORKS.filter((w) => w.categories.includes('video')).length}</span></a></li>
+          ${SALES_LP.enabled ? `<li><a href="${SALES_LP.path}">Web制作・保守サービス（料金・依頼の流れ）<span>→</span></a></li>` : ''}
+        </ul></nav>
       </div>
       <div class="contact__form">
         <form class="form" id="contactForm" novalidate data-endpoint="" data-mailto="${EMAIL}">
@@ -462,7 +548,23 @@ function ctaBand() {
     <div class="wrap cta-band">
       <h2 class="cta-band__title" id="ctaTitle">似たような課題があれば、<br>まずは相談してみてください。</h2>
       <div><p class="body-2">新規制作・リニューアル・既存サイトの改修や運用まで。内容が固まっていない段階でも大丈夫です。</p>
-      <a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon">${ICON.arrow}</span></a></div>
+      <div class="btn-row"><a class="btn" href="/#contact">プロジェクトを相談する<span class="btn__icon">${ICON.arrow}</span></a>
+      ${SALES_LP.enabled ? `<a class="btn btn--ghost" href="${SALES_LP.path}">サービス・料金を確認する<span class="btn__icon">${ICON.arrow}</span></a>` : ''}</div></div>
+    </div>
+  </section>`;
+}
+
+/* 実績詳細の末尾：作品に関連する相談・サービスへの導線（Web/LP は営業用LPが公開されていればそちらへ） */
+function relatedBand(w) {
+  const web = w.categories.includes('lp') || w.categories.includes('web');
+  const kind = w.video ? '映像制作' : web ? 'Web・LP制作' : '制作';
+  const contactHref = web && SALES_LP.enabled ? SALES_LP.contact : '/#contact';
+  return `<section class="is-dark" data-theme="dark" aria-labelledby="relTitle">
+    <div class="wrap cta-band">
+      <div class="cta-band__head"><p class="pj-next__label" style="margin-bottom:1rem">Related Service / Contact</p><h2 class="cta-band__title" id="relTitle">同様の${kind}を、<br>相談してみませんか。</h2></div>
+      <div><p class="body-2">目的や課題が固まっていない段階でも大丈夫です。${w.video ? '映像の構成・編集から' : '構成・デザイン・実装・公開後の改修まで'}、まずはお気軽にご相談ください。</p>
+      <div class="btn-row"><a class="btn" href="${contactHref}">${w.video ? '映像制作' : web ? 'Web制作' : '制作'}について相談する<span class="btn__icon">${ICON.arrow}</span></a>
+      ${web && SALES_LP.enabled ? `<a class="btn btn--ghost" href="${SALES_LP.path}">サービス・料金を確認する<span class="btn__icon">${ICON.arrow}</span></a>` : `<a class="btn btn--ghost" href="/works.html">すべての作品を見る<span class="btn__icon">${ICON.arrow}</span></a>`}</div></div>
     </div>
   </section>`;
 }
@@ -479,43 +581,43 @@ function pageDetail(w, i) {
         <img src="${img(w.slug + '-thumb')}" width="1280" height="720" alt="${esc(w.title)}のサムネイル" fetchpriority="high" decoding="async">
         <button type="button" aria-label="${esc(w.title)}を再生（YouTube）"><span><i>${ICON.play.replace('<svg', '<svg width="14" height="14"')}</i>再生する</span></button>
       </div><p class="pj-visual__caption">再生ボタンを押すとYouTubeの動画を読み込みます（youtube-nocookie.com）。</p></div>`
-    : `<figure class="pj-visual"><div class="pj-visual__stage">
-        <img class="pc" src="${img(w.images.pc[0])}" width="1280" height="800" alt="${esc(w.title)} PC表示のファーストビュー" fetchpriority="high" decoding="async">
-        <img class="sp" src="${img(w.images.sp)}" width="600" height="1298" alt="${esc(w.title)} スマートフォン表示のファーストビュー" decoding="async">
-      </div><figcaption class="pj-visual__caption">公開中のページを撮影した実際の画面です（PC幅1440px／スマートフォン幅390px）。</figcaption></figure>`;
+    : `<figure class="pj-visual">${deviceMockup(w, { size: 'hero', lazy: false, alt: true })}<figcaption class="pj-visual__caption">公開中のページを撮影した実際の画面です（Desktop：幅1440px／Mobile：幅390px）。スマートフォンのフレームは表示イメージです。</figcaption></figure>`;
 
   const facts = [
     ['Type', TYPES[w.type].ja],
+    w.client ? ['Client', w.client] : null,
     ['Category', catLabels(w)],
     ['Field', w.industry],
     w.year ? ['Year', `${w.year}`] : null,
   ].filter(Boolean);
 
+  const roles = w.roles || w.role.split('・');
+  // 02〜10：Overview → Background → Objective → Design Approach → Implementation → Desktop → Mobile → Tech/Role → Live
   const body = [
-    sec('Overview', '概要', `<p class="lead" style="color:inherit">${esc(w.summary)}</p>${w.type === 'concept' ? `<p class="note">${CONCEPT_NOTE}</p>` : ''}`),
-    sec('Background', w.type === 'concept' ? '想定した背景・課題' : '制作背景・課題', `<p>${esc(w.background)}</p>`),
-    sec('Purpose & Policy', '目的と制作方針', `<p><strong>目的：</strong>${esc(w.purpose)}</p><p>${esc(w.approach)}</p>`),
-    sec('Design Points', isVideo ? '構成・編集上の工夫' : 'デザイン・構成上の工夫', `<ol class="pj-list">${w.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ol>${w.flow?.length ? `<p class="caption" style="margin-top:.5rem">ページ構成（上から順）</p><ol class="pj-flow" role="list">${w.flow.map((f) => `<li>${esc(f)}</li>`).join('')}</ol>` : ''}`),
-    sec(isVideo ? 'Format' : 'Implementation', isVideo ? '制作手法' : '実装内容・技術', `<ul class="pj-tech" role="list">${w.tech.map((t) => `<li lang="en">${esc(t)}</li>`).join('')}</ul>`),
+    sec('Project Overview', '概要', `<p class="lead" style="color:inherit">${esc(w.summary)}</p>${w.type === 'concept' ? `<p class="note">${CONCEPT_NOTE}</p>` : ''}`),
+    sec('Background / Challenge', w.type === 'concept' ? '想定した背景・課題' : '背景・課題', `<p>${esc(w.background)}</p>`),
+    sec('Objective', '目的', `<p class="pj-objective">${esc(w.purpose)}</p>`),
+    sec('Design Approach', isVideo ? '構成の方針' : '設計の方針', `<p>${esc(w.approach)}</p>${w.flow?.length ? `<p class="caption" style="margin-top:.5rem">ページ構成（上から順）</p><ol class="pj-flow" role="list">${w.flow.map((f) => `<li>${esc(f)}</li>`).join('')}</ol>` : ''}`),
+    sec('Implementation', isVideo ? '構成・編集の工夫' : '実装と工夫', `<ol class="pj-list">${w.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ol>`),
   ];
 
-  let gallery = '';
   if (!isVideo) {
-    const shots = w.images.pc.slice(1);
-    const g = [];
-    if (shots[0]) g.push(`<figure class="g2 reveal"><img src="${img(shots[0])}" width="1280" height="800" alt="${esc(w.title)} PC表示・ページ中盤" loading="lazy" decoding="async"><figcaption>PC表示 — ページ中盤</figcaption></figure>`);
-    g.push(`<figure class="sp reveal"><img src="${img(w.images.sp)}" width="600" height="1298" alt="${esc(w.title)} スマートフォン表示" loading="lazy" decoding="async"><figcaption>スマートフォン表示</figcaption></figure>`);
-    if (shots[1]) g.push(`<figure class="g3 reveal"><img src="${img(shots[1])}" width="1280" height="800" alt="${esc(w.title)} PC表示・ページ後半" loading="lazy" decoding="async"><figcaption>PC表示 — ページ後半</figcaption></figure>`);
-    gallery = sec('Screens', '完成イメージ', `<div class="pj-gallery">${g.join('')}</div>`).replace('class="pj-sec__body"', 'class="pj-sec__body" style="max-width:none"');
+    const shotsN = 1 + (w.shots.desktop || []).length;
+    const labels = ['ファーストビュー', 'ページ中盤', 'ページ後半'];
+    const desk = Array.from({ length: shotsN }, (_, k) => `<figure class="screens__desk screens__desk--${k + 1} reveal">${browserFrame(w, k + 1, { alt: `${w.title} PC表示：${labels[k]}`, sizes: k === 0 ? '(min-width: 1440px) 1300px, 92vw' : '(min-width: 900px) 46vw, 92vw' })}<figcaption>Desktop — ${labels[k]}</figcaption></figure>`).join('');
+    const mobN = 1 + (w.shots.mobile || []).length;
+    const mob = Array.from({ length: mobN }, (_, k) => `<figure class="screens__mob reveal">${phoneFrame(w, k + 1, { alt: `${w.title} スマートフォン表示：${labels[k]}`, sizes: '(min-width: 900px) 300px, 60vw' })}<figcaption>Mobile — ${labels[k]}</figcaption></figure>`).join('');
+    const note = (t) => (t ? `<p class="screens__note">${esc(t)}</p>` : '');
+    body.push(`<section class="screens screens--desktop" aria-labelledby="deskTitle"><h2 class="pj-sec__label screens__label" id="deskTitle"><b>${pad(++n)}</b>Desktop Experience<span>PC画面（幅1440px）</span></h2>${note(w.desktopNote)}<div class="screens__desk-grid">${desk}</div></section>`);
+    body.push(`<section class="screens screens--mobile" style="--tone:${w.tone || '#222'}" aria-labelledby="mobTitle"><h2 class="pj-sec__label screens__label" id="mobTitle"><b>${pad(++n)}</b>Mobile Experience<span>スマートフォン画面（幅390px）</span></h2>${note(w.mobileNote)}<div class="screens__mob-row" tabindex="0" role="group" aria-label="スマートフォン画面の一覧（横にスクロールできます）">${mob}</div></section>`);
   } else {
-    gallery = sec('Watch', '完成映像', `<p>完成映像はページ上部のプレーヤー、または下のリンクからYouTubeでご覧いただけます。</p>`);
+    body.push(sec('Watch', '完成映像', `<p>完成映像はページ上部のプレーヤー、または下のリンクからYouTubeでご覧いただけます。</p>`));
   }
-  body.push(gallery);
-  body.push(sec('Role', '担当範囲', `<p>${esc(w.role)}</p>`));
-  body.push(sec('Link', 'プロジェクトリンク', `<a class="btn btn--ghost" href="${href(w.url)}" target="_blank" rel="noopener">${esc(w.linkLabel)}<span class="sr-only">（新しいタブで開きます）</span><span class="btn__icon">${ICON.external}</span></a>`));
+  body.push(sec('Tech Stack / Role', isVideo ? '制作手法・担当範囲' : '使用技術・担当範囲', `<p class="caption">${isVideo ? '制作手法' : '使用技術'}</p><ul class="pj-tech" role="list">${w.tech.map((t) => `<li lang="en">${esc(t)}</li>`).join('')}</ul><p class="caption" style="margin-top:.5rem">担当範囲</p><ul class="pj-roles" role="list">${roles.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`));
+  body.push(sec('Live Website', isVideo ? '映像を見る' : '公開中のサイト', `<a class="btn" href="${href(w.url)}" target="_blank" rel="noopener">${esc(w.linkLabel)}<span class="sr-only">（新しいタブで開きます）</span><span class="btn__icon">${ICON.external}</span></a><p class="caption">${esc(hostOf(w.url))}</p>`));
 
   const jsonld = [
-    { '@context': 'https://schema.org', '@type': isVideo ? 'VideoObject' : 'CreativeWork', name: w.title, description: w.summary, url: SITE + path, ...(isVideo ? { thumbnailUrl: SITE + img(w.slug + '-thumb'), embedUrl: `https://www.youtube-nocookie.com/embed/${w.video.id}` } : { image: SITE + img(w.images.pc[0]) }), creator: { '@type': 'Organization', name: BRAND, url: SITE + '/' } },
+    { '@context': 'https://schema.org', '@type': isVideo ? 'VideoObject' : 'CreativeWork', name: w.title, description: w.summary, url: SITE + path, ...(isVideo ? { thumbnailUrl: SITE + img(w.slug + '-thumb'), embedUrl: `https://www.youtube-nocookie.com/embed/${w.video.id}` } : { image: SITE + desktopSrc(w.images.prefix, 1, 1280) }), creator: { '@type': 'Organization', name: BRAND, url: SITE + '/' } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: '制作実績', item: SITE + '/works.html' }, { '@type': 'ListItem', position: 3, name: w.title, item: SITE + path }] },
   ];
 
@@ -527,8 +629,9 @@ ${header('works')}
     <div class="wrap">
       <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="/">Home</a></li><li><a href="/works.html">制作実績</a></li><li aria-current="page">${esc(w.title)}</li></ol></nav>
       <div class="pj-hero__tags">${tags(w)}</div>
-      <h1 class="pj-hero__title" id="pjTitle">${esc(w.title)}</h1>
+      <h1 class="pj-hero__title" id="pjTitle">${titleHtml(w.title)}</h1>
       <p class="pj-hero__en" lang="en">${esc(w.en)}</p>
+      <dl class="pj-hero__meta"><div><dt>Category</dt><dd>${esc(catLabels(w))}</dd></div><div><dt>Role</dt><dd>${esc(roles.slice(0, 5).join(' / '))}${roles.length > 5 ? ' ほか' : ''}</dd></div></dl>
       ${visual}
       <div style="height:clamp(3rem,2rem + 4vw,6rem)"></div>
     </div>
@@ -539,11 +642,12 @@ ${header('works')}
   </div>
   <section class="is-dark" data-theme="dark">
     <div class="wrap">
-      <a class="pj-next" href="${workUrl(next)}"><span class="pj-next__label">Next Project — 次のプロジェクト</span><span class="pj-next__title"><span>${esc(next.title)}</span>${ICON.arrow}</span><span class="tags" style="display:flex;flex-wrap:wrap;gap:.5rem">${tags(next)}</span></a>
+      <a class="pj-next" href="${workUrl(next)}"><span class="pj-next__label">Next Project — 次のプロジェクト</span><span class="pj-next__title"><span>${titleHtml(next.title)}</span>${ICON.arrow}</span><span class="tags" style="display:flex;flex-wrap:wrap;gap:.5rem">${tags(next)}</span></a>
+      <p class="pj-all"><a class="arrow-link" href="/works.html">すべての作品を見る（${WORKS.length}件） ${ICON.arrow}</a></p>
       <div style="border-top:1px solid var(--c-line-dark)"></div>
     </div>
   </section>
-  ${ctaBand()}
+  ${relatedBand(w)}
 </main>
 ${footer()}
 </body>

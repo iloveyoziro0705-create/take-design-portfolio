@@ -7,7 +7,7 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); };
 
   /* ---------- 旧サイトのアンカー（#manifesto 等）を新セクションへ ---------- */
-  var LEGACY_HASH = { manifesto: 'intro', service: 'services', method: 'approach', projects: 'works', behind: 'about', philosophy: 'about', hero: 'top' };
+  var LEGACY_HASH = { manifesto: 'about', intro: 'about', service: 'fields', services: 'fields', method: 'approach', projects: 'works', behind: 'about', philosophy: 'about', hero: 'top' };
   var legacy = LEGACY_HASH[location.hash.slice(1)];
   if (legacy && doc.getElementById(legacy)) {
     history.replaceState(null, '', '#' + legacy);

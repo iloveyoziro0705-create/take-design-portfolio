@@ -5,7 +5,9 @@
  * - 記載ルール：確認できた事実のみ。成果数値・クライアント名・制作年を推測で書かない
  * - type: 'client'（クライアントワーク） / 'concept'（自主制作・コンセプト作品）
  * - categories: CATEGORIES のキー。フィルターは実績が1件以上あるカテゴリーだけ表示される
- * - images: assets/works/ 内の実画面スクリーンショット（scripts/capture は scratchpad 運用）
+ * - shots: 撮影位置（ページ高さに対する割合）。scripts/capture-works.mjs が公開ページから撮影する
+ * - images.prefix: assets/works/<prefix>-desktop-<n>-<w>.webp / -phone-<n>.webp を使う（compose-devices.mjs で合成）
+ * - tone: デバイスモックアップを置くステージの背景色（各LPの配色に合わせた暗色）
  * - 情報がない項目は null / [] にする（ページ側で項目ごと非表示になる）
  */
 
@@ -26,6 +28,41 @@ const LP_ROLE = '構成設計・デザイン・HTML/CSS/JavaScript実装';
 const CONCEPT_NOTE = '自主制作のコンセプト作品です。ブランド名・人物・料金・実績数値などは作品内の設定であり、実在の企業・店舗・成果を示すものではありません。';
 
 export const WORKS = [
+  /* ───────────── Landing Page / Client ───────────── */
+  {
+    slug: 'araidashi-workshop',
+    title: 'The Araidashi｜出張施工ワークショップLP',
+    en: 'The Araidashi — On-site Construction Workshop',
+    type: 'client',
+    categories: ['lp'],
+    industry: 'Building Materials · 設計者向け研修',
+    client: 'ヤブ原産業株式会社（The Araidashi）',
+    year: 2026,
+    role: '構成設計・LPデザイン・HTML/CSS/JavaScript・レスポンシブ対応・FAQ実装・問い合わせフォーム（確認画面・サンクスページ）・既存サイトとの導線設計',
+    roles: ['構成設計', 'LPデザイン', 'HTML / CSS / JavaScript', 'レスポンシブ対応', 'FAQ実装', '問い合わせフォーム', '確認画面', 'サンクスページ', '既存サイトとの導線設計'],
+    desktopNote: '固定ヘッダーから各セクションへ移動でき、FAQは質問タブと回答パネルの切り替えで、情報量が多くても一覧性を保ちます。',
+    mobileNote: 'スマートフォンでは専用に組み直したファーストビューと、右下に固定した問い合わせボタンで、閲覧から相談までを片手で完結できるようにしています。',
+    purpose: '設計事務所からのワークショップ開催の問い合わせ獲得',
+    summary: '洗い出し施工の魅力と、出張施工ワークショップの内容を伝えるLP。施工写真を活かした情報設計と、スマートフォンでの閲覧体験を重視し、構成からデザイン、実装、問い合わせ導線まで制作しました。',
+    background: '天然石洗い出し舗装「テクストン」を、設計事務所の若手設計者に体験してもらう出張施工ワークショップの告知LPです。図面上では伝わりにくい「施工の手触り」と、研修として導入するための情報（所要時間・費用・CPD認定・開催の流れ）の両方を、1ページで伝える必要がありました。',
+    approach: '「設計する」だけでは見えないことを「つくる」ことで学ぶ、というメッセージを軸に、実際の施工写真を主役にした構成にしました。体験の流れを5つの工程で見せたうえで、研修担当者が判断に必要な情報をFAQと開催概要に集約し、問い合わせまで迷わず進める導線にしています。',
+    points: [
+      '施工写真を主役にしたレイアウトで、素材の質感と体験の臨場感を伝える',
+      '天然石を選ぶ → 練る → 塗る → 仕上げる → 完成、の5工程で体験内容を可視化',
+      '研修担当者向けの情報（所要時間・参加費・出張対応・CPD認定）を開催概要とFAQに集約',
+      'FAQは左の質問タブと右の回答パネルを切り替えるUIで、情報量が多くても縦に長くしない',
+      'スマートフォンでは専用のファーストビューと、右下固定の問い合わせボタンで行動しやすく',
+      '固定ヘッダー＋ハンバーガーメニュー、スクロール連動の控えめな表示演出',
+    ],
+    flow: ['ファーストビュー', '若手設計者に実践的な経験を', '施工工程の体験', '参加者の評価', '約3時間・5工程', '体験する素材（テクストン）', '研修プログラムとして', 'FAQ・開催概要', 'お問い合わせフォーム'],
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP（確認画面・送信処理）', 'Responsive', 'Playwright（表示検証）'],
+    url: 'https://yabuhara-ind.co.jp/araidashi_yabuhara/workshop/',
+    linkLabel: 'サイトを見る',
+    shots: { desktop: [0.22, 0.5], mobile: [0.16, 0.4] }, tone: '#2B2824',
+    images: { prefix: 'araidashi-workshop' },
+    featured: true,
+  },
+
   /* ───────────── Video / Client ───────────── */
   {
     slug: 'regional-documentary',
@@ -148,9 +185,11 @@ export const WORKS = [
     ],
     flow: [],
     tech: ['HTML', 'CSS', 'JavaScript', 'IntersectionObserver', 'Responsive'],
+    mobileNote: '320px幅の小型スマートフォンでも崩れないよう、カードUIと見出しの組み方を調整しています。',
     url: './ai-sales-dx-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['ai-sales-dx-pc1', 'ai-sales-dx-pc2', 'ai-sales-dx-pc3'], sp: 'ai-sales-dx-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1D2433',
+    images: { prefix: 'ai-sales-dx' },
     featured: true,
   },
   {
@@ -176,7 +215,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'IntersectionObserver'],
     url: './koyomi-miso-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['koyomi-miso-pc1', 'koyomi-miso-pc2', 'koyomi-miso-pc3'], sp: 'koyomi-miso-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#2C2820',
+    images: { prefix: 'koyomi-miso' },
     featured: true,
   },
   {
@@ -201,7 +241,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'Quiz Logic', 'Simulator'],
     url: './mirai-ryo-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['mirai-ryo-pc1', 'mirai-ryo-pc2', 'mirai-ryo-pc3'], sp: 'mirai-ryo-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1C2730',
+    images: { prefix: 'mirai-ryo' },
     featured: true,
   },
   {
@@ -226,7 +267,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Lenis'],
     url: './finance-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['futurenest-pc1', 'futurenest-pc2', 'futurenest-pc3'], sp: 'futurenest-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#22273A',
+    images: { prefix: 'futurenest' },
     featured: true,
   },
   {
@@ -251,7 +293,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'Simulator', 'Vercel'],
     url: 'https://sakura-seikotsuin-b3au.vercel.app/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['sakura-pc1', 'sakura-pc2', 'sakura-pc3'], sp: 'sakura-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1D2A24',
+    images: { prefix: 'sakura' },
     featured: false,
   },
   {
@@ -276,7 +319,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './lumia-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['lumia-pc1', 'lumia-pc2', 'lumia-pc3'], sp: 'lumia-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#2B2723',
+    images: { prefix: 'lumia' },
     featured: false,
   },
   {
@@ -301,7 +345,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Lenis'],
     url: './ai-school-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['aivoyance-pc1', 'aivoyance-pc2', 'aivoyance-pc3'], sp: 'aivoyance-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1A1B2C',
+    images: { prefix: 'aivoyance' },
     featured: false,
   },
   {
@@ -326,7 +371,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
     url: 'https://trattoria-lucente.vercel.app/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['trattoria-pc1'], sp: 'trattoria-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#272219',
+    images: { prefix: 'trattoria' },
     featured: false,
   },
   {
@@ -351,7 +397,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './elearning-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['learncore-pc1', 'learncore-pc2', 'learncore-pc3'], sp: 'learncore-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1C2532',
+    images: { prefix: 'learncore' },
     featured: false,
   },
   {
@@ -376,7 +423,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript', 'IntersectionObserver'],
     url: './beauty-salon-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['luminos-skin-pc1', 'luminos-skin-pc2', 'luminos-skin-pc3'], sp: 'luminos-skin-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#2D2527',
+    images: { prefix: 'luminos-skin' },
     featured: false,
   },
   {
@@ -401,7 +449,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './hoikushi-mikata-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['hoikushi-mikata-pc1', 'hoikushi-mikata-pc2', 'hoikushi-mikata-pc3'], sp: 'hoikushi-mikata-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#2D2328',
+    images: { prefix: 'hoikushi-mikata' },
     featured: false,
   },
   {
@@ -426,7 +475,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './rapas-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['rapas-pc1', 'rapas-pc2', 'rapas-pc3'], sp: 'rapas-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1C2632',
+    images: { prefix: 'rapas' },
     featured: false,
   },
   {
@@ -451,7 +501,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './business-design-academy-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['business-design-academy-pc1', 'business-design-academy-pc2', 'business-design-academy-pc3'], sp: 'business-design-academy-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#201E19',
+    images: { prefix: 'business-design-academy' },
     featured: false,
   },
   {
@@ -476,7 +527,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     url: './dental-clinic-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['sola-dental-pc1', 'sola-dental-pc2', 'sola-dental-pc3'], sp: 'sola-dental-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#1C272F',
+    images: { prefix: 'sola-dental' },
     featured: false,
   },
   {
@@ -501,7 +553,8 @@ export const WORKS = [
     tech: ['HTML', 'CSS'],
     url: './restaurant-lp/',
     linkLabel: 'サイトを見る',
-    images: { pc: ['restaurant-pc1', 'restaurant-pc2', 'restaurant-pc3'], sp: 'restaurant-sp' },
+    shots: { desktop: [0.28, 0.55], mobile: [0.2, 0.45] }, tone: '#28231C',
+    images: { prefix: 'restaurant' },
     featured: false,
   },
 ];
@@ -509,4 +562,4 @@ export const WORKS = [
 export { CONCEPT_NOTE };
 
 /* トップページ SELECTED WORKS の掲載順 */
-export const FEATURED_ORDER = ['ai-sales-dx', 'regional-documentary', 'koyomi-miso', 'mirai-ryo', 'sns-short-ad', 'futurenest'];
+export const FEATURED_ORDER = ['araidashi-workshop', 'regional-documentary', 'ai-sales-dx', 'koyomi-miso', 'mirai-ryo', 'sns-short-ad', 'futurenest'];
