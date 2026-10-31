@@ -19,7 +19,7 @@
 - 編集後は `node scripts/build.mjs` を実行。CSS/JS を変えたら `build.mjs` の `ASSET_V` を上げる
 - **役割分担**：ポートフォリオ＝制作力・実績の証明（料金・保守プラン・依頼の流れは載せない）／営業用LP `/web-services/`＝サービス・料金・依頼方法（別プロジェクト）
 - 営業用LPへのリンクは `build.mjs` の `SALES_LP`。`web-services/index.html` をリポジトリに追加するとビルド時に自動で有効化（強制: `SALES_LP=on|off node scripts/build.mjs`）。未公開の間はリンクを一切出さない。営業用LPのフォームのアンカーIDは完成後に `SALES_LP.contact` へ合わせる
-- 総合問い合わせフォーム（/#contact、mailto）は映像・AIの相談窓口として維持する。送信先は変更しない
+- 総合問い合わせフォーム（/#contact）は映像・AIの相談窓口として維持する。送信先は変更しない。2026-10-31 から営業用LPの送信API（`https://takecraft-web.vercel.app/api/contact`、`source: "portfolio"`）を共用し、API未設定・通信できないときは site.js が mailto 方式へ自動で切り替える（mailto のみに戻す：`CONTACT_API=off node scripts/build.mjs`）。「ご相談の種類」は build.mjs の `INQUIRY_TYPES` と contact.js の `PORTFOLIO_TYPES` を必ず同じにする
 - Tools & Skills（`TOOLS`）は使用経験を確認できたものだけ載せる（2026-10-27 確認済み）
 
 ## 営業用LP（https://takecraft-web.vercel.app/ ・Vercel プロジェクト takecraft-web）

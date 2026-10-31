@@ -38,7 +38,14 @@
 | `GA4_ID` | – | **ビルド時**の値。`GA4_ID=G-XXXXXXX node scripts/build-web-services.mjs` で計測タグを出力。プライバシーポリシー（ポートフォリオ側）にも追記されるよう `GA4_ID=... node scripts/build.mjs` も実行 |
 
 環境変数を追加・変更したら、Vercel で再デプロイすると反映されます。
-`RESEND_API_KEY` / `CONTACT_TO` が未設定の間、フォームは「送信できませんでした」と表示し、ポートフォリオのフォームを案内します（送信内容は失われません）。
+`RESEND_API_KEY` / `CONTACT_TO` が未設定の間、LPのフォームは「送信できませんでした」と表示し、ポートフォリオのフォームを案内します（送信内容は失われません）。
+
+### ポートフォリオのフォームとの共用（2026-10-31〜）
+- ポートフォリオ（https://take-design-portfolio.vercel.app/#contact）のフォームも、この API（`/api/contact`）に `source: "portfolio"` で送信します。環境変数の設定は takecraft-web 側の1か所だけで済みます
+- 別オリジンからの送信のため、API は許可した Origin（takecraft-web・take-design-portfolio・`ALLOWED_ORIGINS`）にだけ CORS を許可します（OPTIONS のプリフライトにも対応）
+- 件名：`【TAKE CRAFT ポートフォリオ】<ご相談の種類>のご相談：<お名前>様`（LPは `【TAKE CRAFT Web制作】…`）
+- API 未設定（not_configured）・通信できない・送信失敗のときは、ポートフォリオ側が自動でメールアプリ（mailto）方式に切り替えます。Resend の設定前にデプロイしても、今までどおり問い合わせを受け付けられます
+- 反映の順番：**先に LP（`deploy.sh lp`：CORS 対応の API）→ 次にポートフォリオ（`deploy.sh portfolio`）**。逆にすると、LP が古い API の間はポートフォリオの送信がすべて mailto に切り替わります（受付は止まりません）
 
 ### Resend の初期設定（ご本人の操作が必要）
 1. https://resend.com でアカウント作成（無料枠：月3,000通・1日100通）

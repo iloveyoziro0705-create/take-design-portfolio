@@ -169,10 +169,13 @@
   });
 
   /* ---------- Contact form ----------
-   * data-endpoint が空なら mailto 方式。将来フォームAPIを用意したら
-   * data-endpoint に URL を入れるだけで fetch(POST, JSON) 送信に切り替わる。 */
+   * data-endpoint があれば、営業用LPの送信API（/api/contact、source: portfolio）へ fetch(POST, JSON) で送信する。
+   * API が未設定（not_configured）・通信できない・送信に失敗した場合は、mailto 方式（メールアプリ）に切り替える。
+   * data-endpoint が空なら最初から mailto 方式。 */
   var form = $('#contactForm');
   if (form) {
+    var loadedAt = Date.now(); // 表示から送信までの時間（API 側のスパム対策）
+    var sending = false;
     var status = $('#formStatus');
     var submit = $('button[type="submit"]', form);
     var submitHTML = submit.innerHTML;
@@ -237,13 +240,16 @@
         errs[0].focus();
         return;
       }
+      if (sending) return; // 二重送信防止
       var m = compose();
       var to = form.dataset.mailto;
+      sending = true;
       submit.disabled = true;
       submit.innerHTML = '準備しています…';
       show('pending', '<p>送信の準備をしています…</p>');
 
       var done = function (ok, text) {
+        sending = false;
         submit.disabled = false;
         submit.innerHTML = submitHTML;
         if (ok) {
@@ -254,23 +260,51 @@
         }
       };
 
-      var endpoint = form.dataset.endpoint;
-      if (endpoint) {
-        fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: m.subject, body: m.body }) })
-          .then(function (r) { done(r.ok, '<p><strong>送信が完了しました。</strong>内容を確認のうえ、ご入力のメールアドレス宛にご連絡します。</p>'); })
-          .catch(function () { done(false); });
-        return;
-      }
+      // lead：サーバー送信から切り替えたときの一文
+      var openMail = function (lead) {
+        var href = 'mailto:' + to + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+        setTimeout(function () {
+          window.location.href = href;
+          done(true,
+            (lead || '') +
+            '<p><strong>メールアプリを起動しました。</strong>内容をご確認のうえ、メールアプリから送信してください。送信をもってお問い合わせ完了となります。</p>' +
+            '<p>メールアプリが開かない場合は、内容をコピーして <a href="mailto:' + to + '">' + to + '</a> 宛にお送りください。</p>' +
+            '<button class="btn btn--ghost" type="button" data-copy>入力内容をコピーする</button>');
+          copyFallback(m.subject + '\n\n' + m.body);
+        }, 250);
+      };
 
-      var href = 'mailto:' + to + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
-      setTimeout(function () {
-        window.location.href = href;
-        done(true,
-          '<p><strong>メールアプリを起動しました。</strong>内容をご確認のうえ、メールアプリから送信してください。送信をもってお問い合わせ完了となります。</p>' +
-          '<p>メールアプリが開かない場合は、内容をコピーして <a href="mailto:' + to + '">' + to + '</a> 宛にお送りください。</p>' +
-          '<button class="btn btn--ghost" type="button" data-copy>入力内容をコピーする</button>');
-        copyFallback(m.subject + '\n\n' + m.body);
-      }, 250);
+      var endpoint = form.dataset.endpoint;
+      if (!endpoint) { openMail(); return; }
+
+      var e = form.elements;
+      submit.innerHTML = '送信しています…';
+      show('pending', '<p>送信しています。画面を閉じずにお待ちください。</p>');
+      var data = { source: 'portfolio', types: m.types, name: e.name.value, email: e.email.value, company: e.company.value, message: e.message.value, agree: e.agree.checked, website: e.website ? e.website.value : '', t: loadedAt };
+      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'bad_response' }; }); })
+        .then(function (j) {
+          if (j.ok) {
+            form.reset();
+            delete form.dataset.tried;
+            done(true, '<p><strong>送信が完了しました。</strong>内容を確認のうえ、ご入力のメールアドレス宛にご連絡します。</p>');
+            return;
+          }
+          if (j.error === 'validation' && j.fields) {
+            var map = { type: $('input[name="type"]', form), name: e.name, email: e.email, message: e.message, agree: e.agree };
+            Object.keys(j.fields).forEach(function (k) { setErr(k, j.fields[k], k === 'type' || k === 'agree' ? null : map[k]); });
+            sending = false; submit.disabled = false; submit.innerHTML = submitHTML;
+            show('error', '<p><strong>入力内容をご確認ください。</strong></p>');
+            var first = map[Object.keys(j.fields)[0]];
+            if (first) first.focus();
+            return;
+          }
+          throw new Error(j.error || 'failed');
+        })
+        .catch(function () {
+          // API 未設定・通信できない・送信失敗：メールアプリでの送信に切り替える（入力内容は失われない）
+          openMail('<p>自動送信ができなかったため、メールアプリでの送信に切り替えました。</p>');
+        });
     });
   }
 })();

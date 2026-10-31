@@ -1,9 +1,11 @@
 /**
  * 営業用LP（https://takecraft-web.vercel.app/）お問い合わせ送信 API — Vercel Functions（Node.js）
+ * ポートフォリオ（https://take-design-portfolio.vercel.app/#contact）のフォームもこの API を共用する（source: "portfolio"）。
  *
  * POST /api/contact
  *   - JSON（JavaScript から fetch）→ { ok: true } / { ok: false, error, fields? }
  *   - フォームの通常送信（JavaScript 無効時）→ 成功で /thanks/ へ 303、失敗でエラーページ
+ * OPTIONS /api/contact … ポートフォリオ（別オリジン）からの送信前確認（CORS プリフライト）
  *
  * 環境変数（Vercel の Project Settings → Environment Variables。コードに直接書かない）
  *   RESEND_API_KEY      必須  Resend の API キー
@@ -17,6 +19,9 @@
 'use strict';
 
 const SERVICES = { lp: 'LP制作', hp: 'ホームページ制作', fix: 'Webサイト修正・改修', wp: 'WordPress運用・保守', improve: 'Webサイト改善', other: 'その他' };
+const PORTFOLIO_ORIGIN = 'https://take-design-portfolio.vercel.app';
+// ポートフォリオのフォームの「ご相談の種類」。scripts/build.mjs の INQUIRY_TYPES と同じにする
+const PORTFOLIO_TYPES = ['LP制作', 'Webサイト制作', 'サイト改修', '運用・保守', '動画制作', 'AI / Webシステム', 'その他'];
 const BUDGETS = ['10万円未満', '10〜30万円', '30〜50万円', '50万円以上', '未定・相談したい'];
 const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]{2,}$/;
 const MIN_ELAPSED_MS = 3000;
@@ -49,15 +54,52 @@ function validate(body) {
   return { d, errors };
 }
 
-function allowedOrigin(req) {
-  const origin = req.headers.origin || '';
-  if (!origin) return true; // 一部ブラウザ・通常のフォーム送信では付かない場合がある（他の対策で補う）
+// ポートフォリオのフォーム（ご相談の種類は複数選択）
+function validatePortfolio(body) {
+  const raw = Array.isArray(body.types) ? body.types : body.types ? [body.types] : [];
+  const types = [...new Set(raw.map((t) => oneLine(t, 40)).filter(Boolean))].slice(0, PORTFOLIO_TYPES.length);
+  const d = {
+    types,
+    name: oneLine(body.name, 80),
+    email: oneLine(body.email, 200),
+    company: oneLine(body.company, 120),
+    message: clean(body.message, 4000),
+    agree: body.agree === true || body.agree === 'on' || body.agree === 'true',
+  };
+  const errors = {};
+  if (!types.length || !types.every((t) => PORTFOLIO_TYPES.includes(t))) errors.type = 'ご相談の種類を1つ以上選択してください。';
+  if (!d.name) errors.name = 'お名前を入力してください。';
+  if (!d.email) errors.email = 'メールアドレスを入力してください。';
+  else if (!EMAIL_RE.test(d.email)) errors.email = 'メールアドレスの形式をご確認ください。';
+  if (d.message.length < 10) errors.message = 'ご相談内容を10文字以上でご記入ください。';
+  if (!d.agree) errors.agree = 'プライバシーポリシーへの同意が必要です。';
+  return { d, errors };
+}
+
+function originList() {
   const list = (process.env.ALLOWED_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean);
-  list.push('https://takecraft-web.vercel.app');
+  list.push('https://takecraft-web.vercel.app', PORTFOLIO_ORIGIN);
   if (process.env.VERCEL_URL) list.push(`https://${process.env.VERCEL_URL}`);
   if (process.env.VERCEL_BRANCH_URL) list.push(`https://${process.env.VERCEL_BRANCH_URL}`);
   if (process.env.VERCEL_ENV !== 'production') list.push('http://localhost:3000', 'http://127.0.0.1:4173', 'http://127.0.0.1:4180', 'http://127.0.0.1:4181');
-  return list.includes(origin);
+  return list;
+}
+
+function allowedOrigin(req) {
+  const origin = req.headers.origin || '';
+  if (!origin) return true; // 一部ブラウザ・通常のフォーム送信では付かない場合がある（他の対策で補う）
+  return originList().includes(origin);
+}
+
+// 許可した Origin にだけ、ブラウザからの読み取り（CORS）を許可する
+function setCors(req, res) {
+  const origin = req.headers.origin || '';
+  res.setHeader('Vary', 'Origin');
+  if (!origin || !originList().includes(origin)) return;
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+  res.setHeader('Access-Control-Max-Age', '600');
 }
 
 async function sendMail(payload) {
@@ -90,7 +132,12 @@ module.exports = async function handler(req, res) {
     return res.end(JSON.stringify(json));
   };
 
-  if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return reply(405, { ok: false, error: 'method_not_allowed' }); }
+  setCors(req, res);
+  if (req.method === 'OPTIONS') {
+    if (!allowedOrigin(req)) return reply(403, { ok: false, error: 'forbidden' });
+    res.statusCode = 204; return res.end();
+  }
+  if (req.method !== 'POST') { res.setHeader('Allow', 'POST, OPTIONS'); return reply(405, { ok: false, error: 'method_not_allowed' }); }
   if (!allowedOrigin(req)) return reply(403, { ok: false, error: 'forbidden' });
 
   const body = readBody(req);
@@ -99,34 +146,52 @@ module.exports = async function handler(req, res) {
   const elapsed = Date.now() - Number(body.t || 0);
   if (!(elapsed >= MIN_ELAPSED_MS && elapsed <= MAX_ELAPSED_MS)) return reply(400, { ok: false, error: 'invalid_timing' });
 
-  const { d, errors } = validate(body);
+  const fromPortfolio = body.source === 'portfolio';
+  const { d, errors } = fromPortfolio ? validatePortfolio(body) : validate(body);
   if (Object.keys(errors).length) return reply(422, { ok: false, error: 'validation', fields: errors });
 
   if (!process.env.RESEND_API_KEY || !process.env.CONTACT_TO) return reply(503, { ok: false, error: 'not_configured' });
 
-  const service = SERVICES[d.service];
-  const lines = [
-    `ご相談サービス：${service}`,
-    `お名前：${d.name}`,
-    `メールアドレス：${d.email}`,
-    `会社名・屋号：${d.company || '（未記入）'}`,
-    `対象サイトURL：${d.url || '（未記入）'}`,
-    `ご予算：${d.budget || '（未記入）'}`,
-    `ご希望納期：${d.deadline || '（未記入）'}`,
-    '',
-    '■ ご相談内容',
-    d.message,
-    '',
-    '---',
-    `送信元：takecraft-web.vercel.app お問い合わせフォーム（${new Date().toISOString()}）`,
-  ];
+  // details＝自動返信にも載せる部分（ご相談内容まで）
+  let details, subject, site;
+  if (fromPortfolio) {
+    const kinds = d.types.join('・');
+    details = [
+      `ご相談の種類：${d.types.join('、')}`,
+      `お名前：${d.name}`,
+      `メールアドレス：${d.email}`,
+      `会社名・屋号：${d.company || '（未記入）'}`,
+      '',
+      '■ ご相談内容',
+      d.message,
+    ];
+    subject = `【TAKE CRAFT ポートフォリオ】${kinds}のご相談：${d.name}様`;
+    site = 'take-design-portfolio.vercel.app';
+  } else {
+    const service = SERVICES[d.service];
+    details = [
+      `ご相談サービス：${service}`,
+      `お名前：${d.name}`,
+      `メールアドレス：${d.email}`,
+      `会社名・屋号：${d.company || '（未記入）'}`,
+      `対象サイトURL：${d.url || '（未記入）'}`,
+      `ご予算：${d.budget || '（未記入）'}`,
+      `ご希望納期：${d.deadline || '（未記入）'}`,
+      '',
+      '■ ご相談内容',
+      d.message,
+    ];
+    subject = `【TAKE CRAFT Web制作】${service}のご相談：${d.name}様`;
+    site = 'takecraft-web.vercel.app';
+  }
+  const lines = [...details, '', '---', `送信元：${site} お問い合わせフォーム（${new Date().toISOString()}）`];
   const from = process.env.CONTACT_FROM || 'TAKE CRAFT <onboarding@resend.dev>';
   try {
-    await sendMail({ from, to: process.env.CONTACT_TO.split(',').map((s) => s.trim()), reply_to: d.email, subject: `【TAKE CRAFT Web制作】${service}のご相談：${d.name}様`, text: lines.join('\n') });
+    await sendMail({ from, to: process.env.CONTACT_TO.split(',').map((s) => s.trim()), reply_to: d.email, subject, text: lines.join('\n') });
     if (process.env.AUTO_REPLY === 'on') {
       await sendMail({
         from, to: [d.email], subject: '【TAKE CRAFT】お問い合わせありがとうございます',
-        text: [`${d.name} 様`, '', 'TAKE CRAFT へのお問い合わせありがとうございます。', '以下の内容で受け付けました。内容を確認のうえ、メールでご連絡します。', '', ...lines.slice(0, 10), '', 'TAKE CRAFT', 'https://takecraft-web.vercel.app/'].join('\n'),
+        text: [`${d.name} 様`, '', 'TAKE CRAFT へのお問い合わせありがとうございます。', '以下の内容で受け付けました。内容を確認のうえ、メールでご連絡します。', '', ...details, '', 'TAKE CRAFT', `https://${site}/`].join('\n'),
       }).catch(() => {}); // 自動返信の失敗で受付自体を失敗にしない
     }
   } catch (e) {
@@ -137,3 +202,4 @@ module.exports = async function handler(req, res) {
 };
 
 module.exports.validate = validate; // テスト用
+module.exports.validatePortfolio = validatePortfolio;

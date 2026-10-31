@@ -19,7 +19,7 @@ const SITE = 'https://take-design-portfolio.vercel.app';
 const BRAND = 'TAKE CRAFT';
 const EMAIL = 'i.love.yoziro0705@gmail.com';
 const YEAR = new Date().getFullYear();
-const ASSET_V = '20261027-3';
+const ASSET_V = '20261031-1';
 // Webフォントは描画をブロックしないよう非同期で読み込む（display=swap でフォールバック表示→差し替え）
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap';
 
@@ -33,6 +33,12 @@ const SALES_LP = (() => {
   const base = 'https://takecraft-web.vercel.app';
   return { enabled: process.env.SALES_LP !== 'off', path: `${base}/`, contact: `${base}/#contact`, host: 'takecraft-web.vercel.app' };
 })();
+
+/* ───────── お問い合わせフォームの送信先 ─────────
+ * トップの /#contact は、営業用LPの送信API（Vercel Functions + Resend）を共用する（source: portfolio）。
+ * API が未設定・通信できないときは、site.js がメールアプリ（mailto）方式に自動で切り替える。
+ * mailto 方式だけに戻す場合は  CONTACT_API=off node scripts/build.mjs */
+const CONTACT_API = process.env.CONTACT_API === 'off' ? '' : `https://${SALES_LP.host}/api/contact`;
 
 /* ───────── Creative Fields（制作領域）─────────
  * サービス説明・料金は営業用LPの役割。ここでは「対応できる領域」と関連実績だけを示す。
@@ -444,7 +450,7 @@ function contactSection() {
         </ul></nav>
       </div>
       <div class="contact__form">
-        <form class="form" id="contactForm" novalidate data-endpoint="" data-mailto="${EMAIL}">
+        <form class="form" id="contactForm" novalidate data-endpoint="${CONTACT_API}" data-mailto="${EMAIL}">
           <fieldset class="field">
             <legend class="field__label">ご相談の種類 <span class="req">必須</span></legend>
             <div class="chips" role="group">
@@ -479,8 +485,8 @@ function contactSection() {
             <p class="field__error" id="err-agree" role="alert"></p>
           </div>
           <div class="form__submit">
-            <button class="btn" type="submit">内容を確認して送信する<span class="btn__icon">${ICON.arrow}</span></button>
-            <p class="form__note">送信ボタンを押すと、入力内容が記入された状態でお使いのメールアプリが開きます。メールアプリから送信して完了です。</p>
+            <button class="btn" type="submit">${CONTACT_API ? 'この内容で送信する' : '内容を確認して送信する'}<span class="btn__icon">${ICON.arrow}</span></button>
+            <p class="form__note">${CONTACT_API ? '送信ボタンを押すと、入力内容がTAKE CRAFTに送信されます。自動送信ができない場合は、入力内容が記入された状態でお使いのメールアプリが開きます。' : '送信ボタンを押すと、入力内容が記入された状態でお使いのメールアプリが開きます。メールアプリから送信して完了です。'}</p>
           </div>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
@@ -671,18 +677,18 @@ ${header()}
       <h2>2. 利用目的</h2>
       <ul><li>お問い合わせへの回答・ご連絡のため</li><li>ご依頼内容の確認、お見積り・ご提案のため</li></ul>
       <h2>3. 送信方法について</h2>
-      <p>トップページのお問い合わせフォームは、入力内容をお使いのメールアプリに引き渡す方式です。フォームの入力内容が本サイトのサーバーに保存されることはありません。送信はお客様のメールアプリから行われます。</p>
+      ${CONTACT_API ? `<p>トップページのお問い合わせフォームは、入力内容を Web制作・保守サービスサイト（${SALES_LP.host}）の送信用サーバー（Vercel）経由で、メール配信サービス Resend（Resend, Inc.）を通じて当スタジオにメールで送信します。入力内容をデータベース等に保存することはありません。自動送信ができない場合に限り、入力内容をお使いのメールアプリに引き渡す方式に切り替わり、その場合の送信はお客様のメールアプリから行われます。</p>` : '<p>トップページのお問い合わせフォームは、入力内容をお使いのメールアプリに引き渡す方式です。フォームの入力内容が本サイトのサーバーに保存されることはありません。送信はお客様のメールアプリから行われます。</p>'}
       ${SALES_LP.enabled ? `<p>Web制作・保守サービスサイト（${SALES_LP.host}）のお問い合わせフォームは、入力内容を本サイトのサーバー（Vercel）経由で、メール配信サービス Resend（Resend, Inc.）を通じて当スタジオにメールで送信します。入力内容をデータベース等に保存することはありません。</p>` : ''}
       <h2>4. 第三者への提供</h2>
       <p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
       <h2>5. 外部サービス</h2>
-      <p>本サイトはVercel社のホスティングを利用しており、アクセス時の一般的な通信ログが同社のサービス上で処理される場合があります。また、Webフォントの表示にGoogle Fonts、動画の再生にYouTube（再生ボタンを押した場合のみ）を利用しています。${SALES_LP.enabled ? `Web制作・保守サービスサイト（${SALES_LP.host}）はVercel社のホスティングを利用し、お問い合わせの送信には Resend を利用しています。` : ''}</p>
+      <p>本サイトはVercel社のホスティングを利用しており、アクセス時の一般的な通信ログが同社のサービス上で処理される場合があります。また、Webフォントの表示にGoogle Fonts、動画の再生にYouTube（再生ボタンを押した場合のみ）を利用しています。${SALES_LP.enabled ? `Web制作・保守サービスサイト（${SALES_LP.host}）はVercel社のホスティングを利用し、お問い合わせの送信には Resend を利用しています。` : ''}${CONTACT_API ? 'トップページのお問い合わせフォームも、同サイトの送信用サーバーと Resend を利用しています。' : ''}</p>
       ${process.env.GA4_ID ? '<p>Web制作・保守サービスサイトでは、利用状況の把握のため Google アナリティクス（Google LLC）を利用しています。Cookie を用いて匿名の利用データを収集しますが、個人を特定する情報は含みません。ブラウザの設定で Cookie を無効にすることで収集を拒否できます。</p>' : ''}
       <h2>6. 開示・訂正・削除</h2>
       <p>ご本人からの個人情報の開示・訂正・削除のご依頼には、本人確認のうえ対応します。</p>
       <h2>7. お問い合わせ窓口</h2>
       <p><a href="mailto:${EMAIL}">${EMAIL}</a></p>
-      <p class="caption">制定日：2026年10月27日${SALES_LP.enabled ? '／改定日：2026年10月27日' : ''}</p>
+      <p class="caption">制定日：2026年10月27日${CONTACT_API ? '／改定日：2026年10月31日' : SALES_LP.enabled ? '／改定日：2026年10月27日' : ''}</p>
     </div>
   </div>
 </main>
